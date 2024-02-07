@@ -1,0 +1,315 @@
+format = """
+[](col_usr)$os$username[](fg:col_usr)\
+[](fg:col_blk bg:col_dir)\
+$directory[](fg:col_dir bg:col_git)$git_branch$git_status\
+[](fg:col_git bg:col_lng)\
+$aws\
+$c\
+$crystal\
+$dart\
+$docker_context\
+$elixir\
+$golang\
+$haskell\
+$java\
+$julia\
+$kotlin\
+$lua\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$python\
+$rlang\
+$ruby\
+$rust\
+$scala\
+$swift\
+$zig\
+$status\
+$cmd_duration\
+$line_break\
+$line_break\
+$character
+"""
+
+# Doesn't go well with terminal resizing :(
+# right_format = """
+# $cmd_duration\
+# """
+
+
+# ============================ [ COLOR PALETTE ] ============================ #
+
+palette = 'posh_color'
+
+[palettes.posh_color]
+col_wht = '#ffffff'
+col_blk = '#000000'
+col_usr = '#ffce6a'
+col_dir = '#ff7d0b'
+col_git = '#89B4FA'
+col_lng = '#404040'
+col_chk = '#A6E3A1'
+
+col_red = '#f16565'
+col_ylo = "#F9E2AF"
+col_blu = "#89B4FA"
+col_grn = "#A6E3A1"
+col_pnk = "#F5C2E7"
+
+
+# ============================ [ PROMPT DESIGN ] ============================ #
+
+[os]
+disabled = false
+style = "bg:col_usr fg:col_blk"
+
+[username]
+show_always = false
+style_user = "bg:col_usr fg:col_blk"
+style_root = "bg:col_usr fg:col_blk"
+format = '[ $user ]($style)'
+
+[directory]
+read_only = "󰌾 "
+style = "bg:col_dir fg:col_wht"
+format = "[ 🖿 $path ]($style)[$read_only](fg:col_ylo bg:col_dir)"
+truncation_length = 9
+truncation_symbol = "…/"
+
+[status]
+symbol = '[](fg:col_lng bg:col_red)[  ](bg:col_red fg:col_wht)[](fg:col_red)'
+success_symbol = '[](fg:col_lng bg:col_chk)[  ](bg:col_chk fg:col_blk)[](fg:col_chk)'
+not_executable_symbol = '[](fg:col_lng bg:col_red)[  ](bg:col_red fg:col_wht)[](fg:col_red)'
+not_found_symbol =	'[](fg:col_lng bg:col_ylo)[  ](bg:col_ylo fg:col_blk)[](fg:col_ylo)'
+sigint_symbol =	'[](fg:col_lng bg:col_red)[  ](bg:col_red fg:col_wht)[](fg:col_red)' # Interrupt Signal (ctrl+c)
+signal_symbol = '[](fg:col_lng bg:col_ylo)[  ](bg:col_ylo fg:col_blk)[](fg:col_ylo)'
+style = "bg:col_chk fg:col_blk"
+format = '[$symbol]($style)'
+map_symbol = true
+disabled = false
+
+[cmd_duration]
+min_time = 100
+show_milliseconds = false
+disabled = false
+style = "bold italic col_ylo"
+format = " took [$duration]($style)"
+
+
+# ============================== [ OS ICONS ] ============================== #
+
+[os.symbols]
+Alpaquita     = "   "
+Alpine        = "   "
+Amazon        = "   "
+Android       = "   "
+Arch          = "   "
+Artix         = "   "
+CentOS        = "   "
+Debian        = "   "
+DragonFly     = "   "
+Emscripten    = "   "
+EndeavourOS   = "   "
+Fedora        = "   "
+FreeBSD       = "   "
+Garuda        = " 󰛓  "
+Gentoo        = "   "
+HardenedBSD   = " 󰞌  "
+Illumos       = " 󰈸  "
+Linux         = "   "
+Mabox         = "   "
+Macos         = "   "
+Manjaro       = "   "
+Mariner       = "   "
+MidnightBSD   = "   "
+Mint          = "   "
+NetBSD        = "   "
+NixOS         = "   "
+OpenBSD       = " 󰈺  "
+openSUSE      = "   "
+OracleLinux   = " 󰌷  "
+Pop           = "   "
+Raspbian      = "   "
+Redhat        = "   "
+Redox         = " 󰀘  "
+Solus         = " 󰠳  "
+SUSE          = "   "
+Ubuntu        = "   "
+Unknown       = "   "
+Windows       = " 󰍲  "
+
+
+# ============================== [ GIT ICONS ] ============================== #
+
+[git_branch]
+symbol        = ""
+style         = "fg:col_blk bg:col_git"
+format        = '[ $symbol $branch ]($style)'
+
+[git_status]
+staged        = '  ${count}'
+deleted       = '  ${count}'
+renamed       = '  ${count}'
+modified      = '  ${count}'
+untracked     = '  ${count}'
+ahead         = '  ${count}'
+behind        = '  ${count}'
+style         = "fg:col_blk bg:col_git"
+format        = '[$all_status$ahead_behind ]($style)'
+
+
+# ================== [ LAANGUAGES AND TECHNOLOGIES ICONS ] ================== #
+
+[aws]
+symbol        = "  "
+format        = '[ $symbol $context ]($style)'
+
+[buf]
+symbol        = " "
+format        = '[ $symbol $context ]($style)'
+
+[c]
+symbol        = " "
+format        = '[ $symbol ($version) ]($style)'
+
+[conda]
+symbol        = " "
+format        = '[ $symbol $context ]($style)'
+
+[crystal]
+symbol        = " "
+format        = '[ $symbol $context ]($style)'
+
+[dart]
+symbol        = " "
+format        = '[ $symbol $context ]($style)'
+
+[docker_context]
+symbol        = " "
+format        = '[ $symbol $context ]($style)'
+
+[elixir]
+symbol        = " "
+format        = '[ $symbol $context ]($style)'
+
+[elm]
+symbol        = " "
+format        = '[ $symbol ($version) ]($style)'
+
+[fennel]
+symbol        = " "
+format        = '[ $symbol $context ]($style)'
+
+[fossil_branch]
+symbol        = " "
+format        = '[ $symbol $context ]($style)'
+
+[golang]
+symbol        = " "
+format        = '[ $symbol ($version) ]($style)'
+
+[guix_shell]
+symbol        = " "
+format        = '[ $symbol $context ]($style)'
+
+[haskell]
+symbol        = " "
+format        = '[ $symbol ($version) ]($style)'
+
+[haxe]
+symbol        = " "
+format        = '[ $symbol $context ]($style)'
+
+[hg_branch]
+symbol        = " "
+format        = '[ $symbol $context ]($style)'
+
+[hostname]
+ssh_symbol    = " "
+format        = '[ $symbol $context ]($style)'
+
+[java]
+symbol        = " "
+format        = '[ $symbol ($version) ]($style)'
+
+[julia]
+symbol        = " "
+format        = '[ $symbol ($version) ]($style)'
+
+[kotlin]
+symbol        = " "
+format        = '[ $symbol $context ]($style)'
+
+[lua]
+symbol        = " "
+format        = '[ $symbol ($version) ]($style)'
+
+[memory_usage]
+symbol        = "󰍛 "
+format        = '[ $symbol $context ]($style)'
+
+[meson]
+symbol        = "󰔷 "
+format        = '[ $symbol $context ]($style)'
+
+[nim]
+symbol        = "󰆥 "
+format        = '[ $symbol ($version) ]($style)'
+
+[nix_shell]
+symbol        = " "
+format        = '[ $symbol $context ]($style)'
+
+[nodejs]
+symbol        = ""
+format        = '[ $symbol ($version) ]($style)'
+
+[ocaml]
+symbol        = " "
+format        = '[ $symbol $context ]($style)'
+
+[package]
+symbol        = "󰏗 "
+format        = '[ $symbol $context ]($style)'
+
+[perl]
+symbol        = " "
+format        = '[ $symbol $context ]($style)'
+
+[php]
+symbol        = " "
+format        = '[ $symbol $context ]($style)'
+
+[pijul_channel]
+symbol        = " "
+format        = '[ $symbol $context ]($style)'
+
+[python]
+symbol        = " "
+format        = '[ $symbol ($version) ]($style)'
+
+[rlang]
+symbol        = "󰟔 "
+format        = '[ $symbol $context ]($style)'
+
+[ruby]
+symbol        = " "
+format        = '[ $symbol $context ]($style)'
+
+[rust]
+symbol        = ""
+format        = '[ $symbol ($version) ]($style)'
+
+[scala]
+symbol        = " "
+format        = '[ $symbol ($version) ]($style)'
+
+[swift]
+symbol        = " "
+format        = '[ $symbol $context ]($style)'
+
+[zig]
+symbol        = " "
+format        = '[ $symbol $context ]($style)'
