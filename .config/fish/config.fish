@@ -1,6 +1,5 @@
 # Greeting
 set fish_greeting ""
-bash ~/Mid_Hunter/scripts/fetch.sh
 
 # Commands to run in interactive sessions can go here
 if status is-interactive
