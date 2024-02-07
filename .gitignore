@@ -34,6 +34,7 @@
 !.config/starship/
 # Terminal Multiplexer
 !.config/tmux/
+.config/tmux/plugins
 
 # App Launcher
 !.config/fuzzel/
