@@ -1,0 +1,46 @@
+# Ignore Everything
+/*
+!.gitignore
+# Ignore Workspaces ;D
+*/workspace/
+
+# =============================== [ CONFIGS ] =============================== #
+!.config/
+.config/*
+
+# Text Editor
+!.config/nvim/
+# TUI File Explorer
+!.config/vifm/
+.config/vifm/*
+!.config/vifm/vifmrc
+!.config/vifm/colors/
+.config/vifm/colors/*
+!.config/vifm/colors/hunter.vifm
+
+# Wayland Compositor
+!.config/hypr/
+# Notification Daemon
+!.config/mako/
+# System Status Bar
+!.config/waybar/
+
+# Shell
+!.config/fish/
+# Terminal Emulator
+!.config/kitty/
+# Terminal Prompt
+!.config/starship/
+# Terminal Multiplexer
+!.config/tmux/
+
+# App Launcher
+!.config/fuzzel/
+# PDF Viewer
+!.config/zathura/
+
+# =========================== [ PERSONAL FILES ] =========================== #
+!Mid_Hunter/
+Mid_Hunter/*
+
+!Mid_Hunter/scripts/
