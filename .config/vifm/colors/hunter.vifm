@@ -1,0 +1,97 @@
+"=============================================================================="
+"                       Hunter ColorScheme by Mid_Hunter                       "
+"=============================================================================="
+
+highlight clear
+highlight Border	cterm=none	ctermfg=default	ctermbg=default
+highlight TopLine	cterm=none	ctermfg=white	ctermbg=default
+highlight TopLineSel	cterm=bold	ctermfg=002	ctermbg=default
+
+highlight Win		cterm=none	ctermfg=default	ctermbg=default
+highlight Directory	cterm=bold	ctermfg=blue	ctermbg=default
+
+highlight CurrLine	cterm=bold,inverse	ctermfg=default	ctermbg=default
+highlight OtherLine  cterm=reverse    ctermfg=black     ctermbg=white
+highlight Selected	cterm=none	ctermfg=003	ctermbg=008
+
+highlight JobLine	cterm=bold	ctermfg=251	ctermbg=008
+highlight StatusLine	cterm=none	ctermfg=002	ctermbg=default
+highlight ErrorMsg	cterm=bold	ctermfg=001	ctermbg=default
+highlight WildMenu	cterm=bold	ctermfg=015	ctermbg=008
+highlight CmdLine	cterm=none	ctermfg=007	ctermbg=default
+
+
+"============================ [GROUP HIGHLIGHTING] ============================"
+" software documentation
+highlight {COPYRIGHT,COPYING*,BUGS,ChangeLog*,FAQ,INSTALL*,LICEN[CS]E,NEWS,
+          \README*,AUTHORS,TODO,THANKS}
+        \ cterm=none ctermfg=187 ctermbg=default
+" build system files
+highlight {Makefile,Makefile.am,Makefile.in,Makefile.win,*.mak,*.mk,*.m4,*.ac,
+          \configure,CMakeLists.txt,*.cmake,*.pro,*.pri,*.sln,meson.build,
+          \meson_options.txt}
+        \ cterm=none ctermfg=121 ctermbg=default
+" archives
+highlight {*.7z,*.ace,*.arj,*.bz2,*.cpio,*.deb,*.dz,*.gz,*.jar,*.lzh,*.lzma,
+          \*.rar,*.rpm,*.rz,*.tar,*.taz,*.tb2,*.tbz,*.tbz2,*.tgz,*.tlz,*.trz,
+          \*.txz,*.tz,*.tz2,*.xz,*.z,*.zip,*.zoo,*.apk,*.gzip,*.lz}
+        \ cterm=none ctermfg=215 ctermbg=default
+" text
+highlight {*.css,*.less,*.scss,*.markdown,*.md,*.mkd,*.org,*.pandoc,*.pdc,*.tex,
+          \*.txt,*.xml,*.log,*.rss,*.xul,*.json,*.yaml,*.yml,*.csv,*.plist,
+          \*.ini,*.cfg,*.rc,*.conf,*.spec,*.qrc,*.description,*.list,*.log.old,
+          \*.log.1,*.log.2,*.log.3,*.log.4,*.log.5,*.log.6,*.log.7,*.log.8,
+          \syslog,syslog.1}
+        \ cterm=none ctermfg=217 ctermbg=default
+" documents
+highlight {*.doc,*.docx,*.xls,*.xlsm,*.xlsx,*.mobi,*.rtf,*.ppt,*.pptx,*.pdf,
+          \*.epub,*.fb2,*.djvu,*.djv,*.htm,*.html,*.shtml,*.xhtml,*.desktop,
+          \*.odg,*.odt,*.ods}
+        \ cterm=none ctermfg=218 ctermbg=default
+" media
+highlight {*.aac,*.anx,*.asf,*.au,*.avi,*.ts,*.axa,*.axv,*.divx,*.flac,*.m2a,
+          \*.m2v,*.m4a,*.m4p,*.m4v,*.mid,*.midi,*.mka,*.mkv,*.mov,*.mp3,*.mp4,
+          \*.flv,*.mp4v,*.mpc,*.mpeg,*.mpg,*.nuv,*.oga,*.ogg,*.ogv,*.ogx,*.pbm,
+          \*.pgm,*.qt,*.ra,*.ram,*.rm,*.spx,*.vob,*.wav,*.wma,*.wmv,*.xvid,
+          \*.ac3}
+        \ cterm=none ctermfg=Orange3 ctermbg=default
+" images
+highlight {*.bmp,*.gif,*.jpeg,*.jpg,*.ico,*.png,*.ppm,*.svg,*.svgz,*.tga,*.tif,
+          \*.tiff,*.xbm,*.xcf,*.xpm,*.xspf,*.xwd,*.ai,*.pbm,*.pgm,*.webp}
+        \ cterm=none ctermfg=SkyBlue2 ctermbg=default
+" executables
+highlight {*.sh,*.bash,*.zsh,*.bat,*.btm,*.cmd,*.com,*.dll,*.exe,*.run,*.msu,
+          \*.msi,*.fish,*.AppImage}
+        \ cterm=none ctermfg=253 ctermbg=default
+" source code
+highlight {*.patch,*.diff,*.py,*.cpp,*.hpp,*.c,*.h,*.cpp,*.hpp,*.cc,*.hh,*.ld,
+          \*.hs,*.php,*.lua,*.vim,*.vifm,*.asm,*.s,*.java,*.cxx,*.c++,*.go,
+          \*.pl,*.pm,*.t,*.cs,*.asp,*.dart,*.js,*.rb,*.scala,*.ts,*.coffee,
+          \*.ml,*.mli,*.rs,*.sql,*.qml,vifmrc,vimrc,.vimrc,*.flex,*.ypp,*.S}
+        \ cterm=none ctermfg=193 ctermbg=default
+
+
+
+"=================================[FAVORITES]================================="
+
+highlight {*.pdf,*.rs,*.h}
+        \ cterm=none ctermfg=IndianRed1 ctermbg=default
+
+highlight {*.markdown,*.md}
+        \ cterm=none ctermfg=SteelBlue1 ctermbg=default
+
+highlight {*.docx,*.doc,*.css,*.c}
+        \ cterm=none ctermfg=LightSlateBlue ctermbg=default
+
+highlight {*.xls,*.xls[mx],*.xml}
+        \ cterm=none ctermfg=PaleGreen3 ctermbg=default
+
+highlight {*.py,*.js}
+        \ cterm=none ctermfg=yellow ctermbg=default
+
+highlight {*.pptx,*.ppt,*.htm,*.html,*.shtml}
+        \ cterm=none ctermfg=Salmon1 ctermbg=default
+
+highlight {*.php}
+        \ cterm=none ctermfg=Violet ctermbg=default
+
