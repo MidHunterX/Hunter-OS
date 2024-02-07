@@ -37,6 +37,11 @@ nnoremap gh za
 
 " FAST NAVIGATION >:D
 nnoremap / /<c-y>
+anoremap <ESC> <c-j>
+anoremap <c-l> <CR>
+anoremap <c-h> <c-o>
+anoremap <c-j> <c-n>
+anoremap <c-k> <c-p>
 
 " OPEN WITH
 nnoremap o :file<cr>
