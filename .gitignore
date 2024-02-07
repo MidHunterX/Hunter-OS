@@ -43,5 +43,6 @@
 # =========================== [ PERSONAL FILES ] =========================== #
 !Mid_Hunter/
 Mid_Hunter/*
+Mid_Hunter/*/workspace
 
 !Mid_Hunter/scripts/
