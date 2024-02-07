@@ -28,3 +28,19 @@ do
   esac
 done
 clear
+
+# ========================================================================== #
+#                               STORING VALUES                               #
+# ========================================================================== #
+
+# Sourcing Config file
+CONFIG_FILE=~/Mid_Hunter/scripts/set_brightness.conf
+source ${CONFIG_FILE}
+
+# Getting Values
+STORED_VARIABLE="BR_$(date +"%H")"
+STORED_BRIGHTNESS=${!STORED_VARIABLE}
+AVERAGE_BRIGHTNESS=$(awk "BEGIN { printf \"%.2f\", ($STORED_BRIGHTNESS + $CURRENT_BRIGHTNESS) / 2 }")
+
+# Set value in config for next time
+sed -i "s/\($STORED_VARIABLE *= *\).*/\1$AVERAGE_BRIGHTNESS/" $CONFIG_FILE
