@@ -1,49 +1,6 @@
-" █▀ █▀▀ ▀█▀ ▀█▀ █ █▄░█ █▀▀ █▀
-" ▄█ ██▄ ░█░ ░█░ █ █░▀█ █▄█ ▄█
-
-" COLORSCHEMES
-colorscheme hunter Default
-
-" SET LINE NUMBERS
-set number
-
-" RELATIVE NUMBERING FROM CURSOR POSITION
-set relativenumber
-
-" LEAVE SOME SPACE FROM CURSOR WHEN SCROLLING
-set scrolloff=8
-
-" NATURAL SORT OF (VERSION) NUMBERS WITHIN TEXT
-set sortnumbers
-
-" RUN EXECUTABLES BASED ON FILETYPES
-set norunexec
-
-" STATUSLINE = TITLE | ATTRIBUTES, MODIFIED, SORTORDER
-set statusline="  %t %= %A: %20d %8{&sort}  "
-
-" DELETE CONFIRMATION
-set confirm-=delete
-
-" ' + MARKS
-mark h ~/
-mark d ~/Downloads/
-mark c ~/.config/
-mark m ~/Mid_Hunter/
-
-" ALWAYS SHOW PREVIEW
-"view!
-
-" DIRECTORY PREVIEW COLORS
-fileviewer */ ls --color=always
-fileviewer .*/ ls --color=always
-
-
 " █▀█ █▀▀ █▀▄▀█ ▄▀█ █▀█ █▀
 " █▀▄ ██▄ █░▀░█ █▀█ █▀▀ ▄█
-
-" GOTO CONFIG
-nnoremap gc :cd ~/.config<CR>
+" @remaps
 
 " TOGGLE DOT FILES
 nnoremap gh za
@@ -89,8 +46,126 @@ nnoremap K H
 nnoremap v t
 
 
+" =========================================================================== "
+
+
+" █▄▄ █▀█ █▀█ █▄▀ █▀▄▀█ ▄▀█ █▀█ █▄▀ █▀
+" █▄█ █▄█ █▄█ █░█ █░▀░█ █▀█ █▀▄ █░█ ▄█
+" @bookmarks
+
+mark h ~/
+mark d ~/Downloads/
+mark c ~/.config/
+mark m ~/Mid_Hunter/
+
+
+" =========================================================================== "
+
+
+" █▀ █▀▀ ▀█▀ ▀█▀ █ █▄░█ █▀▀ █▀
+" ▄█ ██▄ ░█░ ░█░ █ █░▀█ █▄█ ▄█
+" @settings
+
+" COLORSCHEMES
+colorscheme hunter Default
+
+" SET LINE NUMBERS
+set number
+
+" RELATIVE NUMBERING FROM CURSOR POSITION
+set relativenumber
+
+" LEAVE SOME SPACE FROM CURSOR WHEN SCROLLING
+set scrolloff=8
+
+" NATURAL SORT OF (VERSION) NUMBERS WITHIN TEXT
+set sortnumbers
+
+" RUN EXECUTABLES BASED ON FILETYPES
+set norunexec
+
+" STATUSLINE = TITLE | ATTRIBUTES, MODIFIED, SORTORDER
+set statusline="  %t %= %A: %20d %8{&sort}  "
+
+" DELETE CONFIRMATION
+set confirm-=delete
+
+" ALWAYS SHOW PREVIEW
+view!
+
+" DIRECTORY PREVIEW COLORS
+fileviewer */ ls --color=always
+fileviewer .*/ ls --color=always
+
+" --------------------------------------------------------------------------- "
+
+" Command used to edit files in various contexts.
+if executable('nvim')
+    set vicmd=nvim
+elseif executable('vim')
+    set vicmd=vim
+elseif $EDITOR != ''
+    echo 'Note: using `'.$EDITOR.'` as an editor'
+    let &vicmd = $EDITOR
+endif
+
+" vifm file operations on its own. No cp
+set syscalls
+
+" Trash Directory
+set trash
+
+" What should be saved automatically on restarting vifm.
+set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
+            \phistory,fhistory,dirstack,registers,bookmarks,bmarks
+
+" This is how many directories to store in the directory history.
+set history=100
+
+" Automatically resolve symbolic links on l or Enter.
+set nofollowlinks
+
+" Maximum number of changes that can be undone.
+set undolevels=100
+
+" Use Vim's format of help file (has highlighting and "hyperlinks").
+set vimhelp
+
+" Format for displaying time in file list
+set timefmt='%Y/%m/%d %H:%M'
+
+" Show list of matches on tab completion in command-line mode
+set wildmenu
+
+" Display completions in a form of popup with descriptions of the matches
+set wildstyle=popup
+
+" Display suggestions in normal, visual and view modes for keys, marks
+set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
+
+" Ignore case in search patterns unless it contains at least one uppercase
+" letter
+set ignorecase
+set smartcase
+
+" Don't highlight search results automatically
+set nohlsearch
+
+" Use increment searching (search while typing)
+set incsearch
+
+" Don't do too many requests to slow file systems
+if !has('win')
+    set slowfs=curlftpfs
+endif
+
+
+" =========================================================================== "
+
+
 " █▀▄ █ █▀ ▄▀█ █▄▄ █░░ █▀▀ █▀▄
 " █▄▀ █ ▄█ █▀█ █▄█ █▄▄ ██▄ █▄▀
+" @disabled
 
 " set dotfiles
 " set lsview
@@ -99,10 +174,12 @@ nnoremap v t
 "set viewcolumns=*{name}..,16{mtime},6{size}.
 
 
-" =============================================================================
+" =========================================================================== "
+
 
 " █▀▀ █ █░░ █▀▀   ▀█▀ █▄█ █▀█ █▀▀ █▀   ▄▀█ █▀ █▀ █▀█ █▀▀ █ ▄▀█ ▀█▀ █ █▀█ █▄░█
 " █▀░ █ █▄▄ ██▄   ░█░ ░█░ █▀▀ ██▄ ▄█   █▀█ ▄█ ▄█ █▄█ █▄▄ █ █▀█ ░█░ █ █▄█ █░▀█
+" @association
 
 "  PDF
 filextype {*.pdf},<application/pdf> zathura %c %i, mupdf %c, apvlv %c, xpdf %c
@@ -149,9 +226,9 @@ filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
         \ {View in nomacs}
         \ nomacs %f,
 fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm,*.webp
-    \ kitten icat --silent --transfer-mode=file --place=%pwx%ph@%pxx%py %c >/dev/tty </dev/tty %N
-    \ %pc
-    \ kitten icat --clear --silent >/dev/tty </dev/tty %N
+     \ kitten icat --silent --transfer-mode=file --place=%pwx%ph@%pxx%py %c >/dev/tty </dev/tty %N
+     \ %pc
+     \ kitten icat --clear --silent >/dev/tty </dev/tty %N
 " fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*> identify %f
 
 "  VIDEO
@@ -206,262 +283,7 @@ filetype {*.zip,*.jar,*.war,*.ear,*.oxt,*.apkg},
        \ unzip -l %f | less,
 fileviewer *.zip,*.jar,*.war,*.ear,*.oxt unzip -l %f
 
-
-
-" =============================================================================
-
-" █▀▀ █ █░░ █▀▀   █ █▀▀ █▀█ █▄░█ █▀
-" █▀░ █ █▄▄ ██▄   █ █▄▄ █▄█ █░▀█ ▄█
-" & disown $!,
-
-" Filetypes/directories
-set classify=' :dir:/, :exe:, :reg:, :link:,? :?:, ::../::'
-
-set classify+=' ::Desktop/::, ::Downloads/::, ::Documents/::, ::Music/::,
-           \  ::Pictures/::, ::Videos/::, ::Public/::, ::Templates/::,
-           \  ::data/::, ::repos/::, ::shared/::, ::notes/::, ::dropbox::,
-           \  ::gdrive/::, ::node_modules::, ::.git/::'
-
-" Programming Related
-set classify+='
-             \  ::*.py,,*.pyc,,*.pyd,,*.pyo::,
-             \  ::*.php::,
-             \  ::*.markdown,,*.md::,
-             \  ::*.json::,
-             \  ::*.js::,
-             \  ::*.scss::,
-             \  ::*.ejs,,*.htm,,*.html,,*.slim,,*.xml::,
-             \  ::*.css,,*.less,,*.bat,,*.conf,,*.ini,,*.rc,,*.yml,,*.cfg::,
-             \  ::*.c++,,*.cpp,,*.cxx,,*.c,,*.h::,
-             \  ::*.cc,,*.c::,
-             \  ::*.lua::,
-             \  ::*.jl::,
-             \  ::*.go::,
-             \  ::*.ts::,
-             \  ::*.db,,*.dump,,*.sql::,
-             \  ::*.sln,,*.suo::,
-             \  ::*.exe::,
-             \  ::*.diff,,*.sum,,*.md5,,*.sha512::,
-             \  ::*.scala::,
-             \  ::*.java,,*.jar::,
-             \  ::*.xul::,
-             \  ::*.clj,,*.cljc::,
-             \  ::*.pl,,*.pm,,*.t::,
-             \  ::*.cljs,,*.edn::,
-             \  ::*.rb::,
-             \  ::*.fish,,*.sh,,*.bash,,*.zsh::,
-             \  ::*.dart::,
-             \  ::*.f#,,*.fs,,*.fsi,,*.fsscript,,*.fsx::,
-             \  ::*.rlib,,*.rs::,
-             \  ::*.d::,
-             \  ::*.erl,,*.hrl::,
-             \  ::*.ai::,
-             \  ::*.psb,,*.psd::,
-             \  ::*.jsx::
-\'
-
-" Specific files
-set classify+=' ::.Xdefaults,,.Xresources,,.bashprofile,,.bash_profile,,.bashrc,,
-            \ .dmrc,,.d_store,,.fasd,,.gitconfig,,.gitignore,,.jack-settings,,
-            \ .mime.types,,.nvidia-settings-rc,,.pam_environment,,.profile,,
-            \ .recently-used,,.selected_editor,,.xinitrc,,.inputrc,,.zprofile,,
-             \ .yarnc,,.snclirc,,.tmux.conf,,.urlview,,.config,,.ini,,.user-dirs.dirs,,
-             \ .mimeapps.list,,.offlineimaprc,,.msmtprc,,.Xauthority,,config,,
-             \ Xresources,,xinitrc,,inputrc::,
-             \  ::favicon.*,,README,,readme::,
-             \  ::.vim,,.vimrc,,.gvimrc,,.vifm::,
-             \  ::gruntfile.coffee,,gruntfile.js,,gruntfile.ls::,
-             \  ::gulpfile.coffee,,gulpfile.js,,gulpfile.ls::,
-             \  ::ledger::,
-             \  ::license,,copyright,,copying,,LICENSE,,COPYRIGHT,,COPYING::,
-             \  ::react.jsx::'
-
-" File extensions
-set classify+='λ ::*.ml,,*.mli::,
-             \  ::*.styl::,
-             \  ::*.bmp,,*.gif,,*.ico,,*.jpeg,,*.jpg,,*.png,,*.svg,,*.svgz::,
-             \  ::*.tga,,*.tiff,,*.xmb,,*.xcf,,*.xpm,,*.xspf,,*.xwd,,*.cr2::,
-             \  ::*.dng,,*.3fr,,*.ari,,*.arw,,*.bay,,*.crw,,*.cr3,,*.cap::,
-             \  ::*.data,,*.dcs,,*.dcr,,*drf,,*.eip,,*.erf,,*.fff,,*.gpr::,
-             \  ::*.iiq,,*.k25,,*.kdc,,*.mdc,,*.mef,,*.mos,,*.mrw,,*.obm::,
-             \  ::*.orf,,*.pef,,*.ptx,,*.pxn,,*.r3d,,*.raf,,*.raw,,*.rwl::,
-             \  ::*.rw2,,*.rwz,,*.sr2,,*.srf,,*.srw,,*.tif,,*.x3f,,*.webp,,*.avif,,*.jxl::,
-             \  ::*.mustasche::,
-             \  ::*.rss::,
-             \  ::*.coffee::,
-             \  ::*.twig::,
-             \  ::*.hs,,*.lhs::,
-             \  ::*.aac,,*.anx,,*.asf,,*.au,,*.axa,,*.flac,,*.m2a,,*.m4a::,
-             \  ::*.mid,,*.midi,,*.mp3,,*.mpc,,*.oga,,*.ogg,,*.ogx,,*.ra::,
-             \  ::*.ram,,*.rm,,*.spx,,*.wav,,*.wma,,*.ac3::,
-             \  ::*.avi,,*.flv,,*.mkv,,*.mov,,*.mp4,,*.mpeg,,*.mpg,,*.webm,,*.av1::,
-             \  ::*.epub,,*.pdf,,*.fb2,,*.djvu::,
-             \  ::*.7z,,*.apk,,*.bz2,,*.cab,,*.cpio,,*.deb,,*.gem,,*.gz,,*.gzip::,
-             \  ::*.lh,,*.lzh,,*.lzma,,*.rar,,*.rpm,,*.tar,,*.tgz,,*.xz,,*.zip,,*.zst::,
-             \  ::*.cbr,,*.cbz::,
-             \  ::*.log::,
-             \  ::*.doc,,*.docx,,*.adoc::,
-             \  ::*.xls,,*.xlsmx::,
-             \  ::*.pptx,,*.ppt::'
-
-" =============================================================================
-
-
-" ------------------------------------------------------------------------------
-" Main settings
-" ------------------------------------------------------------------------------
-
-" Command used to edit files in various contexts.  The default is vim.
-" If you would like to use another vi clone such as Elvis or Vile
-" you will need to change this setting.
-if executable('nvim')
-    set vicmd=nvim
-elseif executable('vim')
-    set vicmd=vim
-elseif executable('elvis')
-    set vicmd=elvis\ -G\ termcap
-elseif executable('vile')
-    set vicmd=vile
-elseif $EDITOR != ''
-    echo 'Note: using `'.$EDITOR.'` as an editor'
-    let &vicmd = $EDITOR
-endif
-
-" This makes vifm perform file operations on its own instead of relying on
-" standard utilities like `cp`.  While using `cp` and alike is a more universal
-" solution, it's also much slower when processing large amounts of files and
-" doesn't support progress measuring.
-set syscalls
-
-" Trash Directory
-" The default is to move files that are deleted with dd or :d to
-" the trash directory.  If you change this you will not be able to move
-" files by deleting them and then using p to put the file in the new location.
-" I recommend not changing this until you are familiar with vifm.
-" This probably shouldn't be an option.
-set trash
-
-" What should be saved automatically on restarting vifm.  Drop "savedirs"
-" value if you don't want vifm to remember last visited directories for you.
-set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
-            \phistory,fhistory,dirstack,registers,bookmarks,bmarks
-
-" This is how many directories to store in the directory history.
-set history=100
-
-" Automatically resolve symbolic links on l or Enter.
-set nofollowlinks
-
-" Maximum number of changes that can be undone.
-set undolevels=100
-
-" Use Vim's format of help file (has highlighting and "hyperlinks").
-" If you would rather use a plain text help file set novimhelp.
-set vimhelp
-
-" Format for displaying time in file list. For example:
-" TIME_STAMP_FORMAT=%m/%d-%H:%M
-" See man date or man strftime for details.
-set timefmt='%Y/%m/%d %H:%M'
-
-" Show list of matches on tab completion in command-line mode
-set wildmenu
-
-" Display completions in a form of popup with descriptions of the matches
-set wildstyle=popup
-
-" Display suggestions in normal, visual and view modes for keys, marks and
-" registers (at most 5 files).  In other view, when available.
-set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
-
-" Ignore case in search patterns unless it contains at least one uppercase
-" letter
-set ignorecase
-set smartcase
-
-" Don't highlight search results automatically
-set nohlsearch
-
-" Use increment searching (search while typing)
-set incsearch
-
-" Don't do too many requests to slow file systems
-if !has('win')
-    set slowfs=curlftpfs
-endif
-
-" ------------------------------------------------------------------------------
-" Bookmarks
-" ------------------------------------------------------------------------------
-
-" :mark mark /full/directory/path [filename]
-
-mark b ~/bin/
-mark h ~/
-
-" ------------------------------------------------------------------------------
-" Commands
-" ------------------------------------------------------------------------------
-
-" :com[mand][!] command_name action
-"
-" These are some of the macros that can be used in the action part:
-"  %a for user arguments
-"  %c for current file under the cursor
-"  %C for current file under the cursor of inactive pane
-"  %f for selected file(s)
-"  %F for selected file(s) of inactive pane
-"  %b is the same as %f %F
-"  %d for current directory name
-"  %D for current directory name of inactive pane
-"  %r{x} for list of files in register {x}
-"  %m runs the command in a menu window
-"  %u uses command's output to build a file list
-"  see `:help vifm-macros` and `:help vifm-filename-modifiers` for more
-
-command! df df -h %m 2> /dev/null
-command! diff vim -d %f %F
-command! zip zip -r %c.zip %f
-command! run !! ./%f
-command! make !!make %a
-command! mkcd :mkdir %a | cd %a
-command! vgrep vim "+grep %a"
-command! reload :write | restart full
-
-" ------------------------------------------------------------------------------
-" File types association
-" ------------------------------------------------------------------------------
-
-" :filetype pattern1,pattern2 defaultprogram,program2
-" :fileviewer pattern1,pattern2 consoleviewer
-"
-" The first entry is the default program to be used with a matching file.
-" The other programs for the file type can be accessed via :file command.
-" The command macros like %f, %F, %d, %D may be used in the commands.
-" The %a macro is ignored.  To use a % you must put %%.
-" Spaces in an app name must be escaped, for example: QuickTime\ Player.app
-
-" For automated FUSE mounts, you must register an extension with :file[x]type
-" in one of the following formats:
-"
-" :filetype patterns FUSE_MOUNT|mount_cmd %SOURCE_FILE %DESTINATION_DIR
-"
-" %SOURCE_FILE and %DESTINATION_DIR are filled in at runtime.
-"
-" Example:
-"   :filetype *.zip,*.[jwe]ar FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR
-"
-" :filetype patterns FUSE_MOUNT2|mount_cmd %PARAM %DESTINATION_DIR
-"
-" %PARAM and %DESTINATION_DIR are filled in at runtime.
-"
-" Example:
-"   :filetype *.ssh FUSE_MOUNT2|sshfs %PARAM %DESTINATION_DIR
-"
-" %PARAM value is the first line of the matched file, example: root@127.0.0.1:/
-"
-" You can also add %CLEAR if you want to clear screen before running FUSE
-" program.  There is also %FOREGROUND, which is useful for entering passwords.
+" --------------------------------------------------------------------------- "
 
 " PostScript
 filextype {*.ps,*.eps,*.ps.gz},<application/postscript>
@@ -580,7 +402,13 @@ filextype */
         \ {View in thunar}
         \ Thunar %f &,
 
-" SYNTAX HIGHLIGHTING IN PREVIEW
+
+" =========================================================================== "
+
+
+" █░█ █ █▀▀ █░█ █░░ █ █▀▀ █░█ ▀█▀
+" █▀█ █ █▄█ █▀█ █▄▄ █ █▄█ █▀█ ░█░
+" @syntax_highlighting
 
 " 256-COLOR TERMINAL
 " fileviewer *.[ch],*.[ch]pp,*.py highlight -O xterm256 -s dante --syntax c %c
@@ -595,47 +423,176 @@ filextype */
 " 16-COLOR TERMINAL
 fileviewer *.c,*.h highlight -O ansi -s dante %c
 fileviewer *.py highlight -O ansi --syntax python
+fileviewer *.lua highlight -O ansi --syntax lua
 fileviewer *.json highlight -O ansi --syntax json
 fileviewer *.xml highlight -O ansi --syntax xml 
 fileviewer *.xhtml highlight -O ansi --syntax html
 fileviewer *.opf highlight -O ansi --syntax xml 
+fileviewer *.txt highlight -O ansi --syntax txt
 fileviewer *.md highlight -O ansi --syntax markdown
 fileviewer *.html,*.go,*.css,*.c highlight -O ansi -s dante %c
+fileviewer *.conf highlight -O ansi --syntax conf
+fileviewer *.bash *.sh *.zsh highlight -O ansi --syntax shellscript
+fileviewer *.gvimrc,*.vim,*.vimrc highlight -O ansi --syntax vimscript
 
 " Or leave it for automatic detection
 " fileviewer *[^/] pygmentize -O style=monokai -f console256 -g
 
-" Displaying pictures in terminal
-" fileviewer *.jpg,*.png shellpic %c
 
-" Open all other files with default system programs (you can also remove all
-" :file[x]type commands above to ensure they don't interfere with system-wide
-" settings).  By default all unknown files are opened with 'vi[x]cmd'
-" uncommenting one of lines below will result in ignoring 'vi[x]cmd' option
-" for unknown file types.
-" For *nix:
-" filetype * xdg-open
-" For OS X:
-" filetype * open
-" For Windows:
-" filetype * explorer %"f &
+" =========================================================================== "
 
-" ------------------------------------------------------------------------------
+
+" █▀▀ █ █░░ █▀▀   █ █▀▀ █▀█ █▄░█ █▀
+" █▀░ █ █▄▄ ██▄   █ █▄▄ █▄█ █░▀█ ▄█
+" @icons
+
+" & disown $!,
+
+" Filetypes/directories
+set classify=' :dir:/, :exe:, :reg:, :link:,? :?:, ::../::'
+
+set classify+=' ::Desktop/::, ::Downloads/::, ::Documents/::, ::Music/::,
+           \  ::Pictures/::, ::Videos/::, ::Public/::, ::Templates/::,
+           \  ::data/::, ::repos/::, ::shared/::, ::notes/::, ::dropbox::,
+           \  ::gdrive/::, ::node_modules::, ::.git/::'
+
+" Programming Related
+set classify+='
+             \  ::*.py,,*.pyc,,*.pyd,,*.pyo::,
+             \  ::*.php::,
+             \  ::*.markdown,,*.md::,
+             \  ::*.json::,
+             \  ::*.js::,
+             \  ::*.scss::,
+             \  ::*.ejs,,*.htm,,*.html,,*.slim,,*.xml::,
+             \  ::*.css,,*.less,,*.bat,,*.conf,,*.ini,,*.rc,,*.yml,,*.cfg::,
+             \  ::*.c++,,*.cpp,,*.cxx,,*.c,,*.h::,
+             \  ::*.cc,,*.c::,
+             \  ::*.lua::,
+             \  ::*.jl::,
+             \  ::*.go::,
+             \  ::*.ts::,
+             \  ::*.db,,*.dump,,*.sql::,
+             \  ::*.sln,,*.suo::,
+             \  ::*.exe::,
+             \  ::*.diff,,*.sum,,*.md5,,*.sha512::,
+             \  ::*.scala::,
+             \  ::*.java,,*.jar::,
+             \  ::*.xul::,
+             \  ::*.clj,,*.cljc::,
+             \  ::*.pl,,*.pm,,*.t::,
+             \  ::*.cljs,,*.edn::,
+             \  ::*.rb::,
+             \  ::*.fish,,*.sh,,*.bash,,*.zsh::,
+             \  ::*.dart::,
+             \  ::*.f#,,*.fs,,*.fsi,,*.fsscript,,*.fsx::,
+             \  ::*.rlib,,*.rs::,
+             \  ::*.d::,
+             \  ::*.erl,,*.hrl::,
+             \  ::*.ai::,
+             \  ::*.psb,,*.psd::,
+             \  ::*.jsx::'
+
+" Specific files
+set classify+=' ::.Xdefaults,,.Xresources,,.bashprofile,,.bash_profile,,
+            \ .bashrc,,
+            \ .dmrc,,.d_store,,.fasd,,.gitconfig,,.gitignore,,.jack-settings,,
+            \ .mime.types,,.nvidia-settings-rc,,.pam_environment,,.profile,,
+            \ .recently-used,,.selected_editor,,.xinitrc,,.inputrc,,.zprofile,,
+             \ .snclirc,,.tmux.conf,,.urlview,,.config,,.ini,,.user-dirs.dirs,,
+             \ .mimeapps.list,,.offlineimaprc,,.msmtprc,,.Xauthority,,config,,
+             \ Xresources,,xinitrc,,inputrc::,
+             \  ::favicon.*,,README,,readme::,
+             \  ::.vim,,.vimrc,,.gvimrc,,.vifm::,
+             \  ::gruntfile.coffee,,gruntfile.js,,gruntfile.ls::,
+             \  ::gulpfile.coffee,,gulpfile.js,,gulpfile.ls::,
+             \  ::ledger::,
+             \  ::license,,copyright,,copying,,LICENSE,,COPYRIGHT,,COPYING::,
+             \  ::react.jsx::'
+
+" File extensions
+set classify+='λ ::*.ml,,*.mli::,
+             \  ::*.styl::,
+             \  ::*.bmp,,*.gif,,*.ico,,*.jpeg,,*.jpg,,*.png,,*.svg,,*.svgz::,
+             \  ::*.tga,,*.tiff,,*.xmb,,*.xcf,,*.xpm,,*.xspf,,*.xwd,,*.cr2::,
+             \  ::*.dng,,*.3fr,,*.ari,,*.arw,,*.bay,,*.crw,,*.cr3,,*.cap::,
+             \  ::*.data,,*.dcs,,*.dcr,,*drf,,*.eip,,*.erf,,*.fff,,*.gpr::,
+             \  ::*.iiq,,*.k25,,*.kdc,,*.mdc,,*.mef,,*.mos,,*.mrw,,*.obm::,
+             \  ::*.orf,,*.pef,,*.ptx,,*.pxn,,*.r3d,,*.raf,,*.raw,,*.rwl::,
+             \  ::*.rw2,,*.rwz,,*.sr2,,*.srf,,*.srw,,*.tif,,*.webp,,*.avif::,
+             \  ::*.mustasche::,
+             \  ::*.rss::,
+             \  ::*.coffee::,
+             \  ::*.twig::,
+             \  ::*.hs,,*.lhs::,
+             \  ::*.aac,,*.anx,,*.asf,,*.au,,*.axa,,*.flac,,*.m2a,,*.m4a::,
+             \  ::*.mid,,*.midi,,*.mp3,,*.mpc,,*.oga,,*.ogg,,*.ogx,,*.ra::,
+             \  ::*.ram,,*.rm,,*.spx,,*.wav,,*.wma,,*.ac3::,
+             \  ::*.avi,,*.flv,,*.mkv,,*.mov,,*.mp4,,*.mpeg,,*.mpg,,*.webm::,
+             \  ::*.epub,,*.pdf,,*.fb2,,*.djvu::,
+             \  ::*.7z,,*.apk,,*.bz2,,*.cab,,*.cpio,,*.deb,,*.gz,,*.gzip::,
+             \  ::*.lh,,*.lzh,,*.rar,,*.rpm,,*.tar,,*.tgz,,*.xz,,*.zip::,
+             \  ::*.cbr,,*.cbz::,
+             \  ::*.log::,
+             \  ::*.doc,,*.docx,,*.adoc::,
+             \  ::*.xls,,*.xlsmx::,
+             \  ::*.pptx,,*.ppt::'
+
+
+" =========================================================================== "
+
+
+" █▀▀ █▀█ █▀▄▀█ █▀▄▀█ ▄▀█ █▄░█ █▀▄ █▀
+" █▄▄ █▄█ █░▀░█ █░▀░█ █▀█ █░▀█ █▄▀ ▄█
+" @commands
+
+" These are some of the macros that can be used in the action part:
+"  %a for user arguments
+"  %c for current file under the cursor
+"  %C for current file under the cursor of inactive pane
+"  %f for selected file(s)
+"  %F for selected file(s) of inactive pane
+"  %b is the same as %f %F
+"  %d for current directory name
+"  %D for current directory name of inactive pane
+"  %r{x} for list of files in register {x}
+"  %m runs the command in a menu window
+"  %u uses command's output to build a file list
+"  see `:help vifm-macros` and `:help vifm-filename-modifiers` for more
+
+command! df df -h %m 2> /dev/null
+command! diff vim -d %f %F
+command! zip zip -r %c.zip %f
+command! run !! ./%f
+command! make !!make %a
+command! mkcd :mkdir %a | cd %a
+command! vgrep vim "+grep %a"
+command! reload :write | restart full
+
+
+" =========================================================================== "
+
+
+" █▀▄ █▀▀ █▀▀ ▄▀█ █░█ █░░ ▀█▀ █▀
+" █▄▀ ██▄ █▀░ █▀█ █▄█ █▄▄ ░█░ ▄█
+" @defaults
+
+" -----------------------------------------------------------------------------
 " Panel configuration examples
-" ------------------------------------------------------------------------------
+" -----------------------------------------------------------------------------
 
 " Customize view columns a bit (enable ellipsis for truncated file names)
 " set viewcolumns=-{name}..,6{}.
 
 " Show vertical border
-" set fillchars=vborder:│
+set fillchars=vborder:│
 
 " Filter-out build and temporary files
 " filter! {*.lo,*.o,*.d,*.class,*.pyc,*.pyo,.*~}
 
-" ------------------------------------------------------------------------------
+" -----------------------------------------------------------------------------
 " Sample keyboard mappings
-" ------------------------------------------------------------------------------
+" -----------------------------------------------------------------------------
 
 " Start shell in current directory
 nnoremap s :shell<cr>
@@ -708,11 +665,6 @@ endif
 " Open editor to edit vifmrc and apply settings after returning to vifm
 nnoremap ,c :write | edit $MYVIFMRC | restart full<cr>
 
-" Open gvim to edit vifmrc
-if $DISPLAY && executable('gvim')
-    nnoremap ,C :!gvim --remote-tab-silent $MYVIFMRC &<cr>
-endif
-
 " Toggle wrap setting on ,w key
 nnoremap ,w :set wrap!<cr>
 
@@ -732,9 +684,9 @@ nnoremap <a-o> :sync %c<cr>
 " Swap panes
 " nnoremap <c-u> <c-w>x
 
-" ------------------------------------------------------------------------------
+" -----------------------------------------------------------------------------
 " Various customization examples
-" ------------------------------------------------------------------------------
+" -----------------------------------------------------------------------------
 
 " Use ag (the silver searcher) instead of grep
 " set grepprg='ag --line-numbers %i %a %s'
@@ -756,9 +708,3 @@ nnoremap <a-o> :sync %c<cr>
 
 " Activate screen/tmux support
 " screen!
-
-" ------------------------------------------------------------------------------
-" Icon decorations example
-" ------------------------------------------------------------------------------
-
-" https://github.com/cirala/vifm_devicons
