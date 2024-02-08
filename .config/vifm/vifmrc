@@ -580,17 +580,28 @@ filextype */
         \ {View in thunar}
         \ Thunar %f &,
 
-" Syntax highlighting in preview
-"
-" Explicitly set highlight type for some extensions
-"
-" 256-color terminal
-" fileviewer *.[ch],*.[ch]pp highlight -O xterm256 -s dante --syntax c %c
-" fileviewer Makefile,Makefile.* highlight -O xterm256 -s dante --syntax make %c
-"
-" 16-color terminal
-" fileviewer *.c,*.h highlight -O ansi -s dante %c
-"
+" SYNTAX HIGHLIGHTING IN PREVIEW
+
+" 256-COLOR TERMINAL
+" fileviewer *.[ch],*.[ch]pp,*.py highlight -O xterm256 -s dante --syntax c %c
+" fileviewer *.py highlight -O xterm256 --syntax python
+" fileviewer *.json highlight -O xterm256 --syntax json
+" fileviewer *.xml highlight -O xterm256 --syntax xml 
+" fileviewer *.xhtml highlight -O xterm256 --syntax html
+" fileviewer *.opf highlight -O xterm256 --syntax xml 
+" fileviewer *.md highlight -O xterm256 --syntax markdown
+" fileviewer *.html,*.go,*.css,*.c highlight -O xterm256 -s dante %c
+
+" 16-COLOR TERMINAL
+fileviewer *.c,*.h highlight -O ansi -s dante %c
+fileviewer *.py highlight -O ansi --syntax python
+fileviewer *.json highlight -O ansi --syntax json
+fileviewer *.xml highlight -O ansi --syntax xml 
+fileviewer *.xhtml highlight -O ansi --syntax html
+fileviewer *.opf highlight -O ansi --syntax xml 
+fileviewer *.md highlight -O ansi --syntax markdown
+fileviewer *.html,*.go,*.css,*.c highlight -O ansi -s dante %c
+
 " Or leave it for automatic detection
 " fileviewer *[^/] pygmentize -O style=monokai -f console256 -g
 
