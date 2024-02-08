@@ -43,14 +43,17 @@ anoremap <c-h> <c-o>
 anoremap <c-j> <c-n>
 anoremap <c-k> <c-p>
 
-" OPEN WITH
-nnoremap o :file<cr>
+" FILE MANAGEMENT
+nnoremap o :file<CR>
+nnoremap T :touch<SPACE>
+nnoremap M :mkdir<SPACE>
 
 " TIME TRAVEL
 nnoremap <c-o> :histprev<CR>
-nnoremap <c-i> :histnext<CR>
+"nnoremap <c-i> :histnext<CR>
 
 " SENSIBLE REMAPS
+nnoremap a cW
 nnoremap cw cW
 nnoremap cW cw
 nnoremap <c-u> <PGUP>
@@ -77,6 +80,9 @@ nnoremap v t
 
 " █▀▀ █ █░░ █▀▀   ▀█▀ █▄█ █▀█ █▀▀ █▀   ▄▀█ █▀ █▀ █▀█ █▀▀ █ ▄▀█ ▀█▀ █ █▀█ █▄░█
 " █▀░ █ █▄▄ ██▄   ░█░ ░█░ █▀▀ ██▄ ▄█   █▀█ ▄█ ▄█ █▄█ █▄▄ █ █▀█ ░█░ █ █▄█ █░▀█
+
+fileviewer */ ls --color=always
+fileviewer .*/ ls --color=always
 
 "  PDF
 filextype {*.pdf},<application/pdf> zathura %c %i, mupdf %c, apvlv %c, xpdf %c
