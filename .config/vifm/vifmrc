@@ -25,6 +25,19 @@ set statusline="  %t %= %A: %20d %8{&sort}  "
 " DELETE CONFIRMATION
 set confirm-=delete
 
+" ' + MARKS
+mark h ~/
+mark d ~/Downloads/
+mark c ~/.config/
+mark m ~/Mid_Hunter/
+
+" ALWAYS SHOW PREVIEW
+"view!
+
+" DIRECTORY PREVIEW COLORS
+fileviewer */ ls --color=always
+fileviewer .*/ ls --color=always
+
 
 " █▀█ █▀▀ █▀▄▀█ ▄▀█ █▀█ █▀
 " █▀▄ ██▄ █░▀░█ █▀█ █▀▀ ▄█
@@ -45,8 +58,18 @@ anoremap <c-k> <c-p>
 
 " FILE MANAGEMENT
 nnoremap o :file<CR>
-nnoremap T :touch<SPACE>
+nnoremap t :touch<SPACE>
 nnoremap M :mkdir<SPACE>
+
+" TAB MANAGEMENT
+" create new tab
+nnoremap <c-n> :tabnew<cr>:view!<cr>
+" switch to tab to the left
+nnoremap <a-h> :tabprevious<cr>:view!<cr>
+" switch to tab to the left
+nnoremap <a-l> :tabnext<cr>:view!<cr>
+" switch to tab to the left
+nnoremap x :q<cr>
 
 " TIME TRAVEL
 nnoremap <c-o> :histprev<CR>
@@ -80,9 +103,6 @@ nnoremap v t
 
 " █▀▀ █ █░░ █▀▀   ▀█▀ █▄█ █▀█ █▀▀ █▀   ▄▀█ █▀ █▀ █▀█ █▀▀ █ ▄▀█ ▀█▀ █ █▀█ █▄░█
 " █▀░ █ █▄▄ ██▄   ░█░ ░█░ █▀▀ ██▄ ▄█   █▀█ ▄█ ▄█ █▄█ █▄▄ █ █▀█ ░█░ █ █▄█ █░▀█
-
-fileviewer */ ls --color=always
-fileviewer .*/ ls --color=always
 
 "  PDF
 filextype {*.pdf},<application/pdf> zathura %c %i, mupdf %c, apvlv %c, xpdf %c
