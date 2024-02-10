@@ -36,17 +36,19 @@ nnoremap <c-o> :histprev<CR>
 nnoremap a cW
 nnoremap cw cW
 nnoremap cW cw
-nnoremap <c-u> <PGUP>
-nnoremap <c-d> <PGDN>
+nnoremap <c-u> <PGUP>zz
+nnoremap <c-d> <PGDN>zz
 nnoremap U <c-r>
-nnoremap H <tab>
-nnoremap L <tab>
+nnoremap H <c-w>h
+nnoremap L <c-w>l
 nnoremap J L
 nnoremap K H
 nnoremap v t
 
-" VIEW MODE - ALTERNATE
+" VIEW MODE REMAPS
 nnoremap W <c-w><c-w>a<c-w><c-w>
+qnoremap H <c-w>h
+qnoremap L <c-w>l
 
 
 " =========================================================================== "
@@ -437,8 +439,11 @@ fileviewer *.opf highlight -O ansi --syntax xml
 fileviewer *.txt highlight -O ansi --syntax txt
 fileviewer *.md highlight -O ansi --syntax markdown
 fileviewer *.html,*.go,*.css,*.c highlight -O ansi -s dante %c
-fileviewer *.conf highlight -O ansi --syntax conf
-fileviewer *.bash *.sh *.zsh highlight -O ansi --syntax shellscript
+fileviewer *.conf,
+        \.bashrc,.bash_profile,.xinitrc,.gitignore
+        \ highlight -O ansi --syntax conf
+fileviewer *.bash,*.sh,*.zsh
+        \ highlight -O ansi --syntax shellscript
 fileviewer *.gvimrc,*.vim,*.vimrc highlight -O ansi --syntax vimscript
 
 " Or leave it for automatic detection
