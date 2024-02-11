@@ -75,7 +75,7 @@ format = '[ $user ]($style)'
 read_only = "󰌾 "
 style = "bg:col_dir fg:col_wht"
 format = "[ 🖿 $path ]($style)[$read_only](fg:col_ylo bg:col_dir)"
-truncation_length = 9
+truncation_length = 3
 truncation_symbol = "…/"
 
 [status]
