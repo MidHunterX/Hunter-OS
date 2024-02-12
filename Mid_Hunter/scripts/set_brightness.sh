@@ -38,7 +38,18 @@ CONFIG_FILE=~/Mid_Hunter/scripts/set_brightness.conf
 source ${CONFIG_FILE}
 
 # Getting Values
-STORED_VARIABLE="BR_$(date +"%H")"
+INTERVALS=15
+HOUR=$(date +"%H")
+MINUTE=$(date +"%M")
+MINUTE=$(( (INTERVALS - (10#$MINUTE % INTERVALS) + 10#$MINUTE) ))
+# Jump to next hour if 60
+if [[ $MINUTE_CEIL == 60 ]]; then
+  HOUR=$((10#$HOUR + 1))
+  printf -v HOUR "%02d" $HOUR
+  MINUTE_CEIL=00
+fi
+
+STORED_VARIABLE="BR_${HOUR}_${MINUTE}"
 STORED_BRIGHTNESS=${!STORED_VARIABLE}
 AVERAGE_BRIGHTNESS=$(awk "BEGIN { printf \"%.2f\", ($STORED_BRIGHTNESS + $CURRENT_BRIGHTNESS) / 2 }")
 
