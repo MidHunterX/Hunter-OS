@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ICO='  '
+
 BLK='\033[1;30m'
 RED='\033[1;31m'
 GRN='\033[1;32m'
@@ -8,7 +10,7 @@ BLU='\033[1;34m'
 PNK='\033[1;35m'
 CYN='\033[1;36m'
 WHT='\033[1;37m'
-BLKD='\033[1;30m'
+BLK='\033[1;30m'
 
 DEF='\033[0;39m'
 RESET='\033[0;0m'
@@ -41,4 +43,4 @@ echo -e "  ${X}oMMo ${Y} *o${X}      ${Y}o* ${X} oMMo${R}   ${B}SSD:${R} Micron 
 echo -e "  ${X}oMMo ${Y}   ${X}      ${Y}   ${X} oMMo${R}   ${B}RAM:${R} Hynix HMA851S6DJR6N-XN 2x4GB - ${V}71.1%"
 echo -e "  ${X}:NMo ${Y}   ${X}      ${Y}   ${X} oMN:${R}   ${B}MBD:${R} LNVNB161216"
 echo -e "  ${X}  o+ ${Y}   ${X}      ${Y}   ${X} +o  ${R}"
-echo -e "                           ${RED}   ${GRN}   ${YLO}   ${BLU}   ${PNK}   ${CYN}   ${WHT}   ${BLK}   ${R}"
+echo -e "                           ${RED}${ICO}${GRN}${ICO}${YLO}${ICO}${BLU}${ICO}${PNK}${ICO}${CYN}${ICO}${WHT}${ICO}${BLK}${ICO}${R}"
