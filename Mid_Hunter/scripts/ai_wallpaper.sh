@@ -17,7 +17,7 @@ while [[ 1 ]]; do
   HOUR=$(date +"%H")
   MINUTE=$(date +"%M")
   # 10# == "base 10"; because "0.*" == "octal"
-  WAIT=$(((MINUTES_TO_WAIT - 10#$MINUTE)*60))
+  WAIT=$(((MINUTES_TO_WAIT - (10#$MINUTE % MINUTES_TO_WAIT))*60))
   image=$image_dir$HOUR
 
   if [[ -e "$image.jpg" ]]; then
