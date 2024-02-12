@@ -58,6 +58,12 @@ col_blu = "#89B4FA"
 col_grn = "#A6E3A1"
 col_pnk = "#F5C2E7"
 
+col_vim_err = '#f16565'
+col_vim_ins = "#A6E3A1"
+col_vim_nor = "#89B4FA"
+col_vim_vis = "#F9E2AF"
+col_vim_rep = "#F5C2E7"
+
 
 # ============================ [ PROMPT DESIGN ] ============================ #
 
@@ -97,6 +103,16 @@ disabled = false
 style = "bold italic col_ylo"
 format = " took [$duration]($style)"
 
+[character]
+# success_symbol = "[❯](bold green) "
+# error_symbol = "[❯](bold red) "
+success_symbol = "[ INSERT ](fg:bold col_blk bg:col_vim_ins) "
+error_symbol = "[ ERROR ](fg:bold col_wht bg:col_vim_err) "
+vimcmd_symbol ="[ NORMAL ](fg:bold black bg:col_vim_nor) "
+vimcmd_replace_one_symbol = "[ REPLACE ](fg:bold black bg:col_vim_rep) "
+vimcmd_replace_symbol = "[ REPLACE ](fg:bold black bg:col_vim_rep) "
+vimcmd_visual_symbol = "[ VISUAL ](fg:bold black bg:col_vim_vis) "
+disabled = false
 
 # ============================== [ OS ICONS ] ============================== #
 
