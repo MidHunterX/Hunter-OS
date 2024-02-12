@@ -186,6 +186,13 @@ endif
 " █▀░ █ █▄▄ ██▄   ░█░ ░█░ █▀▀ ██▄ ▄█   █▀█ ▄█ ▄█ █▄█ █▄▄ █ █▀█ ░█░ █ █▄█ █░▀█
 " @association
 
+"  DATABASE
+filextype {*.db},
+        \ {View with DB Browser}
+        \ sqlitebrowser --read-only %c,
+        \ {Edit with DB Browser}
+        \ sqlitebrowser %c
+
 "  PDF
 filextype {*.pdf},<application/pdf> zathura %c %i, mupdf %c, apvlv %c, xpdf %c
 fileviewer {*.pdf},<application/pdf>
