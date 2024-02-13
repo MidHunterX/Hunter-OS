@@ -1,5 +1,6 @@
+# [](col_usr)$os$username[](fg:col_usr)\
 format = """
-[](col_usr)$os$username[](fg:col_usr)\
+[](col_usr)[   ](fg:col_blk bg:col_usr)[](fg:col_usr)\
 [](fg:col_blk bg:col_dir)\
 $directory[](fg:col_dir bg:col_git)$git_branch$git_status\
 [](fg:col_git bg:col_lng)\
@@ -68,7 +69,7 @@ col_vim_rep = "#F5C2E7"
 # ============================ [ PROMPT DESIGN ] ============================ #
 
 [os]
-disabled = false
+disabled = true
 style = "bg:col_usr fg:col_blk"
 
 [username]
@@ -97,7 +98,7 @@ map_symbol = true
 disabled = false
 
 [cmd_duration]
-min_time = 100
+min_time = 1000
 show_milliseconds = false
 disabled = false
 style = "bold italic col_ylo"
