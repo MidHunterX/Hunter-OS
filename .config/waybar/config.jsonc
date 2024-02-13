@@ -3,7 +3,7 @@
   "position": "top",
   "mod": "dock",
   // Exclusive Screen Real-Estate
-  "exclusive": true,
+  "exclusive": false,
   "passthrough": false,
   "gtk-layer-shell": true,
 
@@ -11,20 +11,20 @@
 
   "modules-left": [
     "clock",
-    "idle_inhibitor",
     "hyprland/workspaces"
     // "custom/mid"
   ],
 
-  "modules-center": [
-    "hyprland/window"
-  ],
+  // "modules-center": [
+  //   "hyprland/window"
+  // ],
 
   "modules-right": [
     "network",
     "bluetooth",
     "pulseaudio",
     "pulseaudio#microphone",
+    "idle_inhibitor",
     // "tray",
     // "cpu", // polling expensive
     "backlight",
@@ -38,7 +38,7 @@
   // },
 
   "clock": {
-    "format": " {: %H:%M | %b%e} ", //" {:%H:%M}",
+    "format": " {: %H:%M | %b %e | %a} ", //" {:%H:%M}",
     "format-alt": "{: %I:%M %p   %a, %b %e}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
     // "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",

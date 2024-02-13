@@ -21,7 +21,7 @@ tooltip {
 
 #workspaces button {
   color: #a6adc8;
-  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68);
+  /* transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68); */
 }
 #workspaces button.active {
   color: #f9e2af;
@@ -46,7 +46,6 @@ tooltip {
 #custom-weather,
 #window,
 #clock,
-#idle_inhibitor,
 #battery,
 #pulseaudio,
 #network,
@@ -54,13 +53,15 @@ tooltip {
 #temperature,
 #workspaces,
 #tray,
+#idle_inhibitor,
 #cpu,
 #memory,
 #backlight {
-  background: #1e1e2e;
-  border: 3px solid #1e1e2e;
-  border-top: 0;
-  /* background: transparent; */
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: 3px solid #999999;
+  background: #262626;
+  padding: 2px;
 }
 
 
@@ -69,28 +70,22 @@ tooltip {
 \*================*/
 
 #clock,
-#idle_inhibitor,
 #workspaces,
 #window,
 #tray {
   padding-right: 5px;
   padding-left: 5px;
-  border-radius: 0px 0px 20px 20px;
+  border-radius: 20px 20px 20px 20px;
+  margin-right: 20px;
 }
 
 #clock {
-  /* color: #fab387; */
-  margin-left: 10px;
+  color: #cdcbcb;
+  margin-left: 15px;
 }
 
 #workspaces {
-  margin-left: 8px;
-}
-
-#idle_inhibitor {
-  margin-left: 8px;
-  padding-right: 20px;
-  padding-left: 20px;
+  color: #fab387;
 }
 
 #window {
@@ -115,9 +110,11 @@ tooltip {
 #backlight,
 #pulseaudio,
 #custom-power_profile {
+  border-right: 0px;
   padding-left: 15px;
   padding-right: 5px;
-  border-radius: 0px 0px 0px 20px;
+  border-radius: 20px 0px 0px 20px;
+  margin-left: 20px;
 }
 
 #network {
@@ -134,8 +131,6 @@ tooltip {
 
 #pulseaudio {
   color: #89b4fa;
-  padding-left: 10px;
-  padding-right: 10px;
 }
 
 
@@ -144,6 +139,11 @@ tooltip {
 * NO CORNER *
 \*=========*/
 
+#pulseaudio.microphone {
+  border-radius: 0px 0px 0px 0px;
+  border-left: 0px;
+  border-right: 0px;
+}
 
 
 /*============*\
@@ -151,19 +151,26 @@ tooltip {
 \*============*/
 
 #bluetooth,
-#pulseaudio.microphone,
+#idle_inhibitor,
 #battery {
+  border-left: 0px;
   padding-right: 15px;
-  padding-left: 5px;
+  padding-left: 15px;
   margin-right: 10px;
-  border-radius: 0px 0px 20px 0px;
+  border-radius: 0px 20px 20px 0px;
 }
+
 
 #bluetooth {
   color: #89b4fa;
 } 
 
+#idle_inhibitor {
+  padding-right: 25px;
+}
+
 #pulseaudio.microphone {
+  margin-left: 0px;
   color: #cba6f7;
 }
 
@@ -175,6 +182,7 @@ tooltip {
 }
 #battery {
   color: #a6e3a1;
+  margin-right: 15px;
 }
 #battery.charging {
   color: #a6e3a1;
