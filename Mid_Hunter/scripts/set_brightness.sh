@@ -36,22 +36,82 @@ clear
 # Sourcing Config file
 CONFIG_FILE=~/Mid_Hunter/scripts/set_brightness.conf
 source ${CONFIG_FILE}
-
-# Getting Values
 INTERVALS=15
-HOUR=$(date +"%H")
-MINUTE=$(date +"%M")
-MINUTE=$(( (INTERVALS - (10#$MINUTE % INTERVALS) + 10#$MINUTE) ))
-# Jump to next hour if 60
-if [[ $MINUTE_CEIL == 60 ]]; then
-  HOUR=$((10#$HOUR + 1))
-  printf -v HOUR "%02d" $HOUR
-  MINUTE_CEIL=00
-fi
 
-STORED_VARIABLE="BR_${HOUR}_${MINUTE}"
-STORED_BRIGHTNESS=${!STORED_VARIABLE}
-AVERAGE_BRIGHTNESS=$(awk "BEGIN { printf \"%.2f\", ($STORED_BRIGHTNESS + $CURRENT_BRIGHTNESS) / 2 }")
+# Current and Next hour
+THIS_HOUR=$(date +"%H")
+NEXT_HOUR=$((10#$THIS_HOUR+1))
+PREV_HOUR=$((10#$THIS_HOUR-1))
+printf -v NEXT_HOUR "%02d" $NEXT_HOUR
+printf -v PREV_HOUR "%02d" $PREV_HOUR
+# Boundary handling for the current hour
+if [[ $THIS_HOUR == 00 ]]; then PREV_HOUR=23; fi
+if [[ $THIS_HOUR == 23 ]]; then NEXT_HOUR=00; fi
+PREV_VAR="BR_${PREV_HOUR}_00"
+THIS_VAR="BR_${THIS_HOUR}_00"
+NEXT_VAR="BR_${NEXT_HOUR}_00"
+PREV_VAL="${!PREV_VAR}"
+THIS_VAL="${!THIS_VAR}"
+NEXT_VAL="${!NEXT_VAR}"
 
+# Update Average Brightness
+AVG_BR=$(awk "BEGIN {printf \"%.2f\", ($THIS_VAL + $CURRENT_BRIGHTNESS) / 2}")
 # Set value in config for next time
-sed -i "s/\($STORED_VARIABLE *= *\).*/\1$AVERAGE_BRIGHTNESS/" $CONFIG_FILE
+sed -i "s/\($THIS_VAR *= *\).*/\1$AVG_BR/" $CONFIG_FILE
+# Update New value for generating gradient
+THIS_VAL="${AVG_BR}"
+
+
+DIVISIONS=$((60/$INTERVALS))
+
+
+# UPDATE Linear Gradient - from PREV to THIS
+# ------------------------------------------
+# BRIGHTNESS DIFFERENCE (Floating Point Arithmetic)
+BR_DIFF=$(echo | awk "{print $THIS_VAL - $PREV_VAL}")
+DIV_INC=$(echo | awk "{print $BR_DIFF / $DIVISIONS}")
+printf -v DIV_INC "%.2f" $DIV_INC
+
+# LOG: PREV VARIABLE
+echo "${PREV_VAR} = ${PREV_VAL}"
+
+# Generate Interval Values
+DIV_POINT=00
+for ((i = 1; i < $DIVISIONS; i++)); do
+  DIV_POINT=$((10#$DIV_POINT+$INTERVALS))
+  printf -v DIV_POINT "%02d" $DIV_POINT
+  # Interval Variable Names
+  DIV_VAR="BR_${PREV_HOUR}_${DIV_POINT}"
+  # Generated Values
+  GEN_VAL=$(echo | awk "{print $PREV_VAL + ($DIV_INC * $i)}")
+  # Update linear gradient in config
+  echo "${DIV_VAR} = ${GEN_VAL}"
+  sed -i "s/\($DIV_VAR *= *\).*/\1$GEN_VAL/" $CONFIG_FILE
+done
+
+# LOG: THIS VARIABLE
+echo -e "\033[1;32m${THIS_VAR} = ${THIS_VAL}\033[0;0m"
+
+# UPDATE Linear Gradient - from THIS to NEXT
+# ------------------------------------------
+# BRIGHTNESS DIFFERENCE (Floating Point Arithmetic)
+BR_DIFF=$(echo | awk "{print $NEXT_VAL - $THIS_VAL}")
+DIV_INC=$(echo | awk "{print $BR_DIFF / $DIVISIONS}")
+printf -v DIV_INC "%.2f" $DIV_INC
+
+# Generate Interval Values
+DIV_POINT=00
+for ((i = 1; i < $DIVISIONS; i++)); do
+  DIV_POINT=$((10#$DIV_POINT+$INTERVALS))
+  printf -v DIV_POINT "%02d" $DIV_POINT
+  # Interval Variable Names
+  DIV_VAR="BR_${THIS_HOUR}_${DIV_POINT}"
+  # Generated Values
+  GEN_VAL=$(echo | awk "{print $THIS_VAL + ($DIV_INC * $i)}")
+  # Update linear gradient in config
+  echo "${DIV_VAR} = ${GEN_VAL}"
+  sed -i "s/\($DIV_VAR *= *\).*/\1$GEN_VAL/" $CONFIG_FILE
+done
+
+# LOG: NEXT VARIABLE
+echo "${NEXT_VAR} = ${NEXT_VAL}"
