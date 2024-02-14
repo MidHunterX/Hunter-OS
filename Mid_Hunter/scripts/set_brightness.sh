@@ -38,8 +38,15 @@ CONFIG_FILE=~/Mid_Hunter/scripts/set_brightness.conf
 source ${CONFIG_FILE}
 INTERVALS=15
 
-# Current and Next hour
+# CURRENT, PREVIOUS AND NEXT HOUR VARIABLES
 THIS_HOUR=$(date +"%H")
+THIS_MIN=$(date +"%M")
+# Jump to Next datapoint if Min > 30
+echo $THIS_MIN
+if [[ $THIS_MIN > 30 ]]; then
+  THIS_HOUR=$((10#$THIS_HOUR+1))
+  printf -v THIS_HOUR "%02d" $THIS_HOUR
+fi
 NEXT_HOUR=$((10#$THIS_HOUR+1))
 PREV_HOUR=$((10#$THIS_HOUR-1))
 printf -v NEXT_HOUR "%02d" $NEXT_HOUR
@@ -53,6 +60,7 @@ NEXT_VAR="BR_${NEXT_HOUR}_00"
 PREV_VAL="${!PREV_VAR}"
 THIS_VAL="${!THIS_VAR}"
 NEXT_VAL="${!NEXT_VAR}"
+
 
 # Update Average Brightness
 AVG_BR=$(awk "BEGIN {printf \"%.2f\", ($THIS_VAL + $CURRENT_BRIGHTNESS) / 2}")
