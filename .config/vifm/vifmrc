@@ -33,6 +33,7 @@ nnoremap <c-o> :histprev<CR>
 "nnoremap <c-i> :histnext<CR>
 
 " SENSIBLE REMAPS
+nnoremap i l
 nnoremap a cW
 nnoremap cw cW
 nnoremap cW cw
@@ -200,18 +201,16 @@ fileviewer {*.pdf},<application/pdf>
   \ pdfinfo %c
 
 "  AUDIO
-filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,
-        \ *.aac,*.mpga},
-        \ <audio/*>
-        \ {Play using MPlayer}
-        \ mplayer %f,
+filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ac3,*.og[agx],*.opus,*.aac,*.mpga},
+        \<audio/*>
         \ {Play using mpv}
         \ mpv --no-video %f %s,
         \ {Play using ffplay}
         \ ffplay -nodisp -hide_banner -autoexit %c,
-fileviewer {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,
-         \ *.aac,*.mpga},
-         \ <audio/*>
+        \ {Play using MPlayer}
+        \ mplayer %f,
+fileviewer {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ac3,*.og[agx],*.opus,*.aac,*.mpga},
+         \<audio/*>
          \ ffprobe -hide_banner -pretty %c 2>&1
 
 "  IMAGES
@@ -289,13 +288,17 @@ filetype {*.xhtml,*.html,*.htm},<text/html> links, lynx
 filetype {*.zip,*.jar,*.war,*.ear,*.oxt,*.apkg},
         \<application/zip,application/java-archive>
        \ {Mount with fuse-zip}
-       \ FUSEMOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR,
-       \ {Extract with 7Zip}
+       \ FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR,
+       \ {7Zip - Extract}
        \ 7z e %c -o%d/%c:r,
-       \ {Extract here}
-       \ unzip %c,
+       \ {unzip - Extract}
+       \ unzip %c -d %d/%c:r,
+       \ {unzip - Test Integrity}
+       \ unzip -tq %c,
        \ {View contents}
        \ unzip -l %f | less,
+       \ {Open with 7Zip-GUI}
+       \ 7zFM %d/%c,
 fileviewer *.zip,*.jar,*.war,*.ear,*.oxt unzip -l %f
 
 " --------------------------------------------------------------------------- "
