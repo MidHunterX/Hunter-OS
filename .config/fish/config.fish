@@ -11,6 +11,7 @@ if status is-interactive
   abbr -a -g mid 'nvim'  # Neovim
   abbr -a -g brs 'bash ~/Mid_Hunter/scripts/set_brightness.sh'  # Brightness
   abbr -a -g vos 'bash ~/Mid_Hunter/scripts/set_volume.sh'  # Volume
+  abbr -a -g woman 'man -k . | fzf | awk \'{print $1}\' | xargs man'
 
   # Starship prompt
   starship init fish | source
