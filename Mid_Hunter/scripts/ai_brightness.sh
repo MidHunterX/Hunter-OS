@@ -6,12 +6,13 @@ if [[ `pgrep -f $0` != "$$" ]]; then
   exit
 fi
 
+INTERVALS=15
+
 # Sourcing Config file
 CONFIG_FILE=~/Mid_Hunter/scripts/set_brightness.conf
 source ${CONFIG_FILE}
 
 while [[ 1 ]]; do
-  INTERVALS=15
   HOUR=$(date +"%H")
   MINUTE=$(date +"%M")
   MINUTE_CEIL=$(( (INTERVALS - (10#$MINUTE % INTERVALS) + 10#$MINUTE) ))
@@ -28,8 +29,8 @@ while [[ 1 ]]; do
 
   echo "$STORED_VARIABLE = $STORED_BRIGHTNESS"
 
-  # Set Brightness
-  brillo -u 5000000 -S ${STORED_BRIGHTNESS}
+  # Set Brightness (RAW)
+  brillo -r -u 5000000 -S ${STORED_BRIGHTNESS}
 
   echo $WAIT
   sleep $WAIT
