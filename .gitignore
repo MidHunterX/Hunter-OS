@@ -18,6 +18,10 @@
 !.config/vifm/colors/
 .config/vifm/colors/*
 !.config/vifm/colors/hunter.vifm
+# Keymapping Utility
+!.config/keyd/
+.config/keyd/*
+!.config/keyd/default.conf
 
 # Wayland Compositor
 !.config/hypr/
