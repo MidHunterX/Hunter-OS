@@ -62,6 +62,10 @@ set recolor-keephue "true"
 
 # =============================== [ REMAPS ] =============================== #
 
+# Booklet Mode Toggle
+map b toggle_page_mode
+map [fullscreen] b toggle_page_mode
+
 # i - Dark Mode Toggle
 map i recolor
 map [fullscreen] i recolor
@@ -75,8 +79,26 @@ map [fullscreen] f toggle_fullscreen
 map x quit
 map [fullscreen] x quit
 
+
+# d/u - Half Scroll
+unmap d
+map d scroll "half-down"
+map u scroll "half-up"
+map [fullscreen] d scroll "half-down"
+map [fullscreen] u scroll "half-up"
+
 # h - Previous Page
 map h navigate "previous"
+map [fullscreen] h navigate "previous"
 
 # l - Next Page
 map l navigate "next"
+map [fullscreen] l navigate "next"
+
+# zoom page
+map 0 zoom "default"
+map - zoom "out"
+map = zoom "in"
+map [fullscreen] 0 zoom "default"
+map [fullscreen] - zoom "out"
+map [fullscreen] = zoom "in"
