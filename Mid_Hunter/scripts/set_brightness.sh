@@ -17,7 +17,7 @@ do
   echo          " --------------------------------"
   # Looong stikk sequenze
   echo -e -n " 󰃟 " ${YLO}${BAR:0:27} ${RESET}"\n"
-  echo -e -n " Current Brightness:" ${YLO}${CURRENT_BRIGHTNESS}"%"${RESET}
+  echo -e -n " Current Brightness:" ${YLO}${CURRENT_BRIGHTNESS}${RESET}
   read -n1 junk
 
   case $junk in
