@@ -1,7 +1,7 @@
-archchan.batteryCapacity() {
+arch.updateBatteryPercent() {
   BATTERY=$(cat /sys/class/power_supply/BAT0/capacity)
 }
 
-archchan.batteryStatus() {
+arch.updateBatteryStatus() {
   BATTERY_STATUS=$(cat /sys/class/power_supply/BAT0/status)
 }

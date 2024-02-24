@@ -1,6 +1,3 @@
-# profile.hypr
-# message "Test Message"
-
 profile.hypr() {
   NAME="Hypr Chan"
   IMG=~/Mid_Hunter/scripts/hyprchan/assets/hypr_chan.jpg
@@ -8,6 +5,6 @@ profile.hypr() {
   HINTS+="-h string:bgcolor:#1f4738 "
 }
 
-message() {
-  notify-send $HINTS -i $IMG "$NAME" "$1"
+hypr.message() {
+  notify-send $HINTS -t 5000 -i $IMG "$NAME" "$1"
 }
