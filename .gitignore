@@ -27,6 +27,7 @@
 !.config/hypr/
 # Notification Daemon
 !.config/mako/
+!.config/dunst/
 # System Status Bar
 !.config/waybar/
 
