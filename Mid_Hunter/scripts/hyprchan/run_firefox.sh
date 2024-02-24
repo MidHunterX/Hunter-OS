@@ -1,7 +1,13 @@
 #!/usr/bin/bash
-# Usage: get_firefox Profile_Name
+# Usage: run_firefox Profile_Name
 
+# Read attribute
 PROFILE=$1
+
+# If attribute present, then convet to firefox attributes
+if [[ $PROFILE ]]; then
+  FF_ATTRIB="-P $PROFILE -no-remote "
+fi
 
 # Checks and Moves focus if active instance found
 check_firefox_running() {
@@ -20,4 +26,4 @@ check_firefox_running() {
 check_firefox_running
 
 # Run Firefox if no running instance
-firefox-developer-edition -P "$PROFILE" -no-remote &
+firefox-developer-edition $FF_ATTRIB &
