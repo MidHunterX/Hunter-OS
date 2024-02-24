@@ -1,4 +1,5 @@
-source $(dirname "$0")/memory.sh
+# source $(dirname "$0")/brain.sh
+source ~/Mid_Hunter/scripts/archchan/brain.sh
 
 
 profile.arch() {
