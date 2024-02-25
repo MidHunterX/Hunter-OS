@@ -1,6 +1,40 @@
 #!/bin/bash
 
-sed '1,/^### DATA ###$/d' $0 | fuzzel --dmenu | cut -d ' ' -f 1 | tr -d '\n' | wtype -
+HIST_FILE=~/.cache/emoji-history.txt
+
+# Create history file if it doesn't exist
+if [ ! -f "$HIST_FILE" ]; then
+  touch "$HIST_FILE"
+  echo "" > $HIST_FILE
+fi
+
+# Show Emoji list
+EMOJI_ROW=$( (sed '/^$/d' "$HIST_FILE"; sed '1,/^### DATA ###$/d' "$0") | fuzzel --dmenu)
+echo $EMOJI_ROW
+
+# Exit script if nothing is selected
+if [[ $EMOJI_ROW == '' ]]; then
+  echo "Exiting"
+  exit
+fi
+
+# Cut out only emoji from the row
+SELECTED_EMOJI=$(echo $EMOJI_ROW | cut -d ' ' -f 1 | tr -d '\n')
+echo $SELECTED_EMOJI
+
+# Output Emoji
+wtype $SELECTED_EMOJI
+
+# Add Emoji Row to history file
+if grep -q "^$EMOJI_ROW$" "$HIST_FILE"; then
+  echo 'Found Row'
+  sed -i "0,/^$EMOJI_ROW$/d" "$HIST_FILE"
+  sed -i "1i $EMOJI_ROW" "$HIST_FILE"
+else
+  echo 'Adding Row'
+  sed -i "1i $EMOJI_ROW" "$HIST_FILE"
+fi
+
 exit
 
 
