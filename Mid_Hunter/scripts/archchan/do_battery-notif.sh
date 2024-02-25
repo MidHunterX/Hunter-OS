@@ -19,7 +19,7 @@ while :; do
   # ▀█▀ █░█ █▀█ █▄░█ ▄▀█ █▀█ █▀█ █░█ █▄░█ █▀▄
   # ░█░ █▄█ █▀▄ █░▀█ █▀█ █▀▄ █▄█ █▄█ █░▀█ █▄▀
 
-  if [[ $battery -eq $bat_prev && turnaround ]]; then
+  if [[ $battery -eq $bat_prev && turnaround -eq 1 ]]; then
     turnaround=0
     arch.updateBatteryStatus
     arch.reportBattery
