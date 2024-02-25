@@ -1,8 +1,7 @@
-#!/usr/bin/bash
+#!/bin/bash
 # Usage: run_firefox Profile_Name
 
-# source $(dirname "$0")/hyprchan.sh
-source ~/Mid_Hunter/scripts/hyprchan/hyprchan.sh
+source ~/Mid_Hunter/scripts/hyprchan/profile/profile.sh
 profile.hypr
 
 # Read attribute

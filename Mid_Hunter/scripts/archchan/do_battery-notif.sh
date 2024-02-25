@@ -1,7 +1,7 @@
 #!/bin/bash
 minutes(){ echo $(($1*60));}
 
-source $(dirname "$0")/archchan.sh
+source ~/Mid_Hunter/scripts/archchan/profile/profile.sh
 profile.arch
 arch.updateBatteryPercent
 

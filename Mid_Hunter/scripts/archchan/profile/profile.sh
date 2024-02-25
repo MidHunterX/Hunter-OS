@@ -1,18 +1,31 @@
-# source $(dirname "$0")/brain.sh
-source ~/Mid_Hunter/scripts/archchan/brain.sh
-
-
+# This function is needed to execute admin functions
 profile.arch() {
   NAME="Arch Chan"
-  IMG=~/Mid_Hunter/scripts/archchan/assets/arch_chan.jpg
+  IMG=~/Mid_Hunter/scripts/archchan/profile/assets/arch_chan.jpg
   HINTS="-h string:frcolor:#5cc0ff "
   HINTS+="-h string:bgcolor:#1f3847 "
+}
+
+
+# ========================== [ MEMORY FUNCTIONS ] ========================== #
+
+
+# Returns: var $BATTERY
+arch.updateBatteryPercent() {
+  BATTERY=$(cat /sys/class/power_supply/BAT0/capacity)
+}
+
+# Returns: var $BATTERY_STATUS
+arch.updateBatteryStatus() {
+  BATTERY_STATUS=$(cat /sys/class/power_supply/BAT0/status)
 }
 
 
 # =========================== [ ADMIN FUNCTIONS ] =========================== #
 
 
+# Argument: str 'Charging/Discharging'
+# Returns: Battery Status message from Arch Chan
 arch.reportBattery() {
   arch.updateBatteryStatus
   arch.updateBatteryPercent
@@ -42,6 +55,8 @@ arch.reportBattery() {
 }
 
 
+# Argument: str 'A Simple Message'
+# Returns: Message from Arch Chan
 arch.message() {
   notify-send -t 5000 $HINTS -t 5000 -i $IMG "$NAME" "$1"
 }

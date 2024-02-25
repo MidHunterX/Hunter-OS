@@ -22,6 +22,7 @@ keywords=(
   '[aft-mtp-mount] Mount Android Device'
   '[curlftpfs] Mount FTP Device'
   '[umount] Unmount Device/Partition'
+  '[nmcli] Wifi Connect'
   '[nmcli] Wifi Disable'
   '[nmcli] Wifi Enable'
   '[nmcli] Network Disable'
@@ -39,6 +40,7 @@ commands=(
   'aft-mtp-mount ~/mnt'
   'curlftpfs ftphostname ~/mnt'
   'sudo umount ~/mnt'
+  'nmcli device wifi list '
   'nmcli radio wifi off'
   'nmcli radio wifi on'
   'nmcli networking off'
@@ -48,24 +50,20 @@ commands=(
 )
 comments=(
   'Go on... Have a nice day, master ;D'
-  """ You can set default device using: ${CMD}wpctl set-default <${INT}number${CMD}>
-  ${CMT}Just remember, Source == 🎙️Microphone and Sink == 🔈Sound
-  """
-  """You can set default charging mode at: /etc/tlp.conf
-  STOP_CHARGE_THRESH_BAT0=1"""
-  """You can set default charging mode at: /etc/tlp.conf
-  STOP_CHARGE_THRESH_BAT0=1"""
+  "Set default device using, ${CMD}wpctl set-default <${INT}number${CMD}>. ${CMT}Source = Microphone and Sink = Sound."
+  'You can set default charging mode at: /etc/tlp.conf'
+  'You can set default charging mode at: /etc/tlp.conf'
   'Done'
   'These are the things you gotta yeet!'
   'Done'
   'Done'
   'Done'
+  'You can connect with, nmcli device wifi connect <SSID>'
   'Done'
   'Done'
   'Done'
   'Done'
-  """You can set theme using:
-  ${CMD}gsettings set org.gnome.desktop.interface gtk-theme '${STR}theme_name${CMD}'"""
+  "You can set theme using, ${CMD}gsettings set org.gnome.desktop.interface gtk-theme '${STR}theme_name${CMD}'"
   'Done'
 )
 
