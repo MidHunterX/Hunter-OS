@@ -1,16 +1,16 @@
-'Oopsie.. Select nothing','','Go on... Have a nice day, master ;D'
-'[wpctl] Show audio devices','wpctl status',"Set default device using, ${CMD}wpctl set-default <${INT}number${CMD}>. ${CMT}Source = Microphone and Sink = Sound."
-'[tlp] Disable Conservation Mode - Set to fullcharge temporarily','sudo tlp fullcharge','You can set default charging mode at: /etc/tlp.conf'
-'[tlp] Enable Conservation Mode - Set charging limit @60%','sudo tlp setcharge','You can set default charging mode at: /etc/tlp.conf'
-'[pacman] Remove unwanted depencies','sudo pacman -R $(pacman -Qdtq)','Done'
-'[pacman] Show unwanted depencies','pacman -Qdtq','These are the things you gotta yeet!'
-'[aft-mtp-mount] Mount Android Device','aft-mtp-mount ~/mnt','Done'
-'[curlftpfs] Mount FTP Device','curlftpfs ftphostname ~/mnt','Done'
-'[umount] Unmount Device/Partition','sudo umount ~/mnt','Done'
-'[nmcli] Wifi Connect','nmcli device wifi list ','You can connect with, nmcli device wifi connect <SSID>'
-'[nmcli] Wifi Disable','nmcli radio wifi off','Done'
-'[nmcli] Wifi Enable','nmcli radio wifi on','Done'
-'[nmcli] Network Disable','nmcli networking off','Done'
-'[nmcli] Network Enable','nmcli networking on','Done'
-'[ls] List installed themes','ls /usr/share/themes/',"You can set theme using, ${CMD}gsettings set org.gnome.desktop.interface gtk-theme '${STR}theme_name${CMD}'"
-'[systemctl] Show running background services','systemctl status','Done'
+Oopsie.. Select nothing,,Go on... Have a nice day, master ;D
+[wpctl] Show audio devices,wpctl status,Set default device using, wpctl set-default <number>. Source = Microphone and Sink = Sound.
+[tlp] Disable Conservation Mode - Set to fullcharge temporarily,sudo tlp fullcharge,You can set default charging mode at: /etc/tlp.conf
+[tlp] Enable Conservation Mode - Set charging limit @60%,sudo tlp setcharge,You can set default charging mode at: /etc/tlp.conf
+[pacman] Remove unwanted depencies,sudo pacman -R $(pacman -Qdtq),Done
+[pacman] Show unwanted depencies,pacman -Qdtq,These are the things you gotta yeet!
+[aft-mtp-mount] Mount Android Device,aft-mtp-mount ~/mnt,Done
+[curlftpfs] Mount FTP Device,curlftpfs ftphostname ~/mnt,Done
+[umount] Unmount Device/Partition,sudo umount ~/mnt,Done
+[nmcli] Wifi Connect,nmcli device wifi list ,You can connect with, nmcli device wifi connect <SSID>
+[nmcli] Wifi Disable,nmcli radio wifi off,Done
+[nmcli] Wifi Enable,nmcli radio wifi on,Done
+[nmcli] Network Disable,nmcli networking off,Done
+[nmcli] Network Enable,nmcli networking on,Done
+[ls] List installed themes,ls /usr/share/themes/,You can set theme using, gsettings set org.gnome.desktop.interface gtk-theme <theme_name>
+[systemctl] Show running background services,systemctl status,Done
