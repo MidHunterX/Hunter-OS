@@ -9,14 +9,18 @@ if [ ! -f "$HIST_FILE" ]; then
 fi
 
 # Show Emoji list
-EMOJI_ROW=$( (sed '/^$/d' "$HIST_FILE"; sed '1,/^### DATA ###$/d' "$0") | fuzzel --dmenu)
+EMOJI_ROW=$( (sed '/^$/d' "$HIST_FILE"; sed '1,/^### EMOJI LIST ###$/d' "$0"; echo 'Nerd Fonts') | fuzzel --dmenu)
 echo $EMOJI_ROW
 
 # Exit script if nothing is selected
 if [[ $EMOJI_ROW == '' ]]; then
   echo "Exiting"
   exit
+elif [[ $EMOJI_ROW == 'Nerd Fonts' ]]; then
+  bash "$(dirname "$0")/menu_nerdfont.sh" &
+  exit
 fi
+
 
 # Cut out only emoji from the row
 SELECTED_EMOJI=$(echo $EMOJI_ROW | cut -d ' ' -f 1 | tr -d '\n')
@@ -38,7 +42,7 @@ fi
 exit
 
 
-### DATA ###
+### EMOJI LIST ###
 😀 grinning face face smile happy joy :D grin
 😃 grinning face with big eyes face happy joy haha :D :) smile funny
 😄 grinning face with smiling eyes face happy joy funny haha laugh like :D :) smile
