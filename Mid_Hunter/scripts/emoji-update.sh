@@ -1,6 +1,7 @@
 #!/bin/bash
-sed -i '/^### DATA ###$/q' wofi-emoji.sh
+SCRIPT=emoji-fuzzel.sh
+sed -i '/^### DATA ###$/q' $SCRIPT #emoji-fuzzel.sh
 
-curl https://raw.githubusercontent.com/muan/emojilib/v3.0.6/dist/emoji-en-US.json \
+curl https://raw.githubusercontent.com/muan/emojilib/main/dist/emoji-en-US.json \
   | jq --raw-output '. | to_entries | .[] | .key + " " + (.value | join(" ") | sub("_"; " "; "g"))' \
-  >> wofi-emoji.sh
+  >> $SCRIPT
