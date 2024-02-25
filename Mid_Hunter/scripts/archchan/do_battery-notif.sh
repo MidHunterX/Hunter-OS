@@ -22,7 +22,7 @@ while :; do
   if [[ $battery -eq $bat_prev && turnaround -eq 1 ]]; then
     turnaround=0
     arch.updateBatteryStatus
-    arch.reportBattery
+    # arch.reportBattery
     bat_prev=$battery
     if [[ $BATTERY_STATUS == 'Discharging' ]]; then
       bat_next=$(( battery - (battery % bat_interval) ))
