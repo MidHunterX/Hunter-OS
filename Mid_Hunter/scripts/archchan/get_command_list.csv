@@ -2,16 +2,16 @@ Oopsie.. Select nothing,,Go on... Have a nice day, master ;D
 [wpctl] Show audio devices,wpctl status,Set default device using, wpctl set-default <number>. Source = Microphone and Sink = Sound.
 [tlp] Disable Conservation Mode - Set to fullcharge temporarily,sudo tlp fullcharge,You can set default charging mode at: /etc/tlp.conf
 [tlp] Enable Conservation Mode - Set charging limit @60%,sudo tlp setcharge,You can set default charging mode at: /etc/tlp.conf
-[pacman] Remove unwanted depencies,sudo pacman -R $(pacman -Qdtq),Done
+[pacman] Remove unwanted depencies,sudo pacman -R $(pacman -Qdtq),Successfully removed unwanted dependencies!
 [pacman] Show unwanted depencies,pacman -Qdtq,These are the things you gotta yeet!
-[aft-mtp-mount] Mount Android Device,aft-mtp-mount ~/mnt,Done
-[curlftpfs] Mount FTP Device,curlftpfs ftphostname ~/mnt,Done
+[aft-mtp-mount] Mount Android Device,aft-mtp-mount ~/mnt,Mounted Android Device to ~/mnt
+[curlftpfs] How to mount FTP Device,,You can use the command "curlftpfs ftphostname ~/mnt"
 [umount] Unmount Device/Partition,sudo umount ~/mnt,Done
-[nmcli] Wifi Connect,nmcli device wifi list ,You can connect with, nmcli device wifi connect <SSID>
-[nmcli] Wifi Disable,nmcli radio wifi off,Done
-[nmcli] Wifi Enable,nmcli radio wifi on,Done
+[nmcli] How to Connect to Wifi?,nmcli device wifi list ,You can connect with "nmcli device wifi connect <SSID>"
+[nmcli] Wifi Disable Device,nmcli radio wifi off,Done
+[nmcli] Wifi Enable Device,nmcli radio wifi on,Done
 [nmcli] Network Disable,nmcli networking off,Done
 [nmcli] Network Enable,nmcli networking on,Done
 [ls] List installed themes,ls /usr/share/themes/,You can set theme using, gsettings set org.gnome.desktop.interface gtk-theme <theme_name>
 [systemctl] Show running background services,systemctl status,Done
-[yt-dlp] Download Videos from anywhere,,You can do "yt-dlp -F <URL>" to list available formats and "yt-dlp -f <format> <URL>" to download in that specific format.
+[yt-dlp] How to Download Videos with specific format and size?,,You can do "yt-dlp -F <URL>" to list available formats and "yt-dlp -f <format> <URL>" to download in that specific format.
