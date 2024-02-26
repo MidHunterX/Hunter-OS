@@ -9,8 +9,6 @@
 .config/*
 .config/*/workspace
 
-# Text Editor
-!.config/nvim/
 # TUI File Explorer
 !.config/vifm/
 .config/vifm/*
