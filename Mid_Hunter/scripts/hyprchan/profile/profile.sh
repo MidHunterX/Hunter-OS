@@ -23,5 +23,5 @@ hypr.active_window() {
 
 
 hypr.message() {
-  notify-send $HINTS -t 5000 -i $IMG "$NAME" "$1"
+  notify-send $HINTS -i $IMG "$NAME" "$1"
 }

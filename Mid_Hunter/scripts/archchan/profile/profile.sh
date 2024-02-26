@@ -48,9 +48,9 @@ arch.reportBattery() {
   HINTS2+="-h int:value:$BATTERY "
 
   if [[ $1 ]]; then
-    notify-send -t 5000 $HINTS $HINTS2 -i $IMG "$NAME" "Battery: $BATTERY%, is currently $1 at $(cat /sys/class/power_supply/BAT0/power_now | awk '{ printf "%.1f\n", $1 / 1000000 }')W"
+    notify-send $HINTS $HINTS2 -i $IMG "$NAME" "Battery: $BATTERY%, is currently $1 at $(cat /sys/class/power_supply/BAT0/power_now | awk '{ printf "%.1f\n", $1 / 1000000 }')W"
   else
-    notify-send -t 5000 $HINTS $HINTS2 -i $IMG "$NAME" "Battery is at $BATTERY%!"
+    notify-send $HINTS $HINTS2 -i $IMG "$NAME" "Battery is at $BATTERY%!"
   fi
 }
 
@@ -58,5 +58,5 @@ arch.reportBattery() {
 # Argument: str 'A Simple Message'
 # Returns: Message from Arch Chan
 arch.message() {
-  notify-send -t 5000 $HINTS -t 5000 -i $IMG "$NAME" "$1"
+  notify-send $HINTS -i $IMG "$NAME" "$1"
 }
