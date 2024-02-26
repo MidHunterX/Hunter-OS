@@ -11,11 +11,11 @@ CMD=$BLU # Command
 STR=$GRN # Strings
 INT=$PNK # Integer
 
-
 # Initialize arrays
 keywords=()
 commands=()
 comments=()
+
 
 # Read a CSV file and process each line
 while IFS=',' read -r col1 col2 col3; do
@@ -29,6 +29,7 @@ done < "get_command_list.csv"
 usr_keyword=$(printf "%s\n" "${keywords[@]}" | fzf --prompt 'Select Command: ')
 # usr_keyword=$(printf "%s\n" "${keywords[@]}" | fuzzel --dmenu)
 
+
 # Find the index of the selected keyword
 index=-1
 for i in "${!keywords[@]}"; do
@@ -38,10 +39,15 @@ for i in "${!keywords[@]}"; do
   fi
 done
 
+
 if [[ index -ne -1 ]]; then
-  echo -e "${GRN}${NAME}: ${RST}Executing ${CMD}${commands[$index]}${RST}"
-  echo ''
-  ${commands[$index]}
-  echo ''
-  echo -e "${GRN}${NAME}: ${CMT}${comments[$index]}${RST}"
+
+  # Execute Command only if present
+  if [[ commands[index] -ne '' ]]; then
+    echo -e "\n${GRN}${NAME}: ${RST}Executing ${CMD}${commands[$index]}${RST}"
+    ${commands[$index]}
+  fi
+  # Additional Information
+  echo -e "\n${GRN}${NAME}: ${CMT}${comments[$index]}${RST}"
+
 fi
