@@ -14,3 +14,4 @@ Oopsie.. Select nothing,,Go on... Have a nice day, master ;D
 [nmcli] Network Enable,nmcli networking on,Done
 [ls] List installed themes,ls /usr/share/themes/,You can set theme using, gsettings set org.gnome.desktop.interface gtk-theme <theme_name>
 [systemctl] Show running background services,systemctl status,Done
+[yt-dlp] Download Videos from anywhere,,You can do "yt-dlp -F <URL>" to list available formats and "yt-dlp -f <format> <URL>" to download in that specific format.
