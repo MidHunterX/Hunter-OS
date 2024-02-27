@@ -6,10 +6,8 @@ BLK='\033[1;30m' RED='\033[1;31m' GRN='\033[1;32m' YLO='\033[1;33m'
 BLU='\033[1;34m' PNK='\033[1;35m' CYN='\033[1;36m' WHT='\033[1;37m'
 BLK='\033[1;30m' DEF='\033[0;39m' RST='\033[0;0m'
 
-CMT=$YLO # Comment
 CMD=$BLU # Command
-STR=$GRN # Strings
-INT=$PNK # Integer
+ARG=$PNK # Arguments
 
 # Initialize arrays
 keywords=()
@@ -43,11 +41,13 @@ done
 if [[ index -ne -1 ]]; then
 
   # Execute Command only if present
-  if [[ commands[index] -ne '' ]]; then
+  if [[ ${commands[index]} != '' ]]; then
     echo -e "\n${GRN}${NAME}: ${RST}Executing ${CMD}${commands[$index]}${RST}"
     ${commands[$index]}
   fi
   # Additional Information
-  echo -e "\n${GRN}${NAME}: ${CMT}${comments[$index]}${RST}"
+  comment="${comments[$index]}"
+  formatted_comment=$(echo "$comment" | sed -E 's/"([^"]+)"/'"\\$CMD"'\1'"\\$RST"'/g; s/<([^>]+)>/'"\\$ARG"'<\1>'"\\$RST"'/g')
+  echo -e "\n${GRN}${NAME}: ${RST}$formatted_comment"
 
 fi
