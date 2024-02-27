@@ -1,11 +1,11 @@
-Oopsie.. Select nothing,,Go on... Have a nice day master ;D
+Oopsie.. Select nothing,,Go on... Have a nice day, master ;D
 [wpctl] Show audio devices,wpctl status,Set default device using "wpctl set-default <number>". Source = Microphone and Sink = Sound.
 [tlp] Disable Conservation Mode - Set to fullcharge temporarily,sudo tlp fullcharge,You can set default charging mode at: /etc/tlp.conf
 [tlp] Enable Conservation Mode - Set charging limit @60%,sudo tlp setcharge,You can set default charging mode at: /etc/tlp.conf
 [pacman] Remove unwanted depencies,sudo pacman -R $(pacman -Qdtq),Successfully removed unwanted dependencies!
 [pacman] Show unwanted depencies,pacman -Qdtq,These are the things you gotta yeet!
 [aft-mtp-mount] Mount Android Device,aft-mtp-mount ~/mnt,Mounted Android Device to ~/mnt
-[curlftpfs] How to mount FTP Device,,You can use the command "curlftpfs ftphostname ~/mnt"
+[curlftpfs] How to mount FTP Device,,You can use the command "curlftpfs <ftphostname> ~/mnt" for example: "curlftpfs 'ftp://192.168.1.36:2121' ~/mnt/"
 [umount] Unmount Device/Partition,sudo umount ~/mnt,Done
 [nmcli] How to Connect to Wifi?,nmcli device wifi list,You can connect with "nmcli device wifi connect <SSID>"
 [nmcli] Wifi Disable Device,nmcli radio wifi off,Done

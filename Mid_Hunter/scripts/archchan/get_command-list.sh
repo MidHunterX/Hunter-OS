@@ -20,7 +20,7 @@ while IFS=',' read -r col1 col2 col3; do
     keywords+=("$col1")
     commands+=("$col2")
     comments+=("$col3")
-done < "get_command_list.csv"
+done < "get_command-list.csv"
 
 
 # Prompt for input
