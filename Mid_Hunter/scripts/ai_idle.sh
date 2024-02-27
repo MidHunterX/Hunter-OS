@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 minutes(){ echo $(($1*60));}
 
 DISPLAY_OFF=$(minutes 5)

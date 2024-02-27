@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 update_unicode_emojis() {
   SCRIPT=menu_emoji.sh
   sed -i '/^### EMOJI LIST ###$/q' $SCRIPT

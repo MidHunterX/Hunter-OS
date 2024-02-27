@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 BLU='\033[0;34m'
 YLO='\033[0;33m'

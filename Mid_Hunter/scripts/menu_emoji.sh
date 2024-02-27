@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 HIST_FILE=~/.cache/emoji-history.txt
 

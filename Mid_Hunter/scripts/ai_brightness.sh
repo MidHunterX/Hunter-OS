@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 # "Check if script is already running"; $0 == filename; $$ == PID
 if [[ `pgrep -f $0` != "$$" ]]; then

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 minutes(){ echo $(($1*60));}
 
 source ~/Mid_Hunter/scripts/archchan/profile/profile.sh

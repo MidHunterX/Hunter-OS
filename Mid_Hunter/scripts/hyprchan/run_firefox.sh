@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Usage: run_firefox Profile_Name
 
 source ~/Mid_Hunter/scripts/hyprchan/profile/profile.sh

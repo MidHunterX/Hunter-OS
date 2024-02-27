@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 image_dir=~/Mid_Hunter/customization/wallpaper/24h_vibe/
 
