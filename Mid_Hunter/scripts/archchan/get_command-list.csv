@@ -1,5 +1,5 @@
 Oopsie.. Select nothing,,Go on... Have a nice day, master ;D
-[wpctl] Show audio devices,wpctl status,Set default device using "wpctl set-default <number>". Source = Microphone and Sink = Sound.
+[wpctl] Show audio devices - lists sound devices,wpctl status,Set default device using "wpctl set-default <number>". Source = Microphone and Sink = Sound.
 [tlp] Disable Conservation Mode - Set to fullcharge temporarily,sudo tlp fullcharge,You can set default charging mode at: /etc/tlp.conf
 [tlp] Enable Conservation Mode - Set charging limit @60%,sudo tlp setcharge,You can set default charging mode at: /etc/tlp.conf
 [pacman] Remove unwanted depencies,sudo pacman -R $(pacman -Qdtq),Successfully removed unwanted dependencies!
