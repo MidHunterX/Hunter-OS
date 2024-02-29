@@ -1,0 +1,22 @@
+zoom_default        d
+zoom_fit            s
+
+zoom_in             u
+zoom_out            d
+
+# HJKL normal
+prev_img            k   h Left
+next_img            j   l Right
+
+# HJKL enhanced
+scroll_up           K   C-Up
+scroll_down         J   C-Down
+scroll_left         H   C-Left
+scroll_right        L   C-Right
+
+# Toggles
+toggle_fullscreen   f
+toggle_exif         o
+toggle_filenames    i
+
+close               q   x
