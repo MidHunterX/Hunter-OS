@@ -238,7 +238,7 @@ filextype {.blend}
         \ blender %c,
 filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
         \ {View in feh}
-        \ feh --start-at %c --scale-down --draw-tinted,
+        \ feh --start-at %d/%c:r.%c:e --scale-down --draw-tinted,
         \ {View in nomacs}
         \ nomacs %f,
 fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
