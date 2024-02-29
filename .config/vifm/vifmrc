@@ -72,6 +72,9 @@ mark m ~/Mid_Hunter/
 " ▄█ ██▄ ░█░ ░█░ █ █░▀█ █▄█ ▄█
 " @settings
 
+" TERMINAL TITLE
+set title
+
 " COLORSCHEMES
 colorscheme hunter Default
 
