@@ -9,18 +9,10 @@
 .config/*
 .config/*/workspace
 
-# TUI File Explorer
-!.config/vifm/
-.config/vifm/*
-!.config/vifm/vifmrc
-!.config/vifm/colors/
-.config/vifm/colors/*
-!.config/vifm/colors/hunter.vifm
 # Keymapping Utility
 !.config/keyd/
 .config/keyd/*
 !.config/keyd/default.conf
-
 # Wayland Compositor
 !.config/hypr/
 # Notification Daemon
@@ -38,11 +30,20 @@
 # Terminal Multiplexer
 !.config/tmux/
 .config/tmux/plugins
+# Terminal File Explorer
+!.config/vifm/
+.config/vifm/*
+!.config/vifm/vifmrc
+!.config/vifm/colors/
+.config/vifm/colors/*
+!.config/vifm/colors/hunter.vifm
 
 # App Launcher
 !.config/fuzzel/
 # PDF Viewer
 !.config/zathura/
+# Image Viewer
+!.config/feh/
 
 # =========================== [ PERSONAL FILES ] =========================== #
 !Mid_Hunter/
