@@ -197,6 +197,9 @@ filextype {*.db},
         \ {Edit with DB Browser}
         \ sqlitebrowser %c
 
+"  CSV
+fileviewer *.csv sed "s/,,,,/,,-,,/g;s/,,/ /g" %c | column -t | sed "s/ - /  /g" | cut -c -%pw
+
 "  PDF
 filextype {*.pdf},<application/pdf> zathura %c %i, mupdf %c, apvlv %c, xpdf %c
 fileviewer {*.pdf},<application/pdf>
