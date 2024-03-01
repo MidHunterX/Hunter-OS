@@ -4,29 +4,7 @@ format = """
 $character[](fg:col_blk bg:col_dir)\
 $directory[](fg:col_dir bg:col_git)$git_branch$git_status\
 [](fg:col_git bg:col_lng)\
-$aws\
-$c\
-$crystal\
-$dart\
-$docker_context\
-$elixir\
-$golang\
-$haskell\
-$java\
-$julia\
-$kotlin\
-$lua\
-$nodejs\
-$ocaml\
-$perl\
-$php\
-$python\
-$rlang\
-$ruby\
-$rust\
-$scala\
-$swift\
-$zig\
+$all\
 $status\
 $cmd_duration\
 $line_break\
@@ -82,7 +60,7 @@ read_only = "󰌾 "
 style = "bg:col_dir fg:col_wht"
 format = "[ 🖿 $path ]($style)[$read_only](fg:col_ylo bg:col_dir)"
 truncation_length = 3
-truncation_symbol = "…/"
+# truncation_symbol = "…/"
 
 [status]
 symbol = '[](fg:col_lng bg:col_red)[  ](bg:col_red fg:col_wht)[](fg:col_red)'
@@ -305,7 +283,7 @@ format        = '[ $symbol $context ]($style)'
 
 [python]
 symbol        = " "
-format        = '[ $symbol ($version) ]($style)'
+format        = '[ ${symbol}${pyenv_prefix}(${version}) (\($virtualenv\) )]($style)'
 
 [rlang]
 symbol        = "󰟔 "
