@@ -51,14 +51,18 @@
 .config/cava/*
 !.config/cava/config
 # 🌐 Web Browser
-# !.mozilla/firefox/Personal/chrome/
 !.mozilla/
 .mozilla/*
 !.mozilla/firefox/
 .mozilla/firefox/*
+# Firefox Personal
 !.mozilla/firefox/Personal/
 .mozilla/firefox/Personal/*
 !.mozilla/firefox/Personal/chrome/
+# Firefox Experiment
+!.mozilla/firefox/Experiment/
+.mozilla/firefox/Experiment/*
+!.mozilla/firefox/Experiment/chrome/
 
 
 # =========================== [ PERSONAL FILES ] =========================== #
