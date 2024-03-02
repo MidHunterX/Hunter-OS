@@ -38,12 +38,16 @@
 .config/vifm/colors/*
 !.config/vifm/colors/hunter.vifm
 
-# App Launcher
+# 🚀 App Launcher
 !.config/fuzzel/
-# PDF Viewer
+# 📄 PDF Viewer
 !.config/zathura/
-# Image Viewer
+# 🌄 Image Viewer
 !.config/feh/
+# 📢 Audio Visualizer
+!.config/cava/
+.config/cava/*
+!.config/cava/config
 
 # =========================== [ PERSONAL FILES ] =========================== #
 !Mid_Hunter/
