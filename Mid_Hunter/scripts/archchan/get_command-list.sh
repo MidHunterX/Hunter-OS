@@ -9,6 +9,19 @@ BLK='\033[1;30m' DEF='\033[0;39m' RST='\033[0;0m'
 CMD=$BLU # Command
 ARG=$PNK # Arguments
 
+
+animate_text() {
+    local text="$1"
+    local words=($text)
+    for word in "${words[@]}"; do
+        echo -n -e "$word "
+        sleep 0.1  # Adjust the sleep duration to control the speed of animation
+    done
+    echo  # Add a newline at the end to complete the line
+}
+
+
+
 # Initialize arrays
 keywords=()
 commands=()
@@ -20,7 +33,7 @@ while IFS=',' read -r col1 col2 col3; do
     keywords+=("$col1")
     commands+=("$col2")
     comments+=("$col3")
-done < "get_command-list.csv"
+done < "$(dirname "$0")/get_command-list.csv"
 
 
 # Prompt for input
@@ -44,10 +57,11 @@ if [[ index -ne -1 ]]; then
   if [[ ${commands[index]} != '' ]]; then
     echo -e "\n${GRN}${NAME}: ${RST}Executing ${CMD}${commands[$index]}${RST}"
     ${commands[$index]}
+    echo ''
   fi
   # Additional Information
   comment="${comments[$index]}"
   formatted_comment=$(echo "$comment" | sed -E 's/"([^"]+)"/'"\\$CMD"'\1'"\\$RST"'/g; s/<([^>]+)>/'"\\$ARG"'<\1>'"\\$RST"'/g')
-  echo -e "\n${GRN}${NAME}: ${RST}$formatted_comment"
+  animate_text "\n${GRN}${NAME}: ${RST}${formatted_comment}"
 
 fi
