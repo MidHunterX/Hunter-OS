@@ -44,6 +44,8 @@
 !.config/zathura/
 # 🌄 Image Viewer
 !.config/feh/
+# 📽️ Video Player
+!.config/mpv/
 # 📢 Audio Visualizer
 !.config/cava/
 .config/cava/*
