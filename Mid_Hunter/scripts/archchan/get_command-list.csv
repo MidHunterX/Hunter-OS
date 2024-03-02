@@ -4,17 +4,18 @@ Oopsie.. Select nothing,,Go on... Have a nice day, master ;D
 [tlp] Disable Conservation Mode - Set to fullcharge temporarily,sudo tlp fullcharge,You can set default charging mode at: /etc/tlp.conf
 [tlp] Enable Conservation Mode - Set charging limit @60%,sudo tlp setcharge,You can set default charging mode at: /etc/tlp.conf
 [tlp] How to do Conservation Mode,,You can set default charging mode with: "sudoedit /etc/tlp.conf"
-[pacman] Remove unwanted depencies,sudo pacman -R $(pacman -Qdtq),Successfully removed unwanted dependencies!
-[pacman] Show/List unwanted depencies,pacman -Qdtq,These are the things you gotta yeet!
-[aft-mtp-mount] Mount Android Device,aft-mtp-mount ~/mnt,Mounted Android Device to ~/mnt
-[curlftpfs] How to mount FTP Device,,You can use the command "curlftpfs <ftphostname> ~/mnt" for example: "curlftpfs 'ftp://192.168.1.36:2121' ~/mnt/"
-[umount] Unmount Device/Partition,sudo umount ~/mnt,Done
+[pacman] Remove unwanted dependencyies,sudo pacman -R $(pacman -Qdtq),Successfully removed unwanted dependencyies!
+[pacman] Show/List unwanted dependencyies,pacman -Qdtq,These are the things you gotta yeet!
+[aft-mtp-mount] Mount Android Device,aft-mtp-mount /mnt,Mounted Android Device to /mnt
+[curlftpfs] How to mount FTP Device,,You can use the command "curlftpfs <ftphostname> /mnt" for example: "curlftpfs 'ftp://192.168.1.36:2121' /mnt/"
+[umount] Unmount Device/Partition,sudo umount /mnt,Done
 [nmcli] Wifi Disable Device,nmcli radio wifi off,Done
 [nmcli] Wifi Enable Device,nmcli radio wifi on,Done
 [nmcli] How to Connect to Wifi?,nmcli device wifi list,You can connect with "nmcli device wifi connect <SSID>"
 [nmcli] Network Disable,nmcli networking off,Done
 [nmcli] Network Enable,nmcli networking on,Done
-[ls] List installed themes,ls /usr/share/themes/,You can set theme using "gsettings set org.gnome.desktop.interface gtk-theme <theme_name>"
+Show/get current gtk theme,gsettings get org.gnome.desktop.interface gtk-theme,Done
+[ls] List/get installed gtk themes,ls /usr/share/themes/,You can set theme using "gsettings set org.gnome.desktop.interface gtk-theme <theme_name>"
 [ls] How to set GTK system themes themes,ls /usr/share/themes/,You can set theme using "gsettings set org.gnome.desktop.interface gtk-theme <theme_name>"
 [systemctl] Show running background services,systemctl status,Done
 [yt-dlp] How to Download Videos with specific format and size?,,You can do "yt-dlp -F <URL>" to list available formats and "yt-dlp -f <format> <URL>" to download in that specific format.

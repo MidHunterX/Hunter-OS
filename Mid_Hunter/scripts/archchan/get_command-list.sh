@@ -15,9 +15,9 @@ animate_text() {
     local words=($text)
     for word in "${words[@]}"; do
         echo -n -e "$word "
-        sleep 0.1  # Adjust the sleep duration to control the speed of animation
+        sleep 0.1
     done
-    echo  # Add a newline at the end to complete the line
+    echo
 }
 
 
@@ -36,9 +36,8 @@ while IFS=',' read -r col1 col2 col3; do
 done < "$(dirname "$0")/get_command-list.csv"
 
 
-# Prompt for input
-usr_keyword=$(printf "%s\n" "${keywords[@]}" | fzf --prompt 'Select Command: ')
-# usr_keyword=$(printf "%s\n" "${keywords[@]}" | fuzzel --dmenu)
+# usr_keyword=$(printf "%s\n" "${keywords[@]}" | fzf -q "$1" -0 -1 )
+usr_keyword=$(printf "%s\n" "${keywords[@]}" | fzf --border rounded --border-label "Arch Chan's Command List" )
 
 
 # Find the index of the selected keyword
@@ -55,9 +54,8 @@ if [[ index -ne -1 ]]; then
 
   # Execute Command only if present
   if [[ ${commands[index]} != '' ]]; then
-    echo -e "\n${GRN}${NAME}: ${RST}Executing ${CMD}${commands[$index]}${RST}"
+    echo -e "${GRN}${NAME}: ${RST}Executing ${CMD}${commands[$index]}${RST}\n"
     ${commands[$index]}
-    echo ''
   fi
   # Additional Information
   comment="${comments[$index]}"
