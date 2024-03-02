@@ -50,6 +50,16 @@
 !.config/cava/
 .config/cava/*
 !.config/cava/config
+# 🌐 Web Browser
+# !.mozilla/firefox/Personal/chrome/
+!.mozilla/
+.mozilla/*
+!.mozilla/firefox/
+.mozilla/firefox/*
+!.mozilla/firefox/Personal/
+.mozilla/firefox/Personal/*
+!.mozilla/firefox/Personal/chrome/
+
 
 # =========================== [ PERSONAL FILES ] =========================== #
 !Mid_Hunter/

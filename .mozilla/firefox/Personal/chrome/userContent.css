@@ -1,0 +1,57 @@
+/* =========================== BACKGROUND NEWTAB =========================== */
+@-moz-document url(about:home),
+url(about:newtab){
+
+.click-target-container *,
+.top-sites-list * {
+  color: #fff !important;
+  text-shadow: 2px 2px 2px #222 !important;
+}
+
+body::before {
+  content: "";
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #191b2a no-repeat url(img/bg1.jpg) center;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* REMOVE BRANDING */
+.search-wrapper {
+  display: none !important;
+}
+}
+
+/* ========================= BACKGROUND INCOGNITO ========================= */
+
+@-moz-document url(about:privatebrowsing){
+
+.click-target-container *,
+.top-sites-list * {
+  color: #fff !important;
+  text-shadow: 2px 2px 2px #222 !important;
+}
+
+body::before {
+  content: "";
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #222 no-repeat url(img/bg1.jpg) center;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* REMOVE BRANDING */
+.showPrivate,
+.showSearch {
+  display: none !important;
+}
+
+}
