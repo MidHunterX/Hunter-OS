@@ -239,11 +239,14 @@ filextype {.kra}
 filextype {.blend}
         \ {Open in Blender}
         \ blender %c,
-filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
+filextype {*.gif}
+        \ {Play using mpv}
+        \ mpv %f,
+filextype {*.bmp,*.jpg,*.jpeg,*.png,*.xpm},<image/*>
         \ {View in feh}
         \ feh --start-at %d/%c:r.%c:e --scale-down --draw-tinted,
         \ {View in nomacs}
-        \ nomacs %f,
+        \ nomacs %f -m 'frameless',
 fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
     \ exiv2 %f 2> /dev/null | highlight -O ansi --syntax conf,
     \ kitten icat --silent --transfer-mode=file --place=%pwx%ph@%pxx%py %c >/dev/tty </dev/tty %N
@@ -380,6 +383,8 @@ fileviewer {*.torrent},<application/x-bittorrent>
 filetype {*.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz,*.tar.zst,
          \*.tzst},
         \<application/x-tar>
+       \ {tar - Extract}
+       \ tar -xzvf %f,
        \ {Mount with archivemount}
        \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
 fileviewer *.tgz,*.tar.gz tar -tzf %c
