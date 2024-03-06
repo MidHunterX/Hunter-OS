@@ -10,7 +10,6 @@ BLU='\033[1;34m'
 PNK='\033[1;35m'
 CYN='\033[1;36m'
 WHT='\033[1;37m'
-BLK='\033[1;30m'
 
 DEF='\033[0;39m'
 RESET='\033[0;0m'
@@ -25,7 +24,10 @@ L=${WHT} # Line
 B=${GRN} # Bold
 V=${YLO} # Values
 
-uptime=$(uptime -p | awk -F'( |,)+' '{print $2,$3,$4,$5}')
+# uptime=$(uptime -p | awk -F'( |,)+' '{print $2,$3,$4,$5}')
+uptime=$(uptime -p)
+read -r hr hr_label min min_label <<< "$(awk -F'( |,)+' '{print $2,$3,$4,$5}' <<< "$uptime")"
+uptime="${V}${hr}${R} ${hr_label} ${V}${min}${R} ${min_label}"
 
 echo " "
 echo -e "  ${X}     ${Y}o. ${X}      ${Y} .o${X}     ${R}   ${H}midhunter${R}@${H}Flex-5"
