@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 minutes(){ echo $(($1*60));}
 
-source ~/Mid_Hunter/scripts/archchan/profile/profile.sh
+# Get the directory of the current script
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# source ~/Mid_Hunter/scripts/archchan/profile/profile.sh # for LSP
+source $SCRIPT_DIR/profile/profile.sh
 profile.arch
 arch.updateBatteryPercent
 

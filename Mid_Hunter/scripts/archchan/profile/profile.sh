@@ -1,7 +1,10 @@
+# Get the directory of the current script
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # This function is needed to execute admin functions
 profile.arch() {
   NAME="Arch Chan"
-  IMG=~/Mid_Hunter/scripts/archchan/profile/assets/arch_chan.jpg
+  IMG=$SCRIPT_DIR/assets/arch_chan.jpg
   HINTS="-h string:frcolor:#5cc0ff "
   HINTS+="-h string:bgcolor:#1f3847 "
 }
