@@ -30,7 +30,7 @@ nnoremap x :q<cr>
 
 " TIME TRAVEL
 nnoremap <c-o> :histprev<CR>
-"nnoremap <c-i> :histnext<CR>
+nnoremap <c-i> :histnext<CR>
 
 " SENSIBLE REMAPS
 nnoremap i l
