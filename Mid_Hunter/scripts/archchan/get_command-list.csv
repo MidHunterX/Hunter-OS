@@ -21,3 +21,4 @@ Show/get current gtk theme,gsettings get org.gnome.desktop.interface gtk-theme,D
 [yt-dlp] How to Download Videos with specific format and size?,,You can do "yt-dlp -F <URL>" to list available formats and "yt-dlp -f <format> <URL>" to download in that specific format.
 [git] Git Undo last commit,git reset HEAD~,Done
 [git] How to Git restore selected files with previous commit version to remove current changes,,You can restore files to a previous version to discard current changes with "git restore <file1> <file1>..."
+[tmux] How to create a new session in tmux?,,You can create a new session using: "tmux new -s <Session_Name>" or just simply "tmux" ;D
