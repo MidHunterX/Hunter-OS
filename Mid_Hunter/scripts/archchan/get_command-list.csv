@@ -4,8 +4,7 @@ Oopsie.. Select nothing,,Go on... Have a nice day, master ;D
 [tlp] Disable Conservation Mode - Set to fullcharge temporarily,sudo tlp fullcharge,You can set default charging mode at: /etc/tlp.conf
 [tlp] Enable Conservation Mode - Set charging limit @60%,sudo tlp setcharge,You can set default charging mode at: /etc/tlp.conf
 [tlp] How to do Conservation Mode,,You can set default charging mode with: "sudoedit /etc/tlp.conf"
-[pacman] Remove unwanted dependencyies,sudo pacman -R $(pacman -Qdtq),Successfully removed unwanted dependencyies!
-[pacman] Show/List unwanted dependencyies,pacman -Qdtq,These are the things you gotta yeet!
+[pacman] How to remove unwanted dependencies,pacman -Qdtq,These are the things you gotta yeet! using "sudo pacman -R $(pacman -Qdtq)"
 [aft-mtp-mount] Mount Android Device,aft-mtp-mount /mnt,Mounted Android Device to /mnt
 [curlftpfs] How to mount FTP Device,,You can use the command "curlftpfs <ftphostname> /mnt" for example: "curlftpfs 'ftp://192.168.1.36:2121' /mnt/"
 [umount] Unmount Device/Partition,sudo umount /mnt,Done
@@ -22,3 +21,4 @@ Show/get current gtk theme,gsettings get org.gnome.desktop.interface gtk-theme,D
 [git] Git Undo last commit,git reset HEAD~,Done
 [git] How to Git restore selected files with previous commit version to remove current changes,,You can restore files to a previous version to discard current changes with "git restore <file1> <file1>..."
 [tmux] How to create a new session in tmux?,,You can create a new session using: "tmux new -s <Session_Name>" or just simply "tmux" ;D
+[df] List/Show partition space details,df -h,For showing mountpoints only you can do "df -h | grep /dev"
