@@ -87,6 +87,10 @@ map u scroll "half-up"
 map [fullscreen] d scroll "half-down"
 map [fullscreen] u scroll "half-up"
 
+# j/k - Smooth Scroll
+map j feedkeys "<C-Down>"
+map k feedkeys "<C-Up>"
+
 # h - Previous Page
 map h navigate "previous"
 map [fullscreen] h navigate "previous"
