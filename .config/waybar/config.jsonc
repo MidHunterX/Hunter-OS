@@ -71,14 +71,16 @@
     "format": "{icon}",
     "on-click": "activate",
     "format-icons": {
-      // "1": "",
-      // "2": "",
+      "1": "",
+      "2": "",
+      "3": "",
       "urgent": "󰗖",
-      "active": "󰝥",
-      "default": "󰝦",
+      // "active": "󰝥",
+      // "default": "󰝦",
+      "default": "",
       "sort-by-number": true
     }
-    // "persistent_workspaces": {
+    // "persistent-workspaces": {
     //   "1": [],
     //   "2": [],
     //   "3": []
