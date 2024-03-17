@@ -44,5 +44,12 @@ check_firefox_running() {
 
 check_firefox_running
 
+# Hyprland Workspaces
+if [[ $PROFILE == "Personal" ]]; then
+  WORKSPACE='hyprctl dispatch -- exec [workspace 2]'
+elif [[ $PROFILE == "Experiment" ]]; then
+  WORKSPACE='hyprctl dispatch -- exec [workspace 3]'
+fi
+
 # Run Firefox if no running instance
-firefox-developer-edition $FF_ATTRIB &
+$WORKSPACE firefox-developer-edition $FF_ATTRIB &
