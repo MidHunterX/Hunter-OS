@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 minutes(){ echo $(($1*60));}
 
+# "Check if script is already running"; $0 == filename; $$ == PID
+if [[ `pgrep -f $0` != "$$" ]]; then
+  echo "Another instance of shell already exist!"
+  echo "Exiting"
+  exit
+fi
+
 # Get the directory of the current script
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
