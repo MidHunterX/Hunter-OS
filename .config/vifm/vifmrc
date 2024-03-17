@@ -466,6 +466,7 @@ fileviewer *.conf,
 fileviewer *.bash,*.sh,*.zsh
         \ highlight -O ansi --syntax shellscript
 fileviewer *.gvimrc,*.vim,*.vimrc highlight -O ansi --syntax vimscript
+fileviewer *.tex,*.sty highlight -O ansi --syntax tex
 
 " Or leave it for automatic detection
 " fileviewer *[^/] pygmentize -O style=monokai -f console256 -g
