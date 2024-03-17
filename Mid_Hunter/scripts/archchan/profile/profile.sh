@@ -7,6 +7,14 @@ profile.arch() {
   IMG=$SCRIPT_DIR/assets/arch_chan.jpg
   HINTS="-h string:frcolor:#5cc0ff "
   HINTS+="-h string:bgcolor:#1f3847 "
+
+  # Special DP Change Logic
+  if [[ $1 == "hot" ]]; then
+    IMG=$SCRIPT_DIR/assets/arch_hot.jpg
+  elif [[ $1 == "sad" ]]; then
+    IMG=$SCRIPT_DIR/assets/arch_sad.jpg
+  fi
+
 }
 
 
@@ -23,6 +31,30 @@ arch.updateBatteryStatus() {
   BATTERY_STATUS=$(cat /sys/class/power_supply/BAT0/status)
 }
 
+# Returns: var $CPU
+arch.updateCpuPercent(){
+  # Get total CPU time across cpu cores
+  read -r CPU1 IDLE1 <<< $(grep '^cpu ' /proc/stat | \
+    awk '{print $2+$3+$4+$5+$6+$7+$8, $5}')
+  # Sleep -> The more the sleep, the accurate the result
+  sleep 1
+  # Get total CPU time again
+  read -r CPU2 IDLE2 <<< $(grep '^cpu ' /proc/stat | \
+    awk '{print $2+$3+$4+$5+$6+$7+$8, $5}')
+  # Calculate average CPU usage percentage over sleep time
+  CPU=$(awk \
+    -v idle1="$IDLE1" \
+    -v idle2="$IDLE2" \
+    -v cpu1="$CPU1" \
+    -v cpu2="$CPU2" \
+    'BEGIN {print int (100 * (1 - (idle2 - idle1) / (cpu2 - cpu1)))}')
+}
+
+# Returns: var $CPU_TEMP
+arch.updateCpuTemp(){
+  CPU_TEMP=$(cat /sys/class/thermal/thermal_zone0/temp)
+  CPU_TEMP=$(awk "BEGIN {print $CPU_TEMP / 1000}")
+}
 
 # =========================== [ ADMIN FUNCTIONS ] =========================== #
 
