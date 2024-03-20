@@ -14,6 +14,7 @@ if status is-interactive
   abbr -a -g woman 'man -k . | fzf | awk \'{print $1}\' | xargs man'
   alias arch 'bash ~/Mid_Hunter/scripts/archchan/get_command-list.sh'
 
+
   # Starship prompt
   starship init fish | source
   set -x STARSHIP_CONFIG $HOME/.config/starship/starship.toml
@@ -27,6 +28,10 @@ if status is-interactive
   set fish_cursor_insert      line       blink
   set fish_cursor_replace_one underscore blink
   set fish_cursor_visual      block
+
+
+  # Custom Keybindings
+  bind --mode default U redo
 
 
   # Vi mode with default Emacs keybindings
