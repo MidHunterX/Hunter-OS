@@ -20,7 +20,7 @@ if status is-interactive
 
   # Suggestion Background
   set fish_pager_color_background --background=black
-  set fish_pager_color_secondary_background --background=black
+  set fish_pager_color_secondary_background --background=brblack
 
   # Set the cursor shapes for the different vi modes.
   set fish_cursor_default     block      blink
