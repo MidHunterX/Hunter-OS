@@ -1,0 +1,49 @@
+gui:
+  windowSize: 'normal' # one of 'normal' | 'half' | 'full'
+  scrollPastBottom: true
+  scrollOffMargin: 2
+  sidePanelWidth: 0.3333 # 0 to 1
+  expandFocusedSidePanel: false
+  theme:
+    activeBorderColor:
+      - green
+      - bold
+    inactiveBorderColor:
+      - white
+    searchingActiveBorderColor:
+      - cyan
+      - bold
+    optionsTextColor:
+      - blue
+    selectedLineBgColor:
+      - black # `default`, 'reverse'
+    cherryPickedCommitBgColor:
+      - cyan
+    cherryPickedCommitFgColor:
+      - blue
+    unstagedChangesColor:
+      - red
+    defaultFgColor:
+      - default
+  commitLength:
+    show: true
+  mouseEvents: false
+  showRandomTip: true
+  showBranchCommitHash: false
+  nerdFontsVersion: "3" # ("", "2" or "3");
+  showFileIcons: true
+  commandLogSize: 8
+  splitDiff: 'auto' # 'auto' | 'always'
+  border: 'rounded' # 'single' | 'double' | 'rounded' | 'hidden'
+  animateExplosion: true # explosion animation when nuking the working tree
+  portraitMode: 'auto' # 'auto' | 'never' | 'always'
+  filterMode: 'substring' # 'substring' | 'fuzzy'
+
+refresher:
+  refreshInterval: 10 # File/submodule refresh interval in seconds.
+  fetchInterval: 60 # Re-fetch interval in seconds.
+
+keybinding:
+  universal:
+    quit: 'q'
+    quit-alt1: 'x' # <c-c>
