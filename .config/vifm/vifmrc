@@ -191,7 +191,7 @@ endif
 " @association
 
 "  DATABASE
-filextype {*.db},
+filextype {*.db,*.sqlite3},
         \ {View with DB Browser}
         \ sqlitebrowser --read-only %c,
         \ {Edit with DB Browser}
