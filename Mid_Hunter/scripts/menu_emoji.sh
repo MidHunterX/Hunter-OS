@@ -10,7 +10,7 @@ fi
 
 # Show Emoji list
 EMOJI_ROW=$( (sed '/^$/d' "$HIST_FILE"; sed '1,/^### EMOJI LIST ###$/d' "$0"; echo 'Nerd Fonts') | fuzzel --dmenu)
-echo $EMOJI_ROW
+echo "Selected Row: $EMOJI_ROW"
 
 # Exit script if nothing is selected
 if [[ $EMOJI_ROW == '' ]]; then
@@ -24,18 +24,18 @@ fi
 
 # Cut out only emoji from the row
 SELECTED_EMOJI=$(echo $EMOJI_ROW | cut -d ' ' -f 1 | tr -d '\n')
-echo $SELECTED_EMOJI
+echo "Output: $SELECTED_EMOJI"
 
 # Output Emoji
 wtype $SELECTED_EMOJI
 
 # Add Emoji Row to history file
 if grep -q "^$EMOJI_ROW$" "$HIST_FILE"; then
-  echo 'Found Row'
-  sed -i "0,/^$EMOJI_ROW$/d" "$HIST_FILE"
+  echo "Log: Entry already inside history file"
+  sed -i "/^$EMOJI_ROW$/d" "$HIST_FILE"
   sed -i "1i $EMOJI_ROW" "$HIST_FILE"
 else
-  echo 'Adding Row'
+  echo 'Log: Adding new entry in history file'
   sed -i "1i $EMOJI_ROW" "$HIST_FILE"
 fi
 
