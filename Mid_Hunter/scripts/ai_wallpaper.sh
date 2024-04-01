@@ -12,7 +12,7 @@ if [[ `pgrep -f $0` != "$$" ]]; then
 fi
 
 # Grace period for Wallpaper Daemon to start
-sleep 1
+sleep 3
 
 while [[ 1 ]]; do
   MINUTES_TO_WAIT=60
