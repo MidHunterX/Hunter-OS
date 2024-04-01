@@ -38,8 +38,8 @@
   // },
 
   "clock": {
-    "format": " {: %H:%M | %b%e} ", //" {:%H:%M}",
-    "format-alt": "{: %I:%M %p   %a, %b %e}",
+    "format": "  {:%H:%M | %b %e | %a} ", //" {:%H:%M}",
+    "format-alt": "  {:%I:%M %p   %a, %b %e}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
     // "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "calendar": {
