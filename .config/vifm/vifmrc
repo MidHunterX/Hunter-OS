@@ -34,6 +34,7 @@ nnoremap <c-i> :histnext<CR>
 
 " SENSIBLE REMAPS
 nnoremap i l
+vnoremap a cw
 nnoremap a cW
 nnoremap cw cW
 nnoremap cW cw
