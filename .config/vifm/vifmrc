@@ -188,7 +188,7 @@ endif
 " @association
 
 "  GIT
-fileviewer {.git/}, git status %d %pu
+fileviewer {.git/}, git -c color.status=always status %d %pu
 
 "  DIRECTORY PREVIEW
 fileviewer */ ls --color=always
