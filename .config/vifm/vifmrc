@@ -102,10 +102,6 @@ set confirm-=delete
 " ALWAYS SHOW PREVIEW
 view!
 
-" DIRECTORY PREVIEW COLORS
-fileviewer */ ls --color=always
-fileviewer .*/ ls --color=always
-
 " --------------------------------------------------------------------------- "
 
 " Command used to edit files in various contexts.
@@ -189,6 +185,14 @@ endif
 " █▀▀ █ █░░ █▀▀   ▀█▀ █▄█ █▀█ █▀▀ █▀   ▄▀█ █▀ █▀ █▀█ █▀▀ █ ▄▀█ ▀█▀ █ █▀█ █▄░█
 " █▀░ █ █▄▄ ██▄   ░█░ ░█░ █▀▀ ██▄ ▄█   █▀█ ▄█ ▄█ █▄█ █▄▄ █ █▀█ ░█░ █ █▄█ █░▀█
 " @association
+
+"  GIT
+fileviewer {.git/}, git status %d %pu
+
+"  DIRECTORY PREVIEW
+fileviewer */ ls --color=always
+fileviewer .*/ ls --color=always
+"fileviewer .*/ /usr/bin/tree --noreport -F -L 3 -a %c, /usr/bin/tree --noreport -F -a %c
 
 "  DATABASE
 filextype {*.db,*.sqlite3},
