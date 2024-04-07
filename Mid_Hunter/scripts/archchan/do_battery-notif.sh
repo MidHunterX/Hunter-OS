@@ -17,7 +17,7 @@ profile.arch
 arch.updateBatteryPercent
 
 check_interval=$(minutes 5)
-bat_interval=5
+bat_interval=10
 bat_prev=$BATTERY
 bat_next=0
 turnaround=1
