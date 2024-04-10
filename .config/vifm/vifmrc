@@ -21,12 +21,14 @@ nnoremap M :mkdir<SPACE>
 " TAB MANAGEMENT
 " create new tab
 nnoremap <c-n> :tabnew<cr>:view!<cr>
+nnoremap <c-t> :tabnew<cr>:view!<cr>
 " switch to tab to the left
 nnoremap <a-h> :tabprevious<cr>:view!<cr>
 " switch to tab to the left
 nnoremap <a-l> :tabnext<cr>:view!<cr>
 " switch to tab to the left
 nnoremap x :q<cr>
+nnoremap q :q<cr>
 
 " TIME TRAVEL
 nnoremap <c-o> :histprev<CR>
