@@ -51,7 +51,28 @@ if status is-interactive
       echo 'Directory picking cancelled/failed'
       return 1
     end
-    cd "$dst"
+    builtin cd "$dst"
+  end
+
+  function ls
+    if command -q lsd
+      lsd $argv
+    else
+      command ls $argv
+    end
+  end
+
+  function cd
+    builtin cd $argv
+    ls
+  end
+
+  function cat
+    if command -q bat
+      bat $argv --theme base16
+    else
+      command cat $argv
+    end
   end
 
 end
