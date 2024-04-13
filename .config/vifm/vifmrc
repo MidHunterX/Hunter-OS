@@ -476,7 +476,10 @@ filextype */
 fileviewer *.c,*.h highlight -O ansi -s dante %c
 fileviewer *.py highlight -O ansi --syntax python
 fileviewer *.lua highlight -O ansi --syntax lua
+fileviewer *.js highlight -O ansi --syntax javascript
 fileviewer *.json,*.jsonc highlight -O ansi --syntax json
+fileviewer *.ts highlight -O ansi --syntax typescript
+fileviewer *.jsx,*.tsx highlight -O ansi --syntax tsx
 fileviewer *.xml highlight -O ansi --syntax xml 
 fileviewer *.xhtml highlight -O ansi --syntax html
 fileviewer *.opf highlight -O ansi --syntax xml 
