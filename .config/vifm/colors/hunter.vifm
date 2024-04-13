@@ -37,19 +37,19 @@ highlight {*.7z,*.ace,*.arj,*.bz2,*.cpio,*.deb,*.dz,*.gz,*.jar,*.lzh,*.lzma,
           \*.txz,*.tz,*.tz2,*.xz,*.z,*.zip,*.zoo,*.apk,*.gzip,*.lz}
         \ cterm=none ctermfg=215 ctermbg=default
 " text
-highlight {*.css,*.less,*.scss,*.markdown,*.md,*.mkd,*.org,*.pandoc,*.pdc,*.tex,
-          \*.txt,*.xml,*.log,*.rss,*.xul,*.json,*.yaml,*.yml,*.csv,*.plist,
+highlight {*.less,*.mkd,*.org,*.pandoc,*.pdc,*.tex,
+          \*.txt,*.log,*.rss,*.xul,*.yaml,*.yml,*.csv,*.plist,
           \*.ini,*.cfg,*.rc,*.conf,*.spec,*.qrc,*.description,*.list,*.log.old,
           \*.log.1,*.log.2,*.log.3,*.log.4,*.log.5,*.log.6,*.log.7,*.log.8,
           \syslog,syslog.1}
         \ cterm=none ctermfg=217 ctermbg=default
 " documents
-highlight {*.doc,*.docx,*.xls,*.xlsm,*.xlsx,*.mobi,*.rtf,*.ppt,*.pptx,*.pdf,
-          \*.epub,*.fb2,*.djvu,*.djv,*.htm,*.html,*.shtml,*.xhtml,*.desktop,
+highlight {*.mobi,*.rtf,
+          \*.epub,*.fb2,*.djvu,*.djv,*.desktop,
           \*.odg,*.odt,*.ods}
         \ cterm=none ctermfg=218 ctermbg=default
 " media
-highlight {*.aac,*.anx,*.asf,*.au,*.avi,*.ts,*.axa,*.axv,*.divx,*.flac,*.m2a,
+highlight {*.aac,*.anx,*.asf,*.au,*.avi,*.axa,*.axv,*.divx,*.flac,*.m2a,
           \*.m2v,*.m4a,*.m4p,*.m4v,*.mid,*.midi,*.mka,*.mkv,*.mov,*.mp3,*.mp4,
           \*.flv,*.mp4v,*.mpc,*.mpeg,*.mpg,*.nuv,*.oga,*.ogg,*.ogv,*.ogx,*.pbm,
           \*.pgm,*.qt,*.ra,*.ram,*.rm,*.spx,*.vob,*.wav,*.wma,*.wmv,*.xvid,
@@ -64,10 +64,10 @@ highlight {*.sh,*.bash,*.zsh,*.bat,*.btm,*.cmd,*.com,*.dll,*.exe,*.run,*.msu,
           \*.msi,*.fish,*.AppImage}
         \ cterm=none ctermfg=253 ctermbg=default
 " source code
-highlight {*.patch,*.diff,*.py,*.cpp,*.hpp,*.c,*.h,*.cpp,*.hpp,*.cc,*.hh,*.ld,
-          \*.hs,*.php,*.lua,*.vim,*.vifm,*.asm,*.s,*.java,*.cxx,*.c++,*.go,
-          \*.pl,*.pm,*.t,*.cs,*.asp,*.dart,*.js,*.rb,*.scala,*.ts,*.coffee,
-          \*.ml,*.mli,*.rs,*.sql,*.qml,vifmrc,vimrc,.vimrc,*.flex,*.ypp,*.S}
+highlight {*.patch,*.diff,*.cpp,*.hpp,*.cpp,*.hpp,*.cc,*.hh,*.ld,
+          \*.hs,*.vim,*.vifm,*.asm,*.s,*.java,*.cxx,*.c++,*.go,
+          \*.pl,*.pm,*.t,*.cs,*.asp,*.dart,*.rb,*.scala,*.coffee,
+          \*.ml,*.mli,*.sql,*.qml,vifmrc,vimrc,.vimrc,*.flex,*.ypp,*.S}
         \ cterm=none ctermfg=193 ctermbg=default
 
 
@@ -80,16 +80,16 @@ highlight {*.pdf,*.rs,*.h}
 highlight {*.markdown,*.md}
         \ cterm=none ctermfg=SteelBlue1 ctermbg=default
 
-highlight {*.docx,*.doc,*.css,*.c}
+highlight {*.docx,*.doc,*.css,*.scss,*.c,*.ts,*.tsx,*.lua}
         \ cterm=none ctermfg=LightSlateBlue ctermbg=default
 
 highlight {*.xls,*.xls[mx],*.xml}
         \ cterm=none ctermfg=PaleGreen3 ctermbg=default
 
-highlight {*.py,*.js}
+highlight {*.py,*.js,*.json}
         \ cterm=none ctermfg=yellow ctermbg=default
 
-highlight {*.pptx,*.ppt,*.htm,*.html,*.shtml}
+highlight {*.pptx,*.ppt,*.htm,*.html,*.shtml,*.xhtml}
         \ cterm=none ctermfg=Salmon1 ctermbg=default
 
 highlight {*.php}
