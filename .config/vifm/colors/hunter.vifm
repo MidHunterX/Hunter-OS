@@ -54,7 +54,7 @@ highlight {*.aac,*.anx,*.asf,*.au,*.avi,*.axa,*.axv,*.divx,*.flac,*.m2a,
           \*.flv,*.mp4v,*.mpc,*.mpeg,*.mpg,*.nuv,*.oga,*.ogg,*.ogv,*.ogx,*.pbm,
           \*.pgm,*.qt,*.ra,*.ram,*.rm,*.spx,*.vob,*.wav,*.wma,*.wmv,*.xvid,
           \*.ac3}
-        \ cterm=none ctermfg=Orange3 ctermbg=default
+        \ cterm=none ctermfg=Orange1 ctermbg=default
 " images
 highlight {*.bmp,*.gif,*.jpeg,*.jpg,*.ico,*.png,*.ppm,*.svg,*.svgz,*.tga,*.tif,
           \*.tiff,*.xbm,*.xcf,*.xpm,*.xspf,*.xwd,*.ai,*.pbm,*.pgm,*.webp}
@@ -80,17 +80,20 @@ highlight {*.pdf,*.rs,*.h}
 highlight {*.markdown,*.md}
         \ cterm=none ctermfg=SteelBlue1 ctermbg=default
 
-highlight {*.docx,*.doc,*.css,*.scss,*.c,*.ts,*.tsx,*.lua}
+highlight {*.docx,*.doc,*.css,*.scss,*.c}
         \ cterm=none ctermfg=LightSlateBlue ctermbg=default
 
+highlight {*.ts,*.tsx,*.lua}
+        \ cterm=none ctermfg=SkyBlue2 ctermbg=default
+
 highlight {*.xls,*.xls[mx],*.xml}
-        \ cterm=none ctermfg=PaleGreen3 ctermbg=default
+        \ cterm=none ctermfg=green ctermbg=default
 
 highlight {*.py,*.js,*.json}
         \ cterm=none ctermfg=yellow ctermbg=default
 
 highlight {*.pptx,*.ppt,*.htm,*.html,*.shtml,*.xhtml}
-        \ cterm=none ctermfg=Salmon1 ctermbg=default
+        \ cterm=none ctermfg=LightSalmon1 ctermbg=default
 
 highlight {*.php}
         \ cterm=none ctermfg=Violet ctermbg=default
