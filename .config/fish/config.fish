@@ -23,6 +23,9 @@ if status is-interactive
   set fish_pager_color_background --background=black
   set fish_pager_color_secondary_background --background=brblack
 
+  # ls Colors
+  set -x LS_COLORS 'ow=42;30;1'
+
   # Set the cursor shapes for the different vi modes.
   set fish_cursor_default     block      blink
   set fish_cursor_insert      line       blink
