@@ -62,6 +62,10 @@ format = "[ 🖿 $path ]($style)[$read_only](fg:col_ylo bg:col_dir)"
 truncation_length = 3
 # truncation_symbol = "…/"
 
+[jobs]
+symbol = ''
+format = '[ $symbol $number ]($style)'
+
 [status]
 symbol = '[](fg:col_lng bg:col_red)[  ](bg:col_red fg:col_wht)[](fg:col_red)'
 success_symbol = '[](fg:col_lng bg:col_chk)[  ](bg:col_chk fg:col_blk)[](fg:col_chk)'
