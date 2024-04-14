@@ -466,9 +466,9 @@ filextype */
 " fileviewer *.[ch],*.[ch]pp,*.py highlight -O xterm256 -s dante --syntax c %c
 " fileviewer *.py highlight -O xterm256 --syntax python
 " fileviewer *.json highlight -O xterm256 --syntax json
-" fileviewer *.xml highlight -O xterm256 --syntax xml 
+" fileviewer *.xml highlight -O xterm256 --syntax xml
 " fileviewer *.xhtml highlight -O xterm256 --syntax html
-" fileviewer *.opf highlight -O xterm256 --syntax xml 
+" fileviewer *.opf highlight -O xterm256 --syntax xml
 " fileviewer *.md highlight -O xterm256 --syntax markdown
 " fileviewer *.html,*.go,*.css,*.c highlight -O xterm256 -s dante %c
 
@@ -480,16 +480,16 @@ fileviewer *.js highlight -O ansi --syntax javascript
 fileviewer *.json,*.jsonc highlight -O ansi --syntax json
 fileviewer *.ts highlight -O ansi --syntax typescript
 fileviewer *.jsx,*.tsx highlight -O ansi --syntax tsx
-fileviewer *.xml highlight -O ansi --syntax xml 
+fileviewer *.xml highlight -O ansi --syntax xml
 fileviewer *.xhtml highlight -O ansi --syntax html
-fileviewer *.opf highlight -O ansi --syntax xml 
+fileviewer *.opf highlight -O ansi --syntax xml
 fileviewer *.txt highlight -O ansi --syntax txt
 fileviewer *.md highlight -O ansi --syntax markdown
 fileviewer *.html,*.go,*.css,*.c highlight -O ansi -s dante %c
 fileviewer *.conf,
         \.bashrc,.bash_profile,.xinitrc,.gitignore
         \ highlight -O ansi --syntax conf
-fileviewer *.bash,*.sh,*.zsh
+fileviewer *.bash,*.sh,*.zsh,*.fish
         \ highlight -O ansi --syntax shellscript
 fileviewer *.gvimrc,*.vim,*.vimrc highlight -O ansi --syntax vimscript
 fileviewer *.tex,*.sty highlight -O ansi --syntax tex
