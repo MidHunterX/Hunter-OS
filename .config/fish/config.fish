@@ -35,6 +35,8 @@ if status is-interactive
 
   # Custom Keybindings
   bind --mode default U redo
+  # Ctrl-Z fg command
+  bind --mode insert \cz 'fg 2>/dev/null; commandline -f repaint'
 
 
   # Vi mode with default Emacs keybindings
@@ -50,7 +52,7 @@ if status is-interactive
   # VIFM CD Function
   function vicd
     set dst "$(command vifm --choose-dir - $argv[2..-1])"
-    if [ -z "$dst" ]; 
+    if [ -z "$dst" ];
       echo 'Directory picking cancelled/failed'
       return 1
     end
