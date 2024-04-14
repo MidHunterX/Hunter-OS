@@ -1,6 +1,6 @@
-"=============================================================================="
-"                       Hunter ColorScheme by Mid_Hunter                       "
-"=============================================================================="
+"============================================================================="
+"                      Hunter ColorScheme by Mid_Hunter                       "
+"============================================================================="
 
 highlight clear
 highlight Border	cterm=none	ctermfg=default	ctermbg=default
@@ -9,19 +9,19 @@ highlight TopLineSel	cterm=bold	ctermfg=002	ctermbg=default
 
 highlight Win		cterm=none	ctermfg=default	ctermbg=default
 highlight Directory	cterm=bold	ctermfg=blue	ctermbg=default
-highlight Link cterm=bold ctermfg=cyan ctermbg=default
-highlight BrokenLink cterm=bold ctermfg=black ctermbg=red
+highlight Link		cterm=bold	ctermfg=cyan	ctermbg=default
+highlight BrokenLink	cterm=bold	ctermfg=black	ctermbg=red
 
-highlight Executable cterm=bold ctermfg=green ctermbg=default
-highlight Device cterm=bold ctermfg=yellow ctermbg=default
-highlight Fifo cterm=bold ctermfg=cyan ctermbg=default
-highlight Socket cterm=bold ctermfg=Magenta ctermbg=default
+highlight Executable	cterm=bold	ctermfg=green	ctermbg=default
+highlight Device	cterm=bold 	ctermfg=yellow	ctermbg=default
+highlight Fifo		cterm=bold 	ctermfg=cyan	ctermbg=default
+highlight Socket	cterm=bold 	ctermfg=Magenta ctermbg=default
 
 highlight CurrLine	cterm=bold,inverse	ctermfg=default	ctermbg=default
-highlight OtherLine  cterm=reverse    ctermfg=black     ctermbg=white
+highlight OtherLine	cterm=reverse	ctermfg=black	ctermbg=white
 highlight Selected	cterm=none	ctermfg=003	ctermbg=008
 
-highlight Border cterm=none ctermfg=Grey70 ctermbg=default
+highlight Border	cterm=none	ctermfg=Grey70	ctermbg=default
 highlight JobLine	cterm=bold	ctermfg=251	ctermbg=008
 highlight StatusLine	cterm=none	ctermfg=002	ctermbg=default
 highlight ErrorMsg	cterm=bold	ctermfg=001	ctermbg=default
