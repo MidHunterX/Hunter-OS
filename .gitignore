@@ -1,6 +1,8 @@
 # Ignore Everything
 /*
 !.gitignore
+!README.md
+!assets/
 # Ignore Workspaces ;D
 */workspace/
 
