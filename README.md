@@ -69,7 +69,11 @@ The number of background apps will be shown in prompt as shown.
 
 ### Better LS and CD navigation
 
-- Install **lsd** and **bat** for NerdFont goodness.
+![fish LS CD](./assets/fish_lscd.jpg)
+
+Navigate using ls and cd with much better comfortability.
+
+- Install **lsd** and **bat** for the NerdFont goodness.
 
 ### Extra Functionalities
 
