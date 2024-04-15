@@ -12,9 +12,16 @@
 
 **Focus on Flexibility**: Offers multiple pathways to accomplish tasks to choose the method that best suits the workflow at that specific moment in time.
 
+## Status Bar (waybar)
+
+Highly customizable Wayland bar for Sway and Wlroots based compositors.
+
+![Waybar](./assets/waybar.png)
+
 ## Image Viewer (feh)
 
 ![feh Image Viewer](./assets/feh.jpg)
+
 feh is a lightweight image viewer aimed mainly at users of command line interfaces. Unlike most graphical image viewers, feh does not have any graphical control elements.
 
 | Keymap      | Description             |
@@ -51,6 +58,7 @@ fish is a Unix shell with a focus on interactivity and usability. Fish is design
 - Press `CTRL + Z` inside terminal prompt to move BG app to Foreground.
 
 ![Jobs Icon](./assets/prompt_jobs.png)
+
 The number of background apps will be shown in prompt as shown.
 
 ### Auto Complete based on CMD History
@@ -61,12 +69,34 @@ The number of background apps will be shown in prompt as shown.
 
 ### Better LS and CD navigation
 
-- Install **lsd** and **bat** for NerdFont support
+- Install **lsd** and **bat** for NerdFont goodness.
 
 ### Extra Functionalities
 
 - Auto Pair brackets and quotes
 - Clean out bad CMD History
+
+## Shell Prompt (starship)
+
+Structure: `[ OS > ( Directory | Git Branch ) > Info > Status ]`
+
+### Vim Modes
+
+Insert Mode:
+
+![Insert Mode](./assets/prompt.png)
+
+Normal Mode:
+
+![Normal Mode](./assets/prompt_normal.png)
+
+Visual Mode:
+
+![Visual Mode](./assets/prompt_visual.png)
+
+Replace Mode:
+
+![Replace Mode](./assets/prompt_replace.png)
 
 ## System Wide Key Remaps (keyd)
 
@@ -121,21 +151,6 @@ mpv is free and open-source media player software based on MPlayer, mplayer2 and
 | m      | Mute Volume             |
 | Return | Show Progress           |
 
-## Shell Prompt (starship)
-
-Structure: `[ OS > ( Directory | Git Branch ) > Info > Status ]`
-
-### Vim Modes
-
-Insert Mode
-![Insert Mode](./assets/prompt.png)
-Normal Mode
-![Normal Mode](./assets/prompt_normal.png)
-Visual Mode
-![Visual Mode](./assets/prompt_visual.png)
-Replace Mode
-![Replace Mode](./assets/prompt_replace.png)
-
 ## File Manager (vifm)
 
 Vifm is a file manager with curses interface, which provides Vim-like environment for managing objects within file systems, extended with some useful ideas from mutt. If you use vi, Vifm gives you complete keyboard control over your files without having to learn a new set of commands.
@@ -170,9 +185,3 @@ Vifm is a file manager with curses interface, which provides Vim-like environmen
 | ' d      | Go to Downloads/               |
 | ' c      | Go to .config/                 |
 | x, q     | Close/Quit                     |
-
-## Status Bar (waybar)
-
-Highly customizable Wayland bar for Sway and Wlroots based compositors.
-
-![Waybar](./assets/waybar.png)
