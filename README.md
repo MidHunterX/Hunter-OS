@@ -77,6 +77,7 @@ Navigate using ls and cd with much better comfortability.
 
 ### Extra Functionalities
 
+- `Alt + e` to edit shell prompt input inside Neovim
 - Auto Pair brackets and quotes
 - Clean out bad CMD History
 
@@ -191,3 +192,8 @@ Vifm is a file manager with curses interface, which provides Vim-like environmen
 | ' d      | Go to Downloads/               |
 | ' c      | Go to .config/                 |
 | x, q     | Close/Quit                     |
+
+### Extra Functionalities
+
+- Press `a` or `cw` in Visual Mode to multi-rename files/dirs
+- The most useful default functionality is `s` to drop into shell
