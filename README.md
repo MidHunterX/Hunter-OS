@@ -1,6 +1,6 @@
 # Hunter OS
 
-## Philosophy
+## 🌿 Philosophy
 
 **Distro Agnostic**: Designed to be compatible with a wide range of Linux distributions, ensuring workflow features regardless of preferred base.
 
@@ -12,13 +12,13 @@
 
 **Focus on Flexibility**: Offers multiple pathways to accomplish tasks to choose the method that best suits the workflow at that specific moment in time.
 
-## Status Bar (waybar)
+## 🍫 Status Bar (waybar)
 
 Highly customizable Wayland bar for Sway and Wlroots based compositors.
 
 ![Waybar](./assets/waybar.png)
 
-## Image Viewer (feh)
+## 🌄 Image Viewer (feh)
 
 ![feh Image Viewer](./assets/feh.jpg)
 
@@ -37,7 +37,7 @@ feh is a lightweight image viewer aimed mainly at users of command line interfac
 | i           | View Filename           |
 | q, x        | Quit/Close              |
 
-## Shell (fish)
+## 🐚 Shell (fish)
 
 fish is a Unix shell with a focus on interactivity and usability. Fish is designed to give the user features by default, rather than by configuration. Fish is considered an exotic shell since it does not adhere to POSIX shell standards, at the discretion of the maintainers.
 
@@ -76,7 +76,7 @@ The number of background apps will be shown in prompt as shown.
 - Auto Pair brackets and quotes
 - Clean out bad CMD History
 
-## Shell Prompt (starship)
+## 🚀 Shell Prompt (starship)
 
 Structure: `[ OS > ( Directory | Git Branch ) > Info > Status ]`
 
@@ -98,7 +98,7 @@ Replace Mode:
 
 ![Replace Mode](./assets/prompt_replace.png)
 
-## System Wide Key Remaps (keyd)
+## 🎹 System Wide Key Remaps (keyd)
 
 Linux lacks a good key remapping solution. In order to achieve satisfactory results a medley of tools need to be employed (e.g xcape, xmodmap) with the end result often being tethered to a specified environment (X11). keyd attempts to solve this problem by providing a flexible system wide daemon which remaps keys using kernel level input primitives (evdev, uinput).
 
@@ -114,7 +114,7 @@ Linux lacks a good key remapping solution. In order to achieve satisfactory resu
 | CapsLock (Click) | Esc                    |
 | CapsLock (Press) | Ctrl                   |
 
-## Terminal Emulator (kitty)
+## 🐱 Terminal Emulator (kitty)
 
 kitty is a free and open-source GPU-accelerated terminal emulator for Linux and macOS focused on performance and features. kitty is written in a mix of C and Python programming languages. It provides GPU support. kitty shares its name with another program — KiTTY — a fork of PuTTY for Microsoft Windows.
 
@@ -128,7 +128,7 @@ kitty is a free and open-source GPU-accelerated terminal emulator for Linux and 
 | Ctrl + Shift + U         | Scroll Page Up                 |
 | Ctrl + Shift + Backspace | Clear One Whole Word           |
 
-## Video Player (mpv)
+## 🎬 Video Player (mpv)
 
 mpv is free and open-source media player software based on MPlayer, mplayer2 and FFmpeg. It runs on several operating systems, including Unix-like operating systems (Linux, BSD-based, macOS) and Microsoft Windows. It is cross-platform, running on ARM, PowerPC, x86/IA-32, x86-64, and MIPS architecture.
 
@@ -151,7 +151,7 @@ mpv is free and open-source media player software based on MPlayer, mplayer2 and
 | m      | Mute Volume             |
 | Return | Show Progress           |
 
-## File Manager (vifm)
+## 📁 File Manager (vifm)
 
 Vifm is a file manager with curses interface, which provides Vim-like environment for managing objects within file systems, extended with some useful ideas from mutt. If you use vi, Vifm gives you complete keyboard control over your files without having to learn a new set of commands.
 
