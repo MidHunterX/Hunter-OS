@@ -157,6 +157,8 @@ mpv is free and open-source media player software based on MPlayer, mplayer2 and
 
 ## 📁 File Manager (vifm)
 
+![VIFM](./assets/vifm.jpg)
+
 Vifm is a file manager with curses interface, which provides Vim-like environment for managing objects within file systems, extended with some useful ideas from mutt. If you use vi, Vifm gives you complete keyboard control over your files without having to learn a new set of commands.
 
 | Keymap   | Description                    |
