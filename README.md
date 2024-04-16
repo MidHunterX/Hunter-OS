@@ -75,6 +75,12 @@ Navigate using ls and cd with much better comfortability.
 
 - Install **lsd** and **bat** for the NerdFont goodness.
 
+### Edit Shell Prompt Input with NeoVim
+
+- Press `Alt + e` on Insert mode to edit shell prompt input inside Neovim
+
+![Fish Edit with Neovim](./assets/fish_editor.jpg)
+
 ### Extra Functionalities
 
 - `Alt + e` to edit shell prompt input inside Neovim
@@ -132,6 +138,14 @@ kitty is a free and open-source GPU-accelerated terminal emulator for Linux and 
 | Ctrl + Shift + D         | Scroll Page Down               |
 | Ctrl + Shift + U         | Scroll Page Up                 |
 | Ctrl + Shift + Backspace | Clear One Whole Word           |
+
+### Move Terminal Buffer into Neovim Temporarily
+
+- Press `Alt + n` to send a copy of terminal buffer into Neovim.
+- Then it can be used for scrollback, jumping quickly around and copying text.
+- To exit, either press `q` or `i`
+
+![Kitty Neovim Integration](./assets/kitty_nvim.jpg)
 
 ## 🎬 Video Player (mpv)
 
@@ -193,7 +207,13 @@ Vifm is a file manager with curses interface, which provides Vim-like environmen
 | ' c      | Go to .config/                 |
 | x, q     | Close/Quit                     |
 
-### Extra Functionalities
+### Bulk-Rename Multiple Filenames in Neovim
 
 - Press `a` or `cw` in Visual Mode to multi-rename files/dirs
-- The most useful default functionality is `s` to drop into shell
+- Save and Exit Neovim buffer to save changes
+
+![VIFM Bulk Rename](./assets/vifm_rename.jpg)
+
+### Extra Functionalities
+
+- The most useful default functionality is `s` to drop into shell from currently opened directory
