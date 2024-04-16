@@ -151,24 +151,16 @@ kitty is a free and open-source GPU-accelerated terminal emulator for Linux and 
 
 mpv is free and open-source media player software based on MPlayer, mplayer2 and FFmpeg. It runs on several operating systems, including Unix-like operating systems (Linux, BSD-based, macOS) and Microsoft Windows. It is cross-platform, running on ARM, PowerPC, x86/IA-32, x86-64, and MIPS architecture.
 
-| Keymap | Description             |
-| ------ | ----------------------- |
-| d      | Volume Down by 2        |
-| u      | Volume Up by 2          |
-| x      | Close                   |
-| h      | Seek -10s               |
-| l      | Seek +10s               |
-| H      | Seek -30s               |
-| L      | Seek +30s               |
-| j      | Seek -5 Video Frames    |
-| k      | Seek +5 Video Frames    |
-| J      | Seek One Frame Backward |
-| K      | Seek One Frame Forward  |
-| i      | Video Information       |
-| c      | Cycle Through Subtitles |
-| f      | Fullscreen              |
-| m      | Mute Volume             |
-| Return | Show Progress           |
+| Keymap | Description          | Keymap | Description             |
+| ------ | -------------------- | ------ | ----------------------- |
+| d      | Volume Down by 2     | k      | Seek +5 Video Frames    |
+| u      | Volume Up by 2       | J      | Seek One Frame Backward |
+| x      | Close                | K      | Seek One Frame Forward  |
+| h      | Seek -10s            | i      | Video Information       |
+| l      | Seek +10s            | c      | Cycle Through Subtitles |
+| H      | Seek -30s            | f      | Fullscreen              |
+| L      | Seek +30s            | m      | Mute Volume             |
+| j      | Seek -5 Video Frames | Return | Show Progress           |
 
 ## 📁 File Manager (vifm)
 
@@ -176,36 +168,22 @@ mpv is free and open-source media player software based on MPlayer, mplayer2 and
 
 Vifm is a file manager with curses interface, which provides Vim-like environment for managing objects within file systems, extended with some useful ideas from mutt. If you use vi, Vifm gives you complete keyboard control over your files without having to learn a new set of commands.
 
-| Keymap   | Description                    |
-| -------- | ------------------------------ |
-| Ctrl + f | Fuzzy Find Files               |
-| ?        | Fuzzy Find Files               |
-| /        | Fast Navigation Mode           |
-| Ctrl + o | Go Backward Navigation History |
-| Ctrl + i | Go Forward Navigation History  |
-| o        | Open With                      |
-| t        | touch File                     |
-| M        | mkdir Directory                |
-| i        | Execute Files/Directory        |
-| a        | Rename Filename                |
-| A        | Rename Filename + Extension    |
-| cw       | Rename Filename                |
-| cW       | Rename Filename + Extension    |
-| Ctrl + u | Scroll Page Up                 |
-| Ctrl + d | Scroll Page Down               |
-| u        | Undo                           |
-| U        | Redo                           |
-| H        | Move to Left View/Split        |
-| L        | Move to Right View/Split       |
-| W        | Scroll through different Views |
-| Ctrl + n | New Tab                        |
-| Ctrl + t | New Tab                        |
-| Alt + h  | Switch to Tab on Left          |
-| Alt + l  | Switch to Tab on Right         |
-| ' h      | Go to Home/                    |
-| ' d      | Go to Downloads/               |
-| ' c      | Go to .config/                 |
-| x, q     | Close/Quit                     |
+| Keymap   | Description             | Keymap   | Description              |
+| -------- | ----------------------- | -------- | ------------------------ |
+| Ctrl + f | Fuzzy Find Files        | Ctrl + d | Scroll Page Down         |
+| ?        | Fuzzy Find Files        | u        | Undo                     |
+| /        | Fast Navigation Mode    | U        | Redo                     |
+| Ctrl + o | Go Backward History     | H        | Move to Left View/Split  |
+| Ctrl + i | Go Forward History      | L        | Move to Right View/Split |
+| o        | Open With               | W        | Scroll through views     |
+| t        | touch File              | Ctrl + n | New Tab                  |
+| M        | mkdir Directory         | Ctrl + t | New Tab                  |
+| i        | Execute Files/Directory | Alt + h  | Switch to Tab on Left    |
+| a        | Rename Filename         | Alt + l  | Switch to Tab on Right   |
+| A        | Rename Filename + Ext   | ' h      | Go to Home/              |
+| cw       | Rename Filename         | ' d      | Go to Downloads/         |
+| cW       | Rename Filename + Ext   | ' c      | Go to .config/           |
+| Ctrl + u | Scroll Page Up          | x, q     | Close/Quit               |
 
 ### Bulk-Rename Multiple Filenames in Neovim
 
@@ -214,6 +192,20 @@ Vifm is a file manager with curses interface, which provides Vim-like environmen
 
 ![VIFM Bulk Rename](./assets/vifm_rename.jpg)
 
-### Extra Functionalities
+### Extra Features
+
+- File View Syntax Highlighting using **highlight**
+- **NerdFont** icons for Files and Directories
+- Added support for:
+  - SQLite Browser for DB Files
+  - Zathura PDF
+  - Feh Image Viewer
+  - Kitten Terminal Image Printing
+  - 7zip archive extration
+- .git Dir shows git status output
+- Directory list with ls colors
+
+### Default Functionalities
 
 - The most useful default functionality is `s` to drop into shell from currently opened directory
+- `w` to toggle file viewer
