@@ -76,11 +76,10 @@ The number of background apps will be shown in prompt as shown.
 
 ### Better LS and CD navigation
 
-![fish LS CD](./assets/fish_lscd.jpg)
-
-Navigate using ls and cd with much better comfortability.
-
 - Install **lsd** and **bat** for the NerdFont goodness.
+- Navigate using **ls**  and **cd**  with much better comfortability.
+
+![fish LS CD](./assets/fish_lscd.jpg)
 
 ### Edit Shell Prompt Input with NeoVim
 
