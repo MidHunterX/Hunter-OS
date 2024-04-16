@@ -24,6 +24,10 @@ Highly customizable Wayland bar for Sway and Wlroots based compositors.
 
 feh is a lightweight image viewer aimed mainly at users of command line interfaces. Unlike most graphical image viewers, feh does not have any graphical control elements.
 
+<div align="left">
+<details>
+<summary><h3>Feh Keybindings</h3></summary>
+
 | Keymap      | Description             |
 | ----------- | ----------------------- |
 | u           | Zoom In                 |
@@ -36,6 +40,9 @@ feh is a lightweight image viewer aimed mainly at users of command line interfac
 | o           | Toggle EXIF Information |
 | i           | View Filename           |
 | q, x        | Quit/Close              |
+
+</details>
+</div>
 
 ## 🐚 Shell (fish)
 
@@ -113,6 +120,10 @@ Replace Mode:
 
 Linux lacks a good key remapping solution. In order to achieve satisfactory results a medley of tools need to be employed (e.g xcape, xmodmap) with the end result often being tethered to a specified environment (X11). keyd attempts to solve this problem by providing a flexible system wide daemon which remaps keys using kernel level input primitives (evdev, uinput).
 
+<div align="left">
+<details>
+<summary><h3>KeyD Keybindings</h3></summary>
+
 | Remap            | Output Key             |
 | ---------------- | ---------------------- |
 | Space + h        | Left                   |
@@ -125,9 +136,16 @@ Linux lacks a good key remapping solution. In order to achieve satisfactory resu
 | CapsLock (Click) | Esc                    |
 | CapsLock (Press) | Ctrl                   |
 
+</details>
+</div>
+
 ## 🐱 Terminal Emulator (kitty)
 
 kitty is a free and open-source GPU-accelerated terminal emulator for Linux and macOS focused on performance and features. kitty is written in a mix of C and Python programming languages. It provides GPU support. kitty shares its name with another program — KiTTY — a fork of PuTTY for Microsoft Windows.
+
+<div align="left">
+<details>
+<summary><h3>Kitty Keybindings</h3></summary>
 
 | Keymap                   | Description                    |
 | ------------------------ | ------------------------------ |
@@ -138,6 +156,9 @@ kitty is a free and open-source GPU-accelerated terminal emulator for Linux and 
 | Ctrl + Shift + D         | Scroll Page Down               |
 | Ctrl + Shift + U         | Scroll Page Up                 |
 | Ctrl + Shift + Backspace | Clear One Whole Word           |
+
+</details>
+</div>
 
 ### Move Terminal Buffer into Neovim Temporarily
 
@@ -151,16 +172,31 @@ kitty is a free and open-source GPU-accelerated terminal emulator for Linux and 
 
 mpv is free and open-source media player software based on MPlayer, mplayer2 and FFmpeg. It runs on several operating systems, including Unix-like operating systems (Linux, BSD-based, macOS) and Microsoft Windows. It is cross-platform, running on ARM, PowerPC, x86/IA-32, x86-64, and MIPS architecture.
 
-| Keymap | Description          | Keymap | Description             |
-| ------ | -------------------- | ------ | ----------------------- |
-| d      | Volume Down by 2     | k      | Seek +5 Video Frames    |
-| u      | Volume Up by 2       | J      | Seek One Frame Backward |
-| x      | Close                | K      | Seek One Frame Forward  |
-| h      | Seek -10s            | i      | Video Information       |
-| l      | Seek +10s            | c      | Cycle Through Subtitles |
-| H      | Seek -30s            | f      | Fullscreen              |
-| L      | Seek +30s            | m      | Mute Volume             |
-| j      | Seek -5 Video Frames | Return | Show Progress           |
+<div align="left">
+<details>
+<summary><h3>MPV Keybindings</h3></summary>
+
+| Keymap | Description             |
+| ------ | ----------------------- |
+| d      | Volume Down by 2        |
+| u      | Volume Up by 2          |
+| x      | Close                   |
+| h      | Seek -10s               |
+| l      | Seek +10s               |
+| H      | Seek -30s               |
+| L      | Seek +30s               |
+| j      | Seek -5 Video Frames    |
+| k      | Seek +5 Video Frames    |
+| J      | Seek One Frame Backward |
+| K      | Seek One Frame Forward  |
+| i      | Video Information       |
+| c      | Cycle Through Subtitles |
+| f      | Fullscreen              |
+| m      | Mute Volume             |
+| Return | Show Progress           |
+
+</details>
+</div>
 
 ## 📁 File Manager (vifm)
 
@@ -168,22 +204,43 @@ mpv is free and open-source media player software based on MPlayer, mplayer2 and
 
 Vifm is a file manager with curses interface, which provides Vim-like environment for managing objects within file systems, extended with some useful ideas from mutt. If you use vi, Vifm gives you complete keyboard control over your files without having to learn a new set of commands.
 
-| Keymap   | Description             | Keymap   | Description              |
-| -------- | ----------------------- | -------- | ------------------------ |
-| Ctrl + f | Fuzzy Find Files        | Ctrl + d | Scroll Page Down         |
-| ?        | Fuzzy Find Files        | u        | Undo                     |
-| /        | Fast Navigation Mode    | U        | Redo                     |
-| Ctrl + o | Go Backward History     | H        | Move to Left View/Split  |
-| Ctrl + i | Go Forward History      | L        | Move to Right View/Split |
-| o        | Open With               | W        | Scroll through views     |
-| t        | touch File              | Ctrl + n | New Tab                  |
-| M        | mkdir Directory         | Ctrl + t | New Tab                  |
-| i        | Execute Files/Directory | Alt + h  | Switch to Tab on Left    |
-| a        | Rename Filename         | Alt + l  | Switch to Tab on Right   |
-| A        | Rename Filename + Ext   | ' h      | Go to Home/              |
-| cw       | Rename Filename         | ' d      | Go to Downloads/         |
-| cW       | Rename Filename + Ext   | ' c      | Go to .config/           |
-| Ctrl + u | Scroll Page Up          | x, q     | Close/Quit               |
+<div align="left">
+<details>
+<summary><h3>VIFM Keybindings</h3></summary>
+
+| Keymap   | Description              |
+| -------- | ------------------------ |
+| Ctrl + f | Fuzzy Find Files         |
+| ?        | Fuzzy Find Files         |
+| /        | Fast Navigation Mode     |
+| Ctrl + o | Go Backward History      |
+| Ctrl + i | Go Forward History       |
+| o        | Open With                |
+| t        | touch File               |
+| M        | mkdir Directory          |
+| i        | Execute Files/Directory  |
+| a        | Rename Filename          |
+| A        | Rename Filename + Ext    |
+| cw       | Rename Filename          |
+| cW       | Rename Filename + Ext    |
+| Ctrl + u | Scroll Page Up           |
+| Ctrl + d | Scroll Page Down         |
+| u        | Undo                     |
+| U        | Redo                     |
+| H        | Move to Left View/Split  |
+| L        | Move to Right View/Split |
+| W        | Scroll through views     |
+| Ctrl + n | New Tab                  |
+| Ctrl + t | New Tab                  |
+| Alt + h  | Switch to Tab on Left    |
+| Alt + l  | Switch to Tab on Right   |
+| ' h      | Go to Home/              |
+| ' d      | Go to Downloads/         |
+| ' c      | Go to .config/           |
+| x, q     | Close/Quit               |
+
+</details>
+</div>
 
 ### Bulk-Rename Multiple Filenames in Neovim
 
