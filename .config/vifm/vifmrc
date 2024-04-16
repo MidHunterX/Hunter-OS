@@ -121,6 +121,9 @@ set confirm-=delete
 " ALWAYS SHOW PREVIEW
 view!
 
+" ACTIVATE SCREEN/TMUX SUPPORT
+screen!
+
 " --------------------------------------------------------------------------- "
 
 " Command used to edit files in various contexts.
@@ -764,6 +767,3 @@ nnoremap <a-o> :sync %c<cr>
 "     vifm --server-name "$VIFM_SERVER_NAME" --remote +"cd '$PWD'"
 "
 " let $VIFM_SERVER_NAME = v:servername
-
-" Activate screen/tmux support
-" screen!
