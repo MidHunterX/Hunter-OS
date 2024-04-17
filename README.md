@@ -77,7 +77,7 @@ The number of background apps will be shown in prompt as shown.
 ### Better LS and CD navigation
 
 - Install **lsd** and **bat** for the NerdFont goodness.
-- Navigate using **ls**  and **cd**  with much better comfortability.
+- Navigate using **ls** and **cd** with much better comfortability.
 
 ![fish LS CD](./assets/fish_lscd.jpg)
 
@@ -265,3 +265,38 @@ Vifm is a file manager with curses interface, which provides Vim-like environmen
 
 - The most useful default functionality is `s` to drop into shell from currently opened directory
 - `w` to toggle file viewer
+
+## 📄 PDF Viewer (Poppler + Zathura)
+
+Backend: Poppler is a free library for rendering Portable Document Format (PDF) documents. It is commonly used by the PDF viewers of the open source GNOME and KDE desktop environments.<br>
+
+Frontend: Zathura is a free, plugin-based document viewer. Plugins are available for PDF (via poppler or MuPDF), PostScript and DjVu. It was written to be lightweight.
+
+<div align="left">
+<details>
+<summary><h3>PDF Viewer Keybindings</h3></summary>
+
+| Keymap | Description               |
+| ------ | ------------------------- |
+| b      | Booklet View Mode         |
+| i      | Toggle Dark Mode          |
+| f      | Toggle Fullscreen Mode    |
+| j      | Scroll Down               |
+| k      | Scroll Up                 |
+| d      | Half Page Scroll Down     |
+| u      | Half Page Scroll Up       |
+| h      | Navigate to Previous Page |
+| l      | Navigate to Next Page     |
+| 0      | Set Default Zoom          |
+| +      | Zoom In                   |
+| -      | Zoom Out                  |
+| x      | Close/Quit                |
+
+</details>
+</div>
+
+### Features
+
+- Darkmode for PDF by Default
+- Smooth Scrolling
+- Vim like half page jumping
