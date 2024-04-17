@@ -268,6 +268,8 @@ Vifm is a file manager with curses interface, which provides Vim-like environmen
 
 ## 📄 PDF Viewer (Poppler + Zathura)
 
+![Zathura PDF Viewer](./assets/zathura.jpg)
+
 Backend: Poppler is a free library for rendering Portable Document Format (PDF) documents. It is commonly used by the PDF viewers of the open source GNOME and KDE desktop environments.<br>
 
 Frontend: Zathura is a free, plugin-based document viewer. Plugins are available for PDF (via poppler or MuPDF), PostScript and DjVu. It was written to be lightweight.
