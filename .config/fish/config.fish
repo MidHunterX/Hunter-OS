@@ -19,9 +19,13 @@ if status is-interactive
   starship init fish | source
   set -x STARSHIP_CONFIG $HOME/.config/starship/starship.toml
 
-  # Suggestion Background
+  # Custom Completion Colors
   set fish_pager_color_background --background=black
   set fish_pager_color_secondary_background --background=brblack
+  set fish_pager_color_progress white  # the progress bar at the bottom left
+  set fish_pager_color_prefix blue  # already typed tab completion
+  set fish_pager_color_completion white  # rest of the tab completion
+  set fish_pager_color_description yellow  # tab completion (description)
 
   # ls Colors
   set -x LS_COLORS 'ow=42;30;1'
