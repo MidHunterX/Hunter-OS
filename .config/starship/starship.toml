@@ -1,5 +1,6 @@
 # [](col_usr)$os$username[](fg:col_usr)\
 # [](col_usr)[   ](fg:col_blk bg:col_usr)[](fg:col_usr)\
+
 format = """
 $character[](fg:col_blk bg:col_dir)\
 $directory[](fg:col_dir bg:col_git)$git_branch$git_status\
@@ -63,8 +64,8 @@ truncation_length = 3
 # truncation_symbol = "…/"
 
 [jobs]
-symbol = ''
-format = '[ $symbol $number ]($style)'
+symbol = ' '
+format = '[ $symbol$number ]($style)'
 
 [status]
 symbol = '[](fg:col_lng bg:col_red)[  ](bg:col_red fg:col_wht)[](fg:col_red)'
@@ -86,6 +87,7 @@ style = "bold italic col_ylo"
 format = " took [$duration]($style)"
 
 [character]
+# Added extra space after symbol because of NerdFont's extra width
 success_symbol = "[](col_usr)[ 󰣇  ](fg:col_blk bg:col_usr)[](fg:col_usr)"
 error_symbol = "[](col_red)[   ](fg:col_wht bg:col_red)[](fg:col_red)"
 # success_symbol = "[ INSERT ](fg:bold col_blk bg:col_vim_ins) "
@@ -143,20 +145,20 @@ Windows       = " 󰍲  "
 # ============================== [ GIT ICONS ] ============================== #
 
 [git_branch]
-symbol        = ""
+symbol        = "  "
 style         = "fg:col_blk bg:col_git"
-format        = '[ $symbol $branch ]($style)'
+format        = '[$symbol$branch ]($style)'
 
 [git_status]
-staged        = '  ${count}'
-deleted       = '  ${count}'
-renamed       = '  ${count}'
-modified      = '  ${count}'
-untracked     = '  ${count}'
-ahead         = '  ${count}'
-behind        = '  ${count}'
+staged        = ' ${count} '
+deleted       = ' ${count} '
+renamed       = ' ${count} '
+modified      = ' ${count} '
+untracked     = ' ${count} '
+ahead         = ' ${count} '
+behind        = ' ${count} '
 style         = "fg:col_blk bg:col_git"
-format        = '[$all_status$ahead_behind ]($style)'
+format        = '[$all_status$ahead_behind]($style)'
 
 
 # ================== [ LAANGUAGES AND TECHNOLOGIES ICONS ] ================== #
