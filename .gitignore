@@ -66,6 +66,12 @@
 !.config/cava/
 .config/cava/*
 !.config/cava/config
+# 💻 GUI Code Editor
+!.config/Code\ -\ OSS/
+.config/Code\ -\ OSS/*
+!.config/Code\ -\ OSS/User/
+.config/Code\ -\ OSS/User/*
+!.config/Code\ -\ OSS/User/settings.json
 # 🌐 Web Browser
 !.mozilla/
 .mozilla/*

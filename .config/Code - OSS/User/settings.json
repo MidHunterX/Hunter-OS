@@ -1,0 +1,157 @@
+{
+  // ======================= WORKBENCH CUSTOMIZATION ======================= \\
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#00000000",
+    "editorRuler.foreground": "#6c6c6c",
+    "titleBar.background": "#00000000"
+  },
+  "workbench.tips.enabled": false,
+  "workbench.startupEditor": "none",
+  "workbench.enableExperiments": false,
+  "workbench.iconTheme": "vs-seti",
+  "workbench.colorTheme": "Default Dark+",
+  "workbench.layoutControl.enabled": false,
+  "workbench.activityBar.location": "hidden",
+  "workbench.tree.renderIndentGuides": "always",
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.settings.enableNaturalLanguageSearch": true,
+  "workbench.editor.tabActionCloseVisibility": false,
+  // ======================== EDITOR CUSTOMIZATION ======================== \\
+  "editor.rulers": [
+    80
+  ],
+  "editor.tabSize": 2,
+  "editor.fontSize": 17,
+  "editor.cursorWidth": 4,
+  "editor.wordWrap": "on",
+  "editor.formatOnSave": true,
+  "editor.letterSpacing": 0.1,
+  "editor.formatOnPaste": true,
+  "editor.tabCompletion": "on",
+  "editor.fontLigatures": false,
+  "editor.stickyTabStops": true,
+  "editor.lineNumbers": "relative",
+  "editor.renderWhitespace": "all",
+  "editor.detectIndentation": false,
+  "editor.suggestSelection": "first",
+  "editor.cursorSurroundingLines": 8,
+  "editor.minimap.size": "proportional",
+  "editor.guides.bracketPairs": "active",
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.minimap.renderCharacters": false,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.guides.bracketPairsHorizontal": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.fontFamily": "'JetBrainsMono Nerd Font', monospace",
+  "editor.semanticTokenColorCustomizations": {
+    "enabled": true
+  },
+  // ========================== GENERAL SETTINGS ========================== \\
+  "files.exclude": {
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.classpath": true,
+    "**/.factorypath": true
+  },
+  "update.mode": "manual",
+  "zenMode.fullScreen": false,
+  "breadcrumbs.enabled": false,
+  "files.restoreUndoStack": true,
+  "extensions.autoUpdate": false,
+  "files.trimFinalNewlines": true,
+  "files.insertFinalNewline": true,
+  "telemetry.telemetryLevel": "off",
+  "npm.fetchOnlinePackageInfo": false,
+  "html.format.indentInnerHtml": true,
+  "files.trimTrailingWhitespace": true,
+  "extensions.autoCheckUpdates": false,
+  "extensions.ignoreRecommendations": true,
+  "debug.console.collapseIdenticalLines": false,
+  "window.title": "${activeEditorMedium}${separator} Mid Hunter",
+  "window.autoDetectHighContrast": false,
+  "window.menuBarVisibility": "toggle",
+  // TERMINAL CONFIG
+  "terminal.integrated.env.windows": {},
+  "terminal.integrated.allowChords": false,
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.useWslProfiles": false,
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.windowsEnableConpty": false,
+  "terminal.integrated.fontFamily": "'CaskaydiaCove NF'",
+  "terminal.integrated.defaultProfile.windows": "Mid_Hunter pwsh",
+  // Tab Size
+  "[sass]": {
+    "editor.tabSize": 2
+  },
+  "[css]": {
+    "editor.tabSize": 2
+  },
+  "[html]": {
+    "editor.tabSize": 4
+  },
+  "[javascript]": {
+    "editor.tabSize": 2
+  },
+  "[python]": {
+    "editor.tabSize": 4
+  },
+  // ============================= EXTENSIONS ============================= \\
+  /*==========*\
+  | ANIMATIONS |
+  \*==========*/
+  "animations.Active": "None",
+  "animations.Scrolling": "None",
+  "animations.Smooth-Mode": false,
+  "animations.CursorAnimation": true,
+  "animations.Command-Palette": "None",
+  /*==========*\
+  | POWER MODE |
+  \*==========*/
+  "powermode.enabled": true,
+  "powermode.explosions.size": 12,
+  "powermode.shake.enabled": false,
+  "powermode.combo.timerEnabled": "hide",
+  "powermode.combo.location": "statusbar",
+  "powermode.combo.counterEnabled": "hide",
+  "powermode.explosions.gifMode": "restart",
+  /*==============*\
+  | INDENT RAINBOW |
+  \*==============*/
+  "indentRainbow.indicatorStyle": "light",
+  "indentRainbow.lightIndicatorStyleLineWidth": 1,
+  "indentRainbow.colors": [
+    "rgba(255,255,64,0.3)",
+    "rgba(255,127,255,0.3)",
+    "rgba(57,187,255,0.3)"
+    // "rgba(127,255,127,0.3)"
+  ],
+  "liveServer.settings.NoBrowser": true,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "prettier.useTabs": true,
+  "prettier.bracketSameLine": true,
+  "background.filepath": "e:\\Mid_Hunter\\Customization\\Wallpaper\\blur\\Neon BLur.jpg",
+  "background.windowBackgrounds": [
+    "e:/Mid_Hunter/Customization/Wallpaper/blur/Neon BLur.jpg"
+  ],
+  "background.backgroundOpacity": [
+    0.8,
+    0.9,
+    0.8,
+    0.9
+  ],
+  /*===*\
+  | VIM |
+  \*===*/
+  "vim.sneak": true,
+  "vim.foldfix": true,
+  "vim.hlsearch": true,
+  "vim.leader": "<space>",
+  "vim.smartRelativeLine": true,
+  "vim.useSystemClipboard": true,
+  "vim.highlightedyank.enable": true,
+  "vim.highlightedyank.textColor": "white",
+  "vim.sneakUseIgnorecaseAndSmartcase": true,
+  "vim.highlightedyank.color": "rgba(230, 97, 89, 0.7)",
+  // ======================================================================== \\
+  "security.workspace.trust.untrustedFiles": "open"
+}
