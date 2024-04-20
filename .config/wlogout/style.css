@@ -5,15 +5,15 @@ window {
   background-color: rgba(0, 0, 0, 0.4);
 }
 button {
-  color: #ffffff;
+  color: #b2b2b2;
   background-color: #1e222a;
   border-style: solid;
   border-color: #6abcfa;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 20%;
+  background-size: 30%;
   border-width: 5px;
-  margin: 40px;
+  margin: 20px;
   border-radius: 30%;
 }
 

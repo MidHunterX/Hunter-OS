@@ -7,7 +7,7 @@
 {
     "label" : "hibernate",
     "action" : "systemctl hibernate",
-    "text" : "Hibernate to NVMe [H]",
+    "text" : "Hibernate [H]",
     "keybind" : "h"
 }
 {
@@ -25,7 +25,7 @@
 {
     "label" : "suspend",
     "action" : "systemctl suspend",
-    "text" : "Suspend to RAM [U]",
+    "text" : "Suspend [U]",
     "keybind" : "u"
 }
 {
