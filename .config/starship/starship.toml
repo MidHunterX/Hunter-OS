@@ -1,5 +1,4 @@
 # [](col_usr)$os$username[](fg:col_usr)\
-# [](col_usr)[   ](fg:col_blk bg:col_usr)[](fg:col_usr)\
 
 format = """
 $character[](fg:col_blk bg:col_dir)\
@@ -89,7 +88,7 @@ format = " took [$duration]($style)"
 [character]
 # Added extra space after symbol because of NerdFont's extra width
 success_symbol = "[](col_usr)[ 󰣇  ](fg:col_blk bg:col_usr)[](fg:col_usr)"
-error_symbol = "[](col_red)[   ](fg:col_wht bg:col_red)[](fg:col_red)"
+error_symbol = "[](col_vim_err)[   ](fg:col_wht bg:col_vim_err)[](fg:col_vim_err)"
 # success_symbol = "[ INSERT ](fg:bold col_blk bg:col_vim_ins) "
 # error_symbol = "[ ERROR ](fg:bold col_wht bg:col_vim_err) "
 vimcmd_symbol ="[](col_vim_nor)[   ](fg:bold black bg:col_vim_nor)[](fg:col_vim_nor)"
