@@ -1,5 +1,6 @@
 # Ignore Everything
 /*
+# Except These (with exclamations)
 !.gitignore
 !README.md
 !assets/
@@ -15,17 +16,19 @@
 
 # █▀ █▄█ █▀ ▀█▀ █▀▀ █▀▄▀█
 # ▄█ ░█░ ▄█ ░█░ ██▄ █░▀░█
-# Keymapping Utility
+# 🔑 Keymapping Utility
 !.config/keyd/
 .config/keyd/*
 !.config/keyd/default.conf
-# Wayland Compositor
+# 💧 Wayland Compositor
 !.config/hypr/
-# Notification Daemon
+# 🔔 Notification Daemon
 !.config/mako/
 !.config/dunst/
-# System Status Bar
+# 🍫 System Status Bar
 !.config/waybar/
+# 🖥️ System Power Menu
+!.config/wlogout/
 
 
 # ▀█▀ █▀▀ █▀█ █▀▄▀█ █ █▄░█ ▄▀█ █░░
@@ -33,21 +36,21 @@
 # 🐟 Fish Shell
 !.config/fish/
 .config/fish/fish_variables
-# Terminal Emulator
+# 🐱 Kitty Terminal Emulator
 !.config/kitty/
-# Terminal Prompt
+# 🚀 Starship Terminal Prompt
 !.config/starship/
-# Terminal Multiplexer
+# 🍱 Terminal Multiplexer
 !.config/tmux/
 .config/tmux/plugins
-# Terminal File Explorer
+# 📁 VI File Manager
 !.config/vifm/
 .config/vifm/*
 !.config/vifm/vifmrc
 !.config/vifm/colors/
 .config/vifm/colors/*
 !.config/vifm/colors/hunter.vifm
-# Terminal UI Git
+# 😴 Terminal UI Git
 !.config/lazygit/
 .config/lazygit/*
 !.config/lazygit/config.yml

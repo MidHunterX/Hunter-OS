@@ -1,0 +1,36 @@
+{
+    "label" : "lock",
+    "action" : "swaylock",
+    "text" : "Lock [E]",
+    "keybind" : "e"
+}
+{
+    "label" : "hibernate",
+    "action" : "systemctl hibernate",
+    "text" : "Hibernate to NVMe [H]",
+    "keybind" : "h"
+}
+{
+    "label" : "logout",
+    "action" : "loginctl terminate-user $USER",
+    "text" : "Logout [L]",
+    "keybind" : "l"
+}
+{
+    "label" : "shutdown",
+    "action" : "systemctl poweroff",
+    "text" : "Shutdown [S]",
+    "keybind" : "s"
+}
+{
+    "label" : "suspend",
+    "action" : "systemctl suspend",
+    "text" : "Suspend to RAM [U]",
+    "keybind" : "u"
+}
+{
+    "label" : "reboot",
+    "action" : "systemctl reboot",
+    "text" : "Reboot [R]",
+    "keybind" : "r"
+}
