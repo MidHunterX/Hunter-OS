@@ -129,8 +129,10 @@ Linux lacks a good key remapping solution. In order to achieve satisfactory resu
 | Space + j        | Down                   |
 | Space + k        | Up                     |
 | Space + l        | Right                  |
-| Space + w        | Move One Word Forward  |
+| Space + e        | Move to End of Word    |
 | Space + b        | Move One Word Backward |
+| Space + u        | Move to Front of Line  |
+| Space + d        | Move to End of Line    |
 | f j              | Esc                    |
 | CapsLock (Click) | Esc                    |
 | CapsLock (Press) | Ctrl                   |
