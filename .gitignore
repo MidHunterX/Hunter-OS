@@ -3,6 +3,7 @@
 !.gitignore
 !README.md
 !assets/
+!.bashrc
 # Ignore Workspaces ;D
 */workspace/
 
