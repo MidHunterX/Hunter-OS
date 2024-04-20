@@ -70,6 +70,13 @@ nnoremap W <c-w><c-w>a<c-w><c-w>
 qnoremap H <c-w>h
 qnoremap L <c-w>l
 
+" OPEN SHELL IN CURRENT DIR
+" nnoremap s :!fish <CR>
+nnoremap s :shell<cr>
+
+" SORTING MENU
+nnoremap S :sort<cr>
+
 
 " =========================================================================== "
 
@@ -655,12 +662,6 @@ set fillchars=vborder:│
 " -----------------------------------------------------------------------------
 " Sample keyboard mappings
 " -----------------------------------------------------------------------------
-
-" Start shell in current directory
-nnoremap s :shell<cr>
-
-" Display sorting dialog
-nnoremap S :sort<cr>
 
 " Toggle visibility of preview window
 nnoremap w :view<cr>
