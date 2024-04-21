@@ -108,7 +108,7 @@ build_window_format() {
 current_window_config() {
   local number color background text text_color
   background=$(get_tmux_option '@hunter_window_current_bg' 'blue')
-  foreground=$(get_tmux_option '@hunter_window_current_fg' '#000000')
+  foreground=$(get_tmux_option '@hunter_window_current_fg' '#000000,bold')
   number='#I'
   text=$(get_tmux_option '@hunter_window_current_text' '#W')
   text_color=$(get_tmux_option '@hunter_window_current_text_color' '#ffffff,bold')
