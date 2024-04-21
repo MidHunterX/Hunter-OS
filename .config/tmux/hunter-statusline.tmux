@@ -50,7 +50,7 @@ item_prefix_inverted() {
 
 build_module_format() {
   left_separator=$(get_tmux_option "@hunter_module_left_separator" "█")
-  right_separator=$(get_tmux_option "@hunter_module_right_separator" "██")
+  right_separator=$(get_tmux_option "@hunter_module_right_separator" "█")
 
   local background foreground icon text module_format
   background=$1
@@ -60,7 +60,7 @@ build_module_format() {
 
   module_format=" "
   module_format+="$(item 'default' $background $left_separator)"
-  module_format+="$(item $background $foreground $icon)"
+  module_format+="$(item $background $foreground $icon) "
   module_format+="$(item 'default' $background $right_separator)"
   module_format+=" "
   module_format+="$(item 'default' 'default' $text)"
