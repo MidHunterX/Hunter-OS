@@ -84,8 +84,8 @@ session_module_config() {
 # ▀▄▀▄▀ █ █░▀█ █▄▀ █▄█ ▀▄▀▄▀ ▄█
 
 build_window_format() {
-  left_separator=$(get_tmux_option '@hunter_window_left_separator' '█')
-  right_separator=$(get_tmux_option '@hunter_window_right_separator' '█')
+  left_separator=$(get_tmux_option '@hunter_window_left_separator' '█')
+  right_separator=$(get_tmux_option '@hunter_window_right_separator' '█')
 
   local background foreground number text text_color window_format
   background=$1
@@ -111,7 +111,7 @@ current_window_config() {
   foreground=$(get_tmux_option '@hunter_window_current_fg' '#000000')
   number='#I'
   text=$(get_tmux_option '@hunter_window_current_text' '#W')
-  text_color=$(get_tmux_option '@hunter_window_current_text_color' '#ffffff')
+  text_color=$(get_tmux_option '@hunter_window_current_text_color' '#ffffff,bold')
   build_window_format $background $foreground $number $text $text_color
 }
 
@@ -149,10 +149,10 @@ tmux set-option -g window-status-current-format "$(current_window_config)"
 
 # █▀█ █▀█ █▀▀ █▀▀ █ ▀▄▀   █▀▄▀█ █▀█ █▀▄ █░█ █░░ █▀▀
 # █▀▀ █▀▄ ██▄ █▀░ █ █░█   █░▀░█ █▄█ █▄▀ █▄█ █▄▄ ██▄
-pfx_sel_bg=$(get_tmux_option "@hunter-prefix-selected-bg" 'red')
-pfx_sel_fg=$(get_tmux_option "@hunter-prefix-selected-fg" '#000000')
-pfx_off=" NORMAL "
-pfx_sel=" PREFIX "
+pfx_sel_bg=$(get_tmux_option "@hunter-prefix-selected-bg" 'yellow')
+pfx_sel_fg=$(get_tmux_option "@hunter-prefix-selected-fg" '#000000,bold')
+pfx_off="          "
+pfx_sel="  PREFIX  "
 module="#[bg=default,fg=default]#{?client_prefix,,${pfx_off}}#[bg=${pfx_sel_bg},fg=${pfx_sel_fg}]#{?client_prefix,${pfx_sel},}#[bg=default,fg=default,bold]"
 
 tmux set-option -g status-left "${module}"
