@@ -12,12 +12,37 @@ get_tmux_option() {
 }
 
 
+
+# █ ▀█▀ █▀▀ █▀▄▀█ █▀
+# █ ░█░ ██▄ █░▀░█ ▄█
+
 item() {
   background=$1
   foreground=$2
   content=$3
   echo "#[bg=${background},fg=${foreground}]${content}"
 }
+
+item_prefix() {
+  background=$1
+  foreground=$2
+  content=$3
+  module="#[bg=${background},fg=${foreground},bold]#{?client_prefix,,${content}}"  # Prefix Off
+  module+="#[bg=red,fg=#000000]#{?client_prefix,${content},}"  # Prefix On
+  module+="#[bg=default,fg=default,bold]"
+  echo "$module"
+}
+
+item_prefix_inverted() {
+  background=$1
+  foreground=$2
+  content=$3
+  module="#[bg=${background},fg=${foreground},bold]#{?client_prefix,,${content}}"  # Prefix Off
+  module+="#[bg=#000000,fg=red]#{?client_prefix,${content},}"  # Prefix On
+  module+="#[bg=default,fg=default,bold]"
+  echo "$module"
+}
+
 
 
 # █▀▄▀█ █▀█ █▀▄ █░█ █░░ █▀▀ █▀
@@ -52,6 +77,7 @@ session_module_config() {
   text=$(get_tmux_option '@hunter_module_session_text' '#S')
   build_module_format $background $foreground $icon $text
 }
+
 
 
 # █░█░█ █ █▄░█ █▀▄ █▀█ █░█░█ █▀
@@ -125,9 +151,9 @@ tmux set-option -g window-status-current-format "$(current_window_config)"
 # █▀▀ █▀▄ ██▄ █▀░ █ █░█   █░▀░█ █▄█ █▄▀ █▄█ █▄▄ ██▄
 pfx_sel_bg=$(get_tmux_option "@hunter-prefix-selected-bg" 'red')
 pfx_sel_fg=$(get_tmux_option "@hunter-prefix-selected-fg" '#000000')
-pfx_off="         "
-pfx_sel=" COMMAND "
-module="#[bg=default,fg=default,bold]#{?client_prefix,,${pfx_off}}#[bg=${pfx_sel_bg},fg=${pfx_sel_fg}]#{?client_prefix,${pfx_sel},}#[bg=default,fg=default,bold]"
+pfx_off=" NORMAL "
+pfx_sel=" PREFIX "
+module="#[bg=default,fg=default]#{?client_prefix,,${pfx_off}}#[bg=${pfx_sel_bg},fg=${pfx_sel_fg}]#{?client_prefix,${pfx_sel},}#[bg=default,fg=default,bold]"
 
 tmux set-option -g status-left "${module}"
 
