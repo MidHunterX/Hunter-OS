@@ -32,8 +32,8 @@ tmux set-option -g window-status-current-format "#[bg=${win_sel_bg},fg=${win_sel
 
 # █▀█ █▀█ █▀▀ █▀▀ █ ▀▄▀   █▀▄▀█ █▀█ █▀▄ █░█ █░░ █▀▀
 # █▀▀ █▀▄ ██▄ █▀░ █ █░█   █░▀░█ █▄█ █▄▀ █▄█ █▄▄ ██▄
-pfx_sel_bg=$(get_tmux_option "@hunter-window-selected-bg" 'red')
-pfx_sel_fg=$(get_tmux_option "@hunter-window-selected-fg" '#ffffff')
+pfx_sel_bg=$(get_tmux_option "@hunter-prefix-selected-bg" 'red')
+pfx_sel_fg=$(get_tmux_option "@hunter-prefix-selected-fg" '#000000')
 pfx_off="         "
 pfx_sel=" COMMAND "
 module="#[bg=default,fg=default,bold]#{?client_prefix,,${pfx_off}}#[bg=${pfx_sel_bg},fg=${pfx_sel_fg}]#{?client_prefix,${pfx_sel},}#[bg=default,fg=default,bold]"
