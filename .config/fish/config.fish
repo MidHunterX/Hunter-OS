@@ -4,7 +4,7 @@ set fish_greeting ""
 # Commands to run in interactive sessions can go here
 if status is-interactive
 
-# User abbreviations
+  # User abbreviations
   abbr -a -g sayonara 'shutdown now'  # Epic way to Shutdown
   abbr -a -g cls 'clear'  # Clear Screen
   abbr -a -g yeet 'sudo pacman -Rns'  # Remove packages with dependencies
