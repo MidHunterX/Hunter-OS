@@ -75,3 +75,9 @@ button:hover {
     url("/usr/local/share/wlogout/icons/reboot.png")
   );
 }
+
+#windows {
+  background-image: image(
+    url("./icons/windows.png")
+  );
+}
