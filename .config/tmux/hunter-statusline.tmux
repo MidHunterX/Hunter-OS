@@ -67,6 +67,15 @@ function item_prefix_inverted() {
   echo "$module"
 }
 
+function item_prefix_text() {
+  local background foreground content module
+  background=$1
+  foreground=$2
+  content=$3
+  module="$(build_prefix_off $background $foreground "$content")"
+  module+="$(build_prefix_on $background 'red' "$content")"
+  echo "$module"
+}
 
 
 # █▀▄▀█ █▀█ █▀▄ █░█ █░░ █▀▀ █▀
@@ -148,7 +157,7 @@ function build_window_format() {
 
   window_format=""
   window_format+="$(item 'default' $background $left_separator)"
-  window_format+="$(item $background $foreground $number)"
+  window_format+="$(item_prefix_text $background $foreground $number)"
   window_format+="$(item 'default' $background $right_separator)"
   window_format+=" "
   window_format+="$(item 'default' $text_color $text)"
