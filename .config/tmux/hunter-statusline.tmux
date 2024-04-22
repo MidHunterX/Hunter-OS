@@ -94,8 +94,8 @@ function build_module_format() {
 
 function session_module_config() {
   local background foreground icon text
-  background=$(get_tmux_option '@hunter_window_current_bg' 'yellow')
-  foreground=$(get_tmux_option '@hunter_window_current_fg' '#000000')
+  background=$(get_tmux_option '@hunter_module_session_bg' 'yellow')
+  foreground=$(get_tmux_option '@hunter_module_session_bg' '#000000')
   icon=$(get_tmux_option "@hunter_module_session_icon" '')
   text=$(get_tmux_option '@hunter_module_session_text' '#S')
   build_module_format $background $foreground $icon $text
@@ -169,24 +169,19 @@ function default_window_config() {
   build_window_format $background $foreground $number $text $text_color
 }
 
+tmux set-option -g window-status-format "$(default_window_config)"
+tmux set-option -g window-status-current-format "$(current_window_config)"
+
 
 
 # █▀ ▀█▀ ▄▀█ ▀█▀ █░█ █▀   █░░ █ █▄░█ █▀▀
 # ▄█ ░█░ █▀█ ░█░ █▄█ ▄█   █▄▄ █ █░▀█ ██▄
 status_pos=$(get_tmux_option "@hunter-status-position" "bottom")
 status_jus=$(get_tmux_option "@hunter-status-justify" "centre")
-tmux set-option -g status-position "${status_pos}"
 tmux set-option -g status-style bg=default,fg=default
+tmux set-option -g status-position "${status_pos}"
 tmux set-option -g status-justify "${status_jus}"
 
-
-# █░█░█ █ █▄░█ █▀▄ █▀█ █░█░█ █▀   █░░ █ █▀ ▀█▀
-# ▀▄▀▄▀ █ █░▀█ █▄▀ █▄█ ▀▄▀▄▀ ▄█   █▄▄ █ ▄█ ░█░
-win_sel_bg=$(get_tmux_option "@hunter-window-selected-bg" 'blue')
-win_sel_fg=$(get_tmux_option "@hunter-window-selected-fg" '#000000')
-win_fmt=$(get_tmux_option "@hunter-window-format" '#I:#W')
-tmux set-option -g window-status-format "$(default_window_config)"
-tmux set-option -g window-status-current-format "$(current_window_config)"
 
 
 # █▀█ █▀█ █▀▀ █▀▀ █ ▀▄▀   █▀▄▀█ █▀█ █▀▄ █░█ █░░ █▀▀
