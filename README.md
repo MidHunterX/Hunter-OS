@@ -304,3 +304,39 @@ Frontend: Zathura is a free, plugin-based document viewer. Plugins are available
 - Darkmode for PDF by Default
 - Smooth Scrolling
 - Vim like half page jumping
+
+## System Configs
+
+### Sudoers
+
+/etc/sudoers
+
+```
+# Sudo Stuff
+Defaults timestamp_type=global      # Activate Sudo across terminals
+Defaults timestamp_timeout = 10     # Activate Sudo for 10 minutes
+Defaults passwd_timeout = 5         # Sudo prompt timeout after 5 minutes
+# Login Stuff
+Defaults insults                    # Incorrect Password Easteregg
+Defaults pwfeedback                 # Visible Password Feedback
+```
+
+### Pacman
+
+/etc/pacman.conf
+
+```
+Color
+ILoveCandy
+ParallelDownloads = 5
+```
+
+### Skip Username
+
+/etc/systemd/system/getty@tty1.service.d/skip-username.conf
+
+```
+[Service]
+ExecStart=
+ExecStart=-/sbin/agetty -o '-p -- <username>' --noclear --skip-login - $TERM
+```
