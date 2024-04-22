@@ -81,6 +81,8 @@ function item_prefix_text() {
 # █▀▄▀█ █▀█ █▀▄ █░█ █░░ █▀▀ █▀
 # █░▀░█ █▄█ █▄▀ █▄█ █▄▄ ██▄ ▄█
 
+# █    █    █
+
 function build_module_format() {
   local background foreground icon text module_format
   left_separator=$(get_tmux_option "@hunter_module_left_separator" "█")
@@ -95,8 +97,8 @@ function build_module_format() {
   module_format+="$(item_prefix $background $foreground $icon)"
   module_format+="$(item_prefix $background $foreground ' ')" # Space with BG
   module_format+="$(item_prefix_inverted 'default' $background $right_separator)"
-  module_format+=" "
-  module_format+="$(item 'default' 'default' $text)"
+  module_format+="$(item_prefix_text 'default' 'default' " $text ")"
+  module_format+="$(item_prefix_inverted 'default' $background '█')"
   module_format+=" "
 
   echo "${module_format}"
@@ -104,20 +106,20 @@ function build_module_format() {
 
 function build_module_format_left() {
   local background foreground icon text module_format
-  left_separator=$(get_tmux_option "@hunter_module_left_separator" "██")
-  right_separator=$(get_tmux_option "@hunter_module_right_separator" "")
+  left_separator=$(get_tmux_option "@hunter_module_left_separator" "█")
+  right_separator=$(get_tmux_option "@hunter_module_right_separator" "██")
   background=$1
   foreground=$2
   icon=$3
   text=$4
 
   module_format=" "
-  module_format+="$(item 'default' 'default' $text)"
-  module_format+=" "
   module_format+="$(item_prefix_inverted 'default' $background $left_separator)"
+  module_format+="$(item_prefix_text 'default' 'default' " $text ")"
+  module_format+="$(item_prefix_inverted 'default' $background $right_separator)"
   module_format+="$(item_prefix $background $foreground $icon)"
   module_format+="$(item_prefix $background $foreground ' ')" # Space with BG
-  module_format+="$(item_prefix_inverted 'default' $background $right_separator)"
+  module_format+="$(item_prefix_inverted 'default' $background '')"
   module_format+=" "
 
   echo "${module_format}"
@@ -125,7 +127,7 @@ function build_module_format_left() {
 
 function session_module_config() {
   local background foreground icon text
-  background=$(get_tmux_option '@hunter_module_session_bg' 'magenta')
+  background=$(get_tmux_option '@hunter_module_session_bg' 'gray')
   foreground=$(get_tmux_option '@hunter_module_session_bg' '#000000')
   icon=$(get_tmux_option "@hunter_module_session_icon" '')
   text=$(get_tmux_option '@hunter_module_session_text' '#S')
@@ -134,7 +136,7 @@ function session_module_config() {
 
 function time_module_config() {
   local background foreground icon text
-  background=$(get_tmux_option '@hunter_module_time_bg' 'magenta')
+  background=$(get_tmux_option '@hunter_module_time_bg' 'gray')
   foreground=$(get_tmux_option '@hunter_module_time_bg' '#000000')
   icon=$(get_tmux_option "@hunter_module_time_icon" '󰥔')
   text=$(get_tmux_option '@hunter_module_time_text' "%m%d-%H%M")
