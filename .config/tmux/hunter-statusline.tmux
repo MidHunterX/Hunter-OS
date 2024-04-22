@@ -12,6 +12,29 @@ get_tmux_option() {
 }
 
 
+# █▀█ █▀█ █▀▀ █▀▀ █ ▀▄▀   █▄▄ █░█ █ █░░ █▀▄ █▀▀ █▀█
+# █▀▀ █▀▄ ██▄ █▀░ █ █░█   █▄█ █▄█ █ █▄▄ █▄▀ ██▄ █▀▄
+
+function build_prefix_on() {
+  local bg fg content module
+  bg=$1
+  fg=$2
+  content=$3
+  module="#[bg=${bg},fg=${fg}]#{?client_prefix,${content},}"
+  module+="#[bg=default,fg=default]"
+  echo "$module"
+}
+
+function build_prefix_off() {
+  local bg fg content module
+  bg=$1
+  fg=$2
+  content=$3
+  module="#[bg=${bg},fg=${fg}]#{?client_prefix,,${content}}"
+  module+="#[bg=default,fg=default]"
+  echo "$module"
+}
+
 
 # █ ▀█▀ █▀▀ █▀▄▀█ █▀
 # █ ░█░ ██▄ █░▀░█ ▄█
@@ -24,22 +47,22 @@ item() {
 }
 
 item_prefix() {
-  background=$1
-  foreground=$2
+  local bg fg content module
+  bg=$1
+  fg=$2
   content=$3
-  module="#[bg=${background},fg=${foreground},bold]#{?client_prefix,,${content}}"  # Prefix Off
-  module+="#[bg=red,fg=#000000]#{?client_prefix,${content},}"  # Prefix On
-  module+="#[bg=default,fg=default,bold]"
+  module="$(build_prefix_off $bg $fg "$content")"
+  module+="$(build_prefix_on 'red' '#000000' "$content")"
   echo "$module"
 }
 
 item_prefix_inverted() {
-  background=$1
-  foreground=$2
+  local bg fg content module
+  bg=$1
+  fg=$2
   content=$3
-  module="#[bg=${background},fg=${foreground},bold]#{?client_prefix,,${content}}"  # Prefix Off
-  module+="#[bg=#000000,fg=red]#{?client_prefix,${content},}"  # Prefix On
-  module+="#[bg=default,fg=default,bold]"
+  module="$(build_prefix_off $bg $fg "$content")"
+  module+="$(build_prefix_on '#000000' 'red' "$content")"
   echo "$module"
 }
 
@@ -149,11 +172,11 @@ tmux set-option -g window-status-current-format "$(current_window_config)"
 
 # █▀█ █▀█ █▀▀ █▀▀ █ ▀▄▀   █▀▄▀█ █▀█ █▀▄ █░█ █░░ █▀▀
 # █▀▀ █▀▄ ██▄ █▀░ █ █░█   █░▀░█ █▄█ █▄▀ █▄█ █▄▄ ██▄
-pfx_sel_bg=$(get_tmux_option "@hunter-prefix-selected-bg" 'yellow')
+pfx_sel_bg=$(get_tmux_option "@hunter-prefix-selected-bg" 'red')
 pfx_sel_fg=$(get_tmux_option "@hunter-prefix-selected-fg" '#000000,bold')
 pfx_off="          "
 pfx_sel="  PREFIX  "
-module="#[bg=default,fg=default]#{?client_prefix,,${pfx_off}}#[bg=${pfx_sel_bg},fg=${pfx_sel_fg}]#{?client_prefix,${pfx_sel},}#[bg=default,fg=default,bold]"
+module="$(build_prefix_off 'default' 'default' "$pfx_off")$(build_prefix_on $pfx_sel_bg $pfx_sel_fg "$pfx_sel")"
 
 tmux set-option -g status-left "${module}"
 
