@@ -82,9 +82,10 @@ function build_module_format() {
   text=$4
 
   module_format=" "
-  module_format+="$(item 'default' $background $left_separator)"
-  module_format+="$(item $background $foreground $icon) "
-  module_format+="$(item 'default' $background $right_separator)"
+  module_format+="$(item_prefix_inverted 'default' $background $left_separator)"
+  module_format+="$(item_prefix $background $foreground $icon)"
+  module_format+="$(item_prefix $background $foreground ' ')" # Space with BG
+  module_format+="$(item_prefix_inverted 'default' $background $right_separator)"
   module_format+=" "
   module_format+="$(item 'default' 'default' $text)"
   module_format+=" "
@@ -94,7 +95,7 @@ function build_module_format() {
 
 function session_module_config() {
   local background foreground icon text
-  background=$(get_tmux_option '@hunter_module_session_bg' 'yellow')
+  background=$(get_tmux_option '@hunter_module_session_bg' 'magenta')
   foreground=$(get_tmux_option '@hunter_module_session_bg' '#000000')
   icon=$(get_tmux_option "@hunter_module_session_icon" '')
   text=$(get_tmux_option '@hunter_module_session_text' '#S')
