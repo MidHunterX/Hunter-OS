@@ -127,6 +127,28 @@ function build_window_format() {
   echo "${window_format}"
 }
 
+function build_current_window_format() {
+  local background foreground number text text_color window_format
+  left_separator=$(get_tmux_option '@hunter_window_left_separator' '█')
+  right_separator=$(get_tmux_option '@hunter_window_right_separator' '█')
+  background=$1
+  foreground=$2
+  number=$3
+  text=$4
+  text_color=$5
+
+  window_format=""
+  window_format+="$(item_prefix_inverted 'default' $background $left_separator)"
+  window_format+="$(item_prefix $background $foreground $number)"
+  window_format+="$(item_prefix_inverted 'default' $background $right_separator)"
+
+  window_format+=" "
+  window_format+="$(item 'default' $text_color $text)"
+  window_format+=" "
+
+  echo "${window_format}"
+}
+
 function current_window_config() {
   local background foreground number text text_color
   background=$(get_tmux_option '@hunter_window_current_bg' 'blue')
@@ -134,7 +156,7 @@ function current_window_config() {
   number='#I'
   text=$(get_tmux_option '@hunter_window_current_text' '#W')
   text_color=$(get_tmux_option '@hunter_window_current_text_color' '#ffffff,bold')
-  build_window_format $background $foreground $number $text $text_color
+  build_current_window_format $background $foreground $number $text $text_color
 }
 
 function default_window_config() {
