@@ -258,6 +258,8 @@ filextype {*.svg,*.svgz},<image/svg+xml>
         \ inkscape %f,
         \ {View in Inkview}
         \ inkview %f,
+        \ {Edit in NeoVim}
+        \ nvim %f,
 filextype {*.cr2}
         \ {Open in Darktable}
         \ darktable %f,
@@ -280,12 +282,14 @@ filextype {*.bmp,*.jpg,*.jpeg,*.png,*.xpm},<image/*>
         \ feh --start-at %d/%c:r.%c:e --scale-down --draw-tinted,
         \ {View in nomacs}
         \ nomacs %f -m 'frameless',
+        \ {Edit in NeoVim}
+        \ nvim %f,
 fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
     \ exiv2 %f 2> /dev/null | highlight -O ansi --syntax conf,
+    \ exiv2 -PEkt %f 2> /dev/null | highlight -O ansi --syntax conf,
     \ kitten icat --silent --transfer-mode=file --place=%pwx%ph@%pxx%py %c >/dev/tty </dev/tty %N
     \ %pc
-    \ kitten icat --clear --silent >/dev/tty </dev/tty %N,
-    \ file %f
+    \ kitten icat --clear --silent >/dev/tty </dev/tty %N
 
 "  VIDEO
 filextype {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
