@@ -15,6 +15,9 @@ if status is-interactive
   alias arch 'bash ~/Mid_Hunter/scripts/archchan/get_command-list.sh'
 
 
+  # LS_COLORS
+  source ~/.config/fish/ls_colors.fish
+
   # Starship prompt
   starship init fish | source
   set -x STARSHIP_CONFIG $HOME/.config/starship/starship.toml
@@ -26,9 +29,6 @@ if status is-interactive
   set fish_pager_color_prefix blue  # already typed tab completion
   set fish_pager_color_completion white  # rest of the tab completion
   set fish_pager_color_description yellow  # tab completion (description)
-
-  # ls Colors
-  set -x LS_COLORS 'ow=42;30;1'
 
   # Set the cursor shapes for the different vi modes.
   set fish_cursor_default     block      blink
