@@ -500,12 +500,12 @@ fileviewer *.opf highlight -O ansi --syntax xml
 fileviewer *.txt highlight -O ansi --syntax txt
 fileviewer *.md highlight -O ansi --syntax markdown
 fileviewer *.html,*.go,*.css,*.c highlight -O ansi -s dante %c
-fileviewer *.conf,
-        \.bashrc,.bash_profile,.xinitrc,.gitignore
-        \ highlight -O ansi --syntax conf
-fileviewer *.bash,*.sh,*.zsh,*.fish
-        \ highlight -O ansi --syntax shellscript
-fileviewer *.gvimrc,*.vim,*.vimrc highlight -O ansi --syntax vimscript
+fileviewer *.conf,.xinitrc,.gitignore
+            \ highlight -O ansi --syntax conf
+fileviewer *.bash,.bashrc,*.sh,*.zsh,*.fish
+            \ highlight -O ansi --syntax shellscript
+fileviewer *.gvimrc,*.vim,*.vimrc,*.vifm,vifmrc
+            \ highlight -O ansi --syntax vimscript
 fileviewer *.tex,*.sty highlight -O ansi --syntax tex
 
 " Or leave it for automatic detection
