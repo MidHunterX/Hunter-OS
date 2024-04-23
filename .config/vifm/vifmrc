@@ -220,10 +220,10 @@ fileviewer {.git/}, git -c color.status=always status %d %pu
 
 "  DIRECTORY PREVIEW
 fileviewer {*/},
-        \ lsd --color=always --icon=always,
+        \ lsd --color=always --icon=always --group-directories-first,
         \ ls --color=always
 fileviewer {.*/},
-        \ lsd --color=always --icon=always,
+        \ lsd --color=always --icon=always --group-directories-first,
         \ ls --color=always
 
 "  DATABASE
