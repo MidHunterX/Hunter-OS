@@ -3,29 +3,29 @@
 "============================================================================="
 
 highlight clear
-highlight TopLine	cterm=none	ctermfg=white	ctermbg=default
-highlight TopLineSel	cterm=bold	ctermfg=002	ctermbg=default
+highlight TopLine	cterm=none	ctermfg=White	ctermbg=default
+highlight TopLineSel	cterm=bold	ctermfg=Green	ctermbg=default
 
 highlight Win		cterm=none	ctermfg=default	ctermbg=default
-highlight Directory	cterm=bold	ctermfg=blue	ctermbg=default
-highlight Link		cterm=bold	ctermfg=cyan	ctermbg=default
-highlight BrokenLink	cterm=bold	ctermfg=black	ctermbg=red
+highlight Directory	cterm=bold	ctermfg=Blue	ctermbg=default
+highlight Link		cterm=bold	ctermfg=Cyan	ctermbg=default
+highlight BrokenLink	cterm=bold,inverse	ctermfg=Red	ctermbg=Default
 
-highlight Executable	cterm=bold	ctermfg=green	ctermbg=default
-highlight Device	cterm=bold 	ctermfg=yellow	ctermbg=default
-highlight Fifo		cterm=bold 	ctermfg=cyan	ctermbg=default
+highlight Executable	cterm=bold	ctermfg=Green	ctermbg=default
+highlight Device	cterm=bold 	ctermfg=Yellow	ctermbg=default
+highlight Fifo		cterm=bold 	ctermfg=Cyan	ctermbg=default
 highlight Socket	cterm=bold 	ctermfg=Magenta ctermbg=default
 
 highlight CurrLine	cterm=bold,inverse	ctermfg=default	ctermbg=default
-highlight OtherLine	cterm=reverse	ctermfg=black	ctermbg=white
-highlight Selected	cterm=none	ctermfg=003	ctermbg=008
+highlight OtherLine	cterm=reverse	ctermfg=Black	ctermbg=white
+highlight Selected	cterm=none	ctermfg=Yellow	ctermbg=008
 
 highlight SuggestBox	cterm=bold	ctermfg=default	ctermbg=default
 highlight Border	cterm=none	ctermfg=default	ctermbg=default
-highlight JobLine	cterm=bold	ctermfg=251	ctermbg=008
-highlight StatusLine	cterm=none	ctermfg=002	ctermbg=default
-highlight ErrorMsg	cterm=bold	ctermfg=001	ctermbg=default
-highlight WildMenu	cterm=bold	ctermfg=015	ctermbg=008
+highlight JobLine	cterm=bold	ctermfg=Grey78	ctermbg=008
+highlight StatusLine	cterm=none	ctermfg=Green	ctermbg=default
+highlight ErrorMsg	cterm=bold	ctermfg=Red	ctermbg=default
+highlight WildMenu	cterm=bold	ctermfg=LightCyan	ctermbg=008
 highlight CmdLine	cterm=none	ctermfg=default	ctermbg=default
 
 
@@ -33,29 +33,29 @@ highlight CmdLine	cterm=none	ctermfg=default	ctermbg=default
 " software documentation
 highlight {COPYRIGHT,COPYING*,BUGS,ChangeLog*,FAQ,INSTALL*,LICEN[CS]E,NEWS,
           \README*,AUTHORS,TODO,THANKS}
-        \ cterm=none ctermfg=187 ctermbg=default
+        \ cterm=none ctermfg=LightGoldenrod2 ctermbg=default
 " build system files
 highlight {Makefile,Makefile.am,Makefile.in,Makefile.win,*.mak,*.mk,*.m4,*.ac,
           \configure,CMakeLists.txt,*.cmake,*.pro,*.pri,*.sln,meson.build,
           \meson_options.txt}
-        \ cterm=none ctermfg=121 ctermbg=default
+        \ cterm=none ctermfg=PaleGreen1 ctermbg=default
 " archives
 highlight {*.7z,*.ace,*.arj,*.bz2,*.cpio,*.deb,*.dz,*.gz,*.jar,*.lzh,*.lzma,
           \*.rar,*.rpm,*.rz,*.tar,*.taz,*.tb2,*.tbz,*.tbz2,*.tgz,*.tlz,*.trz,
           \*.txz,*.tz,*.tz2,*.xz,*.z,*.zip,*.zoo,*.apk,*.gzip,*.lz}
-        \ cterm=none ctermfg=215 ctermbg=default
+        \ cterm=none ctermfg=SandyBrown ctermbg=default
 " text
 highlight {*.less,*.mkd,*.org,*.pandoc,*.pdc,*.tex,
           \*.txt,*.log,*.rss,*.xul,*.yaml,*.yml,*.csv,*.plist,
           \*.ini,*.cfg,*.rc,*.conf,*.spec,*.qrc,*.description,*.list,*.log.old,
           \*.log.1,*.log.2,*.log.3,*.log.4,*.log.5,*.log.6,*.log.7,*.log.8,
           \syslog,syslog.1}
-        \ cterm=none ctermfg=217 ctermbg=default
+        \ cterm=none ctermfg=LightPink1 ctermbg=default
 " documents
 highlight {*.mobi,*.rtf,
           \*.epub,*.fb2,*.djvu,*.djv,*.desktop,
           \*.odg,*.odt,*.ods}
-        \ cterm=none ctermfg=218 ctermbg=default
+        \ cterm=none ctermfg=Pink1 ctermbg=default
 " media
 highlight {*.aac,*.anx,*.asf,*.au,*.avi,*.axa,*.axv,*.divx,*.flac,*.m2a,
           \*.m2v,*.m4a,*.m4p,*.m4v,*.mid,*.midi,*.mka,*.mkv,*.mov,*.mp3,*.mp4,
@@ -70,13 +70,13 @@ highlight {*.bmp,*.gif,*.jpeg,*.jpg,*.ico,*.png,*.ppm,*.svg,*.svgz,*.tga,*.tif,
 " executables
 highlight {*.sh,*.bash,*.zsh,*.bat,*.btm,*.cmd,*.com,*.dll,*.exe,*.run,*.msu,
           \*.msi,*.fish,*.AppImage}
-        \ cterm=none ctermfg=253 ctermbg=default
+        \ cterm=none ctermfg=Grey85 ctermbg=default
 " source code
 highlight {*.patch,*.diff,*.cpp,*.hpp,*.cpp,*.hpp,*.cc,*.hh,*.ld,
           \*.hs,*.vim,*.vifm,*.asm,*.s,*.java,*.cxx,*.c++,*.go,
           \*.pl,*.pm,*.t,*.cs,*.asp,*.dart,*.rb,*.scala,*.coffee,
           \*.ml,*.mli,*.sql,*.qml,vifmrc,vimrc,.vimrc,*.flex,*.ypp,*.S}
-        \ cterm=none ctermfg=193 ctermbg=default
+        \ cterm=none ctermfg=DarkSeaGreen1 ctermbg=default
 
 
 
@@ -95,10 +95,10 @@ highlight {*.ts,*.tsx,*.lua}
         \ cterm=none ctermfg=SkyBlue2 ctermbg=default
 
 highlight {*.xls,*.xls[mx],*.xml}
-        \ cterm=none ctermfg=green ctermbg=default
+        \ cterm=none ctermfg=PaleGreen1 ctermbg=default
 
 highlight {*.py,*.js,*.json}
-        \ cterm=none ctermfg=yellow ctermbg=default
+        \ cterm=none ctermfg=Yellow ctermbg=default
 
 highlight {*.pptx,*.ppt,*.htm,*.html,*.shtml,*.xhtml}
         \ cterm=none ctermfg=LightSalmon1 ctermbg=default
