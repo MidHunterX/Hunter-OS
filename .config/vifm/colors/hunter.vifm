@@ -3,7 +3,6 @@
 "============================================================================="
 
 highlight clear
-highlight Border	cterm=none	ctermfg=default	ctermbg=default
 highlight TopLine	cterm=none	ctermfg=white	ctermbg=default
 highlight TopLineSel	cterm=bold	ctermfg=002	ctermbg=default
 
@@ -21,12 +20,13 @@ highlight CurrLine	cterm=bold,inverse	ctermfg=default	ctermbg=default
 highlight OtherLine	cterm=reverse	ctermfg=black	ctermbg=white
 highlight Selected	cterm=none	ctermfg=003	ctermbg=008
 
-highlight Border	cterm=none	ctermfg=Grey70	ctermbg=default
+highlight SuggestBox	cterm=bold	ctermfg=default	ctermbg=default
+highlight Border	cterm=none	ctermfg=default	ctermbg=default
 highlight JobLine	cterm=bold	ctermfg=251	ctermbg=008
 highlight StatusLine	cterm=none	ctermfg=002	ctermbg=default
 highlight ErrorMsg	cterm=bold	ctermfg=001	ctermbg=default
 highlight WildMenu	cterm=bold	ctermfg=015	ctermbg=008
-highlight CmdLine	cterm=none	ctermfg=007	ctermbg=default
+highlight CmdLine	cterm=none	ctermfg=default	ctermbg=default
 
 
 "============================ [GROUP HIGHLIGHTING] ============================"
