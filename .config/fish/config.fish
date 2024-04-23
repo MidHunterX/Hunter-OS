@@ -65,7 +65,7 @@ if status is-interactive
 
   function ls
     if command -q lsd
-      lsd $argv
+      lsd $argv --group-directories-first
     else
       command ls $argv
     end
