@@ -219,9 +219,12 @@ endif
 fileviewer {.git/}, git -c color.status=always status %d %pu
 
 "  DIRECTORY PREVIEW
-fileviewer */ ls --color=always
-fileviewer .*/ ls --color=always
-"fileviewer .*/ /usr/bin/tree --noreport -F -L 3 -a %c, /usr/bin/tree --noreport -F -a %c
+fileviewer {*/},
+        \ lsd --color=always --icon=always,
+        \ ls --color=always
+fileviewer {.*/},
+        \ lsd --color=always --icon=always,
+        \ ls --color=always
 
 "  DATABASE
 filextype {*.db,*.sqlite3},
