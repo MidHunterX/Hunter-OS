@@ -122,6 +122,9 @@ set norunexec
 " STATUSLINE = TITLE | ATTRIBUTES, MODIFIED, SORTORDER
 set statusline="  %t %= %A: %20d %8{&sort}  "
 
+" DIR VIEW FORMAT
+" set viewcolumns=*{name}..,12{perms},8{size}.
+
 " DELETE CONFIRMATION
 set confirm-=delete
 
@@ -204,9 +207,6 @@ endif
 " set dotfiles
 " set lsview
 
-" DIR VIEW FORMAT
-"set viewcolumns=*{name}..,16{mtime},6{size}.
-
 
 " =========================================================================== "
 
@@ -220,10 +220,10 @@ fileviewer {.git/}, git -c color.status=always status %d %pu
 
 "  DIRECTORY PREVIEW
 fileviewer {*/},
-        \ lsd --color=always --icon=always --group-directories-first,
+        \ lsd --almost-all --color=always --icon=always --group-directories-first --blocks=permission --blocks=name,
         \ ls --color=always
 fileviewer {.*/},
-        \ lsd --color=always --icon=always --group-directories-first,
+        \ lsd --almost-all --color=always --icon=always --group-directories-first --blocks=permission --blocks=name,
         \ ls --color=always
 
 "  DATABASE
