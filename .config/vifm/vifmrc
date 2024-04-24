@@ -28,6 +28,7 @@ anoremap <c-l> <CR>
 anoremap <c-h> <c-o>
 anoremap <c-j> <c-n>
 anoremap <c-k> <c-p>
+anoremap <c-i> <CR>
 
 " FILE MANAGEMENT
 nnoremap o :file<CR>
@@ -536,7 +537,7 @@ fileviewer *.tex,*.sty highlight -O ansi --syntax tex
 " & disown $!,
 
 " Filetypes/directories
-set classify=' :dir:/, :exe:, :reg:, :link:,? :?:, ::../::'
+set classify=' :dir:/, :exe:, :reg:, :link:,? :?:, ::../::'
 
 " Independent Super Directories
 set classify+='
