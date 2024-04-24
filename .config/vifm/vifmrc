@@ -632,6 +632,29 @@ set classify+='
 \  ::*.go,,go.mod,,go.sum,,go.work::,
 \'
 
+set classify+='
+\  ::*.cts,,*.mts,,*.ts,,ts::,
+\  ::*.swp,,*.vim,,.vim,,.viminfo,,.vimrc,,vim,,vimrc::,
+\  ::*.ex,,*.exs::,
+\  ::.doom.d,,.emacs.d,,.spacemacs,,config.el,,custom.el,,init.el,,packages.el::,
+\  ::*.kt,,*.kts::,
+\  ::*.gradle,,gradle.properties,,gradle,,gradlew.bat,,gradlew::,
+\  ::*.nim,,*.nimble::,
+\  ::*.ml,,*.mli,,*.mll,,*.mly::,
+\  ::*.pl,,*.plx,,*.pm,,*.pod::,
+\  ::*.rlib,,*.rmeta,,*.rs,,.cargo,,.release.toml,,.rustup,,cargo.lock::,
+\  ::cargo.toml,,rustfmt.toml::,
+\  ::.yarnrc,,yarn.lock::,
+\  ::.node_repl_history,,package-lock.json,,package.json::,
+\  ::*.npmignore,,npmignore::,
+\  ::*.unity32,,*.unity::,
+\  ::*.diff,,*.patch::,
+\  ::*.erb,,*.rubydoc,,*.slim,,rubydoc::,
+\  ::*.hs,,*.lhs::,
+\  ::*.fs,,*.fsi,,*.fsx::,
+\  ::*.sublime-menu,,*.sublime-package,,*.sublime-project,,*.sublime-session::,
+\'
+
 
 
 " =========================================================================== "
