@@ -528,92 +528,45 @@ fileviewer *.tex,*.sty highlight -O ansi --syntax tex
 " Filetypes/directories
 set classify=' :dir:/, :exe:, :reg:, :link:,? :?:, ::../::'
 
-set classify+=' ::Desktop/::, ::Downloads/::, ::Documents/::, ::Music/::,
-           \  ::Pictures/::, ::Videos/::, ::Public/::, ::Templates/::,
-           \  ::data/::, ::repos/::, ::shared/::, ::notes/::, ::dropbox::,
-           \  ::gdrive/::, ::node_modules::, ::.git/::'
-
-" Programming Related
+" Independent Super Directories
 set classify+='
-             \  ::*.py,,*.pyc,,*.pyd,,*.pyo::,
-             \  ::*.php::,
-             \  ::*.markdown,,*.md::,
-             \  ::*.json::,
-             \  ::*.js::,
-             \  ::*.scss::,
-             \  ::*.ejs,,*.htm,,*.html,,*.slim,,*.xml::,
-             \  ::*.css,,*.less,,*.bat,,*.conf,,*.ini,,*.rc,,*.yml,,*.cfg::,
-             \  ::*.c++,,*.cpp,,*.cxx,,*.c,,*.h::,
-             \  ::*.cc,,*.c::,
-             \  ::*.lua::,
-             \  ::*.jl::,
-             \  ::*.go::,
-             \  ::*.ts::,
-             \  ::*.db,,*.dump,,*.sql::,
-             \  ::*.sln,,*.suo::,
-             \  ::*.exe::,
-             \  ::*.diff,,*.sum,,*.md5,,*.sha512::,
-             \  ::*.scala::,
-             \  ::*.java,,*.jar::,
-             \  ::*.xul::,
-             \  ::*.clj,,*.cljc::,
-             \  ::*.pl,,*.pm,,*.t::,
-             \  ::*.cljs,,*.edn::,
-             \  ::*.rb::,
-             \  ::*.fish,,*.sh,,*.bash,,*.zsh::,
-             \  ::*.dart::,
-             \  ::*.f#,,*.fs,,*.fsi,,*.fsscript,,*.fsx::,
-             \  ::*.rlib,,*.rs::,
-             \  ::*.d::,
-             \  ::*.erl,,*.hrl::,
-             \  ::*.ai::,
-             \  ::*.psb,,*.psd::,
-             \  ::*.jsx::'
+\  ::Desktop/::, ::Downloads/::, ::Documents/::, ::Music/::,
+\  ::Pictures/::, ::Videos/::, ::Public/::, ::Templates/::,
+\'
 
-" Specific files
-set classify+=' ::.Xdefaults,,.Xresources,,.bashprofile,,.bash_profile,,
-            \ .bashrc,,
-            \ .dmrc,,.d_store,,.fasd,,.gitconfig,,.gitignore,,.jack-settings,,
-            \ .mime.types,,.nvidia-settings-rc,,.pam_environment,,.profile,,
-            \ .recently-used,,.selected_editor,,.xinitrc,,.inputrc,,.zprofile,,
-             \ .snclirc,,.tmux.conf,,.urlview,,.config,,.ini,,.user-dirs.dirs,,
-             \ .mimeapps.list,,.offlineimaprc,,.msmtprc,,.Xauthority,,config,,
-             \ Xresources,,xinitrc,,inputrc::,
-             \  ::favicon.*,,README,,readme::,
-             \  ::.vim,,.vimrc,,.gvimrc,,.vifm::,
-             \  ::gruntfile.coffee,,gruntfile.js,,gruntfile.ls::,
-             \  ::gulpfile.coffee,,gulpfile.js,,gulpfile.ls::,
-             \  ::ledger::,
-             \  ::license,,copyright,,copying,,LICENSE,,COPYRIGHT,,COPYING::,
-             \  ::react.jsx::'
+" Independent Directories
+set classify+='
+\  ::home/::,  ::videos/::,  ::share/::,  ::nvim/::,  ::media/::,
+\  ::public/::, 󰉍 ::downloads/::, 󰉏 ::pictures/::, 󰉐 ::root/::, 󰙨 ::tests/::,
+\ 󰫦 ::vendor/::, 󱍙 ::music/::, 󱧼 ::src/::,  ::data/::,  ::repos/::,
+\  ::shared/::,  ::notes/::,  ::dropbox::,  ::gdrive/::,
+\'
 
-" File extensions
-set classify+='λ ::*.ml,,*.mli::,
-             \  ::*.styl::,
-             \  ::*.bmp,,*.gif,,*.ico,,*.jpeg,,*.jpg,,*.png,,*.svg,,*.svgz::,
-             \  ::*.tga,,*.tiff,,*.xmb,,*.xcf,,*.xpm,,*.xspf,,*.xwd,,*.cr2::,
-             \  ::*.dng,,*.3fr,,*.ari,,*.arw,,*.bay,,*.crw,,*.cr3,,*.cap::,
-             \  ::*.data,,*.dcs,,*.dcr,,*drf,,*.eip,,*.erf,,*.fff,,*.gpr::,
-             \  ::*.iiq,,*.k25,,*.kdc,,*.mdc,,*.mef,,*.mos,,*.mrw,,*.obm::,
-             \  ::*.orf,,*.pef,,*.ptx,,*.pxn,,*.r3d,,*.raf,,*.raw,,*.rwl::,
-             \  ::*.rw2,,*.rwz,,*.sr2,,*.srf,,*.srw,,*.tif,,*.webp,,*.avif::,
-             \  ::*.mustasche::,
-             \  ::*.rss::,
-             \  ::*.coffee::,
-             \  ::*.twig::,
-             \  ::*.hs,,*.lhs::,
-             \  ::*.aac,,*.anx,,*.asf,,*.au,,*.axa,,*.flac,,*.m2a,,*.m4a::,
-             \  ::*.mid,,*.midi,,*.mp3,,*.mpc,,*.oga,,*.ogg,,*.ogx,,*.ra::,
-             \  ::*.ram,,*.rm,,*.spx,,*.wav,,*.wma,,*.ac3::,
-             \  ::*.avi,,*.flv,,*.mkv,,*.mov,,*.mp4,,*.mpeg,,*.mpg,,*.webm::,
-             \  ::*.epub,,*.pdf,,*.fb2,,*.djvu::,
-             \  ::*.7z,,*.apk,,*.bz2,,*.cab,,*.cpio,,*.deb,,*.gz,,*.gzip::,
-             \  ::*.lh,,*.lzh,,*.rar,,*.rpm,,*.tar,,*.tgz,,*.xz,,*.zip::,
-             \  ::*.cbr,,*.cbz::,
-             \  ::*.log::,
-             \  ::*.doc,,*.docx,,*.adoc::,
-             \  ::*.xls,,*.xlsmx::,
-             \  ::*.pptx,,*.ppt::'
+" Independent Extensions
+set classify+='
+\  ::*.java::,  ::*.epub::,  ::*.ejs::,  ::*.twig::,  ::*.c::,
+\  ::*.lua::,  ::*.elm::,  ::*.pp::,  ::*.org::,  ::*.svelte::,
+\  ::*.zig::,  ::*.fnl::,  ::*.apk::,  ::*.scala::,  ::*.swift::,
+\  ::*.less::,  ::*.clj::,  ::*.t::,  ::*.cljs::,  ::*.rdb::,
+\  ::*.info::,  ::*.dart::,  ::*.erl::,  ::*.ai::,  ::*.iml::,
+\  ::*.psd::,  ::*.list::,  ::*.magnet::,  ::*.mk::,  ::*.rss::,
+\  ::*.coffee::,  ::*.rl::,  ::*.log::,  ::*.pdf::,  ::*.xul::,
+\  ::*.gform::, 󰈡 ::*.slt::, 󰗆 ::*.rproj::, 󰡄 ::*.vue::, 󰦝 ::*.asc::,
+\ 󰪪 ::*.pdb::, 󱁉 ::*.gv::,
+\'
+
+" Independent Files
+set classify+='
+\  ::heroku.yml::, 󰚩 ::robots.txt::, 󰜫 ::webpack.config.js::,
+\  ::netlify.toml::,  ::manifest::,  ::url::,  ::pkgbuild::, 󰀂 ::hosts::,
+\ 󰅱 ::std::,  ::jenkinsfile::,
+\'
+
+" Dot Files
+set classify+='
+\  ::.dbus::,  ::.git::,  ::.github::,  ::.gitlab-ci.yml::,  ::.idlerc::,
+\  ::.vscode::,  ::.atom::,  ::.mozilla::,
+\'
 
 
 " =========================================================================== "
