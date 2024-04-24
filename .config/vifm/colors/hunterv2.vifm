@@ -31,10 +31,10 @@ highlight CmdLine       cterm=none            ctermfg=default   ctermbg=default
 
 "=========================== [GROUP HIGHLIGHTING] ==========================="
 
-" DEV DOCUMENTATION (Grey15, NavajoWhite1)
+" DEV DOCUMENTATION (Default, NavajoWhite1)
 highlight {CONTRIBUTORS,CONTRIBUTORS.md,CONTRIBUTORS.txt,INSTALL,INSTALL.md,
           \INSTALL.txt,README,README.md,README*}
-          \ cterm=none ctermfg=235 ctermbg=223
+          \ cterm=inverse ctermfg=223 ctermbg=default
 
 " DEV LICENCE (Grey62, Default)
 highlight {COPYING,COPYRIGHT,LICEN[CS]E,LICENSE-APACHE,LICENSE-MIT}
