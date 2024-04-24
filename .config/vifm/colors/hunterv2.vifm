@@ -1,0 +1,105 @@
+"============================================================================="
+"                      Hunter V2 (LS_COLORS) ColorScheme                      "
+"============================================================================="
+
+highlight clear
+highlight TopLine       cterm=none            ctermfg=White     ctermbg=default
+highlight TopLineSel    cterm=bold            ctermfg=Green     ctermbg=default
+
+highlight Win           cterm=none            ctermfg=default   ctermbg=default
+highlight Directory     cterm=bold            ctermfg=Blue      ctermbg=default
+highlight Link          cterm=bold            ctermfg=Cyan      ctermbg=default
+highlight BrokenLink    cterm=bold,inverse    ctermfg=Red       ctermbg=default
+
+highlight Executable    cterm=bold            ctermfg=Green     ctermbg=default
+highlight Device        cterm=bold            ctermfg=Yellow    ctermbg=default
+highlight Fifo          cterm=bold            ctermfg=Cyan      ctermbg=default
+highlight Socket        cterm=bold            ctermfg=Magenta   ctermbg=default
+
+highlight CurrLine      cterm=bold,inverse    ctermfg=default   ctermbg=default
+highlight OtherLine     cterm=reverse         ctermfg=Black     ctermbg=white
+highlight Selected      cterm=none            ctermfg=Yellow    ctermbg=008
+
+highlight SuggestBox    cterm=bold            ctermfg=default   ctermbg=default
+highlight Border        cterm=none            ctermfg=default   ctermbg=default
+highlight JobLine       cterm=bold            ctermfg=Grey78    ctermbg=008
+highlight StatusLine    cterm=none            ctermfg=Green     ctermbg=default
+highlight ErrorMsg      cterm=bold            ctermfg=Red       ctermbg=default
+highlight WildMenu      cterm=bold            ctermfg=LightCyan ctermbg=008
+highlight CmdLine       cterm=none            ctermfg=default   ctermbg=default
+
+
+"=========================== [GROUP HIGHLIGHTING] ==========================="
+
+" DEV DOCUMENTATION (Grey15, NavajoWhite1)
+highlight {CONTRIBUTORS,CONTRIBUTORS.md,CONTRIBUTORS.txt,INSTALL,INSTALL.md,
+          \INSTALL.txt,README,README.md,README*}
+          \ cterm=none ctermfg=235 ctermbg=223
+
+" DEV LICENCE (Grey62, Default)
+highlight {COPYING,COPYRIGHT,LICEN[CS]E,LICENSE-APACHE,LICENSE-MIT}
+          \ cterm=none ctermfg=247 ctermbg=default
+
+" DEV CONFIGURATION (DarkSlateGray3, Default)
+highlight {CMakeLists.txt,CODEOWNERS,Doxyfile,MANIFEST.in,
+          \Makefile,SConscript,*SConstruct,clang-format,cmake,
+          \.cmake.in,.dox,.fdignore,.flake8,.gemspec,.gitattributes,
+          \.gitconfig,.gitignore,.gitmodules,.hgrc,.ignore,.kdevelop,
+          \.make,.pro,.rgignore,configure,configure.ac,hgrc,
+          \requirements.txt,setup.py}
+          \ cterm=none ctermfg=116 ctermbg=default
+
+" DEV SOURCE FILES (DarkSeaGreen3, Default)
+highlight {*.as,*.asa,*.awk,*.bash,*.bsh,*.c,*.c++,*.cabal,*.cc,*.cgi,*.clj,
+          \*.cp,*.cpp,*.cr,*.cs,*.css,*.csx,*.cxx,*.d,*.dart,*.def,*.di,*.diff,
+          \*.dot,*.dpr,*.el,*.elc,*.elm,*.epp,*.erl,*.ex,*.exs,*.fish,*.fs,
+          \*.fsi,*.fsx,*.gitlab-ci.yml,*.go,*.gradle,*.groovy,*.gv,*.gvy,*.h,
+          \*.h++,*.hh,*.hpp,*.hs,*.htc,*.hxx,*.inc,*.inl,*.ipp,*.ipynb,*.java,
+          \*.jl,*.js,*.kt,*.kts,*.less,*.lisp,*.ll,*.ltx,*.lua,*.m,*.matlab,
+          \*.mir,*.ml,*.mli,*.mn,*.nb,*.p,*.pas,*.patch,*.php,*.pl,*.pm,*.pod,
+          \*.pp,*.ps1,*.psd1,*.psm1,*.purs,*.py,*.r,*.rb,*.rs,*.sass,*.sbt,
+          \*.scala,*.scss,*.sh,*.sql,*.swift,*.t,*.tcl,*.td,*.tex,*.travis.yml,
+          \*.ts,*.tsx,*.vb,*.vim,*.zsh}
+          \ cterm=none ctermfg=150 ctermbg=default
+
+" DEV SECONDARY FILES (MediumPurple4, Default)
+highlight {CMakeCache.txt,*.CFUserTextEncoding,*.DS_Store,*.aux,
+          \*.bak,*.bbl,*.bc,*.bcf,*.blg,*.cache,*.class,*.dyn_hi,*.dyn_o,
+          \*.fdb_latexmk,*.fls,*.git,*.hi,*.idx,*.ilg,*.ind,*.la,*.lo,
+          \*.localized,*.lock,*.log,*.o,*.orig,*.out,*.pid,*.pyc,*.pyd,*.pyo,
+          \*.rlib,*.scons_opt,*.sconsign.dblite,*.sty,*.swp,*.synctex.gz,*.tmp,
+          \*.toc,*package-lock.json}
+          \ cterm=none ctermfg=60 ctermbg=default
+
+" DEV TODO FILES (Default, Default)
+highlight {TODO,TODO.md,TODO.txt}
+          \ cterm=bold ctermfg=default ctermbg=default
+
+" EXECUTABLES (LightCoral, Default)
+highlight {*.a,*.bat,*.com,*.dll,*.exe,*.ko}
+          \ cterm=bold ctermfg=210 ctermbg=default
+
+" DOCUMENTS (LightCoral, Default)
+highlight {*.doc,*.docx,*.epub,*.ics,*.kex,*.odp,*.ods,*.odt,*.pdf,*.pps,*.ppt,
+          \*.pptx,*.ps,*.rtf,*.sxi,*.sxw,*.xlr,*.xls,*.xlsx}
+          \ cterm=none ctermfg=210 ctermbg=default
+
+" TEXT FILES (NavajoWhite1, Default)
+highlight {*.bib,*.bst,*.cfg,*.conf,*.config,*.csv,*.desktop,*.htm,*.html,
+          \*.ini,*.json,*.markdown,*.md,*.mdown,*.nix,*.org,*.rst,*.shtml,
+          \*.tml,*.toml,*.txt,*.ui,*.xhtml,*.xml,*.xmp,*.yaml,*.yml,*passwd}
+          \ cterm=none ctermfg=223 ctermbg=default
+
+" MULTIMEDIA FILES (MistyRose1, Default)
+highlight {*.ape,*.avi,*.bmp,*.eps,*.flac,*.flv,*.fnt,*.fon,*.gif,*.h264,*.ico,
+          \*.jpeg,*.jpg,*.m3u,*.m4a,*.m4v,*.mid,*.mkv,*.mov,*.mp3,*.mp4,*.mpeg,
+          \*.mpg,*.ogg,*.opus,*.otf,*.pbm,*.pgm,*.png,*.ppm,*.psd,*.rm,*.svg,
+          \*.swf,*.tif,*.tiff,*.ttf,*.vob,*.wav,*.webm,*.webp,*.wma,*.wmv,
+          \*.woff,*.wv,*.xcf}
+          \ cterm=none ctermfg=224 ctermbg=default
+
+" ARCHIVES (DarkSlateGray3, Default)
+highlight {*.7z,*.apk,*.arj,*.bag,*.bin,*.bz,*.bz2,*.deb,*.dmg,*.gz,*.img,
+          \*.iso,*.jar,*.pkg,*.rar,*.rpm,*.tar,*.tbz,*.tbz2,*.tgz,*.toast,
+          \*.vcd,*.xbps,*.xz,*.z,*.zip,*.zst}
+          \ cterm=underline ctermfg=116 ctermbg=default

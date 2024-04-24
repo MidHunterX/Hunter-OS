@@ -102,7 +102,7 @@ mark m ~/Mid_Hunter/
 set title
 
 " COLORSCHEMES
-colorscheme hunter Default
+colorscheme hunterv2 hunter Default
 
 " SET LINE NUMBERS
 set number
@@ -567,13 +567,14 @@ set classify+='
 \  ::.dbus::,  ::.git::,  ::.github::,  ::.gitlab-ci.yml::,  ::.idlerc::,
 \  ::.vscode::,  ::.atom::,  ::.mozilla::,
 \'
+
 " ICON SET FROM LSD
 set classify+='
 \  ::*.7z,,*.ar,,*.bz2,,*.gz,,*.lz,,*.rar,,*.tar,,*.taz,,*.tbz,,*.tbz2::,
 \  ::*.tgz,,*.xz,,*.zip,,*.zst::,
 \  ::*.apng,,*.avif,,*.heic,,*.heif,,*.heix,,*.ico,,*.image::,
 \  ::*.webp,,*.pxm,,*.svg,,*.tiff,,*.xcf,,img::,
-\  ::*.jpeg,,*.jpg,,*.png,,*.bmp,,*.gif::,
+\  ::*.jpeg,,*.jpg,,*.png,,*.bmp,,*.gif::,
 \  ::*.avi,,*.flv,,*.m4v,,*.mkv,,*.mov,,*.mp4,,*.ogv,,*.video,,*.webm,,*.wmv::,
 \  ::*.ape,,*.aac,,*.anx,,*.asf,,*.au,,*.axa,,*.cue,,*.flac,,*.m2a,,*.m4a::,
 \  ::*.mid,,*.midi,,*.mp3,,*.mpc,,*.oga,,*.ogg,,*.ogx,,*.opus,,*.ra::,

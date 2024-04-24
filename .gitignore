@@ -50,6 +50,7 @@
 !.config/vifm/colors/
 .config/vifm/colors/*
 !.config/vifm/colors/hunter.vifm
+!.config/vifm/colors/hunterv2.vifm
 # 😴 Terminal UI Git
 !.config/lazygit/
 .config/lazygit/*
