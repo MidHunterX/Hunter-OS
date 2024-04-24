@@ -120,9 +120,17 @@ set sortnumbers
 set norunexec
 
 " STATUSLINE = TITLE | ATTRIBUTES, MODIFIED, SORTORDER
-highlight User1 ctermbg=green ctermfg=black cterm=bold
-highlight User2 ctermbg=default ctermfg=green cterm=bold
+highlight User1 ctermbg=Green ctermfg=Black cterm=bold
+highlight User2 ctermbg=default ctermfg=Green cterm=bold
 set statusline=" %t %= %2*%1* %A %2*%0* %22d %10{&sort} "
+
+" TABLINE
+highlight User3  ctermbg=Grey11  ctermfg=White    cterm=none
+highlight User4  ctermbg=238    ctermfg=Grey11  cterm=bold
+highlight User5  ctermbg=Grey11  ctermfg=238    cterm=bold
+set tablabel="%[(%n)%]%[%[%T{tree}%]%[{%c}%]@%]%p:t "
+set tabprefix="%5*%[%1*%C%] %3*%[%1*%C%]%N:"
+set tabsuffix="%4*%[%2*%C%]%4*"
 
 " DIR VIEW FORMAT
 " set viewcolumns=*{name}..,12{perms},8{size}.

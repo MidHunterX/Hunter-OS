@@ -27,6 +27,7 @@ highlight StatusLine    cterm=none            ctermfg=Green     ctermbg=default
 highlight ErrorMsg      cterm=bold            ctermfg=Red       ctermbg=default
 highlight WildMenu      cterm=bold            ctermfg=LightCyan ctermbg=008
 highlight CmdLine       cterm=none            ctermfg=default   ctermbg=default
+highlight TabLine       cterm=none            ctermfg=default   ctermbg=238
 
 
 "=========================== [GROUP HIGHLIGHTING] ==========================="
