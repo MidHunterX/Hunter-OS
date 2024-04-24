@@ -592,6 +592,27 @@ set classify+='
 \  ::.xprofile,,.Xprofile,,.xresources,,zathurarc,,.zcompdump::,
 \'
 
+set classify+='
+\  ::*.cc,,*.cpp,,*.cp,,*.c++,,*.cxx::,
+\  ::*.css,,*.lss,,css,,styles::,
+\  ::*.cjs,,*.js,,*.mjs,,js::,
+\  ::*.sass,,*.scss,,sass,,scss::,
+\  ::*.class,,*.jar,,*.java::,
+\ 󰅲 ::*.cl,,*.elc,,*.el,,*.lisp::,
+\  ::*.gemfile,,*.gemspec,,*.guardfile,,*.procfile,,*.rakefile,,*.rb::,
+\  ::*.rspec,,*.rspec_parallel,,*.rspec_status,,*.ru,,.rvm::,
+\  ::*.a,,*.jl,,*.ld,,*.so,,obj::,
+\  ::*.avro,,*.jsonc,,*.json,,*.properties,,*.toml,,*.yaml,,*.yml::,
+\  ::*.asp,,*.xml,,libexec,,lib32,,lib64,,lib::,
+\  ::*.bin,,*.o,,*.sym::,
+\ 󰁯 ::*.bak,,*.old,,*.orig,,backups::,
+\  ::*.desktop,,desktop::,
+\  ::assets,,content,,static::,
+\  ::*.htm,,*.html::,
+\  ::*.ebook,,*.mobi::,
+\'
+
+
 
 " =========================================================================== "
 
