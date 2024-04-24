@@ -655,6 +655,31 @@ set classify+='
 \  ::*.sublime-menu,,*.sublime-package,,*.sublime-project,,*.sublime-session::,
 \'
 
+set classify+='
+\  ::*.jsx,,*.tsx::,
+\  ::*.sqlite3,,.sqlite_history::,
+\  ::.icons,,favicon.ico,,favicons,,icons::,
+\  ::*.lock,,.pki,,hidden,,passwd,,sudoers::,
+\  ::*.eot,,*.font,,*.otf,,*.ttc,,*.ttf,,*.woff2,,*.woff::,
+\  ::build.ninja,,configure,,meson.build::,
+\  ::*.mgc,,magic::,
+\  ::*.h,,*.hh,,*.hpp,,*.hxx::,
+\  ::*.in,,*.rtf,,*.txt::,
+\  ::*.ds_store,,*.localized,,.ds_store,,localized,,*.plist,,*.scpt::,
+\  ::.android,,.fastboot::,
+\  ::*.deb,,*.pkg,,*.rpm,,*.xbps::,
+\  ::*.cypher,,*.dat,,*.db,,*.dump,,*.img,,*.iso,,*.kusto,,*.ldb,,*.malloy::,
+\  ::*.prql,,*.rq,,*.sql,,fstab::,
+\  ::*.doc,,*.docx,,*.gdoc,,*.odt::,
+\  ::*.csv,,*.gsheet,,*.ods,,*.xls,,*.xlsx::,
+\  ::*.gslides,,*.odp,,*.ppt,,*.pptx::,
+\  ::*.git,,.gitattributes,,.gitconfig,,.gitignore,,.gitmodules,,gitignore_global::,
+\  ::*.trash,,.trash::,
+\  ::*.cshtml,,*.razor::,
+\  ::*.dockerfile,,docker-compose.yml,,dockerfile::,
+\  ::*.ebuild,,*.eclass,,portage::,
+\'
+
 
 
 " =========================================================================== "
