@@ -120,7 +120,9 @@ set sortnumbers
 set norunexec
 
 " STATUSLINE = TITLE | ATTRIBUTES, MODIFIED, SORTORDER
-set statusline="  %t %= %A: %20d %8{&sort}  "
+highlight User1 ctermbg=green ctermfg=black cterm=bold
+highlight User2 ctermbg=default ctermfg=green cterm=bold
+set statusline=" %t %= %2*%1* %A %2*%0* %22d %10{&sort} "
 
 " DIR VIEW FORMAT
 " set viewcolumns=*{name}..,12{perms},8{size}.
