@@ -680,6 +680,31 @@ set classify+='
 \  ::*.ebuild,,*.eclass,,portage::,
 \'
 
+set classify+='
+\  ::*.nix,,.nix-channels,,.nix-defexpr::,
+\  ::template,,xbps-src,,xbps.d::,
+\  ::*.download,,*.part,,*.timestamp,,timezone::,
+\  ::*.env,,.env,,.eslintrc.js,,.eslintrc.json,,.eslintrc.yml,,environment,,metadata.xml::,
+\  ::*.asm,,*.s,,module.symvers::,
+\  ::*.whl,,build,,dist::,
+\  ::.ash,,.ash_history,,.kshrc,,a.out,,scripts::,
+\ 󰃨 ::.cache,,.ccls-cache,,.mypy_cache,,cache::,
+\ 󰇰 ::.mailcap,,mail::,
+\ 󰌆 ::*.key,,*.pem,,*.pub::,
+\ 󰌛 ::*.cs,,*.csproj,,*.csx::,
+\ 󰌠 ::requirements.txt,,runtime.txt,,venv::,
+\ 󰐑 ::*.bio,,*.fpl,,*.m3u8,,*.m3u,,*.pls,,*.vlc,,*.wpl::,
+\ 󰒍 ::*.torrent,,api::,
+\ 󰕥 ::md5sum,,sha256sum::,
+\ 󰙅 ::.mime.types,,mime.types::,
+\ 󰟔 ::*.r,,*.rdata,,*.rds::,
+\ 󰢬 ::.gnupg,,.ssh,,pam.d::,
+\ 󰨖 ::*.srt,,*.sub::,
+\ 󰷖 ::id_dsa,,id_rsa,,id_ecdsa::,
+\ 󱆃 ::.bash_history,,.bash_logout,,.bash_profile,,.bashrc,,.cshrc,,.zlogin::,
+\ 󱆃 ::.zlogout,,.zprofile,,.zsh_history,,.zshrc,,csh.cshrc,,csh.login,,csh.logout::,
+\'
+
 
 
 " =========================================================================== "
