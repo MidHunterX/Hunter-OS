@@ -567,6 +567,30 @@ set classify+='
 \  ::.dbus::,  ::.git::,  ::.github::,  ::.gitlab-ci.yml::,  ::.idlerc::,
 \  ::.vscode::,  ::.atom::,  ::.mozilla::,
 \'
+" ICON SET FROM LSD
+set classify+='
+\  ::*.7z,,*.ar,,*.bz2,,*.gz,,*.lz,,*.rar,,*.tar,,*.taz,,*.tbz,,*.tbz2::,
+\  ::*.tgz,,*.xz,,*.zip,,*.zst::,
+\  ::*.apng,,*.avif,,*.heic,,*.heif,,*.heix,,*.ico,,*.image::,
+\  ::*.webp,,*.pxm,,*.svg,,*.tiff,,*.xcf,,img::,
+\  ::*.jpeg,,*.jpg,,*.png,,*.bmp,,*.gif::,
+\  ::*.avi,,*.flv,,*.m4v,,*.mkv,,*.mov,,*.mp4,,*.ogv,,*.video,,*.webm,,*.wmv::,
+\  ::*.ape,,*.aac,,*.anx,,*.asf,,*.au,,*.axa,,*.cue,,*.flac,,*.m2a,,*.m4a::,
+\  ::*.mid,,*.midi,,*.mp3,,*.mpc,,*.oga,,*.ogg,,*.ogx,,*.opus,,*.ra::,
+\  ::*.ram,,*.rm,,*.spx,,*.wav,,*.wma,,*.ac3::,
+\  ::*.awk,,*.bash_history,,*.bash_profile,,*.bashrc,,*.bash,,*.csh,,*.elf::,
+\  ::*.fish,,*.ksh,,*.ps1,,*.shell,,*.sh,,*.zshrc,,*.zsh-theme,,*.zsh::,
+\  ::*.bat,,*.dll,,*.exe,,*.msi,,*.windows::,
+\  ::*.cfg,,*.conf,,*.editorconfig,,*.ini,,.asoundrc,,bspwmrc,,.clang-format::,
+\  ::config.ac,,config.mk,,cron.deny,,crontab,,crypttab,,.editorconfig::,
+\  ::,,.fennelrc,,group,,gshadow,,hostname,,.htaccess,,htoprc,,.htpasswd::,
+\  ::.inputrc,,inputrc,,kbuild,,kconfig,,kdeglobals,,kdenliverc,,lsb-release::,
+\  ::.lynxrc,,makefile.ac,,makefile,,muttrc,,.muttrc,,.mutt,,neomuttrc::,
+\  ::.neomuttrc,,os-release,,profile,,.profile,,rc.lua,,shadow,,.shellcheckrc::,
+\  ::shells,,subgid,,subuid,,sxhkdrc,,tigrc,,tox.ini,,vagrantfile,,.wgetrc::,
+\  ::wgetrc,,.xauthority,,.Xauthority,,.xinitrc,,.xmodmap,,.Xmodmap,,xmonad.hs::,
+\  ::.xprofile,,.Xprofile,,.xresources,,zathurarc,,.zcompdump::,
+\'
 
 
 " =========================================================================== "
