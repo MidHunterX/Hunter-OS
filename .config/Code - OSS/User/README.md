@@ -1,4 +1,4 @@
-# Code OSS
+# 🆚 Code OSS (Code Editor)
 
 Code - OSS is an open source project without any proprietary code under the MIT License.
 The main problem with VSCode is that, it has no context aware keybindings by default for the keyboard people in the year of 2020.
