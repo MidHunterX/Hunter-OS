@@ -517,7 +517,7 @@ fileviewer *.md highlight -O ansi --syntax markdown
 fileviewer *.html,*.go,*.css,*.c highlight -O ansi -s dante %c
 fileviewer *.conf,.xinitrc,.gitignore
             \ highlight -O ansi --syntax conf
-fileviewer *.bash,.bashrc,*.sh,*.zsh,*.fish
+fileviewer *.bash,.bashrc,*.sh,*.zsh,*.fish,*.tmux
             \ highlight -O ansi --syntax shellscript
 fileviewer *.gvimrc,*.vim,*.vimrc,*.vifm,vifmrc
             \ highlight -O ansi --syntax vimscript
