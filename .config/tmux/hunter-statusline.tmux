@@ -97,7 +97,7 @@ function build_module_format() {
   module_format+="$(item_prefix $background $foreground $icon)"
   module_format+="$(item_prefix $background $foreground ' ')" # Space with BG
   module_format+="$(item_prefix_inverted 'default' $background $right_separator)"
-  module_format+="$(item_prefix_text 'default' 'default' " $text ")"
+  module_format+="$(item 'default' 'default' " $text ")"
   module_format+="$(item_prefix_inverted 'default' $background '█')"
   module_format+=" "
 
@@ -115,7 +115,7 @@ function build_module_format_left() {
 
   module_format=" "
   module_format+="$(item_prefix_inverted 'default' $background $left_separator)"
-  module_format+="$(item_prefix_text 'default' 'default' " $text ")"
+  module_format+="$(item 'default' 'default' " $text ")"
   module_format+="$(item_prefix_inverted 'default' $background $right_separator)"
   module_format+="$(item_prefix $background $foreground $icon)"
   module_format+="$(item_prefix $background $foreground ' ')" # Space with BG
