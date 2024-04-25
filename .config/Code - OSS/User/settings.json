@@ -153,5 +153,6 @@
   "vim.sneakUseIgnorecaseAndSmartcase": true,
   "vim.highlightedyank.color": "rgba(230, 97, 89, 0.7)",
   // ======================================================================== \\
-  "security.workspace.trust.untrustedFiles": "open"
+  "security.workspace.trust.untrustedFiles": "open",
+  "git.openRepositoryInParentFolders": "never"
 }
