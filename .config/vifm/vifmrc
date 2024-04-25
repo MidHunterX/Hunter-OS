@@ -601,7 +601,7 @@ set classify+='
 \  ::.neomuttrc,,os-release,,profile,,.profile,,rc.lua,,shadow,,.shellcheckrc::,
 \  ::shells,,subgid,,subuid,,sxhkdrc,,tigrc,,tox.ini,,vagrantfile,,.wgetrc::,
 \  ::wgetrc,,.xauthority,,.Xauthority,,.xinitrc,,.xmodmap,,.Xmodmap,,xmonad.hs::,
-\  ::.xprofile,,.Xprofile,,.xresources,,zathurarc,,.zcompdump::,
+\  ::.xprofile,,.Xprofile,,.xresources,,zathurarc,,.zcompdump,,config::,
 \'
 
 set classify+='
@@ -628,10 +628,10 @@ set classify+='
 \  ::*.cls,,*.styl,,*.stylus,,*.tex::,
 \  ::*.egg-info,,*.ipynb,,*.py,,*.pyc,,.bpython_history,,.jupyter,,.pypirc::,
 \  ::.python_history,,.tox,,__pycache__,,pyproject.toml::,
-\  ::.electron-gyp,,.node-gyp,,.npm,,node_modules::,
-\  ::.audacity-data,,.config,,bin,,conf.d,,config,,cron.d,,cron.daily::,
-\  ::cron.hourly,,cron.monthly,,cron.weekly,,etc,,include,,metadata,,sbin::,
-\  ::user-dirs.dirs,,xorg.conf.d::,
+\  ::.electron-gyp/,,.node-gyp/,,.npm/,,node_modules/::,
+\  ::.audacity-data/,,.config/,,bin/,,conf.d/,,config/,,cron.d/,,cron.daily/::,
+\  ::cron.hourly/,,cron.monthly/,,cron.weekly/,,etc/,,include/,,metadata/,,sbin/::,
+\  ::user-dirs.dirs/,,xorg.conf.d/::,
 \  ::*.phar,,*.php,,composer.json,,composer.lock::,
 \  ::*.markdown,,*.md,,*.mkd,,*.rdoc,,*.readme,,*.rmd,,changelog,,readme::,
 \  ::*.man,,doc,,documents::,
