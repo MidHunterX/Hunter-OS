@@ -69,8 +69,6 @@
 !.config/mpv/
 # 📢 Audio Visualizer
 !.config/cava/
-.config/cava/*
-!.config/cava/config
 # 💻 GUI Code Editor
 !.config/Code\ -\ OSS/
 .config/Code\ -\ OSS/*
