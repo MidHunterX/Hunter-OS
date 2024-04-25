@@ -18,8 +18,6 @@
 # ▄█ ░█░ ▄█ ░█░ ██▄ █░▀░█
 # 🔑 Keymapping Utility
 !.config/keyd/
-.config/keyd/*
-!.config/keyd/default.conf
 # 💧 Wayland Compositor
 !.config/hypr/
 # 🔔 Notification Daemon
