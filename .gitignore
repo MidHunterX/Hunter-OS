@@ -53,8 +53,7 @@
 !.config/vifm/colors/hunterv2.vifm
 # 😴 Terminal UI Git
 !.config/lazygit/
-.config/lazygit/*
-!.config/lazygit/config.yml
+.config/lazygit/state.yml
 
 
 # █▀ █▀█ █▀▀ ▀█▀ █░█░█ ▄▀█ █▀█ █▀▀
