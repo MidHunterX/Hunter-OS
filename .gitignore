@@ -80,6 +80,8 @@
 # 🌐 Web Browser
 !.mozilla/
 .mozilla/*
+!.mozilla/assets/
+!.mozilla/README.md
 !.mozilla/firefox/
 .mozilla/firefox/*
 # Firefox Personal
