@@ -39,19 +39,6 @@ gui:
   portraitMode: 'auto' # 'auto' | 'never' | 'always'
   filterMode: 'fuzzy' # 'substring' | 'fuzzy'
 
-  spinner:
-    "frames": [
-      "▰▱▱▱▱▱▱",
-      "▰▰▱▱▱▱▱",
-      "▰▰▰▱▱▱▱",
-      "▰▰▰▰▱▱▱",
-      "▰▰▰▰▰▱▱",
-      "▰▰▰▰▰▰▱",
-      "▰▰▰▰▰▰▰",
-      "▰▱▱▱▱▱▱"
-    ]
-    rate: 50 # spinner rate in milliseconds
-
 refresher:
   refreshInterval: 10 # File/submodule refresh interval in seconds.
   fetchInterval: 60 # Re-fetch interval in seconds.
