@@ -575,8 +575,8 @@ set classify+='
 
 " Dot Files
 set classify+='
-\  ::.dbus::,  ::.git::,  ::.github::,  ::.gitlab-ci.yml::,  ::.idlerc::,
-\  ::.vscode::,  ::.atom::,  ::.mozilla::,
+\  ::.dbus/::,  ::.git/::,  ::.github/::,  ::.gitlab-ci.yml::,  ::.idlerc::,
+\  ::.vscode/::,  ::.atom/::,  ::.mozilla/::,
 \'
 
 " ICON SET FROM LSD
@@ -619,7 +619,7 @@ set classify+='
 \  ::*.bin,,*.o,,*.sym::,
 \ 󰁯 ::*.bak,,*.old,,*.orig,,backups::,
 \  ::*.desktop,,desktop::,
-\  ::assets,,content,,static::,
+\  ::assets/,,content/,,static/::,
 \  ::*.htm,,*.html::,
 \  ::*.ebook,,*.mobi::,
 \'
@@ -670,7 +670,7 @@ set classify+='
 set classify+='
 \  ::*.jsx,,*.tsx::,
 \  ::*.sqlite3,,.sqlite_history::,
-\  ::.icons,,favicon.ico,,favicons,,icons::,
+\  ::.icons/,,favicon.ico,,favicons/,,icons/::,
 \  ::*.lock,,.pki,,hidden,,passwd,,sudoers::,
 \  ::*.eot,,*.font,,*.otf,,*.ttc,,*.ttf,,*.woff2,,*.woff::,
 \  ::build.ninja,,configure,,meson.build::,
@@ -694,23 +694,23 @@ set classify+='
 
 set classify+='
 \  ::*.nix,,.nix-channels,,.nix-defexpr::,
-\  ::template,,xbps-src,,xbps.d::,
+\  ::template/,,xbps-src/,,xbps.d/::,
 \  ::*.download,,*.part,,*.timestamp,,timezone::,
 \  ::*.env,,.env,,.eslintrc.js,,.eslintrc.json,,.eslintrc.yml,,environment,,metadata.xml::,
 \  ::*.asm,,*.s,,module.symvers::,
 \  ::*.whl,,build,,dist::,
-\  ::.ash,,.ash_history,,.kshrc,,a.out,,scripts::,
-\ 󰃨 ::.cache,,.ccls-cache,,.mypy_cache,,cache::,
-\ 󰇰 ::.mailcap,,mail::,
+\  ::.ash,,.ash_history,,.kshrc,,a.out,,scripts/::,
+\ 󰃨 ::.cache/,,.ccls-cache/,,.mypy_cache/,,cache/::,
+\ 󰇰 ::.mailcap/,,mail/::,
 \ 󰌆 ::*.key,,*.pem,,*.pub::,
 \ 󰌛 ::*.cs,,*.csproj,,*.csx::,
-\ 󰌠 ::requirements.txt,,runtime.txt,,venv::,
+\ 󰌠 ::requirements.txt,,runtime.txt,,venv/::,
 \ 󰐑 ::*.bio,,*.fpl,,*.m3u8,,*.m3u,,*.pls,,*.vlc,,*.wpl::,
 \ 󰒍 ::*.torrent,,api::,
 \ 󰕥 ::md5sum,,sha256sum::,
 \ 󰙅 ::.mime.types,,mime.types::,
 \ 󰟔 ::*.r,,*.rdata,,*.rds::,
-\ 󰢬 ::.gnupg,,.ssh,,pam.d::,
+\ 󰢬 ::.gnupg/,,.ssh/,,pam.d/::,
 \ 󰨖 ::*.srt,,*.sub::,
 \ 󰷖 ::id_dsa,,id_rsa,,id_ecdsa::,
 \ 󱆃 ::.bash_history,,.bash_logout,,.bash_profile,,.bashrc,,.cshrc,,.zlogin::,
