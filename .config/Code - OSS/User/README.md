@@ -1,5 +1,7 @@
 # 🆚 Code OSS (Code Editor)
 
+![VS Code](./assets/code.jpg)
+
 Code - OSS is an open source project without any proprietary code under the MIT License.
 The main problem with VSCode is that, it has no context aware keybindings by default for the keyboard people in the year of 2020.
 keybindings.json contains a list of context aware keybindings that I have used during my time in VSCode. <br>
