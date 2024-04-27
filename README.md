@@ -10,6 +10,30 @@
 
 **Keyboard Centric Workflow with Vim Style Keybindings**: Promotes a keyboard-centric approach, with Vim-style keybindings deeply integrated into every tools, apps and utilities. This allows to navigate and interact with speed, precision and comfortability.
 
+## 📦 Custom Configs
+
+| SW Type              | SW Name                                             |
+| -------------------- | --------------------------------------------------- |
+| GUI Code Editor      | [Code OSS](.config/Code%20-%20OSS/User/)            |
+| TUI Code Editor      | [NeoVim](https://github.com/MidHunterX/HunterX-PDE) |
+| Music Visualizer     | [Cava](.config/cava/)                               |
+| Notification Daemon  | Dunst                                               |
+| Image Viewer         | [Feh](.config/feh/)                                 |
+| Shell                | [Fish](.config/fish/)                               |
+| App Launcher         | [Fuzzel](.config/fuzzel/)                           |
+| Wayland Compositor   | [Hyprland](.config/hypr/)                           |
+| Key Remapping Daemon | [KeyD](.config/keyd/)                               |
+| Terminal Emulator    | [Kitty](.config/kitty/)                             |
+| Git TUI Frontend     | [LazyGit](.config/lazygit/)                         |
+| Video Player         | [Mpv](.config/mpv/)                                 |
+| Shell Prompt Engine  | [Starship](.config/starship/)                       |
+| Terminal Multiplexer | [Tmux](.config/tmux/)                               |
+| File Manager         | [ViFM](.config/vifm/)                               |
+| Status Bar           | [WayBar](.config/waybar/)                           |
+| Logout Menu          | [Wlogout](.config/wlogout/)                         |
+| PDF Backend          | Poppler                                             |
+| PDF Frontend         | [Zathura](.config/zathura/)                         |
+
 ## System Configs
 
 ### Sudoers
