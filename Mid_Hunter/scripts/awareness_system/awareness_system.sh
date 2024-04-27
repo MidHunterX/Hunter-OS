@@ -14,7 +14,7 @@ main() {
       CONTENT=$(python ./awareness_system.py "content" "$ACTIVE_CLASS" "$ACTIVE_TITLE")
       WINTYPE=$(python ./awareness_system.py "wintype" "$ACTIVE_CLASS" "$ACTIVE_TITLE")
       ACTION=$(python ./awareness_system.py "action" "$ACTIVE_CLASS" "$ACTIVE_TITLE")
-      notify-send -t '3000' "$ACTIVE_CLASS" "$ACTION on $WINTYPE for $CONTENT content"
+      notify-send -t '3000' "$ACTIVE_CLASS" "$ACTION on $WINTYPE for $CONTENT"
 
       # Update Previous Window
       PREV_WINDOW=$ACTIVE_TITLE

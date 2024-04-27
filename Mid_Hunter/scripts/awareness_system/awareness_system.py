@@ -30,7 +30,7 @@ def main():
 # Converts window_class -> window_type
 # Window Types: terminal, browser, image, video, document, nothing
 def window_type(window_class):
-    from window_types import window_types
+    from data.window_types import window_types
 
     window_class = str(window_class).lower()
     for key in window_types:
@@ -44,7 +44,7 @@ def window_type(window_class):
 # █▄▄ █▄█ █░▀█ ░█░ ██▄ █░█ ░█░   █▀█ █▄▄ ░█░ █ █▄█ █░▀█
 # Converts window_title -> context action
 def context_action(window_category, window_title):
-    from window_actions import category_actions
+    from data.window_actions import category_actions
 
     window_title = str(window_title).lower()
     actions = category_actions[window_category]
@@ -62,7 +62,7 @@ def context_action(window_category, window_title):
 # ▀▄▀▄▀ █ █░▀█ █▄▀ █▄█ ▀▄▀▄▀   █▄▄ █▄█ █░▀█ ░█░ ██▄ █░▀█ ░█░
 # Window Title -> Window Content
 def general_content(window_title):
-    from window_contents import contents
+    from data.window_contents import contents
 
     window_title = str(window_title).lower()
     for key in contents:
