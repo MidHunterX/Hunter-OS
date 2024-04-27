@@ -1,19 +1,28 @@
 import sys
 
-window_class = sys.argv[1]
-window_title = sys.argv[2]
-# window_class = "firefoxdeveloperedition"
-# window_title = "firefoxdeveloperedition | How to draw on metal. Easy to make at home - YouTube — Firefox Developer Edition"
+user_request = sys.argv[1]
+window_class = sys.argv[2]
+window_title = sys.argv[3]
 
 
 # █▀▄▀█ ▄▀█ █ █▄░█   █░░ █▀█ █▀▀ █ █▀▀
 # █░▀░█ █▀█ █ █░▀█   █▄▄ █▄█ █▄█ █ █▄▄
 def main():
-    wintype = window_type(window_class)  # On this type of software
-    action = context_action(wintype, window_title)  # Doing specific thing
-    content = general_content(window_title)  # Type of content present
-    # Default: Something on NULL for Nothing
-    print(f"{action} on {wintype} for {content}")
+    if user_request == 'content':
+        content = general_content(window_title)  # Type of content present
+        print(content)
+        exit(0)
+
+    if user_request == 'wintype':
+        wintype = window_type(window_class)  # On this type of software
+        print(wintype)
+        exit(0)
+
+    if user_request == 'action':
+        wintype = window_type(window_class)  # On this type of software
+        action = context_action(wintype, window_title)  # Doing specific thing
+        print(action)
+        exit(0)
 
 
 # █░█░█ █ █▄░█ █▀▄ █▀█ █░█░█   ▀█▀ █▄█ █▀█ █▀▀
