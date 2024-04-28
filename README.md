@@ -239,6 +239,21 @@
 
 </details>
 
+<details>
+<summary> 🥃 Screenshot </summary>
+
+### 🥃 Screenshot
+
+| Package Name       | Description                    | Src    |
+| ------------------ | ------------------------------ | ------ |
+| grim               | Screenshot Utility for Wayland | pacman |
+| slurp              | Region Selector for Wayland    | pacman |
+| tesseract          | OCR Utility                    | pacman |
+| tesseract-data-eng | Tesseract OCR Data English     | pacman |
+| tesseract-data-mal | Tesseract OCR Data Malayalam   | pacman |
+
+</details>
+
 ## System Configs
 
 ### Sudoers
