@@ -90,6 +90,21 @@
 
 </details>
 
+<details>
+<summary> 📦 Development </summary>
+
+### 📦 Development
+
+| Package Name  | Description                  | Src    |
+| ------------- | ---------------------------- | ------ |
+| git           | Version control system       | pacman |
+| lazygit       | TUI for Git                  | pacman |
+| nodejs        | Node Java Script Runtime Env | pacman |
+| python        | Python Interpreter           | pacman |
+| sqlitebrowser | DB Browser for SQLite        | pacman |
+
+</details>
+
 ## System Configs
 
 ### Sudoers
