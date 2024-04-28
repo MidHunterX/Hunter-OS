@@ -166,6 +166,23 @@
 
 </details>
 
+<details>
+<summary> 📄 Document viewers and editors </summary>
+
+### 📄 Document viewers and editors
+
+| Package Name        | Description                 | Src    |
+| ------------------- | --------------------------- | ------ |
+| neovim              | Text Editor                 | pacman |
+| code                | Open Source build of VSCode | pacman |
+| obsidian            | MarkDown Note taker         | pacman |
+| zathura-pdf-poppler | Zathura Poppler Backend     | pacman |
+| zathura             | PDF Graphical Viewer        | pacman |
+| pdfarranger         | PDF Page Arranger           | pacman |
+| xournalpp           | PDF Annotation / Drawing    | pacman |
+
+</details>
+
 ## System Configs
 
 ### Sudoers
