@@ -12,6 +12,9 @@
 
 ## 💼 Custom Configurations
 
+> [!NOTE]
+> Click on the Names to know more about that specific configuration
+
 | SW Type              | SW Name                                                |
 | -------------------- | ------------------------------------------------------ |
 | GUI Code Editor      | 🆚 [Code OSS](.config/Code%20-%20OSS/User/)            |
