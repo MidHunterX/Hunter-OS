@@ -183,6 +183,20 @@
 
 </details>
 
+<details>
+<summary> 📁 Archivers and File Manager </summary>
+
+### 📁 Archivers and File Manager
+
+| Package Name | Description          | Src    |
+| ------------ | -------------------- | ------ |
+| vifm         | TUI File Manager     | pacman |
+| nemo         | GUI File Manager     | pacman |
+| p7zip        | CLI 7 Zip Archiver   | pacman |
+| fuse-zip     | FUSE mount zip files | pacman |
+
+</details>
+
 ## System Configs
 
 ### Sudoers
