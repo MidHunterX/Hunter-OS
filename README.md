@@ -10,7 +10,7 @@
 
 **Keyboard Centric Workflow with Vim Style Keybindings**: Promotes a keyboard-centric approach, with Vim-style keybindings deeply integrated into every tools, apps and utilities. This allows to navigate and interact with speed, precision and comfortability.
 
-## 📦 Custom Configs
+## 💼 Custom Configurations
 
 | SW Type              | SW Name                                                |
 | -------------------- | ------------------------------------------------------ |
@@ -34,6 +34,39 @@
 | Logout Menu          | 🌳 [Wlogout](.config/wlogout/)                         |
 | PDF Backend          | Poppler                                                |
 | PDF Frontend         | 📄 [Zathura](.config/zathura/)                         |
+
+## 📦 Prefered Packages
+
+<details>
+<summary> 📷 Audio, Video and Image </summary>
+
+### 📢 Audio
+
+| Package Name   | Description                                     | Src    |
+| -------------- | ----------------------------------------------- | ------ |
+| pipewire       | Audio and Video streaming server                | pacman |
+| pipewire-pulse | A/V router & processor - PulseAudio replacement | pacman |
+| wireplumber    | PipeWire session/policy manager - wpctl         | pacman |
+| pamixer        | CLI Volume Control Tool                         | pacman |
+| pavucontrol    | GUI Volume Control Tool                         | pacman |
+
+### 🎬 Video
+
+| Package Name | Description                                        | Src    |
+| ------------ | -------------------------------------------------- | ------ |
+| ffmpeg       | Super advanced library for handling Audio / Video  | pacman |
+| mpv          | Video Player - Minimal and integrates well with WM | pacman |
+| handbrake    | GUI Video Transcoder                               | pacman |
+| yt-dlp       | Video Downloader                                   | pacman |
+
+### 🌄 Image
+
+| Package Name | Description                          | Src    |
+| ------------ | ------------------------------------ | ------ |
+| feh          | Image Viewer - Super light weight    | pacman |
+| nomacs-git   | Image Viewer - Touch screen friendly | aur    |
+
+</details>
 
 ## System Configs
 
