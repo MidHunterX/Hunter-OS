@@ -210,6 +210,20 @@
 
 </details>
 
+<details>
+<summary> 🖥️ Terminal </summary>
+
+### 🖥️ Terminal
+
+| Package Name | Description                        | Src    |
+| ------------ | ---------------------------------- | ------ |
+| kitty        | best of all terminals out there    | pacman |
+| fish         | Modern Shell used as a Commandline | pacman |
+| starship     | Cross Platform Prompt              | pacman |
+| tmux         | Terminal Multiplexer               | pacman |
+
+</details>
+
 ## System Configs
 
 ### Sudoers
