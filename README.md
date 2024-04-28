@@ -105,6 +105,25 @@
 
 </details>
 
+<details>
+<summary> 🌲 Desktop </summary>
+
+### 🌲 Desktop
+
+| Package Name | Description                  | Src    |
+| ------------ | ---------------------------- | ------ |
+| hyprland     | Wayland compositor           | pacman |
+| swww         | Wayland Wallpaper Daemon     | pacman |
+| waybar       | Wayland Status Bar           | pacman |
+| swayidle     | Wayland Idle Manager         | pacman |
+| wtype        | Wayland Keystrokes Emulation | pacman |
+| wl-clipboard | Wayland Clipboard Utility    | pacman |
+| dunst        | Notification Daemon          | pacman |
+| wlogout      | Logout Screen                | aur    |
+| keyd         | Key Remapping Daemon         | aur    |
+
+</details>
+
 ## System Configs
 
 ### Sudoers
