@@ -124,6 +124,22 @@
 
 </details>
 
+<details>
+<summary> 💻 2-in-1 Laptop Specific </summary>
+
+### 💻 2-in-1 Laptop Specific
+
+| Package Name             | Description                            | Src    |
+| ------------------------ | -------------------------------------- | ------ |
+| yoga-usage-mode-dkms-git | ACPI driver for Tablet mode detection  | aur    |
+| detect-tablet-mode-git   | Tablet mode scripts - watch_tablet     | aur    |
+| iio-sensor-proxy         | Accelerometer Sensor Driver            | pacman |
+| iio-hyprland-git         | Set Hyprland Orientation automatically | aur    |
+| auto-cpufreq             | Dynamic CPU Clock Cycle Frequency      | aur    |
+| tlp                      | Laptop Power Optimization              | pacman |
+
+</details>
+
 ## System Configs
 
 ### Sudoers
