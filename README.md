@@ -140,6 +140,32 @@
 
 </details>
 
+<details>
+<summary> ⚙️ Utilities </summary>
+
+### ⚙️ Utilities
+
+| Package Name      | Description                           | Src    |
+| ----------------- | ------------------------------------- | ------ |
+| jq                | CLI JSON Processor                    | pacman |
+| fzf               | Fuzzy Finder Utility                  | pacman |
+| ripgrep           | Text Search Tool                      | pacman |
+| poppler           | PDF Rendering Engine                  | pacman |
+| highlight         | Syntax Highlighter                    | pacman |
+| ffmpegthumbnailer | Video Thumbnailer                     | pacman |
+| brillo            | Brightness based on human perception  | pacman |
+| tgpt              | CLI AI Chat without API keys          | pacman |
+| libqalculate      | CLI NLP Calculator                    | pacman |
+| dust              | Disk space usage analyzer             | pacman |
+| bat               | cat with syntax highlighting          | pacman |
+| lsd               | ls with Nerd Font support             | pacman |
+| exiv2             | Image EXIF Manipulation Tool          | pacman |
+| cava              | Cross Platform Audio Visualizer       | aur    |
+| warpd-git         | Modal Keyboard Driven Virtual Pointer | aur    |
+| speech-dispatcher | Speech Synthesis (spd-say)            | pacman |
+
+</details>
+
 ## System Configs
 
 ### Sudoers
