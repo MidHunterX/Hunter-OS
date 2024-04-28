@@ -197,6 +197,19 @@
 
 </details>
 
+<details>
+<summary> 📊 System Monitors and Managers </summary>
+
+### 📊 System Monitors and Managers
+
+| Package Name | Description           | Src    |
+| ------------ | --------------------- | ------ |
+| htim         | CPU process monitor   | aur    |
+| nvtop        | GPU process monitor   | pacman |
+| powertop     | Battery usage monitor | pacman |
+
+</details>
+
 ## System Configs
 
 ### Sudoers
