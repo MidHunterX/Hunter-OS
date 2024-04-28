@@ -68,6 +68,28 @@
 
 </details>
 
+<details>
+<summary> 🌐 Network and Security </summary>
+
+### 🌐 Network and Security
+
+| Package Name              | Description                        | Src    |
+| ------------------------- | ---------------------------------- | ------ |
+| dhcpcd                    | DHCP Client Daemon                 | pacman |
+| networkmanager            | CLI Network Manager - nmcli        | pacman |
+| nmtui                     | TUI Network Manager - nmtui        | pacman |
+| wpa_supplicant            | WLAN Daemon                        | pacman |
+| bluez                     | Bluetooth Protocol Daemon          | pacman |
+| bluez-utils               | Bluetooth Utilities - bluetoothctl | pacman |
+| blueman                   | GUI Bluetooth Manager              | pacman |
+| curlftpfs                 | Mount FTP as File System           | pacman |
+| android-file-transfer     | Mount Android Device               | pacman |
+| keepassxc                 | Password Manager                   | pacman |
+| torbrowser-launcher       | Anonnymous Onion Browser           | pacman |
+| firefox-developer-edition | Internet Browser                   | pacman |
+
+</details>
+
 ## System Configs
 
 ### Sudoers
