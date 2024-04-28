@@ -224,6 +224,21 @@
 
 </details>
 
+<details>
+<summary> 🖋️ Fonts </summary>
+
+### 🖋️ Fonts
+
+| Package Name            | Description                     | Src    |
+| ----------------------- | ------------------------------- | ------ |
+| fontconfig              | Font Configuration              | pacman |
+| noto-fonts              | Google Font for Unicode Support | pacman |
+| noto-fonts-cjk          | Google Font for Unicode Support | pacman |
+| noto-fonts-emoji        | Google Font for Unicode Support | pacman |
+| ttf-jetbrains-mono-nerd | Nerd Font Icons patch           | pacman |
+
+</details>
+
 ## System Configs
 
 ### Sudoers
