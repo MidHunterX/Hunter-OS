@@ -265,7 +265,7 @@ visualization of the relationships between packages which can be useful when
 changing into an alternative in the future without breaking the system.
 
 ```mermaid
-graph TD
+graph LR
 vifm(📁 VIFM)
 ls(LSD)
 cat(BAT)
