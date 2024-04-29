@@ -169,7 +169,8 @@ format        = '[$all_status$ahead_behind]($style)'
 
 [time]
 disabled = false
-format = '   [$time]($style) '
+style = "fg:col_blu bold"
+format = ' at [$time]($style) '
 time_format = '%H:%M'
 # utc_time_offset = '-5'
 # time_range = '10:00:00-14:00:00'
