@@ -16,7 +16,7 @@ source $SCRIPT_DIR/profile/profile.sh
 profile.arch hot
 
 check_interval=$(minutes 5)
-WARM_TEMP=55
+WARM_TEMP=60
 
 while :; do
   arch.updateCpuTemp
