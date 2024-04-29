@@ -267,19 +267,19 @@ changing into an alternative in the future without breaking the system.
 ```mermaid
 graph LR
 vifm(📁 VIFM)
-ls(LSD)
-cat(BAT)
-exif(Exiv2)
+ls(lsd)
+cat(bat)
+exif(exiv2)
 syntax(highlight)
 nvim(📝 NeoVim)
 term(🐱 Kitty)
 fish(🐟 Fish Shell)
 volume(pamixer)
-backlight(Brillo)
+backlight(brillo)
 waybar(🍫 Waybar)
 nf(Nerd Font)
-vos(Volume Script)
-brs(Brightness Script)
+vos(🔈 VOS)
+brs(🔆 BRS)
 
 vifm --> ls
 vifm --> nvim
