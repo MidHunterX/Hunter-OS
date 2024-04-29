@@ -257,6 +257,45 @@
 
 </details>
 
+## 🍇 Common Dependency Graph
+
+This graph shows common dependencies among packages, highlighting those that
+are utilized by multiple packages within the system. It provides a clear
+visualization of the relationships between packages which can be useful when
+changing into an alternative in the future without breaking the system.
+
+```mermaid
+graph TD
+vifm(VIFM)
+ls(LSD)
+nvim(NeoVim)
+term(Kitty)
+fish(Fish Shell)
+volume(pamixer)
+backlight(Brillo)
+waybar(Waybar)
+nf(Nerd Font)
+vos(Volume Script)
+brs(Brightness Script)
+
+vifm --> ls
+vifm --> nvim
+vifm --> nf
+fish --> ls
+ls --> nf
+fish --> vifm
+fish --> vos
+fish --> brs
+nvim --> vifm
+nvim --> nf
+term --> nvim
+waybar --> volume
+waybar --> backlight
+waybar --> nf
+vos --> volume
+brs --> backlight
+```
+
 ## System Configs
 
 ### Sudoers
