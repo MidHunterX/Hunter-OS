@@ -17,26 +17,26 @@
 
 | SW Type              | SW Name                                                |
 | -------------------- | ------------------------------------------------------ |
+| File Manager         | 📁 [ViFM](.config/vifm/)                               |
+| Image Viewer         | 🌄 [Feh](.config/feh/)                                 |
+| Video Player         | 🎬 [Mpv](.config/mpv/)                                 |
+| Music Visualizer     | 📊 [Cava](.config/cava/)                               |
+| PDF Frontend         | 📄 [Zathura](.config/zathura/)                         |
+| PDF Backend          | Poppler                                                |
+| App Launcher         | 📜 [Fuzzel](.config/fuzzel/)                           |
+| Web Browser          | 🦊 [FireFox](.mozilla/)                                |
 | GUI Code Editor      | 🆚 [Code OSS](.config/Code%20-%20OSS/User/)            |
 | TUI Code Editor      | 📝 [NeoVim](https://github.com/MidHunterX/HunterX-PDE) |
-| Web Browser          | 🦊 [FireFox](.mozilla/)                                |
-| Music Visualizer     | 📊 [Cava](.config/cava/)                               |
 | Notification Daemon  | 🔔 Dunst                                               |
-| Image Viewer         | 🌄 [Feh](.config/feh/)                                 |
 | Shell                | 🐟 [Fish](.config/fish/)                               |
-| App Launcher         | 📜 [Fuzzel](.config/fuzzel/)                           |
-| Wayland Compositor   | 💧 [Hyprland](.config/hypr/)                           |
-| Key Remapping Daemon | 🎹 [KeyD](.config/keyd/)                               |
-| Terminal Emulator    | 🐱 [Kitty](.config/kitty/)                             |
-| Git TUI Frontend     | 😴 [LazyGit](.config/lazygit/)                         |
-| Video Player         | 🎬 [Mpv](.config/mpv/)                                 |
-| Shell Prompt Engine  | 🚀 [Starship](.config/starship/)                       |
 | Terminal Multiplexer | 🍱 [Tmux](.config/tmux/)                               |
-| File Manager         | 📁 [ViFM](.config/vifm/)                               |
+| Terminal Emulator    | 🐱 [Kitty](.config/kitty/)                             |
+| Shell Prompt Engine  | 🚀 [Starship](.config/starship/)                       |
+| Key Remapping Daemon | 🎹 [KeyD](.config/keyd/)                               |
+| Git TUI Frontend     | 😴 [LazyGit](.config/lazygit/)                         |
+| Wayland Compositor   | 💧 [Hyprland](.config/hypr/)                           |
 | Status Bar           | 🍫 [WayBar](.config/waybar/)                           |
 | Logout Menu          | 🌳 [Wlogout](.config/wlogout/)                         |
-| PDF Backend          | Poppler                                                |
-| PDF Frontend         | 📄 [Zathura](.config/zathura/)                         |
 
 ## 📦 Prefered Packages
 
