@@ -26,9 +26,7 @@ col_wht = '#ffffff'
 col_blk = '#000000'
 col_usr = '#ffce6a'
 col_dir = '#ff7d0b'
-col_git = '#89B4FA'
 col_lng = '#404040'
-col_chk = '#A6E3A1'
 
 col_red = '#f16565'
 col_ylo = "#F9E2AF"
