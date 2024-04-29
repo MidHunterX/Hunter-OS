@@ -7,6 +7,8 @@ $directory[](fg:col_dir bg:col_git)$git_branch$git_status\
 $all\
 $status\
 $cmd_duration\
+$fill\
+$time\
 $line_break\
 [  ](fg:col_wht)
 """
@@ -26,7 +28,9 @@ col_wht = '#ffffff'
 col_blk = '#000000'
 col_usr = '#ffce6a'
 col_dir = '#ff7d0b'
+col_git = '#A6E3A1'
 col_lng = '#404040'
+col_chk = '#89B4FA'
 
 col_red = '#f16565'
 col_ylo = "#F9E2AF"
@@ -42,6 +46,10 @@ col_vim_rep = "#ffa74d"
 
 
 # ============================ [ PROMPT DESIGN ] ============================ #
+
+[fill]
+symbol = ' '
+style = 'bold black'
 
 [os]
 disabled = true
@@ -157,6 +165,14 @@ behind        = ' ${count} '
 style         = "fg:col_blk bg:col_git"
 format        = '[$all_status$ahead_behind]($style)'
 
+# ============================ [ OTHER MODULES ] ============================ #
+
+[time]
+disabled = false
+format = '   [$time]($style) '
+time_format = '%H:%M'
+# utc_time_offset = '-5'
+# time_range = '10:00:00-14:00:00'
 
 # ================== [ LAANGUAGES AND TECHNOLOGIES ICONS ] ================== #
 
