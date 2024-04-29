@@ -7,7 +7,6 @@ $directory[](fg:col_dir bg:col_git)$git_branch$git_status\
 $all\
 $status\
 $cmd_duration\
-$fill\
 $time\
 $line_break\
 [  ](fg:col_wht)
