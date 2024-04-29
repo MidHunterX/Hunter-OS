@@ -257,7 +257,7 @@
 
 </details>
 
-## 🍇 Common Dependency Graph
+## 🍇 Dependency Graph
 
 This graph shows common dependencies among packages, highlighting those that
 are utilized by multiple packages within the system. It provides a clear
@@ -266,14 +266,17 @@ changing into an alternative in the future without breaking the system.
 
 ```mermaid
 graph TD
-vifm(VIFM)
+vifm(📁 VIFM)
 ls(LSD)
-nvim(NeoVim)
-term(Kitty)
-fish(Fish Shell)
+cat(BAT)
+exif(Exiv2)
+syntax(highlight)
+nvim(📝 NeoVim)
+term(🐱 Kitty)
+fish(🐟 Fish Shell)
 volume(pamixer)
 backlight(Brillo)
-waybar(Waybar)
+waybar(🍫 Waybar)
 nf(Nerd Font)
 vos(Volume Script)
 brs(Brightness Script)
@@ -281,11 +284,14 @@ brs(Brightness Script)
 vifm --> ls
 vifm --> nvim
 vifm --> nf
+vifm --> exif
+vifm --> syntax
 fish --> ls
 ls --> nf
 fish --> vifm
 fish --> vos
 fish --> brs
+fish --> cat
 nvim --> vifm
 nvim --> nf
 term --> nvim
