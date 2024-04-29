@@ -65,8 +65,8 @@ format = '[ $user ]($style)'
 read_only = "󰌾 "
 style = "bg:col_dir fg:col_wht"
 format = "[ 🖿 $path ]($style)[$read_only](fg:col_ylo bg:col_dir)"
-truncation_length = 3
-# truncation_symbol = "…/"
+truncation_length = 2
+truncation_symbol = "…/"
 
 [jobs]
 symbol = ' '
