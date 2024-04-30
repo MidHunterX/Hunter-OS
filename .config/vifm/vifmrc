@@ -3,9 +3,14 @@
 " @commands
 
 " FZF Integration
-command! FZFfind : let $FZF_PICK = term('find . -not -path "*/\.*" -type f -o -type d | fzf --height 10 2>/dev/tty')
+" Exclude dot dir and dot files - 47310
+" find . -type d -type f -o -not -regex '.*/\..*' | fzf
+" Exclude dot dir and dot files except for .config/ - 49099
+" find . \( -path "./.config" -o -path "./.config/*" \) -o \( -type d -o -type f \) -not -regex ".*/\..*" | fzf
+
+command! FZFfind : let $FZF_PICK = term('find . \( -path "./.config" -o -path "./.config/*" \) -o \( -type d -o -type f \) -not -regex ".*/\..*" | fzf --height 10 2>/dev/tty')
                 \| if $FZF_PICK != ''
-                \|     execute 'goto' fnameescape($FZF_PICK)
+                \|     execute system('[ -f "$FZF_PICK" ] && echo goto || echo cd') fnameescape($FZF_PICK)
                 \| endif
 nnoremap <c-f> :FZFfind<cr>
 nnoremap ? :FZFfind<cr>
