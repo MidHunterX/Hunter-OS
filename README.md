@@ -272,10 +272,10 @@ cat(bat)
 exif(exiv2)
 syntax(highlight)
 nvim(📝 NeoVim)
-term(🐱 Kitty)
+kitty(🐱 Kitty)
 fish(🐟 Fish Shell)
 volume(pamixer)
-backlight(brillo)
+brillo(brillo)
 waybar(🍫 Waybar)
 nf(Nerd Font)
 vos(🔈 VOS)
@@ -294,12 +294,13 @@ fish --> brs
 fish --> cat
 nvim --> vifm
 nvim --> nf
-term --> nvim
+kitty --> nvim
+kitty --> fish
 waybar --> volume
-waybar --> backlight
+waybar --> brillo
 waybar --> nf
 vos --> volume
-brs --> backlight
+brs --> brillo
 ```
 
 ## System Configs
