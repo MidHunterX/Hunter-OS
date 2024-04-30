@@ -548,6 +548,8 @@ set classify+='
 " Independent Directories
 set classify+='
 \  ::home/::,  ::videos/::,  ::share/::,  ::nvim/::,  ::media/::,
+\ 󰨞 ::Code - OSS/::, 󰄨 ::cava/::,  ::tmux/::, 󰈺 ::fish/::,  ::GIMP/::,
+\  ::hypr/::, 󰌌 ::keyd/::, 󱓞 ::starship/::,  ::VSCodium/::, 󰍃 ::wlogout/::,
 \  ::public/::, 󰉍 ::downloads/::, 󰉏 ::pictures/::, 󰉐 ::root/::, 󰙨 ::tests/::,
 \ 󰫦 ::vendor/::, 󱍙 ::music/::, 󱧼 ::src/::,  ::data/::,  ::repos/::,
 \  ::shared/::,  ::notes/::,  ::dropbox::,  ::gdrive/::,
