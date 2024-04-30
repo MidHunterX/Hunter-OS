@@ -87,6 +87,7 @@
 | blueman                   | GUI Bluetooth Manager              | pacman |
 | curlftpfs                 | Mount FTP as File System           | pacman |
 | android-file-transfer     | Mount Android Device               | pacman |
+| transmission-gtk          | GUI Torrent Client                 | pacman |
 | keepassxc                 | Password Manager                   | pacman |
 | torbrowser-launcher       | Anonnymous Onion Browser           | pacman |
 | firefox-developer-edition | Internet Browser                   | pacman |
