@@ -266,20 +266,20 @@ changing into an alternative in the future without breaking the system.
 
 ```mermaid
 graph LR
-vifm(📁 VIFM)
-ls(lsd)
-cat(bat)
-exif(exiv2)
-syntax(highlight)
-nvim(📝 NeoVim)
-kitty(🐱 Kitty)
-fish(🐟 Fish Shell)
-volume(pamixer)
-brillo(brillo)
-waybar(🍫 Waybar)
-nf(Nerd Font)
+vifm(📁 <a href='.config/vifm/'>VIFM</a>)
+ls{{lsd}}
+cat{{bat}}
+exif{{exiv2}}
+syntax{{highlight}}
+nvim(📝 <a href='https://github.com/MidHunterX/HunterX-PDE'>NeoVim</a>)
+kitty(🐱 <a href='.config/kitty/'>Kitty</a>)
+fish(🐟 <a href='.config/fish/'>Fish Shell</a>)
 vos(🔈 VOS)
+volume{{pamixer}}
 brs(🔆 BRS)
+brillo{{brillo}}
+waybar(🍫 <a href='.config/waybar/'>Waybar</a>)
+nf(Nerd Font)
 
 vifm --> ls
 vifm --> nvim
