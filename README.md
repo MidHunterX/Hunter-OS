@@ -266,19 +266,19 @@ changing into an alternative in the future without breaking the system.
 
 ```mermaid
 graph LR
-vifm(📁 <a href='.config/vifm/'>VIFM</a>)
+vifm(📁 <a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/vifm'>VIFM</a>)
 ls{{lsd}}
 cat{{bat}}
 exif{{exiv2}}
 syntax{{highlight}}
 nvim(📝 <a href='https://github.com/MidHunterX/HunterX-PDE'>NeoVim</a>)
-kitty(🐱 <a href='.config/kitty/'>Kitty</a>)
-fish(🐟 <a href='.config/fish/'>Fish Shell</a>)
+kitty(🐱 <a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/kitty/'>Kitty</a>)
+fish(🐟 <a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/fish/'>Fish Shell</a>)
 vos(🔈 VOS)
 volume{{pamixer}}
 brs(🔆 BRS)
 brillo{{brillo}}
-waybar(🍫 <a href='.config/waybar/'>Waybar</a>)
+waybar(🍫 <a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/waybar/'>Waybar</a>)
 nf(Nerd Font)
 
 vifm --> ls
