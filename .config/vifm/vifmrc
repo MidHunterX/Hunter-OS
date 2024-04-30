@@ -3,7 +3,7 @@
 " @commands
 
 " FZF Integration
-command! FZFfind : let $FZF_PICK = term('find | fzf --height 10 2>/dev/tty')
+command! FZFfind : let $FZF_PICK = term('find . -not -path "*/\.*" -type f -o -type d | fzf --height 10 2>/dev/tty')
                 \| if $FZF_PICK != ''
                 \|     execute 'goto' fnameescape($FZF_PICK)
                 \| endif
