@@ -237,11 +237,9 @@ endif
 fileviewer {.git/}, git -c color.status=always status %d %pu
 
 "  DIRECTORY PREVIEW
-fileviewer {*/},
+fileviewer {*/,.*/,../},
         \ lsd --almost-all --color=always --icon=always --group-directories-first --blocks=permission --blocks=name,
-        \ ls --color=always
-fileviewer {.*/},
-        \ lsd --almost-all --color=always --icon=always --group-directories-first --blocks=permission --blocks=name,
+        \ lsd --almost-all --color=always --icon=always --group-directories-first --tree --depth=3,
         \ ls --color=always
 
 "  DATABASE
@@ -329,7 +327,7 @@ fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
            \*.fl[icv],*.m2v,*.mov,*.webm,*.mts,*.m4v,*.r[am],*.qt,*.divx,
            \*.as[fx],*.unknown_video},
           \<video/*>
-         \ ffprobe -hide_banner -pretty %c 2>&1
+         \ ffprobe -hide_banner -pretty %c 2>&1 | highlight -O ansi --syntax ini
 
 "  OFFICE FILES
 filextype { *.odt,*.doc,*.docx,*.xls,*.xlsx,*.odp,*.pptx,*.ppt},
