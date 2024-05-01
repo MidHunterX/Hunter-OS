@@ -151,6 +151,7 @@
 
 | Package Name      | Description                           | Src    |
 | ----------------- | ------------------------------------- | ------ |
+| fd                | Faster alternative to find command    | pacman |
 | jq                | CLI JSON Processor                    | pacman |
 | fzf               | Fuzzy Finder Utility                  | pacman |
 | ripgrep           | Text Search Tool                      | pacman |
