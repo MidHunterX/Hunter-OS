@@ -9,7 +9,7 @@ highlight TopLineSel    cterm=bold            ctermfg=Green     ctermbg=default
 highlight Win           cterm=none            ctermfg=default   ctermbg=default
 highlight Directory     cterm=bold            ctermfg=Blue      ctermbg=default
 highlight Link          cterm=bold            ctermfg=Cyan      ctermbg=default
-highlight BrokenLink    cterm=bold,inverse    ctermfg=Red       ctermbg=default
+highlight BrokenLink    cterm=bold            ctermfg=Red       ctermbg=Black
 
 highlight Executable    cterm=bold            ctermfg=Green     ctermbg=default
 highlight Device        cterm=bold            ctermfg=Yellow    ctermbg=default
