@@ -9,8 +9,10 @@
 " find . \( -path "./.config" -o -path "./.config/*" \) -o \( -type d -o -type f \) -not -regex ".*/\..*" | fzf
 " Exclude dot dir except for .config/ (dir only) - 9219
 " find . \( -path "./.config" -o -path "./.config/*" \) -type d -o -type d -not -regex ".*/\..*" | fzf
+" fd super fast alternative
+" fd --type d --type f --hidden --exclude ".git" --exclude ".local" --exclude ".cache" --no-ignore-vcs --max-depth 5 | fzf
 
-command! FZFfind : let $FZF_PICK = term('find . \( -path "./.config" -o -path "./.config/*" \) -type d -o -type d -not -regex ".*/\..*" | fzf --height 10 2>/dev/tty')
+command! FZFfind : let $FZF_PICK = term('fd --type d --type f --hidden --exclude ".git" --exclude ".local" --exclude ".cache" --no-ignore-vcs --max-depth 5 | fzf 2>/dev/tty')
                 \| if $FZF_PICK != ''
                 \|     execute system('[ -f "$FZF_PICK" ] && echo goto || echo cd') fnameescape($FZF_PICK)
                 \| endif
