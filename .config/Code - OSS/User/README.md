@@ -7,6 +7,11 @@ The main problem with VSCode is that, it has no context aware keybindings by def
 keybindings.json contains a list of context aware keybindings that I have used during my time in VSCode. <br>
 It also fixes some vim extension key conflicts in order to use the default VSCode keybindings on insert mode and Vim keybindings on normal mode.
 
+## ❌ Problems
+- It puts dotfiles on $HOME dir which doesn't follow XDG Spec. [VSCode Issue has been open since 2016](https://github.com/Microsoft/vscode/issues/3884)
+- This problem is inherited from Electron, which is inherited from Chrome.
+- Electron has has an issue for this: [ electron/electron#8124 ]( https://github.com/electron/electron/issues/8124 ). They seem to be worried about breaking backwards compatibility for every program that uses Electron.
+
 ## ⌨️ Keybindings
 
 ### When Workbench is Selected
