@@ -57,6 +57,35 @@ B=${GRN} # Bold
 V=${YLO} # Values
 
 
+# █▀▀ █▀█ █▄░█ █▀▄ █ ▀█▀ █ █▀█ █▄░█ ▄▀█ █░░   █▀▀ █▀█ █░░ █▀█ █▀█ █▀
+# █▄▄ █▄█ █░▀█ █▄▀ █ ░█░ █ █▄█ █░▀█ █▀█ █▄▄   █▄▄ █▄█ █▄▄ █▄█ █▀▄ ▄█
+# ==================================================================
+# Solid State Drive
+if [[ $SSD_PERCENT -lt 80 ]]; then
+  COL_SSD=${BLU}
+else
+  COL_SSD=${RED}
+fi
+
+# Random Access Memory
+if [[ $RAM_VALUE -lt 2000 ]]; then
+  COL_RAM=${BLU}
+elif [[ $RAM_VALUE -lt 3000 ]]; then
+  COL_RAM=${YLO}
+else
+  COL_RAM=${RED}
+fi
+
+# Battery
+if [[ $BAT_PERCENT -gt 60 ]]; then
+  COL_BAT=${BLU}
+elif [[ $BAT_PERCENT -gt 40 ]]; then
+  COL_BAT=${YLO}
+else
+  COL_BAT=${RED}
+fi
+
+
 # █▀█ █░█ ▀█▀ █▀█ █░█ ▀█▀
 # █▄█ █▄█ ░█░ █▀▀ █▄█ ░█░
 echo " "
@@ -71,8 +100,8 @@ echo -e "  ${X}oMMo ${Y}yyy${X}sNMMNo${Y}yyy${X} oMMo${R}   ${H}Device Details:$
 echo -e "  ${X}oMMo ${Y}yyy${X} '++' ${Y}yyy${X} oMMo${R}   ${L}---------------"
 echo -e "  ${X}oMMo ${Y}yyy${X}      ${Y}yyy${X} oMMo${R}   ${B}CPU:${R} AMD Ryzen 5 5500U"
 echo -e "  ${X}oMMo ${Y}oyy${X}      ${Y}yyo${X} oMMo${R}   ${B}GPU:${R} AMD Radeon RX Vega 7"
-echo -e "  ${X}oMMo ${Y} *o${X}      ${Y}o* ${X} oMMo${R}   ${B}SSD:${R} ${BLU}$SSD_BAR${BLK}$SSD_REST_BAR${R} $SSD_PERCENT%${R}"
-echo -e "  ${X}oMMo ${Y}   ${X}      ${Y}   ${X} oMMo${R}   ${B}RAM:${R} ${YLO}$RAM_BAR${BLK}$RAM_REST_BAR${R} $RAM_VALUE MB${R}"
-echo -e "  ${X}:NMo ${Y}   ${X}      ${Y}   ${X} oMN:${R}   ${B}BAT:${R} ${GRN}$BAT_BAR${BLK}$BAT_REST_BAR${R} $BAT_PERCENT%${R}"
+echo -e "  ${X}oMMo ${Y} *o${X}      ${Y}o* ${X} oMMo${R}   ${B}SSD:${R} ${COL_SSD}$SSD_BAR${BLK}$SSD_REST_BAR${R} $SSD_PERCENT%${R}"
+echo -e "  ${X}oMMo ${Y}   ${X}      ${Y}   ${X} oMMo${R}   ${B}RAM:${R} ${COL_RAM}$RAM_BAR${BLK}$RAM_REST_BAR${R} $RAM_VALUE MB${R}"
+echo -e "  ${X}:NMo ${Y}   ${X}      ${Y}   ${X} oMN:${R}   ${B}BAT:${R} ${COL_BAT}$BAT_BAR${BLK}$BAT_REST_BAR${R} $BAT_PERCENT%${R}"
 echo -e "  ${X}  o+ ${Y}   ${X}      ${Y}   ${X} +o  ${R}"
 echo -e "                           ${RED}${ICO}${GRN}${ICO}${YLO}${ICO}${BLU}${ICO}${PNK}${ICO}${CYN}${ICO}${WHT}${ICO}${BLK}${ICO}${R}"
