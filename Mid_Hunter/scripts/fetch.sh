@@ -11,13 +11,28 @@ BAR_FILL='━'
 BAR_REST='━'
 
 
+# █░█ ▄▀█ █▀█ █ ▄▀█ █▄▄ █░░ █▀▀ █▀
+# ▀▄▀ █▀█ █▀▄ █ █▀█ █▄█ █▄▄ ██▄ ▄█
+# ================================
+BLK='\033[1;30m' RED='\033[1;31m' GRN='\033[1;32m' YLO='\033[1;33m'
+BLU='\033[1;34m' PNK='\033[1;35m' CYN='\033[1;36m' WHT='\033[1;37m'
+DEF='\033[0;39m' RESET='\033[0;0m'
+R=${RESET}
+X=${BLU} # Accent 1
+Y=${YLO} # Accent 2
+H=${BLU} # Heading
+L=${WHT} # Line
+B=${GRN} # Bold
+V=${YLO} # Values
+
+
 # █▀▄ ▄▀█ ▀█▀ ▄▀█
 # █▄▀ █▀█ ░█░ █▀█
 # ===============
 # uptime=$(uptime -p | awk -F'( |,)+' '{print $2,$3,$4,$5}')
 uptime=$(uptime -p)
 read -r hr hr_label min min_label <<< "$(awk -F'( |,)+' '{print $2,$3,$4,$5}' <<< "$uptime")"
-uptime="${V}${hr}${R} ${hr_label} ${V}${min}${R} ${min_label}"
+UPTIME="${V}${hr}${R} ${hr_label} ${V}${min}${R} ${min_label}"
 
 BAR_FRACTION=${BAR_SCALING}
 ROUNDOFF=${BAR_SCALING}
@@ -40,21 +55,6 @@ SSD_ROUND=$((SSD_PERCENT - (SSD_PERCENT%ROUNDOFF)))
 SSD_REST=$((100-SSD_ROUND))
 SSD_BAR=$(echo "$(printf "${BAR_FILL}%.0s" $(seq 1 $((${SSD_ROUND}/BAR_FRACTION))))")
 SSD_REST_BAR=$(echo "$(printf "${BAR_REST}%.0s" $(seq 1 $((${SSD_REST}/BAR_FRACTION))))")
-
-
-# █░█ ▄▀█ █▀█ █ ▄▀█ █▄▄ █░░ █▀▀ █▀
-# ▀▄▀ █▀█ █▀▄ █ █▀█ █▄█ █▄▄ ██▄ ▄█
-# ================================
-BLK='\033[1;30m' RED='\033[1;31m' GRN='\033[1;32m' YLO='\033[1;33m'
-BLU='\033[1;34m' PNK='\033[1;35m' CYN='\033[1;36m' WHT='\033[1;37m'
-DEF='\033[0;39m' RESET='\033[0;0m'
-R=${RESET}
-X=${BLU} # Accent 1
-Y=${YLO} # Accent 2
-H=${BLU} # Heading
-L=${WHT} # Line
-B=${GRN} # Bold
-V=${YLO} # Values
 
 
 # █▀▀ █▀█ █▄░█ █▀▄ █ ▀█▀ █ █▀█ █▄░█ ▄▀█ █░░   █▀▀ █▀█ █░░ █▀█ █▀█ █▀
@@ -94,7 +94,7 @@ echo -e "  ${X},    ${Y}yyo${X}      ${Y}oyy${X}    ,${R}   ${L}----------------
 echo -e "  ${X}oNo  ${Y}yyy${X}      ${Y}yyy${X}  oNo${R}   ${B}OS:${R} Hunter OS"
 echo -e "  ${X}oMMNs${Y}yyy${X}      ${Y}yyy${X}sNMMo${R}   ${B}Host:${R} 82HU IdeaPad Flex 5 14ALC05"
 echo -e "  ${X}oMMMM${Y}yyy${X}      ${Y}yyy${X}MMMMo${R}   ${B}Datetime:${R} $(date +"${V}%d${R} %b %Y, ${V}%H:%M${R} %a")"
-echo -e "  ${X}oMMhd${Y}yyy${X}y.  .y${Y}yyy${X}yyMMo${R}   ${B}Uptime:${R} ${uptime}"
+echo -e "  ${X}oMMhd${Y}yyy${X}y.  .y${Y}yyy${X}yyMMo${R}   ${B}Uptime:${R} ${UPTIME}"
 echo -e "  ${X}oMMo ${Y}yyy${X}MMyyMM${Y}yyy${X} oMMo${R}"
 echo -e "  ${X}oMMo ${Y}yyy${X}sNMMNo${Y}yyy${X} oMMo${R}   ${H}Device Details:${R}"
 echo -e "  ${X}oMMo ${Y}yyy${X} '++' ${Y}yyy${X} oMMo${R}   ${L}---------------"
