@@ -64,8 +64,8 @@ format = '[ $user ]($style)'
 read_only = "󰌾 "
 style = "bg:col_dir fg:col_wht"
 format = "[ 🖿 $path ]($style)[$read_only](fg:col_ylo bg:col_dir)"
-truncation_length = 2
-truncation_symbol = "…/"
+truncation_length = 3
+# truncation_symbol = "…/"
 
 [jobs]
 symbol = ' '
@@ -149,9 +149,10 @@ Windows       = " 󰍲  "
 # ============================== [ GIT ICONS ] ============================== #
 
 [git_branch]
-symbol        = "  "
+symbol        = " "
 style         = "fg:col_blk bg:col_git"
-format        = '[$symbol$branch ]($style)'
+format        = '[ $symbol$branch(:$remote_branch)]($style)'
+# ignore_branches = ['master', 'main']
 
 [git_status]
 staged        = ' ${count} '
@@ -162,7 +163,7 @@ untracked     = ' ${count} '
 ahead         = ' ${count} '
 behind        = ' ${count} '
 style         = "fg:col_blk bg:col_git"
-format        = '[$all_status$ahead_behind]($style)'
+format        = '[ $all_status$ahead_behind]($style)'
 
 # ============================ [ OTHER MODULES ] ============================ #
 
@@ -177,153 +178,184 @@ time_format = '%H:%M'
 # ================== [ LAANGUAGES AND TECHNOLOGIES ICONS ] ================== #
 
 [aws]
-symbol        = "  "
-format        = '[ $symbol $context ]($style)'
+symbol        = "🅰 "
+format        = '[ $symbol$profile ]($style)'
+
+[azure]
+symbol        = "󰠅 "
+format        = '[ $symbol($subscription) ]($style)'
+disabled      = true
 
 [buf]
 symbol        = " "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $symbol$version ]($style)'
 
 [c]
 symbol        = " "
-format        = '[ $symbol ($version) ]($style)'
+format        = '[ $symbol($version(-$name)) ]($style)'
+
+[cmake]
+symbol        = "△ "
+format        = '[ $symbol($version) ]($style)'
 
 [conda]
 symbol        = " "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $symbol$environment ]($style)'
+
+[container]
+symbol        = "⬢ "
+format        = '[ $symbol\[$name\] ]($style)'
 
 [crystal]
 symbol        = " "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $symbol($version) ]($style)'
+
+[daml]
+symbol        = "Λ "
+format        = '[ $symbol($version) ]($style)'
 
 [dart]
 symbol        = " "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $symbol($version) ]($style)'
+
+[deno]
+symbol        = "󱔎 "
+format        = '[ $symbol($version) ]($style)'
 
 [docker_context]
 symbol        = " "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $symbol$context ]($style)'
 
 [elixir]
 symbol        = " "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $symbol($version \(OTP $otp_version\)) ]($style)'
 
 [elm]
 symbol        = " "
-format        = '[ $symbol ($version) ]($style)'
+format        = '[ $symbol($version) ]($style)'
 
 [fennel]
 symbol        = " "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $symbol$version ]($style)'
 
 [fossil_branch]
 symbol        = " "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $symbol$version ]($style)'
 
 [golang]
 symbol        = " "
-format        = '[ $symbol ($version) ]($style)'
+format        = '[ $symbol$version ]($style)'
 
 [guix_shell]
 symbol        = " "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $symbol$version ]($style)'
 
 [haskell]
 symbol        = " "
-format        = '[ $symbol ($version) ]($style)'
+format        = '[ $symbol$version ]($style)'
 
 [haxe]
 symbol        = " "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $symbol$version ]($style)'
+
+[helm]
+symbol        = "⎈ "
+format        = '[ $symbol$version ]($style)'
 
 [hg_branch]
 symbol        = " "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $symbol$version ]($style)'
 
 [hostname]
 ssh_symbol    = " "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $ssh_symbol$hostname ]($style)'
+# trim_at       = '.companyname.com'
 
 [java]
 symbol        = " "
-format        = '[ $symbol ($version) ]($style)'
+format        = '[ $symbol$version ]($style)'
 
 [julia]
 symbol        = " "
-format        = '[ $symbol ($version) ]($style)'
+format        = '[ $symbol$version ]($style)'
 
 [kotlin]
 symbol        = " "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $symbol$version ]($style)'
+
+[kubernetes]
+symbol        = "☸ "
+format        = '[ $symbol$context(\($namespace\)) ]($style)'
+disabled      = true
 
 [lua]
 symbol        = " "
-format        = '[ $symbol ($version) ]($style)'
+format        = '[ $symbol$version ]($style)'
 
 [memory_usage]
 symbol        = "󰍛 "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $symbol$version ]($style)'
 
 [meson]
 symbol        = "󰔷 "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $symbol$version ]($style)'
 
 [nim]
 symbol        = "󰆥 "
-format        = '[ $symbol ($version) ]($style)'
+format        = '[ $symbol$version ]($style)'
 
 [nix_shell]
 symbol        = " "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $symbol$version ]($style)'
 
 [nodejs]
-symbol        = ""
-format        = '[ $symbol ($version) ]($style)'
+symbol        = " "
+format        = '[ $symbol$version ]($style)'
 
 [ocaml]
 symbol        = " "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $symbol$version ]($style)'
 
 [package]
 symbol        = "󰏗 "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $symbol$version ]($style)'
 
 [perl]
 symbol        = " "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $symbol$version ]($style)'
 
 [php]
 symbol        = " "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $symbol$version ]($style)'
 
 [pijul_channel]
 symbol        = " "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $symbol$version ]($style)'
 
 [python]
 symbol        = " "
-format        = '[ ${symbol}${pyenv_prefix}(${version}) (\($virtualenv\) )]($style)'
+format        = '[ ${symbol}${pyenv_prefix}(${version})(\($virtualenv\)) ]($style)'
 
 [rlang]
 symbol        = "󰟔 "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $symbol$version ]($style)'
 
 [ruby]
 symbol        = " "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $symbol$version ]($style)'
 
 [rust]
 symbol        = ""
-format        = '[ $symbol ($version) ]($style)'
+format        = '[ $symbol$version ]($style)'
 
 [scala]
 symbol        = " "
-format        = '[ $symbol ($version) ]($style)'
+format        = '[ $symbol$version ]($style)'
 
 [swift]
 symbol        = " "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $symbol$version ]($style)'
 
 [zig]
 symbol        = " "
-format        = '[ $symbol $context ]($style)'
+format        = '[ $symbol$version ]($style)'
