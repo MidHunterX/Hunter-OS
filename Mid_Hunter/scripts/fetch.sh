@@ -63,14 +63,16 @@ SSD_REST_BAR=$(echo "$(printf "${BAR_REST}%.0s" $(seq 1 $((${SSD_REST}/BAR_FRACT
 # Solid State Drive
 if [[ $SSD_PERCENT -lt 80 ]]; then
   COL_SSD=${BLU}
+elif [[ $SSD_PERCENT -lt 90 ]]; then
+  COL_SSD=${YLO}
 else
   COL_SSD=${RED}
 fi
 
 # Random Access Memory
-if [[ $RAM_VALUE -lt 2000 ]]; then
+if [[ $RAM_VALUE -lt 3000 ]]; then
   COL_RAM=${BLU}
-elif [[ $RAM_VALUE -lt 3000 ]]; then
+elif [[ $RAM_VALUE -lt 4000 ]]; then
   COL_RAM=${YLO}
 else
   COL_RAM=${RED}
