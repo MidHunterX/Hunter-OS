@@ -20,6 +20,8 @@ if status is-interactive
 
   # LS_COLORS
   source ~/.config/fish/ls_colors.fish
+  # Better Alternatives
+  source ~/.config/fish/better_alternatives.fish
 
   # Starship prompt
   starship init fish | source
@@ -78,30 +80,6 @@ if status is-interactive
       return 1
     end
     builtin cd "$dst"
-  end
-
-  # Better LS
-  function ls
-    if command -q lsd
-      lsd $argv --group-directories-first
-    else
-      command ls $argv
-    end
-  end
-
-  # Interactive CD
-  function cd
-    builtin cd $argv
-    ls
-  end
-
-  # Default to BAT
-  function cat
-    if command -q bat
-      bat $argv --theme base16
-    else
-      command cat $argv
-    end
   end
 
 end
