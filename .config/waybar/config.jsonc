@@ -6,6 +6,7 @@
   "exclusive": false,
   "passthrough": false,
   "gtk-layer-shell": true,
+  "reload_style_on_change": false,
 
   // ========================== MODULE POSITIONS ========================== //
 
@@ -67,9 +68,21 @@
 
   "hyprland/workspaces": {
     "active-only": false,
-    "all-outputs": true,
-    "format": "{icon}",
+    "all-outputs": false,
     "on-click": "activate",
+    "format": "{icon}",
+    // "format": "{icon} {windows}",
+    // "format-window-separator": " ",
+    // "window-rewrite-default": "",
+    // "window-rewrite": {
+    //   "class<kitty>": "",
+    //   "class<firefoxdeveloperedition>": "",
+    //   "class<firefoxdeveloperedition> title<.*youtube.*>": "󰗃",
+    //   "class<firefoxdeveloperedition> title<.*Picture-in-Picture.*>": "",
+    //   "class<firefoxdeveloperedition> title<.*wiki.*>": "󰂺",
+    //   "class<obsidian>": "",
+    //   "class<org.keepassxc.KeePassXC>": ""
+    // },
     "format-icons": {
       "1": "",
       "2": "",

@@ -3,7 +3,7 @@
   border-radius: 0;
   font-family: "JetBrainsMono Nerd Font";
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 window#waybar {
@@ -58,7 +58,7 @@ tooltip {
 #memory,
 #backlight {
   margin-top: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 0px;
   border: 3px solid #999999;
   background: #262626;
   padding: 2px;
@@ -163,7 +163,7 @@ tooltip {
 
 #bluetooth {
   color: #89b4fa;
-} 
+}
 
 #idle_inhibitor {
   padding-right: 25px;
