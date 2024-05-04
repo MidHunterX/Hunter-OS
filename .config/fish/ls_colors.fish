@@ -1,17 +1,17 @@
 # LS_COLORS (8-BIT)
 set LS_COLORS ''
-set LS_COLORS (string join '' $LS_COLORS 'no=00:')                 # NORMAL - Global default
-set LS_COLORS (string join '' $LS_COLORS 'fi=00:')                 # FILE
-set LS_COLORS (string join '' $LS_COLORS 'di=34;01:')              # DIR
-set LS_COLORS (string join '' $LS_COLORS 'ow=42;30;01:')           # OTHER_WRITABLE
-set LS_COLORS (string join '' $LS_COLORS 'bd=40;33;01:')           # BLOCK Device
-set LS_COLORS (string join '' $LS_COLORS 'cd=40;33;01:')           # CHARACTER Device
-set LS_COLORS (string join '' $LS_COLORS 'or=40;31;01:')           # ORPHAN SYMLINK
-set LS_COLORS (string join '' $LS_COLORS 'ln=01;36:')              # SYMLINK
-set LS_COLORS (string join '' $LS_COLORS 'ex=01;32:')              # Executable File
-set LS_COLORS (string join '' $LS_COLORS 'pi=40;33:')              # Named PIPE, FIFO
-set LS_COLORS (string join '' $LS_COLORS 'so=01;35:')              # SOCK Socket
-set LS_COLORS (string join '' $LS_COLORS 'do=01;35:')              # DOOR
+set LS_COLORS (string join '' $LS_COLORS 'no=00:')        # NORMAL - Default
+set LS_COLORS (string join '' $LS_COLORS 'fi=00:')        # FILE
+set LS_COLORS (string join '' $LS_COLORS 'di=34;01:')     # DIR
+set LS_COLORS (string join '' $LS_COLORS 'ow=42;30;01:')  # OTHER_WRITABLE
+set LS_COLORS (string join '' $LS_COLORS 'bd=40;33;01:')  # BLOCK Device
+set LS_COLORS (string join '' $LS_COLORS 'cd=40;33;01:')  # CHARACTER Device
+set LS_COLORS (string join '' $LS_COLORS 'or=40;31;01:')  # ORPHAN SYMLINK
+set LS_COLORS (string join '' $LS_COLORS 'ln=01;36:')     # SYMLINK
+set LS_COLORS (string join '' $LS_COLORS 'ex=01;32:')     # Executable File
+set LS_COLORS (string join '' $LS_COLORS 'pi=40;33:')     # Named PIPE, FIFO
+set LS_COLORS (string join '' $LS_COLORS 'so=01;35:')     # SOCK Socket
+set LS_COLORS (string join '' $LS_COLORS 'do=01;35:')     # DOOR
 # EXTENSION STUFF
 set LS_COLORS (string join '' $LS_COLORS '*.a=1;38;5;210:')
 set LS_COLORS (string join '' $LS_COLORS '*.c=0;38;5;150:')
