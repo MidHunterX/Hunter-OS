@@ -4,6 +4,9 @@ set fish_greeting ""
 # Commands to run in interactive sessions can go here
 if status is-interactive
 
+  # ▄▀█ █▄▄ █▄▄ █▀█   ▄▀█ █▄░█ █▀▄   ▄▀█ █░░ █ ▄▀█ █▀
+  # █▀█ █▄█ █▄█ █▀▄   █▀█ █░▀█ █▄▀   █▀█ █▄▄ █ █▀█ ▄█
+  # =================================================
   # User abbreviations
   abbr -a -g sayonara 'shutdown now'  # Epic way to Shutdown
   abbr -a -g cls 'clear'  # Clear Screen
@@ -22,6 +25,11 @@ if status is-interactive
   starship init fish | source
   set -x STARSHIP_CONFIG $HOME/.config/starship/starship.toml
 
+
+
+  # █▀▀ █░█ █▀ ▀█▀ █▀█ █▀▄▀█   █▀▀ █▀█ █░░ █▀█ █▀█ █▀
+  # █▄▄ █▄█ ▄█ ░█░ █▄█ █░▀░█   █▄▄ █▄█ █▄▄ █▄█ █▀▄ ▄█
+  # =================================================
   # Custom Completion Colors
   set fish_pager_color_background --background=black
   set fish_pager_color_secondary_background --background=brblack
@@ -37,12 +45,21 @@ if status is-interactive
   set fish_cursor_visual      block
 
 
-  # Custom Keybindings
+
+  # █▄▀ █▀▀ █▄█ █▄▄ █ █▄░█ █▀▄ █ █▄░█ █▀▀ █▀
+  # █░█ ██▄ ░█░ █▄█ █ █░▀█ █▄▀ █ █░▀█ █▄█ ▄█
+  # ========================================
   bind --mode default U redo
   # Ctrl-Z fg command
   bind --mode insert \cz 'fg 2>/dev/null; commandline -f repaint'
+  # TODO: Ctrl+/
+  bind --mode insert --user \c\/ history-pager
 
 
+
+  # █▀▀ █░█ █▄░█ █▀▀ ▀█▀ █ █▀█ █▄░█ █▀
+  # █▀░ █▄█ █░▀█ █▄▄ ░█░ █ █▄█ █░▀█ ▄█
+  # ==================================
   # Vi mode with default Emacs keybindings
   function fish_hybrid_key_bindings --description \
     "Vi-style bindings that inherit emacs-style bindings in all modes"
@@ -63,6 +80,7 @@ if status is-interactive
     builtin cd "$dst"
   end
 
+  # Better LS
   function ls
     if command -q lsd
       lsd $argv --group-directories-first
@@ -71,11 +89,13 @@ if status is-interactive
     end
   end
 
+  # Interactive CD
   function cd
     builtin cd $argv
     ls
   end
 
+  # Default to BAT
   function cat
     if command -q bat
       bat $argv --theme base16
