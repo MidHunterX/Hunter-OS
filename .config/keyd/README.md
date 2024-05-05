@@ -7,6 +7,7 @@ solve this problem by providing a flexible system wide daemon which remaps keys
 using kernel level input primitives (evdev, uinput).
 
 ## Remapping Philosophy
+
 The most used action is assigned to the most powerful finger; the index finger.
 Second most used action is assigned to middle finger, then ring finger and so
 on. Not only actions but any numerical order are also assigned in this way.
@@ -19,14 +20,14 @@ Homerow modifiers are activated by overloading the specific key assigned to it.
 
 | Key | Output Key |
 | --- | ---------- |
-| a   | Meta       |
-| s   | Alt        |
+| a   | Alt        |
+| s   | Meta       |
 | d   | Ctrl       |
 | f   | Shift      |
 | j   | Shift      |
 | k   | Ctrl       |
-| l   | Alt        |
-| ;   | Meta       |
+| l   | Meta       |
+| ;   | Alt        |
 
 ## 🚀 Space Layer
 
