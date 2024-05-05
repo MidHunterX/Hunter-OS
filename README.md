@@ -2,21 +2,22 @@
 
 ## 🌿 Philosophy
 
-<img src="./assets/ico_agnostic.png" height="32" align="left">
+**Distro Agnostic**: Compatibility with a any linux based system for persisting
+workflow regardless of preferred base.
 
-**Distro Agnostic**: Designed to be compatible with a wide range of Linux distributions, ensuring workflow features regardless of preferred base.
+**Terminal Focused**: The terminal is the heart of this distro, providing
+CLI/TUI tools and utilities for efficient workflow tailored to personal
+preference.
 
-<img src="./assets/ico_terminal.png" height="32" align="left">
+**Lightweight, Optimized, and Battery Efficient**: Perfectly engineered to be
+light on system resources, ensuring smooth performance even on low-powered
+devices. Every aspect is optimized for maximum efficiency, extending battery
+life and also have many features at disposal.
 
-**Terminal Focused**: The terminal is the heart of this distro, providing CLI/TUI tools and utilities for efficient and streamlined workflows.
-
-<img src="./assets/ico_lightweight.png" height="32" align="left">
-
-**Lightweight, Optimized, and Battery Efficient**: Perfectly engineered to be light on system resources, ensuring smooth performance even on low-powered devices. Every aspect is optimized for maximum efficiency, extending battery life and also have many features at disposal.
-
-<img src="./assets/ico_keyboard.png" height="32" align="left">
-
-**Keyboard Centric Workflow with Vim Style Keybindings**: Promotes a keyboard-centric approach, with Vim-style keybindings deeply integrated into every tools, apps and utilities. This allows to navigate and interact with speed, precision and comfortability.
+**Keyboard Centric Workflow with Vim Style Keybindings**: Promotes a
+keyboard-centric approach, with Vim-style keybindings deeply integrated into
+every tools, apps and utilities. This allows to navigate and interact with
+speed, precision and comfortability.
 
 ## 💼 Custom Configurations
 
