@@ -53,6 +53,8 @@ BAT_REST=$((100-$BAT_ROUND))
 BAT_BAR=$(echo "$(printf "${BAR_FILL}%.0s" $(seq 1 $((${BAT_ROUND}/BAR_FRACTION))))")
 BAT_REST_BAR=$(echo "$(printf "${BAR_REST}%.0s" $(seq 1 $((${BAT_REST}/BAR_FRACTION))))")
 
+BATTERY_STATUS=$(cat /sys/class/power_supply/BAT0/status)
+
 RAM_VALUE=$(free | grep Mem: | awk '{printf "%d", $3/1024}')
 RAM_PERCENT=$(free | grep Mem: | awk '{printf "%d", $3/$2 * 100}')
 RAM_ROUND=$((RAM_PERCENT - (RAM_PERCENT%ROUNDOFF)))
@@ -97,6 +99,12 @@ else
   COL_BAT=${RED}
 fi
 
+# Battery Status
+if [[ $BATTERY_STATUS == 'Charging' ]]; then
+  BAT_STATUS_ICO="${YLO}󱐋${R}"
+else
+  BAT_STATUS_ICO=''
+fi
 
 # █▀█ █░█ ▀█▀ █▀█ █░█ ▀█▀
 # █▄█ █▄█ ░█░ █▀▀ █▄█ ░█░
@@ -115,4 +123,4 @@ echo -e "  ${X}oMMo ${Y}oyy${X}      ${Y}yyo${X} oMMo${R}   ${B}CPU:${R} AMD Ryz
 echo -e "  ${X}oMMo ${Y} *o${X}      ${Y}o* ${X} oMMo${R}   ${B}GPU:${R} AMD Radeon RX Vega 7"
 echo -e "  ${X}oMMo ${Y}   ${X}      ${Y}   ${X} oMMo${R}   ${B}SSD:${R} ${COL_SSD}$SSD_BAR${BLK}$SSD_REST_BAR${R} $SSD_PERCENT%${R}"
 echo -e "  ${X}:NMo ${Y}   ${X}      ${Y}   ${X} oMN:${R}   ${B}RAM:${R} ${COL_RAM}$RAM_BAR${BLK}$RAM_REST_BAR${R} $RAM_VALUE MB${R}"
-echo -e "  ${X}  o+ ${Y}   ${X}      ${Y}   ${X} +o  ${R}   ${B}BAT:${R} ${COL_BAT}$BAT_BAR${BLK}$BAT_REST_BAR${R} $BAT_PERCENT%${R}"
+echo -e "  ${X}  o+ ${Y}   ${X}      ${Y}   ${X} +o  ${R}   ${B}BAT:${R} ${COL_BAT}$BAT_BAR${BLK}$BAT_REST_BAR${R} $BAT_PERCENT%${R} $BAT_STATUS_ICO"

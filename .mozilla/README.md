@@ -8,6 +8,7 @@ And this seems to be the least broken browser out there in the market.
 
 ## Problems
 
+- Cannot use ESC to deselect url bar
 - `.mozilla` in $HOME, not following Freedesktop XDG Base Directory Specification
 - Slow development
 - Features and Open Issues stays on for Milleniums
