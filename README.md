@@ -1,5 +1,12 @@
 # Hunter OS
 
+## 📝 ToDo List
+
+- [ ] Brightness Profile System
+- [ ] Audio Dynamic Range Compression - EasyEffects
+- [ ] Audio EQ & Sound Profile Customization
+- [ ] Audio I/O Visualization and Connection Management
+
 ## 🌿 Philosophy
 
 **Distro Agnostic**: Compatibility with a any linux based system for persisting
