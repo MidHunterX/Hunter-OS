@@ -54,23 +54,23 @@ ROUNDOFF=${BAR_SCALING}
 BAT_PERCENT=$(cat /sys/class/power_supply/BAT0/capacity)
 BAT_ROUND=$((BAT_PERCENT - (BAT_PERCENT%ROUNDOFF)))
 BAT_REST=$((100-$BAT_ROUND))
-BAT_BAR=$(echo "$(printf "${BAR_FILL}%.0s" $(seq 0 $((${BAT_ROUND}/BAR_FRACTION))))")
-BAT_REST_BAR=$(echo "$(printf "${BAR_REST}%.0s" $(seq 0 $((${BAT_REST}/BAR_FRACTION))))")
+BAT_BAR=$(echo "$(printf "${BAR_FILL}%.0s" $(seq 1 $((${BAT_ROUND}/BAR_FRACTION))))")
+BAT_REST_BAR=$(echo "$(printf "${BAR_REST}%.0s" $(seq 1 $((${BAT_REST}/BAR_FRACTION))))")
 
 BATTERY_STATUS=$(cat /sys/class/power_supply/BAT0/status)
 
-RAM_VALUE=$(free | grep Mem: | awk '{printf "%d", $3/1024}')
+RAM_VALUE=$(free | grep Mem: | awk '{printf "%d", $3/1024}')  # Return in MB
 RAM_PERCENT=$(free | grep Mem: | awk '{printf "%d", $3/$2 * 100}')
 RAM_ROUND=$((RAM_PERCENT - (RAM_PERCENT%ROUNDOFF)))
 RAM_REST=$((100-RAM_ROUND))
-RAM_BAR=$(echo "$(printf "${BAR_FILL}%.0s" $(seq 0 $((${RAM_ROUND}/BAR_FRACTION))))")
-RAM_REST_BAR=$(echo "$(printf "${BAR_REST}%.0s" $(seq 0 $((${RAM_REST}/BAR_FRACTION))))")
+RAM_BAR=$(echo "$(printf "${BAR_FILL}%.0s" $(seq 1 $((${RAM_ROUND}/BAR_FRACTION))))")
+RAM_REST_BAR=$(echo "$(printf "${BAR_REST}%.0s" $(seq 1 $((${RAM_REST}/BAR_FRACTION))))")
 
 SSD_PERCENT=$(df -h /dev/nvme0n1p7 | awk 'NR==2 {print $5}' | sed 's/%//')
 SSD_ROUND=$((SSD_PERCENT - (SSD_PERCENT%ROUNDOFF)))
 SSD_REST=$((100-SSD_ROUND))
-SSD_BAR=$(echo "$(printf "${BAR_FILL}%.0s" $(seq 0 $((${SSD_ROUND}/BAR_FRACTION))))")
-SSD_REST_BAR=$(echo "$(printf "${BAR_REST}%.0s" $(seq 0 $((${SSD_REST}/BAR_FRACTION))))")
+SSD_BAR=$(echo "$(printf "${BAR_FILL}%.0s" $(seq 1 $((${SSD_ROUND}/BAR_FRACTION))))")
+SSD_REST_BAR=$(echo "$(printf "${BAR_REST}%.0s" $(seq 1 $((${SSD_REST}/BAR_FRACTION))))")
 
 SWP_INFO=$(free | grep Swap)
 SWP_VALUE=$(echo $SWP_INFO | awk '{print $3}')
@@ -80,8 +80,12 @@ SWP_TOTAL=$(($SWP_TOTAL/1000))
 SWP_PERCENTAGE=$(((${SWP_VALUE} / $SWP_TOTAL) * 100))
 SWP_ROUND=$((SWP_PERCENTAGE - (SWP_PERCENTAGE%ROUNDOFF)))
 SWP_REST=$((100-SWP_ROUND))
-SWP_BAR=$(echo "$(printf "${BAR_FILL}%.0s" $(seq 0 $((${SWP_ROUND}/BAR_FRACTION))))")
-SWP_REST_BAR=$(echo "$(printf "${BAR_REST}%.0s" $(seq 0 $((${SWP_REST}/BAR_FRACTION))))")
+if [[ $SWP_ROUND -gt 0 ]]; then
+  SWP_BAR=$(echo "$(printf "${BAR_FILL}%.0s" $(seq 1 $((${SWP_ROUND}/BAR_FRACTION))))")
+else
+  SWP_BAR=''
+fi
+SWP_REST_BAR=$(echo "$(printf "${BAR_REST}%.0s" $(seq 1 $((${SWP_REST}/BAR_FRACTION))))")
 
 
 # █▀▀ █▀█ █▄░█ █▀▄ █ ▀█▀ █ █▀█ █▄░█ ▄▀█ █░░   █▀▀ █▀█ █░░ █▀█ █▀█ █▀
@@ -131,6 +135,18 @@ else
 fi
 
 
+# █▀▀ █ █▄░█ ▄▀█ █░░   █▀▄ ▄▀█ ▀█▀ ▄▀█
+# █▀░ █ █░▀█ █▀█ █▄▄   █▄▀ █▀█ ░█░ █▀█
+# ====================================
+
+# RAM Value
+if [[ $RAM_VALUE -gt 1023 ]]; then
+  RAM_VALUE=$(echo $RAM_VALUE | awk '{printf "%.2fgb", $1/1024}')  # Return in GB
+else
+  RAM_VALUE+='mb'
+fi
+
+
 # █▀█ █░█ ▀█▀ █▀█ █░█ ▀█▀
 # █▄█ █▄█ ░█░ █▀▀ █▄█ ░█░
 # =======================
@@ -147,8 +163,8 @@ echo -e "  ${X}oMMo ${Y}yyy${X} '++' ${Y}yyy${X} oMMo${R}   ${U}${H}Device Detai
 echo -e "  ${X}oMMo ${Y}yyy${X}      ${Y}yyy${X} oMMo${R}   ${B}CPU:${R} AMD Ryzen 5 5500U"
 echo -e "  ${X}oMMo ${Y}oyy${X}      ${Y}yyo${X} oMMo${R}   ${B}GPU:${R} AMD Radeon RX Vega 7"
 echo -e "  ${X}oMMo ${Y} *o${X}      ${Y}o* ${X} oMMo${R}   ${B}SSD:${R} ${COL_SSD}$SSD_BAR${BLK}$SSD_REST_BAR${R} $SSD_PERCENT%${R}"
-echo -e "  ${X}oMMo ${Y}   ${X}      ${Y}   ${X} oMMo${R}   ${B}RAM:${R} ${COL_RAM}$RAM_BAR${BLK}$RAM_REST_BAR${R} ${RAM_VALUE} MB${R}"
-echo -e "  ${X}:NMo ${Y}   ${X}      ${Y}   ${X} oMN:${R}   ${B}SWP:${R} ${COL_SWP}$SWP_BAR${BLK}$SWP_REST_BAR${R} ${SWP_VALUE} MB${R}"
+echo -e "  ${X}oMMo ${Y}   ${X}      ${Y}   ${X} oMMo${R}   ${B}RAM:${R} ${COL_RAM}$RAM_BAR${BLK}$RAM_REST_BAR${R} ${RAM_VALUE}${R}"
+echo -e "  ${X}:NMo ${Y}   ${X}      ${Y}   ${X} oMN:${R}   ${B}SWP:${R} ${COL_SWP}$SWP_BAR${BLK}$SWP_REST_BAR${R} ${SWP_VALUE}mb${R}"
 echo -e "  ${X}  o+ ${Y}   ${X}      ${Y}   ${X} +o  ${R}   ${B}BAT:${R} ${COL_BAT}$BAT_BAR${BLK}$BAT_REST_BAR${R} $BAT_PERCENT%${R} $BAT_STATUS_ICO"
 
 # benchmark_end=$(date +%N)
