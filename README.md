@@ -31,28 +31,31 @@ speed, precision and comfortability.
 > [!NOTE]
 > Click on the Names to know more about that specific configuration
 
-| SW Type              | SW Name                                                |
-| -------------------- | ------------------------------------------------------ |
-| File Manager         | 📁 [ViFM](.config/vifm/)                               |
-| Image Viewer         | 🌄 [Feh](.config/feh/)                                 |
-| Video Player         | 🎬 [Mpv](.config/mpv/)                                 |
-| Music Visualizer     | 📊 [Cava](.config/cava/)                               |
-| PDF Frontend         | 📄 [Zathura](.config/zathura/)                         |
-| PDF Backend          | Poppler                                                |
-| App Launcher         | 📜 [Fuzzel](.config/fuzzel/)                           |
-| Web Browser          | 🦊 [FireFox](.mozilla/)                                |
-| GUI Code Editor      | 🆚 [Code OSS](.config/Code%20-%20OSS/User/)            |
-| TUI Code Editor      | 📝 [NeoVim](https://github.com/MidHunterX/HunterX-PDE) |
-| Notification Daemon  | 🔔 Dunst                                               |
-| Shell                | 🐟 [Fish](.config/fish/)                               |
-| Terminal Multiplexer | 🍱 [Tmux](.config/tmux/)                               |
-| Terminal Emulator    | 🐱 [Kitty](.config/kitty/)                             |
-| Shell Prompt Engine  | 🚀 [Starship](.config/starship/)                       |
-| Key Remapping Daemon | 🎹 [KeyD](.config/keyd/)                               |
-| Git TUI Frontend     | 😴 [LazyGit](.config/lazygit/)                         |
-| Wayland Compositor   | 💧 [Hyprland](.config/hypr/)                           |
-| Status Bar           | 🍫 [WayBar](.config/waybar/)                           |
-| Logout Menu          | 🌳 [Wlogout](.config/wlogout/)                         |
+| SW Type              | SW Name                          |
+| -------------------- | -------------------------------- |
+| File Manager         | 📁 [ViFM](.config/vifm/)         |
+| Image Viewer         | 🌄 [Feh](.config/feh/)           |
+| Video Player         | 🎬 [Mpv](.config/mpv/)           |
+| Music Visualizer     | 📊 [Cava](.config/cava/)         |
+| PDF Frontend         | 📄 [Zathura](.config/zathura/)   |
+| PDF Backend          | Poppler                          |
+| App Launcher         | 📜 [Fuzzel](.config/fuzzel/)     |
+| Web Browser          | 🦊 [FireFox](.mozilla/)          |
+| GUI Code Editor      | 🆚 [VSCode][CodeOSS]             |
+| TUI Code Editor      | 📝 [NeoVim][NeoVim]              |
+| Notification Daemon  | 🔔 Dunst                         |
+| Shell                | 🐟 [Fish](.config/fish/)         |
+| Terminal Multiplexer | 🍱 [Tmux](.config/tmux/)         |
+| Terminal Emulator    | 🐱 [Kitty](.config/kitty/)       |
+| Shell Prompt Engine  | 🚀 [Starship](.config/starship/) |
+| Key Remapping Daemon | 🎹 [KeyD](.config/keyd/)         |
+| Git TUI Frontend     | 😴 [LazyGit](.config/lazygit/)   |
+| Wayland Compositor   | 💧 [Hyprland](.config/hypr/)     |
+| Status Bar           | 🍫 [WayBar](.config/waybar/)     |
+| Logout Menu          | 🌳 [Wlogout](.config/wlogout/)   |
+
+[NeoVim]: https://github.com/MidHunterX/HunterX-PDE
+[CodeOSS]: .config/Code%20-%20OSS/User/
 
 ## 📦 Prefered Packages
 
