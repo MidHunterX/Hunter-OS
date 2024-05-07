@@ -6,28 +6,29 @@ result often being tethered to a specified environment (X11). keyd attempts to
 solve this problem by providing a flexible system wide daemon which remaps keys
 using kernel level input primitives (evdev, uinput).
 
-## Remapping Philosophy
-
-The most used action is assigned to the most powerful finger; the index finger.
-Second most used action is assigned to middle finger, then ring finger and so
-on. Not only actions but any numerical order are also assigned in this way.
-For e.g. 1 to Index, 2 to Middle, 3 to Ring and 4 to Pinkie.
-Ohh... and combined with Vim style keybindings btw ;).
-
-## 🏠 Homerow Mods
+## 🏠 Home Row Mods (GCAS)
 
 Homerow modifiers are activated by overloading the specific key assigned to it.
 
 | Key | Output Key |
 | --- | ---------- |
-| a   | Alt        |
-| s   | Meta       |
-| d   | Ctrl       |
+| a   | Meta       |
+| s   | Ctrl       |
+| d   | Alt        |
 | f   | Shift      |
 | j   | Shift      |
-| k   | Ctrl       |
-| l   | Meta       |
-| ;   | Alt        |
+| k   | Alt        |
+| l   | Ctrl       |
+| ;   | Meta       |
+
+- `Shift` is assigned to `Index finger` as it's the most used key & finger.
+- `Alt` is assigned to `Middle finger` because it's the least used key
+  assigned to the most dangerous key 'D'.
+- `Ctrl` is assigned to `Ring finger` as it's the next strongest finger other
+  than Middle finger. Not only that, Ring finger is the most used finger in
+  combination with Ctrl.
+- `Meta` is assigned to `Pinkie` due to familiarity (because the same finger is
+  used to activate that key otherwise).
 
 ## 🚀 Space Layer
 
