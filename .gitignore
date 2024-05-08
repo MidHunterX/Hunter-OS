@@ -4,6 +4,7 @@
 !.gitignore
 !README.adoc
 !assets/
+!.assets/
 !.bashrc
 !.bash_profile
 # Ignore Workspaces ;D

@@ -1,6 +1,6 @@
 # 📜 Scripts
 
-## Fetch Script
+## fetch.sh
 
 ![fetch.sh](./assets/script_fetch.jpg)
 

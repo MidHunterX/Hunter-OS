@@ -628,7 +628,7 @@ set classify+='
 \  ::*.bin,,*.o,,*.sym::,
 \ 󰁯 ::*.bak,,*.old,,*.orig,,backups::,
 \  ::*.desktop,,desktop::,
-\  ::assets/,,content/,,static/::,
+\  ::assets/,,.assets/,,content/,,static/::,
 \  ::*.htm,,*.html::,
 \  ::*.ebook,,*.mobi::,
 \'
