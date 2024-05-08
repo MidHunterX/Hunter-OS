@@ -2,7 +2,7 @@
 /*
 # Except These (with exclamations)
 !.gitignore
-!README.md
+!README.adoc
 !assets/
 !.bashrc
 !.bash_profile
