@@ -31,47 +31,45 @@ speed, precision and comfortability.
 
 [%header,cols=2*]
 |===
-| SW Type | SW Name
-| App Launcher
-| link:.config/fuzzel/[📜 Fuzzel]
-| File Manager
-| link:.config/vifm/[📁 ViFM]
-| GUI Code Editor
-| link:.config/Code%20-%20OSS/User/[🆚 VSCode]
-| Git TUI Frontend
-| link:.config/lazygit/[😴 LazyGit]
-| Image Viewer
-| link:.config/feh/[🌄 Feh]
-| Key Remapping Daemon
-| link:.config/keyd/[🎹 KeyD]
-| Logout Menu
-| link:.config/wlogout/[🌳 Wlogout]
-| Music Visualizer
+| Name | Description
 | link:.config/cava/[📊 Cava]
-| Notification Daemon
-| link:.config/dunst/[🔔 Dunst]
-| PDF Frontend
-| link:.config/zathura/[📄 Zathura]
-| Scripts
-| link:Mid_Hunter/scripts/[🍷 Scripts]
-| Shell Prompt Engine
-| link:.config/starship/[🚀 Starship]
-| Shell
-| link:.config/fish/[🐟 Fish]
-| Status Bar
-| link:.config/waybar/[🍫 WayBar]
-| TUI Code Editor
-| link:https://github.com/MidHunterX/HunterX-PDE[📝 NeoVim]
-| Terminal Emulator
-| link:.config/kitty/[🐱 Kitty]
-| Terminal Multiplexer
-| link:.config/tmux/[🍱 Tmux]
-| Video Player
-| link:.config/mpv/[🎬 Mpv]
-| Wayland Compositor
-| link:.config/hypr/[💧 Hyprland]
-| Web Browser
+| Music Visualizer
+| link:.config/feh/[🌄 Feh]
+| Image Viewer
 | link:.mozilla/[🦊 FireFox]
+| Web Browser
+| link:.config/fish/[🐟 Fish]
+| Shell
+| link:.config/fuzzel/[📜 Fuzzel]
+| App Launcher
+| link:.config/hypr/[💧 Hyprland]
+| Wayland Compositor
+| link:.config/keyd/[🎹 KeyD]
+| Key Remapping Daemon
+| link:.config/kitty/[🐱 Kitty]
+| Terminal Emulator
+| link:.config/lazygit/[😴 LazyGit]
+| TUI Git Frontend
+| link:.config/mpv/[🎬 Mpv]
+| Video Player
+| link:https://github.com/MidHunterX/HunterX-PDE[📝 NeoVim]
+| TUI Code Editor
+| link:Mid_Hunter/scripts/[⚙️ Scripts]
+| Scripts
+| link:.config/starship/[🚀 Starship]
+| Shell Prompt Engine
+| link:.config/tmux/[🍱 Tmux]
+| Terminal Multiplexer
+| link:.config/vifm/[📁 ViFM]
+| File Manager
+| link:.config/Code%20-%20OSS/User/[🆚 VSCode]
+| GUI Code Editor
+| link:.config/waybar/[🍫 WayBar]
+| Status Bar
+| link:.config/wlogout/[🌳 Wlogout]
+| Logout Menu
+| link:.config/zathura/[📄 Zathura]
+| PDF Frontend
 |===
 
 == 📦 Prefered Packages
