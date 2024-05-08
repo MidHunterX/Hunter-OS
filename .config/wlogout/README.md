@@ -1,6 +1,6 @@
 # 🌳 WLOGOUT (Logout Menu)
 
-![wlogout Logout Menu](./assets/wlogout.jpg)
+![wlogout Logout Menu](./.assets/wlogout.jpg)
 
 wlogout is a Wayland-native logout menu designed for Wayland compositors. It
 provides a simple yet effective way to logout, restart, or shut down your

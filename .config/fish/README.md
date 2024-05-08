@@ -18,7 +18,7 @@ fish is a Unix shell with a focus on interactivity and usability. Fish is design
 - Press `CTRL + Z` when inside terminal app to move it to Background.
 - Press `CTRL + Z` inside terminal prompt to move BG app to Foreground.
 
-![Jobs Icon](./assets/prompt_jobs.png)
+![Jobs Icon](./.assets/prompt_jobs.png)
 
 The number of background apps will be shown in prompt as shown.
 
@@ -26,20 +26,20 @@ The number of background apps will be shown in prompt as shown.
 
 - Go to Normal Mode and search using `/`
 
-![fish CMD History](./assets/prompt_hist2.png)
+![fish CMD History](./.assets/prompt_hist2.png)
 
 ## Better LS and CD navigation
 
 - Install **lsd** and **bat** for the NerdFont goodness.
 - Navigate using **ls** and **cd** with much better comfortability.
 
-![fish LS CD](./assets/fish_lscd.jpg)
+![fish LS CD](./.assets/fish_lscd.jpg)
 
 ## Edit Shell Prompt Input with NeoVim
 
 - Press `Alt + e` on Insert mode to edit shell prompt input inside Neovim
 
-![Fish Edit with Neovim](./assets/fish_editor.jpg)
+![Fish Edit with Neovim](./.assets/fish_editor.jpg)
 
 ## Extra Functionalities
 

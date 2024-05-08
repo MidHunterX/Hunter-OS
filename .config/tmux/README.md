@@ -1,6 +1,6 @@
 # 🍱 TMUX (Terminal Multiplexer)
 
-![TMUX](./assets/tmux.jpg)
+![TMUX](./.assets/tmux.jpg)
 
 tmux is an open-source terminal multiplexer for Unix-like operating systems. It
 allows multiple terminal sessions to be accessed simultaneously in a single

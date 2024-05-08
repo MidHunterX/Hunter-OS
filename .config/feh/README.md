@@ -1,6 +1,6 @@
 # 🌄 FEH (Image Viewer)
 
-![feh Image Viewer](./assets/feh.jpg)
+![feh Image Viewer](./.assets/feh.jpg)
 
 feh is a lightweight image viewer aimed mainly at users of command line interfaces. Unlike most graphical image viewers, feh does not have any graphical control elements.
 

@@ -1,6 +1,6 @@
 # 💧 Hyprland (Wayland Compositor)
 
-![Hyprland](./assets/hypr.jpg)
+![Hyprland](./.assets/hypr.jpg)
 
 Hyprland is a dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks.
 

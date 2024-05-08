@@ -20,4 +20,4 @@ kitty is a free and open-source GPU-accelerated terminal emulator for Linux and 
 - Then it can be used for scrollback, jumping quickly around and copying text.
 - To exit, either press `q` or `i`
 
-![Kitty Neovim Integration](./assets/kitty_nvim.jpg)
+![Kitty Neovim Integration](./.assets/kitty_nvim.jpg)

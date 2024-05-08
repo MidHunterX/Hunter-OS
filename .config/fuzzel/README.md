@@ -1,6 +1,6 @@
 # 📜 FUZZEL (App Launcher)
 
-![Fuzzel App Launcher](./assets/fuzzel.jpg)
+![Fuzzel App Launcher](./.assets/fuzzel.jpg)
 
 Fuzzel is a Wayland-native application launcher, similar to rofi's drun mode.
 

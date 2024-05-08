@@ -1,6 +1,6 @@
 # 📄 POPPLER + ZATHURA (PDF Viewer)
 
-![Zathura PDF Viewer](./assets/zathura.jpg)
+![Zathura PDF Viewer](./.assets/zathura.jpg)
 
 **Backend**: Poppler is a free library for rendering Portable Document Format (PDF) documents. It is commonly used by the PDF viewers of the open source GNOME and KDE desktop environments.<br>
 

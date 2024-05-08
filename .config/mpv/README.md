@@ -1,6 +1,6 @@
 # 🎬 MPV (Video Player)
 
-![mpv Video Player](./assets/mpv.jpg)
+![mpv Video Player](./.assets/mpv.jpg)
 
 mpv is free and open-source media player software based on MPlayer, mplayer2 and FFmpeg. It runs on several operating systems, including Unix-like operating systems (Linux, BSD-based, macOS) and Microsoft Windows. It is cross-platform, running on ARM, PowerPC, x86/IA-32, x86-64, and MIPS architecture.
 

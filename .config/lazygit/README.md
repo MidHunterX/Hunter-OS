@@ -1,6 +1,6 @@
 # LazyGit (git TUI Frontend)
 
-![LazyGit](./assets/lazygit.jpg)
+![LazyGit](./.assets/lazygit.jpg)
 
 A simple terminal UI for git commands
 
