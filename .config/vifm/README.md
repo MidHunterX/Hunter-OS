@@ -1,6 +1,6 @@
 # 📁 File Manager (vifm)
 
-![VIFM](./assets/vifm.jpg)
+![VIFM](./.assets/vifm.jpg)
 
 Vifm is a file manager with curses interface, which provides Vim-like environment for managing objects within file systems, extended with some useful ideas from mutt. If you use vi, Vifm gives you complete keyboard control over your files without having to learn a new set of commands.
 
@@ -42,7 +42,7 @@ Vifm is a file manager with curses interface, which provides Vim-like environmen
 - Press `a` or `cw` in Visual Mode to multi-rename files/dirs
 - Save and Exit Neovim buffer to save changes
 
-![VIFM Bulk Rename](./assets/vifm_rename.jpg)
+![VIFM Bulk Rename](./.assets/vifm_rename.jpg)
 
 ## Extra Features
 

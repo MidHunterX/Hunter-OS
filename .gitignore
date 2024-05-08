@@ -49,7 +49,7 @@
 !.config/vifm/vifmrc
 !.config/vifm/README.md
 !.config/vifm/colors/
-!.config/vifm/assets/
+!.config/vifm/.assets/
 .config/vifm/colors/*
 !.config/vifm/colors/hunter.vifm
 !.config/vifm/colors/hunterv2.vifm
@@ -76,7 +76,7 @@
 .config/Code\ -\ OSS/*
 !.config/Code\ -\ OSS/User/
 .config/Code\ -\ OSS/User/*
-!.config/Code\ -\ OSS/User/assets/
+!.config/Code\ -\ OSS/User/.assets/
 !.config/Code\ -\ OSS/User/settings.json
 !.config/Code\ -\ OSS/User/keybindings.json
 !.config/Code\ -\ OSS/User/README.md
