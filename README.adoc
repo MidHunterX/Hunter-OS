@@ -32,64 +32,42 @@ speed, precision and comfortability.
 [%header,cols=2*]
 |===
 | SW Type | SW Name
-
 | File Manager
 | link:.config/vifm/[📁 ViFM]
-
 | Image Viewer
 | link:.config/feh/[🌄 Feh]
-
 | Video Player
 | link:.config/mpv/[🎬 Mpv]
-
 | Music Visualizer
 | link:.config/cava/[📊 Cava]
-
 | PDF Frontend
 | link:.config/zathura/[📄 Zathura]
-
-| PDF Backend
-| Poppler
-
 | App Launcher
 | link:.config/fuzzel/[📜 Fuzzel]
-
 | Web Browser
 | link:.mozilla/[🦊 FireFox]
-
 | GUI Code Editor
 | link:.config/Code%20-%20OSS/User/[🆚 VSCode]
-
 | TUI Code Editor
 | link:https://github.com/MidHunterX/HunterX-PDE[📝 NeoVim]
-
-| Notification Daemon
-| 🔔 Dunst
-
 | Shell
 | link:.config/fish/[🐟 Fish]
-
 | Terminal Multiplexer
 | link:.config/tmux/[🍱 Tmux]
-
 | Terminal Emulator
 | link:.config/kitty/[🐱 Kitty]
-
 | Shell Prompt Engine
 | link:.config/starship/[🚀 Starship]
-
 | Key Remapping Daemon
 | link:.config/keyd/[🎹 KeyD]
-
 | Git TUI Frontend
 | link:.config/lazygit/[😴 LazyGit]
-
 | Wayland Compositor
 | link:.config/hypr/[💧 Hyprland]
-
+| Notification Daemon
+| link:.config/dunst/[🔔 Dunst]
 | Status Bar
 | link:.config/waybar/[🍫 WayBar]
-
 | Logout Menu
 | link:.config/wlogout/[🌳 Wlogout]
 |===
