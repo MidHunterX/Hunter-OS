@@ -2,7 +2,7 @@
 
 ## Fetch Script (fetch.sh)
 
-![fetch.sh](./assets/script_fetch.jpg)
+![fetch.sh](./.assets/script_fetch.jpg)
 
 This script outputs information such as the operating system, host details,
 package count, current date and time, uptime, and device specifications with
