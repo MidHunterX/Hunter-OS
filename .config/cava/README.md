@@ -1,6 +1,6 @@
 # 📊 CAVA (Music Visualizer)
 
-![Cava Music Visualizer](./assets/cava.jpg)
+![Cava Music Visualizer](./.assets/cava.jpg)
 
 Cava is a bar spectrum audio visualizer for terminal (ncurses) or desktop (SDL).
 
