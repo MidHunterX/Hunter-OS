@@ -1,4 +1,14 @@
-# 🏵️ Scripts
+# 📜 Scripts
+
+## Fetch Script
+
+![fetch.sh](./assets/script_fetch.jpg)
+
+This script outputs information such as the operating system, host details,
+package count, current date and time, uptime, and device specifications with
+speed and efficiency.
+
+## Script Descriptions
 
 | Script               | Description                                        |
 | -------------------- | -------------------------------------------------- |
@@ -14,11 +24,3 @@
 | reboot_to_windows.sh | Reboots directly to Windows                        |
 | set_brightness.sh    | Set Brightness using brillo                        |
 | set_volume.sh        | Sets Systemwide Volume using pamixer               |
-
-## Fetch Script
-
-![fetch.sh](./assets/script_fetch.jpg)
-
-Thish script outputs information such as the operating system, host details,
-package count, current date and time, uptime, and device specifications with
-speed and efficiency.
