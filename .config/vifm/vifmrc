@@ -521,6 +521,7 @@ fileviewer *.xhtml highlight -O ansi --syntax html
 fileviewer *.opf highlight -O ansi --syntax xml
 fileviewer *.txt highlight -O ansi --syntax txt
 fileviewer *.md highlight -O ansi --syntax markdown
+fileviewer *.adoc,*.asciidoc,*.asc highlight -O ansi --syntax asciidoc
 fileviewer *.html,*.go,*.css,*.c highlight -O ansi -s dante %c
 fileviewer *.conf,.xinitrc,.gitignore
             \ highlight -O ansi --syntax conf
