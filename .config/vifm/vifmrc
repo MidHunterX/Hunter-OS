@@ -644,6 +644,7 @@ set classify+='
 \  ::user-dirs.dirs/,,xorg.conf.d/::,
 \  ::*.phar,,*.php,,composer.json,,composer.lock::,
 \  ::*.markdown,,*.md,,*.mkd,,*.rdoc,,*.readme,,*.rmd,,changelog,,readme::,
+\  ::*.adoc,,*.asciidoc::,
 \  ::*.man,,doc,,documents::,
 \  ::*.license,,*.sig,,.git-credentials,,authorized_keys,,contributing::,
 \  ::copyright,,known_hosts,,license.md,,license.txt,,license,,licenses::,
