@@ -8,9 +8,8 @@ And this seems to be the least broken browser out there in the market.
 
 ## Problems
 
-- Cannot use ESC to deselect url bar
+- Cannot use ESC to deselect url bar. [Bug Report](https://bugzilla.mozilla.org/show_bug.cgi?id=1086524) opened 10 years ago but still not solved.
 - `.mozilla` in $HOME, not following Freedesktop XDG Base Directory Specification
-- Slow development
 - Features and Open Issues stays on for Milleniums
 - Even though customizable, it has many design limitations
 - Tougher to implement vertical tabs natively
