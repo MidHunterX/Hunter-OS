@@ -141,9 +141,9 @@ fi
 
 # RAM Value
 if [[ $RAM_VALUE -gt 1023 ]]; then
-  RAM_VALUE=$(echo $RAM_VALUE | awk '{printf "%.2fgb", $1/1024}')  # Return in GB
+  RAM_VALUE=$(echo $RAM_VALUE | awk '{printf "%.1f GB", $1/1024}')  # Return in GB
 else
-  RAM_VALUE+='mb'
+  RAM_VALUE+=' MB'
 fi
 
 
@@ -164,7 +164,7 @@ echo -e "  ${X}oMMo ${Y}yyy${X}      ${Y}yyy${X} oMMo${R}   ${B}CPU:${R} AMD Ryz
 echo -e "  ${X}oMMo ${Y}oyy${X}      ${Y}yyo${X} oMMo${R}   ${B}GPU:${R} AMD Radeon RX Vega 7"
 echo -e "  ${X}oMMo ${Y} *o${X}      ${Y}o* ${X} oMMo${R}   ${B}SSD:${R} ${COL_SSD}$SSD_BAR${BLK}$SSD_REST_BAR${R} $SSD_PERCENT%${R}"
 echo -e "  ${X}oMMo ${Y}   ${X}      ${Y}   ${X} oMMo${R}   ${B}RAM:${R} ${COL_RAM}$RAM_BAR${BLK}$RAM_REST_BAR${R} ${RAM_VALUE}${R}"
-echo -e "  ${X}:NMo ${Y}   ${X}      ${Y}   ${X} oMN:${R}   ${B}SWP:${R} ${COL_SWP}$SWP_BAR${BLK}$SWP_REST_BAR${R} ${SWP_VALUE}mb${R}"
+echo -e "  ${X}:NMo ${Y}   ${X}      ${Y}   ${X} oMN:${R}   ${B}SWP:${R} ${COL_SWP}$SWP_BAR${BLK}$SWP_REST_BAR${R} ${SWP_VALUE} MB${R}"
 echo -e "  ${X}  o+ ${Y}   ${X}      ${Y}   ${X} +o  ${R}   ${B}BAT:${R} ${COL_BAT}$BAT_BAR${BLK}$BAT_REST_BAR${R} $BAT_PERCENT%${R} $BAT_STATUS_ICO"
 
 # benchmark_end=$(date +%N)
