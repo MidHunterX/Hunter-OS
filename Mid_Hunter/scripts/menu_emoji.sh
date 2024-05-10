@@ -9,7 +9,8 @@ if [ ! -f "$HIST_FILE" ]; then
 fi
 
 # Show Emoji list
-EMOJI_ROW=$( (sed '/^$/d' "$HIST_FILE"; sed '1,/^### EMOJI LIST ###$/d' "$0"; echo 'Nerd Fonts') | fuzzel --dmenu)
+EMOJI_ROW=$( (sed '/^$/d' "$HIST_FILE"; sed '1,/^### EMOJI LIST ###$/d' "$0"; echo 'Nerd Fonts') | fuzzel --dmenu --border-color=#f9e2afff --background=#2d2d239b)
+
 echo "Selected Row: $EMOJI_ROW"
 
 # Exit script if nothing is selected
