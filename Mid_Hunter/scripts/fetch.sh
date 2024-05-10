@@ -103,16 +103,16 @@ fi
 # Swap Partition
 if [[ $SWP_PERCENTAGE -lt 50 ]]; then
   COL_SWP=${BLU}
-elif [[ $SSD_PERCENT -lt 80 ]]; then
+elif [[ $SWP_PERCENTAGE -lt 80 ]]; then
   COL_SWP=${YLO}
 else
   COL_SWP=${RED}
 fi
 
 # Random Access Memory
-if [[ $RAM_VALUE -lt 3000 ]]; then
+if [[ $RAM_PERCENT -lt 50 ]]; then
   COL_RAM=${BLU}
-elif [[ $RAM_VALUE -lt 4000 ]]; then
+elif [[ $RAM_PERCENT -lt 80 ]]; then
   COL_RAM=${YLO}
 else
   COL_RAM=${RED}
@@ -121,7 +121,7 @@ fi
 # Battery
 if [[ $BAT_PERCENT -gt 60 ]]; then
   COL_BAT=${BLU}
-elif [[ $BAT_PERCENT -gt 40 ]]; then
+elif [[ $BAT_PERCENT -gt 30 ]]; then
   COL_BAT=${YLO}
 else
   COL_BAT=${RED}
