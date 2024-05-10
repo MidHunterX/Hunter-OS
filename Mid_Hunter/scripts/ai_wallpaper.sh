@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-# Get the directory of the current script
+# Failsafe mechanism for relative links
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source $SCRIPT_DIR/ai_wallpaper.conf
-# source ./ai_wallpaper.conf  # For LSP
+cd $SCRIPT_DIR
 
+source ./ai_wallpaper.conf
 normal_dir=$D_NORMAL
 custom_dir=$D_CUSTOM
 
