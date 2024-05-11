@@ -80,6 +80,9 @@
 !.config/Code\ -\ OSS/User/settings.json
 !.config/Code\ -\ OSS/User/keybindings.json
 !.config/Code\ -\ OSS/User/README.md
+!.config/emacs/
+.config/emacs/*
+!.config/emacs/init.el
 # 🌐 Web Browser
 !.mozilla/
 .mozilla/*
