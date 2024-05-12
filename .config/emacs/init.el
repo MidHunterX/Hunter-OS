@@ -35,7 +35,7 @@
 (setq select-enable-clipboard t)
 (set-face-attribute 'default nil :height 150)   ; Font Size
 (set-frame-parameter nil 'alpha-background 80)
-(add-to-list 'default-frame-alist '(font . "jetbrains mono nerd font"))
+(add-to-list 'default-frame-alist '(font . "jetbrains mono nerd font-14"))
 (add-to-list 'default-frame-alist '(alpha-background . 80))
 (setq-default frame-title-format "%b %& emacs")
 (setq-default indicate-empty-lines t)  ; show blank lines at EOF
@@ -97,6 +97,14 @@
 (unless (package-installed-p 'evil) (package-install 'evil))
 (require 'evil)
 (evil-mode 1)
+(with-eval-after-load 'evil
+  (evil-set-leader '(normal) (kbd "<SPC>"))
+  ;; Interactive file name search.
+  (evil-define-key 'normal 'global (kbd "<leader>ff") 'find-file-in-project)
+  ;; Interactive file content search (git).
+  (evil-define-key 'normal 'global (kbd "<leader>gg") 'counsel-git-grep)
+  ;; Interactive open-buffer switch.
+  (evil-define-key 'normal 'global (kbd "<leader>b") 'counsel-switch-buffer))
 
 ;; COLORSCHEME
 (unless (package-installed-p 'catppuccin-theme)
