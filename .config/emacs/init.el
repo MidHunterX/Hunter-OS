@@ -5,16 +5,51 @@
 (tool-bar-mode -1)                  ; Disable Toolbar
 (menu-bar-mode -1)                  ; Disable Menubar
 (scroll-bar-mode -1)                ; Disable Scrollbar
-
+(setq use-dialog-box nil)
 
 ;; █▀ █▀▀ ▀█▀ ▀█▀ █ █▄░█ █▀▀ █▀
 ;; ▄█ ██▄ ░█░ ░█░ █ █░▀█ █▄█ ▄█
 ;; ============================
+
+;; ENCODING
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(setq default-buffer-file-coding-system 'utf-8)
+
+;; VISUAL
 (global-hl-line-mode t)                         ; Highligh Current Line
-;; (load-theme `tango-dark)                        ; Colorscheme
+(global-display-line-numbers-mode 1)
+(show-paren-mode 1)
+(setq visible-bell 1)
+(setq blink-matching-paren nil)
+(setq show-paren-delay 0.2)
+(setq show-paren-highlight-openparen t)
+(setq show-paren-when-point-inside-paren t)
+(setq cursor-in-non-selected-windows 'hollow)
+(setq highlight-nonselected-windows t)
+(setq bidi-display-reordering nil)  ; Disable bidirectional txt for performance
+(setq inhibit-startup-buffer-menu t)  ; buffer switching gets in the way
+(setq scroll-margin 8)
+(setq select-enable-clipboard t)
 (set-face-attribute 'default nil :height 150)   ; Font Size
-(set-frame-parameter nil 'alpha-background 70)
-(add-to-list 'default-frame-alist '(alpha-background . 70))
+(set-frame-parameter nil 'alpha-background 80)
+(add-to-list 'default-frame-alist '(font . "jetbrains mono nerd font"))
+(add-to-list 'default-frame-alist '(alpha-background . 80))
+(setq-default frame-title-format "%b %& emacs")
+(setq-default indicate-empty-lines t)  ; show blank lines at EOF
+(defalias 'yes-or-no-p 'y-or-n-p)  ; answering just 'y' or 'n' is sufficient
+
+;; INDENTATION
+(setq default-tab-width 4)
+(setq tab-width 4)
+(setq default-fill-column 80)
+(setq fill-column 80)
+(setq-default evil-indent-convert-tabs nil)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq-default evil-shift-round nil)
 
 
 ;; ORG Mode Stuff
@@ -75,6 +110,14 @@
   (package-install 'doom-modeline))
 (require 'doom-modeline)
 (doom-modeline-mode 1)
+
+;; set leader key in all states
+(evil-set-leader nil (kbd "C-SPC"))
+;; set leader key in normal state
+(evil-set-leader 'normal (kbd "SPC"))
+;; set local leader
+(evil-set-leader 'normal "," t)
+(evil-define-key 'normal 'global (kbd "<leader>w") 'save-buffer)
 
 
 ;; UNTOUCHABLES
