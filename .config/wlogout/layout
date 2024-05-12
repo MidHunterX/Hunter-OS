@@ -30,7 +30,7 @@
 }
 {
     "label" : "windows",
-    "action" : "kitty bash ~/Mid_Hunter/scripts/reboot_to_windows.sh",
+    "action" : "kitty bash ~/Mid_Hunter/scripts/sys_windows.sh",
     "text" : "Windows [W]",
     "keybind" : "w"
 }
