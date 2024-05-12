@@ -22,7 +22,7 @@
 (global-hl-line-mode t)                         ; Highligh Current Line
 (global-display-line-numbers-mode 1)
 (show-paren-mode 1)
-(setq visible-bell 1)
+;;(setq visible-bell 1)
 (setq blink-matching-paren nil)
 (setq show-paren-delay 0.2)
 (setq show-paren-highlight-openparen t)
@@ -32,6 +32,7 @@
 (setq bidi-display-reordering nil)  ; Disable bidirectional txt for performance
 (setq inhibit-startup-buffer-menu t)  ; buffer switching gets in the way
 (setq scroll-margin 8)
+(setq scroll-conservatively scroll-margin)
 (setq select-enable-clipboard t)
 (set-face-attribute 'default nil :height 150)   ; Font Size
 (set-frame-parameter nil 'alpha-background 80)
@@ -68,7 +69,6 @@
 ;; ========================================
 ;; TMUX Keys
 (global-set-key (kbd "C-SPC") 'Control-X-prefix)
-(global-set-key (kbd "C-SPC x") 'save-buffers-kill-terminal)
 
 ;; Help Keys
 (global-set-key (kbd "C-h b") 'describe-bindings)
@@ -95,16 +95,21 @@
 
 ;; EVIL
 (unless (package-installed-p 'evil) (package-install 'evil))
+(setq evil-want-C-u-scroll t)
+(setq evil-want-C-i-jump t)
 (require 'evil)
 (evil-mode 1)
 (with-eval-after-load 'evil
+  ;; set leader key in all states
+  (evil-set-leader nil (kbd "C-SPC"))
+  ;; set leader key in normal state
   (evil-set-leader '(normal) (kbd "<SPC>"))
+  ;; Save buffer
+  (evil-define-key 'normal 'global (kbd "<leader>w") 'save-buffer)
   ;; Interactive file name search.
-  (evil-define-key 'normal 'global (kbd "<leader>ff") 'find-file-in-project)
-  ;; Interactive file content search (git).
-  (evil-define-key 'normal 'global (kbd "<leader>gg") 'counsel-git-grep)
+  (evil-define-key 'normal 'global (kbd "<leader>pf") 'project-find-file)
   ;; Interactive open-buffer switch.
-  (evil-define-key 'normal 'global (kbd "<leader>b") 'counsel-switch-buffer))
+  (evil-define-key 'normal 'global (kbd "<leader>x") 'kill-this-buffer))
 
 ;; COLORSCHEME
 (unless (package-installed-p 'catppuccin-theme)
@@ -118,15 +123,6 @@
   (package-install 'doom-modeline))
 (require 'doom-modeline)
 (doom-modeline-mode 1)
-
-;; set leader key in all states
-(evil-set-leader nil (kbd "C-SPC"))
-;; set leader key in normal state
-(evil-set-leader 'normal (kbd "SPC"))
-;; set local leader
-(evil-set-leader 'normal "," t)
-(evil-define-key 'normal 'global (kbd "<leader>w") 'save-buffer)
-
 
 ;; UNTOUCHABLES
 (custom-set-variables
