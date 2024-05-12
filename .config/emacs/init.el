@@ -97,6 +97,7 @@
 (unless (package-installed-p 'evil) (package-install 'evil))
 (setq evil-want-C-u-scroll t)
 (setq evil-want-C-i-jump t)
+(setq evil-undo-system 'undo-redo)
 (require 'evil)
 (evil-mode 1)
 (with-eval-after-load 'evil
@@ -104,6 +105,8 @@
   (evil-set-leader nil (kbd "C-SPC"))
   ;; set leader key in normal state
   (evil-set-leader '(normal) (kbd "<SPC>"))
+  ;; Redo
+  (evil-define-key 'normal 'global (kbd "U") 'undo-redo)
   ;; Save buffer
   (evil-define-key 'normal 'global (kbd "<leader>w") 'save-buffer)
   ;; Interactive file name search.
