@@ -127,6 +127,21 @@
 (require 'doom-modeline)
 (doom-modeline-mode 1)
 
+;; DASHBOARD
+(unless (package-installed-p 'dashboard) (package-install 'dashboard))
+(setq wallpaper (with-temp-buffer
+                    (insert-file-contents "~/.cache/swww/eDP-1")
+                    (thing-at-point 'line t)))
+;; supported values are: string (filepath), 'official, 'logo and integers.
+(setq dashboard-startup-banner wallpaper)
+(setq dashboard-image-banner-max-width 600)
+(setq dashboard-banner-logo-title "Welcome to Emacs")
+(setq dashboard-center-content t)
+(setq dashboard-vertically-center-content t)
+(require 'dashboard)
+(dashboard-setup-startup-hook)
+
+
 ;; UNTOUCHABLES
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
