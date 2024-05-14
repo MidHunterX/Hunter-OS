@@ -197,6 +197,7 @@ speed, precision and comfortability.
 | Package Name      | Description                           | Src
 | fd                | Faster alternative to find command    | pacman
 | jq                | CLI JSON Processor                    | pacman
+| xsv               | CLI CSV Processor                     | pacman
 | fzf               | Fuzzy Finder Utility                  | pacman
 | ripgrep           | Text Search Tool                      | pacman
 | poppler           | PDF Rendering Engine                  | pacman

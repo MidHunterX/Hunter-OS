@@ -252,7 +252,9 @@ filextype {*.db,*.sqlite3},
         \ sqlitebrowser %c
 
 "  CSV
-fileviewer *.csv sed "s/,,,,/,,-,,/g;s/,,/ /g" %c | column -t | sed "s/ - /  /g" | cut -c -%pw
+fileviewer *.csv,
+        \ cat %c | xsv table,
+        \ sed "s/,,,,/,,-,,/g;s/,,/ /g" %c | column -t | sed "s/ - /  /g" | cut -c -%pw
 
 "  PDF
 filextype {*.pdf},<application/pdf> zathura %c %i, mupdf %c, apvlv %c, xpdf %c
