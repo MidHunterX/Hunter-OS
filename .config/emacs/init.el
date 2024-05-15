@@ -1,6 +1,11 @@
+;; Without init.el: 0.15s
+
+;; ================================@[130ms]================================ ;;
+;; Total Time: 280ms
+
+
 ;; █▀▄ █ █▀ ▄▀█ █▄▄ █░░ █▀▀
 ;; █▄▀ █ ▄█ █▀█ █▄█ █▄▄ ██▄
-;; ========================
 (setq inhibit-startup-message t)    ; Disable Startup Message
 (tool-bar-mode -1)                  ; Disable Toolbar
 (menu-bar-mode -1)                  ; Disable Menubar
@@ -9,7 +14,6 @@
 
 ;; █▀ █▀▀ ▀█▀ ▀█▀ █ █▄░█ █▀▀ █▀
 ;; ▄█ ██▄ ░█░ ░█░ █ █░▀█ █▄█ ▄█
-;; ============================
 
 ;; ENCODING
 (prefer-coding-system 'utf-8)
@@ -52,7 +56,6 @@
 (setq-default tab-width 4)
 (setq-default evil-shift-round nil)
 
-
 ;; ORG Mode Stuff
 (defvar dw/fixed-pitch-font "JetBrains Mono"
   "The font used for `default' and `fixed-pitch' faces.")
@@ -62,6 +65,9 @@
 (defvar dw/variable-pitch-size 120)
 (defvar dw/org-heading-font "Noto Sans"
   "The font used for Org Mode headings.")
+
+;; =================================@[70ms]================================= ;;
+;; Total Time: 350ms
 
 
 ;; █▄▀ █▀▀ █▄█ █▄▄ █ █▄░█ █▀▄ █ █▄░█ █▀▀ █▀
@@ -83,6 +89,9 @@
 (global-set-key (kbd "C-w") 'kill-region)
 (global-set-key (kbd "M-g") 'goto-line)
 
+;; =================================@[0ms]================================= ;;
+;; Total Time: 350ms
+
 
 ;; █▀▄▀█ █▀▀ █░░ █▀█ ▄▀█
 ;; █░▀░█ ██▄ █▄▄ █▀▀ █▀█
@@ -92,6 +101,9 @@
 (package-initialize)
 ;; (package-refresh-contents)
 (unless package-archive-contents (package-refresh-contents))
+
+;; ================================@[180ms]================================ ;;
+;; Total Time: 530ms
 
 ;; EVIL
 (unless (package-installed-p 'evil) (package-install 'evil))
@@ -114,6 +126,9 @@
   ;; Interactive open-buffer switch.
   (evil-define-key 'normal 'global (kbd "<leader>x") 'kill-this-buffer))
 
+;; ================================@[140ms]================================ ;;
+;; Total Time: 670ms
+
 ;; COLORSCHEME
 (unless (package-installed-p 'catppuccin-theme)
   (package-install 'catppuccin-theme))
@@ -122,11 +137,17 @@
 (catppuccin-set-color 'base "#262626")
 (catppuccin-reload)
 
+;; ================================@[1780ms]================================ ;;
+;; Total Time: 1920ms
+
 ;; DOOM MODELINE
 (unless (package-installed-p 'doom-modeline)
   (package-install 'doom-modeline))
 (require 'doom-modeline)
 (doom-modeline-mode 1)
+
+;; ================================@[130ms]================================ ;;
+;; Total Time: 2050ms
 
 ;; DASHBOARD
 (unless (package-installed-p 'dashboard) (package-install 'dashboard))
@@ -161,6 +182,8 @@
 (require 'dashboard)
 (dashboard-setup-startup-hook)
 
+;; =================================@[10ms]================================= ;;
+;; Total Time: 2060ms
 
 ;; UNTOUCHABLES
 (custom-set-variables
