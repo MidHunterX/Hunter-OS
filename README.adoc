@@ -74,6 +74,68 @@ speed, precision and comfortability.
 
 == 📦 Prefered Packages
 
+.👢 Boot
+[%collapsible]
+====
+[discrete]
+=== 👢 Boot
+[%header,cols=3*]
+|===
+| Package Name | Description
+| dosfstools   | DOS Filesystem Utilities
+| efibootmgr   | Utility to modify the EFI Boot Manager
+| grub         | GNU GRand Unified Bootloader
+| ntfs-3g      | NTFS filesystem driver and utilities
+| os-prober    | Utility to detect other OSes on a set of drives
+|===
+====
+
+.💾 Hardware
+[%collapsible]
+====
+[discrete]
+=== 💾 Hardware
+[%header,cols=3*]
+|===
+| Package Name | Description
+| acpi         | Client for battery, power and thermal readings
+| acpi_call    | Kernel module to enable calls to ACPI (/proc/acpi/call)
+| acpid        | Daemon for ACPI power management events
+| amd-ucode    | Microcode update image for AMD CPUs
+| amdvlk       | AMD's standalone Vulkan driver
+|===
+====
+
+.⚙️ Utilities
+[%collapsible]
+====
+[discrete]
+=== ⚙️ Utilities
+[%header,cols=3*]
+|===
+| Package Name      | Description                           | Src
+| sudo              | Run commands as root                  | pacman
+| fd                | Faster alternative to find command    | pacman
+| jq                | CLI JSON Processor                    | pacman
+| xsv               | CLI CSV Processor                     | pacman
+| fzf               | Fuzzy Finder Utility                  | pacman
+| ripgrep           | Text Search Tool                      | pacman
+| poppler           | PDF Rendering Engine                  | pacman
+| highlight         | Syntax Highlighter                    | pacman
+| ffmpegthumbnailer | Video Thumbnailer                     | pacman
+| brillo            | Brightness based on human perception  | pacman
+| tgpt              | CLI AI Chat without API keys          | pacman
+| libqalculate      | CLI NLP Calculator                    | pacman
+| dust              | Disk space usage analyzer             | pacman
+| bat               | cat with syntax highlighting          | pacman
+| lsd               | ls with Nerd Font support             | pacman
+| exiv2             | Image EXIF Manipulation Tool          | pacman
+| cava              | Cross Platform Audio Visualizer       | aur
+| warpd-git         | Modal Keyboard Driven Virtual Pointer | aur
+| speech-dispatcher | Speech Synthesis (spd-say)            | pacman
+|===
+====
+
 .📷 Audio, Video and Image
 [%collapsible]
 ====
@@ -187,35 +249,6 @@ speed, precision and comfortability.
 |===
 ====
 
-.⚙️ Utilities
-[%collapsible]
-====
-[discrete]
-=== ⚙️ Utilities
-[%header,cols=3*]
-|===
-| Package Name      | Description                           | Src
-| fd                | Faster alternative to find command    | pacman
-| jq                | CLI JSON Processor                    | pacman
-| xsv               | CLI CSV Processor                     | pacman
-| fzf               | Fuzzy Finder Utility                  | pacman
-| ripgrep           | Text Search Tool                      | pacman
-| poppler           | PDF Rendering Engine                  | pacman
-| highlight         | Syntax Highlighter                    | pacman
-| ffmpegthumbnailer | Video Thumbnailer                     | pacman
-| brillo            | Brightness based on human perception  | pacman
-| tgpt              | CLI AI Chat without API keys          | pacman
-| libqalculate      | CLI NLP Calculator                    | pacman
-| dust              | Disk space usage analyzer             | pacman
-| bat               | cat with syntax highlighting          | pacman
-| lsd               | ls with Nerd Font support             | pacman
-| exiv2             | Image EXIF Manipulation Tool          | pacman
-| cava              | Cross Platform Audio Visualizer       | aur
-| warpd-git         | Modal Keyboard Driven Virtual Pointer | aur
-| speech-dispatcher | Speech Synthesis (spd-say)            | pacman
-|===
-====
-
 .📄 Document viewers and editors
 [%collapsible]
 ====
@@ -246,6 +279,7 @@ speed, precision and comfortability.
 | nemo         | GUI File Manager     | pacman
 | p7zip        | CLI 7 Zip Archiver   | pacman
 | fuse-zip     | FUSE mount zip files | pacman
+| unzip        | Unzip .zip archives  | pacman
 |===
 ====
 
