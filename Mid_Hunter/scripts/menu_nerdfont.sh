@@ -10,7 +10,8 @@ fi
 
 # Show Emoji list
 NF_ROW=$( (sed '/^$/d' "$HIST_FILE"; sed '1,/^### NF LIST ###$/d' "$0") | fuzzel --dmenu --border-color=#89b4faff --background=#2d2d379b)
-echo $NF_ROW
+
+echo "Selected Row: $NF_ROW"
 
 # Exit script if nothing is selected
 if [[ $NF_ROW == '' ]]; then
@@ -20,18 +21,18 @@ fi
 
 # Cut out only emoji from the row
 SELECTED_NF=$(echo $NF_ROW | cut -d ' ' -f 1 | tr -d '\n')
-echo $SELECTED_NF
+echo "Output: $SELECTED_NF"
 
 # Output Emoji
 wtype $SELECTED_NF
 
-# Add Emoji Row to history file
+# Add NerdFont Row to history file
 if grep -q "^$NF_ROW$" "$HIST_FILE"; then
-  echo 'Found Row'
-  sed -i "0,/^$NF_ROW$/d" "$HIST_FILE"
+  echo "Log: Entry already inside history file"
+  sed -i "/^$NF_ROW$/d" "$HIST_FILE"
   sed -i "1i $NF_ROW" "$HIST_FILE"
 else
-  echo 'Adding Row'
+  echo 'Log: Adding new entry in history file'
   sed -i "1i $NF_ROW" "$HIST_FILE"
 fi
 
