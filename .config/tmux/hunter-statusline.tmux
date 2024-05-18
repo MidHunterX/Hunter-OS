@@ -234,8 +234,10 @@ pfx_sel="  PREFIX  "
 module="$(build_prefix_off 'default' 'default' "$pfx_off")"
 module+="$(build_prefix_on $pfx_sel_bg $pfx_sel_fg "$pfx_sel")"
 # tmux set-option -g status-left "${module}"
-tmux set-option -g status-left "$(time_module_config)"
+# tmux set-option -g status-left "$(time_module_config)"
+# tmux set-option -g status-right "$(session_module_config)"
+# tmux set-option -g status-right-length 69
+# tmux set-option -g status-left-length 69
 
-tmux set-option -g status-right "$(session_module_config)"
-tmux set-option -g status-right-length 69
-tmux set-option -g status-left-length 69
+tmux set-option -g status-left ""
+tmux set-option -g status-right ""
