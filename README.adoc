@@ -79,7 +79,7 @@ speed, precision and comfortability.
 ====
 [discrete]
 === 👢 Boot
-[%header,cols=3*]
+[%header]
 |===
 | Package Name | Description
 | dosfstools   | DOS Filesystem Utilities
@@ -95,7 +95,7 @@ speed, precision and comfortability.
 ====
 [discrete]
 === 💾 Hardware
-[%header,cols=3*]
+[%header]
 |===
 | Package Name | Description
 | acpi         | Client for battery, power and thermal readings
@@ -111,7 +111,7 @@ speed, precision and comfortability.
 ====
 [discrete]
 === ⚙️ Utilities
-[%header,cols=3*]
+[%header]
 |===
 | Package Name      | Description                           | Src
 | sudo              | Run commands as root                  | pacman
@@ -141,7 +141,7 @@ speed, precision and comfortability.
 ====
 [discrete]
 === 📢 Audio
-[%header,cols=3*]
+[%header]
 |===
 | Package Name   | Description                                     | Src
 | pipewire       | Audio and Video streaming server                | pacman
@@ -153,7 +153,7 @@ speed, precision and comfortability.
 
 [discrete]
 === 🎬 Video
-[%header,cols=3*]
+[%header]
 |===
 | Package Name | Description                                        | Src
 | ffmpeg       | Super advanced library for handling Audio / Video  | pacman
@@ -164,7 +164,7 @@ speed, precision and comfortability.
 
 [discrete]
 === 🌄 Image
-[%header,cols=3*]
+[%header]
 |===
 | Package Name | Description                          | Src
 | feh          | Image Viewer - Super light weight    | pacman
@@ -177,7 +177,7 @@ speed, precision and comfortability.
 ====
 [discrete]
 === 🌐 Network and Security
-[%header,cols=3*]
+[%header]
 |===
 | Package Name              | Description                        | Src
 | dhcpcd                    | DHCP Client Daemon                 | pacman
@@ -201,7 +201,7 @@ speed, precision and comfortability.
 ====
 [discrete]
 === 📦 Development
-[%header,cols=3*]
+[%header]
 |===
 | Package Name  | Description                  | Src
 | git           | Version control system       | pacman
@@ -217,7 +217,7 @@ speed, precision and comfortability.
 ====
 [discrete]
 === 🌲 Desktop
-[%header,cols=3*]
+[%header]
 |===
 | Package Name | Description                  | Src
 | hyprland     | Wayland compositor           | pacman
@@ -237,7 +237,7 @@ speed, precision and comfortability.
 ====
 [discrete]
 === 💻 2-in-1 Laptop Specific
-[%header,cols=3*]
+[%header]
 |===
 | Package Name             | Description                            | Src
 | yoga-usage-mode-dkms-git | ACPI driver for Tablet mode detection  | aur
@@ -254,7 +254,7 @@ speed, precision and comfortability.
 ====
 [discrete]
 === 📄 Document viewers and editors
-[%header,cols=3*]
+[%header]
 |===
 | Package Name        | Description                 | Src
 | neovim              | Text Editor                 | pacman
@@ -272,7 +272,7 @@ speed, precision and comfortability.
 ====
 [discrete]
 === 📁 Archivers and File Manager
-[%header,cols=3*]
+[%header]
 |===
 | Package Name | Description          | Src
 | vifm         | TUI File Manager     | pacman
@@ -288,7 +288,7 @@ speed, precision and comfortability.
 ====
 [discrete]
 === 📊 System Monitors and Managers
-[%header,cols=3*]
+[%header]
 |===
 | Package Name | Description           | Src
 | htim         | CPU process monitor   | aur
@@ -302,7 +302,7 @@ speed, precision and comfortability.
 ====
 [discrete]
 === 🖥️ Terminal
-[%header,cols=3*]
+[%header]
 |===
 | Package Name | Description                        | Src
 | kitty        | best of all terminals out there    | pacman
@@ -317,7 +317,7 @@ speed, precision and comfortability.
 ====
 [discrete]
 === 🖋️ Fonts
-[%header,cols=3*]
+[%header]
 |===
 | Package Name            | Description                     | Src
 | fontconfig              | Font Configuration              | pacman
@@ -333,7 +333,7 @@ speed, precision and comfortability.
 ====
 [discrete]
 === 🥃 Screenshot
-[%header,cols=3*]
+[%header]
 |===
 | Package Name       | Description                    | Src
 | grim               | Screenshot Utility for Wayland | pacman
