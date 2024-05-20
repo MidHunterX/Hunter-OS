@@ -68,7 +68,7 @@ comfortability without even thinking about keybindings.
 
 | link:https://github.com/MidHunterX/HunterX-PDE[📝 NeoVim]
 | TUI Code Editor
-| image:https://github.com/MidHunterX/NvME/blob/37a9ab0ee56159f744e670831e315ca085a7b218/img/nvim_dashboard.jpg[,128,link=]
+| image:https://github.com/MidHunterX/NvME/blob/37a9ab0ee56159f744e670831e315ca085a7b218/img/nvim_dashboard.jpg[,128,link=https://github.com/MidHunterX/HunterX-PDE]
 
 | link:Mid_Hunter/scripts/[⚙️ Scripts]
 | Scripts
