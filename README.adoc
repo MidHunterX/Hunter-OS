@@ -1,12 +1,5 @@
 = Hunter OS
 
-== 📝 ToDo List
-
-* [ ] Brightness Profile System
-* [ ] Audio Dynamic Range Compression - EasyEffects
-* [ ] Audio EQ & Sound Profile Customization
-* [ ] Audio I/O Visualization and Connection Management
-
 == 🌿 Philosophy
 
 *Distro Agnostic*: Compatibility with a any linux based system for persisting
@@ -14,17 +7,17 @@ workflow regardless of preferred base.
 
 *Terminal Focused*: The terminal is the heart of this distro, providing
 CLI/TUI tools and utilities for efficient workflow tailored to personal
-preference.
+preference. Do 95% of work in TTY in the absence of a display server.
 
 *Lightweight, Optimized, and Battery Efficient*: Perfectly engineered to be
-light on system resources, ensuring smooth performance even on low-powered
-devices. Every aspect is optimized for maximum efficiency, extending battery
-life and also have many features at disposal.
+light on system resources, ensuring smooth performance. Every aspect is
+optimized for maximum efficiency, extending battery life and also have many
+features at disposal.
 
-*Keyboard Centric Workflow with Vim Style Keybindings*: Promotes a
-keyboard-centric approach, with Vim-style keybindings deeply integrated into
-every tools, apps and utilities. This allows to navigate and interact with
-speed, precision and comfortability.
+*Keyboard Centric Workflow with Vim Style Keybindings*: Keyboard-centric
+approach, with Vim-style keybindings deeply integrated into every tools, apps
+and utilities. This allows to navigate and interact with speed, precision and
+comfortability without even thinking about keybindings.
 
 
 == 💼 Custom Configurations
