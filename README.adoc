@@ -134,6 +134,7 @@ comfortability without even thinking about keybindings.
 | acpid        | Daemon for ACPI power management events
 | amd-ucode    | Microcode update image for AMD CPUs
 | amdvlk       | AMD's standalone Vulkan driver
+| mesa-utils   | Essential Utilities for Open-source OpenGL drivers
 |===
 ====
 
