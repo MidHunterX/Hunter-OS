@@ -28,27 +28,27 @@ comfortability without even thinking about keybindings.
 
 | link:.config/cava/[📊 Cava]
 | Music Visualizer
-| image:.config/cava/.assets/cava.jpg[,128]
+| image:.config/cava/.assets/cava.jpg[,128,link=.config/cava/]
 
 | link:.config/feh/[🌄 Feh]
 | Image Viewer
-| image:.config/feh/.assets/feh.jpg[,128]
+| image:.config/feh/.assets/feh.jpg[,128,link=.config/feh/]
 
 | link:.mozilla/[🦊 FireFox]
 | Web Browser
-| image:.mozilla/assets/firefox.jpg[,128]
+| image:.mozilla/assets/firefox.jpg[,128,link=.mozilla/]
 
 | link:.config/fish/[🐟 Fish]
 | Shell
-| image:.config/fish/.assets/fish_lscd.jpg[,128]
+| image:.config/fish/.assets/fish_lscd.jpg[,128,link=.config/fish/]
 
 | link:.config/fuzzel/[📜 Fuzzel]
 | App Launcher
-| image:.config/fuzzel/.assets/fuzzel.jpg[,128]
+| image:.config/fuzzel/.assets/fuzzel.jpg[,128,link=.config/fuzzel/]
 
 | link:.config/hypr/[💧 Hyprland]
 | Wayland Compositor
-| image:.config/hypr/.assets/hypr.jpg[,128]
+| image:.config/hypr/.assets/hypr.jpg[,128,link=.config/hypr/]
 
 | link:.config/keyd/[🎹 KeyD]
 | Key Remapping Daemon
@@ -56,51 +56,51 @@ comfortability without even thinking about keybindings.
 
 | link:.config/kitty/[🐱 Kitty]
 | Terminal Emulator
-| image:.config/kitty/.assets/kitty_nvim.jpg[,128]
+| image:.config/kitty/.assets/kitty_nvim.jpg[,128,link=.config/kitty/]
 
 | link:.config/lazygit/[😴 LazyGit]
 | TUI Git Frontend
-| image:.config/lazygit/.assets/lazygit.jpg[,128]
+| image:.config/lazygit/.assets/lazygit.jpg[,128,link=.config/lazygit/]
 
 | link:.config/mpv/[🎬 Mpv]
 | Video Player
-| image:.config/mpv/.assets/mpv.jpg[,128]
+| image:.config/mpv/.assets/mpv.jpg[,128,link=.config/mpv/]
 
 | link:https://github.com/MidHunterX/HunterX-PDE[📝 NeoVim]
 | TUI Code Editor
-| image:https://github.com/MidHunterX/NvME/blob/37a9ab0ee56159f744e670831e315ca085a7b218/img/nvim_dashboard.jpg[,128]
+| image:https://github.com/MidHunterX/NvME/blob/37a9ab0ee56159f744e670831e315ca085a7b218/img/nvim_dashboard.jpg[,128,link=]
 
 | link:Mid_Hunter/scripts/[⚙️ Scripts]
 | Scripts
-| image:Mid_Hunter/scripts/.assets/script_fetch.jpg[,128]
+| image:Mid_Hunter/scripts/.assets/script_fetch.jpg[,128,link=Mid_Hunter/scripts/]
 
 | link:.config/starship/[🚀 Starship]
 | Shell Prompt Engine
-| image:.config/starship/.assets/prompt.png[,128]
+| image:.config/starship/.assets/prompt.png[,128,link=.config/starship/]
 
 | link:.config/tmux/[🍱 Tmux]
 | Terminal Multiplexer
-| image:.config/tmux/.assets/tmux.jpg[,128]
+| image:.config/tmux/.assets/tmux.jpg[,128,link=.config/tmux/]
 
 | link:.config/vifm/[📁 ViFM]
 | File Manager
-| image:.config/vifm/.assets/vifm.jpg[,128]
+| image:.config/vifm/.assets/vifm.jpg[,128,link=.config/vifm/]
 
 | link:.config/Code%20-%20OSS/User/[🆚 VSCode]
 | GUI Code Editor
-| image:.config/Code%20-%20OSS/User/.assets/code.jpg[,128]
+| image:.config/Code%20-%20OSS/User/.assets/code.jpg[,128,link=.config/Code%20-%20OSS/User/]
 
 | link:.config/waybar/[🍫 WayBar]
 | Status Bar
-| image:.config/waybar/.assets/waybar.png[,128]
+| image:.config/waybar/.assets/waybar.png[,128,link=.config/waybar/]
 
 | link:.config/wlogout/[🌳 Wlogout]
 | Logout Menu
-| image:.config/wlogout/.assets/wlogout.jpg[,128]
+| image:.config/wlogout/.assets/wlogout.jpg[,128,link=.config/wlogout/]
 
 | link:.config/zathura/[📄 Zathura]
 | PDF Frontend
-| image:.config/zathura/.assets/zathura.jpg[,128]
+| image:.config/zathura/.assets/zathura.jpg[,128,link=.config/zathura/]
 |===
 
 == 📦 Prefered Packages
