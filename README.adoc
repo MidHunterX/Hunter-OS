@@ -147,24 +147,24 @@ comfortability without even thinking about keybindings.
 |===
 | Package Name      | Description                           | Src
 | sudo              | Run commands as root                  | pacman
-| fd                | Faster alternative to find command    | pacman
-| jq                | CLI JSON Processor                    | pacman
-| xsv               | CLI CSV Processor                     | pacman
-| fzf               | Fuzzy Finder Utility                  | pacman
-| ripgrep           | Text Search Tool                      | pacman
-| poppler           | PDF Rendering Engine                  | pacman
-| highlight         | Syntax Highlighter                    | pacman
-| ffmpegthumbnailer | Video Thumbnailer                     | pacman
-| brillo            | Brightness based on human perception  | pacman
-| tgpt              | CLI AI Chat without API keys          | pacman
-| libqalculate      | CLI NLP Calculator                    | pacman
-| dust              | Disk space usage analyzer             | pacman
 | bat               | cat with syntax highlighting          | pacman
-| lsd               | ls with Nerd Font support             | pacman
+| dust              | Disk space usage analyzer             | pacman
 | exiv2             | Image EXIF Manipulation Tool          | pacman
-| cava              | Cross Platform Audio Visualizer       | aur
-| warpd-git         | Modal Keyboard Driven Virtual Pointer | aur
+| fd                | Faster alternative to find command    | pacman
+| ffmpegthumbnailer | Video Thumbnailer                     | pacman
+| fzf               | Fuzzy Finder Utility                  | pacman
+| highlight         | Syntax Highlighter                    | pacman
+| jq                | CLI JSON Processor                    | pacman
+| libqalculate      | CLI NLP Calculator                    | pacman
+| lsd               | ls with Nerd Font support             | pacman
+| poppler           | PDF Rendering Engine                  | pacman
+| ripgrep           | Text Search Tool                      | pacman
 | speech-dispatcher | Speech Synthesis (spd-say)            | pacman
+| xsv               | CLI CSV Processor                     | pacman
+| brillo            | Brightness based on human perception  | aur
+| cava              | Cross Platform Audio Visualizer       | aur
+| tgpt              | CLI AI Chat without API keys          | aur
+| warpd-git         | Modal Keyboard Driven Virtual Pointer | aur
 |===
 ====
 
@@ -176,11 +176,11 @@ comfortability without even thinking about keybindings.
 [%header]
 |===
 | Package Name   | Description                                     | Src
+| pamixer        | CLI Volume Control Tool                         | pacman
+| pavucontrol    | GUI Volume Control Tool                         | pacman
 | pipewire       | Audio and Video streaming server                | pacman
 | pipewire-pulse | A/V router & processor - PulseAudio replacement | pacman
 | wireplumber    | PipeWire session/policy manager - wpctl         | pacman
-| pamixer        | CLI Volume Control Tool                         | pacman
-| pavucontrol    | GUI Volume Control Tool                         | pacman
 |===
 
 [discrete]
@@ -189,8 +189,8 @@ comfortability without even thinking about keybindings.
 |===
 | Package Name | Description                                        | Src
 | ffmpeg       | Super advanced library for handling Audio / Video  | pacman
-| mpv          | Video Player - Minimal and integrates well with WM | pacman
 | handbrake    | GUI Video Transcoder                               | pacman
+| mpv          | Video Player - Minimal and integrates well with WM | pacman
 | yt-dlp       | Video Downloader                                   | pacman
 |===
 
@@ -200,7 +200,7 @@ comfortability without even thinking about keybindings.
 |===
 | Package Name | Description                          | Src
 | feh          | Image Viewer - Super light weight    | pacman
-| nomacs-git   | Image Viewer - Touch screen friendly | aur
+| nomacs       | Image Viewer - Touch screen friendly | aur
 |===
 ====
 
@@ -212,19 +212,18 @@ comfortability without even thinking about keybindings.
 [%header]
 |===
 | Package Name              | Description                        | Src
-| dhcpcd                    | DHCP Client Daemon                 | pacman
-| networkmanager            | CLI Network Manager - nmcli        | pacman
-| nmtui                     | TUI Network Manager - nmtui        | pacman
-| wpa_supplicant            | WLAN Daemon                        | pacman
+| android-file-transfer     | Mount Android Device               | pacman
+| blueman                   | GUI Bluetooth Manager              | pacman
 | bluez                     | Bluetooth Protocol Daemon          | pacman
 | bluez-utils               | Bluetooth Utilities - bluetoothctl | pacman
-| blueman                   | GUI Bluetooth Manager              | pacman
 | curlftpfs                 | Mount FTP as File System           | pacman
-| android-file-transfer     | Mount Android Device               | pacman
-| transmission-gtk          | GUI Torrent Client                 | pacman
-| keepassxc                 | Password Manager                   | pacman
-| torbrowser-launcher       | Anonnymous Onion Browser           | pacman
+| dhcpcd                    | DHCP Client Daemon                 | pacman
 | firefox-developer-edition | Internet Browser                   | pacman
+| keepassxc                 | Password Manager                   | pacman
+| networkmanager            | CLI Network Manager - nmcli, nmtui | pacman
+| torbrowser-launcher       | Anonnymous Onion Browser           | pacman
+| transmission-gtk          | GUI Torrent Client                 | pacman
+| wpa_supplicant            | WLAN Daemon                        | pacman
 |===
 ====
 
@@ -252,15 +251,16 @@ comfortability without even thinking about keybindings.
 [%header]
 |===
 | Package Name | Description                  | Src
-| hyprland     | Wayland compositor           | pacman
-| swww         | Wayland Wallpaper Daemon     | pacman
-| waybar       | Wayland Status Bar           | pacman
-| swayidle     | Wayland Idle Manager         | pacman
-| wtype        | Wayland Keystrokes Emulation | pacman
-| wl-clipboard | Wayland Clipboard Utility    | pacman
 | dunst        | Notification Daemon          | pacman
-| wlogout      | Logout Screen                | aur
+| fuzzel       | Wayland App Launcher         | pacman
+| hyprland     | Wayland compositor           | pacman
+| swayidle     | Wayland Idle Manager         | pacman
+| waybar       | Wayland Status Bar           | pacman
+| wl-clipboard | Wayland Clipboard Utility    | pacman
+| wtype        | Wayland Keystrokes Emulation | pacman
 | keyd         | Key Remapping Daemon         | aur
+| swww         | Wayland Wallpaper Daemon     | aur
+| wlogout      | Logout Screen                | aur
 |===
 ====
 
@@ -272,12 +272,12 @@ comfortability without even thinking about keybindings.
 [%header]
 |===
 | Package Name             | Description                            | Src
-| yoga-usage-mode-dkms-git | ACPI driver for Tablet mode detection  | aur
-| detect-tablet-mode-git   | Tablet mode scripts - watch_tablet     | aur
 | iio-sensor-proxy         | Accelerometer Sensor Driver            | pacman
-| iio-hyprland-git         | Set Hyprland Orientation automatically | aur
-| auto-cpufreq             | Dynamic CPU Clock Cycle Frequency      | aur
 | tlp                      | Laptop Power Optimization              | pacman
+| auto-cpufreq             | Dynamic CPU Clock Cycle Frequency      | aur
+| detect-tablet-mode-git   | Tablet mode scripts - watch_tablet     | aur
+| iio-hyprland-git         | Set Hyprland Orientation automatically | aur
+| yoga-usage-mode-dkms-git | ACPI driver for Tablet mode detection  | aur
 |===
 ====
 
@@ -292,10 +292,10 @@ comfortability without even thinking about keybindings.
 | neovim              | Text Editor                 | pacman
 | code                | Open Source build of VSCode | pacman
 | obsidian            | MarkDown Note taker         | pacman
-| zathura-pdf-poppler | Zathura Poppler Backend     | pacman
-| zathura             | PDF Graphical Viewer        | pacman
 | pdfarranger         | PDF Page Arranger           | pacman
 | xournalpp           | PDF Annotation / Drawing    | pacman
+| zathura             | PDF Graphical Viewer        | pacman
+| zathura-pdf-poppler | Zathura Poppler Backend     | pacman
 |===
 ====
 
@@ -307,11 +307,11 @@ comfortability without even thinking about keybindings.
 [%header]
 |===
 | Package Name | Description          | Src
-| vifm         | TUI File Manager     | pacman
+| fuse-zip     | FUSE mount zip files | pacman
 | nemo         | GUI File Manager     | pacman
 | p7zip        | CLI 7 Zip Archiver   | pacman
-| fuse-zip     | FUSE mount zip files | pacman
 | unzip        | Unzip .zip archives  | pacman
+| vifm         | TUI File Manager     | pacman
 |===
 ====
 
@@ -337,8 +337,8 @@ comfortability without even thinking about keybindings.
 [%header]
 |===
 | Package Name | Description                        | Src
-| kitty        | best of all terminals out there    | pacman
 | fish         | Modern Shell used as a Commandline | pacman
+| kitty        | best of all terminals out there    | pacman
 | starship     | Cross Platform Prompt              | pacman
 | tmux         | Terminal Multiplexer               | pacman
 |===
