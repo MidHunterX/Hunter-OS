@@ -253,6 +253,7 @@ comfortability without even thinking about keybindings.
 [%header]
 |===
 | Package Name | Description                  | Src
+| libnotify    | Notification library         | pacman
 | dunst        | Notification Daemon          | pacman
 | fuzzel       | Wayland App Launcher         | pacman
 | hyprland     | Wayland compositor           | pacman
