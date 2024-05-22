@@ -117,6 +117,8 @@ comfortability without even thinking about keybindings.
 | base-devel     | Basic tools to build Arch Linux packages
 | linux          | The Linux kernel and modules
 | linux-firmware | Firmware files for Linux
+| linux-headers  | Headers and scripts for building modules
+| pacman-contrib | Scripts and tools for pacman systems (paccache)
 |===
 ====
 
