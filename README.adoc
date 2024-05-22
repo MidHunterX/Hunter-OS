@@ -24,7 +24,7 @@ comfortability without even thinking about keybindings.
 
 [%header,cols=3*]
 |===
-| Name | Description | Thumbnail
+| Name | Description | Preview
 
 | link:.config/cava/[📊 Cava]
 | Music Visualizer
@@ -105,19 +105,18 @@ comfortability without even thinking about keybindings.
 
 == 📦 Prefered Packages
 
-.👢 Boot
+.🐧 Linux System
 [%collapsible]
 ====
 [discrete]
-=== 👢 Boot
+=== 🐧 Linux System
 [%header]
 |===
-| Package Name | Description
-| dosfstools   | DOS Filesystem Utilities
-| efibootmgr   | Utility to modify the EFI Boot Manager
-| grub         | GNU GRand Unified Bootloader
-| ntfs-3g      | NTFS filesystem driver and utilities
-| os-prober    | Utility to detect other OSes on a set of drives
+| Package Name   | Description
+| base           | Base Arch Installation
+| base-devel     | Basic tools to build Arch Linux packages
+| linux          | The Linux kernel and modules
+| linux-firmware | Firmware files for Linux
 |===
 ====
 
@@ -135,6 +134,22 @@ comfortability without even thinking about keybindings.
 | amd-ucode    | Microcode update image for AMD CPUs
 | amdvlk       | AMD's standalone Vulkan driver
 | mesa-utils   | Essential Utilities for Open-source OpenGL drivers
+|===
+====
+
+.👢 Boot
+[%collapsible]
+====
+[discrete]
+=== 👢 Boot
+[%header]
+|===
+| Package Name | Description
+| dosfstools   | DOS Filesystem Utilities
+| efibootmgr   | Utility to modify the EFI Boot Manager
+| grub         | GNU GRand Unified Bootloader
+| ntfs-3g      | NTFS filesystem driver and utilities
+| os-prober    | Utility to detect other OSes on a set of drives
 |===
 ====
 
