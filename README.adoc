@@ -434,7 +434,7 @@ sudo cp -R ~/.config/GRUB/CyberEXS /boot/grub/themes
 sudoedit /etc/default/grub
 lsblk
 ----
-./etc/default/grub
+.📝 /etc/default/grub [replace]
 [source,bash]
 ----
 GRUB_TIMEOUT=2
@@ -443,7 +443,7 @@ GRUB_DISABLE_OS_PROBER=false
 ----
 [source,html]
 ----
-sudo mount /dev/<EFI_Partition> /mnt/
+sudo mount /dev/<EFI-Partition> /mnt/
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 sudo umount /mnt
 ----
@@ -461,7 +461,7 @@ systemctl start keyd.service
 ----
 sudoedit /etc/sudoers
 ----
-./etc/sudoers
+.📝 /etc/sudoers [add]
 [source,bash]
 ----
 # Sudo Stuff
@@ -480,7 +480,7 @@ sudo mkdir -p /etc/systemd/system/getty@tty1.service.d/
 sudo touch /etc/systemd/system/getty@tty1.service.d/skip-username.conf
 sudoedit /etc/systemd/system/getty@tty1.service.d/skip-username.conf
 ----
-./etc/systemd/system/getty@tty1.service.d/skip-username.conf
+.📝 /etc/systemd/system/getty@tty1.service.d/skip-username.conf [add]
 [source,html]
 ----
 [Service]
@@ -493,7 +493,7 @@ ExecStart=-/sbin/agetty -o '-p -- <username>' --noclear --skip-login - $TERM
 ----
 sudoedit /etc/pacman.conf
 ----
-./etc/pacman.conf
+.📝 /etc/pacman.conf [add]
 [source,bash]
 ----
 ParallelDownloads = 5
