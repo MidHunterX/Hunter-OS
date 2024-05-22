@@ -148,7 +148,11 @@ else
 fi
 
 # BAT Value with WATTAGE
-BAT_PERCENT="${BAT_PERCENT}% @${BAT_WATT}W"
+if [[ $BAT_WATT != '0.0' ]]; then
+  BAT_PERCENT="${BAT_PERCENT}% @${BAT_WATT}W"
+else
+  BAT_PERCENT+="%"
+fi
 
 
 # █▀█ █░█ ▀█▀ █▀█ █░█ ▀█▀
