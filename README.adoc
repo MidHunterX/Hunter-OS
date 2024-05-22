@@ -157,6 +157,7 @@ comfortability without even thinking about keybindings.
 | jq                | CLI JSON Processor                    | pacman
 | libqalculate      | CLI NLP Calculator                    | pacman
 | lsd               | ls with Nerd Font support             | pacman
+| man-db            | Utility for reading man pages         | pacman
 | poppler           | PDF Rendering Engine                  | pacman
 | ripgrep           | Text Search Tool                      | pacman
 | speech-dispatcher | Speech Synthesis (spd-say)            | pacman
@@ -426,6 +427,35 @@ brs --> brillo
 
 == 💽 System Configs
 
+=== GRUB Bootloader
+[source,bash]
+----
+sudo cp -R ~/.config/GRUB/CyberEXS /boot/grub/themes
+sudoedit /etc/default/grub
+lsblk
+----
+./etc/default/grub
+[source,bash]
+----
+GRUB_TIMEOUT=2
+GRUB_THEME=/boot/grub/themes/CyberEXS/theme.txt
+GRUB_DISABLE_OS_PROBER=false
+----
+[source,html]
+----
+sudo mount /dev/<EFI_Partition> /mnt/
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+sudo umount /mnt
+----
+
+=== KeyD Setup
+[source,bash]
+----
+sudo ln -s ~/.config/keyd/default.conf /etc/keyd/default.conf
+systemctl enable keyd.service
+systemctl start keyd.service
+----
+
 === Sudoers
 [source,bash]
 ----
@@ -451,9 +481,22 @@ sudo touch /etc/systemd/system/getty@tty1.service.d/skip-username.conf
 sudoedit /etc/systemd/system/getty@tty1.service.d/skip-username.conf
 ----
 ./etc/systemd/system/getty@tty1.service.d/skip-username.conf
-[source,bash]
+[source,html]
 ----
 [Service]
 ExecStart=
 ExecStart=-/sbin/agetty -o '-p -- <username>' --noclear --skip-login - $TERM
+----
+
+=== Colorful Pacman
+[source,bash]
+----
+sudoedit /etc/pacman.conf
+----
+./etc/pacman.conf
+[source,bash]
+----
+ParallelDownloads = 5
+Color
+ILoveCandy
 ----
