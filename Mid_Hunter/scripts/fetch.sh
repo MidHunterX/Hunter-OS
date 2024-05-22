@@ -57,6 +57,7 @@ BAT_REST=$((100-$BAT_ROUND))
 BAT_BAR=$(echo "$(printf "${BAR_FILL}%.0s" $(seq 1 $((${BAT_ROUND}/BAR_FRACTION))))")
 BAT_REST_BAR=$(echo "$(printf "${BAR_REST}%.0s" $(seq 1 $((${BAT_REST}/BAR_FRACTION))))")
 
+BAT_WATT=$(cat /sys/class/power_supply/BAT0/power_now | awk '{ printf "%.1f\n", $1 / 1000000 }')
 BATTERY_STATUS=$(cat /sys/class/power_supply/BAT0/status)
 
 RAM_VALUE=$(free | grep Mem: | awk '{printf "%d", $3/1024}')  # Return in MB
@@ -146,6 +147,9 @@ else
   RAM_VALUE+=' MB'
 fi
 
+# BAT Value with WATTAGE
+BAT_PERCENT="${BAT_PERCENT}% @${BAT_WATT}W"
+
 
 # █▀█ █░█ ▀█▀ █▀█ █░█ ▀█▀
 # █▄█ █▄█ ░█░ █▀▀ █▄█ ░█░
@@ -165,7 +169,7 @@ echo -e "  ${X}oMMo ${Y}oyy${X}      ${Y}yyo${X} oMMo${R}   ${B}GPU:${R} AMD Rad
 echo -e "  ${X}oMMo ${Y} *o${X}      ${Y}o* ${X} oMMo${R}   ${B}SSD:${R} ${COL_SSD}$SSD_BAR${BLK}$SSD_REST_BAR${R} $SSD_PERCENT%${R}"
 echo -e "  ${X}oMMo ${Y}   ${X}      ${Y}   ${X} oMMo${R}   ${B}RAM:${R} ${COL_RAM}$RAM_BAR${BLK}$RAM_REST_BAR${R} ${RAM_VALUE}${R}"
 echo -e "  ${X}:NMo ${Y}   ${X}      ${Y}   ${X} oMN:${R}   ${B}SWP:${R} ${COL_SWP}$SWP_BAR${BLK}$SWP_REST_BAR${R} ${SWP_VALUE} MB${R}"
-echo -e "  ${X}  o+ ${Y}   ${X}      ${Y}   ${X} +o  ${R}   ${B}BAT:${R} ${COL_BAT}$BAT_BAR${BLK}$BAT_REST_BAR${R} $BAT_PERCENT%${R} $BAT_STATUS_ICO"
+echo -e "  ${X}  o+ ${Y}   ${X}      ${Y}   ${X} +o  ${R}   ${B}BAT:${R} ${COL_BAT}$BAT_BAR${BLK}$BAT_REST_BAR${R} $BAT_PERCENT${R} $BAT_STATUS_ICO"
 
 # benchmark_end=$(date +%N)
 # benchmark=$(((${benchmark_end:0:-6} - ${benchmark_start:0:-6})))
