@@ -36,7 +36,7 @@ if [[ $iatest > 0 ]]; then bind "set bell-style visible"; fi
 # Don't put duplicate lines in the history
 export HISTCONTROL=ignoredups
 # Disable Bash History File
-unset HISTFILE
+# unset HISTFILE
 
 # Vi mode
 set -o vi
@@ -509,3 +509,5 @@ vicd() {
   fi
   cd "$dst"
 }
+
+history -c
