@@ -129,12 +129,14 @@ comfortability without even thinking about keybindings.
 === 👢 Boot
 [%header]
 |===
-| Package Name | Description                            | Src
-| dosfstools   | DOS Filesystem Utilities               | pacman
-| efibootmgr   | Utility to modify the EFI Boot Manager | pacman
-| grub         | GNU GRand Unified Bootloader           | pacman
-| ntfs-3g      | NTFS filesystem driver and utilities   | pacman
-| os-prober    | Utility to detect other OSes           | pacman
+| Package Name    | Description                             | Src
+| dosfstools      | DOS Filesystem Utilities                | pacman
+| efibootmgr      | Utility to modify the EFI Boot Manager  | pacman
+| grub            | GNU GRand Unified Bootloader            | pacman
+| ntfs-3g         | NTFS filesystem driver and utilities    | pacman
+| os-prober       | Utility to detect other OSes            | pacman
+| plymouth        | Graphical boot splash screen            | pacman
+| cantarell-fonts | Humanist sans serif font (for plymouth) | pacman
 |===
 ====
 
@@ -464,7 +466,17 @@ GRUB_THEME=/boot/grub/themes/CyberEXS/theme.txt
 [source,bash]
 ----
 GRUB_TIMEOUT=2
+# Setting "splash" for boot splash screen with plymouth
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet splash"
+# Read other EFI with os-prober
 GRUB_DISABLE_OS_PROBER=false
+----
+
+=== Plymouth Splash
+[source,bash]
+----
+sudo cp -R ~/.config/PLYMOUTH/cuts_alt /usr/share/plymouth/themes
+sudo plymouth-set-default-theme -R cuts_alt
 ----
 
 === Usergroups
