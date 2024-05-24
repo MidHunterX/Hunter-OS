@@ -519,11 +519,21 @@ sudo touch /etc/systemd/system/getty@tty1.service.d/skip-username.conf
 sudoedit /etc/systemd/system/getty@tty1.service.d/skip-username.conf
 ----
 .📝 /etc/systemd/system/getty@tty1.service.d/skip-username.conf [add]
-[source,html]
+[source,bash]
 ----
 [Service]
 ExecStart=
 ExecStart=-/sbin/agetty -o '-p -- midhunter' --noclear --skip-login - $TERM
+----
+
+or use this line if you want to **auto login** to a specific user on TTY1
+
+.📝 /etc/systemd/system/getty@tty1.service.d/skip-username.conf [add]
+[source,bash]
+----
+[Service]
+ExecStart=
+ExecStart=-/sbin/agetty --autologin 'midhunter' %I $TERM
 ----
 
 === Colorful Pacman
