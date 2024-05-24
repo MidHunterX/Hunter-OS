@@ -112,30 +112,13 @@ comfortability without even thinking about keybindings.
 === 🐧 Linux System
 [%header]
 |===
-| Package Name   | Description
-| base           | Base Arch Installation
-| base-devel     | Basic tools to build Arch Linux packages
-| linux          | The Linux kernel and modules
-| linux-firmware | Firmware files for Linux
-| linux-headers  | Headers and scripts for building modules
-| pacman-contrib | Scripts and tools for pacman systems (paccache)
-|===
-====
-
-.💾 Hardware
-[%collapsible]
-====
-[discrete]
-=== 💾 Hardware
-[%header]
-|===
-| Package Name | Description
-| acpi         | Client for battery, power and thermal readings
-| acpi_call    | Kernel module to enable calls to ACPI (/proc/acpi/call)
-| acpid        | Daemon for ACPI power management events
-| amd-ucode    | Microcode update image for AMD CPUs
-| amdvlk       | AMD's standalone Vulkan driver
-| mesa-utils   | Essential Utilities for Open-source OpenGL drivers
+| Package Name   | Description                                     | Src
+| base           | Base Arch Installation                          | pacman
+| base-devel     | Basic tools to build Arch Linux packages        | pacman
+| linux          | The Linux kernel and modules                    | pacman
+| linux-firmware | Firmware files for Linux                        | pacman
+| linux-headers  | Headers and scripts for building modules        | pacman
+| pacman-contrib | Scripts and tools for pacman systems (paccache) | pacman
 |===
 ====
 
@@ -146,12 +129,47 @@ comfortability without even thinking about keybindings.
 === 👢 Boot
 [%header]
 |===
-| Package Name | Description
-| dosfstools   | DOS Filesystem Utilities
-| efibootmgr   | Utility to modify the EFI Boot Manager
-| grub         | GNU GRand Unified Bootloader
-| ntfs-3g      | NTFS filesystem driver and utilities
-| os-prober    | Utility to detect other OSes on a set of drives
+| Package Name | Description                            | Src
+| dosfstools   | DOS Filesystem Utilities               | pacman
+| efibootmgr   | Utility to modify the EFI Boot Manager | pacman
+| grub         | GNU GRand Unified Bootloader           | pacman
+| ntfs-3g      | NTFS filesystem driver and utilities   | pacman
+| os-prober    | Utility to detect other OSes           | pacman
+|===
+====
+
+.💾 Hardware
+[%collapsible]
+====
+[discrete]
+=== 💾 Hardware
+[%header]
+|===
+| Package Name | Description                                    | Src
+| acpi         | Client for battery, power and thermal readings | pacman
+| acpi_call    | Kernel module call ACPI (/proc/acpi/call)      | pacman
+| acpid        | Daemon for ACPI power management events        | pacman
+| amd-ucode    | Microcode update image for AMD CPUs            | pacman
+| amdvlk       | AMD's standalone Vulkan driver                 | pacman
+| mesa-utils   | Essential Utilities for Open-source OpenGL     | pacman
+|===
+====
+
+.📦 Development
+[%collapsible]
+====
+[discrete]
+=== 📦 Development
+[%header]
+|===
+| Package Name  | Description                  | Src
+| git           | Version control system       | pacman
+| lazygit       | TUI for Git                  | pacman
+| meson         | Nice build system            | pacman
+| nodejs        | Node Java Script Runtime Env | pacman
+| npm           | Node JS package manager      | pacman
+| python        | Python Interpreter           | pacman
+| sqlitebrowser | DB Browser for SQLite        | pacman
 |===
 ====
 
@@ -243,22 +261,6 @@ comfortability without even thinking about keybindings.
 | torbrowser-launcher       | Anonnymous Onion Browser           | pacman
 | transmission-gtk          | GUI Torrent Client                 | pacman
 | wpa_supplicant            | WLAN Daemon                        | pacman
-|===
-====
-
-.📦 Development
-[%collapsible]
-====
-[discrete]
-=== 📦 Development
-[%header]
-|===
-| Package Name  | Description                  | Src
-| git           | Version control system       | pacman
-| lazygit       | TUI for Git                  | pacman
-| nodejs        | Node Java Script Runtime Env | pacman
-| python        | Python Interpreter           | pacman
-| sqlitebrowser | DB Browser for SQLite        | pacman
 |===
 ====
 
@@ -450,20 +452,26 @@ brs --> brillo
 ----
 sudo cp -R ~/.config/GRUB/CyberEXS /boot/grub/themes
 sudoedit /etc/default/grub
-lsblk
+lsblk && sleep 1
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+----
+.📝 /etc/default/grub [add]
+[source,bash]
+----
+GRUB_THEME=/boot/grub/themes/CyberEXS/theme.txt
 ----
 .📝 /etc/default/grub [replace]
 [source,bash]
 ----
 GRUB_TIMEOUT=2
-GRUB_THEME=/boot/grub/themes/CyberEXS/theme.txt
 GRUB_DISABLE_OS_PROBER=false
 ----
-[source,html]
+
+=== Usergroups
+
+[source,bash]
 ----
-sudo mount /dev/<EFI-Partition> /mnt/
-sudo grub-mkconfig -o /boot/grub/grub.cfg
-sudo umount /mnt
+sudo usermod -G wheel,audio,video,power,input,storage midhunter
 ----
 
 === KeyD Setup
@@ -503,7 +511,7 @@ sudoedit /etc/systemd/system/getty@tty1.service.d/skip-username.conf
 ----
 [Service]
 ExecStart=
-ExecStart=-/sbin/agetty -o '-p -- <username>' --noclear --skip-login - $TERM
+ExecStart=-/sbin/agetty -o '-p -- midhunter' --noclear --skip-login - $TERM
 ----
 
 === Colorful Pacman
