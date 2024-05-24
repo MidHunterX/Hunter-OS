@@ -20,6 +20,8 @@
 # ▄█ ░█░ ▄█ ░█░ ██▄ █░▀░█
 # 🧽 GRUB Theme
 !.config/GRUB/
+# 👄 Plymouth Splash
+!.config/PLYMOUTH/
 # 🔑 Keymapping Utility
 !.config/keyd/
 # 💧 Wayland Compositor
