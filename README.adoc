@@ -454,7 +454,6 @@ brs --> brillo
 ----
 sudo cp -R ~/.config/GRUB/CyberEXS /boot/grub/themes
 sudoedit /etc/default/grub
-lsblk && sleep 1
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ----
 .📝 /etc/default/grub [add]
@@ -465,7 +464,7 @@ GRUB_THEME=/boot/grub/themes/CyberEXS/theme.txt
 .📝 /etc/default/grub [replace]
 [source,bash]
 ----
-GRUB_TIMEOUT=2
+GRUB_TIMEOUT=1
 # Setting "splash" for boot splash screen with plymouth
 GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet splash"
 # Read other EFI with os-prober
@@ -533,7 +532,7 @@ or use this line if you want to **auto login** to a specific user on TTY1
 ----
 [Service]
 ExecStart=
-ExecStart=-/sbin/agetty --autologin 'midhunter' %I $TERM
+ExecStart=-/sbin/agetty --noissue --autologin 'midhunter' - $TERM
 ----
 
 === Colorful Pacman
