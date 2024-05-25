@@ -53,3 +53,77 @@ activate space layer remaps.
 | f j              | Esc        |
 | CapsLock (Click) | Esc        |
 | CapsLock (Press) | Ctrl       |
+
+## 🍇 Meta Keymap Toggle
+
+### Meta + Space
+
+```mermaid
+graph LR
+lr0[QWERTY]
+lr1[NUMPAD]
+lr2[DVORAK]
+
+lr0 --> lr1
+lr1 --> lr2
+lr2 --> lr0
+```
+
+### Homerow Meta + Space
+
+```mermaid
+graph LR
+lr0[QWERTY]
+lr1[NUMPAD]
+
+lr0 --> lr1
+lr1 --> lr0
+```
+
+### QWERTY Layer
+
+```
+1 2 3 4 5 6 7 8 9 0 - =
+ q w e r t y u i o p [ ] \
+  a s d f g h j k l ; '
+   z x c v b n m , . /
+```
+
+```
+! @ # $ % ^ & * ( ) _ +
+ Q W E R T Y U I O P { } |
+  A S D F G H J K L : "
+   Z X C V B N M < > ?
+```
+
+### NUMPAD Layer
+
+```
+Function Keys (F1-F9)
+ q w e r t y 7 8 9 p [ ] \
+  a s d f g h 4 5 6 ; '
+   z x c v b 0 1 2 3 /
+```
+
+```
+Function Keys (F1-F9)
+ Q W E R T Y & * ( P { } |
+  A S D F G H $ % ^ : "
+   Z X C V B ) ! @ # ?
+```
+
+### DVORAK Layer
+
+```
+1 2 3 4 5 6 7 8 9 0 [ ]
+ ' , . p y f g c r l / = \
+  a o e u i d h t n s -
+   ; q j k x b m w v z
+```
+
+```
+! @ # $ % ^ & * ( ) { }
+ " < > P Y F G C R L ? + |
+  A O E U I D H T N S _
+   : Q J K X B M W V Z
+```
