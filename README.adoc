@@ -447,6 +447,16 @@ vos --> volume
 brs --> brillo
 ----
 
+== 🛎️ System Services
+
+[%header]
+|===
+| Service                | Description
+| NetworkManager.service | Network connection manager
+| dhcpcd.service         | DHCP/ IPv4LL/ IPv6RA/ DHCPv6 client
+| keyd.service           | A key remapping daemon for linux
+|===
+
 == 💽 System Configs
 
 === GRUB Bootloader
