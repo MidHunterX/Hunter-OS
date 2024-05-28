@@ -27,6 +27,31 @@ if status is-interactive
   starship init fish | source
   set -x STARSHIP_CONFIG $HOME/.config/starship/starship.toml
 
+  # Starship transient prompt
+  function starship_transient_prompt_func
+    set BLKFG '\033[1;30m'
+    set GRNFG '\033[1;32m'
+    set YLOFG '\033[1;33m'
+    set WHTFG '\033[1;37m'
+
+    set BLKBG '\033[1;40m'
+    set GRNBG '\033[1;42m'
+    set YLOBG '\033[1;43m'
+    set WHTBG '\033[1;47m'
+
+    set BOLD '\033[4m'
+    set RESET '\033[0;0m'
+    set PROMPT ""
+
+    # BUBBLE
+    set PROMPT (string join '' $PROMPT "$RESET$YLOFG")
+    set PROMPT (string join '' $PROMPT "$YLOBG$BLKFG $(date +%H:%M) ")
+    set PROMPT (string join '' $PROMPT "$RESET$YLOFG")
+
+    echo -n -e "\n$PROMPT$RESET "
+  end
+  enable_transience
+
 
 
   # █▀▀ █░█ █▀ ▀█▀ █▀█ █▀▄▀█   █▀▀ █▀█ █░░ █▀█ █▀█ █▀
