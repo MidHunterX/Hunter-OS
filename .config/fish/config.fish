@@ -18,6 +18,28 @@ if status is-interactive
   alias arch 'bash ~/Mid_Hunter/scripts/archchan/get_command-list.sh'
 
 
+  # function format_duration
+  #   set ms $CMD_DURATION
+  #   set x (math --scale=0 $ms / 1000)
+  #   set seconds (math --scale=0 $x % 60)
+  #   set x (math --scale=0 $x / 60)
+  #   set minutes (math --scale=0 $x % 60)
+  #   set x (math --scale=0 $x / 60)
+  #   set hours (math --scale=0 $x % 24)
+  #   set result ""
+  #   if test $hours -gt 0
+  #     set result "$result$hours"h
+  #   end
+  #   if test $minutes -gt 0
+  #     set result "$result$minutes"m
+  #   end
+  #   if test $seconds -gt 0 -o (not test -n "$result")
+  #     set result "$result$seconds"s
+  #   end
+  #   echo $result
+  # end
+
+
   # LS_COLORS
   source ~/.config/fish/ls_colors.fish
   # Better Alternatives
@@ -42,6 +64,16 @@ if status is-interactive
     set BOLD '\033[4m'
     set RESET '\033[0;0m'
     set PROMPT ""
+
+    # # COMMAND DURATION
+    # set DURATION (format_duration)
+    # if test $DURATION != ''
+    #   set PROMPT (string join '' $PROMPT "$RESET$BLKFG")
+    #   set PROMPT (string join '' $PROMPT "$BLKBG$WHTFG $DURATION ")
+    #   set PROMPT (string join '' $PROMPT "$RESET$BLKFG\n")
+    # else
+    #   set PROMPT (string join '' $PROMPT "\n")
+    # end
 
     # BUBBLE
     set PROMPT (string join '' $PROMPT "$RESET$YLOFG")
