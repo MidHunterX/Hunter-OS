@@ -20,7 +20,7 @@ and utilities. This allows to navigate and interact with speed, precision and
 comfortability without even thinking about keybindings.
 
 
-== 💼 Custom Configurations
+== 💼 Contained Concocted Custom Configurations
 
 [%header,cols=3*]
 |===
@@ -103,7 +103,7 @@ comfortability without even thinking about keybindings.
 | image:.config/zathura/.assets/zathura.jpg[,128,link=.config/zathura/]
 |===
 
-== 📦 Prefered Packages
+== 📦 Preeminently Preferred Primary Packages
 
 .🐧 Linux System
 [%collapsible]
@@ -400,12 +400,7 @@ comfortability without even thinking about keybindings.
 |===
 ====
 
-== 🍇 Dependency Graph
-
-This graph shows common dependencies among packages, highlighting those that
-are utilized by multiple packages within the system. It provides a clear
-visualization of the relationships between packages which can be useful when
-changing into an alternative in the future without breaking the system.
+== 🍇 Directed Dependency Diagram
 
 [source,mermaid]
 ----
