@@ -455,6 +455,7 @@ brs --> brillo
 == 💽 System Configs
 
 === GRUB Bootloader
+image:.config/GRUB/.assets/cyberexs.jpg[]
 [source,bash]
 ----
 sudo cp -R ~/.config/GRUB/CyberEXS /boot/grub/themes
@@ -476,7 +477,8 @@ GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet splash"
 GRUB_DISABLE_OS_PROBER=false
 ----
 
-=== Plymouth Splash
+=== Plymouth Splash Screen
+image:./.config/PLYMOUTH/.assets/cuts_alt.gif[]
 [source,bash]
 ----
 sudo cp -R ~/.config/PLYMOUTH/cuts_alt /usr/share/plymouth/themes
