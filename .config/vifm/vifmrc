@@ -330,10 +330,12 @@ filextype {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
         \ {View using mplayer}
         \ mplayer %f,
 fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
-           \*.fl[icv],*.m2v,*.mov,*.webm,*.mts,*.m4v,*.r[am],*.qt,*.divx,
-           \*.as[fx],*.unknown_video},
-          \<video/*>
-         \ ffprobe -hide_banner -pretty %c 2>&1 | highlight -O ansi --syntax ini
+  \*.fl[icv],*.m2v,*.mov,*.webm,*.mts,*.m4v,*.r[am],*.qt,*.divx,
+  \*.as[fx],*.unknown_video},
+  \<video/*>
+  \ $VIFM/scripts/ffprobe.sh %c,
+  \ ffprobe -hide_banner -pretty %c 2>&1 | highlight -O ansi --syntax ini,
+  \ ffprobe -hide_banner -pretty %c 2>&1
 
 "  OFFICE FILES
 filextype { *.odt,*.doc,*.docx,*.xls,*.xlsx,*.odp,*.pptx,*.ppt},

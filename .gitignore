@@ -53,6 +53,7 @@
 !.config/vifm/vifmrc
 !.config/vifm/README.md
 !.config/vifm/colors/
+!.config/vifm/scripts/
 !.config/vifm/.assets/
 .config/vifm/colors/*
 !.config/vifm/colors/hunter.vifm
