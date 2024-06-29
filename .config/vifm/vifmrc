@@ -334,8 +334,8 @@ fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
   \*.as[fx],*.unknown_video},
   \<video/*>
   \ $VIFM/scripts/ffprobe.sh %c,
-  \ ffprobe -hide_banner -pretty %c 2>&1 | highlight -O ansi --syntax ini,
-  \ ffprobe -hide_banner -pretty %c 2>&1
+  \ ffprobe -hide_banner -v error -pretty -print_format json -show_private_data -show_format -show_streams  %c | highlight -O ansi --syntax json,
+  \ ffprobe -hide_banner -pretty %c 2>&1 | highlight -O ansi --syntax ini
 
 "  OFFICE FILES
 filextype { *.odt,*.doc,*.docx,*.xls,*.xlsx,*.odp,*.pptx,*.ppt},
