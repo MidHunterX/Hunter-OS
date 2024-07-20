@@ -81,8 +81,8 @@ qnoremap H <c-w>h
 qnoremap L <c-w>l
 
 " OPEN SHELL IN CURRENT DIR
-" nnoremap s :!fish <CR>
-nnoremap s :shell<cr>
+nnoremap s :!fish <cr>
+" nnoremap s :shell<cr>
 
 " SORTING MENU
 nnoremap S :sort<cr>
