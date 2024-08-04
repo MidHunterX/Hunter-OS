@@ -255,7 +255,7 @@ comfortability without even thinking about keybindings.
 | blueman                   | GUI Bluetooth Manager              | pacman
 | bluez                     | Bluetooth Protocol Daemon          | pacman
 | bluez-utils               | Bluetooth Utilities - bluetoothctl | pacman
-| curlftpfs                 | Mount FTP as File System           | pacman
+| termscp                   | TUI client for SCP, FTP, Kube, S3  | pacman
 | dhcpcd                    | DHCP Client Daemon                 | pacman
 | firefox-developer-edition | Internet Browser                   | pacman
 | keepassxc                 | Password Manager                   | pacman
