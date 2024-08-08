@@ -494,6 +494,8 @@ filextype *.pro qtcreator %f &
 filextype */
         \ {View in thunar}
         \ Thunar %f &,
+        \ {Compress to ZIP with 7z}
+        \ 7z a %c.zip %d/%c:r,
 
 
 " =========================================================================== "
