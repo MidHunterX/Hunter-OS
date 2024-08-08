@@ -23,6 +23,8 @@ comfortability without even thinking about keybindings.
 
 == 💼 Contained Concocted Custom Configurations
 
+Click the links below for a detailed documentation.
+
 [%header,cols=3*]
 |===
 | Name | Description | Preview
@@ -105,6 +107,8 @@ comfortability without even thinking about keybindings.
 |===
 
 == 📦 Preeminently Preferred Primary Packages
+
+Click the following categories to toggle the list of packages in that category.
 
 .🐧 Linux System
 [%collapsible]
