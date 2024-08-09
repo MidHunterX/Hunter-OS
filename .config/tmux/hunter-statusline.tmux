@@ -83,7 +83,16 @@ function item_prefix_text() {
 
 # █    █    █
 
-function build_module_format() {
+function build_simple_module() {
+  local background foreground text module_format
+  background=$1
+  foreground=$2
+  text=$3
+  module_format="$(item 'default' 'default' " $text ")"
+  echo "${module_format}"
+}
+
+function build_module_format_right() {
   local background foreground icon text module_format
   left_separator=$(get_tmux_option "@hunter_module_left_separator" "█")
   right_separator=$(get_tmux_option "@hunter_module_right_separator" "█")
@@ -131,7 +140,8 @@ function session_module_config() {
   foreground=$(get_tmux_option '@hunter_module_session_bg' '#000000')
   icon=$(get_tmux_option "@hunter_module_session_icon" '')
   text=$(get_tmux_option '@hunter_module_session_text' '#S')
-  build_module_format $background $foreground $icon $text
+  # build_module_format_right $background $foreground $icon $text
+  build_simple_module $background $foreground $text
 }
 
 function time_module_config() {
@@ -140,7 +150,8 @@ function time_module_config() {
   foreground=$(get_tmux_option '@hunter_module_time_bg' '#000000')
   icon=$(get_tmux_option "@hunter_module_time_icon" '󰥔')
   text=$(get_tmux_option '@hunter_module_time_text' "%m%d-%H%M")
-  build_module_format_left $background $foreground $icon $text
+  # build_module_format_left $background $foreground $icon $text
+  build_simple_module $background $foreground $text
 }
 
 
@@ -233,11 +244,16 @@ pfx_off="          "
 pfx_sel="  PREFIX  "
 module="$(build_prefix_off 'default' 'default' "$pfx_off")"
 module+="$(build_prefix_on $pfx_sel_bg $pfx_sel_fg "$pfx_sel")"
+
+
+
+# █▀ ▀█▀ ▄▀█ ▀█▀ █░█ █▀   █▀▄▀█ █▀█ █▀▄ █░█ █░░ █▀▀ █▀
+# ▄█ ░█░ █▀█ ░█░ █▄█ ▄█   █░▀░█ █▄█ █▄▀ █▄█ █▄▄ ██▄ ▄█
+tmux set-option -g status-right-length 69
+tmux set-option -g status-left-length 69
+# Uncomment any or concat var strings for more
 # tmux set-option -g status-left "${module}"
 # tmux set-option -g status-left "$(time_module_config)"
 # tmux set-option -g status-right "$(session_module_config)"
-# tmux set-option -g status-right-length 69
-# tmux set-option -g status-left-length 69
-
-tmux set-option -g status-left ""
-tmux set-option -g status-right ""
+tmux set-option -g status-left "$(session_module_config)"
+tmux set-option -g status-right "$(time_module_config)"
