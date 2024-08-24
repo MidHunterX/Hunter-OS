@@ -38,6 +38,24 @@ gui:
   animateExplosion: true # explosion animation when nuking the working tree
   portraitMode: 'auto' # 'auto' | 'never' | 'always'
   filterMode: 'fuzzy' # 'substring' | 'fuzzy'
+  spinner:
+    frames:
+      - "▁"
+      - "▂"
+      - "▃"
+      - "▄"
+      - "▅"
+      - "▆"
+      - "▇"
+      - "█"
+      - "▇"
+      - "▆"
+      - "▅"
+      - "▄"
+      - "▃"
+      - "▂"
+      - "▁"
+    rate: 50
 
 refresher:
   refreshInterval: 10 # File/submodule refresh interval in seconds.
@@ -47,3 +65,7 @@ keybinding:
   universal:
     quit: 'q'
     quit-alt1: 'x' # <c-c>
+
+git:
+  merging:
+    args: "--no-ff" # No Fast Forwarding, Make Merge Commit
