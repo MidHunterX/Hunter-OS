@@ -38,6 +38,8 @@ gui:
   animateExplosion: true # explosion animation when nuking the working tree
   portraitMode: 'auto' # 'auto' | 'never' | 'always'
   filterMode: 'fuzzy' # 'substring' | 'fuzzy'
+  showDivergenceFromBaseBranch: arrowAndNumber  # 'none' | 'onlyArrow'  | 'arrowAndNumber'
+  statusPanelView: dashboard # 'dashboard' (default) | 'allBranchesLog'
   spinner:
     frames:
       - "▁"
