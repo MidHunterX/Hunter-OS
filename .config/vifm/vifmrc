@@ -277,6 +277,8 @@ fileviewer {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ac3,*.og[agx],*.opus,*.aac,*.mpga},
 
 "  IMAGES
 filextype {*.svg,*.svgz},<image/svg+xml>
+        \ {View in feh}
+        \ feh --start-at %d/%c:r.%c:e --scale-down --draw-tinted,
         \ {Edit in Inkscape}
         \ inkscape %f,
         \ {View in Inkview}
