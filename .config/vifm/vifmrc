@@ -260,7 +260,8 @@ fileviewer *.csv,
 filextype {*.pdf},<application/pdf> zathura %c %i, mupdf %c, apvlv %c, xpdf %c
 fileviewer {*.pdf},<application/pdf>
   \ pdftotext -nopgbrk %c -,
-  \ pdfinfo %c
+  \ pdfinfo %c,
+  \ pdftotext -raw -nopgbrk %c -,
 
 "  AUDIO
 filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ac3,*.og[agx],*.opus,*.aac,*.mpga},
