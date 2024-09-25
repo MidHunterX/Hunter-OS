@@ -46,7 +46,6 @@ nnoremap M :mkdir<SPACE>
 
 " TAB MANAGEMENT
 " create new tab
-nnoremap <c-n> :tabnew<cr>:view!<cr>
 nnoremap <c-t> :tabnew<cr>:view!<cr>
 " switch to tab to the left
 nnoremap <a-h> :tabprevious<cr>:view!<cr>

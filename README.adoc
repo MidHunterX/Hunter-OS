@@ -29,6 +29,10 @@ Click the links below for a detailed documentation.
 |===
 | Name | Description | Preview
 
+| link:.config/keyd/[🎹 KeyD]
+| Keyboard Layout/Mapping
+|
+
 | link:.config/cava/[📊 Cava]
 | Music Visualizer
 | image:.config/cava/.assets/cava.jpg[,128,link=.config/cava/]
@@ -52,10 +56,6 @@ Click the links below for a detailed documentation.
 | link:.config/hypr/[💧 Hyprland]
 | Wayland Compositor
 | image:.config/hypr/.assets/hypr.jpg[,128,link=.config/hypr/]
-
-| link:.config/keyd/[🎹 KeyD]
-| Key Remapping Daemon
-|
 
 | link:.config/kitty/[🐱 Kitty]
 | Terminal Emulator

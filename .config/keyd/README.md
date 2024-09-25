@@ -37,6 +37,7 @@ activate space layer remaps.
 
 | Key | Output Key             |
 | --- | ---------------------- |
+| i   | Enter                  |
 | h   | Left                   |
 | j   | Down                   |
 | k   | Up                     |
