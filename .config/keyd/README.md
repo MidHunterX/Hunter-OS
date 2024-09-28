@@ -46,6 +46,9 @@ activate space layer remaps.
 | b   | Move One Word Backward |
 | u   | Move to Front of Line  |
 | d   | Move to End of Line    |
+| ;   | Backspace              |
+
+Note: Backspace also works in homerow Ctrl layer as well
 
 ## 🎹 KeyD Keybindings
 
