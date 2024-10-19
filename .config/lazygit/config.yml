@@ -67,6 +67,18 @@ keybinding:
   universal:
     quit: 'q'
     quit-alt1: 'x' # <c-c>
+    # UP/DOWN - to jump Blocks
+    prevItem: '' # <up>
+    nextItem: '' # <down>
+    prevBlock: <up>
+    nextBlock: <down>
+    # HJKL - to scroll
+    scrollLeft: H
+    scrollRight: L
+    scrollUpMain-alt1: '' # K
+    scrollDownMain-alt1: '' # J
+    prevPage: K # ','
+    nextPage: J # .
 
 git:
   merging:
