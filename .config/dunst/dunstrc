@@ -197,7 +197,7 @@
 
     # Recursive icon lookup. You can set a single theme, instead of having to
     # define all lookup paths.
-    enable_recursive_icon_lookup = true
+    enable_recursive_icon_lookup = false
 
     # Set icon theme (only used for recursive icon lookup)
     icon_theme = Adwaita
