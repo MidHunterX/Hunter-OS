@@ -577,15 +577,15 @@ Color
 ILoveCandy
 ----
 
-== 💽 Personal System Configs
+== 🗒️ Personal Notes
 
 === Partition Sizes
 [%header]
 |===
-| Partition   | Size
-| /           | \~= 32G (Max Used: 18G)
-| /boot       | == 256M (Max Used: 230M)
-| /tmp (swap) | == 4G (Max Used: 8K)
-| /home       | >= 128G
+| Partition   | Recommended Size | Max Used
+| /           | ~ 32G            | 18G
+| /boot       | = 256M           | 230M
+| /tmp (swap) | = 4G             | 8K
+| /home       | > 128G           | 40G
 |===
 
