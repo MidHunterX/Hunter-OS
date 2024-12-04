@@ -278,18 +278,19 @@ Click the following categories to toggle the list of packages in that category.
 === 🌲 Desktop
 [%header]
 |===
-| Package Name | Description                  | Src
-| libnotify    | Notification library         | pacman
-| dunst        | Notification Daemon          | pacman
-| fuzzel       | Wayland App Launcher         | pacman
-| hyprland     | Wayland compositor           | pacman
-| swayidle     | Wayland Idle Manager         | pacman
-| waybar       | Wayland Status Bar           | pacman
-| wl-clipboard | Wayland Clipboard Utility    | pacman
-| wtype        | Wayland Keystrokes Emulation | pacman
-| keyd         | Key Remapping Daemon         | aur
-| swww         | Wayland Wallpaper Daemon     | aur
-| wlogout      | Logout Screen                | aur
+| Package Name                | Description                  | Src
+| libnotify                   | Notification library         | pacman
+| dunst                       | Notification Daemon          | pacman
+| fuzzel                      | Wayland App Launcher         | pacman
+| hyprland                    | Wayland compositor           | pacman
+| xdg-desktop-portal-hyprland | Desktop Integration Portal   | pacman
+| swayidle                    | Wayland Idle Manager         | pacman
+| waybar                      | Wayland Status Bar           | pacman
+| wl-clipboard                | Wayland Clipboard Utility    | pacman
+| wtype                       | Wayland Keystrokes Emulation | pacman
+| keyd                        | Key Remapping Daemon         | aur
+| swww                        | Wayland Wallpaper Daemon     | aur
+| wlogout                     | Logout Screen                | aur
 |===
 ====
 
@@ -496,6 +497,22 @@ sudo plymouth-set-default-theme -R cuts_alt
 ----
 sudo usermod -G wheel,audio,video,power,input,storage midhunter
 ----
+[%header]
+|===
+| Group   | Purpose
+| wheel   | Grants sudo privileges
+| audio   | Access to audio devices
+| video   | Access to GPU and hardware acceleration.
+| power   | Control power states (suspend, reboot, etc.)
+| input   | Access to input devices
+| storage | Raw access to storage devices
+|===
+
+Verify currently active groups:
+[source,bash]
+----
+groups midhunter
+----
 
 === KeyD Setup
 [source,bash]
@@ -559,3 +576,16 @@ ParallelDownloads = 5
 Color
 ILoveCandy
 ----
+
+== 💽 Personal System Configs
+
+=== Partition Sizes
+[%header]
+|===
+| Partition   | Size
+| /           | \~= 32G (Max Used: 18G)
+| /boot       | == 256M (Max Used: 230M)
+| /tmp (swap) | == 4G (Max Used: 8K)
+| /home       | >= 128G
+|===
+
