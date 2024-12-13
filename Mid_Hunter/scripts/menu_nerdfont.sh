@@ -9,7 +9,7 @@ if [ ! -f "$HIST_FILE" ]; then
 fi
 
 # Show Emoji list
-NF_ROW=$( (sed '/^$/d' "$HIST_FILE"; sed '1,/^### NF LIST ###$/d' "$0") | fuzzel --dmenu --border-color=#89b4faff --background=#2d2d379b)
+NF_ROW=$( (sed '/^$/d' "$HIST_FILE"; sed '1,/^### NF LIST ###$/d' "$0"; echo 'Emoji List') | fuzzel --dmenu --border-color=#89b4faff --background=#2d2d379b)
 
 echo "Selected Row: $NF_ROW"
 
@@ -17,7 +17,11 @@ echo "Selected Row: $NF_ROW"
 if [[ $NF_ROW == '' ]]; then
   echo "Exiting"
   exit
+elif [[ $NF_ROW == 'Emoji List' ]]; then
+  bash "$(dirname "$0")/menu_emoji.sh" &
+  exit
 fi
+
 
 # Cut out only emoji from the row
 SELECTED_NF=$(echo $NF_ROW | cut -d ' ' -f 1 | tr -d '\n')
