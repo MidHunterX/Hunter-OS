@@ -340,7 +340,7 @@ fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
   \ ffprobe -hide_banner -pretty %c 2>&1 | highlight -O ansi --syntax ini
 
 "  OFFICE FILES
-filextype { *.odt,*.doc,*.docx,*.xls,*.xlsx,*.odp,*.pptx,*.ppt},
+filextype { *.odt,*.doc,*.docx,*.odp,*.pptx,*.ppt},
           \ <application/vnd.openxmlformats-officedocument.*,
           \ application/msword,
           \ application/vnd.ms-excel>
@@ -350,6 +350,11 @@ fileviewer {*.docx},
            \<application/
            \vnd.openxmlformats-officedocument.wordprocessingml.document>
            \ docx2txt.pl %f -
+
+"  SPREADSHEET FILES
+filextype {*.ods,*.xls,*.xlsx},
+          \ {Open in Libre Office}
+          \ libreoffice --calc %f &,
 
 "  WEB
 filextype {*.xhtml,*.html,*.htm},<text/html>
