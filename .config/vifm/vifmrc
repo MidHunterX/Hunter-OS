@@ -512,39 +512,278 @@ filextype */
 " █▀█ █ █▄█ █▀█ █▄▄ █ █▄█ █▀█ ░█░
 " @syntax_highlighting
 
-" 256-COLOR TERMINAL
-" fileviewer *.[ch],*.[ch]pp,*.py highlight -O xterm256 -s dante --syntax c %c
-" fileviewer *.py highlight -O xterm256 --syntax python
-" fileviewer *.json highlight -O xterm256 --syntax json
-" fileviewer *.xml highlight -O xterm256 --syntax xml
-" fileviewer *.xhtml highlight -O xterm256 --syntax html
-" fileviewer *.opf highlight -O xterm256 --syntax xml
-" fileviewer *.md highlight -O xterm256 --syntax markdown
-" fileviewer *.html,*.go,*.css,*.c highlight -O xterm256 -s dante %c
+" Get available list and formated using:
+" highlight --list-scripts langs
+" s/.*: *\(.*\)/\1
+" s/\(^\S\+$\)/fileviewer *.\1 highlight -0 ansi --syntax \1
+" sort
+" s/ /,*./g
+" s/,\*\.(//
+" s/,\*\.)//
+" s/\(^[a-z0-9]*\),\(.*\)/fileviewer *.\1,\2 highlight -0 ansi --syntax \1
 
 " 16-COLOR TERMINAL
-fileviewer *.c,*.h highlight -O ansi -s dante %c
-fileviewer *.py highlight -O ansi --syntax python
+fileviewer *.abap,*.abp highlight -O ansi --syntax abap
+fileviewer *.abc highlight -O ansi --syntax abc
+fileviewer *.abnf highlight -O ansi --syntax abnf
+fileviewer *.actionscript,*.as highlight -O ansi --syntax actionscript
+fileviewer *.ada,*.a,*.adb,*.ads,*.gnad highlight -O ansi --syntax ada
+fileviewer *.agda,*.lagda highlight -O ansi --syntax agda
+fileviewer *.alan,*.alan,*.i highlight -O ansi --syntax alan
+fileviewer *.algol,*.alg highlight -O ansi --syntax algol
+fileviewer *.ampl,*.dat,*.run highlight -O ansi --syntax ampl
+fileviewer *.amtrix,*.hnd,*.s4,*.s4h,*.s4t,*.t4 highlight -O ansi --syntax amtrix
+fileviewer *.applescript highlight -O ansi --syntax applescript
+fileviewer *.arc highlight -O ansi --syntax arc
+fileviewer *.arm highlight -O ansi --syntax arm
+fileviewer *.as400cl highlight -O ansi --syntax as400cl
+fileviewer *.ascend,*.a4c highlight -O ansi --syntax ascend
+fileviewer *.asciidoc highlight -O ansi --syntax asciidoc
+fileviewer *.asp,*.ascx,*.ashx,*.aspx highlight -O ansi --syntax asp
+fileviewer *.aspect,*.was,*.wud highlight -O ansi --syntax aspect
+fileviewer *.assembler,*.29k,*.68s,*.68x,*.a51,*.asm,*.x86 highlight -O ansi --syntax assembler
+fileviewer *.ats,*.dats highlight -O ansi --syntax ats
+fileviewer *.autohotkey,*.ahk highlight -O ansi --syntax autohotkey
+fileviewer *.autoit,*.au3 highlight -O ansi --syntax autoit
+fileviewer *.avenue highlight -O ansi --syntax avenue
+fileviewer *.awk highlight -O ansi --syntax awk
+fileviewer *.ballerina,*.bal highlight -O ansi --syntax ballerina
+fileviewer *.bat,*.cmd highlight -O ansi --syntax bat
+fileviewer *.bbcode highlight -O ansi --syntax bbcode
+fileviewer *.bcpl highlight -O ansi --syntax bcpl
+fileviewer *.bibtex,*.bib highlight -O ansi --syntax bibtex
+fileviewer *.biferno,*.bfr highlight -O ansi --syntax biferno
+fileviewer *.bison,*.y highlight -O ansi --syntax bison
+fileviewer *.blitzbasic,*.bb highlight -O ansi --syntax blitzbasic
+fileviewer *.bms highlight -O ansi --syntax bms
+fileviewer *.bnf highlight -O ansi --syntax bnf
+fileviewer *.boo highlight -O ansi --syntax boo
+fileviewer *.c,*.c++,*.cc,*.cpp,*.cppm,*.cu,*.cxx,*.h,*.hh,*.hpp,*.hxx,*.inl,*.ino,*.ipp,*.ixx highlight -O ansi --syntax c
+fileviewer *.carbon highlight -O ansi --syntax carbon
+fileviewer *.ceylon highlight -O ansi --syntax ceylon
+fileviewer *.charmm,*.inp highlight -O ansi --syntax charmm
+fileviewer *.chill,*.chl highlight -O ansi --syntax chill
+fileviewer *.chpl highlight -O ansi --syntax chpl
+fileviewer *.clean,*.icl highlight -O ansi --syntax clean
+fileviewer *.clearbasic,*.cb highlight -O ansi --syntax clearbasic
+fileviewer *.clipper highlight -O ansi --syntax clipper
+fileviewer *.clojure,*.boot,*.cl2,*.clj,*.cljc,*.cljs,*.cljscm,*.cljx,*.edn,*.hic highlight -O ansi --syntax clojure
+fileviewer *.clp highlight -O ansi --syntax clp
+fileviewer *.cmake highlight -O ansi --syntax cmake
+fileviewer *.cobol,*.cbl,*.cob highlight -O ansi --syntax cobol
+fileviewer *.coffeescript,*.cakefile,*.cjsx,*.coffee,*.iced highlight -O ansi --syntax coffeescript
+fileviewer *.coldfusion,*.cfc,*.cfm highlight -O ansi --syntax coldfusion
+fileviewer *.conf,*.anacrontab highlight -O ansi --syntax conf
+fileviewer *.cpp2 highlight -O ansi --syntax cpp2
+fileviewer *.critic highlight -O ansi --syntax critic
+fileviewer *.crk highlight -O ansi --syntax crk
+fileviewer *.crystal,*.cr highlight -O ansi --syntax crystal
+fileviewer *.cs_block_regex highlight -O ansi --syntax cs_block_regex
+fileviewer *.csharp,*.cs highlight -O ansi --syntax csharp
+fileviewer *.css highlight -O ansi --syntax css
+fileviewer *.cue highlight -O ansi --syntax cue
+fileviewer *.d highlight -O ansi --syntax d
+fileviewer *.dart highlight -O ansi --syntax dart
+fileviewer *.delphi,*.dpr,*.pas highlight -O ansi --syntax delphi
+fileviewer *.diff,*.patch highlight -O ansi --syntax diff
+fileviewer *.dockerfile highlight -O ansi --syntax dockerfile
+fileviewer *.dts,*.dtsi highlight -O ansi --syntax dts
+fileviewer *.dylan highlight -O ansi --syntax dylan
+fileviewer *.ebnf highlight -O ansi --syntax ebnf
+fileviewer *.ebnf2 highlight -O ansi --syntax ebnf2
+fileviewer *.eiffel,*.e,*.se highlight -O ansi --syntax eiffel
+fileviewer *.elixir,*.ex,*.exs,*.heex highlight -O ansi --syntax elixir
+fileviewer *.elm highlight -O ansi --syntax elm
+fileviewer *.email highlight -O ansi --syntax email
+fileviewer *.erb highlight -O ansi --syntax erb
+fileviewer *.erlang,*.erl,*.hrl,*.xrl,*.yrl highlight -O ansi --syntax erlang
+fileviewer *.euphoria,*.eu,*.ew,*.exw,*.wxu highlight -O ansi --syntax euphoria
+fileviewer *.exapunks,*.exa,*.exapunks highlight -O ansi --syntax exapunks
+fileviewer *.excel highlight -O ansi --syntax excel
+fileviewer *.express,*.exp highlight -O ansi --syntax express
+fileviewer *.factor highlight -O ansi --syntax factor
+fileviewer *.fame,*.fame highlight -O ansi --syntax fame
+fileviewer *.fasm,*.inc highlight -O ansi --syntax fasm
+fileviewer *.felix,*.flx highlight -O ansi --syntax felix
+fileviewer *.fish highlight -O ansi --syntax fish
+fileviewer *.fortran77,*.f,*.for,*.ftn highlight -O ansi --syntax fortran77
+fileviewer *.fortran90,*.f90,*.f95 highlight -O ansi --syntax fortran90
+fileviewer *.frink highlight -O ansi --syntax frink
+fileviewer *.fsharp,*.fs,*.fsi,*.fsx highlight -O ansi --syntax fsharp
+fileviewer *.fstab highlight -O ansi --syntax fstab
+fileviewer *.fx highlight -O ansi --syntax fx
+fileviewer *.gambas,*.class highlight -O ansi --syntax gambas
+fileviewer *.gdb highlight -O ansi --syntax gdb
+fileviewer *.gdscript,*.gd highlight -O ansi --syntax gdscript
+fileviewer *.gleam highlight -O ansi --syntax gleam
+fileviewer *.go highlight -O ansi --syntax go
+fileviewer *.graphviz,*.dot highlight -O ansi --syntax graphviz
+fileviewer *.haml highlight -O ansi --syntax haml
+fileviewer *.hare,*.ha highlight -O ansi --syntax hare
+fileviewer *.haskell,*.hs highlight -O ansi --syntax haskell
+fileviewer *.haxe,*.hx highlight -O ansi --syntax haxe
+fileviewer *.hcl highlight -O ansi --syntax hcl
+fileviewer *.html,*.htm,*.jinja,*.twig,*.xhtml highlight -O ansi --syntax html
+fileviewer *.httpd highlight -O ansi --syntax httpd
+fileviewer *.hugo,*.hug highlight -O ansi --syntax hugo
+fileviewer *.icon,*.icn highlight -O ansi --syntax icon
+fileviewer *.idl highlight -O ansi --syntax idl
+fileviewer *.idlang highlight -O ansi --syntax idlang
+fileviewer *.inc_luatex highlight -O ansi --syntax inc_luatex
+fileviewer *.informix,*.4gl highlight -O ansi --syntax informix
+fileviewer *.ini,*.cfg,*.desktop,*.doxyfile,*.inf,*.kdev3,*.reg highlight -O ansi --syntax ini
+fileviewer *.innosetup,*.iss highlight -O ansi --syntax innosetup
+fileviewer *.interlis,*.ili highlight -O ansi --syntax interlis
+fileviewer *.io highlight -O ansi --syntax io
+fileviewer *.jam,*.ham,*.jam highlight -O ansi --syntax jam
+fileviewer *.jasmin,*.j highlight -O ansi --syntax jasmin
+fileviewer *.java,*.gradle,*.groovy,*.grv,*.jenkinsfile highlight -O ansi --syntax java
+fileviewer *.javascript,*.js highlight -O ansi --syntax javascript
+fileviewer *.js_regex highlight -O ansi --syntax js_regex
+fileviewer *.json highlight -O ansi --syntax json
+fileviewer *.jsp highlight -O ansi --syntax jsp
+fileviewer *.jsx highlight -O ansi --syntax jsx
+fileviewer *.julia,*.jl highlight -O ansi --syntax julia
+fileviewer *.kotlin,*.kt,*.kts highlight -O ansi --syntax kotlin
+fileviewer *.ldif highlight -O ansi --syntax ldif
+fileviewer *.less highlight -O ansi --syntax less
+fileviewer *.lhs highlight -O ansi --syntax lhs
+fileviewer *.lilypond,*.ly highlight -O ansi --syntax lilypond
+fileviewer *.limbo,*.b highlight -O ansi --syntax limbo
+fileviewer *.lindenscript,*.lsl highlight -O ansi --syntax lindenscript
+fileviewer *.lisp,*.cl,*.clisp,*.el,*.fas,*.fasl,*.lsp,*.mud,*.sbcl,*.scm,*.scom highlight -O ansi --syntax lisp
+fileviewer *.logtalk,*.lgt highlight -O ansi --syntax logtalk
+fileviewer *.lotos highlight -O ansi --syntax lotos
+fileviewer *.lotus,*.ls highlight -O ansi --syntax lotus
 fileviewer *.lua highlight -O ansi --syntax lua
-fileviewer *.js highlight -O ansi --syntax javascript
-fileviewer *.json,*.jsonc highlight -O ansi --syntax json
-fileviewer *.ts highlight -O ansi --syntax typescript
-fileviewer *.jsx,*.tsx highlight -O ansi --syntax tsx
+fileviewer *.luban,*.lbn highlight -O ansi --syntax luban
+fileviewer *.makefile,*.gnumakefile,*.mak,*.mk highlight -O ansi --syntax makefile
+fileviewer *.maple,*.mpl highlight -O ansi --syntax maple
+fileviewer *.markdown,*.markdown,*.md,*.mdwn,*.mdx,*.mkd,*.mkdn,*.mkdown,*.ronn,*.workbook highlight -O ansi --syntax markdown
+fileviewer *.matlab,*.m highlight -O ansi --syntax matlab
+fileviewer *.maya,*.mel highlight -O ansi --syntax maya
+fileviewer *.mercury highlight -O ansi --syntax mercury
+fileviewer *.meson highlight -O ansi --syntax meson
+fileviewer *.miranda highlight -O ansi --syntax miranda
+fileviewer *.mod2,*.def,*.mod highlight -O ansi --syntax mod2
+fileviewer *.mod3,*.i3,*.m3 highlight -O ansi --syntax mod3
+fileviewer *.modelica,*.mo highlight -O ansi --syntax modelica
+fileviewer *.mojo highlight -O ansi --syntax mojo
+fileviewer *.moon highlight -O ansi --syntax moon
+fileviewer *.ms highlight -O ansi --syntax ms
+fileviewer *.msl,*.nbs highlight -O ansi --syntax msl
+fileviewer *.mssql highlight -O ansi --syntax mssql
+fileviewer *.mxml highlight -O ansi --syntax mxml
+fileviewer *.n3,*.nt,*.ttl highlight -O ansi --syntax n3
+fileviewer *.nasal,*.nas highlight -O ansi --syntax nasal
+fileviewer *.nbc highlight -O ansi --syntax nbc
+fileviewer *.nemerle,*.n highlight -O ansi --syntax nemerle
+fileviewer *.netrexx,*.nrx highlight -O ansi --syntax netrexx
+fileviewer *.nginx highlight -O ansi --syntax nginx
+fileviewer *.nice highlight -O ansi --syntax nice
+fileviewer *.nim,*.nimble,*.nimrod,*.nims highlight -O ansi --syntax nim
+fileviewer *.nix highlight -O ansi --syntax nix
+fileviewer *.nsis,*.nsh,*.nsi highlight -O ansi --syntax nsis
+fileviewer *.nxc highlight -O ansi --syntax nxc
+fileviewer *.oberon,*.ooc highlight -O ansi --syntax oberon
+fileviewer *.objc highlight -O ansi --syntax objc
+fileviewer *.ocaml,*.eliom,*.eliomi,*.ml,*.ml4,*.mli,*.mll,*.mly highlight -O ansi --syntax ocaml
+fileviewer *.octave highlight -O ansi --syntax octave
+fileviewer *.odfile,*.podspec,*.pp,*.prawn,*.rabl,*.rake,*.rakefile,*.rantfile,*.rb,*.rbx,*.rjs,*.ruby,*.scanfile,*.simplecov,*.snapfile,*.thor,*.thorfile,*.vagrantfile highlight -O ansi --syntax odfile
+fileviewer *.oorexx highlight -O ansi --syntax oorexx
+fileviewer *.org highlight -O ansi --syntax org
+fileviewer *.os highlight -O ansi --syntax os
+fileviewer *.oz highlight -O ansi --syntax oz
+fileviewer *.paradox,*.sc highlight -O ansi --syntax paradox
+fileviewer *.pas highlight -O ansi --syntax pas
+fileviewer *.pdf highlight -O ansi --syntax pdf
+fileviewer *.perl,*.cgi,*.perl,*.pl,*.plex,*.plx,*.pm highlight -O ansi --syntax perl
+fileviewer *.php,*.php3,*.php4,*.php5,*.php6,*.php7,*.phps,*.phpt highlight -O ansi --syntax php
+fileviewer *.pike,*.pmod highlight -O ansi --syntax pike
+fileviewer *.pl1,*.bdy,*.ff,*.fp,*.fpp,*.rpp,*.sf,*.sp,*.spb,*.spe,*.spp,*.sps,*.wf,*.wp,*.wpb,*.wpp,*.wps highlight -O ansi --syntax pl1
+fileviewer *.plperl highlight -O ansi --syntax plperl
+fileviewer *.plpython highlight -O ansi --syntax plpython
+fileviewer *.pltcl highlight -O ansi --syntax pltcl
+fileviewer *.po highlight -O ansi --syntax po
+fileviewer *.polygen,*.grm highlight -O ansi --syntax polygen
+fileviewer *.pony highlight -O ansi --syntax pony
+fileviewer *.pov highlight -O ansi --syntax pov
+fileviewer *.powershell,*.ps1,*.psd1,*.psm1 highlight -O ansi --syntax powershell
+fileviewer *.pro,*.pro highlight -O ansi --syntax pro
+fileviewer *.progress,*.p,*.w highlight -O ansi --syntax progress
+fileviewer *.ps highlight -O ansi --syntax ps
+fileviewer *.psl highlight -O ansi --syntax psl
+fileviewer *.pure highlight -O ansi --syntax pure
+fileviewer *.purebasic,*.pb,*.pbf,*.pbi highlight -O ansi --syntax purebasic
+fileviewer *.purescript,*.purs highlight -O ansi --syntax purescript
+fileviewer *.pyrex,*.pyx highlight -O ansi --syntax pyrex
+fileviewer *.python,*.cpy,*.gyp,*.gypi,*.pxd,*.pxi,*.py,*.py3,*.pyi,*.pyw,*.rpy,*.sconstruct,*.snakefile,*.wscript highlight -O ansi --syntax python
+fileviewer *.q highlight -O ansi --syntax q
+fileviewer *.qmake highlight -O ansi --syntax qmake
+fileviewer *.qml highlight -O ansi --syntax qml
+fileviewer *.qu highlight -O ansi --syntax qu
+fileviewer *.r highlight -O ansi --syntax r
+fileviewer *.rebol highlight -O ansi --syntax rebol
+fileviewer *.rego highlight -O ansi --syntax rego
+fileviewer *.rexx,*.rex,*.rx,*.the highlight -O ansi --syntax rexx
+fileviewer *.rnc highlight -O ansi --syntax rnc
+fileviewer *.rpg highlight -O ansi --syntax rpg
+fileviewer *.rpl highlight -O ansi --syntax rpl
+fileviewer *.rst highlight -O ansi --syntax rst
+fileviewer *.ruby,*.appfile,*.appraisals,*.berksfile,*.brewfile,*.capfile,*.cheffile,*.config.ru,*.deliverfile,*.fastfile,*.fcgi,*.gemfile,*.gemspec,*.guardfile,*.irbrc,*.jbuilder,*.p highlight -O ansi --syntax ruby
+fileviewer *.rust,*.rs highlight -O ansi --syntax rust
+fileviewer *.s highlight -O ansi --syntax s
+fileviewer *.sam highlight -O ansi --syntax sam
+fileviewer *.sas highlight -O ansi --syntax sas
+fileviewer *.scad highlight -O ansi --syntax scad
+fileviewer *.scala highlight -O ansi --syntax scala
+fileviewer *.scilab,*.sce,*.sci highlight -O ansi --syntax scilab
+fileviewer *.scss highlight -O ansi --syntax scss
+fileviewer *.shellscript,*.bash,*.ebuild,*.eclass,*.sh,*.zsh highlight -O ansi --syntax shellscript
+fileviewer *.slim highlight -O ansi --syntax slim
+fileviewer *.small,*.sma highlight -O ansi --syntax small
+fileviewer *.smalltalk,*.gst,*.sq,*.st highlight -O ansi --syntax smalltalk
+fileviewer *.sml highlight -O ansi --syntax sml
+fileviewer *.snmp,*.mib,*.smi highlight -O ansi --syntax snmp
+fileviewer *.snobol,*.sno highlight -O ansi --syntax snobol
+fileviewer *.solidity,*.sol highlight -O ansi --syntax solidity
+fileviewer *.spec highlight -O ansi --syntax spec
+fileviewer *.spn highlight -O ansi --syntax spn
+fileviewer *.sql highlight -O ansi --syntax sql
+fileviewer *.squirrel,*.nut highlight -O ansi --syntax squirrel
+fileviewer *.styl highlight -O ansi --syntax styl
+fileviewer *.svg highlight -O ansi --syntax svg
+fileviewer *.swift highlight -O ansi --syntax swift
+fileviewer *.sybase highlight -O ansi --syntax sybase
+fileviewer *.tcl,*.itcl,*.wish highlight -O ansi --syntax tcl
+fileviewer *.tcsh highlight -O ansi --syntax tcsh
+fileviewer *.terraform,*.tf,*.tfvars highlight -O ansi --syntax terraform
+fileviewer *.tex,*.cls,*.sty highlight -O ansi --syntax tex
 fileviewer *.toml highlight -O ansi --syntax toml
-fileviewer *.xml highlight -O ansi --syntax xml
-fileviewer *.xhtml highlight -O ansi --syntax html
-fileviewer *.opf highlight -O ansi --syntax xml
-fileviewer *.txt highlight -O ansi --syntax txt
-fileviewer *.md highlight -O ansi --syntax markdown
-fileviewer *.adoc,*.asciidoc,*.asc highlight -O ansi --syntax asciidoc
-fileviewer *.html,*.go,*.css,*.c highlight -O ansi -s dante %c
-fileviewer *.conf,.xinitrc,.gitignore
-            \ highlight -O ansi --syntax conf
-fileviewer *.bash,.bashrc,*.sh,*.zsh,*.fish,*.tmux
-            \ highlight -O ansi --syntax shellscript
-fileviewer *.gvimrc,*.vim,*.vimrc,*.vifm,vifmrc
-            \ highlight -O ansi --syntax vimscript
-fileviewer *.tex,*.sty highlight -O ansi --syntax tex
+fileviewer *.tsql highlight -O ansi --syntax tsql
+fileviewer *.tsx highlight -O ansi --syntax tsx
+fileviewer *.ttcn3 highlight -O ansi --syntax ttcn3
+fileviewer *.txt,*.text highlight -O ansi --syntax txt
+fileviewer *.typescript,*.ts highlight -O ansi --syntax typescript
+fileviewer *.upc highlight -O ansi --syntax upc
+fileviewer *.v highlight -O ansi --syntax v
+fileviewer *.vala highlight -O ansi --syntax vala
+fileviewer *.vb,*.bas,*.basic,*.bi,*.vbs highlight -O ansi --syntax vb
+fileviewer *.verilog,*.v highlight -O ansi --syntax verilog
+fileviewer *.vhd highlight -O ansi --syntax vhd
+fileviewer *.vimscript,*.gvimrc,*.vim,*.vimrc highlight -O ansi --syntax vimscript
+fileviewer *.vue highlight -O ansi --syntax vue
+fileviewer *.wat highlight -O ansi --syntax wat
+fileviewer *.whiley highlight -O ansi --syntax whiley
+fileviewer *.wren highlight -O ansi --syntax wren
+fileviewer *.xml,*.csproj,*.dtd,*.ecf,*.ent,*.glade,*.graphml,*.hdr,*.hub,*.jnlp,*.nrm,*.opml,*.resx,*.rng,*.rss,*.sgm,*.sgml,*.tld,*.vxml,*.wml,*.xsd,*.xsl highlight -O ansi --syntax xml
+fileviewer *.xpp highlight -O ansi --syntax xpp
+fileviewer *.yaiff highlight -O ansi --syntax yaiff
+fileviewer *.yaml,*.yml highlight -O ansi --syntax yaml
+fileviewer *.yaml_ansible highlight -O ansi --syntax yaml_ansible
+fileviewer *.yang highlight -O ansi --syntax yang
+fileviewer *.zig highlight -O ansi --syntax zig
+fileviewer *.znn highlight -O ansi --syntax znn
 
 " Or leave it for automatic detection
 " fileviewer *[^/] pygmentize -O style=monokai -f console256 -g
