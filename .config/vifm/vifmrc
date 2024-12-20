@@ -13,9 +13,9 @@
 " fd --type d --type f --hidden --exclude ".git" --exclude ".local" --exclude ".cache" --no-ignore-vcs --max-depth 5 | fzf
 
 command! FZFfind : let $FZF_PICK = term('fd --type d --type f --hidden --exclude ".git" --exclude ".local" --exclude ".cache" --no-ignore-vcs --max-depth 5 | fzf 2>/dev/tty')
-                \| if $FZF_PICK != ''
-                \|     execute system('[ -f "$FZF_PICK" ] && echo goto || echo cd') fnameescape($FZF_PICK)
-                \| endif
+      \| if $FZF_PICK != ''
+      \|     execute system('[ -f "$FZF_PICK" ] && echo goto || echo cd') fnameescape($FZF_PICK)
+      \| endif
 nnoremap <c-f> :FZFfind<cr>
 nnoremap ? :FZFfind<cr>
 
@@ -157,12 +157,12 @@ screen!
 
 " Command used to edit files in various contexts.
 if executable('nvim')
-    set vicmd=nvim
+  set vicmd=nvim
 elseif executable('vim')
-    set vicmd=vim
+  set vicmd=vim
 elseif $EDITOR != ''
-    echo 'Note: using `'.$EDITOR.'` as an editor'
-    let &vicmd = $EDITOR
+  echo 'Note: using `'.$EDITOR.'` as an editor'
+  let &vicmd = $EDITOR
 endif
 
 " vifm file operations on its own. No cp
@@ -173,7 +173,7 @@ set trash
 
 " What should be saved automatically on restarting vifm.
 set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
-            \phistory,fhistory,dirstack,registers,bookmarks,bmarks
+      \phistory,fhistory,dirstack,registers,bookmarks,bmarks
 
 " This is how many directories to store in the directory history.
 set history=100
@@ -212,7 +212,7 @@ set incsearch
 
 " Don't do too many requests to slow file systems
 if !has('win')
-    set slowfs=curlftpfs
+  set slowfs=curlftpfs
 endif
 
 
@@ -239,168 +239,164 @@ fileviewer {.git/}, git -c color.status=always status %d %pu
 
 "  DIRECTORY PREVIEW
 fileviewer {*/,.*/,../},
-        \ lsd --almost-all --color=always --icon=always --group-directories-first --blocks=permission --blocks=name,
-        \ lsd --almost-all --color=always --icon=always --group-directories-first --tree --depth=3,
-        \ ls --color=always
+      \ lsd --almost-all --color=always --icon=always --group-directories-first --blocks=permission --blocks=name,
+      \ lsd --almost-all --color=always --icon=always --group-directories-first --tree --depth=3,
+      \ ls --color=always
 
 "  DATABASE
 filextype {*.db,*.sqlite3},
-        \ {View with DB Browser}
-        \ sqlitebrowser --read-only %c,
-        \ {Edit with DB Browser}
-        \ sqlitebrowser %c
+      \ {View with DB Browser}
+      \ sqlitebrowser --read-only %c,
+      \ {Edit with DB Browser}
+      \ sqlitebrowser %c
 
 "  CSV
 fileviewer *.csv,
-        \ cat %c | xsv table,
-        \ sed "s/,,,,/,,-,,/g;s/,,/ /g" %c | column -t | sed "s/ - /  /g" | cut -c -%pw
+      \ cat %c | xsv table,
+      \ sed "s/,,,,/,,-,,/g;s/,,/ /g" %c | column -t | sed "s/ - /  /g" | cut -c -%pw
 
 "  PDF
 filextype {*.pdf},<application/pdf> zathura %c %i, mupdf %c, apvlv %c, xpdf %c
 fileviewer {*.pdf},<application/pdf>
-  \ pdftotext -nopgbrk %c -,
-  \ pdfinfo %c,
-  \ pdftotext -raw -nopgbrk %c -,
+      \ pdftotext -nopgbrk %c -,
+      \ pdfinfo %c,
+      \ pdftotext -raw -nopgbrk %c -,
 
 "  AUDIO
-filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ac3,*.og[agx],*.opus,*.aac,*.mpga},
-        \<audio/*>
-        \ {Play using mpv}
-        \ mpv --no-video %f %s,
-        \ {Play using ffplay}
-        \ ffplay -nodisp -hide_banner -autoexit %c,
-        \ {Play using MPlayer}
-        \ mplayer %f,
-fileviewer {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ac3,*.og[agx],*.opus,*.aac,*.mpga},
-         \<audio/*>
-         \ ffprobe -hide_banner -pretty %c 2>&1
+filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ac3,*.og[agx],*.opus,*.aac,*.mpga},<audio/*>
+      \ {Play using mpv}
+      \ mpv --no-video %f %s,
+      \ {Play using ffplay}
+      \ ffplay -nodisp -hide_banner -autoexit %c,
+      \ {Play using MPlayer}
+      \ mplayer %f,
+fileviewer {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ac3,*.og[agx],*.opus,*.aac,*.mpga},<audio/*>
+      \ ffprobe -hide_banner -pretty %c 2>&1
 
 "  IMAGES
 filextype {*.svg,*.svgz},<image/svg+xml>
-        \ {View in feh}
-        \ feh --start-at %d/%c:r.%c:e --scale-down --draw-tinted,
-        \ {Edit in Inkscape}
-        \ inkscape %f,
-        \ {View in Inkview}
-        \ inkview %f,
-        \ {Edit in NeoVim}
-        \ nvim %f,
+      \ {View in feh}
+      \ feh --start-at %d/%c:r.%c:e --scale-down --draw-tinted,
+      \ {Edit in Inkscape}
+      \ inkscape %f,
+      \ {View in Inkview}
+      \ inkview %f,
+      \ {Edit in NeoVim}
+      \ nvim %f,
 filextype {*.cr2}
-        \ {Open in Darktable}
-        \ darktable %f,
-        \ {Open in RawTherapee}
-        \ rawtherapee %f,
+      \ {Open in Darktable}
+      \ darktable %f,
+      \ {Open in RawTherapee}
+      \ rawtherapee %f,
 filextype {*.xcf}
-        \ {Open in GIMP}
-        \ gimp %f,
+      \ {Open in GIMP}
+      \ gimp %f,
 filextype {.kra}
-        \ {Open in Krita}
-        \ krita %f,
+      \ {Open in Krita}
+      \ krita %f,
 filextype {.blend}
-        \ {Open in Blender}
-        \ blender %c,
+      \ {Open in Blender}
+      \ blender %c,
 filextype {*.gif}
-        \ {Play using mpv}
-        \ mpv --terminal=no %f,
+      \ {Play using mpv}
+      \ mpv --terminal=no %f,
 filextype {*.bmp,*.jpg,*.jpeg,*.png,*.xpm},<image/*>
-        \ {View in feh}
-        \ feh --start-at %d/%c:r.%c:e --scale-down --draw-tinted,
-        \ {View in nomacs}
-        \ nomacs %f -m 'frameless',
-        \ {Set as Wallpaper with SWWW}
-        \ swww img %f -t 'center',
-        \ {Edit in NeoVim}
-        \ nvim %f,
+      \ {View in feh}
+      \ feh --start-at %d/%c:r.%c:e --scale-down --draw-tinted,
+      \ {View in nomacs}
+      \ nomacs %f -m 'frameless',
+      \ {Set as Wallpaper with SWWW}
+      \ swww img %f -t 'center',
+      \ {Edit in NeoVim}
+      \ nvim %f,
 fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-    \ exiv2 %f 2> /dev/null | highlight -O ansi --syntax conf,
-    \ exiv2 -PEkt %f 2> /dev/null | highlight -O ansi --syntax conf,
-    \ kitten icat --silent --transfer-mode=file --place=%pwx%ph@%pxx%py %c >/dev/tty </dev/tty %N
-    \ %pc
-    \ kitten icat --clear --silent >/dev/tty </dev/tty %N
+      \ exiv2 %f 2> /dev/null | highlight -O ansi --syntax conf,
+      \ exiv2 -PEkt %f 2> /dev/null | highlight -O ansi --syntax conf,
+      \ kitten icat --silent --transfer-mode=file --place=%pwx%ph@%pxx%py %c >/dev/tty </dev/tty %N
+      \ %pc
+      \ kitten icat --clear --silent >/dev/tty </dev/tty %N
 
 "  VIDEO
 filextype {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
-          \*.fl[icv],*.m2v,*.mov,*.webm,*.mts,*.m4v,*.r[am],*.qt,*.divx,
-          \*.as[fx],*.unknown_video},
-         \<video/*>
-        \ {Play using mpv}
-        \ mpv --terminal=no %f,
-        \ {View using ffplay}
-        \ ffplay -fs -hide_banner -autoexit %f,
-        \ {View using Dragon}
-        \ dragon %f:p,
-        \ {View using mplayer}
-        \ mplayer %f,
+      \*.fl[icv],*.m2v,*.mov,*.webm,*.mts,*.m4v,*.r[am],*.qt,*.divx,
+      \*.as[fx],*.unknown_video},<video/*>
+      \ {Play using mpv}
+      \ mpv --terminal=no %f,
+      \ {View using ffplay}
+      \ ffplay -fs -hide_banner -autoexit %f,
+      \ {View using Dragon}
+      \ dragon %f:p,
+      \ {View using mplayer}
+      \ mplayer %f,
 fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
-  \*.fl[icv],*.m2v,*.mov,*.webm,*.mts,*.m4v,*.r[am],*.qt,*.divx,
-  \*.as[fx],*.unknown_video},
-  \<video/*>
-  \ $VIFM/scripts/ffprobe.sh %c,
-  \ ffprobe -hide_banner -v error -pretty -print_format json -show_private_data -show_format -show_streams  %c | highlight -O ansi --syntax json,
-  \ ffprobe -hide_banner -pretty %c 2>&1 | highlight -O ansi --syntax ini
+      \*.fl[icv],*.m2v,*.mov,*.webm,*.mts,*.m4v,*.r[am],*.qt,*.divx,
+      \*.as[fx],*.unknown_video},<video/*>
+      \ $VIFM/scripts/ffprobe.sh %c,
+      \ ffprobe -hide_banner -v error -pretty -print_format json -show_private_data -show_format -show_streams  %c | highlight -O ansi --syntax json,
+      \ ffprobe -hide_banner -pretty %c 2>&1 | highlight -O ansi --syntax ini
 
 "  OFFICE FILES
 filextype { *.odt,*.doc,*.docx,*.odp,*.pptx,*.ppt},
-          \ <application/vnd.openxmlformats-officedocument.*,
-          \ application/msword,
-          \ application/vnd.ms-excel>
-          \ libreoffice %f &
+      \ <application/vnd.openxmlformats-officedocument.*,
+      \ application/msword,
+      \ application/vnd.ms-excel>
+      \ libreoffice %f &
 fileviewer {*.doc},<application/msword> catdoc %c
 fileviewer {*.docx},
-           \<application/
-           \vnd.openxmlformats-officedocument.wordprocessingml.document>
-           \ docx2txt.pl %f -
+      \<application/
+      \vnd.openxmlformats-officedocument.wordprocessingml.document>
+      \ docx2txt.pl %f -
 
 "  SPREADSHEET FILES
 filextype {*.ods,*.xls,*.xlsx},
-          \ {Open in Libre Office}
-          \ libreoffice --calc %f &,
+      \ {Open in Libre Office}
+      \ libreoffice --calc %f &,
 
 "  WEB
 filextype {*.xhtml,*.html,*.htm},<text/html>
-        \ {Open with firefox}
-        \ firefox %f &,
-        \ {Open with qutebrowser}
-        \ qutebrowser %f %i,
+      \ {Open with firefox}
+      \ firefox %f &,
+      \ {Open with qutebrowser}
+      \ qutebrowser %f %i,
 filetype {*.xhtml,*.html,*.htm},<text/html> links, lynx
 
 "  FUSE ZIP MOUNT
 filetype {*.zip,*.jar,*.war,*.ear,*.oxt,*.apkg},
-        \<application/zip,application/java-archive>
-       \ {Mount with fuse-zip}
-       \ FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR,
-       \ {7Zip - Extract}
-       \ 7z e %c -o%d/%c:r,
-       \ {unzip - Extract}
-       \ unzip %c -d %d/%c:r,
-       \ {unzip - Test Integrity}
-       \ unzip -tq %c,
-       \ {View contents}
-       \ unzip -l %f | less,
-       \ {Open with 7Zip-GUI}
-       \ 7zFM %d/%c,
+      \<application/zip,application/java-archive>
+      \ {Mount with fuse-zip}
+      \ FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR,
+      \ {7Zip - Extract}
+      \ 7z e %c -o%d/%c:r,
+      \ {unzip - Extract}
+      \ unzip %c -d %d/%c:r,
+      \ {unzip - Test Integrity}
+      \ unzip -tq %c,
+      \ {View contents}
+      \ unzip -l %f | less,
+      \ {Open with 7Zip-GUI}
+      \ 7zFM %d/%c,
 fileviewer *.zip,*.jar,*.war,*.ear,*.oxt unzip -l %f
 
 " --------------------------------------------------------------------------- "
 
 " PostScript
 filextype {*.ps,*.eps,*.ps.gz},<application/postscript>
-        \ {View in zathura}
-        \ zathura %f,
-        \ {View in gv}
-        \ gv %c %i,
+      \ {View in zathura}
+      \ zathura %f,
+      \ {View in gv}
+      \ gv %c %i,
 
 " Djvu
 filextype {*.djvu},<image/vnd.djvu>
-        \ {View in zathura}
-        \ zathura %f,
-        \ {View in apvlv}
-        \ apvlv %f,
+      \ {View in zathura}
+      \ zathura %f,
+      \ {View in apvlv}
+      \ apvlv %f,
 
 " Midi
 filetype {*.mid,*.kar}
-       \ {Play using TiMidity++}
-       \ timidity %f,
+      \ {Play using TiMidity++}
+      \ timidity %f,
 
 " Object
 filetype {*.o},<application/x-object> nm %f | less
@@ -411,53 +407,53 @@ fileviewer {*.[1-8]},<text/troff> man ./%c | col -b
 
 " OpenRaster
 filextype *.ora
-        \ {Edit in MyPaint}
-        \ mypaint %f,
+      \ {Edit in MyPaint}
+      \ mypaint %f,
 
 " Mindmap
 filextype *.vym
-        \ {Open with VYM}
-        \ vym %f &,
+      \ {Open with VYM}
+      \ vym %f &,
 
 " MD5
 filetype *.md5
-       \ {Check MD5 hash sum}
-       \ md5sum -c %f %S,
+      \ {Check MD5 hash sum}
+      \ md5sum -c %f %S,
 
 " SHA1
 filetype *.sha1
-       \ {Check SHA1 hash sum}
-       \ sha1sum -c %f %S,
+      \ {Check SHA1 hash sum}
+      \ sha1sum -c %f %S,
 
 " SHA256
 filetype *.sha256
-       \ {Check SHA256 hash sum}
-       \ sha256sum -c %f %S,
+      \ {Check SHA256 hash sum}
+      \ sha256sum -c %f %S,
 
 " SHA512
 filetype *.sha512
-       \ {Check SHA512 hash sum}
-       \ sha512sum -c %f %S,
+      \ {Check SHA512 hash sum}
+      \ sha512sum -c %f %S,
 
 " GPG signature
 filetype {*.asc},<application/pgp-signature>
-       \ {Check signature}
-       \ !!gpg --verify %c,
+      \ {Check signature}
+      \ !!gpg --verify %c,
 
 " Torrent
 filetype {*.torrent},<application/x-bittorrent> ktorrent %f &
 fileviewer {*.torrent},<application/x-bittorrent>
-         \ dumptorrent -v %c,
-         \ transmission-show %c
+      \ dumptorrent -v %c,
+      \ transmission-show %c
 
 " ArchiveMount
 filetype {*.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz,*.tar.zst,
-         \*.tzst},
-        \<application/x-tar>
-       \ {tar - Extract}
-       \ tar -xzvf %f,
-       \ {Mount with archivemount}
-       \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
+      \*.tzst},
+      \<application/x-tar>
+      \ {tar - Extract}
+      \ tar -xzvf %f,
+      \ {Mount with archivemount}
+      \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
 fileviewer *.tgz,*.tar.gz tar -tzf %c
 fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
 fileviewer *.tar.xz,*.txz tar -tJf %c
@@ -466,29 +462,29 @@ fileviewer {*.tar},<application/x-tar> tar -tf %c
 
 " Rar2FsMount and rar archives
 filetype {*.rar},<application/x-rar>
-       \ {Mount with rar2fs}
-       \ FUSE_MOUNT|rar2fs %SOURCE_FILE %DESTINATION_DIR,
+      \ {Mount with rar2fs}
+      \ FUSE_MOUNT|rar2fs %SOURCE_FILE %DESTINATION_DIR,
 fileviewer {*.rar},<application/x-rar> unrar v %c
 
 " IsoMount
 filetype {*.iso},<application/x-iso9660-image>
-       \ {Mount with fuseiso}
-       \ FUSE_MOUNT|fuseiso %SOURCE_FILE %DESTINATION_DIR,
+      \ {Mount with fuseiso}
+      \ FUSE_MOUNT|fuseiso %SOURCE_FILE %DESTINATION_DIR,
 
 " SshMount
 filetype *.ssh
-       \ {Mount with sshfs}
-       \ FUSE_MOUNT2|sshfs %PARAM %DESTINATION_DIR %FOREGROUND,
+      \ {Mount with sshfs}
+      \ FUSE_MOUNT2|sshfs %PARAM %DESTINATION_DIR %FOREGROUND,
 
 " FtpMount
 filetype *.ftp
-       \ {Mount with curlftpfs}
-       \ FUSE_MOUNT2|curlftpfs -o ftp_port=-,,disable_eprt %PARAM %DESTINATION_DIR %FOREGROUND,
+      \ {Mount with curlftpfs}
+      \ FUSE_MOUNT2|curlftpfs -o ftp_port=-,,disable_eprt %PARAM %DESTINATION_DIR %FOREGROUND,
 
 " Fuse7z and 7z archives
 filetype {*.7z},<application/x-7z-compressed>
-       \ {Mount with fuse-7z}
-       \ FUSE_MOUNT|fuse-7z %SOURCE_FILE %DESTINATION_DIR,
+      \ {Mount with fuse-7z}
+      \ FUSE_MOUNT|fuse-7z %SOURCE_FILE %DESTINATION_DIR,
 fileviewer {*.7z},<application/x-7z-compressed> 7z l %c
 
 " TuDu files
@@ -499,10 +495,10 @@ filextype *.pro qtcreator %f &
 
 " Directories
 filextype */
-        \ {View in thunar}
-        \ Thunar %f &,
-        \ {Compress to ZIP with 7z}
-        \ 7z a %c.zip %d/%c:r,
+      \ {View in thunar}
+      \ Thunar %f &,
+      \ {Compress to ZIP with 7z}
+      \ 7z a %c.zip %d/%c:r,
 
 
 " =========================================================================== "
@@ -803,184 +799,184 @@ set classify=' :dir:/, :exe:, :reg:, :link:,? :?:, ::../::'
 
 " Independent Super Directories
 set classify+='
-\  ::Desktop/::, ::Downloads/::, ::Documents/::, ::Music/::,
-\  ::Pictures/::, ::Videos/::, ::Public/::, ::Templates/::,
-\'
+      \  ::Desktop/::, ::Downloads/::, ::Documents/::, ::Music/::,
+      \  ::Pictures/::, ::Videos/::, ::Public/::, ::Templates/::,
+      \'
 
 " Independent Directories
 set classify+='
-\  ::home/::,  ::videos/::,  ::share/::,  ::nvim/::,  ::media/::,
-\ 󰨞 ::Code - OSS/::, 󰄨 ::cava/::,  ::tmux/::, 󰈺 ::fish/::,  ::GIMP/::,
-\  ::hypr/::, 󰌌 ::keyd/::, 󱓞 ::starship/::,  ::VSCodium/::, 󰍃 ::wlogout/::,
-\  ::public/::, 󰉍 ::downloads/::, 󰉏 ::pictures/::, 󰉐 ::root/::, 󰙨 ::tests/::,
-\ 󰫦 ::vendor/::, 󱍙 ::music/::, 󱧼 ::src/::,  ::data/::,  ::repos/::,
-\  ::shared/::,  ::notes/::,  ::dropbox::,  ::gdrive/::,
-\'
+      \  ::home/::,  ::videos/::,  ::share/::,  ::nvim/::,  ::media/::,
+      \ 󰨞 ::Code - OSS/::, 󰄨 ::cava/::,  ::tmux/::, 󰈺 ::fish/::,  ::GIMP/::,
+      \  ::hypr/::, 󰌌 ::keyd/::, 󱓞 ::starship/::,  ::VSCodium/::, 󰍃 ::wlogout/::,
+      \  ::public/::, 󰉍 ::downloads/::, 󰉏 ::pictures/::, 󰉐 ::root/::, 󰙨 ::tests/::,
+      \ 󰫦 ::vendor/::, 󱍙 ::music/::, 󱧼 ::src/::,  ::data/::,  ::repos/::,
+      \  ::shared/::,  ::notes/::,  ::dropbox::,  ::gdrive/::,
+      \'
 
 " Independent Extensions
 set classify+='
-\  ::*.java::,  ::*.epub::,  ::*.ejs::,  ::*.twig::,  ::*.c::,
-\  ::*.lua::,  ::*.elm::,  ::*.pp::,  ::*.org::,  ::*.svelte::,
-\  ::*.zig::,  ::*.fnl::,  ::*.apk::,  ::*.scala::,  ::*.swift::,
-\  ::*.less::,  ::*.clj::,  ::*.t::,  ::*.cljs::,  ::*.rdb::,
-\  ::*.info::,  ::*.dart::,  ::*.erl::,  ::*.ai::,  ::*.iml::,
-\  ::*.psd::,  ::*.list::,  ::*.magnet::,  ::*.mk::,  ::*.rss::,
-\  ::*.coffee::,  ::*.rl::,  ::*.log::,  ::*.pdf::,  ::*.xul::,
-\  ::*.gform::, 󰈡 ::*.slt::, 󰗆 ::*.rproj::, 󰡄 ::*.vue::, 󰦝 ::*.asc::,
-\ 󰪪 ::*.pdb::, 󱁉 ::*.gv::,
-\'
+      \  ::*.java::,  ::*.epub::,  ::*.ejs::,  ::*.twig::,  ::*.c::,
+      \  ::*.lua::,  ::*.elm::,  ::*.pp::,  ::*.org::,  ::*.svelte::,
+      \  ::*.zig::,  ::*.fnl::,  ::*.apk::,  ::*.scala::,  ::*.swift::,
+      \  ::*.less::,  ::*.clj::,  ::*.t::,  ::*.cljs::,  ::*.rdb::,
+      \  ::*.info::,  ::*.dart::,  ::*.erl::,  ::*.ai::,  ::*.iml::,
+      \  ::*.psd::,  ::*.list::,  ::*.magnet::,  ::*.mk::,  ::*.rss::,
+      \  ::*.coffee::,  ::*.rl::,  ::*.log::,  ::*.pdf::,  ::*.xul::,
+      \  ::*.gform::, 󰈡 ::*.slt::, 󰗆 ::*.rproj::, 󰡄 ::*.vue::, 󰦝 ::*.asc::,
+      \ 󰪪 ::*.pdb::, 󱁉 ::*.gv::,
+      \'
 
 " Independent Files
 set classify+='
-\  ::heroku.yml::, 󰚩 ::robots.txt::, 󰜫 ::webpack.config.js::,
-\  ::netlify.toml::,  ::manifest::,  ::url::,  ::pkgbuild::, 󰀂 ::hosts::,
-\ 󰅱 ::std::,  ::jenkinsfile::,
-\'
+      \  ::heroku.yml::, 󰚩 ::robots.txt::, 󰜫 ::webpack.config.js::,
+      \  ::netlify.toml::,  ::manifest::,  ::url::,  ::pkgbuild::, 󰀂 ::hosts::,
+      \ 󰅱 ::std::,  ::jenkinsfile::,
+      \'
 
 " Dot Files
 set classify+='
-\  ::.dbus/::,  ::.git/::,  ::.github/::,  ::.gitlab-ci.yml::,  ::.idlerc::,
-\  ::.vscode/::,  ::.atom/::,  ::.mozilla/::,
-\'
+      \  ::.dbus/::,  ::.git/::,  ::.github/::,  ::.gitlab-ci.yml::,  ::.idlerc::,
+      \  ::.vscode/::,  ::.atom/::,  ::.mozilla/::,
+      \'
 
 " ICON SET FROM LSD
 set classify+='
-\  ::*.7z,,*.ar,,*.bz2,,*.gz,,*.lz,,*.rar,,*.tar,,*.taz,,*.tbz,,*.tbz2::,
-\  ::*.tgz,,*.xz,,*.zip,,*.zst::,
-\  ::*.apng,,*.avif,,*.heic,,*.heif,,*.heix,,*.ico,,*.image::,
-\  ::*.webp,,*.pxm,,*.svg,,*.tiff,,*.xcf,,img::,
-\  ::*.jpeg,,*.jpg,,*.png,,*.bmp,,*.gif::,
-\  ::*.avi,,*.flv,,*.m4v,,*.mkv,,*.mov,,*.mp4,,*.ogv,,*.video,,*.webm,,*.wmv::,
-\  ::*.ape,,*.aac,,*.anx,,*.asf,,*.au,,*.axa,,*.cue,,*.flac,,*.m2a,,*.m4a::,
-\  ::*.mid,,*.midi,,*.mp3,,*.mpc,,*.oga,,*.ogg,,*.ogx,,*.opus,,*.ra::,
-\  ::*.ram,,*.rm,,*.spx,,*.wav,,*.wma,,*.ac3::,
-\  ::*.awk,,*.bash_history,,*.bash_profile,,*.bashrc,,*.bash,,*.csh,,*.elf::,
-\  ::*.fish,,*.ksh,,*.ps1,,*.shell,,*.sh,,*.zshrc,,*.zsh-theme,,*.zsh::,
-\  ::*.bat,,*.dll,,*.exe,,*.msi,,*.windows::,
-\  ::*.cfg,,*.conf,,*.editorconfig,,*.ini,,.asoundrc,,bspwmrc,,.clang-format::,
-\  ::config.ac,,config.mk,,cron.deny,,crontab,,crypttab,,.editorconfig::,
-\  ::,,.fennelrc,,group,,gshadow,,hostname,,.htaccess,,htoprc,,.htpasswd::,
-\  ::.inputrc,,inputrc,,kbuild,,kconfig,,kdeglobals,,kdenliverc,,lsb-release::,
-\  ::.lynxrc,,makefile.ac,,makefile,,muttrc,,.muttrc,,.mutt,,neomuttrc::,
-\  ::.neomuttrc,,os-release,,profile,,.profile,,rc.lua,,shadow,,.shellcheckrc::,
-\  ::shells,,subgid,,subuid,,sxhkdrc,,tigrc,,tox.ini,,vagrantfile,,.wgetrc::,
-\  ::wgetrc,,.xauthority,,.Xauthority,,.xinitrc,,.xmodmap,,.Xmodmap,,xmonad.hs::,
-\  ::.xprofile,,.Xprofile,,.xresources,,zathurarc,,.zcompdump,,config::,
-\'
+      \  ::*.7z,,*.ar,,*.bz2,,*.gz,,*.lz,,*.rar,,*.tar,,*.taz,,*.tbz,,*.tbz2::,
+      \  ::*.tgz,,*.xz,,*.zip,,*.zst::,
+      \  ::*.apng,,*.avif,,*.heic,,*.heif,,*.heix,,*.ico,,*.image::,
+      \  ::*.webp,,*.pxm,,*.svg,,*.tiff,,*.xcf,,img::,
+      \  ::*.jpeg,,*.jpg,,*.png,,*.bmp,,*.gif::,
+      \  ::*.avi,,*.flv,,*.m4v,,*.mkv,,*.mov,,*.mp4,,*.ogv,,*.video,,*.webm,,*.wmv::,
+      \  ::*.ape,,*.aac,,*.anx,,*.asf,,*.au,,*.axa,,*.cue,,*.flac,,*.m2a,,*.m4a::,
+      \  ::*.mid,,*.midi,,*.mp3,,*.mpc,,*.oga,,*.ogg,,*.ogx,,*.opus,,*.ra::,
+      \  ::*.ram,,*.rm,,*.spx,,*.wav,,*.wma,,*.ac3::,
+      \  ::*.awk,,*.bash_history,,*.bash_profile,,*.bashrc,,*.bash,,*.csh,,*.elf::,
+      \  ::*.fish,,*.ksh,,*.ps1,,*.shell,,*.sh,,*.zshrc,,*.zsh-theme,,*.zsh::,
+      \  ::*.bat,,*.dll,,*.exe,,*.msi,,*.windows::,
+      \  ::*.cfg,,*.conf,,*.editorconfig,,*.ini,,.asoundrc,,bspwmrc,,.clang-format::,
+      \  ::config.ac,,config.mk,,cron.deny,,crontab,,crypttab,,.editorconfig::,
+      \  ::,,.fennelrc,,group,,gshadow,,hostname,,.htaccess,,htoprc,,.htpasswd::,
+      \  ::.inputrc,,inputrc,,kbuild,,kconfig,,kdeglobals,,kdenliverc,,lsb-release::,
+      \  ::.lynxrc,,makefile.ac,,makefile,,muttrc,,.muttrc,,.mutt,,neomuttrc::,
+      \  ::.neomuttrc,,os-release,,profile,,.profile,,rc.lua,,shadow,,.shellcheckrc::,
+      \  ::shells,,subgid,,subuid,,sxhkdrc,,tigrc,,tox.ini,,vagrantfile,,.wgetrc::,
+      \  ::wgetrc,,.xauthority,,.Xauthority,,.xinitrc,,.xmodmap,,.Xmodmap,,xmonad.hs::,
+      \  ::.xprofile,,.Xprofile,,.xresources,,zathurarc,,.zcompdump,,config::,
+      \'
 
 set classify+='
-\  ::*.cc,,*.cpp,,*.cp,,*.c++,,*.cxx::,
-\  ::*.css,,*.lss,,css,,styles::,
-\  ::*.cjs,,*.js,,*.mjs,,js::,
-\  ::*.sass,,*.scss,,sass,,scss::,
-\  ::*.class,,*.jar,,*.java::,
-\ 󰅲 ::*.cl,,*.elc,,*.el,,*.lisp::,
-\  ::*.gemfile,,*.gemspec,,*.guardfile,,*.procfile,,*.rakefile,,*.rb::,
-\  ::*.rspec,,*.rspec_parallel,,*.rspec_status,,*.ru,,.rvm::,
-\  ::*.a,,*.jl,,*.ld,,*.so,,obj::,
-\  ::*.avro,,*.jsonc,,*.json,,*.properties,,*.toml,,*.yaml,,*.yml::,
-\  ::*.asp,,*.xml,,libexec,,lib32,,lib64,,lib::,
-\  ::*.bin,,*.o,,*.sym::,
-\ 󰁯 ::*.bak,,*.old,,*.orig,,backups::,
-\  ::*.desktop,,desktop::,
-\  ::assets/,,.assets/,,content/,,static/::,
-\  ::*.htm,,*.html::,
-\  ::*.ebook,,*.mobi::,
-\'
+      \  ::*.cc,,*.cpp,,*.cp,,*.c++,,*.cxx::,
+      \  ::*.css,,*.lss,,css,,styles::,
+      \  ::*.cjs,,*.js,,*.mjs,,js::,
+      \  ::*.sass,,*.scss,,sass,,scss::,
+      \  ::*.class,,*.jar,,*.java::,
+      \ 󰅲 ::*.cl,,*.elc,,*.el,,*.lisp::,
+      \  ::*.gemfile,,*.gemspec,,*.guardfile,,*.procfile,,*.rakefile,,*.rb::,
+      \  ::*.rspec,,*.rspec_parallel,,*.rspec_status,,*.ru,,.rvm::,
+      \  ::*.a,,*.jl,,*.ld,,*.so,,obj::,
+      \  ::*.avro,,*.jsonc,,*.json,,*.properties,,*.toml,,*.yaml,,*.yml::,
+      \  ::*.asp,,*.xml,,libexec,,lib32,,lib64,,lib::,
+      \  ::*.bin,,*.o,,*.sym::,
+      \ 󰁯 ::*.bak,,*.old,,*.orig,,backups::,
+      \  ::*.desktop,,desktop::,
+      \  ::assets/,,.assets/,,content/,,static/::,
+      \  ::*.htm,,*.html::,
+      \  ::*.ebook,,*.mobi::,
+      \'
 
 set classify+='
-\  ::*.cls,,*.styl,,*.stylus,,*.tex::,
-\  ::*.egg-info,,*.ipynb,,*.py,,*.pyc,,.bpython_history,,.jupyter,,.pypirc::,
-\  ::.python_history,,.tox,,__pycache__,,pyproject.toml::,
-\  ::.electron-gyp/,,.node-gyp/,,.npm/,,node_modules/::,
-\  ::.audacity-data/,,.config/,,bin/,,conf.d/,,config/,,cron.d/,,cron.daily/::,
-\  ::cron.hourly/,,cron.monthly/,,cron.weekly/,,etc/,,include/,,metadata/,,sbin/::,
-\  ::user-dirs.dirs/,,xorg.conf.d/::,
-\  ::*.phar,,*.php,,composer.json,,composer.lock::,
-\  ::*.markdown,,*.md,,*.mkd,,*.rdoc,,*.readme,,*.rmd,,changelog,,readme::,
-\  ::*.adoc,,*.asciidoc::,
-\  ::*.man,,doc,,documents::,
-\  ::*.license,,*.sig,,.git-credentials,,authorized_keys,,contributing::,
-\  ::copyright,,known_hosts,,license.md,,license.txt,,license,,licenses::,
-\  ::maintainers,,unlicense::,
-\  ::*.hbs,,*.mustache::,
-\  ::gulpfile.coffee,,gulpfile.js,,gulpfile.ls::,
-\  ::gruntfile.coffee,,gruntfile.js,,gruntfile.ls::,
-\  ::*.go,,go.mod,,go.sum,,go.work::,
-\'
+      \  ::*.cls,,*.styl,,*.stylus,,*.tex::,
+      \  ::*.egg-info,,*.ipynb,,*.py,,*.pyc,,.bpython_history,,.jupyter,,.pypirc::,
+      \  ::.python_history,,.tox,,__pycache__,,pyproject.toml::,
+      \  ::.electron-gyp/,,.node-gyp/,,.npm/,,node_modules/::,
+      \  ::.audacity-data/,,.config/,,bin/,,conf.d/,,config/,,cron.d/,,cron.daily/::,
+      \  ::cron.hourly/,,cron.monthly/,,cron.weekly/,,etc/,,include/,,metadata/,,sbin/::,
+      \  ::user-dirs.dirs/,,xorg.conf.d/::,
+      \  ::*.phar,,*.php,,composer.json,,composer.lock::,
+      \  ::*.markdown,,*.md,,*.mkd,,*.rdoc,,*.readme,,*.rmd,,changelog,,readme::,
+      \  ::*.adoc,,*.asciidoc::,
+      \  ::*.man,,doc,,documents::,
+      \  ::*.license,,*.sig,,.git-credentials,,authorized_keys,,contributing::,
+      \  ::copyright,,known_hosts,,license.md,,license.txt,,license,,licenses::,
+      \  ::maintainers,,unlicense::,
+      \  ::*.hbs,,*.mustache::,
+      \  ::gulpfile.coffee,,gulpfile.js,,gulpfile.ls::,
+      \  ::gruntfile.coffee,,gruntfile.js,,gruntfile.ls::,
+      \  ::*.go,,go.mod,,go.sum,,go.work::,
+      \'
 
 set classify+='
-\  ::*.cts,,*.mts,,*.ts,,ts::,
-\  ::*.swp,,*.vim,,.vim,,.viminfo,,.vimrc,,vim,,vimrc::,
-\  ::*.ex,,*.exs::,
-\  ::.doom.d,,.emacs.d,,.spacemacs,,config.el,,custom.el,,init.el,,packages.el::,
-\  ::*.kt,,*.kts::,
-\  ::*.gradle,,gradle.properties,,gradle,,gradlew.bat,,gradlew::,
-\  ::*.nim,,*.nimble::,
-\  ::*.ml,,*.mli,,*.mll,,*.mly::,
-\  ::*.pl,,*.plx,,*.pm,,*.pod::,
-\  ::*.rlib,,*.rmeta,,*.rs,,.cargo,,.release.toml,,.rustup,,cargo.lock::,
-\  ::cargo.toml,,rustfmt.toml::,
-\  ::.yarnrc,,yarn.lock::,
-\  ::.node_repl_history,,package-lock.json,,package.json::,
-\  ::*.npmignore,,npmignore::,
-\  ::*.unity32,,*.unity::,
-\  ::*.diff,,*.patch::,
-\  ::*.erb,,*.rubydoc,,*.slim,,rubydoc::,
-\  ::*.hs,,*.lhs::,
-\  ::*.fs,,*.fsi,,*.fsx::,
-\  ::*.sublime-menu,,*.sublime-package,,*.sublime-project,,*.sublime-session::,
-\'
+      \  ::*.cts,,*.mts,,*.ts,,ts::,
+      \  ::*.swp,,*.vim,,.vim,,.viminfo,,.vimrc,,vim,,vimrc::,
+      \  ::*.ex,,*.exs::,
+      \  ::.doom.d,,.emacs.d,,.spacemacs,,config.el,,custom.el,,init.el,,packages.el::,
+      \  ::*.kt,,*.kts::,
+      \  ::*.gradle,,gradle.properties,,gradle,,gradlew.bat,,gradlew::,
+      \  ::*.nim,,*.nimble::,
+      \  ::*.ml,,*.mli,,*.mll,,*.mly::,
+      \  ::*.pl,,*.plx,,*.pm,,*.pod::,
+      \  ::*.rlib,,*.rmeta,,*.rs,,.cargo,,.release.toml,,.rustup,,cargo.lock::,
+      \  ::cargo.toml,,rustfmt.toml::,
+      \  ::.yarnrc,,yarn.lock::,
+      \  ::.node_repl_history,,package-lock.json,,package.json::,
+      \  ::*.npmignore,,npmignore::,
+      \  ::*.unity32,,*.unity::,
+      \  ::*.diff,,*.patch::,
+      \  ::*.erb,,*.rubydoc,,*.slim,,rubydoc::,
+      \  ::*.hs,,*.lhs::,
+      \  ::*.fs,,*.fsi,,*.fsx::,
+      \  ::*.sublime-menu,,*.sublime-package,,*.sublime-project,,*.sublime-session::,
+      \'
 
 set classify+='
-\  ::*.jsx,,*.tsx::,
-\  ::*.sqlite3,,.sqlite_history::,
-\  ::.icons/,,favicon.ico,,favicons/,,icons/::,
-\  ::*.lock,,.pki,,hidden,,passwd,,sudoers::,
-\  ::*.eot,,*.font,,*.otf,,*.ttc,,*.ttf,,*.woff2,,*.woff::,
-\  ::build.ninja,,configure,,meson.build::,
-\  ::*.mgc,,magic::,
-\  ::*.h,,*.hh,,*.hpp,,*.hxx::,
-\  ::*.in,,*.rtf,,*.txt::,
-\  ::*.ds_store,,*.localized,,.ds_store,,localized,,*.plist,,*.scpt::,
-\  ::.android,,.fastboot::,
-\  ::*.deb,,*.pkg,,*.rpm,,*.xbps::,
-\  ::*.cypher,,*.dat,,*.db,,*.dump,,*.img,,*.iso,,*.kusto,,*.ldb,,*.malloy::,
-\  ::*.prql,,*.rq,,*.sql,,fstab::,
-\  ::*.doc,,*.docx,,*.gdoc,,*.odt::,
-\  ::*.csv,,*.gsheet,,*.ods,,*.xls,,*.xlsx::,
-\  ::*.gslides,,*.odp,,*.ppt,,*.pptx::,
-\  ::*.git,,.gitattributes,,.gitconfig,,.gitignore,,.gitmodules,,gitignore_global::,
-\  ::*.trash,,.trash::,
-\  ::*.cshtml,,*.razor::,
-\  ::*.dockerfile,,docker-compose.yml,,dockerfile::,
-\  ::*.ebuild,,*.eclass,,portage::,
-\'
+      \  ::*.jsx,,*.tsx::,
+      \  ::*.sqlite3,,.sqlite_history::,
+      \  ::.icons/,,favicon.ico,,favicons/,,icons/::,
+      \  ::*.lock,,.pki,,hidden,,passwd,,sudoers::,
+      \  ::*.eot,,*.font,,*.otf,,*.ttc,,*.ttf,,*.woff2,,*.woff::,
+      \  ::build.ninja,,configure,,meson.build::,
+      \  ::*.mgc,,magic::,
+      \  ::*.h,,*.hh,,*.hpp,,*.hxx::,
+      \  ::*.in,,*.rtf,,*.txt::,
+      \  ::*.ds_store,,*.localized,,.ds_store,,localized,,*.plist,,*.scpt::,
+      \  ::.android,,.fastboot::,
+      \  ::*.deb,,*.pkg,,*.rpm,,*.xbps::,
+      \  ::*.cypher,,*.dat,,*.db,,*.dump,,*.img,,*.iso,,*.kusto,,*.ldb,,*.malloy::,
+      \  ::*.prql,,*.rq,,*.sql,,fstab::,
+      \  ::*.doc,,*.docx,,*.gdoc,,*.odt::,
+      \  ::*.csv,,*.gsheet,,*.ods,,*.xls,,*.xlsx::,
+      \  ::*.gslides,,*.odp,,*.ppt,,*.pptx::,
+      \  ::*.git,,.gitattributes,,.gitconfig,,.gitignore,,.gitmodules,,gitignore_global::,
+      \  ::*.trash,,.trash::,
+      \  ::*.cshtml,,*.razor::,
+      \  ::*.dockerfile,,docker-compose.yml,,dockerfile::,
+      \  ::*.ebuild,,*.eclass,,portage::,
+      \'
 
 set classify+='
-\  ::*.nix,,.nix-channels,,.nix-defexpr::,
-\  ::template/,,xbps-src/,,xbps.d/::,
-\  ::*.download,,*.part,,*.timestamp,,timezone::,
-\  ::*.env,,.env,,.eslintrc.js,,.eslintrc.json,,.eslintrc.yml,,environment,,metadata.xml::,
-\  ::*.asm,,*.s,,module.symvers::,
-\  ::*.whl,,build,,dist::,
-\  ::.ash,,.ash_history,,.kshrc,,a.out,,scripts/::,
-\ 󰃨 ::.cache/,,.ccls-cache/,,.mypy_cache/,,cache/::,
-\ 󰇰 ::.mailcap/,,mail/::,
-\ 󰌆 ::*.key,,*.pem,,*.pub::,
-\ 󰌛 ::*.cs,,*.csproj,,*.csx::,
-\ 󰌠 ::requirements.txt,,runtime.txt,,venv/::,
-\ 󰐑 ::*.bio,,*.fpl,,*.m3u8,,*.m3u,,*.pls,,*.vlc,,*.wpl::,
-\ 󰒍 ::*.torrent,,api::,
-\ 󰕥 ::md5sum,,sha256sum::,
-\ 󰙅 ::.mime.types,,mime.types::,
-\ 󰟔 ::*.r,,*.rdata,,*.rds::,
-\ 󰢬 ::.gnupg/,,.ssh/,,pam.d/::,
-\ 󰨖 ::*.srt,,*.sub::,
-\ 󰷖 ::id_dsa,,id_rsa,,id_ecdsa::,
-\ 󱆃 ::.bash_history,,.bash_logout,,.bash_profile,,.bashrc,,.cshrc,,.zlogin::,
-\ 󱆃 ::.zlogout,,.zprofile,,.zsh_history,,.zshrc,,csh.cshrc,,csh.login,,csh.logout::,
-\'
+      \  ::*.nix,,.nix-channels,,.nix-defexpr::,
+      \  ::template/,,xbps-src/,,xbps.d/::,
+      \  ::*.download,,*.part,,*.timestamp,,timezone::,
+      \  ::*.env,,.env,,.eslintrc.js,,.eslintrc.json,,.eslintrc.yml,,environment,,metadata.xml::,
+      \  ::*.asm,,*.s,,module.symvers::,
+      \  ::*.whl,,build,,dist::,
+      \  ::.ash,,.ash_history,,.kshrc,,a.out,,scripts/::,
+      \ 󰃨 ::.cache/,,.ccls-cache/,,.mypy_cache/,,cache/::,
+      \ 󰇰 ::.mailcap/,,mail/::,
+      \ 󰌆 ::*.key,,*.pem,,*.pub::,
+      \ 󰌛 ::*.cs,,*.csproj,,*.csx::,
+      \ 󰌠 ::requirements.txt,,runtime.txt,,venv/::,
+      \ 󰐑 ::*.bio,,*.fpl,,*.m3u8,,*.m3u,,*.pls,,*.vlc,,*.wpl::,
+      \ 󰒍 ::*.torrent,,api::,
+      \ 󰕥 ::md5sum,,sha256sum::,
+      \ 󰙅 ::.mime.types,,mime.types::,
+      \ 󰟔 ::*.r,,*.rdata,,*.rds::,
+      \ 󰢬 ::.gnupg/,,.ssh/,,pam.d/::,
+      \ 󰨖 ::*.srt,,*.sub::,
+      \ 󰷖 ::id_dsa,,id_rsa,,id_ecdsa::,
+      \ 󱆃 ::.bash_history,,.bash_logout,,.bash_profile,,.bashrc,,.cshrc,,.zlogin::,
+      \ 󱆃 ::.zlogout,,.zprofile,,.zsh_history,,.zshrc,,csh.cshrc,,csh.login,,csh.logout::,
+      \'
 
 
 
@@ -1044,10 +1040,10 @@ nnoremap w :view<cr>
 vnoremap w :view<cr>gv
 
 if $DISPLAY && executable('gvim')
-    " Open file in existing instance of gvim
-    nnoremap o :!gvim --remote-tab-silent %f<cr>
-    " Open file in new instance of gvim
-    nnoremap O :!gvim %f<cr>
+  " Open file in existing instance of gvim
+  nnoremap o :!gvim --remote-tab-silent %f<cr>
+  " Open file in new instance of gvim
+  nnoremap O :!gvim %f<cr>
 endif
 
 " Open file in the background using its default program
@@ -1055,33 +1051,33 @@ nnoremap gb :file &<cr>l
 
 " Interaction with system clipboard
 if has('win')
-    " Yank current directory path to Windows clipboard with forward slashes
-    nnoremap yp :!echo %"d:gs!\!/! %i | clip<cr>
-    " Yank path to current file to Windows clipboard with forward slashes
-    nnoremap yf :!echo %"c:gs!\!/! %i | clip<cr>
+  " Yank current directory path to Windows clipboard with forward slashes
+  nnoremap yp :!echo %"d:gs!\!/! %i | clip<cr>
+  " Yank path to current file to Windows clipboard with forward slashes
+  nnoremap yf :!echo %"c:gs!\!/! %i | clip<cr>
 elseif $WAYLAND_DISPLAY
-    if executable('wl-copy')
-        " Yank current directory path into primary and selection clipboards
-        nnoremap yd :!echo -n %d | wl-copy %i &&
-                    \ echo -n %d | wl-copy -p %i<cr>
-        " Yank current file path into into primary and selection clipboards
-        nnoremap yf :!echo -n %c:p | wl-copy %i &&
-                    \ echo -n %c:p | wl-copy -p %i<cr>
-    endif
+  if executable('wl-copy')
+    " Yank current directory path into primary and selection clipboards
+    nnoremap yd :!echo -n %d | wl-copy %i &&
+          \ echo -n %d | wl-copy -p %i<cr>
+    " Yank current file path into into primary and selection clipboards
+    nnoremap yf :!echo -n %c:p | wl-copy %i &&
+          \ echo -n %c:p | wl-copy -p %i<cr>
+  endif
 elseif $DISPLAY
-    if executable('xclip')
-        " Yank current directory path into the clipboard
-        nnoremap yd :!echo %d | xclip %i<cr>
-        " Yank current file path into the clipboard
-        nnoremap yf :!echo %c:p | xclip %i<cr>
-    elseif executable('xsel')
-        " Yank current directory path into primary and selection clipboards
-        nnoremap yd :!echo -n %d | xsel --input --primary %i &&
-                    \ echo -n %d | xsel --clipboard --input %i<cr>
-        " Yank current file path into into primary and selection clipboards
-        nnoremap yf :!echo -n %c:p | xsel --input --primary %i &&
-                    \ echo -n %c:p | xsel --clipboard --input %i<cr>
-    endif
+  if executable('xclip')
+    " Yank current directory path into the clipboard
+    nnoremap yd :!echo %d | xclip %i<cr>
+    " Yank current file path into the clipboard
+    nnoremap yf :!echo %c:p | xclip %i<cr>
+  elseif executable('xsel')
+    " Yank current directory path into primary and selection clipboards
+    nnoremap yd :!echo -n %d | xsel --input --primary %i &&
+          \ echo -n %d | xsel --clipboard --input %i<cr>
+    " Yank current file path into into primary and selection clipboards
+    nnoremap yf :!echo -n %c:p | xsel --input --primary %i &&
+          \ echo -n %c:p | xsel --clipboard --input %i<cr>
+  endif
 endif
 
 " Mappings for faster renaming
@@ -1096,9 +1092,9 @@ nnoremap A cw
 
 " Open console in current directory
 if $DISPLAY && executable('xterm')
-    nnoremap ,t :!xterm &<cr>
+  nnoremap ,t :!xterm &<cr>
 elseif $TERMINAL
-    nnoremap ,t :!$TERMINAL &<cr>
+  nnoremap ,t :!$TERMINAL &<cr>
 endif
 
 " Open editor to edit vifmrc and apply settings after returning to vifm
