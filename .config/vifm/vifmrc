@@ -1,3 +1,5 @@
+" For syntax highlighting, :set filetype=vim
+
 " █▀▀ █░█ █▀ ▀█▀ █▀█ █▀▄▀█   █▀▀ █▀█ █▀▄▀█ █▀▄▀█ ▄▀█ █▄░█ █▀▄ █▀
 " █▄▄ █▄█ ▄█ ░█░ █▄█ █░▀░█   █▄▄ █▄█ █░▀░█ █░▀░█ █▀█ █░▀█ █▄▀ ▄█
 " @commands
@@ -258,9 +260,13 @@ fileviewer *.csv,
 "  PDF
 filextype {*.pdf},<application/pdf> zathura %c %i, mupdf %c, apvlv %c, xpdf %c
 fileviewer {*.pdf},<application/pdf>
+      " Text reading order
       \ pdftotext -nopgbrk %c -,
-      \ pdfinfo %c,
+      " Text content stream order
       \ pdftotext -raw -nopgbrk %c -,
+      " Maintains columns, hyphenation etc.
+      \ pdftotext -nopgbrk -layout %c -,
+      \ pdfinfo %c,
 
 "  AUDIO
 filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ac3,*.og[agx],*.opus,*.aac,*.mpga},<audio/*>
