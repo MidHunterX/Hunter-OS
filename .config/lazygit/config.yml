@@ -67,11 +67,8 @@ keybinding:
   universal:
     quit: 'q'
     quit-alt1: 'x' # <c-c>
-    # UP/DOWN - to jump Blocks
-    prevItem: '' # <up>
-    nextItem: '' # <down>
-    prevBlock: <up>
-    nextBlock: <down>
+    prevItem: '<up>' # <up> used for selecting commit history messages also
+    nextItem: '<down>' # <down> used for selecting commit history messages also
     # HJKL - to scroll
     scrollLeft: H
     scrollRight: L
@@ -82,4 +79,10 @@ keybinding:
 
 git:
   merging:
-    args: "--no-ff" # No Fast Forwarding, Make Merge Commit
+    # args: "--no-ff" # No Fast Forwarding, Make Merge Commit
+    squashMergeMessage: 🍋 Squash {{selectedRef}} into {{currentBranch}}
+
+  mainBranches:
+    - master
+    - main
+    - develop
