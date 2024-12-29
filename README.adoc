@@ -406,6 +406,17 @@ Click the following categories to toggle the list of packages in that category.
 |===
 ====
 
+=== 🚙 Extra Utility Tools
+
+==== Yay - Yet Another Yogurt AUR Helper
+[source,bash]
+----
+sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay-bin.git
+cd yay-bin
+makepkg -si
+----
+
 == 🍇 Directed Dependency Diagram
 
 [source,mermaid]
