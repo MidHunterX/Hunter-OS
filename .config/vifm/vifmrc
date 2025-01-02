@@ -243,6 +243,8 @@ fileviewer {.git/}, git -c color.status=always status %d %pu
 fileviewer {*/,.*/,../},
       \ lsd --almost-all --color=always --icon=always --group-directories-first --blocks=permission --blocks=name,
       \ lsd --almost-all --color=always --icon=always --group-directories-first --tree --depth=3,
+      \ dust %f,
+      \ df -h %f | highlight -O ansi --syntax javascript,
       \ ls --color=always
 
 "  DATABASE
@@ -773,7 +775,7 @@ fileviewer *.vala highlight -O ansi --syntax vala
 fileviewer *.vb,*.bas,*.basic,*.bi,*.vbs highlight -O ansi --syntax vb
 fileviewer *.verilog,*.v highlight -O ansi --syntax verilog
 fileviewer *.vhd highlight -O ansi --syntax vhd
-fileviewer *.vimscript,*.gvimrc,*.vim,*.vimrc highlight -O ansi --syntax vimscript
+fileviewer *.vimscript,*.gvimrc,*.vim,*.vimrc,vifmrc highlight -O ansi --syntax vimscript
 fileviewer *.vue highlight -O ansi --syntax vue
 fileviewer *.wat highlight -O ansi --syntax wat
 fileviewer *.whiley highlight -O ansi --syntax whiley
