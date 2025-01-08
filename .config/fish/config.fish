@@ -109,10 +109,15 @@ if status is-interactive
   # █░█ ██▄ ░█░ █▄█ █ █░▀█ █▄▀ █ █░▀█ █▄█ ▄█
   # ========================================
   bind --mode default U redo
+
+  # Move to 0 and $ with H and L
+  for mode in default visual
+    bind --mode $mode H 'commandline -f beginning-of-line'
+    bind --mode $mode L 'commandline -f end-of-line'
+  end
+
   # Ctrl-Z fg command
   bind --mode insert \cz 'fg 2>/dev/null; commandline -f repaint'
-  # TODO: Ctrl+/
-  bind --mode insert --user \c\/ history-pager
 
 
 
