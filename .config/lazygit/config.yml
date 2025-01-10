@@ -39,7 +39,7 @@ gui:
   portraitMode: 'auto' # 'auto' | 'never' | 'always'
   filterMode: 'fuzzy' # 'substring' | 'fuzzy'
   showDivergenceFromBaseBranch: arrowAndNumber  # 'none' | 'onlyArrow'  | 'arrowAndNumber'
-  statusPanelView: dashboard # 'dashboard' (default) | 'allBranchesLog'
+  statusPanelView: allBranchesLog # 'dashboard' (default) | 'allBranchesLog'
   spinner:
     frames:
       - "▁"
