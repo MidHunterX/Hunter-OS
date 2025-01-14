@@ -254,6 +254,11 @@ filextype {*.db,*.sqlite3},
       \ {Edit with DB Browser}
       \ sqlitebrowser %c
 
+fileviewer {*.db,*.sqlite3},
+      \ sqlite3 %f "SELECT name FROM sqlite_master WHERE type='table';",
+      \ stat %f,
+      \ sqlite3 %f ".schema",
+
 "  CSV
 fileviewer *.csv,
       \ cat %c | xsv table,
