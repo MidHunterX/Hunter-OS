@@ -17,6 +17,7 @@ $line_break\
 # $cmd_duration\
 # """
 
+command_timeout = 1000
 
 # ============================ [ COLOR PALETTE ] ============================ #
 
@@ -32,16 +33,16 @@ col_lng = '#404040'
 col_chk = '#A6E3A1'
 
 col_red = '#f16565'
-col_ylo = "#F9E2AF"
-col_blu = "#89B4FA"
-col_grn = "#A6E3A1"
-col_pnk = "#F5C2E7"
+col_ylo = '#F9E2AF'
+col_blu = '#89B4FA'
+col_grn = '#A6E3A1'
+col_pnk = '#F5C2E7'
 
 col_vim_err = '#f16565'
-col_vim_ins = "#A6E3A1"
-col_vim_nor = "#89B4FA"
-col_vim_vis = "#e78ef5"
-col_vim_rep = "#ffa74d"
+col_vim_ins = '#A6E3A1'
+col_vim_nor = '#89B4FA'
+col_vim_vis = '#e78ef5'
+col_vim_rep = '#ffa74d'
 
 
 # ============================ [ PROMPT DESIGN ] ============================ #
