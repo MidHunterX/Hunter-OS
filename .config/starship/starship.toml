@@ -230,9 +230,19 @@ format        = '[ $symbol($version) ]($style)'
 symbol        = " "
 format        = '[ $symbol$context ]($style)'
 
+# 410 ms
 [elixir]
 symbol        = " "
 format        = '[ $symbol($version \(OTP $otp_version\)) ]($style)'
+disabled      = true
+
+# 4 ms
+[custom.elixir_optimized]
+symbol        = " "
+format        = '[ $symbol(v$output) ]($style)'
+command       = "elixir --short-version 2>/dev/null"
+when          = "test -f mix.exs"
+style         = 'bold purple'
 
 [elm]
 symbol        = " "
