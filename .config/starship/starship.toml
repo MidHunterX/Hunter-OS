@@ -161,6 +161,9 @@ deleted       = ' ${count} '
 renamed       = ' ${count} '
 modified      = ' ${count} '
 untracked     = ' ${count} '
+stashed       = ' '
+diverged      = ' '
+up_to_date    = ''
 ahead         = ' ${count} '
 behind        = ' ${count} '
 style         = "fg:col_blk bg:col_git"
@@ -174,7 +177,7 @@ style = "fg:col_blu bold"
 format = ' at [$time]($style) '
 time_format = '%H:%M'
 # utc_time_offset = '-5'
-# time_range = '10:00:00-14:00:00'
+# time_range = '09:00:00-18:00:00'
 
 # ================== [ LAANGUAGES AND TECHNOLOGIES ICONS ] ================== #
 
