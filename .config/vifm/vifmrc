@@ -363,7 +363,7 @@ fileviewer {*.docx},
 "  SPREADSHEET FILES
 filextype {*.ods,*.xls,*.xlsx},
       \ {Open in Libre Office}
-      \ libreoffice --calc %f &,
+      \ nohup libreoffice --calc %f & disown,
 
 "  WEB
 filextype {*.xhtml,*.html,*.htm},<text/html>
