@@ -10,6 +10,17 @@
 # Ignore Workspaces ;D
 */workspace/
 
+# ================================ [ LOCAL ] ================================ #
+!.local/
+.local/*
+!.local/share/
+.local/share/*
+!.local/share/icons/
+.local/share/icons/*
+
+# 🖱️ Bibata Modern Classic Cursor
+!.local/share/icons/Bibata_Modern_Classic/
+
 # =============================== [ CONFIGS ] =============================== #
 !.config/
 .config/*
