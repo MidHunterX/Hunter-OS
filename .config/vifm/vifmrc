@@ -463,8 +463,14 @@ fileviewer {*.torrent},<application/x-bittorrent>
 filetype {*.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz,*.tar.zst,
       \*.tzst},
       \<application/x-tar>
-      \ {tar - Extract}
-      \ tar -xzvf %f,
+      \ {tar - Extract tarball .tar}
+      \ tar -xf %f,
+      \ {tar - Extract gzipped .tar.gz}
+      \ tar -zxf %f,
+      \ {tar - Extract bzipped .tar.bz2}
+      \ tar -jxf %f,
+      \ {tar - Extract xzipped .tar.xz}
+      \ tar -Jxf %f,
       \ {Mount with archivemount}
       \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
 fileviewer *.tgz,*.tar.gz tar -tzf %c
