@@ -479,6 +479,12 @@ fileviewer *.tar.xz,*.txz tar -tJf %c
 fileviewer *.tar.zst,*.tzst tar -t --zstd -f %c
 fileviewer {*.tar},<application/x-tar> tar -tf %c
 
+filetype {*.gz},
+      \ {gzip - Extract}
+      \ gzip -d %f,
+fileviewer {*.gz},
+      \ gzip -l %f,
+
 " Rar2FsMount and rar archives
 filetype {*.rar},<application/x-rar>
       \ {Mount with rar2fs}
