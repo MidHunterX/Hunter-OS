@@ -243,7 +243,6 @@ fileviewer {.git/}, git -c color.status=always status %d %pu
 fileviewer {*/,.*/,../},
       \ lsd --almost-all --color=always --icon=always --group-directories-first --blocks=permission --blocks=name,
       \ lsd --almost-all --color=always --icon=always --group-directories-first --tree --depth=3,
-      \ dust %f,
       \ df -h %f | highlight -O ansi --syntax javascript,
       \ ls --color=always
 
