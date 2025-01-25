@@ -190,6 +190,7 @@ Click the following categories to toggle the list of packages in that category.
 | Package Name      | Description                           | Src
 | sudo              | Run commands as root                  | pacman
 | bat               | cat with syntax highlighting          | pacman
+| zoxide            | Better alternative to cd command      | pacman
 | dust              | Disk space usage analyzer             | pacman
 | exiv2             | Image EXIF Manipulation Tool          | pacman
 | fd                | Faster alternative to find command    | pacman
@@ -419,22 +420,29 @@ makepkg -si
 
 == 🍇 Directed Dependency Diagram
 
+|===
+| 🔴 | Required Dependency
+| 🟡 | Optional Dependency
+| 🟢 | Good to Have Dependency
+|===
+
 [source,mermaid]
 ----
 graph LR
-vifm(📁 <a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/vifm'>VIFM</a>)
-ls{{lsd}}
-cat{{bat}}
-exif{{exiv2}}
-syntax{{highlight}}
-nvim(📝 <a href='https://github.com/MidHunterX/HunterX-PDE'>NeoVim</a>)
-kitty(🐱 <a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/kitty/'>Kitty</a>)
-fish(🐟 <a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/fish/'>Fish Shell</a>)
-vos(🔈 VOS)
-volume{{pamixer}}
-brs(🔆 BRS)
-brillo{{brillo}}
-waybar(🍫 <a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/waybar/'>Waybar</a>)
+vifm(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/vifm'>VIFM</a>)
+ls{{🟡 lsd / ls}}
+cat{{🟡 bat / cat}}
+exif{{🟢 exiv2}}
+syntax{{🔴 highlight}}
+nvim(<a href='https://github.com/MidHunterX/HunterX-PDE'>NeoVim</a>)
+kitty(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/kitty/'>Kitty</a>)
+fish(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/fish/'>Fish Shell</a>)
+vos(VOS)
+cd{{🟡 zoxide / cd}}
+volume{{🔴 pamixer}}
+brs(BRS)
+brillo{{🔴 brillo}}
+waybar(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/waybar/'>Waybar</a>)
 nf(Nerd Font)
 
 vifm --> ls
@@ -445,6 +453,7 @@ vifm --> syntax
 fish --> ls
 ls --> nf
 fish --> vifm
+fish --> cd
 fish --> vos
 fish --> brs
 fish --> cat

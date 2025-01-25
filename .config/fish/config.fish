@@ -146,3 +146,7 @@ if status is-interactive
 
 end
 
+# zoxide
+if command -q zoxide
+  zoxide init fish --cmd=z | source
+end
