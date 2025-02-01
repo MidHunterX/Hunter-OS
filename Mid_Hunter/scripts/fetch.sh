@@ -154,6 +154,21 @@ else
   BAT_PERCENT+="%"
 fi
 
+# OS Name
+if [[ -f /etc/os-release ]]; then
+    OSNAME=$(grep -Po '(?<=^PRETTY_NAME=).*' /etc/os-release | tr -d '"')
+elif [[ -f /usr/lib/os-release ]]; then
+    OSNAME=$(grep -Po '(?<=^PRETTY_NAME=).*' /usr/lib/os-release | tr -d '"')
+else
+    OSNAME=$(uname -o)
+fi
+
+# Host Device
+# vendor=$(cat /sys/devices/virtual/dmi/id/sys_vendor 2>/dev/null)
+product=$(cat /sys/devices/virtual/dmi/id/product_name 2>/dev/null)
+version=$(cat /sys/devices/virtual/dmi/id/product_version 2>/dev/null)
+HOSTDEVICE="${product} ${version}"
+
 
 # █▀█ █░█ ▀█▀ █▀█ █░█ ▀█▀
 # █▄█ █▄█ ░█░ █▀▀ █▄█ ░█░
@@ -161,9 +176,9 @@ fi
 echo " "
 echo -e "  ${X}     ${Y}o. ${X}      ${Y} .o${X}     ${R}   ${RED}${ICO}${GRN}${ICO}${YLO}${ICO}${BLU}${ICO}${PNK}${ICO}${CYN}${ICO}${WHT}${ICO}${BLK}${ICO}${R}"
 echo -e "  ${X},    ${Y}yyo${X}      ${Y}oyy${X}    ,${R}"
-echo -e "  ${X}oNo  ${Y}yyy${X}      ${Y}yyy${X}  oNo${R}   ${U}${H}midhunter${WHT}@${H}Flex-5${R}"
-echo -e "  ${X}oMMNs${Y}yyy${X}      ${Y}yyy${X}sNMMo${R}   ${B}OS:${R} Hunter OS"
-echo -e "  ${X}oMMMM${Y}yyy${X}      ${Y}yyy${X}MMMMo${R}   ${B}Host:${R} 82HU IdeaPad Flex 5 14ALC05"
+echo -e "  ${X}oNo  ${Y}yyy${X}      ${Y}yyy${X}  oNo${R}   ${U}${H}${USER}${WHT}@${H}${HOSTNAME}${R}"
+echo -e "  ${X}oMMNs${Y}yyy${X}      ${Y}yyy${X}sNMMo${R}   ${B}OS:${R} ${OSNAME}"
+echo -e "  ${X}oMMMM${Y}yyy${X}      ${Y}yyy${X}MMMMo${R}   ${B}Device:${R} ${HOSTDEVICE}"
 echo -e "  ${X}oMMhd${Y}yyy${X}y.  .y${Y}yyy${X}yyMMo${R}   ${B}Datetime:${R} $(date +"${V}%d${R} %b %Y, ${V}%H:%M${R} %a")"
 echo -e "  ${X}oMMo ${Y}yyy${X}MMyyMM${Y}yyy${X} oMMo${R}   ${B}Uptime:${R} ${UPTIME}"
 echo -e "  ${X}oMMo ${Y}yyy${X}sNMMNo${Y}yyy${X} oMMo${R}"
