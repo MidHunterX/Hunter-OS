@@ -1,4 +1,4 @@
-Oopsie.. Select nothing,,Go on... Have a nice day, master ;D
+Oopsie.. Select nothing,,"Go on... Have a nice day, master ;D"
 [wpctl] Show audio devices - lists sound devices,wpctl status,Set default device using "wpctl set-default <number>". Source = Microphone and Sink = Sound.
 [wpctl] How to set default audio/microphone device,wpctl status,Set default device using "wpctl set-default <number>". Source = Microphone and Sink = Sound.
 [tlp] Disable Conservation Mode - Set to fullcharge temporarily,sudo tlp fullcharge,You can set default charging mode at: /etc/tlp.conf
