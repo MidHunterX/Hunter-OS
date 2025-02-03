@@ -3,6 +3,8 @@
 # Except These (with exclamations)
 !.gitignore
 !README.adoc
+!.psqlrc
+!LICENSE
 !assets/
 !.assets/
 !.bashrc
