@@ -1,0 +1,42 @@
+\set QUIET 1
+
+-- Display how long commands take
+\timing on
+
+-- Expanded table format (on|off|auto)
+\x auto
+
+-- Verbose error reports.
+\set VERBOSITY verbose
+
+-- Autocomplete keywords (like SELECT) in UPPERCASE
+\set COMP_KEYWORD_CASE upper
+
+-- Show NULL values as [NULL]
+\pset null '[NULL]'
+
+-- ===============================[ PROMPTS ]=============================== --
+
+-- Example prompts
+-- host user@db=#               | '%[%033[1m%]%M %n@%/%R%[%033[0m%]%# '
+-- user@host/db=#               | '%n@%M/%/%R%#%x '
+-- user@host:port/db=#          | '%n@%M:%>/%/%R%#%x '
+-- host:port(version) user db=# | '%m:%>(%:pg_version:) %n %/ %x%# '
+-- [more] - >                   | '[more] %R > '
+
+-- Prompt1 for initial input
+\set PROMPT1 '\033[1;32m%n@%M:%>\033[0m/\033[1;35m%/\033[0m%R%x%# '
+
+-- Prompt2 when waiting for more input
+\set PROMPT2 '[more] %R > '
+
+-- ===============================[ HISTORY ]=============================== --
+
+-- use per-database history files
+\set HISTFILE ~/.psql_history- :DBNAME
+
+-- history size limit
+\set HISTSIZE 2000
+
+-- ignore both ignoredups and ignorespace
+\set HISTCONTROL ignoreboth
