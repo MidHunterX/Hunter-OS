@@ -10,6 +10,7 @@
 # ICO='⣿⣿⣿ '  # Air Vent
 # ICO='▜▙  '  # Egyptian Snek
 # ICO='█ '  # Sharp Edges
+# ICO=''  # Caution Stripes
 ICO=''  # Tigerstripes
 # 1=100% 2=50% 3=33% 4=25% 5=20%
 BAR_SCALING=5
