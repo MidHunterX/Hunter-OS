@@ -14,9 +14,9 @@
 ICO=''  # Tigerstripes
 # 1=100% 2=50% 3=33% 4=25% 5=20%
 BAR_SCALING=5
-# Some Icons: ━ ≡ = ◍◌ ▮▯
-BAR_FILL='━'
-BAR_REST='━'
+# Some Icons: 🬋 ━ ≡ = ◍◌ ▮▯
+BAR_FILL='🬋'
+BAR_REST='🬋'
 
 
 # █░█ ▄▀█ █▀█ █ ▄▀█ █▄▄ █░░ █▀▀ █▀
@@ -33,6 +33,21 @@ H=${BLU} # Heading
 L=${WHT} # Line
 B=${GRN} # Bold
 V=${YLO} # Values
+
+ceil_div() {
+  echo $(( ($1 + $2 - 1) / $2 ))
+}
+
+generate_bar() {
+  VALUE=$1
+  BAR_FILL=$2
+  BAR=""
+  # echo -n $(( VALUE / BAR_SCALING ))
+  if (( VALUE / BAR_SCALING > 0 )); then
+    BAR=$(echo "$(printf "${BAR_FILL}%.0s" $(seq 1 $(ceil_div VALUE BAR_SCALING)))")
+  fi
+  echo $BAR
+}
 
 
 # █▀▄ ▄▀█ ▀█▀ ▄▀█
@@ -55,8 +70,8 @@ ROUNDOFF=${BAR_SCALING}
 BAT_PERCENT=$(cat /sys/class/power_supply/BAT0/capacity)
 BAT_ROUND=$((BAT_PERCENT - (BAT_PERCENT%ROUNDOFF)))
 BAT_REST=$((100-$BAT_ROUND))
-BAT_BAR=$(echo "$(printf "${BAR_FILL}%.0s" $(seq 1 $((${BAT_ROUND}/BAR_FRACTION))))")
-BAT_REST_BAR=$(echo "$(printf "${BAR_REST}%.0s" $(seq 1 $((${BAT_REST}/BAR_FRACTION))))")
+BAT_BAR=$(generate_bar $BAT_ROUND $BAR_FILL)
+BAT_REST_BAR=$(generate_bar $BAT_REST $BAR_REST)
 
 BAT_WATT=$(cat /sys/class/power_supply/BAT0/power_now | awk '{ printf "%.1f\n", $1 / 1000000 }')
 BATTERY_STATUS=$(cat /sys/class/power_supply/BAT0/status)
@@ -65,14 +80,14 @@ RAM_VALUE=$(free | grep Mem: | awk '{printf "%d", $3/1024}')  # Return in MB
 RAM_PERCENT=$(free | grep Mem: | awk '{printf "%d", $3/$2 * 100}')
 RAM_ROUND=$((RAM_PERCENT - (RAM_PERCENT%ROUNDOFF)))
 RAM_REST=$((100-RAM_ROUND))
-RAM_BAR=$(echo "$(printf "${BAR_FILL}%.0s" $(seq 1 $((${RAM_ROUND}/BAR_FRACTION))))")
-RAM_REST_BAR=$(echo "$(printf "${BAR_REST}%.0s" $(seq 1 $((${RAM_REST}/BAR_FRACTION))))")
+RAM_BAR=$(generate_bar $RAM_ROUND $BAR_FILL)
+RAM_REST_BAR=$(generate_bar $RAM_REST $BAR_REST)
 
 SSD_PERCENT=$(df -h /dev/nvme0n1p7 | awk 'NR==2 {print $5}' | sed 's/%//')
 SSD_ROUND=$((SSD_PERCENT - (SSD_PERCENT%ROUNDOFF)))
 SSD_REST=$((100-SSD_ROUND))
-SSD_BAR=$(echo "$(printf "${BAR_FILL}%.0s" $(seq 1 $((${SSD_ROUND}/BAR_FRACTION))))")
-SSD_REST_BAR=$(echo "$(printf "${BAR_REST}%.0s" $(seq 1 $((${SSD_REST}/BAR_FRACTION))))")
+SSD_BAR=$(generate_bar $SSD_ROUND $BAR_FILL)
+SSD_REST_BAR=$(generate_bar $SSD_REST $BAR_REST)
 
 SWP_INFO=$(free | grep Swap)
 SWP_VALUE=$(echo $SWP_INFO | awk '{print $3}')
@@ -82,12 +97,8 @@ SWP_TOTAL=$(($SWP_TOTAL/1000))
 SWP_PERCENTAGE=$(((${SWP_VALUE} / $SWP_TOTAL) * 100))
 SWP_ROUND=$((SWP_PERCENTAGE - (SWP_PERCENTAGE%ROUNDOFF)))
 SWP_REST=$((100-SWP_ROUND))
-if [[ $SWP_ROUND -gt 0 ]]; then
-  SWP_BAR=$(echo "$(printf "${BAR_FILL}%.0s" $(seq 1 $((${SWP_ROUND}/BAR_FRACTION))))")
-else
-  SWP_BAR=''
-fi
-SWP_REST_BAR=$(echo "$(printf "${BAR_REST}%.0s" $(seq 1 $((${SWP_REST}/BAR_FRACTION))))")
+SWP_BAR=$(generate_bar $SWP_ROUND $BAR_FILL)
+SWP_REST_BAR=$(generate_bar $SWP_REST $BAR_REST)
 
 
 # █▀▀ █▀█ █▄░█ █▀▄ █ ▀█▀ █ █▀█ █▄░█ ▄▀█ █░░   █▀▀ █▀█ █░░ █▀█ █▀█ █▀
