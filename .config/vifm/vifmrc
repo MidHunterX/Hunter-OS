@@ -4,7 +4,9 @@
 " █▄▄ █▄█ ▄█ ░█░ █▄█ █░▀░█   █▄▄ █▄█ █░▀░█ █░▀░█ █▀█ █░▀█ █▄▀ ▄█
 " @commands
 
+" --------------------------------------------------------------------------- "
 " FZF Integration
+
 " Exclude dot dir and dot files - 47310
 " find . -type d -type f -o -not -regex '.*/\..*' | fzf
 " Exclude dot dir and dot files except for .config/ - 49099
@@ -21,6 +23,14 @@ command! FZFfind : let $FZF_PICK = term('fd --type d --type f --hidden --exclude
 nnoremap <c-f> :FZFfind<cr>
 nnoremap ? :FZFfind<cr>
 
+" --------------------------------------------------------------------------- "
+" Open random media file
+
+command! OpenRandomFile :let $RANDOM_FILE = system('fd -e mp4 -e mkv -e avi -e jpg -e png -e jpeg -e gif --type f --hidden --exclude ".git" | shuf -n 1') |
+      \ if $RANDOM_FILE != '' |
+      \     execute 'goto' fnameescape($RANDOM_FILE) |
+      \ endif
+nnoremap <c-r> :OpenRandomFile<CR>l<c-o>
 
 " =========================================================================== "
 
