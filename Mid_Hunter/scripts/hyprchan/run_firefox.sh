@@ -17,25 +17,25 @@ if [[ $PROFILE ]]; then
 fi
 
 # Initial new tab (show once per day)
-HIST_FILE=~/.cache/run_firefox_history.txt
-if [ ! -f "$HIST_FILE" ]; then
-  touch "$HIST_FILE"
-  LAST_RUN_DATE=$(date --date="yesterday" +"%Y-%m-%d")
-  echo $LAST_RUN_DATE > $HIST_FILE
-fi
-
-set_newtab () {
-  if [[ $PROFILE == "Personal" ]]; then
+if [[ $PROFILE == "Personal" ]]; then
+  set_newtab () {
     NEW_TAB_URL="https://app.daily.dev/"
     FF_ATTRIB+="-new-tab $NEW_TAB_URL"
+  }
+  # Init history file
+  HIST_FILE=~/.cache/run_firefox_history.txt
+  if [ ! -f "$HIST_FILE" ]; then
+    touch "$HIST_FILE"
+    LAST_RUN_DATE=$(date --date="yesterday" +"%Y-%m-%d")
+    echo $LAST_RUN_DATE > $HIST_FILE
   fi
-}
-
-LAST_RUN_DATE=$(cat $HIST_FILE)
-TODAY=$(date +"%Y-%m-%d")
-if [[ $LAST_RUN_DATE != $TODAY ]]; then
-  set_newtab
-  echo $(date +"%Y-%m-%d") > $HIST_FILE
+  # Set new tab
+  LAST_RUN_DATE=$(cat $HIST_FILE)
+  TODAY=$(date +"%Y-%m-%d")
+  if [[ $LAST_RUN_DATE != $TODAY ]]; then
+    set_newtab
+    echo $(date +"%Y-%m-%d") > $HIST_FILE
+  fi
 fi
 
 
