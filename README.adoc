@@ -386,9 +386,36 @@ Click the following categories to toggle the list of packages in that category.
 | fontconfig              | Font Configuration              | pacman
 | noto-fonts              | Google Font for Unicode Support | pacman
 | noto-fonts-cjk          | Google Font for Unicode Support | pacman
-| noto-fonts-emoji        | Google Font for Unicode Support | pacman
 | ttf-jetbrains-mono-nerd | Nerd Font Icons patch           | pacman
 |===
+
+[discrete]
+=== 😀 Emojis
+With no emoji fonts installed, all of the emojis should look like boxes.
+Install any one of the following to use systemwide:
+
+[%header]
+|===
+| Package Name     | Description         | Src
+| noto-fonts-emoji | Emoji by Google     | pacman
+| ttf-joypixels    | High quality emojis | pacman
+| ttf-twemoji      | Emoji by Twitter    | pacman
+|===
+
+* noto-fonts-emoji emojis are easily distinguishable from each other when font size is small; like on terminals. Uses COLRv1.
+* ttf-twemoji is perfect for bigger font size. Perfect for Web Browsers.
+* ttf-joypixels has that premium feel. Search it up.
+
+My Recommendation: Install `ttf-joypixels` and `noto-fonts-emoji`
+
+* On every GUI apps, high quality ttf-joypixels is used.
+* On Kitty terminal, it will fallback to using noto-fonts-emoji.
+
+.To make ttf-twemoji take precedence over noto-fonts-emoji on GUI:
+[source,bash]
+----
+sudo ln -s /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/
+----
 ====
 
 .🥃 Screenshot
