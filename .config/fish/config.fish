@@ -3,6 +3,12 @@ set fish_greeting ""
 
 # Commands to run in interactive sessions can go here
 if status is-interactive
+  # █▀█ ▄▀█ ▀█▀ █░█ █▀
+  # █▀▀ █▀█ ░█░ █▀█ ▄█
+  # ==================
+  if test -d $HOME/.local/bin
+    set -x PATH $HOME/.local/bin $PATH
+  end
 
   # ▄▀█ █▄▄ █▄▄ █▀█   ▄▀█ █▄░█ █▀▄   ▄▀█ █░░ █ ▄▀█ █▀
   # █▀█ █▄█ █▄█ █▀▄   █▀█ █░▀█ █▄▀   █▀█ █▄▄ █ █▀█ ▄█
