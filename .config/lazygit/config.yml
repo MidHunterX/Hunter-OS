@@ -1,4 +1,7 @@
 gui:
+  branchColorPatterns:
+    "^docs/": "#11aaff"
+    'ISSUE-\d+': "#ff5733"
   screenMode: "normal" # one of 'normal' | 'half' | 'full'
   scrollPastBottom: true
   scrollOffMargin: 4
@@ -82,3 +85,5 @@ git:
     - master
     - main
     - develop
+os:
+  editPreset: "nvim" # nvim, nvim-remote, emacs, vscode, kakoune, helix
