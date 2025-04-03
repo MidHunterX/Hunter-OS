@@ -1,0 +1,217 @@
+#!/usr/bin/env bash
+
+# -----------------------------[ CONFIGURATION ]----------------------------- #
+
+SESSION_NAME=""
+INIT_SETUP="none"    # [ none | python | node ]
+TMUX_LAYOUT="custom" # [ custom | fastapi | nextjs | django | node | rust ]
+
+AUTOSTART_SERVER=true
+AUTORUN_COMMANDS=true
+
+# USE_POSTGRES=true
+# USE_MONGODB=true
+# USE_REDIS=true
+
+# -----------------------------[ CUSTOM LAYOUT ]----------------------------- #
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd $SCRIPT_DIR
+
+setup_custom_layout() {
+  create_tmux_session "Editor" "nvim"
+  create_window "Test" "cargo test"
+}
+
+# =========================================================================== #
+
+# █░█ ▀█▀ █ █░░ █▀
+# █▄█ ░█░ █ █▄▄ ▄█
+
+create_tmux_session() {
+  local NAME="$1"
+  local CMD="$2"
+  tmux new-session -d -s "$SESSION_NAME" -n "$NAME"
+  if command -v "${CMD%% *}" >/dev/null; then
+    tmux send-keys -t "$SESSION_NAME" "$CMD"
+    [ "$AUTOSTART_SERVER" = true ] && tmux send-keys -t "$SESSION_NAME" Enter
+  fi
+}
+
+# create_window(str:window_name str:command int:window_index)
+create_window() {
+  local NAME="$1"
+  local CMD="$2"
+  if command -v "${CMD%% *}" >/dev/null; then
+    tmux new-window -t "$SESSION_NAME" -n "$NAME"
+    tmux send-keys -t "$SESSION_NAME" "$CMD"
+    [ "$AUTORUN_COMMANDS" = true ] && tmux send-keys -t "$SESSION_NAME" Enter
+  fi
+}
+
+# create_temp_window(str:window_name str:command)
+create_temp_window() {
+  local NAME="$1"
+  local CMD="$2"
+  if command -v "${CMD%% *}" >/dev/null; then
+    tmux new-window -t "$SESSION_NAME" -n "$1" "$2"
+  fi
+}
+
+# █░░ ▄▀█ █▄█ █▀█ █░█ ▀█▀ █▀
+# █▄▄ █▀█ ░█░ █▄█ █▄█ ░█░ ▄█
+
+setup_fastapi_layout() {
+  create_tmux_session "Server" "fastapi dev main.py"
+  create_temp_window "Editor" "nvim"
+  create_window "Test" "clear && pytest"
+}
+
+setup_nextjs_layout() {
+  create_tmux_session "Server" "npm run dev"
+  create_temp_window "Editor" "nvim"
+  # create_window "Test" "npm test"
+  # create_window "Build" "npm run build"
+}
+
+setup_django_layout() {
+  create_tmux_session "Server" "python manage.py runserver"
+  create_temp_window "Editor" "nvim"
+  # create_window "Test" "python manage.py test"
+  # create_window "Shell" "python manage.py shell"
+}
+
+setup_node_layout() {
+  create_tmux_session "Server" "npm start"
+  create_temp_window "Editor" "nvim"
+  create_window "Test" "npm test"
+}
+
+setup_rust_layout() {
+  create_tmux_session "Run" "cargo run"
+  create_temp_window "Editor" "nvim"
+  create_window "Test" "cargo test"
+}
+
+# █▀ █▀▀ █▀█ █░█ █ █▀▀ █▀▀ █▀
+# ▄█ ██▄ █▀▄ ▀▄▀ █ █▄▄ ██▄ ▄█
+
+init_services() {
+  # Syntax: [systemctl-service-name]="$USE_SERVICE"
+  declare -A SERVICES=(
+    [postgresql]="$USE_POSTGRES"
+    [mongod]="$USE_MONGODB"
+    [redis - server]="$USE_REDIS"
+  )
+
+  for service in "${!SERVICES[@]}"; do
+    if [[ "${SERVICES[$service]}" = true ]]; then
+      if ! systemctl is-active --quiet "$service"; then
+        echo "🚀 Starting up $service..."
+        sudo systemctl start "$service"
+      fi
+    fi
+  done
+}
+
+# █▀▀ █▄░█ █░█   █▀ █▀▀ ▀█▀ █░█ █▀█
+# ██▄ █░▀█ ▀▄▀   ▄█ ██▄ ░█░ █▄█ █▀▀
+
+setup_env() {
+  local DEPENDENCY_DIR="$1"
+  local DEPENDENCY_CMD="$2"
+  if [[ ! -d $DEPENDENCY_DIR ]]; then
+    echo "🚀 Setting up dependencies..."
+    command -v ${DEPENDENCY_CMD%% *} >/dev/null || {
+      echo "❌ Error: ${DEPENDENCY_CMD%% *} not found"
+      exit 1
+    }
+    $DEPENDENCY_CMD
+  fi
+}
+
+setup_python_env() {
+  local DEPENDENCY_DIR="venv/"
+  local DEPENDENCY_CMD="python -m venv venv"
+  if [[ ! -d $DEPENDENCY_DIR ]]; then
+    setup_env "$DEPENDENCY_DIR" "$DEPENDENCY_CMD"
+    echo "📦 Installing requirements..."
+    source "$DEPENDENCY_DIR/bin/activate"
+    if [[ -f "requirements.txt" ]]; then
+      pip install -r requirements.txt
+    else
+      echo "🚧 Warning: No requirements.txt found"
+    fi
+  fi
+  source "$DEPENDENCY_DIR/bin/activate"
+}
+
+setup_node_env() {
+  setup_env "node_modules/" "npm install"
+}
+
+check_tmux_dependency() {
+  # Install tmux if missing
+  if ! command -v tmux >/dev/null; then
+    echo "Tmux is required for full functionality."
+    echo "Install with: sudo apt install tmux (or equivalent for your OS)"
+    echo "Running in basic mode without tmux..."
+
+    if [[ "$PROJECT_TYPE" == "fastapi" ]]; then
+      command -v fastapi >/dev/null || {
+        echo "Error: fastapi not found in PATH"
+        exit 1
+      }
+      fastapi dev main.py
+    elif [[ "$PROJECT_TYPE" == "nextjs" ]]; then
+      npm run dev
+    fi
+    exit 0
+  fi
+}
+
+# █▀▄▀█ ▄▀█ █ █▄░█
+# █░▀░█ █▀█ █ █░▀█
+
+main() {
+  init_services
+  check_tmux_dependency
+
+  # Attach session if exists
+  if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
+    echo "Session '$SESSION_NAME' already exists. Attaching..."
+    tmux attach -t "$SESSION_NAME"
+    exit 0
+  fi
+
+  # Set up dependencies
+  case "$INIT_SETUP" in
+  "none") ;;
+  "python") setup_python_env ;;
+  "node") setup_node_env ;;
+  *)
+    echo "Unknown primary language: $INIT_SETUP"
+    exit 1
+    ;;
+  esac
+
+  # Set up tmux layouts
+  case "$TMUX_LAYOUT" in
+  "custom") setup_custom_layout ;;
+  "fastapi") setup_fastapi_layout ;;
+  "nextjs") setup_nextjs_layout ;;
+  "django") setup_django_layout ;;
+  "node") setup_node_layout ;;
+  "rust") setup_rust_layout ;;
+  *)
+    echo "Unknown project type: $TMUX_LAYOUT"
+    echo "Using default layout..."
+    create_tmux_session "Server" "echo 'Configure commands in run script'"
+    create_temp_window "Editor" "nvim"
+    ;;
+  esac
+
+  tmux attach -t "$SESSION_NAME"
+}
+
+main
