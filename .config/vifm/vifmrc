@@ -31,6 +31,7 @@ command! OpenRandomFile :let $RANDOM_FILE = system('fd -e mp4 -e mkv -e avi -e j
       \     execute 'goto' fnameescape($RANDOM_FILE) |
       \ endif
 nnoremap <c-r> :OpenRandomFile<CR>l<c-o>
+nnoremap rr :OpenRandomFile<CR>l<c-o>
 
 " =========================================================================== "
 
@@ -82,8 +83,8 @@ nnoremap <c-d> <PGDN>zz
 nnoremap U <c-r>
 nnoremap H <c-w>h
 nnoremap L <c-w>l
-nnoremap J L
-nnoremap K H
+nnoremap J 2j
+nnoremap K 2k
 nnoremap v t
 
 " VIEW MODE REMAPS
@@ -568,7 +569,7 @@ fileviewer *.arc highlight -O ansi --syntax arc
 fileviewer *.arm highlight -O ansi --syntax arm
 fileviewer *.as400cl highlight -O ansi --syntax as400cl
 fileviewer *.ascend,*.a4c highlight -O ansi --syntax ascend
-fileviewer *.asciidoc highlight -O ansi --syntax asciidoc
+fileviewer *.asciidoc,*.adoc highlight -O ansi --syntax asciidoc
 fileviewer *.asp,*.ascx,*.ashx,*.aspx highlight -O ansi --syntax asp
 fileviewer *.aspect,*.was,*.wud highlight -O ansi --syntax aspect
 fileviewer *.assembler,*.29k,*.68s,*.68x,*.a51,*.asm,*.x86 highlight -O ansi --syntax assembler
@@ -668,7 +669,7 @@ fileviewer *.io highlight -O ansi --syntax io
 fileviewer *.jam,*.ham,*.jam highlight -O ansi --syntax jam
 fileviewer *.jasmin,*.j highlight -O ansi --syntax jasmin
 fileviewer *.java,*.gradle,*.groovy,*.grv,*.jenkinsfile highlight -O ansi --syntax java
-fileviewer *.javascript,*.js highlight -O ansi --syntax javascript
+fileviewer *.javascript,*.js,*.jsm,*.mjs highlight -O ansi --syntax javascript
 fileviewer *.js_regex highlight -O ansi --syntax js_regex
 fileviewer *.json highlight -O ansi --syntax json
 fileviewer *.jsp highlight -O ansi --syntax jsp
