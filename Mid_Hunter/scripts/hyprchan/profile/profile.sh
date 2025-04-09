@@ -1,14 +1,15 @@
 # This function is needed to execute admin functions
 profile.hypr() {
+  # Failsafe mechanism for relative links
+  cd "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
   NAME="Hypr Chan"
-  IMG=~/Mid_Hunter/scripts/hyprchan/profile/assets/hypr_chan.jpg
+  IMG="$(realpath ./assets/hypr_chan.jpg)"
   HINTS="-h string:frcolor:#52efb3 "
   HINTS+="-h string:bgcolor:#1f4738 "
 }
 
-
 # ========================== [ MEMORY FUNCTIONS ] ========================== #
-
 
 # Creates following variables:
 # ACTIVE_CLASS -> Class name of active window
@@ -18,9 +19,7 @@ hypr.active_window() {
   ACTIVE_TITLE=$(hyprctl activewindow -j | jq -r .title)
 }
 
-
 # =========================== [ ADMIN FUNCTIONS ] =========================== #
-
 
 hypr.message() {
   notify-send -t 5000 $HINTS -i $IMG "$NAME" "$1"
