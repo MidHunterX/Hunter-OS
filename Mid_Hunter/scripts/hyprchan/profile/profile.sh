@@ -22,5 +22,6 @@ hypr.active_window() {
 # =========================== [ ADMIN FUNCTIONS ] =========================== #
 
 hypr.message() {
-  notify-send -t 5000 $HINTS -i $IMG "$NAME" "$1"
+  local TIMEOUT=1000
+  notify-send -t $TIMEOUT $HINTS -i $IMG "$NAME" "$1"
 }
