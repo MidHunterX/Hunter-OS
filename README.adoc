@@ -289,6 +289,7 @@ Click the following categories to toggle the list of packages in that category.
 | waybar                      | Wayland Status Bar           | pacman
 | wl-clipboard                | Wayland Clipboard Utility    | pacman
 | wtype                       | Wayland Keystrokes Emulation | pacman
+| wl-screenrec                | Wayland Screen Recorder      | aur
 | keyd                        | Key Remapping Daemon         | aur
 | swww                        | Wayland Wallpaper Daemon     | aur
 | wlogout                     | Logout Screen                | aur
@@ -399,7 +400,7 @@ Install any one of the following to use systemwide:
 | Package Name     | Description         | Src
 | noto-fonts-emoji | Emoji by Google     | pacman
 | ttf-joypixels    | High quality emojis | pacman
-| ttf-twemoji      | Emoji by Twitter    | pacman
+| ttf-twemoji      | Emoji by Twitter    | yay
 |===
 
 * noto-fonts-emoji emojis are easily distinguishable from each other when font size is small; like on terminals. Uses COLRv1.
