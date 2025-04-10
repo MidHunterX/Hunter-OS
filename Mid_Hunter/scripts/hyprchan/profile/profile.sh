@@ -1,10 +1,10 @@
 # This function is needed to execute admin functions
 profile.hypr() {
   # Failsafe mechanism for relative links
-  cd "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  local SOURCE=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
   NAME="Hypr Chan"
-  IMG="$(realpath ./assets/hypr_chan.jpg)"
+  IMG="$SOURCE/assets/hypr_chan.jpg"
   HINTS="-h string:frcolor:#52efb3 "
   HINTS+="-h string:bgcolor:#1f4738 "
 }
