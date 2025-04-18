@@ -359,7 +359,7 @@ symbol        = " "
 format        = '[ $symbol$version ]($style)'
 
 [rust]
-symbol        = ""
+symbol        = " "
 format        = '[ $symbol$version ]($style)'
 
 [scala]
