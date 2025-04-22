@@ -61,9 +61,11 @@ gui:
       - "▂"
       - "▁"
     rate: 50
+
 refresher:
   refreshInterval: 10 # File/submodule refresh interval in seconds.
   fetchInterval: 60 # Re-fetch interval in seconds.
+
 keybinding:
   universal:
     quit: "q"
@@ -77,13 +79,19 @@ keybinding:
     scrollDownMain-alt1: "" # J
     prevPage: K # ','
     nextPage: J # .
+
 git:
+  commit:
+    # If true, pass '--signoff' flag when committing
+    signOff: true
   merging:
     # args: "--no-ff" # No Fast Forwarding, Make Merge Commit
-    squashMergeMessage: "\U0001F34B Squash {{selectedRef}} into {{currentBranch}}"
+    squashMergeMessage: "merge: 🍋 Squash merged {{selectedRef}} into {{currentBranch}}"
   mainBranches:
     - master
     - main
     - develop
+  branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium --oneline {{branchName}} --"
+
 os:
   editPreset: "nvim" # nvim, nvim-remote, emacs, vscode, kakoune, helix
