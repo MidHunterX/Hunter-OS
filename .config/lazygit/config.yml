@@ -94,7 +94,14 @@ git:
     - master
     - main
     - develop
-  branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium --oneline {{branchName}} --"
+  # branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium --oneline {{branchName}} --"
+  branchLogCmd: "git log --all --graph --color=always --pretty=format:'%C(magenta)%h  %C(white)%an  %ar%C(auto) %D%n%s%n'"
+    # %h: commit hash
+    # %an: author name
+    # %ar: author date
+    # %D: branch name
+    # %s: commit message
+    # %n: newline
 
 os:
   editPreset: "nvim" # nvim, nvim-remote, emacs, vscode, kakoune, helix
