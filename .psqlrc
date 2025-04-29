@@ -15,6 +15,11 @@
 -- Show NULL values as [NULL]
 \pset null '[NULL]'
 
+-- Styles
+\pset border 2
+\pset linestyle unicode
+\pset null '∅'
+
 -- ===============================[ PROMPTS ]=============================== --
 
 -- Example prompts
@@ -40,3 +45,5 @@
 
 -- ignore both ignoredups and ignorespace
 \set HISTCONTROL ignoreboth
+
+-- \unset QUIET
