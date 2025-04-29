@@ -172,6 +172,7 @@ Click the following categories to toggle the list of packages in that category.
 | Package Name  | Description                  | Src
 | git           | Version control system       | pacman
 | lazygit       | TUI for Git                  | pacman
+| git-delta     | Git Syntax Highlighted Pager | pacman
 | meson         | Nice build system            | pacman
 | nodejs        | Node Java Script Runtime Env | pacman
 | npm           | Node JS package manager      | pacman

@@ -81,9 +81,12 @@ keybinding:
     nextPage: J # .
 
 git:
+  paging:
+    colorArg: always
+    pager: delta --paging=never --syntax-theme="base16" --diff-highlight
   commit:
     # If true, pass '--signoff' flag when committing
-    signOff: true
+    signOff: false
   merging:
     # args: "--no-ff" # No Fast Forwarding, Make Merge Commit
     squashMergeMessage: "merge: 🍋 Squash merged {{selectedRef}} into {{currentBranch}}"
