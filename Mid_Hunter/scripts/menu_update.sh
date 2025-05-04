@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+
+# Failsafe mechanism for relative links
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd $SCRIPT_DIR
+
 update_unicode_emojis() {
   SCRIPT=menu_emoji.sh
   sed -i '/^### EMOJI LIST ###$/q' $SCRIPT

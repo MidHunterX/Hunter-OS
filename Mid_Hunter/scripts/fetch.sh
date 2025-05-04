@@ -83,7 +83,7 @@ RAM_REST=$((100-RAM_ROUND))
 RAM_BAR=$(generate_bar $RAM_ROUND $BAR_FILL)
 RAM_REST_BAR=$(generate_bar $RAM_REST $BAR_REST)
 
-SSD_PERCENT=$(df -h /dev/nvme0n1p7 | awk 'NR==2 {print $5}' | sed 's/%//')
+SSD_PERCENT=$(df -h /dev/nvme0n1p5 | awk 'NR==2 {print $5}' | sed 's/%//')
 SSD_ROUND=$((SSD_PERCENT - (SSD_PERCENT%ROUNDOFF)))
 SSD_REST=$((100-SSD_ROUND))
 SSD_BAR=$(generate_bar $SSD_ROUND $BAR_FILL)

@@ -91,7 +91,7 @@ exit
 😏 smirking face face smile mean prank smug sarcasm flirting sexual smirk suggestive
 😒 unamused face indifference bored straight face serious sarcasm unimpressed skeptical dubious ugh side eye dissatisfied meh unhappy
 🙄 face with rolling eyes face eyeroll frustrated eye roll
-😬 grimacing face face grimace teeth #1 best awkward eek foot friend mouth mutual nervous snapchat
+😬 grimacing face face grimace teeth awkward eek nervous
 🤥 lying face face lie pinocchio liar long nose
 😌 relieved face face relaxed phew massage happiness content pleased whew
 😔 pensive face face sad depressed upset dejected sadface sorrowful
@@ -148,7 +148,7 @@ exit
 ☠️ skull and crossbones poison danger deadly scary death pirate evil body face halloween monster
 💩 pile of poo hankey shitface fail turd shit comic crap dirt dog dung face monster poop smiling bad needs improvement
 🤡 clown face face mock
-👹 ogre monster red mask halloween scary creepy devil demon japanese ogre creature face fairy fantasy oni tale
+👹 ogre monster red mask halloween scary creepy devil demon japanese ogre creature face fairy fantasy oni tale shrek
 👺 goblin red evil mask monster scary creepy japanese goblin creature face fairy fantasy long nose tale tengu
 👻 ghost halloween spooky scary creature disappear face fairy fantasy ghoul monster tale
 👽 alien UFO paul weird outer space creature et extraterrestrial face fairy fantasy monster tale external
@@ -359,7 +359,7 @@ exit
 🕵️ detective human spy eye or private sleuth
 🕵️‍♂️ man detective crime male men sleuth spy
 🕵️‍♀️ woman detective human spy detective female woman sleuth women
-💂 guard protect british foot guardsman
+💂 guard protect british guardsman
 💂‍♂️ man guard uk gb british male guy royal guardsman men
 💂‍♀️ woman guard uk gb british female royal woman guardsman guardswoman women
 👷 construction worker labor build builder face hard hat helmet safety add ci update ci
@@ -1724,6 +1724,7 @@ exit
 🇶🇦 flag qatar qa flag nation country banner qatar qatari
 🇷🇪 flag reunion réunion flag nation country banner reunion réunionnais
 🇷🇴 flag romania ro flag nation country banner romania romanian
+🇨🇶 flag sark cq flag banner
 🇷🇸 flag serbia rs flag nation country banner serbia serbian flag
 🇷🇺 flag russia russian federation flag nation country banner russia indicator letters regional ru symbol
 🇷🇼 flag rwanda rw flag nation country banner rwanda rwandan
@@ -1882,7 +1883,7 @@ exit
 🫅 person with crown royalty power monarch noble regal
 🫃 pregnant man baby belly bloated full
 🫄 pregnant person baby belly bloated full
-🧌 troll mystical monster fairy fantasy tale
+🧌 troll mystical monster fairy fantasy tale shrek
 🪸 coral ocean sea reef
 🪷 lotus flower calm meditation buddhism hinduism india purity vietnam
 🪹 empty nest bird nesting
@@ -1907,7 +1908,7 @@ exit
 🩶 grey heart silver monochrome
 🫷 leftwards pushing hand highfive pressing stop
 🫸 rightwards pushing hand highfive pressing stop
-🫎 moose shrek canada sweden sven cool
+🫎 moose canada sweden sven cool
 🫏 donkey eeyore mule
 🪽 wing angel birds flying fly
 🐦‍⬛ black bird crow
@@ -1950,3 +1951,10 @@ exit
 🍋‍🟩 lime fruit acidic citric
 🍄‍🟫 brown mushroom toadstool fungus
 ⛓️‍💥 broken chain constraint break
+🫩 face with bags under eyes tired sleepy exhausted
+🫆 fingerprint
+🪾 leafless tree
+🫜 root vegetable radish
+🪉 harp music instrument
+🪏 shovel tool dig
+🫟 splatter
