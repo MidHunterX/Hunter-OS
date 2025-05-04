@@ -6,16 +6,16 @@ feh is a lightweight image viewer aimed mainly at users of command line interfac
 
 ## Feh Keybindings
 
-| Keymap      | Description             |
-| ----------- | ----------------------- |
-| u           | Zoom In                 |
-| d           | Zoom Out                |
-| s           | Set to Fit Zoom         |
-| S           | Set to Default Zoom     |
-| j, h, left  | Previous Image          |
-| k, l, right | Next Image              |
-| f           | Toggle Fullscreen       |
-| o           | Toggle EXIF Information |
-| i           | View Filename           |
-| q, x        | Quit/Close              |
-
+| Keymap         | Description             |
+| -------------- | ----------------------- |
+| u, <C-i>       | Zoom In                 |
+| d, <C-o>       | Zoom Out                |
+| s              | Set to Fit Zoom         |
+| S              | Set to Default Zoom     |
+| HJKL, <C-hjkl> | Move around image       |
+| j, h, left     | Previous Image          |
+| k, l, right    | Next Image              |
+| f              | Toggle Fullscreen       |
+| o              | Toggle EXIF Information |
+| i              | View Filename           |
+| q, x           | Quit/Close              |

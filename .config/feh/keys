@@ -1,18 +1,18 @@
 zoom_default        S
 zoom_fit            s
 
-zoom_in             u
-zoom_out            d
+zoom_in             u   C-i
+zoom_out            d   C-o
 
 # HJKL normal
 prev_img            k   h Left
 next_img            j   l Right
 
 # HJKL enhanced
-scroll_up           K   C-Up
-scroll_down         J   C-Down
-scroll_left         H   C-Left
-scroll_right        L   C-Right
+scroll_up           K   C-k
+scroll_down         J   C-j
+scroll_left         H   C-h
+scroll_right        L   C-l
 
 # Toggles
 toggle_fullscreen   f
