@@ -7,6 +7,9 @@
 # Open document in fit-width mode by default
 set adjust-open "best-fit"
 
+# Database - store input, bookmarks
+set database "null" # null, sqlite
+
 # One page per row by default
 set pages-per-row 1
 
@@ -90,6 +93,12 @@ map U zoom "in"
 map [fullscreen] D zoom "out"
 map [fullscreen] U zoom "in"
 
+# <C-o>/<C-i> - Zoom
+map <C-o> zoom "out"
+map <C-i> zoom "in"
+map [fullscreen] <C-o> zoom "out"
+map [fullscreen] <C-i> zoom "in"
+
 # d/u - Half Scroll
 unmap d
 map d scroll "half-down"
@@ -100,6 +109,8 @@ map [fullscreen] u scroll "half-up"
 # j/k - Smooth Scroll
 map j feedkeys "<C-Down>"
 map k feedkeys "<C-Up>"
+map [fullscreen] j feedkeys "<C-Down>"
+map [fullscreen] k feedkeys "<C-Up>"
 
 # h - Previous Page
 map h navigate "previous"
