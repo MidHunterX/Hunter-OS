@@ -23,6 +23,8 @@ set guioptions ""
 set render-loading "false"
 set scroll-step 50
 
+# =============================== [ COLORS ] =============================== #
+
 # zathurarc-dark
 set font "inconsolata 15"
 set default-bg "rgba(25, 25, 25, 0.6)" #00
@@ -62,12 +64,15 @@ set recolor-keephue "true"
 
 # =============================== [ REMAPS ] =============================== #
 
-# Booklet Mode Toggle
+# b - Booklet Mode Toggle
 map b toggle_page_mode
 map [fullscreen] b toggle_page_mode
 
-# i - Dark Mode Toggle
-map i recolor
+# i - Information Toggle
+map i toggle_statusbar
+
+# I - Invert Colorscheme (Dark mode toggle)
+map I recolor
 map [fullscreen] i recolor
 
 # f - fullscreen
@@ -79,6 +84,11 @@ map [fullscreen] f toggle_fullscreen
 map x quit
 map [fullscreen] x quit
 
+# D/U - Zoom
+map D zoom "out"
+map U zoom "in"
+map [fullscreen] D zoom "out"
+map [fullscreen] U zoom "in"
 
 # d/u - Half Scroll
 unmap d
