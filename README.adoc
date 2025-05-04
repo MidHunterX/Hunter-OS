@@ -345,6 +345,8 @@ Click the following categories to toggle the list of packages in that category.
 | p7zip        | CLI 7 Zip Archiver   | pacman
 | unzip        | Unzip .zip archives  | pacman
 | vifm         | TUI File Manager     | pacman
+| docx2txt     | View .docx files     | pacman
+| odt2txt      | View .odt files      | pacman
 |===
 ====
 

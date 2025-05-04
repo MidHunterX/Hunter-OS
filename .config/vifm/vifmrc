@@ -363,17 +363,19 @@ filextype { *.odt,*.doc,*.docx,*.odp,*.pptx,*.ppt},
       \ <application/vnd.openxmlformats-officedocument.*,
       \ application/msword,
       \ application/vnd.ms-excel>
-      \ libreoffice %f &
+      \ libreoffice %f & disown
 fileviewer {*.doc},<application/msword> catdoc %c
+fileviewer {*.odt},
+      \ odt2txt %f -
 fileviewer {*.docx},
       \<application/
       \vnd.openxmlformats-officedocument.wordprocessingml.document>
-      \ docx2txt.pl %f -
+      \ docx2txt %f -
 
 "  SPREADSHEET FILES
 filextype {*.ods,*.xls,*.xlsx},
       \ {Open in Libre Office}
-      \ nohup libreoffice --calc %f & disown,
+      \ libreoffice --calc %f & disown,
 
 "  WEB
 filextype {*.xhtml,*.html,*.htm},<text/html>
