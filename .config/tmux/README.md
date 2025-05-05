@@ -8,6 +8,25 @@ window. It is useful for running more than one command-line program at the same
 time. It can also be used to detach processes from their controlling terminals,
 allowing remote sessions to remain active without being visible.
 
+## Negatives
+
+> Doesn't recognize many ctrl sequences
+
+Most terminal apps can only recognize the following ctrl chars:
+
+- `Ctrl-A` .. `Ctrl-Z`
+- `Ctrl-@` `Ctrl-[` `Ctrl-\` `Ctrl-]` `Ctrl-^` `Ctrl-_`
+
+and they cannot tell the difference between, for example, `Ctrl-i` and `Tab`,
+`Ctrl-M` and `Enter`, `Ctr-[` and `Esc`, ... (more details
+[here](https://www.leonerd.org.uk/hacks/fixterms/)).
+
+Nvim uses [libtermkey](https://www.leonerd.org.uk/code/libtermkey/) which can
+recognize more ctrl sequences but for tmux, `Ctrl-=` is the same as `=` so tmux
+just forwards = to nvim.
+
+Which means.. many keybindings won't work when using nvim with tmux.
+
 ## TMUX Keybindings
 
 | Keymap  | Description       |
