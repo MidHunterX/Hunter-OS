@@ -5,18 +5,19 @@ HIST_FILE=~/.cache/nerd-history.txt
 # Create history file if it doesn't exist
 if [ ! -f "$HIST_FILE" ]; then
   touch "$HIST_FILE"
-  echo "" > $HIST_FILE
+  echo "" >$HIST_FILE
 fi
 
 # Show Emoji list
-NF_ROW=$( (
-  sed '/^$/d' "$HIST_FILE"
-  sed '1,/^### NF LIST ###$/d' "$0"
-  echo 'Emoji List'
-) | fuzzel --dmenu \
-  --border-color=#89b4faff \
-  --background=#2d2d379b \
-  --match-mode=fuzzy \
+NF_ROW=$(
+  (
+    sed '/^$/d' "$HIST_FILE"
+    sed '1,/^### NF LIST ###$/d' "$0"
+    echo 'Emoji List'
+  ) | fuzzel --dmenu \
+    --border-color=#89b4faff \
+    --background=#2d2d379b \
+    --match-mode=fuzzy
 )
 
 echo "Selected Row: $NF_ROW"
@@ -30,6 +31,12 @@ elif [[ $NF_ROW == 'Emoji List' ]]; then
   exit
 fi
 
+# Check if row is valid
+PART_COUNT=$(echo "$NF_ROW" | awk '{print NF}')
+if [ "$PART_COUNT" -lt 2 ]; then
+  echo "Error: selected row must contain at least two space-separated parts."
+  exit 1
+fi
 
 # Cut out only emoji from the row
 SELECTED_NF=$(echo $NF_ROW | cut -d ' ' -f 1 | tr -d '\n')
@@ -37,6 +44,9 @@ echo "Output: $SELECTED_NF"
 
 # Output Emoji
 wtype $SELECTED_NF
+
+# Copy Emoji
+wl-copy $SELECTED_EMOJI
 
 # Add NerdFont Row to history file
 if grep -q "^$NF_ROW$" "$HIST_FILE"; then
@@ -49,8 +59,6 @@ else
 fi
 
 exit
-
-
 
 ### NF LIST ###
  cod-account
@@ -6789,7 +6797,7 @@ exit
 󰮧 md-home_variant_outline
 󰛢 md-hook
 󰛣 md-hook_off
-󰹖 md-hoop_house
+��� md-hoop_house
 󰋟 md-hops
 󱃳 md-horizontal_rotate_clockwise
 󱃴 md-horizontal_rotate_counterclockwise

@@ -30,6 +30,12 @@ elif [[ $EMOJI_ROW == 'Nerd Fonts' ]]; then
   exit
 fi
 
+# Check if row is valid
+PART_COUNT=$(echo "$EMOJI_ROW" | awk '{print NF}')
+if [ "$PART_COUNT" -lt 2 ]; then
+  echo "Error: selected row must contain at least two space-separated parts."
+  exit 1
+fi
 
 # Cut out only emoji from the row
 SELECTED_EMOJI=$(echo $EMOJI_ROW | cut -d ' ' -f 1 | tr -d '\n')
@@ -37,6 +43,9 @@ echo "Output: $SELECTED_EMOJI"
 
 # Output Emoji
 wtype $SELECTED_EMOJI
+
+# Copy Emoji
+wl-copy $SELECTED_EMOJI
 
 # Add Emoji Row to history file
 if grep -q "^$EMOJI_ROW$" "$HIST_FILE"; then
