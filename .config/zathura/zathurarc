@@ -24,7 +24,6 @@ set zoom-min 10
 set guioptions ""
 
 set render-loading "false"
-set scroll-step 50
 
 # =============================== [ COLORS ] =============================== #
 
@@ -112,13 +111,17 @@ map k feedkeys "<C-Up>"
 map [fullscreen] j feedkeys "<C-Down>"
 map [fullscreen] k feedkeys "<C-Up>"
 
-# h - Previous Page
+# h/l - Previous or Next Page
 map h navigate "previous"
-map [fullscreen] h navigate "previous"
-
-# l - Next Page
 map l navigate "next"
+map [fullscreen] h navigate "previous"
 map [fullscreen] l navigate "next"
+
+# left/right - Previous or Next Page
+map <Left> navigate "previous"
+map <Right> navigate "next"
+map [fullscreen] <Left> navigate "previous"
+map [fullscreen] <Right> navigate "next"
 
 # zoom page
 map 0 zoom "default"
