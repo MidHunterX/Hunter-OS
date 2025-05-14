@@ -8,6 +8,8 @@ Vifm is a file manager with curses interface, which provides Vim-like environmen
 
 | Keymap   | Description              |
 | -------- | ------------------------ |
+| rr       | Opens random media file  |
+| rv       | Opens random video file  |
 | Ctrl + f | Fuzzy Find Files         |
 | ?        | Fuzzy Find Files         |
 | /        | Fast Navigation Mode     |

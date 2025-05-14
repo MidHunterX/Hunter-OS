@@ -24,7 +24,7 @@ nnoremap <c-f> :FZFfind<cr>
 nnoremap ? :FZFfind<cr>
 
 " --------------------------------------------------------------------------- "
-" Open random media file
+" Open random media file [rr]
 
 command! OpenRandomFile :let $RANDOM_FILE = system('fd -e mp4 -e mkv -e avi -e jpg -e png -e jpeg -e gif --type f --hidden --exclude ".git" | shuf -n 1') |
       \ if $RANDOM_FILE != '' |
@@ -32,6 +32,13 @@ command! OpenRandomFile :let $RANDOM_FILE = system('fd -e mp4 -e mkv -e avi -e j
       \ endif
 nnoremap <c-r> :OpenRandomFile<CR>l<c-o>
 nnoremap rr :OpenRandomFile<CR>l<c-o>
+
+" Open random video file [rv]
+command! OpenRandomVideoFile :let $RANDOM_VIDEO_FILE = system('fd -e mp4 -e mkv -e avi --type f --hidden --exclude ".git" | shuf -n 1') |
+      \ if $RANDOM_VIDEO_FILE != '' |
+      \     execute 'goto' fnameescape($RANDOM_VIDEO_FILE) |
+      \ endif
+nnoremap rv :OpenRandomVideoFile<CR>l<c-o>
 
 " =========================================================================== "
 
@@ -326,6 +333,8 @@ filextype {*.gif}
 filextype {*.bmp,*.jpg,*.jpeg,*.png,*.xpm},<image/*>
       \ {View in feh}
       \ feh --start-at %d/%c:r.%c:e --scale-down --draw-tinted --version-sort --sort=name,
+      \ {Slideshow in feh}
+      \ feh --start-at %d/%c:r.%c:e --scale-down --draw-tinted --version-sort --sort=name --slideshow-delay=3,
       \ {View in nomacs}
       \ nomacs %f -m 'frameless',
       \ {Set as Wallpaper with SWWW}
