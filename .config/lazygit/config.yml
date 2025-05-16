@@ -89,7 +89,7 @@ git:
     signOff: false
   merging:
     # args: "--no-ff" # No Fast Forwarding, Make Merge Commit
-    squashMergeMessage: "merge: 🍋 Squash merged {{selectedRef}} into {{currentBranch}}"
+    squashMergeMessage: "🍋 squash_merge: {{selectedRef}} into {{currentBranch}}"
   mainBranches:
     - master
     - main
