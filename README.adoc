@@ -542,6 +542,8 @@ sudo cp -R ~/.config/PLYMOUTH/cuts_alt /usr/share/plymouth/themes
 sudo plymouth-set-default-theme -R cuts_alt
 ----
 
+NOTE: The splash screen included here is one from the 80+ plymouth splash screens from https://github.com/adi1090x/plymouth-themes[adi1090x/plymouth-themes].
+
 === Usergroups
 
 [source,bash]
