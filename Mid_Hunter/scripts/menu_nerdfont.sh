@@ -6797,7 +6797,7 @@ exit
 󰮧 md-home_variant_outline
 󰛢 md-hook
 󰛣 md-hook_off
-��� md-hoop_house
+󰹖 md-hoop_house
 󰋟 md-hops
 󱃳 md-horizontal_rotate_clockwise
 󱃴 md-horizontal_rotate_counterclockwise
