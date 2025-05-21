@@ -290,11 +290,12 @@ Click the following categories to toggle the list of packages in that category.
 | waybar                      | Wayland Status Bar           | pacman
 | wl-clipboard                | Wayland Clipboard Utility    | pacman
 | wtype                       | Wayland Keystrokes Emulation | pacman
-| wl-screenrec                | Wayland Screen Recorder      | aur
+| wf-recorder                 | Wayland Screen Recorder      | aur
 | keyd                        | Key Remapping Daemon         | aur
 | swww                        | Wayland Wallpaper Daemon     | aur
 | wlogout                     | Logout Screen                | aur
 |===
+NOTE: wl-screenrec might be optimized, fast, efficient and Lightweight but it doesn't work in battery saver mode unlike wf-recorder.
 ====
 
 .💻 2-in-1 Laptop Specific
