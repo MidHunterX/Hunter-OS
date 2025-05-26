@@ -8,14 +8,28 @@ keybindings.json contains a list of context aware keybindings that I have used d
 It also fixes some vim extension key conflicts in order to use the default VSCode keybindings on insert mode and Vim keybindings on normal mode.
 
 ## ❌ Problems
+
 - It puts dotfiles on $HOME dir which doesn't follow XDG Spec. [VSCode Issue has been open since 2016](https://github.com/Microsoft/vscode/issues/3884)
 - This problem is inherited from Electron, which is inherited from Chrome.
-- Electron has has an issue for this: [ electron/electron#8124 ]( https://github.com/electron/electron/issues/8124 ). They seem to be worried about breaking backwards compatibility for every program that uses Electron.
+- Electron has has an issue for this: [ electron/electron#8124 ](https://github.com/electron/electron/issues/8124). They seem to be worried about breaking backwards compatibility for every program that uses Electron.
 - VSCode is also creating `~/.pki/nssdb` even though NSS has supported XDG since version 3.42
 
-## ⌨️ Keybindings
+## 🛠️ Design Decisions
 
-### When Workbench is Selected
+### 🎨 Minimal UI
+
+Everything is hidden by default.
+
+- Toggle terminal visibility using `ctrl+j`
+- Toggle sidebar visibility using `ctrl+b`
+  - Show Explorer using `ctrl+shift+e`
+  - Show Git using `ctrl+shift+g`
+  - Show Extensions using `ctrl+shift+x`
+  - Show Debug using `ctrl+shift+d`
+
+### ⌨️ Context Aware Keybindings
+
+#### When Workbench is Selected
 
 Workbench is selected automatically by default or whenever any other panel is deselected by executing their keybindings again after selection.
 
@@ -25,7 +39,7 @@ Workbench is selected automatically by default or whenever any other panel is de
 | ctrl+t | New Tab (Web Browser Style) |
 | ctrl+w | Close Tab (Windows Style)   |
 
-### When Explorer Panel is Selected (ctrl+shift+e)
+#### When Explorer Panel is Selected (ctrl+shift+e)
 
 | Keymap       | Description                |
 | ------------ | -------------------------- |
@@ -33,7 +47,7 @@ Workbench is selected automatically by default or whenever any other panel is de
 | ctrl+shift+n | New Folder (Windows Style) |
 | ctrl+shift+d | Delete Files               |
 
-### When Terminal Panel is Selected (ctrl+j)
+#### When Terminal Panel is Selected (ctrl+j)
 
 | Keymap  | Description                  |
 | ------- | ---------------------------- |
