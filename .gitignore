@@ -53,6 +53,7 @@
 # 🐟 Fish Shell
 !.config/fish/
 .config/fish/fish_variables
+.config/fish/env.fish
 # 🐱 Kitty Terminal Emulator
 !.config/kitty/
 # 🚀 Starship Terminal Prompt

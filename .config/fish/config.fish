@@ -6,8 +6,14 @@ if status is-interactive
   # █▀█ ▄▀█ ▀█▀ █░█ █▀
   # █▀▀ █▀█ ░█░ █▀█ ▄█
   # ==================
+  # Local bin
   if test -d $HOME/.local/bin
     set -x PATH $HOME/.local/bin $PATH
+  end
+
+  # Environment Variables
+  if test -f $XDG_CONFIG_HOME/fish/env.fish
+    source $XDG_CONFIG_HOME/fish/env.fish
   end
 
   # ▄▀█ █▄▄ █▄▄ █▀█   ▄▀█ █▄░█ █▀▄   ▄▀█ █░░ █ ▄▀█ █▀
@@ -22,6 +28,7 @@ if status is-interactive
   abbr -a -g vos 'bash ~/Mid_Hunter/scripts/set_volume.sh'  # Volume
   abbr -a -g woman 'man -k . | fzf | awk \'{print $1}\' | xargs man'
   alias arch 'bash ~/Mid_Hunter/scripts/archchan/get_command-list.sh'
+  alias vim 'nvim'
 
 
   # function format_duration
