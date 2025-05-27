@@ -348,6 +348,7 @@ NOTE: wl-screenrec might be optimized, fast, efficient and Lightweight but it do
 | vifm         | TUI File Manager     | pacman
 | docx2txt     | View .docx files     | pacman
 | odt2txt      | View .odt files      | pacman
+| curlftpfs    | FUSE mount ftp sites | pacman
 |===
 ====
 
@@ -507,7 +508,8 @@ brs --> brillo
 | Service                | Description
 | NetworkManager.service | Network connection manager
 | dhcpcd.service         | DHCP/ IPv4LL/ IPv6RA/ DHCPv6 client
-| keyd.service           | A key remapping daemon for linux
+| https://github.com/MidHunterX/Hunter-OS/tree/master/.config/keyd/[keyd.service]
+| A key remapping daemon for linux
 |===
 
 == 💽 System Configs
