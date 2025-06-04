@@ -3,7 +3,7 @@
 == 🌿 Philosophy
 
 *Distro Agnostic*: Compatibility with a any linux based system for persisting
-workflow regardless of preferred base.
+workflow regardless of preferred base distro (with Wayland compositor).
 
 *Terminal Focused*: The terminal is the heart of this distro, providing
 CLI/TUI tools and utilities for efficient workflow tailored to personal
@@ -21,7 +21,7 @@ and utilities. This allows to navigate and interact with speed, precision and
 comfortability without even thinking about keybindings.
 
 
-== 💼 Contained Concocted Custom Configurations
+== 💼 Contained Custom Concocted Configurations
 
 Click the links below for a detailed documentation.
 
