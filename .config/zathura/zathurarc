@@ -75,7 +75,7 @@ map i toggle_statusbar
 
 # I - Invert Colorscheme (Dark mode toggle)
 map I recolor
-map [fullscreen] i recolor
+map [fullscreen] I recolor
 
 # f - fullscreen
 unmap f
