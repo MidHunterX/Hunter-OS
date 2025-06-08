@@ -282,7 +282,17 @@ fileviewer *.csv,
       \ sed "s/,,,,/,,-,,/g;s/,,/ /g" %c | column -t | sed "s/ - /  /g" | cut -c -%pw
 
 "  PDF
-filextype {*.pdf},<application/pdf> zathura %c %i, mupdf %c, apvlv %c, xpdf %c
+filextype {*.pdf},<application/pdf>
+      \ {View in zathura}
+      \ zathura %c %i,
+      \ {View with mupdf}
+      \ mupdf %c,
+      \ {View with apvlv}
+      \ apvlv %c,
+      \ {View with qpdfview}
+      \ qpdfview %c,
+      \ {View with xpdf}
+      \ xpdf %c
 fileviewer {*.pdf},<application/pdf>
       " Text reading order
       \ pdftotext -nopgbrk %c -,
@@ -410,6 +420,13 @@ filetype {*.zip,*.jar,*.war,*.ear,*.oxt,*.apkg},
       \ {Open with 7Zip-GUI}
       \ 7zFM %d/%c,
 fileviewer *.zip,*.jar,*.war,*.ear,*.oxt unzip -l %f
+
+" LaTeX
+filetype *.tex
+      \ {Edit in nvim}
+      \ nvim %f,
+      \ {Convert to PDF with pdflatex (clean)}
+      \ sh -c 'pdflatex %f && rm -f %c:r.aux %c:r.log %c:r.out %c:r.toc',
 
 " --------------------------------------------------------------------------- "
 
