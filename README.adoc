@@ -2,9 +2,6 @@
 
 == 🌿 Philosophy
 
-*Distro Agnostic*: Compatibility with a any linux based system for persisting
-workflow regardless of preferred base distro (with Wayland compositor).
-
 *Terminal Focused*: The terminal is the heart of this distro, providing
 CLI/TUI tools and utilities for efficient workflow tailored to personal
 preference. Even in the absence of a display server, do 95% of work in TTY
