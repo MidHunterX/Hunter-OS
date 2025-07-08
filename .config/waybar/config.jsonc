@@ -90,14 +90,14 @@
       "urgent": "󰗖",
       // "active": "󰝥",
       // "default": "󰝦",
-      "default": "",
+      // "default": "",
       "sort-by-number": true
+    },
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": []
     }
-    // "persistent-workspaces": {
-    //   "1": [],
-    //   "2": [],
-    //   "3": []
-    // }
   },
 
   // ========================= MID MODULE CONFIGS ========================= //

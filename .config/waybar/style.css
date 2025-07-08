@@ -20,14 +20,17 @@ tooltip {
 }
 
 #workspaces button {
-  color: #a6adc8;
+  color: #f9e2af;
   /* transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68); */
 }
+#workspaces button.empty {
+  color: #a6adc8;
+}
 #workspaces button.active {
-  color: #f9e2af;
+  border-radius: 15px;
+  background-color: #38596c;
 }
 #workspaces button.focused {
-  color: #a6adc8;
   background: #eba0ac;
   border-radius: 10px;
 }
