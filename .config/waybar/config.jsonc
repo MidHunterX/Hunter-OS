@@ -12,22 +12,23 @@
 
   "modules-left": [
     "clock",
-    "hyprland/workspaces"
+    "network",
+    "bluetooth"
     // "custom/mid"
   ],
 
-  // "modules-center": [
-  //   "hyprland/window"
-  // ],
+  "modules-center": [
+    "hyprland/workspaces"
+    // "hyprland/window"
+  ],
 
   "modules-right": [
-    "network",
-    "bluetooth",
     "pulseaudio",
     "pulseaudio#microphone",
     "idle_inhibitor",
     // "tray",
     // "cpu", // polling expensive
+    // "backlight/slider",
     "backlight",
     "battery"
   ],
@@ -58,13 +59,20 @@
     }
   },
 
-"idle_inhibitor": {
+  "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
-        "activated": "",
-        "deactivated": ""
+      "activated": "",
+      "deactivated": ""
     }
-},
+  },
+
+  "backlight/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal"
+    // "device": "intel_backlight"
+  },
 
   "hyprland/workspaces": {
     "active-only": false,
@@ -160,7 +168,7 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", "", ""]
+      "default": ["", "", " "]
     }
   },
 
