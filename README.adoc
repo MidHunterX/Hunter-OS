@@ -213,7 +213,8 @@ Click the following categories to toggle the list of packages in that category.
 | sudo              | Run commands as root                  | pacman
 | bat               | cat with syntax highlighting          | pacman
 | zoxide            | Better alternative to cd command      | pacman
-| dust              | Disk space usage analyzer             | pacman
+| dust              | Disk usage analyzer (static)          | pacman
+| ncdu              | Disk space cleaner (interactive)      | pacman
 | exiv2             | Image EXIF Manipulation Tool          | pacman
 | fd                | Faster alternative to find command    | pacman
 | ffmpegthumbnailer | Video Thumbnailer                     | pacman
