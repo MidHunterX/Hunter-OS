@@ -17,6 +17,22 @@ approach, with Vim-style keybindings deeply integrated into every tools, apps
 and utilities. This allows to navigate and interact with speed, precision and
 comfortability without even thinking about keybindings.
 
+=== 🎹 Standard Keybindings
+
+[%header,cols=2*]
+|===
+| Key   | Description
+| i     | go inside, enter inside selected
+| o     | step out, stay outside and open with, step outside selected
+| <C-i> | history forward, zoom in
+| <C-o> | history backward, zoom out
+| <C-u> | scroll up
+| <C-d> | scroll down
+| ?     | help, keybindings
+| /     | search mode
+| x     | exit from sub-features (like menus, options etc.) or quit if none are present
+| q     | quit
+|===
 
 == 💼 Contained Custom Concocted Configurations
 
@@ -206,7 +222,8 @@ Click the following categories to toggle the list of packages in that category.
 | brillo            | Brightness based on human perception  | aur
 | cava              | Cross Platform Audio Visualizer       | aur
 | tgpt              | CLI AI Chat without API keys          | aur
-| warpd-git         | Modal Keyboard Driven Virtual Pointer | aur
+| wl-kbptr          | Cursor Modal Keyboard Driven Pointer  | aur
+| wlrctl            | Cursor Control Utility                | aur
 |===
 ====
 

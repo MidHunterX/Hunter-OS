@@ -10,7 +10,7 @@ It provides the latest Wayland features, is highly customizable, has all the eye
 
 ### Vim Style Modal Keybindings
 
-Press `SUPER + E` to enter Execute Mode and activate the following keys
+Press `SUPER + E` to enter **Execute** Mode and activate the following keys
 
 | Keymap | Description                                    |
 | ------ | ---------------------------------------------- |
@@ -22,6 +22,21 @@ Press `SUPER + E` to enter Execute Mode and activate the following keys
 | V      | **V**olume Script                              |
 | P      | **P**rint Screen with Tesseract OCR Extraction |
 | ESC    | Disable Execute Mode                           |
+
+Press `SUPER + C` to enter **Cursor** Mode and activate the following keys
+
+| Keymap  | Description                |
+| ------- | -------------------------- |
+| f       | Vim like Find mode         |
+| h,j,k,l | Move cursor                |
+| H,J,K,L | Move cursor faster         |
+| i       | Left Click (Inside click)  |
+| o       | Right Click (Outside menu) |
+| u       | Scroll Up                  |
+| d       | Scroll Down                |
+| w       | Scroll Right               |
+| b       | Scroll Left                |
+| ESC     | Exit Cursor Mode           |
 
 ### Windows Style Keybindings
 
@@ -71,7 +86,6 @@ Press `SUPER + E` to enter Execute Mode and activate the following keys
 | SUPER + SHIFT + P | Take screenshot with Selection and copy to clipboard |
 | SUPER + B         | Logout Menu                                          |
 | SUPER + SHIFT + B | Kill Hyprland                                        |
-| SUPER + C         | Warpd Vim like Mouse navigation                      |
 
 ## Default Features:
 
