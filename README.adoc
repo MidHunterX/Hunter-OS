@@ -1,5 +1,13 @@
 = Hunter OS
 
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
 == 🌿 Philosophy
 
 *Terminal Focused*: The terminal is the heart of this distro, providing
@@ -310,6 +318,8 @@ Click the following categories to toggle the list of packages in that category.
 | wlogout                     | Logout Screen                | aur
 |===
 NOTE: wl-screenrec might be optimized, fast, efficient and Lightweight but it doesn't work in battery saver mode unlike wf-recorder.
+
+WARNING: xdg-desktop-portal-hyprland enables features like screen sharing. There is a bug when the display is rotated, screen sharing shows it as default landscape mode. This is because `SPA_META_VideoTransform` is not present in the buffer metadata for **PipeWire streams**. This is what many apps, including browsers use to determine if and how the captured image needs to be rotated and Browser WebRTC doesn't support the SPA_META_VideoTransform metadata as well. This issue can be tracked here: https://github.com/hyprwm/xdg-desktop-portal-hyprland/issues/292[issue 292] and in WebRTC: https://issues.webrtc.org/issues/42226058[issue 42226058]. Have to wait until WebRTC fixes it.
 ====
 
 .💻 2-in-1 Laptop Specific
