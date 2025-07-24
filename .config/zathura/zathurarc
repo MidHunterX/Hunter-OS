@@ -4,8 +4,7 @@
 
 # ============================== [ SETTINGS ] ============================== #
 
-# Open document in fit-width mode by default
-set adjust-open "best-fit"
+set adjust-open "best-fit" # best-fit, width
 
 # Database - store input, bookmarks
 set database "null" # null, sqlite
@@ -19,18 +18,22 @@ set smooth-scroll "true"
 set scroll-full-overlap 0.01
 set scroll-step 100
 
-#zoom settings
-set zoom-min 10
-set guioptions ""
+set selection-clipboard "clipboard" # primary, clipboard
+set selection-notification "false"
 
+set guioptions "v" # v - vertical scrollbar
+set statusbar-page-percent "false"
+set statusbar-basename "true"
+
+set zoom-min 10
 set render-loading "false"
 
 # =============================== [ COLORS ] =============================== #
 
 # zathurarc-dark
-set font "inconsolata 15"
+set font "Ubuntu 18"
 set default-bg "rgba(25, 25, 25, 0.6)" #00
-set default-fg "#F7F7F6" #01
+set default-fg "#FFFFFF" #01
 
 set statusbar-fg "#B0B0B0" #04
 set statusbar-bg "#202020" #01
@@ -72,6 +75,7 @@ map [fullscreen] b toggle_page_mode
 
 # i - Information Toggle
 map i toggle_statusbar
+map [fullscreen] i toggle_statusbar
 
 # I - Invert Colorscheme (Dark mode toggle)
 map I recolor
