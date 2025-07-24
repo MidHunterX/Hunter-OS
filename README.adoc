@@ -10,10 +10,9 @@ endif::[]
 
 == 🌿 Philosophy
 
-*Terminal Focused*: The terminal is the heart of this distro, providing
+*Terminal Centric*: The terminal is the heart of this environment, providing
 CLI/TUI tools and utilities for efficient workflow tailored to personal
-preference. Even in the absence of a display server, do 95% of work in TTY
-comfortability without disrupting the workflow.
+preference.
 
 *Lightweight, Optimized, and Battery Efficient*: Perfectly engineered to be
 light on system resources, ensuring smooth performance. Every aspect is
@@ -24,23 +23,6 @@ features at disposal.
 approach, with Vim-style keybindings deeply integrated into every tools, apps
 and utilities. This allows to navigate and interact with speed, precision and
 comfortability without even thinking about keybindings.
-
-=== 🎹 Standard Keybindings
-
-[%header,cols=2*]
-|===
-| Key   | Description
-| i     | go inside, enter inside selected
-| o     | step out, stay outside and open with, step outside selected
-| <C-i> | history forward, zoom in
-| <C-o> | history backward, zoom out
-| <C-u> | scroll up
-| <C-d> | scroll down
-| ?     | help, keybindings
-| /     | search mode
-| x     | exit from sub-features (like menus, options etc.) or quit if none are present
-| q     | quit
-|===
 
 == 💼 Contained Custom Concocted Configurations
 
