@@ -6,27 +6,29 @@
   "exclusive": false,
   "passthrough": false,
   "gtk-layer-shell": true,
+  "reload_style_on_change": false,
 
   // ========================== MODULE POSITIONS ========================== //
 
   "modules-left": [
     "clock",
-    "hyprland/workspaces"
+    "network",
+    "bluetooth"
     // "custom/mid"
   ],
 
-  // "modules-center": [
-  //   "hyprland/window"
-  // ],
+  "modules-center": [
+    "hyprland/workspaces"
+    // "hyprland/window"
+  ],
 
   "modules-right": [
-    "network",
-    "bluetooth",
     "pulseaudio",
     "pulseaudio#microphone",
     "idle_inhibitor",
     // "tray",
     // "cpu", // polling expensive
+    // "backlight/slider",
     "backlight",
     "battery"
   ],
@@ -39,7 +41,7 @@
 
   "clock": {
     "format": "  {:%H:%M | %b %e | %a} ", //" {:%H:%M}",
-    "format-alt": "  {:%I:%M %p   %a, %b %e}",
+    "format-alt": "{: %I:%M %p   %a, %b %e}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
     // "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "calendar": {
@@ -57,32 +59,53 @@
     }
   },
 
-"idle_inhibitor": {
+  "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
-        "activated": "",
-        "deactivated": ""
+      "activated": "",
+      "deactivated": ""
     }
-},
+  },
+
+  "backlight/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal"
+    // "device": "intel_backlight"
+  },
 
   "hyprland/workspaces": {
     "active-only": false,
-    "all-outputs": true,
-    "format": "{icon}",
+    "all-outputs": false,
     "on-click": "activate",
+    "format": "{icon}",
+    // "format": "{icon} {windows}",
+    // "format-window-separator": " ",
+    // "window-rewrite-default": "",
+    // "window-rewrite": {
+    //   "class<kitty>": "",
+    //   "class<firefoxdeveloperedition>": "",
+    //   "class<firefoxdeveloperedition> title<.*youtube.*>": "󰗃",
+    //   "class<firefoxdeveloperedition> title<.*Picture-in-Picture.*>": "",
+    //   "class<firefoxdeveloperedition> title<.*wiki.*>": "󰂺",
+    //   "class<obsidian>": "",
+    //   "class<org.keepassxc.KeePassXC>": ""
+    // },
     "format-icons": {
-      // "1": "",
-      // "2": "",
+      "1": "",
+      "2": "",
+      "3": "",
       "urgent": "󰗖",
-      "active": "󰝥",
-      "default": "󰝦",
+      // "active": "󰝥",
+      // "default": "󰝦",
+      // "default": "",
       "sort-by-number": true
+    },
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": []
     }
-    // "persistent_workspaces": {
-    //   "1": [],
-    //   "2": [],
-    //   "3": []
-    // }
   },
 
   // ========================= MID MODULE CONFIGS ========================= //
@@ -145,7 +168,7 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", "", ""]
+      "default": ["", "", " "]
     }
   },
 
@@ -180,8 +203,9 @@
     "format-charging": " {capacity}%",
     "format-plugged": " {capacity}%",
     "format-alt": "{time} {icon}",
-    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
     // "format-icons": ["", "", "", "", ""]
+    "on-click": "wlogout"
   },
 
   // ============================= [ UNUSED ] ============================= //

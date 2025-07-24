@@ -3,7 +3,7 @@
   border-radius: 0;
   font-family: "JetBrainsMono Nerd Font";
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 window#waybar {
@@ -20,14 +20,17 @@ tooltip {
 }
 
 #workspaces button {
-  color: #a6adc8;
+  color: #f9e2af;
   /* transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68); */
 }
+#workspaces button.empty {
+  color: #a6adc8;
+}
 #workspaces button.active {
-  color: #f9e2af;
+  border-radius: 15px;
+  background-color: #38596c;
 }
 #workspaces button.focused {
-  color: #a6adc8;
   background: #eba0ac;
   border-radius: 10px;
 }
@@ -40,6 +43,26 @@ tooltip {
   background: #11111b;
   color: #cdd6f4;
   border-radius: 10px;
+}
+
+#backlight-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+#backlight-slider trough {
+    min-height: 20px;
+    min-width: 60px;
+    border-radius: 5px;
+    background-color: black;
+}
+#backlight-slider highlight {
+    min-width: 10px;
+    border-radius: 5px;
+    background-color: red;
 }
 
 #custom-power_profile,
@@ -58,7 +81,7 @@ tooltip {
 #memory,
 #backlight {
   margin-top: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 0px;
   border: 3px solid #999999;
   background: #262626;
   padding: 2px;
@@ -163,7 +186,7 @@ tooltip {
 
 #bluetooth {
   color: #89b4fa;
-} 
+}
 
 #idle_inhibitor {
   padding-right: 25px;
