@@ -211,7 +211,6 @@ Click the following categories to toggle the list of packages in that category.
 | speech-dispatcher | Speech Synthesis (spd-say)            | pacman
 | xsv               | CLI CSV Processor                     | pacman
 | brillo            | Brightness based on human perception  | aur
-| cava              | Cross Platform Audio Visualizer       | aur
 | tgpt              | CLI AI Chat without API keys          | aur
 | wl-kbptr          | Cursor Modal Keyboard Driven Pointer  | aur
 | wlrctl            | Cursor Control Utility                | aur
@@ -225,12 +224,16 @@ Click the following categories to toggle the list of packages in that category.
 === 📢 Audio
 [%header]
 |===
-| Package Name   | Description                                     | Src
-| pamixer        | CLI Volume Control Tool                         | pacman
-| pavucontrol    | GUI Volume Control Tool                         | pacman
-| pipewire       | Audio and Video streaming server                | pacman
-| pipewire-pulse | A/V router & processor - PulseAudio replacement | pacman
-| wireplumber    | PipeWire session/policy manager - wpctl         | pacman
+| Package Name    | Description                                     | Src
+| pamixer         | CLI Volume Control Tool                         | pacman
+| pavucontrol     | GUI Volume Control Tool                         | pacman
+| pipewire        | Audio and Video streaming server                | pacman
+| pipewire-pulse  | A/V router & processor - PulseAudio replacement | pacman
+| wireplumber     | PipeWire session/policy manager - wpctl         | pacman
+| easyeffects     | Loudness Equalization                           | pacman
+| lsp-plugins-lv2 | easyeffects: equalizer, compressor, loudness    | pacman
+| calf            | easyeffects: limiter, exciter, bass enhancer    | pacman
+| cava            | Cross Platform Audio Visualizer                 | aur
 |===
 
 [discrete]
@@ -293,7 +296,7 @@ Click the following categories to toggle the list of packages in that category.
 | xdg-desktop-portal-hyprland | Desktop Integration Portal   | pacman
 | swayidle                    | Wayland Idle Manager         | pacman
 | waybar                      | Wayland Status Bar           | pacman
-| wl-clipboard                | Wayland Clipboard Utility    | pacman
+| wl-clipboard                | wl-copy + wl-paste           | pacman
 | wtype                       | Wayland Keystrokes Emulation | pacman
 | wf-recorder                 | Wayland Screen Recorder      | aur
 | keyd                        | Key Remapping Daemon         | aur
