@@ -8,7 +8,6 @@ window {
 button {
   color: #ffffff;
   border-style: none;
-  border-color: #6abcfa;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 25%;
@@ -19,6 +18,7 @@ button:focus,
 button:active,
 button:hover {
   background-size: 35%;
+  outline-style: none;
   /* animation: gradient_f 20s ease-in infinite; */
   /* transition: all 0.3s cubic-bezier(0.55, 0, 0.28, 1.682); */
 }
