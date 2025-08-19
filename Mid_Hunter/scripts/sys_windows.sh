@@ -6,9 +6,15 @@ center_text() {
 }
 
 center_color() {
-  text="$1"
-  columns="$(tput cols)"
-  echo -e "$(printf "%*s" $(((${#text} + columns) / 2 + 10)) "$text")"
+  local text="$1"
+  local columns
+  local visible_len
+  local offset
+
+  columns=$(tput cols)
+  visible_len=$(echo -e "$text" | sed 's/\x1B\[[0-9;]*[A-Za-z]//g' | wc -m)
+  offset=$(((columns - visible_len) / 2))
+  echo -e "$(printf "%*s%s\n" "$offset" "" "$text")"
 }
 
 # Specificly spaced for Sudo Prompt
@@ -17,11 +23,11 @@ center_space() {
   printf "%*s" $(((${#text} + columns) / 2 - 23))
 }
 
-RED='\033[1;31m'
-GRN='\033[1;32m'
-YLO='\033[1;33m'
-BLU='\033[1;34m'
-CYN='\033[1;36m'
+R='\033[1;31m' # RED
+G='\033[1;32m' # GREEN
+Y='\033[1;33m' # YELLOW
+B='\033[1;34m' # BLUE
+C='\033[1;36m' # CYAN
 RESET='\033[0;0m'
 
 echo -e '\n\n\n\n'
@@ -30,25 +36,24 @@ center_text '==================='
 echo -e '\n'
 
 logo=(
-  "${GRN}"
-  "        .oodMMMM"
-  ".oodMMMMMMMMMMMM"
-  "${RED}       ..oodMMM${GRN}  MMMMMMMMMMMMMMMMMMM"
-  "${RED} oodMMMMMMMMMMM${GRN}  MMMMMMMMMMMMMMMMMMM"
-  "${RED} MMMMMMMMMMMMMM${GRN}  MMMMMMMMMMMMMMMMMMM"
-  "${RED} MMMMMMMMMMMMMM${GRN}  MMMMMMMMMMMMMMMMMMM"
-  "${RED} MMMMMMMMMMMMMM${GRN}  MMMMMMMMMMMMMMMMMMM"
-  "${RED} MMMMMMMMMMMMMM${GRN}  MMMMMMMMMMMMMMMMMMM"
-  "${RED} MMMMMMMMMMMMMM${GRN}  MMMMMMMMMMMMMMMMMMM"
+  "${R}                ${G}            .oodMMMM"
+  "${R}                ${G}    .oodMMMMMMMMMMMM"
+  "${R}       ..oodMMM ${G} MMMMMMMMMMMMMMMMMMM"
+  "${R} oodMMMMMMMMMMM ${G} MMMMMMMMMMMMMMMMMMM"
+  "${R} MMMMMMMMMMMMMM ${G} MMMMMMMMMMMMMMMMMMM"
+  "${R} MMMMMMMMMMMMMM ${G} MMMMMMMMMMMMMMMMMMM"
+  "${R} MMMMMMMMMMMMMM ${G} MMMMMMMMMMMMMMMMMMM"
+  "${R} MMMMMMMMMMMMMM ${G} MMMMMMMMMMMMMMMMMMM"
+  "${R} MMMMMMMMMMMMMM ${G} MMMMMMMMMMMMMMMMMMM"
   ""
-  "${CYN} MMMMMMMMMMMMMM${YLO}  MMMMMMMMMMMMMMMMMMM"
-  "${CYN} MMMMMMMMMMMMMM${YLO}  MMMMMMMMMMMMMMMMMMM"
-  "${CYN} MMMMMMMMMMMMMM${YLO}  MMMMMMMMMMMMMMMMMMM"
-  "${CYN} MMMMMMMMMMMMMM${YLO}  MMMMMMMMMMMMMMMMMMM"
-  "${CYN} MMMMMMMMMMMMMM${YLO}  MMMMMMMMMMMMMMMMMMM"
-  "${CYN} \`^^^^^^MMMMMMM${YLO}  MMMMMMMMMMMMMMMMMMM"
-  "${CYN}       \`\`\`\`^^^^${YLO}  ^^MMMMMMMMMMMMMMMMM"
-  "  \`\`\`\`^^^^^^MMMM"
+  "${C} MMMMMMMMMMMMMM ${Y} MMMMMMMMMMMMMMMMMMM"
+  "${C} MMMMMMMMMMMMMM ${Y} MMMMMMMMMMMMMMMMMMM"
+  "${C} MMMMMMMMMMMMMM ${Y} MMMMMMMMMMMMMMMMMMM"
+  "${C} MMMMMMMMMMMMMM ${Y} MMMMMMMMMMMMMMMMMMM"
+  "${C} MMMMMMMMMMMMMM ${Y} MMMMMMMMMMMMMMMMMMM"
+  "${C} '^^^^^^MMMMMMM ${Y} MMMMMMMMMMMMMMMMMMM"
+  "${C}        ''''^^^ ${Y} ^^MMMMMMMMMMMMMMMMM"
+  "${C}                ${Y}       ''''^^^^^MMMM"
   "${RESET}"
 )
 
@@ -60,9 +65,10 @@ done
 if ! sudo -n true 2>/dev/null; then
   echo -e "\n\n"
   center_text "Enter sudo password to continue, or Ctrl+C to cancel"
-  echo -e -n "${GRN}"
+  echo -e -n "${G}"
   read -p "$(center_text 'PASSWORD: ')" SUDO_PASSWORD
 
+  if [ -z "$SUDO_PASSWORD" ]; then exit 1; fi
   if ! echo "$SUDO_PASSWORD" | sudo -S -v >/dev/null 2>&1; then
     exit 1
   fi
