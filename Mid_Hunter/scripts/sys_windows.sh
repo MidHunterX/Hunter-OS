@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Print Center of Terminal
 center_text() {
   text="$1"
@@ -21,6 +23,35 @@ center_color() {
 center_space() {
   columns="$(tput cols)"
   printf "%*s" $(((${#text} + columns) / 2 - 23))
+}
+
+read_password() {
+    local prompt="$1"
+    local password=""
+    local char
+
+    # Print prompt without newline
+    printf "%s" "$prompt"
+
+    while IFS= read -r -s -n 1 char; do
+        # Enter ends input
+        if [[ $char == $'\0' || $char == $'\n' ]]; then
+            break
+        fi
+        # Handle backspace (ASCII 127)
+        if [[ $char == $'\177' ]]; then
+            if [ -n "$password" ]; then
+                password=${password%?}
+                # Move cursor back, erase *, move back again
+                printf '\b \b'
+            fi
+        else
+            password+=$char
+            printf '*'
+        fi
+    done
+    echo
+    REPLY="$password"   # store in REPLY like `read` does
 }
 
 R='\033[1;31m' # RED
@@ -64,9 +95,12 @@ done
 # Activate sudo if not root
 if ! sudo -n true 2>/dev/null; then
   echo -e "\n\n"
-  center_text "Enter sudo password to continue, or Ctrl+C to cancel"
+  center_color "[ Enter sudo password to continue, or ${R}Ctrl+C${RESET} to cancel ]"
+
   echo -e -n "${G}"
-  read -p "$(center_text 'PASSWORD: ')" SUDO_PASSWORD
+  # read -sp "$(center_text ' PASSWORD: ')" SUDO_PASSWORD
+  read_password "$(center_space)   PASSWORD: "
+  SUDO_PASSWORD="$REPLY"
 
   if [ -z "$SUDO_PASSWORD" ]; then exit 1; fi
   if ! echo "$SUDO_PASSWORD" | sudo -S -v >/dev/null 2>&1; then
