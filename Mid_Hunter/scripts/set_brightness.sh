@@ -7,7 +7,7 @@ RESET='\033[0;0m'
 while true
 do
   # Get le Brightness Value
-  CURRENT_BRIGHTNESS=$(brillo -r)
+  CURRENT_BRIGHTNESS=$(brillo)
   # BAR=$(seq -s "─" 0 ${CURRENT_BRIGHTNESS:0:-3} | sed 's/[0-9]//g')
   BAR=$(echo "$(printf '─%.0s' $(seq 1 ${CURRENT_BRIGHTNESS:0:-3}))")
 
@@ -21,8 +21,8 @@ do
   read -n1 junk
 
   case $junk in
-    "u") brillo -r -A 1 ;;
-    "d") brillo -r -U 1 ;;
+    "u") brillo -A 0.5 ;;
+    "d") brillo -U 0.5 ;;
     "x") break ;;
     *) echo -n "Invalid Input! Try: u/d/x" ;;
   esac
@@ -64,7 +64,7 @@ NEXT_VAL="${!NEXT_VAR}"
 # Update Average Brightness
 AVG_BR=$(awk "BEGIN {printf \"%.2f\", ($THIS_VAL + $CURRENT_BRIGHTNESS) / 2}")
 # Roundoff into integer
-AVG_BR=$(printf "%.0f" $AVG_BR)
+# AVG_BR=$(printf "%.0f" $AVG_BR)
 # Set value in config for next time
 sed -i "s/\($THIS_VAR *= *\).*/\1$AVG_BR/" $CONFIG_FILE
 # Update New value for generating gradient
@@ -79,7 +79,8 @@ DIVISIONS=$((60/$INTERVALS))
 # BRIGHTNESS DIFFERENCE (Floating Point Arithmetic)
 BR_DIFF=$(echo | awk "{print $THIS_VAL - $PREV_VAL}")
 DIV_INC=$(echo | awk "{print $BR_DIFF / $DIVISIONS}")
-printf -v DIV_INC "%.2f" $DIV_INC
+# Roundoff into integer
+# printf -v DIV_INC "%.2f" $DIV_INC
 
 # LOG: PREV VARIABLE
 echo "${PREV_VAR} = ${PREV_VAL}"
@@ -94,7 +95,7 @@ for ((i = 1; i < $DIVISIONS; i++)); do
   # Generated Values in float
   GEN_VAL=$(echo | awk "{print $PREV_VAL + ($DIV_INC * $i)}")
   # Roundoff into integer
-  GEN_VAL=$(printf "%.0f" $GEN_VAL)
+  # GEN_VAL=$(printf "%.0f" $GEN_VAL)
   # Update linear gradient in config
   echo "${DIV_VAR} = ${GEN_VAL}"
   sed -i "s/\($DIV_VAR *= *\).*/\1$GEN_VAL/" $CONFIG_FILE
@@ -120,7 +121,7 @@ for ((i = 1; i < $DIVISIONS; i++)); do
   # Generated Values in float
   GEN_VAL=$(echo | awk "{print $THIS_VAL + ($DIV_INC * $i)}")
   # Roundoff into integer
-  GEN_VAL=$(printf "%.0f" $GEN_VAL)
+  # GEN_VAL=$(printf "%.0f" $GEN_VAL)
   # Update linear gradient in config
   echo "${DIV_VAR} = ${GEN_VAL}"
   sed -i "s/\($DIV_VAR *= *\).*/\1$GEN_VAL/" $CONFIG_FILE

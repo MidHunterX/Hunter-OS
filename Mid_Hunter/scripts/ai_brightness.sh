@@ -29,8 +29,8 @@ while [[ 1 ]]; do
 
   echo "$STORED_VARIABLE = $STORED_BRIGHTNESS"
 
-  # Set Brightness (RAW)
-  brillo -r -u 5000000 -S ${STORED_BRIGHTNESS}
+  # Set Brightness
+  brillo -u 5000000 -S ${STORED_BRIGHTNESS}
 
   echo $WAIT
   sleep $WAIT
