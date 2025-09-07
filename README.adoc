@@ -269,6 +269,7 @@ Click the following categories to toggle the list of packages in that category.
 | blueman                   | GUI Bluetooth Manager              | pacman
 | bluez                     | Bluetooth Protocol Daemon          | pacman
 | bluez-utils               | Bluetooth Utilities - bluetoothctl | pacman
+| curlftpfs                 | FUSE mount ftp sites               | pacman
 | termscp                   | TUI client for SCP, FTP, Kube, S3  | pacman
 | dhcpcd                    | DHCP Client Daemon                 | pacman
 | firefox-developer-edition | Internet Browser                   | pacman
@@ -279,6 +280,13 @@ Click the following categories to toggle the list of packages in that category.
 | transmission-gtk          | GUI Torrent Client                 | pacman
 | wpa_supplicant            | WLAN Daemon                        | pacman
 |===
+
+[discrete]
+==== FUSE Mounted FTP File Transfer Issue
+When using `curlftpfs` to FUSE mount and copy files over FTP, there's a common issue with not being able to copy over file names/paths containing spaces because of how the FTP protocol and the FUSE layer handle escaping (files should be URL-encoded). As a workaround you can:
+* Just rename the file before copying
+* Use `termscp` but you'll have to use their TUI interface instead of direct filesystem access.
+
 ====
 
 .🌲 Desktop
@@ -358,7 +366,6 @@ WARNING: xdg-desktop-portal-hyprland enables features like screen sharing. There
 | vifm         | TUI File Manager     | pacman
 | docx2txt     | View .docx files     | pacman
 | odt2txt      | View .odt files      | pacman
-| curlftpfs    | FUSE mount ftp sites | pacman
 |===
 ====
 
@@ -649,7 +656,7 @@ ILoveCandy
 [%header]
 |===
 | Partition   | Recommended Size | Max Used
-| /           | ~ 32G            | 18G
+| /           | > 50G            | 35G
 | /boot       | = 256M           | 230M
 | /tmp (swap) | = 4G             | 8K
 | /home       | > 128G           | 40G
