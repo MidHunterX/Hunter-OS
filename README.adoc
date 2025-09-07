@@ -482,6 +482,7 @@ graph LR
 vifm(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/vifm'>VIFM</a>)
 ls{{🟡 lsd / ls}}
 cat{{🟡 bat / cat}}
+find{{🟡 fd / find}}
 exif{{🟢 exiv2}}
 syntax{{🔴 highlight}}
 nvim(<a href='https://github.com/MidHunterX/HunterX-PDE'>NeoVim</a>)
@@ -507,6 +508,7 @@ fish --> cd
 fish --> vos
 fish --> brs
 fish --> cat
+fish --> find
 nvim --> vifm
 nvim --> nf
 kitty --> nvim

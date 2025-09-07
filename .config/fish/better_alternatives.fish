@@ -25,13 +25,13 @@ function cat
   end
 end
 
-# FZF -> FD
+# FIND -> FD
 # =========
-function fzf
+function find
   if command -q fd
     fd $argv
   else
-    command fzf $argv
+    command find $argv
   end
 end
 
