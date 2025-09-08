@@ -1,8 +1,8 @@
 zoom_default        S
 zoom_fit            s
 
-zoom_in             u   C-i
-zoom_out            d   C-o
+zoom_in             u   C-u   C-i
+zoom_out            d   C-d   C-o
 
 # HJKL normal
 prev_img            k   h Left
