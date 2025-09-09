@@ -654,9 +654,9 @@ Color
 ILoveCandy
 ----
 
-== 🗒️ Personal Notes
+= Personal Notes
 
-=== Partition Sizes
+== 🗒️ Partition Sizes
 [%header]
 |===
 | Partition   | Recommended Size | Max Used
@@ -666,3 +666,46 @@ ILoveCandy
 | /home       | > 128G           | 40G
 |===
 
+== 🤫 SSH
+
+Create separate SSH keys for separate stuff.
+
+[source,bash]
+----
+ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519          # Personal Key
+ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_company  # Work Key
+----
+
+=== Work-Life Separation (Multiple GitHub Accounts)
+
+.📝 $HOME/.ssh/config
+[source,config]
+----
+Host github.com
+  IdentityFile ~/.ssh/id_ed25519
+  IdentitiesOnly yes
+
+Host github-company
+  IdentityFile ~/.ssh/id_ed25519_company
+  IdentitiesOnly yes
+----
+
+.📝 $HOME/.gitconfig-company
+[source,config]
+----
+[url "git@github-company:"]
+  insteadOf = git@github.com:
+  insteadOf = https://github.com/
+----
+
+.📝 $HOME/.gitconfig
+[source,config]
+----
+[includeIf "gitdir:~/projects/work/"]
+  path = ~/.gitconfig-company
+----
+
+- `~/projects/personal/` → personal account
+- `~/projects/work/` → work account
+
+Now you just clone normally. Git and SSH handle the rest. No more manual switching, no more mistakes.
