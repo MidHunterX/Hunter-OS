@@ -1,8 +1,11 @@
 # Greeting
 set fish_greeting ""
 
-# Commands to run in interactive sessions can go here
 if status is-interactive
+  # Semantic abbreviations
+  abbr -a -g fetch 'fastfetch'
+  abbr -a -g gitfetch 'onefetch'
+
   # █▀█ ▄▀█ ▀█▀ █░█ █▀
   # █▀▀ █▀█ ░█░ █▀█ ▄█
   # ==================
@@ -27,6 +30,7 @@ if status is-interactive
   abbr -a -g brs 'bash ~/Mid_Hunter/scripts/set_brightness.sh'  # Brightness
   abbr -a -g vos 'bash ~/Mid_Hunter/scripts/set_volume.sh'  # Volume
   abbr -a -g woman 'man -k . | fzf | awk \'{print $1}\' | xargs man'
+
   alias arch 'bash ~/Mid_Hunter/scripts/archchan/get_command-list.sh'
   alias vim 'nvim'
 

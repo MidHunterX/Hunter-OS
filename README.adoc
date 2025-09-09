@@ -210,6 +210,8 @@ Click the following categories to toggle the list of packages in that category.
 | ripgrep           | Text Search Tool                      | pacman
 | speech-dispatcher | Speech Synthesis (spd-say)            | pacman
 | xsv               | CLI CSV Processor                     | pacman
+| fastfetch         | Fetch System Information              | pacman
+| onefetch          | Fetch Git Project Information         | aur
 | brillo            | Brightness based on human perception  | aur
 | tgpt              | CLI AI Chat without API keys          | aur
 | wl-kbptr          | Cursor Modal Keyboard Driven Pointer  | aur
