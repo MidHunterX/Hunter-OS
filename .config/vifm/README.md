@@ -62,4 +62,16 @@ Vifm is a file manager with curses interface, which provides Vim-like environmen
 ## Default Functionalities
 
 - The most useful default functionality is `s` to drop into shell from currently opened directory
-- `w` to toggle file viewer
+- `w` to toggle file viewer and `W` to switch between different views
+
+## Recommended Optional Dependencies
+
+| Package Name | Description                             | Src    |
+| ------------ | --------------------------------------- | ------ |
+| git          | Git Status on .git/                     | pacman |
+| highlight    | Code Syntax Highlighter                 | pacman |
+| lsd          | Better file list view                   | pacman |
+| xsv          | View CSV in a neat table                | pacman |
+| ffmpeg       | View video/audio metadata using ffprobe | pacman |
+| exiv2        | Image EXIF metadata                     | pacman |
+| odt2txt      | View .odt files                         | pacman |
