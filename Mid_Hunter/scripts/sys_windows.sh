@@ -19,10 +19,11 @@ center_color() {
   echo -e "$(printf "%*s%s\n" "$offset" "" "$text")"
 }
 
-# Specificly spaced for Sudo Prompt
+# Space to center with an offset. For inputs
 center_space() {
+  local offset=$1
   columns="$(tput cols)"
-  printf "%*s" $(((${#text} + columns) / 2 - 23))
+  printf "%*s" $(((${#text} + columns) / 2 - offset))
 }
 
 read_password() {
@@ -99,7 +100,7 @@ if ! sudo -n true 2>/dev/null; then
 
   echo -e -n "${G}"
   # read -sp "$(center_text ' PASSWORD: ')" SUDO_PASSWORD
-  read_password "$(center_space)   PASSWORD: "
+  read_password "$(center_space 23)   PASSWORD: "
   SUDO_PASSWORD="$REPLY"
 
   if [ -z "$SUDO_PASSWORD" ]; then exit 1; fi
