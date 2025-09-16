@@ -24,6 +24,7 @@ do
     "u") brillo -A 0.5 ;;
     "d") brillo -U 0.5 ;;
     "x") break ;;
+    "q") exit ;;
     *) echo -n "Invalid Input! Try: u/d/x" ;;
   esac
 done
