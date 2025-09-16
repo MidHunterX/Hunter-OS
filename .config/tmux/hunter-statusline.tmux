@@ -141,7 +141,7 @@ function session_module_config() {
   icon=$(get_tmux_option "@hunter_module_session_icon" '')
   text=$(get_tmux_option '@hunter_module_session_text' '#S')
   # build_module_format_right $background $foreground $icon $text
-  build_simple_module $background $foreground $text
+  build_simple_module $background $foreground "$icon $text"
 }
 
 function time_module_config() {
@@ -149,9 +149,9 @@ function time_module_config() {
   background=$(get_tmux_option '@hunter_module_time_bg' 'gray')
   foreground=$(get_tmux_option '@hunter_module_time_bg' '#000000')
   icon=$(get_tmux_option "@hunter_module_time_icon" '󰥔')
-  text=$(get_tmux_option '@hunter_module_time_text' "%m%d-%H%M")
+  text=$(get_tmux_option '@hunter_module_time_text' "%H%M")
   # build_module_format_left $background $foreground $icon $text
-  build_simple_module $background $foreground $text
+  build_simple_module $background $foreground "$icon $text"
 }
 
 

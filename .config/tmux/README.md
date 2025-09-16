@@ -29,14 +29,10 @@ Which means.. many keybindings won't work when using nvim with tmux.
 
 ## TMUX Keybindings
 
-| Keymap  | Description       |
-| ------- | ----------------- |
-| C-Space | Prefix Mode       |
-| v       | Copy Mode         |
-| C-h     | Select Pane Left  |
-| C-j     | Select Pane Down  |
-| C-k     | Select Pane Up    |
-| C-l     | Select Pane Right |
+| Keymap  | Description |
+| ------- | ----------- |
+| C-Space | Prefix Mode |
+| v       | Copy Mode   |
 
 ## Prefix Mode Keybindings
 
@@ -45,6 +41,7 @@ Which means.. many keybindings won't work when using nvim with tmux.
 | n      | Next Window        |
 | p      | Previous Window    |
 | x      | Close Window       |
+| hjkl   | Navigate Panes     |
 | sv     | Split Vertically   |
 | sh     | Split Horizontally |
 | t      | Show Time          |
