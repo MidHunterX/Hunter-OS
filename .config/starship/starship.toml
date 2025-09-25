@@ -44,6 +44,7 @@ col_vim_nor = '#89B4FA'
 col_vim_vis = '#e78ef5'
 col_vim_rep = '#ffa74d'
 
+col_vifm = '#ff0000'  # Override with intense color as this info is critical
 
 # ============================ [ PROMPT DESIGN ] ============================ #
 
@@ -153,7 +154,7 @@ Windows       = " 󰍲  "
 symbol        = " "
 style         = "fg:col_blk bg:col_git"
 format        = '[ $symbol$branch(:$remote_branch)]($style)'
-# ignore_branches = ['master', 'main']
+ignore_branches = ['master', 'main']
 
 [git_status]
 staged        = ' ${count} '
@@ -230,19 +231,18 @@ format        = '[ $symbol($version) ]($style)'
 symbol        = " "
 format        = '[ $symbol$context ]($style)'
 
-# 410 ms
 [elixir]
-symbol        = " "
-format        = '[ $symbol($version \(OTP $otp_version\)) ]($style)'
-disabled      = true
+symbol        = ""
+# format        = '[ $symbol($version \(OTP $otp_version\)) ]($style)' # 410 ms
+format        = '[ $symbol Elixir ]($style)' # 0 ms
 
 # 4 ms
-[custom.elixir_optimized]
-symbol        = " "
-format        = '[ $symbol(v$output) ]($style)'
-command       = "elixir --short-version 2>/dev/null"
-when          = "test -f mix.exs"
-style         = 'bold purple'
+# [custom.elixir_optimized]
+# symbol        = " "
+# format        = '[ $symbol(v$output) ]($style)'
+# command       = "elixir --short-version 2>/dev/null"
+# when          = "test -f mix.exs"
+# style         = 'bold purple'
 
 [elm]
 symbol        = " "
@@ -331,7 +331,7 @@ symbol        = " "
 format        = '[ $symbol$version ]($style)'
 
 [package]
-symbol        = "󰏗 "
+symbol        = " "
 format        = '[ $symbol$version ]($style)'
 
 [perl]
@@ -373,3 +373,11 @@ format        = '[ $symbol$version ]($style)'
 [zig]
 symbol        = " "
 format        = '[ $symbol$version ]($style)'
+
+# =========================== [ CUSTOM MODULES ] =========================== #
+
+[custom.vifm]
+symbol        = " VIFM"
+format        = ' [](col_vifm)[$symbol]($style)[](col_vifm) '
+when          = "$VIFM_MODE"  # Need to set VIFM_MODE=true in vifmrc
+style         = "fg:col_wht bg:col_vifm"
