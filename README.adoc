@@ -475,7 +475,6 @@ makepkg -si
 |===
 | 🔴 | Required Dependency
 | 🟡 | Optional Dependency
-| 🟢 | Good to Have Dependency
 |===
 
 [source,mermaid]
@@ -485,7 +484,7 @@ vifm(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/vifm'>
 ls{{🟡 lsd / ls}}
 cat{{🟡 bat / cat}}
 find{{🟡 fd / find}}
-exif{{🟢 exiv2}}
+exif{{🟡 exiv2}}
 syntax{{🔴 highlight}}
 nvim(<a href='https://github.com/MidHunterX/HunterX-PDE'>NeoVim</a>)
 kitty(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/kitty/'>Kitty</a>)
@@ -497,27 +496,41 @@ brs(BRS)
 brillo{{🔴 brillo}}
 waybar(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/waybar/'>Waybar</a>)
 nf(Nerd Font)
+fzf{{🔴 fzf}}
+prompt{{🟡 starship}}
 
-vifm --> ls
-vifm --> nvim
-vifm --> nf
-vifm --> exif
-vifm --> syntax
+kitty --> nvim
+kitty --> fish
+
 fish --> ls
-ls --> nf
 fish --> vifm
 fish --> cd
 fish --> vos
 fish --> brs
 fish --> cat
 fish --> find
-nvim --> vifm
+fish --> prompt
+
+cd --> ls
+prompt <--> vifm
+
+ls --> nf
+vifm --> ls
+vifm --> exif
+vifm --> syntax
+vifm --> nf
+vifm --> fzf
+vifm --> find
+
+nvim <--> vifm
 nvim --> nf
-kitty --> nvim
-kitty --> fish
+nvim --> find
+nvim --> kitty
+
 waybar --> volume
 waybar --> brillo
 waybar --> nf
+
 vos --> volume
 brs --> brillo
 ----
@@ -569,6 +582,12 @@ sudo plymouth-set-default-theme -R cuts_alt
 NOTE: The splash screen included here is one from the 80+ plymouth splash screens from https://github.com/adi1090x/plymouth-themes[adi1090x/plymouth-themes].
 
 === Usergroups
+
+List all available groups that you can assign:
+[source,bash]
+----
+cat /etc/group
+----
 
 [source,bash]
 ----
@@ -660,9 +679,9 @@ ILoveCandy
 [%header]
 |===
 | Partition   | Recommended Size | Max Used
-| /           | > 50G            | 35G
+| /           | > 50G            | 45G
 | /boot       | = 256M           | 230M
-| /tmp (swap) | = 4G             | 8K
+| /tmp (swap) | = 4G             | 200M
 | /home       | > 128G           | 40G
 |===
 
