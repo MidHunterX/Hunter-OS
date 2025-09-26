@@ -1,3 +1,16 @@
+# GIT -> LAZYGIT
+# ==============
+function git
+  if test -n "$argv"
+    command git $argv
+    return
+  end
+
+  if command -q lazygit
+    lazygit
+  end
+end
+
 # LS -> LSD
 # =========
 function ls
