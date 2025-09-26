@@ -479,12 +479,38 @@ makepkg -si
 
 [source,mermaid]
 ----
-graph LR
+flowchart LR
+
+subgraph XOSCRP Layer
+  intention(<a href='https://github.com/MidHunterX/Intention'>Intention</a>)
+  linux(Linux OS)
+  windows(Windows OS)
+  grub{GRUB Bootloader}
+  keyd{{<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/keyd/'>KeyD</a>}}
+end
+
+intention --> grub --> linux & windows
+linux & windows --> intention
+keyd --> linux
+
+
+subgraph Orchestration Layer
+  hypr(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/hypr'>Hyprland</a>)
+  run(<a href='https://github.com/MidHunterX/Project-Launcher'>Project Launcher</a>)
+  expression(<a href='https://github.com/MidHunterX/Expression'>Expression</a>)
+  swww{{🔴 swww}}
+end
+
+linux ==> hypr
+
+
 vifm(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/vifm'>VIFM</a>)
 ls{{🟡 lsd / ls}}
 cat{{🟡 bat / cat}}
 find{{🟡 fd / find}}
+grep{{🟡 ripgrep / grep}}
 exif{{🟡 exiv2}}
+tmux{{🔴 tmux}}
 syntax{{🔴 highlight}}
 nvim(<a href='https://github.com/MidHunterX/HunterX-PDE'>NeoVim</a>)
 kitty(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/kitty/'>Kitty</a>)
@@ -497,40 +523,22 @@ brillo{{🔴 brillo}}
 waybar(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/waybar/'>Waybar</a>)
 nf(Nerd Font)
 fzf{{🔴 fzf}}
-prompt{{🟡 starship}}
+git{{🟡 git / lazygit}}
+prompt(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/starship/'>Starship Prompt</a>)
 
-kitty --> nvim
-kitty --> fish
+hypr --> kitty & expression
+expression --> swww
+hypr <--> swww & waybar
+run --> tmux & nvim
 
-fish --> ls
-fish --> vifm
-fish --> cd
-fish --> vos
-fish --> brs
-fish --> cat
-fish --> find
-fish --> prompt
-
-cd --> ls
+kitty --> nvim & fish
+fish --> ls & vifm & nvim & cd & git & vos & brs & cat & find & prompt
+cd --> ls --> nf
 prompt <--> vifm
-
-ls --> nf
-vifm --> ls
-vifm --> exif
-vifm --> syntax
-vifm --> nf
-vifm --> fzf
-vifm --> find
-
+vifm --> ls & exif & syntax & nf & fzf & find
 nvim <--> vifm
-nvim --> nf
-nvim --> find
-nvim --> kitty
-
-waybar --> volume
-waybar --> brillo
-waybar --> nf
-
+nvim --> nf & find & git & grep & kitty
+waybar --> volume & brillo & nf
 vos --> volume
 brs --> brillo
 ----
