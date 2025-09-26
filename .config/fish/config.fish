@@ -82,16 +82,6 @@ if status is-interactive
     set RESET '\033[0;0m'
     set PROMPT ""
 
-    # # COMMAND DURATION
-    # set DURATION (format_duration)
-    # if test $DURATION != ''
-    #   set PROMPT (string join '' $PROMPT "$RESET$BLKFG")
-    #   set PROMPT (string join '' $PROMPT "$BLKBG$WHTFG $DURATION ")
-    #   set PROMPT (string join '' $PROMPT "$RESET$BLKFG\n")
-    # else
-    #   set PROMPT (string join '' $PROMPT "\n")
-    # end
-
     # BUBBLE
     set PROMPT (string join '' $PROMPT "$RESET$YLOFG")
     set PROMPT (string join '' $PROMPT "$YLOBG$BLKFG $(date +%H:%M) ")
@@ -101,6 +91,14 @@ if status is-interactive
   end
   enable_transience
 
+  # Starship <-> VIFM Integration Behavior
+  if test -n "$VIFM_MODE"
+    function vifm_ctrl_d
+      # only typing command for triggering transient prompt with enter key
+      commandline -r "exit"
+    end
+    bind --mode insert \cd vifm_ctrl_d
+  end
 
 
   # █▀▀ █░█ █▀ ▀█▀ █▀█ █▀▄▀█   █▀▀ █▀█ █░░ █▀█ █▀█ █▀

@@ -534,7 +534,7 @@ run --> tmux & nvim
 kitty --> nvim & fish
 fish --> ls & vifm & nvim & cd & git & vos & brs & cat & find & prompt
 cd --> ls --> nf
-prompt <--> vifm
+prompt & fish --> subshell[[VIFM_MODE]] --> vifm
 vifm --> ls & exif & syntax & nf & fzf & find
 nvim <--> vifm
 nvim --> nf & find & git & grep & kitty
