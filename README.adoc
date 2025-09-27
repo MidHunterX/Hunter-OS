@@ -10,19 +10,46 @@ endif::[]
 
 == 🌿 Philosophy
 
-*Terminal Centric*: The terminal is the heart of this environment, providing
-CLI/TUI tools and utilities for efficient workflow tailored to personal
-preference.
+* Computers and tools should adapt to Humans and not vice versa.
+* Computers and tools should understand context and intent.
+* Environment should support cognitive flow, not disrupt or redirect it.
+
+*Terminal Centric and Reliable*: The terminal is the heart of this environment,
+providing CLI/TUI tools and utilities for efficient workflow tailored to
+personal preference. Even if the Display Server (central point of failure)
+fails, navigate and have access to 99% of the workflow comfortability in TTY
+interface even in the absence of display server.
 
 *Lightweight, Optimized, and Battery Efficient*: Perfectly engineered to be
 light on system resources, ensuring smooth performance. Every aspect is
 optimized for maximum efficiency, extending battery life and also have many
 features at disposal.
 
-*Keyboard Centric Workflow with Vim Style Keybindings*: Keyboard-centric
-approach, with Vim-style keybindings deeply integrated into every tools, apps
-and utilities. This allows to navigate and interact with speed, precision and
-comfortability without even thinking about keybindings.
+*Cohesive Universal Interface with Vim Keybindings*: Keyboard-centric approach,
+with standardized Vim-style keybindings deeply integrated into every tools,
+apps and utilities. This allows to navigate and interact with speed, precision
+and comfortability without even thinking about keybindings.
+
+*Modal Computing*: Environment specific context should always be contained and
+should never bleed into other context without a clear necessity. E.g. (hypr)
+Execute mode makes keys execute apps, (hypr) Cursor mode makes the same keys
+can be used to teleport and move cursors.
+
+*Spatial Navigation and Context Switching*: You should be able to move away
+from one place to another for temporarily accessing environment with different
+contexts. E.g. (run) nvim have files in buffer_tabs, nvim_tabs as tabs for
+buffer_tabs and tmux_tabs as tabs for nvim_tabs which is a tab for buffer_tabs,
+(vifm) VIFM_MODE in terminal for accessing an isolated sub-shell environment
+inside another shell for temporary context switch.
+
+*Current Research & Development*: Reduction of Cognitive Load by Intent based
+computing, Active Agentic Assistance and Automation.
+
+* link:https://github.com/MidHunterX/Project-Launcher[Run]: Automating project initialization and environment setup. Helps to maintain cognitive context of task without distracting yourself from manual setup.
+* link:https://github.com/MidHunterX/Expression[Expression]: Expressing a non-intrusive ambient notification of life events and schedules. Know time schedule without knowing the time. Useful for humans with low interoception who works on computers all day.
+* link:https://github.com/MidHunterX/Intention[Intention]: State your intent and let your computer change itself to adapt to your intention. Abstracts away Operating Systems to use it as specialized environment for a specific intent.
+* Arch Chan: Reporting important information like battery depletion or suspicious activity. Assistance to command-line toolchain usage.
+* Hypr Chan: Assistance with Hyprland Window Manager related tasks.
 
 == 💼 Contained Custom Concocted Configurations
 
