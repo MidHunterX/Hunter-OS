@@ -39,19 +39,25 @@ can be used to teleport and move cursors.
 
 *Spatial Navigation and Context Switching*: You should be able to move away
 from one place to another for temporarily accessing environment with different
-contexts. E.g. (run) nvim have files in buffer_tabs, nvim_tabs as tabs for
-buffer_tabs and tmux_tabs as tabs for nvim_tabs which is a tab for buffer_tabs,
-(vifm) VIFM_MODE in terminal for accessing an isolated sub-shell environment
-inside another shell for temporary context switch.
+contexts. E.g. (vifm) VIFM_MODE in terminal for accessing an isolated sub-shell
+environment inside another shell for temporary context switch.
 
-*Current Research & Development*: Reduction of Cognitive Load by Intent based
-computing, Active Agentic Assistance and Automation.
+.⚗️ Current Research & Development
+[%collapsible]
+====
+[discrete]
+=== ⚗️ Current Research & Development
+
+Reduction of Cognitive Load by Intent based computing for context switching,
+Ambient notification system as Mark Weiser's Calm technology, Active Agentic
+Assistance and Automation.
 
 * link:https://github.com/MidHunterX/Project-Launcher[Run]: Automating project initialization and environment setup. Helps to maintain cognitive context of task without distracting yourself from manual setup.
 * link:https://github.com/MidHunterX/Expression[Expression]: Expressing a non-intrusive ambient notification of life events and schedules. Know time schedule without knowing the time. Useful for humans with low interoception who works on computers all day.
 * link:https://github.com/MidHunterX/Intention[Intention]: State your intent and let your computer change itself to adapt to your intention. Abstracts away Operating Systems to use it as specialized environment for a specific intent.
 * Arch Chan: Reporting important information like battery depletion or suspicious activity. Assistance to command-line toolchain usage.
 * Hypr Chan: Assistance with Hyprland Window Manager related tasks.
+====
 
 == 💼 Carefully Concocted Custom Configurations
 
@@ -65,13 +71,13 @@ Click the links below for a detailed documentation.
 | Keyboard Layout/Mapping
 |
 
-| link:.config/cava/[📊 Cava]
-| Music Visualizer
-| image:.config/cava/.assets/cava.jpg[,128,link=.config/cava/]
+| link:.config/vifm/[📁 ViFM]
+| File Manager
+| image:.config/vifm/.assets/vifm.jpg[,128,link=.config/vifm/]
 
-| link:.config/feh/[🌄 Feh]
-| Image Viewer
-| image:.config/feh/.assets/feh.jpg[,128,link=.config/feh/]
+| link:https://github.com/MidHunterX/HunterX-PDE[📝 NeoVim]
+| TUI Code Editor
+| image:https://github.com/MidHunterX/NvME/blob/37a9ab0ee56159f744e670831e315ca085a7b218/img/nvim_dashboard.jpg[,128,link=https://github.com/MidHunterX/HunterX-PDE]
 
 | link:.mozilla/[🦊 FireFox]
 | Web Browser
@@ -80,6 +86,22 @@ Click the links below for a detailed documentation.
 | link:.config/fish/[🐟 Fish]
 | Shell
 | image:.config/fish/.assets/fish_lscd.jpg[,128,link=.config/fish/]
+
+| link:.config/tmux/[🍱 Tmux]
+| Terminal Multiplexer
+| image:.config/tmux/.assets/tmux.jpg[,128,link=.config/tmux/]
+
+| link:.config/zathura/[📄 Zathura]
+| PDF Frontend
+| image:.config/zathura/.assets/zathura.jpg[,128,link=.config/zathura/]
+
+| link:.config/cava/[📊 Cava]
+| Music Visualizer
+| image:.config/cava/.assets/cava.jpg[,128,link=.config/cava/]
+
+| link:.config/feh/[🌄 Feh]
+| Image Viewer
+| image:.config/feh/.assets/feh.jpg[,128,link=.config/feh/]
 
 | link:.config/fuzzel/[📜 Fuzzel]
 | App Launcher
@@ -101,10 +123,6 @@ Click the links below for a detailed documentation.
 | Video Player
 | image:.config/mpv/.assets/mpv.jpg[,128,link=.config/mpv/]
 
-| link:https://github.com/MidHunterX/HunterX-PDE[📝 NeoVim]
-| TUI Code Editor
-| image:https://github.com/MidHunterX/NvME/blob/37a9ab0ee56159f744e670831e315ca085a7b218/img/nvim_dashboard.jpg[,128,link=https://github.com/MidHunterX/HunterX-PDE]
-
 | link:Mid_Hunter/scripts/[⚙️ Scripts]
 | Scripts
 | image:Mid_Hunter/scripts/.assets/script_fetch.jpg[,128,link=Mid_Hunter/scripts/]
@@ -112,14 +130,6 @@ Click the links below for a detailed documentation.
 | link:.config/starship/[🚀 Starship]
 | Shell Prompt Engine
 | image:.config/starship/.assets/prompt.png[,128,link=.config/starship/]
-
-| link:.config/tmux/[🍱 Tmux]
-| Terminal Multiplexer
-| image:.config/tmux/.assets/tmux.jpg[,128,link=.config/tmux/]
-
-| link:.config/vifm/[📁 ViFM]
-| File Manager
-| image:.config/vifm/.assets/vifm.jpg[,128,link=.config/vifm/]
 
 | link:.config/Code%20-%20OSS/User/[🆚 VSCode]
 | GUI Code Editor
@@ -132,10 +142,6 @@ Click the links below for a detailed documentation.
 | link:.config/wlogout/[🌳 Wlogout]
 | Logout Menu
 | image:.config/wlogout/.assets/wlogout.jpg[,128,link=.config/wlogout/]
-
-| link:.config/zathura/[📄 Zathura]
-| PDF Frontend
-| image:.config/zathura/.assets/zathura.jpg[,128,link=.config/zathura/]
 |===
 
 == 🍇 Directed Diagram Denoting Documented Dependencies
