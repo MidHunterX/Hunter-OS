@@ -51,7 +51,7 @@ computing, Active Agentic Assistance and Automation.
 * Arch Chan: Reporting important information like battery depletion or suspicious activity. Assistance to command-line toolchain usage.
 * Hypr Chan: Assistance with Hyprland Window Manager related tasks.
 
-== 💼 Contained Custom Concocted Configurations
+== 💼 Carefully Concocted Custom Configurations
 
 Click the links below for a detailed documentation.
 
@@ -135,6 +135,79 @@ Click the links below for a detailed documentation.
 | PDF Frontend
 | image:.config/zathura/.assets/zathura.jpg[,128,link=.config/zathura/]
 |===
+
+== 🍇 Directed Diagram Denoting Documented Dependencies
+
+|===
+| 🔴 | Required Dependency
+| 🟡 | Optional Dependency
+|===
+
+[source,mermaid]
+----
+flowchart LR
+
+subgraph XOSCRP Layer
+  intention(<a href='https://github.com/MidHunterX/Intention'>Intention</a>)
+  linux(Linux OS)
+  windows(Windows OS)
+  grub{GRUB Bootloader}
+  keyd{{<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/keyd/'>KeyD</a>}}
+end
+
+intention --> grub --> linux & windows
+linux & windows --> intention
+keyd --> linux
+
+
+subgraph Orchestration Layer
+  hypr(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/hypr'>Hyprland</a>)
+  run(<a href='https://github.com/MidHunterX/Project-Launcher'>Project Launcher</a>)
+  expression(<a href='https://github.com/MidHunterX/Expression'>Expression</a>)
+  swww{{🔴 swww}}
+end
+
+linux ==> hypr
+
+
+vifm(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/vifm'>VIFM</a>)
+ls{{🟡 lsd / ls}}
+cat{{🟡 bat / cat}}
+find{{🟡 fd / find}}
+grep{{🟡 ripgrep / grep}}
+exif{{🟡 exiv2}}
+tmux{{🔴 tmux}}
+syntax{{🔴 highlight}}
+nvim(<a href='https://github.com/MidHunterX/HunterX-PDE'>NeoVim</a>)
+kitty(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/kitty/'>Kitty</a>)
+fish(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/fish/'>Fish Shell</a>)
+vos(VOS)
+cd{{🟡 zoxide / cd}}
+volume{{🔴 pamixer}}
+brs(BRS)
+brillo{{🔴 brillo}}
+waybar(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/waybar/'>Waybar</a>)
+nf(Nerd Font)
+fzf{{🔴 fzf}}
+git{{🟡 git / lazygit}}
+prompt(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/starship/'>Starship Prompt</a>)
+
+hypr --> kitty & expression
+expression --> swww
+hypr <--> swww & waybar
+run --> tmux & nvim
+
+kitty --> nvim & fish
+fish --> ls & vifm & nvim & cd & git & vos & brs & cat & find & prompt
+cd --> ls --> nf
+prompt & fish --> subshell[[VIFM_MODE]] --> vifm
+vifm --> ls & exif & syntax & nf & fzf & find
+nvim <--> vifm
+nvim --> nf & find & git & grep & kitty
+waybar --> volume & brillo & nf
+vos --> volume
+brs --> brillo
+----
 
 == 📦 Preeminently Preferred Primary Packages
 
@@ -497,80 +570,7 @@ cd yay-bin
 makepkg -si
 ----
 
-== 🍇 Directed Dependency Diagram
-
-|===
-| 🔴 | Required Dependency
-| 🟡 | Optional Dependency
-|===
-
-[source,mermaid]
-----
-flowchart LR
-
-subgraph XOSCRP Layer
-  intention(<a href='https://github.com/MidHunterX/Intention'>Intention</a>)
-  linux(Linux OS)
-  windows(Windows OS)
-  grub{GRUB Bootloader}
-  keyd{{<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/keyd/'>KeyD</a>}}
-end
-
-intention --> grub --> linux & windows
-linux & windows --> intention
-keyd --> linux
-
-
-subgraph Orchestration Layer
-  hypr(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/hypr'>Hyprland</a>)
-  run(<a href='https://github.com/MidHunterX/Project-Launcher'>Project Launcher</a>)
-  expression(<a href='https://github.com/MidHunterX/Expression'>Expression</a>)
-  swww{{🔴 swww}}
-end
-
-linux ==> hypr
-
-
-vifm(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/vifm'>VIFM</a>)
-ls{{🟡 lsd / ls}}
-cat{{🟡 bat / cat}}
-find{{🟡 fd / find}}
-grep{{🟡 ripgrep / grep}}
-exif{{🟡 exiv2}}
-tmux{{🔴 tmux}}
-syntax{{🔴 highlight}}
-nvim(<a href='https://github.com/MidHunterX/HunterX-PDE'>NeoVim</a>)
-kitty(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/kitty/'>Kitty</a>)
-fish(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/fish/'>Fish Shell</a>)
-vos(VOS)
-cd{{🟡 zoxide / cd}}
-volume{{🔴 pamixer}}
-brs(BRS)
-brillo{{🔴 brillo}}
-waybar(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/waybar/'>Waybar</a>)
-nf(Nerd Font)
-fzf{{🔴 fzf}}
-git{{🟡 git / lazygit}}
-prompt(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/starship/'>Starship Prompt</a>)
-
-hypr --> kitty & expression
-expression --> swww
-hypr <--> swww & waybar
-run --> tmux & nvim
-
-kitty --> nvim & fish
-fish --> ls & vifm & nvim & cd & git & vos & brs & cat & find & prompt
-cd --> ls --> nf
-prompt & fish --> subshell[[VIFM_MODE]] --> vifm
-vifm --> ls & exif & syntax & nf & fzf & find
-nvim <--> vifm
-nvim --> nf & find & git & grep & kitty
-waybar --> volume & brillo & nf
-vos --> volume
-brs --> brillo
-----
-
-== 🛎️ System Services
+== 🛎️ Sustained System Services
 
 [%header]
 |===
@@ -581,7 +581,7 @@ brs --> brillo
 | A key remapping daemon for linux
 |===
 
-== 💽 System Configs
+== 💽 Core Computational Configurations
 
 === GRUB Bootloader
 image:.config/GRUB/.assets/cyberexs.jpg[]
