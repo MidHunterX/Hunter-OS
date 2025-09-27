@@ -19,8 +19,7 @@ endif::[]
 *Terminal Centric and Reliable*: The terminal is the heart of this environment,
 providing CLI/TUI tools and utilities for efficient workflow tailored to
 personal preference. Even if the Display Server (central point of failure)
-fails, navigate and have access to 99% of the workflow comfortability in TTY
-interface even in the absence of display server.
+fails, navigate comfortability in TTY interface without feeling homesick.
 
 *Lightweight, Optimized, and Battery Efficient*: Perfectly engineered to be
 light on system resources, ensuring smooth performance. Every aspect is
@@ -32,25 +31,21 @@ with standardized Vim-style keybindings deeply integrated into every tools,
 apps and utilities. This allows to navigate and interact with speed, precision
 and comfortability without even thinking about keybindings.
 
-*Modal Computing*: Environment specific context should always be contained and
-should never bleed into other context without a clear necessity. E.g. (hypr)
-Execute mode makes keys execute apps, (hypr) Cursor mode makes the same keys
-can be used to teleport and move cursors.
+*Modal Interaction First*: Modes are always preferred first then modifiers.
+Same keys can do many different things depending on different contextual modes.
 
-*Spatial Navigation and Context Switching*: You should be able to move away
-from one place to another for temporarily accessing environment with different
-contexts. E.g. (vifm) VIFM_MODE in terminal for accessing an isolated sub-shell
-environment inside another shell for temporary context switch.
+*Context Switching*: You should be able to move away from one place to another
+for accessing an isolated environment with different contexts.
 
-.⚗️ Current Research & Development
+.⚗️ Experimental Features
 [%collapsible]
 ====
 [discrete]
-=== ⚗️ Current Research & Development
+=== ⚗️ Experimental Features
 
 Reduction of Cognitive Load by Intent based computing for context switching,
-Ambient notification system as Mark Weiser's Calm technology, Active Agentic
-Assistance and Automation.
+Ambient notification system like Calm technology, Active Assistance and
+Automation.
 
 * link:https://github.com/MidHunterX/Project-Launcher[Run]: Automating project initialization and environment setup. Helps to maintain cognitive context of task without distracting yourself from manual setup.
 * link:https://github.com/MidHunterX/Expression[Expression]: Expressing a non-intrusive ambient notification of life events and schedules. Know time schedule without knowing the time. Useful for humans with low interoception who works on computers all day.
