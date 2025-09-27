@@ -8,11 +8,13 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
-== 🌿 Philosophy
+== 📖 Manifesto
 
 * Computers and tools should adapt to Humans and not vice versa.
 * Computers and tools should understand context and intent.
 * Environment should support cognitive flow, not disrupt or redirect it.
+
+== 📜 Philosophy
 
 *Terminal Centric and Reliable*: The terminal is the heart of this environment,
 providing CLI/TUI tools and utilities for efficient workflow tailored to
