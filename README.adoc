@@ -8,12 +8,6 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
-== 📖 Manifesto
-
-* Computers and tools should adapt to Humans and not vice versa.
-* Computers and tools should understand context and intent.
-* Environment should support cognitive flow, not disrupt or redirect it.
-
 == 📜 Philosophy
 
 *Terminal Centric and Reliable*: The terminal is the heart of this environment,
@@ -35,13 +29,20 @@ and comfortability without even thinking about keybindings.
 Same keys can do many different things depending on different contextual modes.
 
 *Context Switching*: You should be able to move away from one place to another
-for accessing an isolated environment with different contexts.
+for accessing an isolated environment with different intention.
 
-.⚗️ Experimental Features
+.⚗️ Distilled Section
 [%collapsible]
 ====
 [discrete]
-=== ⚗️ Experimental Features
+=== 📖 Manifesto
+
+* Computers and tools should adapt to Humans and not vice versa.
+* Computers and tools should understand context and intent.
+* Environment should support cognitive flow, not disrupt or redirect it.
+
+[discrete]
+=== 🔭 On-Going Experiments
 
 Reduction of Cognitive Load by Intent based computing for context switching,
 Ambient notification system like Calm technology, Active Assistance and
