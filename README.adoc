@@ -25,13 +25,7 @@ with standardized Vim-style keybindings deeply integrated into every tools,
 apps and utilities. This allows to navigate and interact with speed, precision
 and comfortability without even thinking about keybindings.
 
-*Modal Interaction First*: Modes are always preferred first then modifiers.
-Same keys can do many different things depending on different contextual modes.
-
-*Context Switching*: You should be able to move away from one place to another
-for accessing an isolated environment with different intention.
-
-.⚗️ Distilled Section
+.⚗️ Experimental Features
 [%collapsible]
 ====
 [discrete]
@@ -48,11 +42,18 @@ Reduction of Cognitive Load by Intent based computing for context switching,
 Ambient notification system like Calm technology, Active Assistance and
 Automation.
 
-* link:https://github.com/MidHunterX/Project-Launcher[Run]: Automating project initialization and environment setup. Helps to maintain cognitive context of task without distracting yourself from manual setup.
-* link:https://github.com/MidHunterX/Expression[Expression]: Expressing a non-intrusive ambient notification of life events and schedules. Know time schedule without knowing the time. Useful for humans with low interoception who works on computers all day.
-* link:https://github.com/MidHunterX/Intention[Intention]: State your intent and let your computer change itself to adapt to your intention. Abstracts away Operating Systems to use it as specialized environment for a specific intent.
-* Arch Chan: Reporting important information like battery depletion or suspicious activity. Assistance to command-line toolchain usage.
-* Hypr Chan: Assistance with Hyprland Window Manager related tasks.
+link:https://github.com/MidHunterX/Project-Launcher[Run]: Automating project
+initialization and environment setup. Helps to maintain cognitive context of
+task without distracting yourself from manual setup.
+
+link:https://github.com/MidHunterX/Expression[Expression]: Expressing a
+non-intrusive ambient notification of life events and schedules. Know time
+schedule without knowing the time. Useful for humans with low interoception who
+works on computers all day.
+
+link:https://github.com/MidHunterX/Intention[Intention]: State your intent and
+let your computer change itself to adapt to your intention. Abstracts away
+Operating Systems to use it as specialized environment for a specific intent.
 ====
 
 == 💼 Carefully Concocted Custom Configurations
