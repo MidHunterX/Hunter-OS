@@ -44,7 +44,7 @@ col_vim_nor = '#89B4FA'
 col_vim_vis = '#e78ef5'
 col_vim_rep = '#ffa74d'
 
-col_vifm = '#ff0000'  # Override with intense color as this info is critical
+col_vifm = '#ff7d0b' # Color coded to col_dir. VIFM is related to dir
 
 # ============================ [ PROMPT DESIGN ] ============================ #
 
@@ -66,7 +66,7 @@ format = '[ $user ]($style)'
 read_only = "󰌾 "
 style = "bg:col_dir fg:col_wht"
 format = "[ 🖿 $path ]($style)[$read_only](fg:col_ylo bg:col_dir)"
-truncation_length = 3
+truncation_length = 2
 # truncation_symbol = "…/"
 
 [jobs]
@@ -231,18 +231,20 @@ format        = '[ $symbol($version) ]($style)'
 symbol        = " "
 format        = '[ $symbol$context ]($style)'
 
+# 410 ms
 [elixir]
 symbol        = ""
-# format        = '[ $symbol($version \(OTP $otp_version\)) ]($style)' # 410 ms
 format        = '[ $symbol Elixir ]($style)' # 0 ms
+disabled      = true
 
 # 4 ms
-# [custom.elixir_optimized]
-# symbol        = " "
-# format        = '[ $symbol(v$output) ]($style)'
-# command       = "elixir --short-version 2>/dev/null"
-# when          = "test -f mix.exs"
-# style         = 'bold purple'
+[custom.elixir_optimized]
+symbol        = " "
+format        = '[ $symbol(v$output) ]($style)'
+command       = "elixir --short-version 2>/dev/null"
+when          = "test -f mix.exs"
+style         = 'bold purple'
+# disabled      = true
 
 [elm]
 symbol        = " "
@@ -378,6 +380,7 @@ format        = '[ $symbol$version ]($style)'
 
 [custom.vifm]
 symbol        = " VIFM"
-format        = ' [](col_vifm)[$symbol]($style)[](col_vifm) '
+# format        = ' [](col_vifm)[$symbol]($style)[](col_vifm) '
+format        = '[](fg:col_blk bg:col_vifm)[ $symbol ]($style)[](col_vifm)'
 when          = "$VIFM_MODE"  # Need to set VIFM_MODE=true in vifmrc
 style         = "fg:col_wht bg:col_vifm"
