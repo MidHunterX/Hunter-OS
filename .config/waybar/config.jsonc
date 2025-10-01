@@ -1,224 +1,238 @@
-{
-  "layer": "bottom",
-  "position": "top",
-  "mod": "dock",
-  // Exclusive Screen Real-Estate
-  "exclusive": false,
-  "passthrough": false,
-  "gtk-layer-shell": true,
-  "reload_style_on_change": false,
-
-  // ========================== MODULE POSITIONS ========================== //
-
-  "modules-left": [
-    "clock",
-    "network",
-    "bluetooth"
-    // "custom/mid"
-  ],
-
-  "modules-center": [
-    "hyprland/workspaces"
-    // "hyprland/window"
-  ],
-
-  "modules-right": [
-    "pulseaudio",
-    "pulseaudio#microphone",
-    "idle_inhibitor",
-    // "tray",
-    // "cpu", // polling expensive
-    // "backlight/slider",
-    "backlight",
-    "battery"
-  ],
-
-  // ========================= LEFT MODULE CONFIGS ========================= //
-
-  // "custom/mid": {
-  //   "exec": "echo Mid_Hunter"
-  // },
-
-  "clock": {
-    "format": "  {:%H:%M | %b %e | %a} ", //" {:%H:%M}",
-    "format-alt": "{: %I:%M %p   %a, %b %e}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
-    // "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "calendar": {
-      "mode"          : "month", // year
-      "mode-mon-col"  : 3,
-      "weeks-pos"     : "right",
-      "on-scroll"     : 1,
-      "format": {
-        "months":     "<span color='#ffead3'><b>{}</b></span>",
-        "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-        "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
-        "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-        "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+[
+  // ========================= [ SUBMAP MODE BAR ] ========================= //
+  {
+    "hyprland/submap": {
+      "format": " 󰌌 {} ",
+      "tooltip": false
+    },
+    "layer": "top",
+    "position": "top",
+    "modules-center": [
+      "hyprland/submap"
+    ],
+    "name": "hyprsubmap",
+    "mode": "overlay"
+  },
+  // ========================= [ WAYBAR MAIN BAR ] ========================= //
+  {
+    "layer": "bottom",
+    "position": "top",
+    "mod": "dock",
+    // Exclusive Screen Real-Estate
+    "exclusive": false,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "reload_style_on_change": false,
+    // ------------------------------------------------------- MODULE POSITIONS
+    "modules-left": [
+      "clock",
+      "network",
+      "bluetooth"
+      // "custom/mid"
+    ],
+    "modules-center": [
+      "hyprland/workspaces"
+      // "hyprland/window"
+    ],
+    "modules-right": [
+      "pulseaudio",
+      "pulseaudio#microphone",
+      "idle_inhibitor",
+      // "tray",
+      // "cpu", // polling expensive
+      // "backlight/slider",
+      "backlight",
+      "battery"
+    ],
+    // ---------------------------------------------------- LEFT MODULE CONFIGS
+    "clock": {
+      "format": "  {:%H:%M | %b %e | %a} ", //" {:%H:%M}",
+      "format-alt": "{: %I:%M %p   %a, %b %e}",
+      "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
+      // "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+      "calendar": {
+        "mode": "month", // year
+        "mode-mon-col": 3,
+        "weeks-pos": "right",
+        "on-scroll": 1,
+        "format": {
+          "months": "<span color='#ffead3'><b>{}</b></span>",
+          "days": "<span color='#ecc6d9'><b>{}</b></span>",
+          "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+          "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+          "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+        }
       }
-    }
-  },
-
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "",
-      "deactivated": ""
-    }
-  },
-
-  "backlight/slider": {
-    "min": 0,
-    "max": 100,
-    "orientation": "horizontal"
-    // "device": "intel_backlight"
-  },
-
-  "hyprland/workspaces": {
-    "active-only": false,
-    "all-outputs": false,
-    "on-click": "activate",
-    "format": "{icon}",
-    // "format": "{icon} {windows}",
-    // "format-window-separator": " ",
-    // "window-rewrite-default": "",
-    // "window-rewrite": {
-    //   "class<kitty>": "",
-    //   "class<firefoxdeveloperedition>": "",
-    //   "class<firefoxdeveloperedition> title<.*youtube.*>": "󰗃",
-    //   "class<firefoxdeveloperedition> title<.*Picture-in-Picture.*>": "",
-    //   "class<firefoxdeveloperedition> title<.*wiki.*>": "󰂺",
-    //   "class<obsidian>": "",
-    //   "class<org.keepassxc.KeePassXC>": ""
-    // },
-    "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "urgent": "󰗖",
-      // "active": "󰝥",
-      // "default": "󰝦",
-      // "default": "",
-      "sort-by-number": true
     },
-    "persistent-workspaces": {
-      "1": [],
-      "2": [],
-      "3": []
-    }
-  },
-
-  // ========================= MID MODULE CONFIGS ========================= //
-
-  "hyprland/window": {
-    "format": " {} ",
-    "separate-outputs": true,
-    "max-length": 64
-  },
-
-  // ======================== RIGHT MODULE CONFIGS ======================== //
-
-  "network": {
-    // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": "{icon} {signalStrength}%",
-    "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
-    "format-ethernet": "{ipaddr}/{cidr}",
-    "tooltip-format": "{essid} - {ifname} via {gwaddr}",
-    "format-linked": "{ifname} (No IP)",
-    "format-disconnected": "󱚼",
-    "format-disabled": "󰖪",
-    "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}"
-  },
-
-  "bluetooth": {
-    "format-connected": " {num_connections}",
-    "format-disconnected": "󰂲",
-    "format": "󰂲",
-    "format-on": "󰂱",
-    "format-off": "ERR",
-    "format-disabled": "󰂲", // an empty format will hide the module
-    "tooltip-format": "{device_alias}",
-    "tooltip-format-connected": " {device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}"
-  },
-
-  "backlight": {
-    // "device": "intel_backlight",
-    "format": "{icon} {percent}%",
-    "format-icons": ["󰃞","󰃟","󰃠"],
-    // "format-icons": ["", "", "", "", "", "", "", "", ""],
-    "on-scroll-up": "brillo -q -A 1", //"brightnessctl set 1%+",
-    "on-scroll-down": "brillo -q -U 1", //"brightnessctl set 1%-",
-    "min-length": 3
-  },
-
-  "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "tooltip": false,
-    "format-muted": " Muted",
-    // "on-click": "pamixer -t",
-    // "on-click": "~/.config/waybar/scripts/audio_sink_changer.py",
-    "on-scroll-up": "pamixer -i 5",
-    "on-scroll-down": "pamixer -d 5",
-    "scroll-step": 5,
-    "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": ["", "", " "]
-    }
-  },
-
-  "pulseaudio#microphone": {
-    "format": "{format_source}",
-    "format-source": " {volume}%",
-    "format-source-muted": "",
-    "on-click": "pamixer --default-source -t",
-    "on-scroll-up": "pamixer --default-source -i 5",
-    "on-scroll-down": "pamixer --default-source -d 5",
-    "scroll-step": 5
-  },
-
-  "tray": {
-    "icon-size": 18,
-    "spacing": 10
-  },
-
-  "cpu": {
-    "format": " {usage:>2}%", // "{usage:>2}% "
-    "format-alt": "󰻠 {avg_frequency} GHz",
-    "interval": 2
-  },
-
-  "battery": {
-    "states": {
-      "good": 90,
-      "warning": 40,
-      "critical": 20
+    "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+        "activated": "",
+        "deactivated": ""
+      }
     },
-    "format": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
-    "format-alt": "{time} {icon}",
-    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-    // "format-icons": ["", "", "", "", ""]
-    "on-click": "wlogout"
-  },
-
-  // ============================= [ UNUSED ] ============================= //
-
-  "temperature": {
-    "thermal-zone": 1,
-    "format": "{temperatureC}°C ",
-    "critical-threshold": 69,
-    "format-critical": "{temperatureC}°C "
-  },
-
-  "memory": {
-    "format": "󰍜 {}%"
+    "backlight/slider": {
+      "min": 0,
+      "max": 100,
+      "orientation": "horizontal"
+    },
+    "hyprland/workspaces": {
+      "active-only": false,
+      "all-outputs": false,
+      "on-click": "activate",
+      "format": "{icon}",
+      // "format": "{icon} {windows}",
+      // "format-window-separator": " ",
+      // "window-rewrite-default": "",
+      // "window-rewrite": {
+      //   "class<kitty>": "",
+      //   "class<firefoxdeveloperedition>": "",
+      //   "class<firefoxdeveloperedition> title<.*youtube.*>": "󰗃",
+      //   "class<firefoxdeveloperedition> title<.*Picture-in-Picture.*>": "",
+      //   "class<firefoxdeveloperedition> title<.*wiki.*>": "󰂺",
+      //   "class<obsidian>": "",
+      //   "class<org.keepassxc.KeePassXC>": ""
+      // },
+      "format-icons": {
+        "1": "",
+        "2": "",
+        "3": "",
+        "urgent": "󰗖",
+        // "active": "󰝥",
+        // "default": "󰝦",
+        // "default": "",
+        "sort-by-number": true
+      },
+      "persistent-workspaces": {
+        "1": [],
+        "2": [],
+        "3": []
+      }
+    },
+    // ----------------------------------------------------- MID MODULE CONFIGS
+    "hyprland/window": {
+      "format": " {} ",
+      "separate-outputs": true,
+      "max-length": 64
+    },
+    // --------------------------------------------------- RIGHT MODULE CONFIGS
+    "network": {
+      // "interface": "wlp2*", // (Optional) To force the use of this interface
+      "format-wifi": "{icon} {signalStrength}%",
+      "format-icons": [
+        "󰤯",
+        "󰤟",
+        "󰤢",
+        "󰤥",
+        "󰤨"
+      ],
+      "format-ethernet": "{ipaddr}/{cidr}",
+      "tooltip-format": "{essid} - {ifname} via {gwaddr}",
+      "format-linked": "{ifname} (No IP)",
+      "format-disconnected": "󱚼",
+      "format-disabled": "󰖪",
+      "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}"
+    },
+    "bluetooth": {
+      "format-connected": " {num_connections}",
+      "format-disconnected": "󰂲",
+      "format": "󰂲",
+      "format-on": "󰂱",
+      "format-off": "ERR",
+      "format-disabled": "󰂲", // an empty format will hide the module
+      "tooltip-format": "{device_alias}",
+      "tooltip-format-connected": " {device_enumerate}",
+      "tooltip-format-enumerate-connected": "{device_alias}"
+    },
+    "backlight": {
+      // "device": "intel_backlight",
+      "format": "{icon} {percent}%",
+      "format-icons": [
+        "󰃞",
+        "󰃟",
+        "󰃠"
+      ],
+      // "format-icons": ["", "", "", "", "", "", "", "", ""],
+      "on-scroll-up": "brillo -q -A 1", //"brightnessctl set 1%+",
+      "on-scroll-down": "brillo -q -U 1", //"brightnessctl set 1%-",
+      "min-length": 3
+    },
+    "pulseaudio": {
+      "format": "{icon} {volume}%",
+      "tooltip": false,
+      "format-muted": " Muted",
+      // "on-click": "pamixer -t",
+      // "on-click": "~/.config/waybar/scripts/audio_sink_changer.py",
+      "on-scroll-up": "pamixer -i 5",
+      "on-scroll-down": "pamixer -d 5",
+      "scroll-step": 5,
+      "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": [
+          "",
+          "",
+          " "
+        ]
+      }
+    },
+    "pulseaudio#microphone": {
+      "format": "{format_source}",
+      "format-source": " {volume}%",
+      "format-source-muted": "",
+      "on-click": "pamixer --default-source -t",
+      "on-scroll-up": "pamixer --default-source -i 5",
+      "on-scroll-down": "pamixer --default-source -d 5",
+      "scroll-step": 5
+    },
+    "tray": {
+      "icon-size": 18,
+      "spacing": 10
+    },
+    "cpu": {
+      "format": " {usage:>2}%", // "{usage:>2}% "
+      "format-alt": "󰻠 {avg_frequency} GHz",
+      "interval": 2
+    },
+    "battery": {
+      "states": {
+        "good": 90,
+        "warning": 40,
+        "critical": 20
+      },
+      "format": "{icon} {capacity}%",
+      "format-charging": " {capacity}%",
+      "format-plugged": " {capacity}%",
+      "format-alt": "{time} {icon}",
+      "format-icons": [
+        "󰂎",
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ],
+      // "format-icons": ["", "", "", "", ""]
+      "on-click": "wlogout"
+    },
+    // ============================= [ UNUSED ] ============================= //
+    "temperature": {
+      "thermal-zone": 1,
+      "format": "{temperatureC}°C ",
+      "critical-threshold": 69,
+      "format-critical": "{temperatureC}°C "
+    },
+    "memory": {
+      "format": "󰍜 {}%"
+    }
   }
-
-}
+]

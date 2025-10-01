@@ -6,6 +6,15 @@
   font-size: 18px;
 }
 
+#submap {
+  background-color: rgba(10, 10, 10, 0.7);
+  color: rgba(152, 239, 106, 1);
+  /* color: rgba(116, 196, 239, 1); */
+  border-radius: 8px;
+  padding: 5px;
+  margin-top: 10px;
+}
+
 window#waybar {
   background: rgba(21, 18, 27, 0);
   color: #cdd6f4;
