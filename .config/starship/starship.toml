@@ -45,6 +45,7 @@ col_vim_vis = '#e78ef5'
 col_vim_rep = '#ffa74d'
 
 col_vifm = '#ff7d0b' # Color coded to col_dir. VIFM is related to dir
+col_sudo = '#ff0101' # Very important information. Signal for danger
 
 # ============================ [ PROMPT DESIGN ] ============================ #
 
@@ -379,8 +380,15 @@ format        = '[ $symbol$version ]($style)'
 # =========================== [ CUSTOM MODULES ] =========================== #
 
 [custom.vifm]
-symbol        = " VIFM"
+symbol        = " VIFM"
 # format        = ' [](col_vifm)[$symbol]($style)[](col_vifm) '
 format        = '[](fg:col_blk bg:col_vifm)[ $symbol ]($style)[](col_vifm)'
 when          = "$VIFM_MODE"  # Need to set VIFM_MODE=true in vifmrc
 style         = "fg:col_wht bg:col_vifm"
+
+[custom.sudo]
+symbol        = " SUDO"
+description   = "valid sudo timestamp marker"
+format        = '[](fg:col_blk bg:col_sudo)[ $symbol ]($style)[](col_sudo)'
+style         = "bold fg:col_wht bg:col_sudo"
+when          = "sudo -vn &>/dev/null"
