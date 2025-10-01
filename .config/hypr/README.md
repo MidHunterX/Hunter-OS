@@ -25,18 +25,27 @@ Press `SUPER + E` to enter **Execute** Mode and activate the following keys
 
 Press `SUPER + C` to enter **Cursor** Mode and activate the following keys
 
-| Keymap  | Description                |
-| ------- | -------------------------- |
-| f       | Vim like Find mode         |
-| h,j,k,l | Move cursor                |
-| H,J,K,L | Move cursor faster         |
-| i       | Left Click (Inside click)  |
-| o       | Right Click (Outside menu) |
-| u       | Scroll Up                  |
-| d       | Scroll Down                |
-| w       | Scroll Right               |
-| b       | Scroll Left                |
-| ESC     | Exit Cursor Mode           |
+| Keymap          | Description                |
+| --------------- | -------------------------- |
+| F               | Vim like Find mode         |
+| H,J,K,L         | Move cursor                |
+| SHIFT + H,J,K,L | Move cursor faster         |
+| I               | Left Click (Inside click)  |
+| O               | Right Click (Outside menu) |
+| U               | Scroll Up                  |
+| D               | Scroll Down                |
+| W               | Scroll Right               |
+| B               | Scroll Left                |
+| ESC             | Exit Cursor Mode           |
+
+Press `SUPER + T` to enter window **Transformation** Mode and activate the following keys
+
+| Keymap          | Description   |
+| --------------- | ------------- |
+| H,J,K,L         | Focus window  |
+| SHIFT + H,J,K,L | Move window   |
+| CTRL + H,J,K,L  | Resize window |
+| ESC             | Exit Mode     |
 
 ### Windows Style Keybindings
 
