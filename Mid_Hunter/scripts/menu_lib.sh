@@ -60,7 +60,7 @@ show_menu() {
     ) | fuzzel --dmenu \
       --border-color="$color" \
       --background="#2d2d379b" \
-      --match-mode=fuzzy \
+      --match-mode=fzf \
       --prompt="$prompt "
   )
   echo "$selection"

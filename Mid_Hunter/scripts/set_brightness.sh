@@ -4,31 +4,45 @@ BLU='\033[0;34m'
 YLO='\033[0;33m'
 RESET='\033[0;0m'
 
-while true
-do
-  # Get le Brightness Value
+# Switch to alternate screen + hide cursor
+tput smcup
+tput civis
+
+draw_ui() {
+  local BAR
   CURRENT_BRIGHTNESS=$(brillo)
-  # BAR=$(seq -s "─" 0 ${CURRENT_BRIGHTNESS:0:-3} | sed 's/[0-9]//g')
   BAR=$(echo "$(printf '─%.0s' $(seq 1 ${CURRENT_BRIGHTNESS:0:-3}))")
 
-  clear
+  tput cup 0 0
   echo ""
   echo -e ${BLU}" Hunter Brightness Script (u/d/x)"${RESET}
-  echo          " --------------------------------"
-  # Looong stikk sequenze
+  echo " --------------------------------"
   echo -e -n " 󰃟 " ${YLO}${BAR:0:27} ${RESET}"\n"
   echo -e -n " Current Brightness:" ${YLO}${CURRENT_BRIGHTNESS}${RESET}
-  read -n1 junk
+  tput ed
+}
 
+draw_ui
+
+while true; do
+  read -rsn1 junk
   case $junk in
-    "u") brillo -A 0.5 ;;
-    "d") brillo -U 0.5 ;;
-    "x") break ;;
-    "q") exit ;;
+    u) brillo -A 0.5 ;;
+    d) brillo -U 0.5 ;;
+    x) break ;;
+    q) DONT_STORE=true && break ;;
     *) echo -n "Invalid Input! Try: u/d/x" ;;
   esac
+  draw_ui
 done
-clear
+
+# Restore normal screen + cursor
+tput rmcup
+tput cnorm
+
+if [[ $DONT_STORE ]]; then
+  exit 0
+fi
 
 # ========================================================================== #
 #                               STORING VALUES                               #
