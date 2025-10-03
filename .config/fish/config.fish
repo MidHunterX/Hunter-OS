@@ -2,9 +2,6 @@
 set fish_greeting ""
 
 if status is-interactive
-  # Semantic abbreviations
-  abbr -a -g fetch 'fastfetch'
-  abbr -a -g gitfetch 'onefetch'
 
   # █▀█ ▄▀█ ▀█▀ █░█ █▀
   # █▀▀ █▀█ ░█░ █▀█ ▄█
@@ -22,6 +19,15 @@ if status is-interactive
   # ▄▀█ █▄▄ █▄▄ █▀█   ▄▀█ █▄░█ █▀▄   ▄▀█ █░░ █ ▄▀█ █▀
   # █▀█ █▄█ █▄█ █▀▄   █▀█ █░▀█ █▄▀   █▀█ █▄▄ █ █▀█ ▄█
   # =================================================
+
+  # Semantic abbreviations
+  abbr -a -g fe 'fastfetch'
+  abbr -a -g fetch 'fastfetch'
+  abbr -a -g gi 'git'
+  abbr -a -g gife 'onefetch'
+  abbr -a -g gitfetch 'onefetch'
+  abbr -a -g unsudo 'sudo -k'
+
   # User abbreviations
   abbr -a -g sayonara 'shutdown now'  # Epic way to Shutdown
   abbr -a -g cls 'clear'  # Clear Screen
