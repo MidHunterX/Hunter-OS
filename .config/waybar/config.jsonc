@@ -67,7 +67,7 @@
       // "cpu", // polling expensive
       // "backlight/slider",
       "backlight",
-      "battery"
+      "battery#og"
     ],
     // ---------------------------------------------------- LEFT MODULE CONFIGS
     "clock": {
@@ -223,7 +223,7 @@
       "format-alt": "󰻠 {avg_frequency} GHz",
       "interval": 2
     },
-    "battery": {
+    "battery#og": {
       "states": {
         "good": 90,
         "warning": 40,

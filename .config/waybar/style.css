@@ -85,7 +85,7 @@ tooltip {
 #custom-weather,
 #window,
 #clock,
-#battery,
+#battery.og,
 #pulseaudio,
 #network,
 #bluetooth,
@@ -187,7 +187,7 @@ tooltip {
 
 #bluetooth,
 #idle_inhibitor,
-#battery {
+#battery.og {
   border-left: 0px;
   padding-right: 15px;
   padding-left: 15px;
@@ -215,17 +215,17 @@ tooltip {
     color: #000000;
   }
 }
-#battery {
+#battery.og {
   color: #a6e3a1;
   margin-right: 15px;
 }
-#battery.charging {
+#battery.og.charging {
   color: #a6e3a1;
 }
-#battery.warning {
+#battery.og.warning {
   color: #f9e2af;
 }
-#battery.critical:not(.charging) {
+#battery.og.critical:not(.charging) {
   background-color: #f53c3c;
   color: #ffffff;
   animation-name: blink;
