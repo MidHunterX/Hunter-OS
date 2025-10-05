@@ -13,6 +13,31 @@
     "name": "hyprsubmap",
     "mode": "overlay"
   },
+  // ============================ [ PIXEL BAR ] ============================ //
+  {
+    "name": "pixelbar",
+    "layer": "bottom",
+    "position": "top",
+    "mod": "dock",
+    "exclusive": false,
+    "passthrough": true,
+    "gtk-layer-shell": true,
+    "reload_style_on_change": false,
+    "modules-center": [
+      "hyprland/workspaces#pixel"
+    ],
+    "hyprland/workspaces#pixel": {
+      "active-only": false,
+      "all-outputs": false,
+      "on-click": "activate",
+      "format": "",
+      "persistent-workspaces": {
+        "1": [],
+        "2": [],
+        "3": []
+      }
+    }
+  },
   // ========================= [ WAYBAR MAIN BAR ] ========================= //
   {
     "layer": "bottom",
@@ -31,7 +56,7 @@
       // "custom/mid"
     ],
     "modules-center": [
-      "hyprland/workspaces"
+      "hyprland/workspaces#og"
       // "hyprland/window"
     ],
     "modules-right": [
@@ -76,7 +101,7 @@
       "max": 100,
       "orientation": "horizontal"
     },
-    "hyprland/workspaces": {
+    "hyprland/workspaces#og": {
       "active-only": false,
       "all-outputs": false,
       "on-click": "activate",

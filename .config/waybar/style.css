@@ -1,11 +1,15 @@
-@import url("./modWorkspaceBubble.css");
+@import url("./modWorkspacePixel.css");
 
 * {
   border: none;
   border-radius: 0;
   font-family: "JetBrainsMono Nerd Font";
   font-weight: bold;
-  font-size: 18px;
+  font-size: 1.05em;
+  /* Reset Default Styles */
+  padding: 0;
+  margin: 0;
+  min-height: 0;
 }
 
 #submap {
@@ -20,6 +24,33 @@
 window#waybar {
   background: rgba(21, 18, 27, 0);
   color: #cdd6f4;
+}
+
+#workspaces.og button {
+  color: #f9e2af;
+  padding: 0px 15px 0px 10px;
+  /* transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68); */
+}
+#workspaces.og button.empty {
+  color: #a6adc8;
+}
+#workspaces.og button.active {
+  border-radius: 15px;
+  background-color: #38596c;
+}
+#workspaces.og button.focused {
+  background: #eba0ac;
+  border-radius: 10px;
+}
+#workspaces.og button.urgent {
+  color: #11111b;
+  background: #a6e3a1;
+  border-radius: 10px;
+}
+#workspaces.og button:hover {
+  background: #11111b;
+  color: #cdd6f4;
+  border-radius: 10px;
 }
 
 tooltip {
@@ -59,7 +90,7 @@ tooltip {
 #network,
 #bluetooth,
 #temperature,
-#workspaces,
+#workspaces.og,
 #tray,
 #idle_inhibitor,
 #cpu,
@@ -78,7 +109,7 @@ tooltip {
 \*================*/
 
 #clock,
-#workspaces,
+#workspaces.og,
 #window,
 #tray {
   padding-right: 5px;
@@ -90,10 +121,6 @@ tooltip {
 #clock {
   color: #cdcbcb;
   margin-left: 15px;
-}
-
-#workspaces {
-  color: #fab387;
 }
 
 #window {

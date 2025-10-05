@@ -1,0 +1,38 @@
+/* #waybar.pixelbar { */
+/*   background-color: rgba(152, 239, 106, 0.4); */
+/* } */
+
+#workspaces.pixel {
+  font-size: 0.5px;
+  /* margin-left: 20px; */
+  background-color: rgba(0, 0, 0, 0);
+}
+
+/*================*\
+*      BUTTON      *
+\*================*/
+
+#workspaces.pixel button {
+  margin-right: 10px;
+  padding-right: 50px;
+  background-color: #eea912;
+}
+
+#workspaces.pixel button.empty {
+  background-color: #72728d;
+}
+
+#workspaces.pixel button.active {
+  background-color: #f9e2af;
+  border-radius: 0px;
+}
+
+#workspaces.pixel button.focused {
+  background-color: #eba0ac;
+}
+
+#workspaces.pixel button.urgent {
+  color: #11111b;
+  background: #a6e3a1;
+  border-radius: 10px;
+}
