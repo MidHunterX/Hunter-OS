@@ -1,6 +1,8 @@
 [
   // ========================= [ SUBMAP MODE BAR ] ========================= //
   {
+    "name": "modal",
+    "mode": "overlay",
     "hyprland/submap": {
       "format": " 󰌌 {} ",
       "tooltip": false
@@ -9,9 +11,7 @@
     "position": "top",
     "modules-center": [
       "hyprland/submap"
-    ],
-    "name": "hyprsubmap",
-    "mode": "overlay"
+    ]
   },
   // ============================ [ PIXEL BAR ] ============================ //
   {
@@ -30,7 +30,14 @@
       "active-only": false,
       "all-outputs": false,
       "on-click": "activate",
-      "format": "",
+      "format": "{icon}",
+      "format-icons": {
+        "1": "",
+        "2": "",
+        "3": "",
+        "urgent": "󰗖",
+        "sort-by-number": true
+      },
       "persistent-workspaces": {
         "1": [],
         "2": [],
@@ -55,10 +62,10 @@
       "bluetooth"
       // "custom/mid"
     ],
-    "modules-center": [
-      "hyprland/workspaces#og"
+    // "modules-center": [
+      // "hyprland/workspaces#og"
       // "hyprland/window"
-    ],
+    // ],
     "modules-right": [
       "pulseaudio",
       "pulseaudio#microphone",
