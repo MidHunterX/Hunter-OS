@@ -64,3 +64,30 @@
 #workspaces.pixel button:hover {
   background: rgba(100, 104, 119, 50);
 }
+
+/* =========================== [ AUDIO VOLUME ] =========================== */
+
+#pulseaudio-slider.pixel {
+  min-height: 0px;
+  min-width: 0px;
+  padding-top: 0px;
+  /* Using negative values bc this GTK slider trash always stays center */
+  margin-top: -45px;
+  margin-right: 20px;
+}
+#pulseaudio-slider.pixel slider {
+  min-height: 0px;
+  min-width: 0px;
+  opacity: 0;
+}
+#pulseaudio-slider.pixel trough {
+  min-height: 5px;
+  min-width: 100px;
+  border-radius: 5px;
+  background-color: #5c5c70;
+}
+#pulseaudio-slider.pixel highlight {
+  min-width: 10px;
+  border-radius: 5px;
+  background-color: #89b4fa;
+}

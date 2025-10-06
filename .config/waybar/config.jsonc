@@ -26,6 +26,14 @@
     "modules-center": [
       "hyprland/workspaces#pixel"
     ],
+    // "modules-right": [
+    //   "pulseaudio/slider#pixel"
+    // ],
+    "pulseaudio/slider#pixel": {
+      "min": 0,
+      "max": 100,
+      "orientation": "horizontal"
+    },
     "hyprland/workspaces#pixel": {
       "active-only": false,
       "all-outputs": false,
@@ -63,8 +71,8 @@
       // "custom/mid"
     ],
     // "modules-center": [
-      // "hyprland/workspaces#og"
-      // "hyprland/window"
+    // "hyprland/workspaces#og"
+    // "hyprland/window"
     // ],
     "modules-right": [
       "pulseaudio",
