@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-LABEL="Menu Emoji"
+LABEL="Emoji Menu"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"

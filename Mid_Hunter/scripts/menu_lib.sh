@@ -8,28 +8,28 @@ mkdir -p "$CACHE_DIR"
 
 # Menu registry: "Label:script"
 declare -A MENU_REGISTRY=(
-  ["Menu Emoji"]="menu_emoji.sh"
-  ["Menu Nerd Font"]="menu_nerdfont.sh"
+  ["Emoji Menu"]="menu_emoji.sh"
+  ["Font Menu"]="menu_nerdfont.sh"
 )
 
 # update_emojis <cache_file>
 update_emojis() {
   local cache_file=$1
-  curl -sSL https://raw.githubusercontent.com/muan/emojilib/main/dist/emoji-en-US.json \
-    | jq --raw-output '. | to_entries | .[] | .key + " " + (.value | join(" ") | sub("_"; " "; "g"))' \
-    > "$cache_file"
+  curl -sSL https://raw.githubusercontent.com/muan/emojilib/main/dist/emoji-en-US.json |
+    jq --raw-output '. | to_entries | .[] | .key + " " + (.value | join(" ") | sub("_"; " "; "g"))' \
+      >"$cache_file"
 }
 
 # update_nerdfonts <cache_file>
 update_nerdfonts() {
   local cache_file=$1
-  curl -sSL "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/css/nerd-fonts-generated.css" \
-    | sed -ne '/\.nf-/p' -e '/\s*[^_]content:/p' \
-    | sed -e 'N;s/^\.nf-\(.*\):before.* content: \"\\\(.*\)\";/\\U\2 \1/' \
-    | while IFS= read -r line; do
-        # interpret \Uxxxx into actual char
-        echo -e "$line"
-      done > "$cache_file"
+  curl -sSL "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/css/nerd-fonts-generated.css" |
+    sed -ne '/\.nf-/p' -e '/\s*[^_]content:/p' |
+    sed -e 'N;s/^\.nf-\(.*\):before.* content: \"\\\(.*\)\";/\\U\2 \1/' |
+    while IFS= read -r line; do
+      # interpret \Uxxxx into actual char
+      echo -e "$line"
+    done >"$cache_file"
 }
 
 ensure_cache() {
