@@ -156,6 +156,17 @@ if status is-interactive
   end
   set -g fish_key_bindings fish_hybrid_key_bindings
 
+  # Fish Incognito Mode
+  function incognito -d "Toggle fish's private mode on and off"
+    if set -q fish_private_mode
+      set -x INCOGNITO_MODE false # for starship prompt
+      exec fish
+    else
+      set -x INCOGNITO_MODE true # for starship prompt
+      exec fish --private
+    end
+  end
+
   # VIFM CD Function
   function vicd
     set dst "$(command vifm --choose-dir - $argv[2..-1])"

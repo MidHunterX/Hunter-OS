@@ -46,6 +46,7 @@ col_vim_rep = '#ffa74d'
 
 col_vifm = '#ff7d0b' # Color coded to col_dir. VIFM is related to dir
 col_sudo = '#ff0101' # Very important information. Signal for danger
+col_fish = '#1a2d4c' # That incognito look
 
 # ============================ [ PROMPT DESIGN ] ============================ #
 
@@ -392,3 +393,9 @@ description   = "valid sudo timestamp marker"
 format        = '[](fg:col_blk bg:col_sudo)[ $symbol ]($style)[](col_sudo)'
 style         = "bold fg:col_wht bg:col_sudo"
 when          = "sudo -vn &>/dev/null"
+
+[custom.fish_private]
+symbol        = "󰗹 SECRET"
+format        = '[](fg:col_blk bg:col_fish)[ $symbol ]($style)[](col_fish)'
+when          = '$INCOGNITO_MODE'
+style         = "fg:col_wht bg:col_fish"
