@@ -20,7 +20,7 @@
     "position": "top",
     "mod": "dock",
     "exclusive": false,
-    "passthrough": true,
+    "passthrough": false,
     "gtk-layer-shell": true,
     "reload_style_on_change": false,
     "modules-center": [
@@ -239,7 +239,7 @@
       "format": "{icon} {capacity}%",
       "format-charging": " {capacity}%",
       "format-plugged": " {capacity}%",
-      "format-alt": "{time} {icon}",
+      // "format-alt": "{time} {icon}",
       "format-icons": [
         "󰂎",
         "󰁺",
