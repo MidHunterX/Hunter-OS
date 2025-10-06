@@ -31,10 +31,15 @@ end
 # CAT -> BAT
 # ==========
 function cat
-  if command -q bat
-    bat $argv --theme base16
-  else
+  # if more than one arg OR stdin is not a tty (piped), fallback to cat
+  if test (count $argv) -gt 1 -o ! -t 0
     command cat $argv
+  else
+    if command -q bat
+      bat $argv --theme base16
+    else
+      command cat $argv
+    end
   end
 end
 
