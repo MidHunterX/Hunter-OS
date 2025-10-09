@@ -9,17 +9,26 @@ And this seems to be the least broken browser out there in the market.
 ## Problems
 
 - ~Cannot use ESC to deselect url bar. [Bug Report](https://bugzilla.mozilla.org/show_bug.cgi?id=1086524) opened 10 years ago but still not solved.~
-> Happy news for Vimmers, this got fixed in 2024... on it's 10th anniversary 🎉
+  > Happy news for Vimmers, this got fixed in 2024... on it's 10th anniversary 🎉
 - `.mozilla` in $HOME, not following Freedesktop XDG Base Directory Specification
 - Features and Open Issues stays on for Milleniums
 - Even though customizable, it has many design limitations
 - Tougher to implement vertical tabs natively
 
 ## Features:
+
 - Icon only tabs - That's the only information I need though. How many tabs there are.
 - Distinctive theming for different profiles to reflect the type of usage.
 - Used oneBar as base because... "Dig out the best stuff and improve upon it"
-- Hardened with Arkenfox js
+
+## Extensions
+
+- Harden with Betterfox as it provides better performance and security without breaking anything. Arkenfox is a bit too aggressive.
+- uBlock Origin - Ad blocker.
+- VimiumC - Vimmer's favorite extension. Shows better legible tags than others.
+- Dark Reader - Dark mode for every web pages.
+- Markdown Viewer, Asciidoctor js live preview - for live docs preview.
+- BigTube - Better YouTube theatre mode.
 
 Personally I use these extensions:
 
