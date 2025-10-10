@@ -93,4 +93,4 @@ elif [[ $PROFILE == "Experiment" ]]; then
 fi
 
 # Run Firefox if no running instance
-$WORKSPACE firefox-developer-edition $FF_ATTRIB &
+$WORKSPACE firefox $FF_ATTRIB &

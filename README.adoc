@@ -379,7 +379,7 @@ Click the following categories to toggle the list of packages in that category.
 | curlftpfs                 | FUSE mount ftp sites               | pacman
 | termscp                   | TUI client for SCP, FTP, Kube, S3  | pacman
 | dhcpcd                    | DHCP Client Daemon                 | pacman
-| firefox-developer-edition | Internet Browser                   | pacman
+| firefox                   | Internet Browser                   | pacman
 | keepassxc                 | Password Manager                   | pacman
 | networkmanager            | CLI Network Manager - nmcli, nmtui | pacman
 | openssh                   | SSH protocol implementation        | pacman
