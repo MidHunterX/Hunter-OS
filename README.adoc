@@ -713,6 +713,53 @@ Color
 ILoveCandy
 ----
 
+=== Rage against the Censorship
+
+Sometimes *dhcpcd* will generate configuration which also includes DNS nameservers from your ISP in `/etc/resolv.conf`. We gotta stop that.
+
+[source,bash]
+----
+sudoedit /etc/dhcpcd.conf
+----
+
+.📝 /etc/dhcpcd.conf [add]
+[source,bash]
+----
+nohook resolv.conf
+----
+
+[source,bash]
+----
+sudo systemctl restart dhcpcd
+----
+
+Now, set all the nameservers you want to use instead.
+
+[source,bash]
+----
+sudoedit /etc/resolv.conf
+----
+
+.📝 /etc/resolv.conf
+[source,bash]
+----
+# Custom static DNS configuration
+nameserver 1.1.1.1     # Cloudflare
+nameserver 1.0.0.1     # Cloudflare secondary
+nameserver 8.8.8.8     # Google
+nameserver 8.8.4.4     # Google secondary
+----
+
+.💡 Using other DNS Resolvers?
+[%collapsible]
+====
+[discrete]
+If you use systemd-resolved or NetworkManager, they might override this file. In that case, you can set your static nameservers inside their configs
+
+* /etc/systemd/resolved.conf for systemd-resolved
+* /etc/NetworkManager/conf.d/ for NetworkManager
+====
+
 = Personal Notes
 
 == 🗒️ Partition Sizes
