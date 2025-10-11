@@ -12,16 +12,17 @@ It provides the latest Wayland features, is highly customizable, has all the eye
 
 Press `SUPER + E` to enter **Execute** Mode and activate the following keys
 
-| Keymap | Description                                    |
-| ------ | ---------------------------------------------- |
-| F      | **F**irefox (Default Profile)                  |
-| E      | **E**xperiment Firefox Profile                 |
-| K      | **K**itty Terminal Emulator                    |
-| W      | **W**aybar Toggle                              |
-| B      | **B**rightness Script                          |
-| V      | **V**olume Script                              |
-| P      | **P**rint Screen with Tesseract OCR Extraction |
-| ESC    | Disable Execute Mode                           |
+| Keymap    | Description                                    |
+| --------- | ---------------------------------------------- |
+| F         | **F**irefox (Default Profile)                  |
+| E         | **E**xperiment Firefox Profile                 |
+| K         | **K**itty Terminal Emulator                    |
+| W         | **W**aybar Refresh                             |
+| SHIFT + W | **W**aybar Toggle                              |
+| B         | **B**rightness Script                          |
+| V         | **V**olume Script                              |
+| P         | **P**rint Screen with Tesseract OCR Extraction |
+| ESC       | Disable Execute Mode                           |
 
 Press `SUPER + C` to enter **Cursor** Mode and activate the following keys
 
