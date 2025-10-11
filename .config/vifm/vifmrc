@@ -542,6 +542,11 @@ fileviewer *.znn highlight -O ansi --syntax znn
 "  GIT
 fileviewer {.git/}, git -c color.status=always status %d %pu
 
+" 󱏚 CORRECTION INSTITUTION
+" mod getting recogized as an audio file
+filextype {go.mod},
+      \ $EDITOR %f,
+
 "  DIRECTORY PREVIEW
 fileviewer {*/,.*/,../},
       \ lsd --almost-all --color=always --icon=always --group-directories-first --blocks=permission --blocks=name,
