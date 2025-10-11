@@ -580,15 +580,80 @@ makepkg -si
 [%header]
 |===
 | Service                | Description
-| NetworkManager.service | Network connection manager
 | dhcpcd.service         | DHCP/ IPv4LL/ IPv6RA/ DHCPv6 client
+| NetworkManager.service | Network connection manager
 | https://github.com/MidHunterX/Hunter-OS/tree/master/.config/keyd/[keyd.service]
 | A key remapping daemon for linux
 |===
 
 == 💽 Core Computational Configurations
 
-=== GRUB Bootloader
+=== 🚫 Rage against the Censorship
+
+*dhcpcd* brings up the networking interface (wlp2s0/eth0), assigns IP and other host configurations.
+
+*NetworkManager* gives tools like nmcli and nmtui to connect to WiFi and manage network related tasks more easily.
+
+Both *dhcpcd* and *NetworkManager* have the ability to configure DNS nameservers from your *ISP* in `/etc/resolv.conf`.
+Since we are going to use our own custom DNS config, we need to tell them both to stop auto-generating DNS configurations.
+
+Tell dhcpcd:
+
+[source,bash]
+----
+sudoedit /etc/dhcpcd.conf
+----
+
+.📝 /etc/dhcpcd.conf [append]
+[source,bash]
+----
+nohook resolv.conf
+----
+
+[source,bash]
+----
+sudo systemctl restart dhcpcd
+----
+
+Tell NetworkManager:
+
+[source,bash]
+----
+sudoedit /etc/NetworkManager/conf.d/dns.conf
+----
+
+.📝 /etc/NetworkManager/conf.d/dns.conf
+[source,bash]
+----
+[main]
+dns=none
+----
+
+[source,bash]
+----
+sudo systemctl restart NetworkManager
+----
+
+Now, set all the DNS nameservers you want to use instead.
+
+[source,bash]
+----
+sudoedit /etc/resolv.conf
+----
+
+.📝 /etc/resolv.conf
+[source,bash]
+----
+# Custom static DNS configuration
+nameserver 1.1.1.1     # Cloudflare
+nameserver 1.0.0.1     # Cloudflare secondary
+nameserver 8.8.8.8     # Google
+nameserver 8.8.4.4     # Google secondary
+----
+
+NOTE: systemd-resolved can also set DNS config but since we are not enabling that service, it will not do anything.
+
+=== 👢 GRUB Bootloader
 image:.config/GRUB/.assets/cyberexs.jpg[]
 [source,bash]
 ----
@@ -611,7 +676,7 @@ GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet splash"
 GRUB_DISABLE_OS_PROBER=false
 ----
 
-=== Plymouth Splash Screen
+=== 🫟 Plymouth Splash Screen
 image:./.config/PLYMOUTH/.assets/cuts_alt.gif[]
 [source,bash]
 ----
@@ -621,7 +686,7 @@ sudo plymouth-set-default-theme -R cuts_alt
 
 NOTE: The splash screen included here is one from the 80+ plymouth splash screens from https://github.com/adi1090x/plymouth-themes[adi1090x/plymouth-themes].
 
-=== Usergroups
+=== 👥 Usergroups
 
 List all available groups that you can assign:
 [source,bash]
@@ -650,7 +715,7 @@ Verify currently active groups:
 groups midhunter
 ----
 
-=== KeyD Setup
+=== 🎹 KeyD Setup
 [source,bash]
 ----
 sudo ln -s ~/.config/keyd/default.conf /etc/keyd/default.conf
@@ -658,7 +723,7 @@ systemctl enable keyd.service
 systemctl start keyd.service
 ----
 
-=== Sudoers
+=== 🔑 Sudoers
 [source,bash]
 ----
 sudoedit /etc/sudoers
@@ -675,7 +740,7 @@ Defaults insults                    # Incorrect Password Easteregg
 Defaults pwfeedback                 # Visible Password Feedback
 ----
 
-=== Skip Username
+=== 🚪 Skip Username
 [source,bash]
 ----
 sudo mkdir -p /etc/systemd/system/getty@tty1.service.d/
@@ -700,7 +765,7 @@ ExecStart=
 ExecStart=-/sbin/agetty --noissue --autologin 'midhunter' - $TERM
 ----
 
-=== Colorful Pacman
+=== 🍬 Colorful Pacman
 [source,bash]
 ----
 sudoedit /etc/pacman.conf
@@ -712,53 +777,6 @@ ParallelDownloads = 5
 Color
 ILoveCandy
 ----
-
-=== Rage against the Censorship
-
-Sometimes *dhcpcd* will generate configuration which also includes DNS nameservers from your ISP in `/etc/resolv.conf`. We gotta stop that.
-
-[source,bash]
-----
-sudoedit /etc/dhcpcd.conf
-----
-
-.📝 /etc/dhcpcd.conf [add]
-[source,bash]
-----
-nohook resolv.conf
-----
-
-[source,bash]
-----
-sudo systemctl restart dhcpcd
-----
-
-Now, set all the nameservers you want to use instead.
-
-[source,bash]
-----
-sudoedit /etc/resolv.conf
-----
-
-.📝 /etc/resolv.conf
-[source,bash]
-----
-# Custom static DNS configuration
-nameserver 1.1.1.1     # Cloudflare
-nameserver 1.0.0.1     # Cloudflare secondary
-nameserver 8.8.8.8     # Google
-nameserver 8.8.4.4     # Google secondary
-----
-
-.💡 Using other DNS Resolvers?
-[%collapsible]
-====
-[discrete]
-If you use systemd-resolved or NetworkManager, they might override this file. In that case, you can set your static nameservers inside their configs
-
-* /etc/systemd/resolved.conf for systemd-resolved
-* /etc/NetworkManager/conf.d/ for NetworkManager
-====
 
 = Personal Notes
 
