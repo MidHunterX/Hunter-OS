@@ -90,6 +90,7 @@
 # 📢 Audio Visualizer
 !.config/cava/
 .config/cava/shaders/
+.config/cava/themes/
 # 💻 GUI Code Editor
 !.config/Code\ -\ OSS/
 .config/Code\ -\ OSS/*
