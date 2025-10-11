@@ -12,6 +12,6 @@ system from within a Wayland session.
 | l       | Logout            |
 | u       | Suspend           |
 | s       | Shutdown          |
-| h       | Hibernate         |
+| g       | Goodnight         |
 | r       | Reboot            |
 | w       | Reboot to Windows |

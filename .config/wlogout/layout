@@ -17,10 +17,10 @@
     "keybind" : "s"
 }
 {
-    "label" : "hibernate",
-    "action" : "systemctl hibernate",
-    "text" : "Hibernate [H]",
-    "keybind" : "h"
+    "label" : "goodnight",
+    "action" : "sleep 20 && systemctl poweroff",
+    "text" : "Good Night [G]",
+    "keybind" : "g"
 }
 {
     "label" : "reboot",

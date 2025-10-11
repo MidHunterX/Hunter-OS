@@ -92,3 +92,10 @@ button:hover {
 #windows:focus {
   background-image: image(url("./icons/hi_windows.png"));
 }
+
+#goodnight {
+  background-image: image(url("./icons/sleep.png"));
+}
+#goodnight:focus {
+  background-image: image(url("./icons/hi_sleep.png"));
+}
