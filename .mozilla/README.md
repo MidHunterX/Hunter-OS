@@ -46,6 +46,7 @@ Personally I use these extensions:
 
 - pastel pink + charcoal by brad
 - TWP Translate Web Pages by Filipe Dev - Translate any web page with just `Ctrl`+`Alt`+`T`.
+- Theater Mode for YouTube™ by James Fray - Force YouTube to open in its player in the theater mode.
 - BigTube by Pregnantboy - Better YouTube theatre mode. Full-sized theater mode, miniplayer on scroll, Popout player for all video sites.
 - Return YouTube Dislike by Dmitry Selivanov - Say no to censorship of any kind. Hiding only specific information away from one is also a kind of lie.
 - SponsorBlock by Ajay - Block those pesky in video promotions too. Don't let anyone persuade your interests.
