@@ -57,11 +57,10 @@ Note: Backspace also works in homerow Ctrl layer as well
 
 ## 🎹 KeyD Keybindings
 
-| Remap            | Output Key |
-| ---------------- | ---------- |
-| f j              | Esc        |
-| CapsLock (Click) | Esc        |
-| CapsLock (Press) | Ctrl       |
+- Escape    = f+j (chorded < 50ms)
+- Escape    = CapsLock (Click < 300ms)
+- Ctrl      = CapsLock (Press < 300ms with other Key)
+- CapsLock  = CapsLock (Press > 300ms)
 
 ## 🍇 Meta Keymap Toggle
 
