@@ -1,8 +1,9 @@
-# 🆚 Code OSS (Code Editor)
+# 🆚 VSCodium (Code Editor)
 
 ![VS Code](./.assets/code.jpg)
 
-Code - OSS is an open source project without any proprietary code under the MIT License.
+VSCodium is a free and open-source licensed version of Visual Studio Code (VS Code) with all of the telemetry tracking and proprietary features removed.
+
 The main problem with VSCode is that, it has no context aware keybindings by default for the keyboard people in the year of 2020.
 keybindings.json contains a list of context aware keybindings that I have used during my time in VSCode. <br>
 It also fixes some vim extension key conflicts in order to use the default VSCode keybindings on insert mode and Vim keybindings on normal mode.

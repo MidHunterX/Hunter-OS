@@ -128,9 +128,9 @@ Click the links below for a detailed documentation.
 | Shell Prompt Engine
 | image:.config/starship/.assets/prompt.png[,128,link=.config/starship/]
 
-| link:.config/Code%20-%20OSS/User/[🆚 VSCode]
+| link:.config/VSCodium/User/[🆚 VSCode]
 | GUI Code Editor
-| image:.config/Code%20-%20OSS/User/.assets/code.jpg[,128,link=.config/Code%20-%20OSS/User/]
+| image:.config/VSCodium/User/.assets/code.jpg[,128,link=.config/Code%20-%20OSS/User/]
 
 | link:.config/waybar/[🍫 WayBar]
 | Status Bar
@@ -449,12 +449,12 @@ WARNING: xdg-desktop-portal-hyprland enables features like screen sharing. There
 |===
 | Package Name        | Description                 | Src
 | neovim              | Text Editor                 | pacman
-| code                | Open Source build of VSCode | pacman
 | obsidian            | MarkDown Note taker         | pacman
 | pdfarranger         | PDF Page Arranger           | pacman
 | xournalpp           | PDF Annotation / Drawing    | pacman
 | zathura             | PDF Graphical Viewer        | pacman
 | zathura-pdf-poppler | Zathura Poppler Backend     | pacman
+| vscodium-bin        | Open Source build of VSCode | yay
 |===
 ====
 
