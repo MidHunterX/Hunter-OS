@@ -92,17 +92,19 @@
 .config/cava/shaders/
 .config/cava/themes/
 # 💻 GUI Code Editor
-!.config/Code\ -\ OSS/
-.config/Code\ -\ OSS/*
-!.config/Code\ -\ OSS/User/
-.config/Code\ -\ OSS/User/*
-!.config/Code\ -\ OSS/User/.assets/
-!.config/Code\ -\ OSS/User/settings.json
-!.config/Code\ -\ OSS/User/keybindings.json
-!.config/Code\ -\ OSS/User/README.md
+!.config/VSCodium/
+.config/VSCodium/*
+!.config/VSCodium/User/
+.config/VSCodium/User/*
+!.config/VSCodium/User/.assets/
+!.config/VSCodium/User/settings.json
+!.config/VSCodium/User/keybindings.json
+!.config/VSCodium/User/README.md
+
 !.config/emacs/
 .config/emacs/*
 !.config/emacs/init.el
+
 # 🌐 Web Browser
 !.mozilla/
 .mozilla/*
