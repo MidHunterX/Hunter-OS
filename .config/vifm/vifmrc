@@ -692,6 +692,8 @@ filextype {*.ods,*.xls,*.xlsx},
 
 "  WEB
 filextype {*.xhtml,*.html,*.htm},<text/html>
+      \ {Edit File}
+      \ $EDITOR %f,
       \ {Open with firefox}
       \ firefox %f &,
       \ {Open with qutebrowser}
