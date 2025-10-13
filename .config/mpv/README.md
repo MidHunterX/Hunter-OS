@@ -15,6 +15,8 @@ mpv is free and open-source media player software based on MPlayer, mplayer2 and
 | l      | Seek +10s               |
 | H      | Seek -30s               |
 | L      | Seek +30s               |
+| O      | Toggle Infinite Loop    |
+| o      | show OSD                |
 | j      | Seek -5 Video Frames    |
 | k      | Seek +5 Video Frames    |
 | J      | Seek One Frame Backward |
