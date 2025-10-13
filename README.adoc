@@ -602,6 +602,7 @@ Tell dhcpcd:
 [source,bash]
 ----
 sudoedit /etc/dhcpcd.conf
+sudo systemctl restart dhcpcd
 ----
 
 .📝 /etc/dhcpcd.conf [append]
@@ -610,16 +611,12 @@ sudoedit /etc/dhcpcd.conf
 nohook resolv.conf
 ----
 
-[source,bash]
-----
-sudo systemctl restart dhcpcd
-----
-
 Tell NetworkManager:
 
 [source,bash]
 ----
 sudoedit /etc/NetworkManager/conf.d/dns.conf
+sudo systemctl restart NetworkManager
 ----
 
 .📝 /etc/NetworkManager/conf.d/dns.conf
@@ -627,11 +624,6 @@ sudoedit /etc/NetworkManager/conf.d/dns.conf
 ----
 [main]
 dns=none
-----
-
-[source,bash]
-----
-sudo systemctl restart NetworkManager
 ----
 
 Now, set all the DNS nameservers you want to use instead.
