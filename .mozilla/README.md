@@ -6,14 +6,6 @@ Because... monopoly have never been a good thing to be honest (except for the co
 
 And this seems to be the least broken browser out there in the market.
 
-## Setup
-
-- Download `user.js` from Betterfox into the profile directories.
-  > This will enable css customizations by default.
-- Open the Firefox Settings page:
-  - Home > Firefox Home Content > Uncheck "Web Search" and "Shortcuts"
-- On top right panel, rightclick Extensions icon > Customize Toolbar > Drag and remove all the unnecessary toolbar icons.
-
 ## Problems
 
 - ~Cannot use ESC to deselect url bar. [Bug Report](https://bugzilla.mozilla.org/show_bug.cgi?id=1086524) opened 10 years ago but still not solved.~
@@ -30,11 +22,24 @@ And this seems to be the least broken browser out there in the market.
 - Used oneBar as base because... "Dig out the best stuff and improve upon it"
 - Hardened with Betterfox as it provides better performance and security without breaking anything. Arkenfox is a bit too aggressive.
 
-## Extensions
+## Setup
+
+### Settings
+
+- Download `user.js` from Betterfox into the profile directories.
+  > This will enable css customizations by default.
+- Open the Firefox Settings page:
+  - Home > Firefox Home Content > Uncheck "Web Search" and "Shortcuts"
+- On top right panel, rightclick Extensions icon > Customize Toolbar > Drag and remove all the unnecessary toolbar icons.
+
+### Extensions
+
+- Install everything manually in one `PROFILE`.
+- To get the same extensions on other profiles, copy `~/.mozilla/firefox/{ PROFILE }/extensions` into other profile directories.
 
 Personally I use these extensions:
 
-### Personal Profile
+#### Personal Profile
 
 - Default Dark theme by Firefox
 - uBlock Origin - Have never been a fan of ads
@@ -42,7 +47,7 @@ Personally I use these extensions:
 - Dark Reader - Welcome to the dark side for every websites.
 - Markdown Viewer, Asciidoctor js live preview - for live docs preview.
 
-### Experiment Profile
+#### Experiment Profile
 
 - pastel pink + charcoal by brad
 - TWP Translate Web Pages by Filipe Dev - Translate any web page with just `Ctrl`+`Alt`+`T`.

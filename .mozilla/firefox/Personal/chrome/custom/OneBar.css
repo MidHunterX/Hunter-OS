@@ -1,11 +1,6 @@
-/* 1.4.0
-- Fixed from latest Firefox update!
-- Added CSS variables for changing the URLbar width
-*/
-
 :root {
-    --urlbar-collapsed-width: 200px;
-    --urlbar-open-width: 300px;
+    --urlbar-collapsed-width: 250px;
+    --urlbar-open-width: 400px;
     /* Only when disable-centering-of-URLbar is enabled */
 }
 
@@ -240,7 +235,8 @@ toolbarspring,
 }
 
 /* Truncate https:// when collapsed */
-@supports not -moz-bool-pref("onebar.disable-https-truncate") {
+/* UPDATE: Forefox already does this by default */
+/* @supports not -moz-bool-pref("onebar.disable-https-truncate") {
     #urlbar-input {
         transition: margin .1s;
     }
@@ -249,7 +245,7 @@ toolbarspring,
         margin-left: -4ch !important;
         mask: linear-gradient(to right, transparent 4ch, black 5ch calc(100% - 3ch), transparent) !important;
     }
-}
+} */
 
 /* Hide unimportant buttons until hover */
 :root {
