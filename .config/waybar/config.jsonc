@@ -13,48 +13,9 @@
       "hyprland/submap"
     ]
   },
-  // ============================ [ PIXEL BAR ] ============================ //
+  // ======================= [ PIXEL BAR + BUBBLE ] ======================= //
   {
     "name": "pixelbar",
-    "layer": "bottom",
-    "position": "top",
-    "mod": "dock",
-    "exclusive": false,
-    "passthrough": false,
-    "gtk-layer-shell": true,
-    "reload_style_on_change": false,
-    "modules-center": [
-      "hyprland/workspaces#pixel"
-    ],
-    // "modules-right": [
-    //   "pulseaudio/slider#pixel"
-    // ],
-    "pulseaudio/slider#pixel": {
-      "min": 0,
-      "max": 100,
-      "orientation": "horizontal"
-    },
-    "hyprland/workspaces#pixel": {
-      "active-only": false,
-      "all-outputs": false,
-      "on-click": "activate",
-      "format": "{icon}",
-      "format-icons": {
-        "1": "",
-        "2": "",
-        "3": "",
-        "urgent": "󰗖",
-        "sort-by-number": true
-      },
-      "persistent-workspaces": {
-        "1": [],
-        "2": [],
-        "3": []
-      }
-    }
-  },
-  // ========================= [ WAYBAR MAIN BAR ] ========================= //
-  {
     "layer": "bottom",
     "position": "top",
     "mod": "dock",
@@ -69,12 +30,14 @@
       "network"
       // "bluetooth"
     ],
-    // "modules-center": [
-    // "hyprland/workspaces#og"
-    // "hyprland/window"
-    // ],
+    "modules-center": [
+      "hyprland/workspaces#pixel"
+      // "hyprland/workspaces#og"
+      // "hyprland/window"
+    ],
     "modules-right": [
       "pulseaudio",
+      // "pulseaudio/slider#pixel"
       "pulseaudio#microphone",
       "idle_inhibitor",
       // "cpu", // polling expensive
@@ -96,6 +59,24 @@
       "min": 0,
       "max": 100,
       "orientation": "horizontal"
+    },
+    "hyprland/workspaces#pixel": {
+      "active-only": false,
+      "all-outputs": false,
+      "on-click": "activate",
+      "format": "{icon}",
+      "format-icons": {
+        "1": "",
+        "2": "",
+        "3": "",
+        "urgent": "󰗖",
+        "sort-by-number": true
+      },
+      "persistent-workspaces": {
+        "1": [],
+        "2": [],
+        "3": []
+      }
     },
     "hyprland/workspaces#og": {
       "active-only": false,
@@ -177,6 +158,11 @@
       "on-scroll-up": "brillo -q -A 1", //"brightnessctl set 1%+",
       "on-scroll-down": "brillo -q -U 1", //"brightnessctl set 1%-",
       "min-length": 3
+    },
+    "pulseaudio/slider#pixel": {
+      "min": 0,
+      "max": 100,
+      "orientation": "horizontal"
     },
     "pulseaudio": {
       "format": "{icon} {volume}%",

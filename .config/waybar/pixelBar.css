@@ -1,13 +1,16 @@
 #waybar.pixelbar {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.2) 30%,
+    rgba(0, 0, 0, 0) 100%
+  );
 }
 
 /* ============================ [ WORKSPACES ] ============================ */
 
 /* #workspaces.pixel {
-  font-size: 1.0em;
   margin-left: 20px;
-  background-color: rgba(0, 0, 0, 0);
 } */
 
 /* Inactive and Full */
@@ -69,7 +72,11 @@
 }
 
 #workspaces.pixel button:hover {
-  background: rgba(100, 104, 119, 50);
+  background: linear-gradient(
+    to bottom,
+    rgba(50, 50, 50, 0.8) 0%,
+    rgba(50, 50, 50, 0) 100%
+  );
 }
 
 /* =========================== [ AUDIO VOLUME ] =========================== */
