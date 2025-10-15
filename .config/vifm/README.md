@@ -46,6 +46,14 @@ Vifm is a file manager with curses interface, which provides Vim-like environmen
 
 ![VIFM Bulk Rename](./.assets/vifm_rename.jpg)
 
+## Drop into GUI File Explorer
+
+Ever in need of GUI File Explorer features? Use `gn` to Goto Nemo File Manager.
+
+> If you are using a tiling window manager, look into enabling "swallow"
+> feature to make the jump absolutely seamless. It'll feel like Vifm converted
+> into a GUI File Manager right in front of your eyes.
+
 ## Extra Features
 
 - File View Syntax Highlighting using **highlight**

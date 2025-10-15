@@ -49,6 +49,7 @@ nnoremap rv :OpenRandomVideoFile<CR>l<c-o>
 
 " TOGGLE DOT FILES
 nnoremap gh za
+nnoremap gn :!nemo %d 2>/dev/null<CR>
 
 " FAST NAVIGATION >:D
 nnoremap / /<c-y>
@@ -652,11 +653,11 @@ fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
 filextype {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
       \*.fl[icv],*.m2v,*.mov,*.webm,*.mts,*.m4v,*.r[am],*.qt,*.divx,
       \*.as[fx],*.unknown_video},<video/*>
-      \ {Play using mpv GPU}
+      \ {View using mpv GPU}
       \ mpv --terminal=no %f,
-      \ {     |---- mpv TTY Terminal}
+      \ {     using mpv TTY Terminal}
       \ mpv --vo=tct %f,
-      \ {     |---- mpv Kitty Protocol}
+      \ {     using mpv Kitty Protocol}
       \ mpv --vo=kitty %f,
       \ {View using ffplay}
       \ ffplay -fs -hide_banner -autoexit %f,
