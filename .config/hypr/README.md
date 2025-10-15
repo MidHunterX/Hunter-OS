@@ -14,6 +14,7 @@ Press `SUPER + E` to enter **Execute** Mode and activate the following keys
 
 | Keymap    | Description                                    |
 | --------- | ---------------------------------------------- |
+| N         | **N**eovim as Text Input Mode                  |
 | F         | **F**irefox (Default Profile)                  |
 | E         | **E**xperiment Firefox Profile                 |
 | K         | **K**itty Terminal Emulator                    |
