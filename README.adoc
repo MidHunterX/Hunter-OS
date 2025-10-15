@@ -588,63 +588,6 @@ makepkg -si
 
 == 💽 Core Computational Configurations
 
-=== 🚫 Rage against the Censorship
-
-*dhcpcd* brings up the networking interface (wlp2s0/eth0), assigns IP and other host configurations.
-
-*NetworkManager* gives tools like nmcli and nmtui to connect to WiFi and manage network related tasks more easily.
-
-Both *dhcpcd* and *NetworkManager* have the ability to configure DNS nameservers from your *ISP* in `/etc/resolv.conf`.
-Since we are going to use our own custom DNS config, we need to tell them both to stop auto-generating DNS configurations.
-
-Tell dhcpcd:
-
-[source,bash]
-----
-sudoedit /etc/dhcpcd.conf
-sudo systemctl restart dhcpcd
-----
-
-.📝 /etc/dhcpcd.conf [append]
-[source,bash]
-----
-nohook resolv.conf
-----
-
-Tell NetworkManager:
-
-[source,bash]
-----
-sudoedit /etc/NetworkManager/conf.d/dns.conf
-sudo systemctl restart NetworkManager
-----
-
-.📝 /etc/NetworkManager/conf.d/dns.conf
-[source,bash]
-----
-[main]
-dns=none
-----
-
-Now, set all the DNS nameservers you want to use instead.
-
-[source,bash]
-----
-sudoedit /etc/resolv.conf
-----
-
-.📝 /etc/resolv.conf
-[source,bash]
-----
-# Custom static DNS configuration
-nameserver 1.1.1.1     # Cloudflare
-nameserver 1.0.0.1     # Cloudflare secondary
-nameserver 8.8.8.8     # Google
-nameserver 8.8.4.4     # Google secondary
-----
-
-NOTE: systemd-resolved can also set DNS config but since we are not enabling that service, it will not do anything.
-
 === 👢 GRUB Bootloader
 image:.config/GRUB/.assets/cyberexs.jpg[]
 [source,bash]
@@ -769,6 +712,63 @@ ParallelDownloads = 5
 Color
 ILoveCandy
 ----
+
+=== 🚫 Rage against the Censorship
+
+*dhcpcd* brings up the networking interface (wlp2s0/eth0), assigns IP and other host configurations.
+
+*NetworkManager* gives tools like nmcli and nmtui to connect to WiFi and manage network related tasks more easily.
+
+Both *dhcpcd* and *NetworkManager* have the ability to configure DNS nameservers from your *ISP* in `/etc/resolv.conf`.
+Since we are going to use our own custom DNS config, we need to tell them both to stop auto-generating DNS configurations.
+
+Tell dhcpcd:
+
+[source,bash]
+----
+sudoedit /etc/dhcpcd.conf
+sudo systemctl restart dhcpcd
+----
+
+.📝 /etc/dhcpcd.conf [append]
+[source,bash]
+----
+nohook resolv.conf
+----
+
+Tell NetworkManager:
+
+[source,bash]
+----
+sudoedit /etc/NetworkManager/conf.d/dns.conf
+sudo systemctl restart NetworkManager
+----
+
+.📝 /etc/NetworkManager/conf.d/dns.conf
+[source,bash]
+----
+[main]
+dns=none
+----
+
+Now, set all the DNS nameservers you want to use instead.
+
+[source,bash]
+----
+sudoedit /etc/resolv.conf
+----
+
+.📝 /etc/resolv.conf
+[source,bash]
+----
+# Custom static DNS configuration
+nameserver 1.1.1.1     # Cloudflare
+nameserver 1.0.0.1     # Cloudflare secondary
+nameserver 8.8.8.8     # Google
+nameserver 8.8.4.4     # Google secondary
+----
+
+NOTE: systemd-resolved can also set DNS config but since we are not enabling that service, it will not do anything.
 
 = Personal Notes
 
