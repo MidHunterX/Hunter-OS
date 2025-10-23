@@ -21,12 +21,17 @@ if status is-interactive
   # =================================================
 
   # Semantic abbreviations
+  abbr -a -g unsudo 'sudo -k'
+  # FE - FETCH
   abbr -a -g fe 'fastfetch'
   abbr -a -g fetch 'fastfetch'
+  # GI FE - GIT FETCH
   abbr -a -g gi 'git'
   abbr -a -g gife 'onefetch'
   abbr -a -g gitfetch 'onefetch'
-  abbr -a -g unsudo 'sudo -k'
+  # FF - FILE FIND [NVIM STYLE]
+  abbr -a -g ff 'vifm'
+  abbr -a -g fc 'vicd'
 
   # User abbreviations
   abbr -a -g sayonara 'shutdown now'  # Epic way to Shutdown
@@ -156,8 +161,8 @@ if status is-interactive
   end
   set -g fish_key_bindings fish_hybrid_key_bindings
 
-  # Fish Incognito Mode
-  function incognito -d "Toggle fish's private mode on and off"
+  # Fish Private Mode
+  function private -d "Toggle fish's private mode on and off"
     if set -q fish_private_mode
       set -x INCOGNITO_MODE false # for starship prompt
       exec fish
