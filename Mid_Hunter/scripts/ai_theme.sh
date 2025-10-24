@@ -26,6 +26,15 @@ error() {
   fi
 }
 
+# Linear Interpolation (lerp)
+# Usage: lerp normalized_factor lower_value upper_value
+lerp() {
+  local g="$1"  # normalized factor (0.0–1.0)
+  local d="$2"  # dark / lower value
+  local l="$3"  # light / upper value
+  awk -v g="$g" -v d="$d" -v l="$l" 'BEGIN{print d + (g * (l - d))}'
+}
+
 # Step 1: Locate current wallpaper
 CACHE_FILE="$HOME/.cache/swww/eDP-1"
 # it’s a binary-like file, so use strings
@@ -58,25 +67,21 @@ percent=$(echo "$GRAY_VALUE" | awk '{printf "%.0f", $1/255*100}')
 # Step 3: Choose theme based on brightness
 THRESHOLD=127
 if ((GRAY_VALUE > THRESHOLD)); then
-  type="Light"
+  log "🌄 Light Wallpaper: $GRAY_VALUE/255 ($percent%)"
+  # gsettings set org.gnome.desktop.interface gtk-theme Materia-light
 else
-  type="Dark"
+  log "🌃 Dark Wallpaper: $GRAY_VALUE/255 ($percent%)"
+  # gsettings set org.gnome.desktop.interface gtk-theme Materia-dark
 fi
-
-log "🌄 $type Wallpaper: $GRAY_VALUE/255 ($percent% Bright)"
 
 # Step 4: Autoscale brightness & contrast
 g_norm=$(awk -v g="$GRAY_VALUE" 'BEGIN{print g/255}') # normalize 0–255 to 0–1
 
-brightness=$(awk -v g="$g_norm" -v d="$dark_brightness" -v l="$light_brightness" 'BEGIN{print d - (g * (d - l))}')
-contrast=$(awk -v g="$g_norm" -v d="$dark_contrast" -v l="$light_contrast" 'BEGIN{print d + (g * (l - d))}')
-
-# clamp values just to be safe
-brightness=$(awk -v v="$brightness" 'BEGIN{if(v<0)v=0;if(v>2)v=2;print v}')
-contrast=$(awk -v v="$contrast" 'BEGIN{if(v<0)v=0;if(v>2)v=2;print v}')
+brightness=$(lerp "$g_norm" "$dark_brightness" "$light_brightness")
+contrast=$(lerp "$g_norm" "$dark_contrast" "$light_contrast")
 
 log "☀️ Brightness: $brightness"
 log "🌗 Contrast: $contrast"
 
-hyprctl keyword decoration:blur:brightness $brightness
-hyprctl keyword decoration:blur:contrast $contrast
+hyprctl keyword decoration:blur:brightness $brightness >/dev/null
+hyprctl keyword decoration:blur:contrast $contrast >/dev/null
