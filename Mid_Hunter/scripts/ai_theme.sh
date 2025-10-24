@@ -11,38 +11,33 @@ light_contrast=0.5
 dark_contrast=0.8
 
 log() {
-  local green='\033[1;32m'
-  local reset='\033[0;0m'
+  local grn='\033[1;32m'
+  local rst='\033[0;0m'
   if $print_logs; then
-    echo -e "[${green}$(date +'%H:%M:%S')${reset}] $1"
+    echo -e "[${grn}$(date +'%H:%M:%S')${rst}] $1"
   fi
 }
 
 error() {
   local red='\033[1;31m'
-  local reset='\033[0;0m'
-  if $print_logs; then
-    echo -e "[${red}$(date +'%H:%M:%S')${reset}] $1"
-  fi
+  local rst='\033[0;0m'
+  echo -e "[${red}$(date +'%H:%M:%S')${rst}] $1"
 }
 
 # Linear Interpolation (lerp)
 # Usage: lerp normalized_factor lower_value upper_value
 lerp() {
-  local g="$1"  # normalized factor (0.0–1.0)
-  local d="$2"  # dark / lower value
-  local l="$3"  # light / upper value
+  local g="$1" # normalized factor (0.0–1.0)
+  local d="$2" # dark / lower value
+  local l="$3" # light / upper value
   awk -v g="$g" -v d="$d" -v l="$l" 'BEGIN{print d + (g * (l - d))}'
 }
 
 # Step 1: Locate current wallpaper
 CACHE_FILE="$HOME/.cache/swww/eDP-1"
-# it’s a binary-like file, so use strings
-# cat ~/.cache/swww/eDP-1
-# ^@Lanczos3^@path/to/wallpaper.jpg^@
 WALLPAPER_PATH=$(strings "$CACHE_FILE" | grep -E '^/' | tail -n1)
 if [[ -z "$WALLPAPER_PATH" || ! -f "$WALLPAPER_PATH" ]]; then
-  error "❌ Wallpaper not found or invalid: $WALLPAPER_PATH"
+  error "Wallpaper not found or invalid: $WALLPAPER_PATH"
   exit 1
 fi
 
@@ -52,16 +47,11 @@ log "🎨 Using wallpaper: $WALLPAPER_PATH"
 TMP_IMG="/tmp/theme_color.jpeg"
 magick "$WALLPAPER_PATH" -colorspace gray -resize 1x1 "$TMP_IMG" 2>/dev/null
 if [[ ! -f "$TMP_IMG" ]]; then
-  error "❌ Failed to generate grayscale sample."
+  error "Failed to generate grayscale sample."
   exit 1
 fi
-GRAY_VALUE=$(magick "$TMP_IMG" txt: | awk -F'[()]' '/gray/{print $2}' | awk '{print $1}')
-if [[ -z "$GRAY_VALUE" ]]; then
-  error "❌ Could not extract gray value."
-  exit 1
-fi
+GRAY_VALUE=$(magick "$TMP_IMG" txt: | awk -F'[()]' '/gray\(\w+\)/{print $2}')
 
-GRAY_VALUE=$(echo $GRAY_VALUE | awk '{print int($1)}')
 percent=$(echo "$GRAY_VALUE" | awk '{printf "%.0f", $1/255*100}')
 
 # Step 3: Choose theme based on brightness
