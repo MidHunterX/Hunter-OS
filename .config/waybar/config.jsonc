@@ -46,7 +46,9 @@
     ],
     // ---------------------------------------------------- LEFT MODULE CONFIGS
     "clock": {
-      "format": " {:%H:%M |  %a,%e %b}"
+      // uses : fmt.dev/latest/syntax/#chrono-format-specifications
+      //  HOUR:MINUTE |  YEAR-MONTH-DAY WEEK
+      "format": "󰥔 {:%H:%M | 󰃭 %Y-%m-%d | 󰨳 %a}"
     },
     "idle_inhibitor": {
       "format": "{icon}",
@@ -129,11 +131,11 @@
         "󰤨"
       ],
       "format-ethernet": "{ipaddr}/{cidr}",
-      "tooltip-format": "{essid} - {ifname} via {gwaddr}",
+      "tooltip-format": "{essid} - {ifname} via {gwaddr} ({ipaddr}/{cidr})",
       "format-linked": "{ifname} (No IP)",
       "format-disconnected": "󱚼",
-      "format-disabled": "󰖪",
-      "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}"
+      "format-disabled": "󰖪"
+      // "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}"
     },
     "bluetooth": {
       "format-connected": " {num_connections}",
@@ -216,17 +218,17 @@
       "format-plugged": " {capacity}%",
       // "format-alt": "{time} {icon}",
       "format-icons": [
-        "󰂎",
-        "󰁺",
-        "󰁻",
-        "󰁼",
-        "󰁽",
-        "󰁾",
-        "󰁿",
-        "󰂀",
-        "󰂁",
-        "󰂂",
-        "󰁹"
+        "░░░░░░░░░░ 󰂎",
+        "▉░░░░░░░░░ 󰁺",
+        "▉▉░░░░░░░░ 󰁻",
+        "▉▉▉░░░░░░░ 󰁼",
+        "▉▉▉▉░░░░░░ 󰁽",
+        "▉▉▉▉▉░░░░░ 󰁾",
+        "▉▉▉▉▉▉░░░░ 󰁿",
+        "▉▉▉▉▉▉▉░░░ 󰂀",
+        "▉▉▉▉▉▉▉▉░░ 󰂁",
+        "▉▉▉▉▉▉▉▉▉░ 󰂂",
+        "▉▉▉▉▉▉▉▉▉▉ 󰁹"
       ],
       // "format-icons": ["", "", "", "", ""]
       "on-click": "wlogout"

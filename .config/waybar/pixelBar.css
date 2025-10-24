@@ -22,14 +22,15 @@
   margin-right: 10px;
   padding-left: 25px;
   padding-right: 25px;
-  border-color: #cdd6f4;
-  color: #cdd6f4;
+  border-color: rgba(205, 214, 244, 0.8);
+  color: rgba(205, 214, 244, 0.8);
+  transition: none;
 }
 
 /* Inactive and Empty */
 #workspaces.pixel button.empty {
-  border-color: #6c7086;
-  color: #6c7086;
+  border-color: rgba(108, 112, 134, 0.5);
+  color: rgba(108, 112, 134, 0.5);
 }
 
 /* Active and Full */
