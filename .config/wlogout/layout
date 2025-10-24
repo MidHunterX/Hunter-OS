@@ -18,7 +18,7 @@
 }
 {
     "label" : "goodnight",
-    "action" : "sleep 20 && systemctl poweroff",
+    "action" : "sleep 30 && systemctl poweroff",
     "text" : "Good Night [G]",
     "keybind" : "g"
 }

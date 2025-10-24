@@ -15,7 +15,7 @@ speed and efficiency.
 Fuzzy matchable emojis using Fuzzel. Select entry `nerd font` in Emoji list to
 load up Nerd Font list.
 
-## Reboot Directly to W*ndows (reboot_to_windows.sh)
+## Reboot Directly to W\*ndows (reboot_to_windows.sh)
 
 ![reboot_to_windows.sh](./.assets/reboot_to_windows.jpg)
 
@@ -28,7 +28,7 @@ reboots.
 | -------------------- | -------------------------------------------------- |
 | ai_brightness.sh     | Automatically set brightness based on your history |
 | ai_idle.sh           | Automatically execute commands after timeout       |
-| ai_wallpaper.sh      | Automatically set wallpaper based on time          |
+| ai_theme.sh          | Wallpaper based auto transparency and more         |
 | fetch.sh             | Simple Fetch Script                                |
 | kill_hypr.sh         | Kill Hyprland Safely                               |
 | menu_emoji.sh        | Emoji Selector                                     |
