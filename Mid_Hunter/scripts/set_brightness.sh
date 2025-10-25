@@ -2,103 +2,106 @@
 
 BLU='\033[0;34m'
 YLO='\033[0;33m'
+GRN='\033[1;32m'
 RESET='\033[0;0m'
 
-CURRENT_BRIGHTNESS=$(brillo)
-
-# Sourcing Config file
-CONFIG_FILE=~/Mid_Hunter/scripts/set_brightness.conf
-source ${CONFIG_FILE}
+CONFIG_FILE="${HOME}/Mid_Hunter/scripts/set_brightness.conf"
 INTERVALS=15
+DIVISIONS=$((60 / INTERVALS))
 
-# CURRENT, PREVIOUS AND NEXT HOUR VARIABLES
-THIS_HOUR=$(date +"%H")
-THIS_MIN=$(date +"%M")
-# Jump to Next datapoint if Min > 30
-if [[ $THIS_MIN > 30 ]]; then
-  THIS_HOUR=$((10#$THIS_HOUR+1))
-  printf -v THIS_HOUR "%02d" $THIS_HOUR
-fi
-NEXT_HOUR=$((10#$THIS_HOUR+1))
-PREV_HOUR=$((10#$THIS_HOUR-1))
-printf -v NEXT_HOUR "%02d" $NEXT_HOUR
-printf -v PREV_HOUR "%02d" $PREV_HOUR
-# Boundary handling for the current hour
-if [[ $THIS_HOUR == 00 ]]; then PREV_HOUR=23; fi
-if [[ $THIS_HOUR == 23 ]]; then NEXT_HOUR=00; fi
-PREV_VAR="BR_${PREV_HOUR}_00"
-THIS_VAR="BR_${THIS_HOUR}_00"
-NEXT_VAR="BR_${NEXT_HOUR}_00"
-PREV_VAL="${!PREV_VAR}"
-THIS_VAL="${!THIS_VAR}"
-NEXT_VAL="${!NEXT_VAR}"
+[[ -f "$CONFIG_FILE" ]] || {
+  echo "Config file not found: $CONFIG_FILE" >&2
+  exit 1
+}
+source "$CONFIG_FILE"
 
+calc() {
+  local result
+  result=$(awk "BEGIN {print $*}")
 
-# Update Average Brightness
-AVG_BR=$(awk "BEGIN {printf \"%.2f\", ($THIS_VAL + $CURRENT_BRIGHTNESS) / 2}")
-# Roundoff into integer
-# AVG_BR=$(printf "%.0f" $AVG_BR)
-# Set value in config for next time
-sed -i "s/\($THIS_VAR *= *\).*/\1$AVG_BR/" $CONFIG_FILE
-# Update New value for generating gradient
-THIS_VAL="${AVG_BR}"
+  if [[ "$result" =~ ^-?[0-9]+$ ]]; then
+    printf "%d" "$result"
+  else
+    printf "%.2f" "$result"
+  fi
+}
 
+update_config_value() {
+  local key="$1" val="$2"
+  sed -i "s/\(${key} *= *\).*/\1${val}/" "$CONFIG_FILE"
+}
 
-DIVISIONS=$((60/$INTERVALS))
+clamp_hour() {
+  local h="$1"
+  ((h < 0)) && echo "23" && return
+  ((h > 23)) && echo "00" && return
+  printf "%02d" "$h"
+}
 
+# Returns:
+# var $THIS_HOUR
+# var $PREV_HOUR
+# var $NEXT_HOUR
+get_time_context() {
+  local hour minute
+  hour=$(date +"%H")
+  minute=$(date +"%M")
+  # Jump to next datapoint if >30 min
+  ((minute > 30)) && hour=$((10#$hour + 1))
+  THIS_HOUR=$(clamp_hour "$hour")
+  PREV_HOUR=$(clamp_hour $((10#$THIS_HOUR - 1)))
+  NEXT_HOUR=$(clamp_hour $((10#$THIS_HOUR + 1)))
+}
 
-# UPDATE Linear Gradient - from PREV to THIS
-# ------------------------------------------
-# BRIGHTNESS DIFFERENCE (Floating Point Arithmetic)
-BR_DIFF=$(echo | awk "{print $THIS_VAL - $PREV_VAL}")
-DIV_INC=$(echo | awk "{print $BR_DIFF / $DIVISIONS}")
-# Roundoff into integer
-# printf -v DIV_INC "%.2f" $DIV_INC
+# procedure: prints out gradient, updates config
+# usage: generate_gradient from_hour to_hour from_val to_val
+generate_gradient() {
+  local from_hour="$1" _="$2" from_val="$3" to_val="$4"
 
-# LOG: PREV VARIABLE
-echo "${PREV_VAR} = ${PREV_VAL}"
+  local diff step
+  diff=$(calc "${to_val} - ${from_val}")
+  step=$(calc "${diff} / ${DIVISIONS}")
 
-# Generate Interval Values
-DIV_POINT=00
-for ((i = 1; i < $DIVISIONS; i++)); do
-  DIV_POINT=$((10#$DIV_POINT+$INTERVALS))
-  printf -v DIV_POINT "%02d" $DIV_POINT
-  # Interval Variable Names
-  DIV_VAR="BR_${PREV_HOUR}_${DIV_POINT}"
-  # Generated Values in float
-  GEN_VAL=$(echo | awk "{print $PREV_VAL + ($DIV_INC * $i)}")
-  # Roundoff into integer
-  # GEN_VAL=$(printf "%.0f" $GEN_VAL)
-  # Update linear gradient in config
-  echo "${DIV_VAR} = ${GEN_VAL}"
-  sed -i "s/\($DIV_VAR *= *\).*/\1$GEN_VAL/" $CONFIG_FILE
-done
+  local div_point=0
+  for ((i = 1; i < DIVISIONS; i++)); do
+    div_point=$((10#$div_point + INTERVALS))
+    printf -v div_point "%02d" "$div_point"
+    local var="BR_${from_hour}_${div_point}"
+    local val
+    val=$(calc "${from_val} + (${step} * ${i})")
+    echo "${var} = ${val}"
+    update_config_value "$var" "$val"
+  done
+}
 
-# LOG: THIS VARIABLE
-echo -e "\033[1;32m${THIS_VAR} = ${THIS_VAL}\033[0;0m"
+main() {
+  local current_brightness
+  current_brightness=$(brillo)
 
-# UPDATE Linear Gradient - from THIS to NEXT
-# ------------------------------------------
-# BRIGHTNESS DIFFERENCE (Floating Point Arithmetic)
-BR_DIFF=$(echo | awk "{print $NEXT_VAL - $THIS_VAL}")
-DIV_INC=$(echo | awk "{print $BR_DIFF / $DIVISIONS}")
-printf -v DIV_INC "%.2f" $DIV_INC
+  get_time_context
 
-# Generate Interval Values
-DIV_POINT=00
-for ((i = 1; i < $DIVISIONS; i++)); do
-  DIV_POINT=$((10#$DIV_POINT+$INTERVALS))
-  printf -v DIV_POINT "%02d" $DIV_POINT
-  # Interval Variable Names
-  DIV_VAR="BR_${THIS_HOUR}_${DIV_POINT}"
-  # Generated Values in float
-  GEN_VAL=$(echo | awk "{print $THIS_VAL + ($DIV_INC * $i)}")
-  # Roundoff into integer
-  # GEN_VAL=$(printf "%.0f" $GEN_VAL)
-  # Update linear gradient in config
-  echo "${DIV_VAR} = ${GEN_VAL}"
-  sed -i "s/\($DIV_VAR *= *\).*/\1$GEN_VAL/" $CONFIG_FILE
-done
+  # Resolve brightness vars dynamically
+  local PREV_VAR="BR_${PREV_HOUR}_00"
+  local THIS_VAR="BR_${THIS_HOUR}_00"
+  local NEXT_VAR="BR_${NEXT_HOUR}_00"
 
-# LOG: NEXT VARIABLE
-echo "${NEXT_VAR} = ${NEXT_VAL}"
+  local PREV_VAL="${!PREV_VAR}"
+  local THIS_VAL="${!THIS_VAR}"
+  local NEXT_VAL="${!NEXT_VAR}"
+
+  # Average current & stored brightness
+  local AVG_BR
+  AVG_BR=$(calc "(${THIS_VAL} + ${current_brightness}) / 2")
+  update_config_value "$THIS_VAR" "$AVG_BR"
+  THIS_VAL="$AVG_BR"
+
+  echo -e "${YLO}${PREV_VAR} = ${PREV_VAL} # PREV${RESET}"
+  generate_gradient "$PREV_HOUR" "$THIS_HOUR" "$PREV_VAL" "$THIS_VAL"
+  echo -e "${GRN}${THIS_VAR} = ${THIS_VAL} # THIS${RESET}"
+  generate_gradient "$THIS_HOUR" "$NEXT_HOUR" "$THIS_VAL" "$NEXT_VAL"
+  echo -e "${BLU}${NEXT_VAR} = ${NEXT_VAL} # NEXT${RESET}"
+
+  echo -e "\n${GRN}Brightness interpolation updated successfully.${RESET}"
+}
+
+main "$@"
