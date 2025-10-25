@@ -410,6 +410,7 @@ When using `curlftpfs` to FUSE mount and copy files over FTP, there's a common i
 | hyprland                    | Wayland compositor           | pacman
 | xdg-desktop-portal-hyprland | Desktop Integration Portal   | pacman
 | swayidle                    | Wayland Idle Manager         | pacman
+| swayosd                     | On Screen Display Window     | pacman
 | waybar                      | Wayland Status Bar           | pacman
 | wl-clipboard                | wl-copy + wl-paste           | pacman
 | wtype                       | Wayland Keystrokes Emulation | pacman
@@ -579,12 +580,22 @@ makepkg -si
 
 [%header]
 |===
-| Service                | Description
+| Service Name           | Description
 | dhcpcd.service         | DHCP/ IPv4LL/ IPv6RA/ DHCPv6 client
 | NetworkManager.service | Network connection manager
+
 | https://github.com/MidHunterX/Hunter-OS/tree/master/.config/keyd/[keyd.service]
 | A key remapping daemon for linux
+
+| swayosd-libinput-backend.service
+| Libinput daemon for sway OSD server
 |===
+
+.Enable services at startup with:
+[source,bash]
+----
+systemctl enable <Service_Name>
+----
 
 == 💽 Core Computational Configurations
 
