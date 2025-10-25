@@ -164,6 +164,7 @@ set tabprefix="%5*%[%1*%C%] %3*%[%1*%C%]%N:"
 set tabsuffix="%4*%[%2*%C%]%4*"
 
 " DIR VIEW FORMAT
+" Uses sorting keys: https://vifm.info/docs/vifm-app.txt#vifm-%27sort%27
 " set viewcolumns=*{name}..,12{perms},8{size}.
 
 " DELETE CONFIRMATION
@@ -639,7 +640,7 @@ filextype {*.bmp,*.jpg,*.jpeg,*.png,*.xpm},<image/*>
       \ {View in nomacs}
       \ nomacs %f -m 'frameless',
       \ {Set as Wallpaper with SWWW}
-      \ swww img %f -t 'center',
+      \ swww img %f && bash ~/Mid_Hunter/scripts/ai_theme.sh &,
       \ {Edit in NeoVim}
       \ nvim %f,
 fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
@@ -659,6 +660,8 @@ filextype {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
       \ mpv --vo=tct %f,
       \ {     using mpv Kitty Protocol}
       \ mpv --vo=kitty %f,
+      \ {Set as Wallpaper with mpvpaper}
+      \ $VIFM/scripts/mpvpaper.sh %f,
       \ {View using ffplay}
       \ ffplay -fs -hide_banner -autoexit %f,
       \ {View using Dragon}
@@ -966,6 +969,7 @@ set classify+='
       \  ::.python_history,,.tox,,__pycache__,,pyproject.toml::,
       \  ::.electron-gyp/,,.node-gyp/,,.npm/,,node_modules/::,
       \  ::.audacity-data/,,.config/,,bin/,,conf.d/,,config/,,cron.d/,,cron.daily/::,
+      \  ::lib/,,lib64/,,lib32/,,libexec/,,libx86/,,local/,,share/,,var/::,
       \  ::cron.hourly/,,cron.monthly/,,cron.weekly/,,etc/,,include/,,metadata/,,sbin/::,
       \  ::user-dirs.dirs/,,xorg.conf.d/::,
       \  ::*.phar,,*.php,,composer.json,,composer.lock::,
