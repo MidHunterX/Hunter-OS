@@ -4,49 +4,7 @@ BLU='\033[0;34m'
 YLO='\033[0;33m'
 RESET='\033[0;0m'
 
-# Switch to alternate screen + hide cursor
-tput smcup
-tput civis
-
-draw_ui() {
-  local BAR
-  CURRENT_BRIGHTNESS=$(brillo)
-  BAR=$(echo "$(printf '─%.0s' $(seq 1 ${CURRENT_BRIGHTNESS:0:-3}))")
-
-  tput cup 0 0
-  echo ""
-  echo -e ${BLU}" Hunter Brightness Script (u/d/x)"${RESET}
-  echo " --------------------------------"
-  echo -e -n " 󰃟 " ${YLO}${BAR:0:27} ${RESET}"\n"
-  echo -e -n " Current Brightness:" ${YLO}${CURRENT_BRIGHTNESS}${RESET}
-  tput ed
-}
-
-draw_ui
-
-while true; do
-  read -rsn1 junk
-  case $junk in
-    u) brillo -A 0.5 ;;
-    d) brillo -U 0.5 ;;
-    x) break ;;
-    q) DONT_STORE=true && break ;;
-    *) echo -n "Invalid Input! Try: u/d/x" ;;
-  esac
-  draw_ui
-done
-
-# Restore normal screen + cursor
-tput rmcup
-tput cnorm
-
-if [[ $DONT_STORE ]]; then
-  exit 0
-fi
-
-# ========================================================================== #
-#                               STORING VALUES                               #
-# ========================================================================== #
+CURRENT_BRIGHTNESS=$(brillo)
 
 # Sourcing Config file
 CONFIG_FILE=~/Mid_Hunter/scripts/set_brightness.conf

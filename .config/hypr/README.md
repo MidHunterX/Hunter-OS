@@ -20,8 +20,8 @@ Press `SUPER + E` to enter **Execute** Mode and activate the following keys
 | K         | **K**itty Terminal Emulator                    |
 | W         | **W**aybar Refresh                             |
 | SHIFT + W | **W**aybar Toggle                              |
-| B         | **B**rightness Script                          |
-| V         | **V**olume Script                              |
+| B         | **B**rightness Mode                            |
+| V         | **V**olume Mode                                |
 | P         | **P**rint Screen with Tesseract OCR Extraction |
 | ESC       | Disable Execute Mode                           |
 
