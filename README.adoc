@@ -55,6 +55,12 @@ link:https://github.com/MidHunterX/Intention[Intention]: An implementation of
 Proactive computing where you simply state your intent and let your computer
 change and modify its environment to adapt to your intention. Abstracts away
 Operating Systems to use it as specialized environment for a specific intent.
+
+link:Mid_Hunter/scripts/ai_theme.sh[Adaptive Window Contrast]: An adaptive
+interface design solution for UI contrast issues with transparent windows. It
+makes the window text readable against both light and dark wallpapers by
+detecting the brightness of the Wallpaper and adjusting the perceived
+transparency of the window (via blur brightness + contrast).
 ====
 
 == 💼 Carefully Concocted Custom Configurations
