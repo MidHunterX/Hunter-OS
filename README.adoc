@@ -51,8 +51,9 @@ non-intrusive ambient notification of life events and schedules. Know time
 schedule without knowing the time. Useful for humans with low interoception who
 works on computers all day.
 
-link:https://github.com/MidHunterX/Intention[Intention]: State your intent and
-let your computer change itself to adapt to your intention. Abstracts away
+link:https://github.com/MidHunterX/Intention[Intention]: An implementation of
+Proactive computing where you simply state your intent and let your computer
+change and modify its environment to adapt to your intention. Abstracts away
 Operating Systems to use it as specialized environment for a specific intent.
 ====
 

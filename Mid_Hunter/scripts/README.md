@@ -36,5 +36,5 @@ reboots.
 | menu_update.sh       | Emoji Update Script                                |
 | menu_wifi.sh         | Wifi Selector                                      |
 | reboot_to_windows.sh | Reboots directly to Windows                        |
-| set_brightness.sh    | Set Brightness using brillo                        |
+| set_brightness.sh    | Brightness preference learner using brillo         |
 | set_volume.sh        | Sets Systemwide Volume using pamixer               |
