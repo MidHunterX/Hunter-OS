@@ -79,9 +79,9 @@ Click the links below for a detailed documentation.
 | File Manager
 | image:.config/vifm/.assets/vifm.jpg[,128,link=.config/vifm/]
 
-| link:https://github.com/MidHunterX/HunterX-PDE[📝 NeoVim]
+| link:https://github.com/MidHunterX/NvME[📝 NeoVim]
 | TUI Code Editor
-| image:https://github.com/MidHunterX/NvME/blob/37a9ab0ee56159f744e670831e315ca085a7b218/img/nvim_dashboard.jpg[,128,link=https://github.com/MidHunterX/HunterX-PDE]
+| image:https://github.com/MidHunterX/NvME/blob/37a9ab0ee56159f744e670831e315ca085a7b218/img/nvim_dashboard.jpg[,128,link=https://github.com/MidHunterX/NvME]
 
 | link:.mozilla/[🦊 FireFox]
 | Web Browser
@@ -163,7 +163,7 @@ subgraph XOSCRP Layer
   intention(<a href='https://github.com/MidHunterX/Intention'>Intention</a>)
   linux(Linux OS)
   windows(Windows OS)
-  grub{GRUB Bootloader}
+  grub{<a href='https://github.com/MidHunterX/Hunter-OS?tab=readme-ov-file#-grub-bootloader'>GRUB</a>}
   keyd{{<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/keyd/'>KeyD</a>}}
 end
 
@@ -190,7 +190,7 @@ grep{{🟡 ripgrep / grep}}
 exif{{🟡 exiv2}}
 tmux{{🔴 tmux}}
 syntax{{🔴 highlight}}
-nvim(<a href='https://github.com/MidHunterX/HunterX-PDE'>NeoVim</a>)
+nvim(<a href='https://github.com/MidHunterX/NvME'>NeoVim</a>)
 kitty(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/kitty/'>Kitty</a>)
 fish(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/fish/'>Fish Shell</a>)
 vos(VOS)
