@@ -32,7 +32,7 @@ set render-loading "false"
 
 # zathurarc-dark
 set font "Ubuntu 18"
-set default-bg "rgba(25, 25, 25, 0.6)" #00
+set default-bg "rgba(25, 25, 25, 0.0)" #00
 set default-fg "#FFFFFF" #01
 
 set statusbar-fg "#B0B0B0" #04
