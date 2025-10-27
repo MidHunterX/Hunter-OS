@@ -168,7 +168,7 @@ subgraph XOSCRP Layer
 end
 
 intention --> grub --> linux & windows
-linux & windows --> intention
+linux --> intention
 keyd --> linux
 
 
@@ -176,22 +176,21 @@ subgraph Orchestration Layer
   hypr(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/hypr'>Hyprland</a>)
   run(<a href='https://github.com/MidHunterX/Project-Launcher'>Project Launcher</a>)
   expression(<a href='https://github.com/MidHunterX/Expression'>Expression</a>)
-  swww{{🔴 swww}}
+  kitty(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/kitty/'>Kitty</a>)
 end
 
 linux ==> hypr
 
-
+swww{{🔴 swww}}
 vifm(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/vifm'>VIFM</a>)
 ls{{🟡 lsd / ls}}
 cat{{🟡 bat / cat}}
 find{{🟡 fd / find}}
 grep{{🟡 ripgrep / grep}}
 exif{{🟡 exiv2}}
-tmux{{🔴 tmux}}
-syntax{{🔴 highlight}}
+tmux{{🟡 tmux}}
+syntax{{🟡 highlight}}
 nvim(<a href='https://github.com/MidHunterX/NvME'>NeoVim</a>)
-kitty(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/kitty/'>Kitty</a>)
 fish(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/fish/'>Fish Shell</a>)
 vos(VOS)
 cd{{🟡 zoxide / cd}}
@@ -204,18 +203,24 @@ fzf{{🔴 fzf}}
 git{{🟡 git / lazygit}}
 prompt(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/starship/'>Starship Prompt</a>)
 
-hypr --> kitty & expression
-expression --> swww
-hypr <--> swww & waybar
+hypr --> kitty
+hypr --startup--> expression --> swww --wayland--> hypr
+hypr --startup--> swww & waybar
+waybar --submap--> hypr
 run --> tmux & nvim
 
-kitty --> nvim & fish
+kitty --scrollback pager--> nvim
+kitty --default shell--> fish
 fish --> ls & vifm & nvim & cd & git & vos & brs & cat & find & prompt
 cd --> ls --> nf
-prompt & fish --> subshell[[VIFM_MODE]] --> vifm
-vifm --> ls & exif & syntax & nf & fzf & find
-nvim <--> vifm
-nvim --> nf & find & git & grep & kitty
+prompt & fish --$VIFM_MODE--> vifm
+vifm --> ls & exif & nf
+vifm --syntax highlighting--> syntax
+vifm --file search--> fzf & find
+nvim --vifm.vim--> vifm
+vifm --$editor--> nvim
+nvim --> nf & find & git & grep
+nvim --graphics_protocol--> kitty
 waybar --> volume & brillo & nf
 vos --> volume
 brs --> brillo
