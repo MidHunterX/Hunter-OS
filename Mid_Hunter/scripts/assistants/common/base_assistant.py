@@ -13,7 +13,7 @@ class BaseAssistant:
         self.image_path = image_path
         self.hints = hints
 
-    def _execute_command(self, command: list[str]):
+    def execute_command(self, command: list[str]):
         """Executes a shell command."""
         try:
             subprocess.run(command, check=True, capture_output=True, text=True)
@@ -37,7 +37,7 @@ class BaseAssistant:
             self.name,
             message_text,
         ]
-        self._execute_command(command)
+        self.execute_command(command)
 
 
 class Singleton:

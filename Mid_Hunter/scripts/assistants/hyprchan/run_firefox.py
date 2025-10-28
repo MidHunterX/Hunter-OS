@@ -71,10 +71,7 @@ def main():
     pid = find_firefox_process(profile_name)
 
     if pid:
-        print(
-            f"'{profile_name}' Firefox instance found with PID: {pid}. Focusing window."
-        )
-        subprocess.run(["hyprctl", "dispatch", "focuswindow", f"pid:{pid}"])
+        hypr_chan.focus_window(pid)
         hypr_chan.message(random.choice(COMMENTS), 1000)
         sys.exit(0)
 

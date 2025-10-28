@@ -17,6 +17,10 @@ class HyprChan(BaseAssistant):
         hints = ["-h", "string:frcolor:#52efb3", "-h", "string:bgcolor:#1f4738"]
         super().__init__(name, str(image_path), hints)
 
+    def focus_window(self, pid: str | int):
+        """Focuses the window with the given PID."""
+        self.execute_command(["hyprctl", "dispatch", "focuswindow", f"pid:{pid}"])
+
     # TODO: Use get_active_window for user intent detection
     @staticmethod
     def get_active_window() -> dict:
