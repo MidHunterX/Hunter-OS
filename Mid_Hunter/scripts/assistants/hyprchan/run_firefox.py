@@ -43,20 +43,29 @@ def find_firefox_process(profile_name: str) -> str | None:
         result = subprocess.run(["ps", "aux"], capture_output=True, text=True)
         for line in result.stdout.strip().split("\n"):
             parts = line.strip().split(maxsplit=2)
-
-            if len(parts) < 2:
-                continue
-
             #    1,   2,    3,    4,   5,   6,   7,    8,     9,   10,      11
             # USER, PID, %CPU, %MEM, VSZ, RSS, TTY, STAT, START, TIME, COMMAND
-
-            _, pid, cmd = parts
-
-            if "firefox" in cmd and f"-P {profile_name}" in cmd:
+            if len(parts) < 3:
+                continue  # Skip lines with less than 3 parts
+            _, pid, cmd = parts  # 1.USER, 2.PID, Parts 3-11
+            if ("firefox" in cmd) and (f"-P {profile_name}" in cmd):
                 return pid
     except FileNotFoundError:
         print("Error: 'ps' command not found.")
     return None
+
+
+def daily_personal_tab(ff_attribs: list[str]):
+    """Extends ff_attribs list if it's first run of the day for "Personal" profile."""
+    hist_file = Path.home() / ".cache/run_firefox_history.txt"
+    date_today: str = str(datetime.date.today())
+    date_last_run: str = hist_file.read_text().strip() if hist_file.exists() else ""
+
+    if date_today != date_last_run:
+        print("First run of the day for 'Personal' profile. Adding new tab.")
+        ff_attribs.extend(["-new-tab", "https://app.daily.dev/"])
+        hist_file.parent.mkdir(parents=True, exist_ok=True)
+        hist_file.write_text(date_today)
 
 
 def main():
@@ -82,18 +91,7 @@ def main():
 
     # Logic for daily new tab for "Personal" profile
     if profile_name == "Personal":
-        hist_file = Path.home() / ".cache/run_firefox_history.txt"
-        today = datetime.date.today()
-
-        last_run_date_str = ""
-        if hist_file.exists():
-            last_run_date_str = hist_file.read_text().strip()
-
-        if str(today) != last_run_date_str:
-            print("First run of the day for 'Personal' profile. Adding new tab.")
-            ff_attribs.extend(["-new-tab", "https://app.daily.dev/"])
-            hist_file.parent.mkdir(parents=True, exist_ok=True)
-            hist_file.write_text(str(today))
+        daily_personal_tab(ff_attribs)
 
     # Determine workspace and launch command
     workspace_cmd = []
@@ -105,8 +103,7 @@ def main():
     # Use Popen to run Firefox in the background
     launch_cmd = ["firefox", *ff_attribs]
     if workspace_cmd:
-        # Hyprland's exec handles launching the process in the background
-        subprocess.run([*workspace_cmd, *launch_cmd])
+        hypr_chan.execute_command([*workspace_cmd, *launch_cmd])
     else:
         # Fallback for other profiles without a specific workspace
         subprocess.Popen(launch_cmd)

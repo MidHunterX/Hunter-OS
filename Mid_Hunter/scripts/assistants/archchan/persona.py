@@ -145,4 +145,4 @@ class ArchChan(BaseAssistant):
             self.name,
             message,
         ]
-        self._execute_command(command)
+        self.execute_command(command)

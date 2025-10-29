@@ -36,7 +36,7 @@ Handles Personal Assistance Tasks based on generated data
 
 ---
 
-# Data Driven Context Awareness System (Research Phase)
+# Data Driven Context Awareness System
 
 ## Ideas for tools
 
@@ -97,6 +97,7 @@ System = {
     Time : {},
 }
 ```
+
 ### Check Audio Playing
 
 ```bash
@@ -106,7 +107,7 @@ echo $system_sound
 
 ---
 
-# Awareness Driven Action System (Research Phase)
+# Awareness Driven Action System
 
 - Auto Suspend on idle at work time
 - Set Auto Shutdown on idle after sleep time
@@ -123,7 +124,7 @@ echo $system_sound
 
 ---
 
-# Awareness Driven Emotion System (Research Phase)
+# Awareness Driven Emotion System
 
 ## Possible Algorithms
 
@@ -132,11 +133,46 @@ echo $system_sound
 - Human Neuro Transmitters Emulation
 - Videogame Design - RPG Stat System
 
-## Neuro Transmitters Algorithm
+## Neurotransmitters
 
-- Serotonin - Well being and happiness
-- Oxytocin - Love, affection and trust
-- Dopamine - Pleasure and reward center
+### Adrenaline `Fight or Flight`
+
+Also known as epinephrine, is a hormone produced in high stress or exciting
+situations. This leads to a physical boost, and heightened awareness.
+
+### Noradrenaline `Concentration`
+
+Also known as norepinephrine, affects attention & and responding actions in the
+brain. Alongside adrenaline, also involved in the ‘fight or flight’ response.
+
+### Dopamine `Pleasure`
+
+Associated with feelings of pleasure & satisfaction. It is also associated with
+addiction, movement, and motivation. The feelings of satisfaction caused by
+dopamine can become desired, repeat behaviours that lead to dopamine release.
+
+### Serotonin `Mood`
+
+Well-being and happiness. Regulates the sleep cycle along with melatonin. Low
+levels of serotonin have been linked to depression, anxiety.
+
+### GABA `Calming`
+
+Gamma-aminobutyric acid (GABA) is the major inhibitory neurotransmitter of the
+brain. Increased levels improve mental focus and relaxation, whilst low levels
+can cause anxiety.
+
+### Acetylcholine `Learning`
+
+Involved in thought, learning and memory. In the body, it is involved in
+activating muscle action. Acetylcholine is also associated with attention, and
+enhancement of sensory perception upon waking.
+
+### Endorphins `Euphoria`
+
+Released in the brain during exercise, excitement, pain, and sexual activity,
+and produce a feeling of well-being or even euphoria. Certain foods, such as
+chocolate & spicy foods, can also stimulate the release of endorphins.
 
 ## Personal Factors (contents)
 
