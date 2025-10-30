@@ -69,11 +69,19 @@ def daily_personal_tab(ff_attribs: list[str]):
 
 
 def main():
-    if len(sys.argv) < 2:
-        print(f"Usage: {sys.argv[0]} Profile_Name")
+    if len(sys.argv) <= 1:
+        print(f"Usage: {sys.argv[0]} Profile_Name [URL]")
         sys.exit(1)
 
     profile_name = sys.argv[1]
+
+    ff_attribs = ["-P", profile_name, "-no-remote"]
+
+    # Add URL if provided
+    if len(sys.argv) >= 3:
+        url = sys.argv[2]
+        ff_attribs.extend(["-new-tab", url])
+
     hypr_chan = HyprChan()
 
     # Check if an instance is already running
@@ -86,8 +94,6 @@ def main():
 
     # Logic to launch a new instance
     print(f"No running instance for profile '{profile_name}'. Launching new one.")
-
-    ff_attribs = ["-P", profile_name, "-no-remote"]
 
     # Logic for daily new tab for "Personal" profile
     if profile_name == "Personal":
