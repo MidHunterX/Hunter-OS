@@ -78,6 +78,7 @@ def main():
     ff_attribs = ["-P", profile_name, "-no-remote"]
 
     # Add URL if provided
+    url = ""
     if len(sys.argv) >= 3:
         url = sys.argv[2]
         ff_attribs.extend(["-new-tab", url])
@@ -88,6 +89,9 @@ def main():
     pid = find_firefox_process(profile_name)
 
     if pid:
+        if url:
+            launch_cmd = ["firefox", *ff_attribs]
+            hypr_chan.execute_command([*launch_cmd])
         hypr_chan.focus_window(pid)
         hypr_chan.message(random.choice(COMMENTS), 1000)
         sys.exit(0)
