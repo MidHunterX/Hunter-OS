@@ -441,7 +441,6 @@ fileviewer *.os highlight -O ansi --syntax os
 fileviewer *.oz highlight -O ansi --syntax oz
 fileviewer *.paradox,*.sc highlight -O ansi --syntax paradox
 fileviewer *.pas highlight -O ansi --syntax pas
-fileviewer *.pdf highlight -O ansi --syntax pdf
 fileviewer *.perl,*.cgi,*.perl,*.pl,*.plex,*.plx,*.pm highlight -O ansi --syntax perl
 fileviewer *.php,*.php3,*.php4,*.php5,*.php6,*.php7,*.phps,*.phpt highlight -O ansi --syntax php
 fileviewer *.pike,*.pmod highlight -O ansi --syntax pike
@@ -593,6 +592,8 @@ fileviewer {*.pdf},<application/pdf>
       " Maintains columns, hyphenation etc.
       \ pdftotext -nopgbrk -layout %c -,
       \ pdfinfo %c,
+      " Actual PDF Binary Data
+      \ highlight -O ansi --syntax pdf,
 
 "  AUDIO
 filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ac3,*.og[agx],*.opus,*.aac,*.mpga},<audio/*>
