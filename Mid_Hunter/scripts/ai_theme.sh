@@ -5,6 +5,8 @@
 print_logs=false
 [[ "$1" == "--log" ]] && print_logs=true
 
+AUTOSCALE_STRATEGY="auto" # customize | auto
+
 log() {
     local grn='\033[1;32m'
     local rst='\033[0;0m'
@@ -58,12 +60,6 @@ fi
 # AUTOSCALE BRIGHTNESS & CONTRAST
 # -----------------------------------------------------------------------------
 
-# Preference
-light_brightness=0.2
-dark_brightness=0.6
-light_contrast=0.5
-dark_contrast=0.8
-
 # Linear Interpolation (lerp)
 # Usage: lerp normalized_factor lower_value upper_value
 # Where,
@@ -79,8 +75,34 @@ lerp() {
 
 g_norm=$(awk -v g="$GRAY_VALUE" 'BEGIN{print g/255}') # normalize 0–255 to 0–1
 
-brightness=$(lerp "$g_norm" "$dark_brightness" "$light_brightness")
-contrast=$(lerp "$g_norm" "$dark_contrast" "$light_contrast")
+case "$AUTOSCALE_STRATEGY" in
+"customize")
+    # Personal Preference
+    light_brightness=0.2
+    dark_brightness=0.6
+    light_contrast=0.5
+    dark_contrast=0.8
+
+    brightness=$(lerp "$g_norm" "$dark_brightness" "$light_brightness")
+    contrast=$(lerp "$g_norm" "$dark_contrast" "$light_contrast")
+    ;;
+"auto")
+    target_darkness=0.6 # target percent of window darkness (0.0 - 1.0)
+    # scale: how strong the adaptation should be
+    # the lower the scale, the less adaptation between light and dark walls
+    scale=0.4
+
+    darkness_factor=$(awk -v g="$g_norm" 'BEGIN{print 1 - g}')
+    adapt=$(awk -v d="$darkness_factor" -v p="$target_darkness" 'BEGIN{print d - p}')
+
+    brightness=$(awk -v a="$adapt" -v s="$scale" 'BEGIN{print 0.5 + (a * s)}')
+    contrast=$(awk -v a="$adapt" -v s="$scale" 'BEGIN{print 0.7 + (a * s)}')
+    ;;
+*)
+    brightness=0.5
+    contrast=0.5
+    ;;
+esac
 
 log "☀️ Brightness: $brightness"
 log "🌗 Contrast: $contrast"
