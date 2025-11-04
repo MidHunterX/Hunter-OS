@@ -21,6 +21,7 @@ if status is-interactive
   # =================================================
 
   # Semantic abbreviations
+  abbr -a -g in 'intention'
   abbr -a -g unsudo 'sudo -k'
   # FE - FETCH
   abbr -a -g fe 'fastfetch'
@@ -29,9 +30,9 @@ if status is-interactive
   abbr -a -g gi 'git'
   abbr -a -g gife 'onefetch'
   abbr -a -g gitfetch 'onefetch'
-  # FF - FILE FIND [NVIM STYLE]
-  abbr -a -g ff 'vifm'
-  abbr -a -g fc 'vicd'
+  # Reducing aukward finger movements
+  abbr -a -g vm 'vifm'
+  abbr -a -g vc 'vicd'
 
   # User abbreviations
   abbr -a -g sayonara 'shutdown now'  # Epic way to Shutdown
@@ -42,7 +43,7 @@ if status is-interactive
   abbr -a -g vos 'bash ~/Mid_Hunter/scripts/set_volume.sh'  # Volume
   abbr -a -g woman 'man -k . | fzf | awk \'{print $1}\' | xargs man'
 
-  alias arch 'bash ~/Mid_Hunter/scripts/archchan/get_command-list.sh'
+  alias arch 'bash ~/Mid_Hunter/scripts/assistants/archchan/get_command-list.sh'
   alias vim 'nvim'
 
 

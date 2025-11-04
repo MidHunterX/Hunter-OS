@@ -15,13 +15,14 @@ fish is a Unix shell with a focus on interactivity and usability. Fish is design
 
 ### Semantic Commands
 
-| Command        | Description       |
-| -------------- | ----------------- |
-| fe, fetch      | System Info Fetch |
-| gi, git        | Lazygit TUI       |
-| gife, gitfetch | Git Info Fetch    |
-| ff             | VIFM File Manager |
-| fc             | VIFM CD Mode      |
+| Command        | Description                                          |
+| -------------- | ---------------------------------------------------- |
+| fe, fetch      | System Info Fetch                                    |
+| gi, git        | Lazygit TUI                                          |
+| gife, gitfetch | Git Info Fetch                                       |
+| vm             | VIFM File Manager                                    |
+| vc             | VIFM CD Mode                                         |
+| in             | [Intention](https://github.com/MidHunterX/Intention) |
 
 ## Move Terminal Apps to BG and FG
 
