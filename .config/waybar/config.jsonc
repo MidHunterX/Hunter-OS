@@ -47,8 +47,8 @@
     // ---------------------------------------------------- LEFT MODULE CONFIGS
     "clock": {
       // uses : fmt.dev/latest/syntax/#chrono-format-specifications
-      //  HOUR:MINUTE |  YEAR-MONTH-DAY WEEK
-      "format": "󰥔 {:%H:%M | 󰃭 %Y-%m-%d | 󰨳 %a}"
+      // 󰨳 WEEK |  YEAR-MONTH-DAY |  HOUR:MINUTE
+      "format": "󰨳 {:%a | 󰃭 %Y-%m-%d | 󰥔 %H:%M }"
     },
     "idle_inhibitor": {
       "format": "{icon}",
