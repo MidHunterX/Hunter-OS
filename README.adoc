@@ -161,16 +161,14 @@ flowchart LR
 
 subgraph XOSCRP Layer
   intention(<a href='https://github.com/MidHunterX/Intention'>Intention</a>)
-  linux(Linux OS)
-  windows(Windows OS)
+  linux(Linux)
+  windows(Windows)
   grub{<a href='https://github.com/MidHunterX/Hunter-OS?tab=readme-ov-file#-grub-bootloader'>GRUB</a>}
   keyd{{<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/keyd/'>KeyD</a>}}
 end
 
 intention --> grub --> linux & windows
-linux --> intention
-keyd --> linux
-
+linux -.SEND.-> intention -.RECV.-> linux & windows
 
 subgraph Orchestration Layer
   hypr(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/hypr'>Hyprland</a>)
@@ -179,7 +177,7 @@ subgraph Orchestration Layer
   kitty(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/kitty/'>Kitty</a>)
 end
 
-linux ==> hypr
+keyd --- linux ==Bash Shell==> hypr
 
 swww{{🔴 swww}}
 vifm(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/vifm'>VIFM</a>)
