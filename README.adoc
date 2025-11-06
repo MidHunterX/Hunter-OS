@@ -326,6 +326,7 @@ Click the following categories to toggle the list of packages in that category.
 | speech-dispatcher | Speech Synthesis (spd-say)            | pacman
 | xsv               | CLI CSV Processor                     | pacman
 | fastfetch         | Fetch System Information              | pacman
+| localsend-bin     | Air-drop like Local File Transfer     | aur
 | onefetch          | Fetch Git Project Information         | aur
 | brillo            | Brightness based on human perception  | aur
 | tgpt              | CLI AI Chat without API keys          | aur
