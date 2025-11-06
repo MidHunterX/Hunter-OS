@@ -3,6 +3,7 @@
 # Except These (with exclamations)
 !.gitignore
 !README.adoc
+!TODO.md
 !.psqlrc
 !LICENSE
 !assets/
@@ -46,6 +47,8 @@
 !.config/waybar/
 # ⚡ System Power Menu
 !.config/wlogout/
+# 🕹️ System UI
+!.config/ags/
 
 
 # ▀█▀ █▀▀ █▀█ █▀▄▀█ █ █▄░█ ▄▀█ █░░
