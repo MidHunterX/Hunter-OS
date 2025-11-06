@@ -576,6 +576,8 @@ fileviewer *.csv,
 filextype {*.pdf},<application/pdf>
       \ {View in zathura}
       \ zathura %c %i,
+      \ {View in zathura (fork)}
+      \ zathura --fork %c %i,
       \ {View with mupdf}
       \ mupdf %c,
       \ {View with apvlv}
