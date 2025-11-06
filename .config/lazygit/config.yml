@@ -61,11 +61,9 @@ gui:
       - "▂"
       - "▁"
     rate: 50
-
 refresher:
   refreshInterval: 10 # File/submodule refresh interval in seconds.
   fetchInterval: 60 # Re-fetch interval in seconds.
-
 keybinding:
   universal:
     quit: "q"
@@ -79,11 +77,10 @@ keybinding:
     scrollDownMain-alt1: "" # J
     prevPage: K # ','
     nextPage: J # .
-
 git:
-  paging:
-    colorArg: always
-    pager: delta --paging=never --syntax-theme="base16" --diff-highlight
+  pagers:
+    - colorArg: always
+      pager: delta --paging=never --syntax-theme="base16" --diff-highlight
   commit:
     # If true, pass '--signoff' flag when committing
     signOff: false
@@ -96,12 +93,11 @@ git:
     - develop
   # branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium --oneline {{branchName}} --"
   branchLogCmd: "git log --all --graph --color=always --pretty=format:'%C(magenta)%h  %C(white)%an  %ar%C(auto) %D%n%s%n'"
-    # %h: commit hash
-    # %an: author name
-    # %ar: author date
-    # %D: branch name
-    # %s: commit message
-    # %n: newline
-
+  # %h: commit hash
+  # %an: author name
+  # %ar: author date
+  # %D: branch name
+  # %s: commit message
+  # %n: newline
 os:
   editPreset: "nvim" # nvim, nvim-remote, emacs, vscode, kakoune, helix
