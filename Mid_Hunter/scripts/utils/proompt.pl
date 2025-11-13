@@ -12,6 +12,7 @@ my $input_file = shift || 'PROOMPT.md';
 # File extension to language hashmap for Markdown code fences
 # -----------------------------------------------------------------------------
 my %LANGUAGE_MAP = (
+	'adoc' => 'asciidoc',
 	'py'   => 'python',
 	'sh'   => 'bash',
 	'pl'   => 'perl',
@@ -57,11 +58,17 @@ sub detect_language {
 	return '';
 }
 
+sub clean_backtick_lines {
+	my @lines = @_;
+	return grep { $_ !~ /```/ } @lines;
+}
+
 sub get_file_content {
 	my ($path) = @_;
 	open my $fh, '<', $path or return "(WARNING: Could not read $path)\n";
 	my @lines = <$fh>;
 	close $fh;
+	@lines = clean_backtick_lines(@lines);
 	return @lines;
 }
 
