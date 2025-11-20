@@ -137,7 +137,7 @@ Click the links below for a detailed documentation.
 
 | link:.config/VSCodium/User/[🆚 VSCode]
 | GUI Code Editor
-| image:.config/VSCodium/User/.assets/code.jpg[,128,link=.config/Code%20-%20OSS/User/]
+| image:.config/VSCodium/User/.assets/code.jpg[,128,link=.config/VSCodium/User/]
 
 | link:.config/waybar/[🍫 WayBar]
 | Status Bar
