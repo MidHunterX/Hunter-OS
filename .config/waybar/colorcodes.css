@@ -1,0 +1,11 @@
+/* Color of speaker_out port */
+@define-color cc_audio #a6e3a1;
+/* Color of microphone_in port */
+@define-color cc_microphone #f5c2e7;
+/* Color of light in illustrations */
+@define-color cc_backlight #f9e2af;
+
+
+/* General Data */
+@define-color cc_battery #bac2de;
+@define-color cc_time #bac2de;

@@ -1,7 +1,6 @@
-/* vim: set filetype=sass : */
-
 @import url("./pixelBar.css");
 @import "colors.css";
+@import "colorcodes.css";
 
 * {
   border: none;
@@ -30,30 +29,27 @@ window#waybar {
 }
 
 #workspaces.og button {
-  color: #f9e2af;
+  color: @secondary;
   padding: 0px 15px 0px 10px;
   /* transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68); */
 }
 #workspaces.og button.empty {
-  color: #a6adc8;
+  color: @primary_container;
 }
 #workspaces.og button.active {
+  background-color: @primary;
+  color: @scrim;
   border-radius: 15px;
-  background-color: #38596c;
-}
-#workspaces.og button.focused {
-  background: #eba0ac;
-  border-radius: 10px;
 }
 #workspaces.og button.urgent {
-  color: #11111b;
-  background: #a6e3a1;
-  border-radius: 10px;
+  background-color: @error;
+  color: @scrim;
+  border-radius: 15px;
 }
 #workspaces.og button:hover {
-  background: #11111b;
-  color: rgba(205, 214, 244, 100);
-  border-radius: 10px;
+  background-color: @tertiary;
+  color: @scrim;
+  border-radius: 15px;
 }
 
 tooltip {
@@ -106,7 +102,7 @@ tooltip {
 }
 
 #clock {
-  color: #cdcbcb;
+  color: @cc_time;
   margin-left: 15px;
   margin-right: 15px;
 }
@@ -138,6 +134,10 @@ tooltip {
   margin-left: 15px;
 }
 
+#backlight {
+  color: @cc_backlight;
+}
+
 #network {
   color: #f9e2af;
 }
@@ -151,7 +151,7 @@ tooltip {
 }
 
 #pulseaudio {
-  color: #89b4fa;
+  color: @cc_audio;
 }
 
 /*=========*\
@@ -188,7 +188,7 @@ tooltip {
 
 #pulseaudio.microphone {
   margin-left: 0px;
-  color: #cba6f7;
+  color: @cc_microphone;
 }
 
 @keyframes blink {
@@ -198,7 +198,7 @@ tooltip {
   }
 }
 #battery.og {
-  color: #a6e3a1;
+  color: @cc_battery;
   margin-right: 15px;
 }
 #battery.og.charging {
