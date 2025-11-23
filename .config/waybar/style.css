@@ -1,4 +1,7 @@
+/* vim: set filetype=sass : */
+
 @import url("./pixelBar.css");
+@import "colors.css";
 
 * {
   border: none;

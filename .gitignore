@@ -124,6 +124,13 @@
 .mozilla/firefox/Experiment/*
 !.mozilla/firefox/Experiment/chrome/
 
+# 🎨 Color Generation
+!.config/matugen/
+# Generated Files
+.config/fuzzel/colors.ini
+.config/hypr/colors.conf
+.config/kitty/colors/colors.conf
+.config/waybar/colors.css
 
 # =========================== [ PERSONAL FILES ] =========================== #
 !Mid_Hunter/

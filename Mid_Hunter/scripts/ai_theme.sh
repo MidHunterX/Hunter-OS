@@ -5,7 +5,7 @@
 print_logs=false
 [[ "$1" == "--log" ]] && print_logs=true
 
-AUTOSCALE_STRATEGY="auto" # customize | auto
+AUTOSCALE_STRATEGY="auto" # custom | auto
 
 log() {
     local grn='\033[1;32m'
@@ -48,13 +48,19 @@ percent=$(echo "$GRAY_VALUE" | awk '{printf "%.0f", $1/255*100}')
 # THEME BASED ON LIGHT/DARK WALLPAPER
 # -----------------------------------------------------------------------------
 
+matugen image "$WALLPAPER_PATH" --quiet
+
 THRESHOLD=127
 if ((GRAY_VALUE > THRESHOLD)); then
     log "🌄 Light Wallpaper: $GRAY_VALUE/255 ($percent%)"
     # gsettings set org.gnome.desktop.interface gtk-theme Materia-light
+    # gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
+    # matugen image "$WALLPAPER_PATH" --mode "light" --quiet
 else
     log "🌃 Dark Wallpaper: $GRAY_VALUE/255 ($percent%)"
     # gsettings set org.gnome.desktop.interface gtk-theme Materia-dark
+    # gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    # matugen image "$WALLPAPER_PATH" --mode "dark" --quiet
 fi
 
 # AUTOSCALE BRIGHTNESS & CONTRAST
@@ -76,7 +82,7 @@ lerp() {
 g_norm=$(awk -v g="$GRAY_VALUE" 'BEGIN{print g/255}') # normalize 0–255 to 0–1
 
 case "$AUTOSCALE_STRATEGY" in
-"customize")
+"custom")
     # Personal Preference
     light_brightness=0.2
     dark_brightness=0.6
@@ -87,7 +93,7 @@ case "$AUTOSCALE_STRATEGY" in
     contrast=$(lerp "$g_norm" "$dark_contrast" "$light_contrast")
     ;;
 "auto")
-    target_darkness=0.6 # target percent of window darkness (0.0 - 1.0)
+    target_darkness=0.8 # target percent of window darkness (0.0 - 1.0)
     # scale: how strong the adaptation should be
     # the lower the scale, the less adaptation between light and dark walls
     scale=0.4

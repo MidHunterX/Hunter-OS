@@ -1,0 +1,40 @@
+[config]
+
+# █▀▄ █▄█ █▄░█ ▄▀█ █▀▄▀█ █ █▀▀
+# █▄▀ ░█░ █░▀█ █▀█ █░▀░█ █ █▄▄
+# ============================
+# See changes immediately.
+
+[templates.hyprland]
+input_path  = '~/.config/matugen/templates/hyprland.conf'
+output_path = '~/.config/hypr/colors.conf'
+post_hook   = 'hyprctl reload config-only'
+
+[templates.waybar]
+input_path  = '~/.config/matugen/templates/waybar.css'
+output_path = '~/.config/waybar/colors.css'
+post_hook   = 'pkill -SIGUSR2 waybar'
+
+[templates.cava]
+input_path  = '~/.config/matugen/templates/cava.ini'
+output_path = '~/.config/cava/themes/colors'
+post_hook   = "pkill -USR1 cava"
+
+# NOTE: Everything is colorcoded here... ls_colors etc. So, no generation.
+# [templates.kitty]
+# input_path  = '~/.config/matugen/templates/kitty.conf'
+# output_path = '~/.config/kitty/colors/colors.conf'
+# post_hook   = 'pkill -SIGUSR1 kitty'
+
+# █▀ ▀█▀ ▄▀█ ▀█▀ █ █▀▀
+# ▄█ ░█░ █▀█ ░█░ █ █▄▄
+# ====================
+# Changes visible only after app restart.
+
+[templates.btop]
+input_path  = '~/.config/matugen/templates/btop.theme'
+output_path = '~/.config/btop/themes/colors.theme'
+
+[templates.fuzzel]
+input_path  = '~/.config/matugen/templates/fuzzel.ini'
+output_path = '~/.config/fuzzel/colors.ini'

@@ -1,3 +1,5 @@
+/* vim: set filetype=sass : */
+
 #waybar.pixelbar {
   background: linear-gradient(
     to bottom,
@@ -22,8 +24,8 @@
   margin-right: 10px;
   padding-left: 25px;
   padding-right: 25px;
-  border-color: rgba(205, 214, 244, 0.8);
-  color: rgba(205, 214, 244, 0.8);
+  border-color: @tertiary;
+  color: @tertiary;
   transition: none;
 }
 
@@ -35,16 +37,14 @@
 
 /* Active and Full */
 #workspaces.pixel button.active {
-  border-color: #89b4fa;
-  color: #89b4fa;
-  background: linear-gradient(to bottom, rgba(137, 180, 250, 0.2) 0%, rgba(137, 180, 250, 0) 100%);
+  border-color: @primary;
+  color: @primary;
 }
 
 /* Active but Empty */
 #workspaces.pixel button.active.empty {
-  border-color: #f38ba8;
-  color: #f38ba8;
-  background: linear-gradient(to bottom, rgba(243, 139, 168, 0.2) 0%, rgba(243, 139, 168, 0) 100%);
+  border-color: @secondary;
+  color: @secondary;
 }
 
 #workspaces.pixel button.focused {

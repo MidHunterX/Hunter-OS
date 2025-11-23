@@ -1,10 +1,11 @@
+# vim: ft=toml
+
 [general]
 framerate = 60
 bars = 0
-bar_width = 2
+bar_width = 1
 bar_spacing = 1
 sleep_timer = 3
-
 
 [color]
 gradient = 1
@@ -16,7 +17,18 @@ gradient_color_5 = '#c6a0f6'
 gradient_color_6 = '#f5bde6'
 gradient_color_7 = '#ee99a0'
 gradient_color_8 = '#ed8796'
-
+theme = 'colors'
 
 [smoothing]
 noise_reduction = 70
+monstercat = 0
+
+[eq]
+# This one is tricky. You can have as much keys as you want.
+# Add more sections for more precision
+# band_section = power
+1 = 0.9 # bass
+2 = 1.0
+3 = 1.0 # midtone
+4 = 1.0
+5 = 1.0 # treble
