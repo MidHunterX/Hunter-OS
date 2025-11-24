@@ -28,28 +28,32 @@ window#waybar {
   color: #cdd6f4;
 }
 
+#workspaces.og {
+  border-radius: 20px 20px 20px 20px;
+}
 #workspaces.og button {
+  background-color: @secondary_container;
   color: @secondary;
-  padding: 0px 15px 0px 10px;
-  /* transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68); */
+  border-radius: 15px;
+  margin: 0px 5px;
+  min-width: 70px;
+  /* transition: all 0.3s ease-in-out; */
 }
 #workspaces.og button.empty {
-  color: @primary_container;
+  background-color: @background;
+  color: @outline;
 }
 #workspaces.og button.active {
   background-color: @primary;
   color: @scrim;
-  border-radius: 15px;
 }
 #workspaces.og button.urgent {
   background-color: @error;
   color: @scrim;
-  border-radius: 15px;
 }
 #workspaces.og button:hover {
   background-color: @tertiary;
   color: @scrim;
-  border-radius: 15px;
 }
 
 tooltip {
@@ -78,7 +82,7 @@ tooltip {
   /* pixelbar 10px padding + 3px border */
   margin-top: 13px;
   margin-bottom: 0px;
-  background: #262626;
+  background: @background;
   padding: 5px;
   /* text-shadow:
     1px 1px 4 #000,
@@ -93,7 +97,6 @@ tooltip {
 
 #network,
 #clock,
-#workspaces.og,
 #window,
 #tray {
   padding-right: 15px;

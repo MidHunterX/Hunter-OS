@@ -104,9 +104,9 @@
       //   "class<org.keepassxc.KeePassXC>": ""
       // },
       "format-icons": {
-        "1": "",
-        "2": "",
-        "3": "",
+        "1": "dev",
+        "2": "www",
+        "3": "exp",
         "urgent": "󰗖",
         // "active": "󰝥",
         // "default": "󰝦",
@@ -157,11 +157,8 @@
     "backlight": {
       // "device": "intel_backlight",
       "format": "{icon} {percent}%",
-      "format-icons": [
-        "󰃞",
-        "󰃟",
-        "󰃠"
-      ],
+      "format-icons": "󰃠",
+      // "format-icons": [ "󰃞", "󰃟", "󰃠" ],
       // "format-icons": ["", "", "", "", "", "", "", "", ""],
       "on-scroll-up": "brillo -q -A 1", //"brightnessctl set 1%+",
       "on-scroll-down": "brillo -q -U 1", //"brightnessctl set 1%-",
@@ -188,11 +185,8 @@
         "phone": "",
         "portable": "",
         "car": "",
-        "default": [
-          "",
-          "",
-          " "
-        ]
+        // "default": [ "", "", " " ]
+        "default": "󰓃"
       }
     },
     "pulseaudio#microphone": {

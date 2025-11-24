@@ -19,7 +19,8 @@
   padding-bottom: 10px;
   border-top: 3px;
   border-style: solid;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
   padding-left: 25px;
   padding-right: 25px;
   border-color: rgba(205, 214, 244, 0.8);
@@ -35,8 +36,8 @@
 
 /* Active and Full */
 #workspaces.pixel button.active {
-  border-color: #89b4fa;
-  color: #89b4fa;
+  border-color: @primary;
+  color: @primary;
 }
 
 /* Active but Empty */
