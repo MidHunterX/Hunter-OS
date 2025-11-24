@@ -2,7 +2,10 @@
 
 | Package               | Desc                                 | pacman |
 | --------------------- | ------------------------------------ | ------ |
+| vicinae-bin           | Raycast Launcher alt                 | aur    |
+| helix                 | Visual first Vim like editor         | pacman |
 | veracrypt             | Data Encryption                      | pacman |
+| aylurs-gtk-shell      | Scaffolding for Astal+Gnim project   | aur    |
 | git-fame              | git stats                            | aur    |
 | ⭐ git-filter-repo    | Filter git repos based on regex      | pacman |
 | tokei                 | Code Stats - rust alt to cloc        | pacman |
@@ -36,10 +39,13 @@
 | easyeffects           | Audio Equalizer                      | pacman |
 
 Best implementation of transparency:
+
 ```
 materia-transparent-gtk-theme-git | Transparent GTK | aur
 443.09 MiB | Packages (50)
 ```
+
+- vicinae-bin (App Launcher - C++): Needs constantly running daemon for something we launch rarely. But it's really fast, insanely polished and packed with lot of features.
 
 ---
 
@@ -91,8 +97,6 @@ materia-transparent-gtk-theme-git | Transparent GTK | aur
 | hyprgrass           | Touch Gesture support for Hyprland | aur    |
 | stirling-pdf-bin    | PDF viewer                         | aur    |
 | ❌ wluma            | Auto Brightness preference system  | aur    |
-| ❌ lazysql          | SQL TUI Client                     | aur    |
-| ❌ walker           | Fuzzel Alternative                 | aur    |
 
 waydroid
 portmaster
@@ -138,34 +142,39 @@ sudo modprobe v4l2loopback
 
 # Rejected
 
-| Software                 | Type                                 | pacman |
-| ------------------------ | ------------------------------------ | ------ |
-| yazi                     | File Manager                         | pacman |
-| voice2json               | Voice and Intent recognition         | aur    |
-| texlive-latexrecommended | LaTeX (latex, pdflatex)              | pacman |
-| jujutsu                  | Git compatible D-VCS                 | aur    |
-| imcat-git                | ANSI Image Converter                 | aur    |
-| laptop-mode-tools        | Laptop Optimization Features         | aur    |
-| bottles-git              | Wine prefix manager                  | aur    |
-| wine                     | Win32 API Compatibility Layer        | pacman |
-| ❌ gazelle-tui           | nmtui alt - too slow                 | aur    |
-| ❌ walker-bin            | App Launcher too slow and clunky     | aur    |
-| ❌ emacs-wayland         | Emacs Text Editor                    | pacman |
-| ❌ gvfs                  | Thunar Automount USB                 | pacman |
-| ❌ swaybg                | Wayland Wallpaper Tool               | pacman |
-| ❌ pavucontrol           | GUI Volume Control Tool              | pacman |
-| ❌ libreoffice-fresh     | Office tools                         | pacman |
-| ❌ thunar                | XFCE GUI File Browser                | pacman |
-| ❌ foot                  | Terminal Emulator with sixel support | pacman |
-| ❌ conky                 | Light-weight Rainmeter alternative   | pacman |
-| ❌ kmonad                | Keyboard Mapper                      | pacman |
-| ❌ input-remapper-bin    | Key Remapper                         | aur    |
-| ❌ playonlinux           | Wine fork for Windows Games          | aur    |
-| ❌ rofi-lbonn-wayland    | Rofi Wayland                         | aur    |
-| ❌ eww-wayland           | Widgets                              | aur    |
-| ❌ stacer-bin            | AIO System Utility SW                | aur    |
-| ❌ kmonad-bin            | Advanced Keyboard Remapper           | aur    |
-| ❌ kando-bin             | Cross Platform Fly Pie               | aur    |
-| ❌ laptop-mode-tools     | tlp gave better battery performance  | aur    |
-| ❌ blesh-git             | TTY BASH readline                    | aur    |
-| ❌ wl-screenrec          | Screen recorder for Wayland          | aur    |
+| Software              | Type                                 | pacman |
+| --------------------- | ------------------------------------ | ------ |
+| ❌ gvfs               | Thunar Automount USB                 | pacman |
+| ❌ swaybg             | Wayland Wallpaper Tool               | pacman |
+| ❌ libreoffice-fresh  | Office tools                         | pacman |
+| ❌ foot               | Terminal Emulator with sixel support | pacman |
+| ❌ conky              | Light-weight Rainmeter alternative   | pacman |
+| ❌ kmonad             | Keyboard Mapper                      | pacman |
+| ❌ input-remapper-bin | Key Remapper                         | aur    |
+| ❌ playonlinux        | Wine fork for Windows Games          | aur    |
+| ❌ rofi-lbonn-wayland | Rofi Wayland                         | aur    |
+| ❌ eww-wayland        | Widgets                              | aur    |
+| ❌ stacer-bin         | AIO System Utility SW                | aur    |
+| ❌ laptop-mode-tools  | tlp gave better battery performance  | aur    |
+| ❌ blesh-git          | TTY BASH readline                    | aur    |
+| ❌ wl-screenrec       | Screen recorder for Wayland          | aur    |
+
+- kmonad-bin (Keyboard Remapper): Config style is very convoluted. A code like style is still the best despite the initial learning curve.
+- lazysql (SQL TUI Client): Interferes with my lazygit command autocomplete workflow (`laz<TAB>`)
+- kew (TUI Music Player): kew's whole design is built around having a home for your music library, and work with simple strings not file paths.
+- walker-bin (App Launcher - Rust): Needs elephant, an additional daemon dependency setup to function. Also too slow and clunky.
+- sherlock-launcher-bin (App Launcher - Rust): Noticeable milliseconds of delay on startup. Absolutely terrible history search algorithm.
+- thunar (XFCE GUI File Browser): Installs many other unwanted and useless dependencies along with it wasting your disk space.
+- gazelle-tui (nmtui alt): Too slow.
+- emacs-wayland (Text Editor): Very slow and heavy. I'll take neovim instead.
+
+## Rejected but Might Retry Later
+
+- yazi (File Manager): Really great and fast image viewing capability in terminal. Needs heavy rework to be as functional as my vifm config.
+- voice2json (Voice and Intent recognition): Didn't figure out to use voice model yet.
+- jujutsu (Git compatible D-VCS): Not really compatible with my current workflow relying on branching and selective commits.
+- imcat-git (ANSI Image Converter):
+- laptop-mode-tools (Laptop Optimization Features):
+- bottles-git (Wine prefix manager): Handles prefixes for you but.. needs to find way to work with portable windows games.
+- wine (Win32 API Compatibility Layer): Would be great if I can handle prefixes on my own. Needs to invest time.
+- kando-bin (Wayland compatible cross platform Fly Pie alt): Still in beta phase.. waiting for it to become mature.
