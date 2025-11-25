@@ -15,3 +15,8 @@ system from within a Wayland session.
 | g       | Goodnight         |
 | r       | Reboot            |
 | w       | Reboot to Windows |
+
+## Dynamic Colors
+
+- This config needs a color generator like `matugen`.
+- This script `~/.config/matugen/scripts/wlogout.sh` to generate colored SVGs.

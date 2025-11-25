@@ -40,6 +40,10 @@ output_path = '~/.config/btop/themes/colors.theme'
 input_path  = '~/.config/matugen/templates/fuzzel.ini'
 output_path = '~/.config/fuzzel/colors.ini'
 
+[templates.wlogout]
+input_path  = '~/.config/matugen/templates/wlogout.css'
+output_path = '~/.config/wlogout/colors.css'
+post_hook   = 'bash ~/.config/matugen/scripts/wlogout.sh'
 # [config.custom_colors]
 # red     = { color = "#f38ba8", blend = true }
 # green   = { color = "#a6e3a1", blend = true }

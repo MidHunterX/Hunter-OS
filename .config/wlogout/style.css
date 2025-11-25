@@ -1,12 +1,15 @@
+@import "colors.css";
+
 * {
   background-image: none;
   box-shadow: none;
+  text-shadow: none;
 }
 window {
-  background-color: rgba(0, 0, 0, 0.0);
+  background-color: rgba(0, 0, 0, 0);
 }
 button {
-  color: #ffffff;
+  color: @on_background;
   border-style: none;
   background-repeat: no-repeat;
   background-position: center;
@@ -17,85 +20,71 @@ button {
 button:focus,
 button:active,
 button:hover {
+  color: @background;
+  background-color: @primary;
+  border-radius: 15px;
   background-size: 35%;
   outline-style: none;
   /* animation: gradient_f 20s ease-in infinite; */
   /* transition: all 0.3s cubic-bezier(0.55, 0, 0.28, 1.682); */
 }
 
-#lock {
-  background-image: image(
-    url("./icons/lock.png"),
-    url("/usr/share/wlogout/icons/lock.png"),
-    url("/usr/local/share/wlogout/icons/lock.png")
-  );
-}
-
 #logout {
   background-image: image(
-    url("./icons/logout.png"),
-    url("/usr/share/wlogout/icons/logout.png"),
-    url("/usr/local/share/wlogout/icons/logout.png")
+    url("./color_icons/logout-adwaita.svg"),
+    url("./icons/logout-adwaita.svg")
   );
 }
 #logout:focus {
-  background-image: image(url("./icons/hi_logout.png"));
+  background-image: image(url("./icons/logout-adwaita.svg"));
 }
 
 #suspend {
   background-image: image(
-    url("./icons/suspend.png"),
-    url("/usr/share/wlogout/icons/suspend.png"),
-    url("/usr/local/share/wlogout/icons/suspend.png")
+    url("./color_icons/suspend-adwaita.svg"),
+    url("./icons/suspend-adwaita.svg")
   );
 }
 #suspend:focus {
-  background-image: image(url("./icons/hi_suspend.png"));
-}
-
-#hibernate {
-  background-image: image(
-    url("./icons/hibernate.png"),
-    url("/usr/share/wlogout/icons/hibernate.png"),
-    url("/usr/local/share/wlogout/icons/hibernate.png")
-  );
-}
-#hibernate:focus {
-  background-image: image(url("./icons/hi_hibernate.png"));
+  background-image: image(url("./icons/suspend-adwaita.svg"));
 }
 
 #shutdown {
   background-image: image(
-    url("./icons/shutdown.png"),
-    url("/usr/share/wlogout/icons/shutdown.png"),
-    url("/usr/local/share/wlogout/icons/shutdown.png")
+    url("./color_icons/shutdown-adwaita.svg"),
+    url("./icons/shutdown-adwaita.svg")
   );
 }
 #shutdown:focus {
-  background-image: image(url("./icons/hi_shutdown.png"));
+  background-image: image(url("./icons/shutdown-adwaita.svg"));
 }
 
 #reboot {
   background-image: image(
-    url("./icons/reboot.png"),
-    url("/usr/share/wlogout/icons/reboot.png"),
-    url("/usr/local/share/wlogout/icons/reboot.png")
+    url("./color_icons/reboot-adwaita.svg"),
+    url("./icons/reboot-adwaita.svg")
   );
 }
 #reboot:focus {
-  background-image: image(url("./icons/hi_reboot.png"));
+  background-image: image(url("./icons/reboot-adwaita.svg"));
 }
 
 #windows {
-  background-image: image(url("./icons/windows.png"));
+  background-image: image(
+    url("./color_icons/windows-hashicorp.svg"),
+    url("./icons/windows-hashicorp.svg")
+  );
 }
 #windows:focus {
-  background-image: image(url("./icons/hi_windows.png"));
+  background-image: image(url("./icons/windows-hashicorp.svg"));
 }
 
 #goodnight {
-  background-image: image(url("./icons/sleep.png"));
+  background-image: image(
+    url("./color_icons/sleep-adwaita.svg"),
+    url("./icons/sleep-adwaita.svg")
+  );
 }
 #goodnight:focus {
-  background-image: image(url("./icons/hi_sleep.png"));
+  background-image: image(url("./icons/sleep-adwaita.svg"));
 }

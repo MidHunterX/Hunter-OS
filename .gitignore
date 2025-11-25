@@ -131,6 +131,8 @@
 .config/hypr/colors.conf
 .config/kitty/colors/colors.conf
 .config/waybar/colors.css
+.config/wlogout/color_icons/
+.config/wlogout/colors.css
 
 # =========================== [ PERSONAL FILES ] =========================== #
 !Mid_Hunter/
