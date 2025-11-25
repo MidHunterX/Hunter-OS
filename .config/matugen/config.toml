@@ -21,6 +21,7 @@ output_path = '~/.config/cava/themes/colors'
 post_hook   = "pkill -USR1 cava"
 
 # NOTE: Everything is colorcoded here... ls_colors etc. So, no generation.
+# UPDATE: colorcoding issue solved with custom_colors. But looks a bit off for my taste.
 # [templates.kitty]
 # input_path  = '~/.config/matugen/templates/kitty.conf'
 # output_path = '~/.config/kitty/colors/colors.conf'
@@ -38,3 +39,12 @@ output_path = '~/.config/btop/themes/colors.theme'
 [templates.fuzzel]
 input_path  = '~/.config/matugen/templates/fuzzel.ini'
 output_path = '~/.config/fuzzel/colors.ini'
+
+# [config.custom_colors]
+# red     = { color = "#f38ba8", blend = true }
+# green   = { color = "#a6e3a1", blend = true }
+# yellow  = { color = "#f9e2af", blend = true }
+# blue    = { color = "#89b4fa", blend = true }
+# magenta = { color = "#f5c2e7", blend = true }
+# cyan    = { color = "#94e2d5", blend = true }
+# white   = { color = "#e6e6e6", blend = true }
