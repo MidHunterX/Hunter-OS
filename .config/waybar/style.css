@@ -85,10 +85,10 @@ tooltip {
   background: @background;
   padding: 5px;
   /* text-shadow:
-    1px 1px 4 #000,
-    -1px 1px 4 #000,
-    1px -1px 4 #000,
-    -1px -1px 4 #000; */
+1px 1px 4 #000,
+-1px 1px 4 #000,
+1px -1px 4 #000,
+-1px -1px 4 #000; */
 }
 
 /*================*\
