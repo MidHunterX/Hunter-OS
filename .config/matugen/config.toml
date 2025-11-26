@@ -20,6 +20,11 @@ input_path  = '~/.config/matugen/templates/cava.ini'
 output_path = '~/.config/cava/themes/colors'
 post_hook   = "pkill -USR1 cava"
 
+[templates.dunst]
+input_path  = '~/.config/matugen/templates/dunst.conf'
+output_path = '~/.config/dunst/dunstrc.d/99-colors.conf'
+post_hook = 'dunstctl reload'
+
 # NOTE: Everything is colorcoded here... ls_colors etc. So, no generation.
 # UPDATE: colorcoding issue solved with custom_colors. But looks a bit off for my taste.
 [templates.kitty]
@@ -44,6 +49,7 @@ output_path = '~/.config/fuzzel/colors.ini'
 input_path  = '~/.config/matugen/templates/wlogout.css'
 output_path = '~/.config/wlogout/colors.css'
 post_hook   = 'bash ~/.config/matugen/scripts/wlogout.sh'
+
 [config.custom_colors]
 red     = { color = "#f38ba8", blend = true }
 green   = { color = "#a6e3a1", blend = true }

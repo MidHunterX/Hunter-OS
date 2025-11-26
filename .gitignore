@@ -133,6 +133,7 @@
 .config/waybar/colors.css
 .config/wlogout/color_icons/
 .config/wlogout/colors.css
+.config/dunst/dunstrc.d/99-colors.conf
 
 # =========================== [ PERSONAL FILES ] =========================== #
 !Mid_Hunter/
