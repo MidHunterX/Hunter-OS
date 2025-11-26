@@ -49,21 +49,23 @@ function item() {
 
 function item_prefix() {
   local background foreground content module
+  pfx_bg=$(get_tmux_option "@hunter_prefix_bg" 'red')
   background=$1
   foreground=$2
   content=$3
   module="$(build_prefix_off $background $foreground "$content")"
-  module+="$(build_prefix_on 'red' '#000000' "$content")"
+  module+="$(build_prefix_on $pfx_bg '#000000' "$content")"
   echo "$module"
 }
 
 function item_prefix_inverted() {
   local background foreground content module
+  pfx_bg=$(get_tmux_option "@hunter_prefix_bg" 'red')
   background=$1
   foreground=$2
   content=$3
   module="$(build_prefix_off $background $foreground "$content")"
-  module+="$(build_prefix_on '#000000' 'red' "$content")"
+  module+="$(build_prefix_on '#000000' $pfx_bg "$content")"
   echo "$module"
 }
 
@@ -137,7 +139,7 @@ function build_module_format_left() {
 function session_module_config() {
   local background foreground icon text
   background=$(get_tmux_option '@hunter_module_session_bg' 'gray')
-  foreground=$(get_tmux_option '@hunter_module_session_bg' '#000000')
+  foreground=$(get_tmux_option '@hunter_module_session_fg' '#000000')
   icon=$(get_tmux_option "@hunter_module_session_icon" '')
   text=$(get_tmux_option '@hunter_module_session_text' '#S')
   # build_module_format_right $background $foreground $icon $text
