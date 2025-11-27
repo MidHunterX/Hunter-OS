@@ -21,6 +21,7 @@ error() {
     echo -e "[${red}$(date +'%H:%M:%S')${rst}] $1${rst}"
 }
 
+# -----------------------------------------------------------------------------
 # INITIALIZE
 # -----------------------------------------------------------------------------
 
@@ -34,35 +35,63 @@ fi
 
 log "🎨 Using wallpaper: $WALLPAPER_PATH"
 
-# Compute brightness (grayscale average of image)
 TMP_IMG="/tmp/theme_color.jpeg"
-magick "$WALLPAPER_PATH" -colorspace gray -resize 1x1 "$TMP_IMG" 2>/dev/null
-if [[ ! -f "$TMP_IMG" ]]; then
-    error "Failed to generate grayscale sample."
-    exit 1
-fi
-GRAY_VALUE=$(magick "$TMP_IMG" txt: | awk -F'[()]' '/gray\(\w+\)/{print $2}')
 
-percent=$(echo "$GRAY_VALUE" | awk '{printf "%.0f", $1/255*100}')
+# -----------------------------------------------------------------------------
+# THEME BASED ON WALLPAPER COLOR
+# -----------------------------------------------------------------------------
 
+# Convert hex color to ANSI escape sequence
+# usage: hex_to_ansi "#RRGGBB" [bg]
+# bg: optional argument to set background. If not provided, text color is set
+hex_to_ansi() {
+    local hex="${1#'#'}" # remove leading #
+    local bg=$2
+    local r=$((16#${hex:0:2}))
+    local g=$((16#${hex:2:2}))
+    local b=$((16#${hex:4:2}))
+    if [[ -n "$bg" ]]; then
+        # Set text color
+        local brightness=$(((299 * r + 587 * g + 114 * b) / 1000))
+        ((brightness < 128)) && printf '\033[38;2;255;255;255m' || printf '\033[38;2;0;0;0m'
+        # Set background color
+        printf '\033[48;2;%d;%d;%dm' "$r" "$g" "$b"
+    else
+        # Set text color only
+        printf '\033[38;2;%d;%d;%dm' "$r" "$g" "$b"
+    fi
+}
+
+# Compute theme color (RGB average of image)
+magick "$WALLPAPER_PATH" -resize 1x1 "$TMP_IMG" 2>/dev/null
+hex_value=$(magick "$TMP_IMG" txt: | awk '/#\w+/{print $3}')
+log "🎨 Average Color: $(hex_to_ansi "$hex_value" bg_pls)${hex_value}"
+
+# matugen image "$WALLPAPER_PATH" --quiet
+matugen color hex "$hex_value" --quiet
+
+# -----------------------------------------------------------------------------
 # THEME BASED ON LIGHT/DARK WALLPAPER
 # -----------------------------------------------------------------------------
 
-matugen image "$WALLPAPER_PATH" --quiet
+# Compute brightness (grayscale average of image)
+magick "$WALLPAPER_PATH" -colorspace gray -resize 1x1 "$TMP_IMG" 2>/dev/null
+luma_value=$(magick "$TMP_IMG" txt: | awk -F'[()]' '/gray\(\w+\)/{print $2}')
+luma_percent=$(echo "$luma_value" | awk '{printf "%.0f", $1/255*100}')
 
-THRESHOLD=127
-if ((GRAY_VALUE > THRESHOLD)); then
-    log "🌄 Light Wallpaper: $GRAY_VALUE/255 ($percent%)"
+if ((luma_percent > 50)); then
+    log "🌄 Light Wallpaper: $luma_value/255 ($luma_percent%)"
     # gsettings set org.gnome.desktop.interface gtk-theme Materia-light
     # gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
     # matugen image "$WALLPAPER_PATH" --mode "light" --quiet
 else
-    log "🌃 Dark Wallpaper: $GRAY_VALUE/255 ($percent%)"
+    log "🌃 Dark Wallpaper: $luma_value/255 ($luma_percent%)"
     # gsettings set org.gnome.desktop.interface gtk-theme Materia-dark
     # gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
     # matugen image "$WALLPAPER_PATH" --mode "dark" --quiet
 fi
 
+# -----------------------------------------------------------------------------
 # AUTOSCALE BRIGHTNESS & CONTRAST
 # -----------------------------------------------------------------------------
 
@@ -79,7 +108,7 @@ lerp() {
     awk -v g="$g" -v d="$d" -v l="$l" 'BEGIN{print d + (g * (l - d))}'
 }
 
-g_norm=$(awk -v g="$GRAY_VALUE" 'BEGIN{print g/255}') # normalize 0–255 to 0–1
+g_norm=$(awk -v g="$luma_value" 'BEGIN{print g/255}') # normalize 0–255 to 0–1
 
 case "$AUTOSCALE_STRATEGY" in
 "custom")
@@ -110,41 +139,8 @@ case "$AUTOSCALE_STRATEGY" in
     ;;
 esac
 
-log "☀️ Brightness: $brightness"
-log "🌗 Contrast: $contrast"
+log "☀️ Window Brightness: $brightness"
+log "🌗 Window Contrast: $contrast"
 
 hyprctl keyword decoration:blur:brightness "$brightness" >/dev/null
 hyprctl keyword decoration:blur:contrast "$contrast" >/dev/null
-
-# AVERAGE COLOR
-# -----------------------------------------------------------------------------
-
-hex_to_ansi() {
-    local hex="${1#'#'}" # remove leading #
-    local bg=$2
-    local r=$((16#${hex:0:2}))
-    local g=$((16#${hex:2:2}))
-    local b=$((16#${hex:4:2}))
-    if [[ -n "$bg" ]]; then
-        # Set text color
-        local brightness=$(((299 * r + 587 * g + 114 * b) / 1000))
-        ((brightness < 128)) && printf '\033[38;2;255;255;255m' || printf '\033[38;2;0;0;0m'
-        # Set background color
-        printf '\033[48;2;%d;%d;%dm' "$r" "$g" "$b"
-    else
-        # Set text color only
-        printf '\033[38;2;%d;%d;%dm' "$r" "$g" "$b"
-    fi
-}
-
-if $print_logs; then
-    TMP_IMG="/tmp/theme_color.jpeg"
-    magick "$WALLPAPER_PATH" -resize 1x1 "$TMP_IMG" 2>/dev/null
-    hex_code=$(magick "$TMP_IMG" txt: | awk '/#\w+/{print $3}')
-    ansi_color=$(hex_to_ansi "$hex_code" bg_pls)
-
-    log "🎨 Color: ${ansi_color}${hex_code}"
-
-    # hex_number=${hex_code:1}
-    # hyprctl keyword general:col.inactive_border "rgb(${hex_number})" >/dev/null
-fi
