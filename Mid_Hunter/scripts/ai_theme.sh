@@ -5,6 +5,7 @@
 print_logs=false
 [[ "$1" == "--log" ]] && print_logs=true
 
+MONITOR="eDP-1"
 AUTOSCALE_STRATEGY="auto" # custom | auto
 
 log() {
@@ -26,7 +27,7 @@ error() {
 # -----------------------------------------------------------------------------
 
 # Locate current wallpaper
-CACHE_FILE="$HOME/.cache/swww/eDP-1"
+CACHE_FILE="$HOME/.cache/swww/$MONITOR"
 WALLPAPER_PATH=$(strings "$CACHE_FILE" | grep -E '^/' | tail -n1)
 if [[ -z "$WALLPAPER_PATH" || ! -f "$WALLPAPER_PATH" ]]; then
     error "Wallpaper not found or invalid: $WALLPAPER_PATH"
@@ -41,6 +42,17 @@ TMP_IMG="/tmp/theme_color.jpeg"
 # THEME BASED ON WALLPAPER COLOR
 # -----------------------------------------------------------------------------
 
+# Fast approximation based on Rec. 601 standard
+# usage: hex_brightness "#RRGGBB"
+hex_brightness() {
+    local hex="${1#'#'}" # remove leading #
+    local r=$((16#${hex:0:2}))
+    local g=$((16#${hex:2:2}))
+    local b=$((16#${hex:4:2}))
+    local brightness=$(((299 * r + 587 * g + 114 * b) / 1000))
+    echo $brightness
+}
+
 # Convert hex color to ANSI escape sequence
 # usage: hex_to_ansi "#RRGGBB" [bg]
 # bg: optional argument to set background. If not provided, text color is set
@@ -52,8 +64,7 @@ hex_to_ansi() {
     local b=$((16#${hex:4:2}))
     if [[ -n "$bg" ]]; then
         # Set text color
-        local brightness=$(((299 * r + 587 * g + 114 * b) / 1000))
-        ((brightness < 128)) && printf '\033[38;2;255;255;255m' || printf '\033[38;2;0;0;0m'
+        (($(hex_brightness "$hex") < 128)) && printf '\033[38;2;255;255;255m' || printf '\033[38;2;0;0;0m'
         # Set background color
         printf '\033[48;2;%d;%d;%dm' "$r" "$g" "$b"
     else
@@ -65,7 +76,7 @@ hex_to_ansi() {
 # Compute theme color (RGB average of image)
 magick "$WALLPAPER_PATH" -resize 1x1 "$TMP_IMG" 2>/dev/null
 hex_value=$(magick "$TMP_IMG" txt: | awk '/#\w+/{print $3}')
-log "🎨 Average Color: $(hex_to_ansi "$hex_value" bg_pls)${hex_value}"
+log "🎨 Average Color: $(hex_to_ansi "$hex_value" invert)${hex_value}"
 
 # matugen image "$WALLPAPER_PATH" --quiet
 matugen color hex "$hex_value" --quiet
@@ -75,8 +86,7 @@ matugen color hex "$hex_value" --quiet
 # -----------------------------------------------------------------------------
 
 # Compute brightness (grayscale average of image)
-magick "$WALLPAPER_PATH" -colorspace gray -resize 1x1 "$TMP_IMG" 2>/dev/null
-luma_value=$(magick "$TMP_IMG" txt: | awk -F'[()]' '/gray\(\w+\)/{print $2}')
+luma_value=$(hex_brightness "$hex_value")
 luma_percent=$(echo "$luma_value" | awk '{printf "%.0f", $1/255*100}')
 
 if ((luma_percent > 50)); then
