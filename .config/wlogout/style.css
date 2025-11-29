@@ -11,6 +11,7 @@ window {
 button {
   color: @on_background;
   border-style: none;
+  border-radius: 15px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 25%;
@@ -18,15 +19,19 @@ button {
 }
 
 button:focus,
-button:active,
-button:hover {
+button:active {
   color: @background;
   background-color: @primary;
-  border-radius: 15px;
   background-size: 35%;
   outline-style: none;
   /* animation: gradient_f 20s ease-in infinite; */
   /* transition: all 0.3s cubic-bezier(0.55, 0, 0.28, 1.682); */
+}
+
+button:hover {
+  color: @primary;
+  border: 3px solid;
+  border-color: @primry;
 }
 
 #logout {

@@ -53,7 +53,7 @@ output_path = '~/.config/fuzzel/colors.ini'
 [templates.wlogout]
 input_path  = '~/.config/matugen/templates/wlogout.css'
 output_path = '~/.config/wlogout/colors.css'
-post_hook   = 'bash ~/.config/matugen/scripts/wlogout.sh'
+post_hook   = 'perl ~/.config/matugen/scripts/wlogout.pl'
 
 [config.custom_colors]
 red     = { color = "#f38ba8", blend = true }
