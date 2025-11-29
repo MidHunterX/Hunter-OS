@@ -6,7 +6,7 @@ print_logs=false
 [[ "$1" == "--log" ]] && print_logs=true
 
 MONITOR="eDP-1"
-AUTOSCALE_STRATEGY="auto" # custom | auto
+AUTOSCALE_STRATEGY="adapt" # custom | adapt
 
 log() {
     local grn='\033[1;32m'
@@ -22,19 +22,26 @@ error() {
     echo -e "[${red}$(date +'%H:%M:%S')${rst}] $1${rst}"
 }
 
+# usage: get_swww_wallpaper "monitor_name"
+# returns: /path/to/wallpaper
+get_swww_wallpaper() {
+    local monitor cache_file wallpaper_path
+    monitor="$1"
+    cache_file="$HOME/.cache/swww/$monitor"
+    wallpaper_path=$(strings "$cache_file" | grep -E '^/' | tail -n1)
+    echo "$wallpaper_path"
+}
+
 # -----------------------------------------------------------------------------
 # INITIALIZE
 # -----------------------------------------------------------------------------
 
-# Locate current wallpaper
-CACHE_FILE="$HOME/.cache/swww/$MONITOR"
-WALLPAPER_PATH=$(strings "$CACHE_FILE" | grep -E '^/' | tail -n1)
-if [[ -z "$WALLPAPER_PATH" || ! -f "$WALLPAPER_PATH" ]]; then
-    error "Wallpaper not found or invalid: $WALLPAPER_PATH"
+wallpaper=$(get_swww_wallpaper "$MONITOR")
+if [[ -z "$wallpaper" || ! -f "$wallpaper" ]]; then
+    error "Wallpaper not found or invalid: $wallpaper"
     exit 1
 fi
-
-log "🎨 Using wallpaper: $WALLPAPER_PATH"
+log "🎨 Using wallpaper: $wallpaper"
 
 TMP_IMG="/tmp/theme_color.jpeg"
 
@@ -74,7 +81,11 @@ hex_to_ansi() {
 }
 
 # Compute theme color (RGB average of image)
-magick "$WALLPAPER_PATH" -resize 1x1 "$TMP_IMG" 2>/dev/null
+# bias average-color sampling toward the center of the image by cropping border edges
+CENTER_BIAS=10 # (0-100)
+border=$((100 - CENTER_BIAS))
+magick "$wallpaper" -gravity Center -crop ${border}%x${border}+0+0 -resize 1x1 "$TMP_IMG" 2>/dev/null
+# magick "$wallpaper" -resize 1x1 "$TMP_IMG" 2>/dev/null
 hex_value=$(magick "$TMP_IMG" txt: | awk '/#\w+/{print $3}')
 log "🎨 Average Color: $(hex_to_ansi "$hex_value" invert)${hex_value}"
 
@@ -118,34 +129,38 @@ lerp() {
     awk -v g="$g" -v d="$d" -v l="$l" 'BEGIN{print d + (g * (l - d))}'
 }
 
-g_norm=$(awk -v g="$luma_value" 'BEGIN{print g/255}') # normalize 0–255 to 0–1
+wallpaper_brightness=$(awk -v g="$luma_value" 'BEGIN{print g/255}') # normalize 0–255 to 0–1
 
 case "$AUTOSCALE_STRATEGY" in
 "custom")
     # Personal Preference
-    light_brightness=0.2
-    dark_brightness=0.6
-    light_contrast=0.5
-    dark_contrast=0.8
+    min_brightness=0.2
+    max_brightness=0.7
+    min_contrast=0.5
+    max_contrast=0.8
 
-    brightness=$(lerp "$g_norm" "$dark_brightness" "$light_brightness")
-    contrast=$(lerp "$g_norm" "$dark_contrast" "$light_contrast")
+    brightness=$(lerp "$wallpaper_brightness" "$max_brightness" "$min_brightness")
+    contrast=$(lerp "$wallpaper_brightness" "$max_contrast" "$min_contrast")
     ;;
-"auto")
-    target_darkness=0.8 # target percent of window darkness (0.0 - 1.0)
+"adapt")
+    # wallpaper_brightness (0-1)
+    # brightness (0-1)
+    # contrast (0-2)
+
+    target_darkness=0.6 # target percent of window darkness (0.0 - 1.0)
     # scale: how strong the adaptation should be
     # the lower the scale, the less adaptation between light and dark walls
-    scale=0.4
+    scale=0.6
 
-    darkness_factor=$(awk -v g="$g_norm" 'BEGIN{print 1 - g}')
+    darkness_factor=$(awk -v g="$wallpaper_brightness" 'BEGIN{print 1 - g}')
     adapt=$(awk -v d="$darkness_factor" -v p="$target_darkness" 'BEGIN{print d - p}')
 
     brightness=$(awk -v a="$adapt" -v s="$scale" 'BEGIN{print 0.5 + (a * s)}')
     contrast=$(awk -v a="$adapt" -v s="$scale" 'BEGIN{print 0.7 + (a * s)}')
     ;;
 *)
-    brightness=0.5
-    contrast=0.5
+    brightness=1.0
+    contrast=1.0
     ;;
 esac
 
