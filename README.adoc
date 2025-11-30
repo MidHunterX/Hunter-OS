@@ -25,22 +25,19 @@ with standardized Vim-style keybindings deeply integrated into every tools,
 apps and utilities. This allows to navigate and interact with speed, precision
 and comfortability without even thinking about keybindings.
 
-.⚗️ Experimental Features
+.`⚠️ Experimental Features Section`
 [%collapsible]
 ====
 [discrete]
-=== 📖 Manifesto
+== ⚗️ Experimentally Engineered Empathic Environment
 
-* Computers and tools should adapt to Humans and not vice versa.
-* Computers and tools should understand context and intent.
-* Environment should support cognitive flow, not disrupt or redirect it.
+Exploring reduction of Cognitive Load by Intent based context switching, Calm
+technology inspired ambient nudging, Automation and Proactive Computing.
 
 [discrete]
-=== 🔭 On-Going Experiments
-
-Reduction of Cognitive Load by Intent based computing for context switching,
-Ambient notification system like Calm technology, Active Assistance and
-Automation.
+.Core Philosophies
+- Computers and tools should understand context, intent and work for humans.
+- Environment should support cognitive flow, not disrupt or redirect it.
 
 link:https://github.com/MidHunterX/Project-Launcher[Run]: Automating project
 initialization and environment setup. Helps to maintain cognitive context of
@@ -61,6 +58,10 @@ interface design solution for UI contrast issues with transparent windows. It
 makes the window text readable against both light and dark wallpapers by
 detecting the brightness of the Wallpaper and adjusting the perceived
 transparency of the window (via blur brightness + contrast).
+
+.`Fig: Window brightness (perceived) adapted to 60% across wallpapers with varying brightness`
+image:Mid_Hunter/scripts/.assets/auto_adaptation.jpg[link=Mid_Hunter/scripts/ai_theme.sh]
+
 ====
 
 == 💼 Carefully Concocted Custom Configurations
@@ -798,7 +799,7 @@ NOTE: systemd-resolved can also set DNS config but since we are not enabling tha
 
 = Personal Notes
 
-== 🗒️ Partition Sizes
+== 🗒️ Partition Proportions
 [%header]
 |===
 | Partition   | Recommended Size | Max Used
