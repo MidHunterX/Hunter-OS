@@ -29,7 +29,7 @@ and comfortability without even thinking about keybindings.
 [%collapsible]
 ====
 [discrete]
-== ⚗️ Experimentally Engineered Empathic Environment
+== ⚗️ Empathic Environment Engineering Experiment
 
 Exploring reduction of Cognitive Load by Intent based context switching, Calm
 technology inspired ambient nudging, Automation and Proactive Computing.
