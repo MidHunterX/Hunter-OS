@@ -144,19 +144,20 @@ case "$AUTOSCALE_STRATEGY" in
     ;;
 "adapt")
     # wallpaper_brightness (0-1)
-    # brightness (0-1)
-    # contrast (0-2)
+    # brightness (0-2) where, 0-1=dark, 1=neutral, 1-2=light
+    # contrast (0-2) where, 0-1=dark, 1=neutral, 1-2=light
 
-    target_darkness=0.6 # target percent of window darkness (0.0 - 1.0)
-    # scale: how strong the adaptation should be
-    # the lower the scale, the less adaptation between light and dark walls
-    scale=0.6
+    base_brightness=0.5
+    base_contrast=0.7
+
+    target_brightness=0.6 # target percieved brightness of window (0.0 - 1.0)
+    strength=0.6 # lower value = lesser adapt between light and dark walls
 
     darkness_factor=$(awk -v g="$wallpaper_brightness" 'BEGIN{print 1 - g}')
-    adapt=$(awk -v d="$darkness_factor" -v p="$target_darkness" 'BEGIN{print d - p}')
+    adapt=$(awk -v d="$darkness_factor" -v p="$target_brightness" 'BEGIN{print d - p}')
 
-    brightness=$(awk -v a="$adapt" -v s="$scale" 'BEGIN{print 0.5 + (a * s)}')
-    contrast=$(awk -v a="$adapt" -v s="$scale" 'BEGIN{print 0.7 + (a * s)}')
+    brightness=$(awk -v b="$base_brightness" -v a="$adapt" -v s="$strength" 'BEGIN{print b + (a * s)}')
+    contrast=$(awk -v b="$base_contrast" -v a="$adapt" -v s="$strength" 'BEGIN{print b + (a * s)}')
     ;;
 *)
     brightness=1.0
