@@ -19,7 +19,6 @@
         "layer": "bottom",
         "position": "top",
         "mod": "dock",
-        // Exclusive Screen Real-Estate
         "exclusive": false,
         "passthrough": false,
         "gtk-layer-shell": true,
@@ -43,7 +42,6 @@
         "layer": "bottom",
         "position": "top",
         "mod": "dock",
-        // Exclusive Screen Real-Estate
         "exclusive": false,
         "passthrough": false,
         "gtk-layer-shell": true,

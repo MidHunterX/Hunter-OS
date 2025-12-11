@@ -17,19 +17,21 @@
 #workspaces.pixel button {
   padding-top: 10px;
   padding-bottom: 10px;
-  border-top: 3px;
+  border-top: 2px;
   border-style: solid;
   margin-left: 5px;
   margin-right: 5px;
   padding-left: 25px;
   padding-right: 25px;
-  border-color: rgba(205, 214, 244, 0.8);
-  color: rgba(205, 214, 244, 0.8);
+  border-color: @secondary;
+  color: @secondary;
   transition: none;
 }
 
 /* Inactive and Empty */
 #workspaces.pixel button.empty {
+  border-top: 1px;
+  border-style: solid;
   border-color: rgba(108, 112, 134, 0.5);
   color: rgba(108, 112, 134, 0.5);
 }
@@ -38,6 +40,8 @@
 #workspaces.pixel button.active {
   border-color: @primary;
   color: @primary;
+  border-top: 3px;
+  border-style: solid;
 }
 
 /* Active but Empty */
