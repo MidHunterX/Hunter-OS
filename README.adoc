@@ -13,7 +13,7 @@ endif::[]
 *Terminal Centric and Reliable*: The terminal is the heart of this environment,
 providing CLI/TUI tools and utilities for efficient workflow tailored to
 personal preference. Even if the Display Server (central point of failure)
-fails, navigate comfortability in TTY interface without feeling homesick.
+fails, navigate comfortably in TTY interface without feeling homesick.
 
 *Lightweight, Optimized, and Battery Efficient*: Perfectly engineered to be
 light on system resources, ensuring smooth performance. Every aspect is
@@ -23,46 +23,7 @@ features at disposal.
 *Cohesive Universal Interface with Vim Keybindings*: Keyboard-centric approach,
 with standardized Vim-style keybindings deeply integrated into every tools,
 apps and utilities. This allows to navigate and interact with speed, precision
-and comfortability without even thinking about keybindings.
-
-.`⚠️ Experimental Features Section`
-[%collapsible]
-====
-[discrete]
-== ⚗️ Empathic Environment Engineering Experiment
-
-Exploring reduction of Cognitive Load by Intent based context switching, Calm
-technology inspired ambient nudging, Automation and Proactive Computing.
-
-[discrete]
-.Core Philosophies
-- Computers and tools should understand context, intent and work for humans.
-- Environment should support cognitive flow, not disrupt or redirect it.
-
-link:https://github.com/MidHunterX/Project-Launcher[Run]: Automating project
-initialization and environment setup. Helps to maintain cognitive context of
-task without distracting yourself from manual setup.
-
-link:https://github.com/MidHunterX/Expression[Expression]: Expressing a
-non-intrusive ambient notification of life events and schedules. Know time
-schedule without knowing the time. Useful for humans with low interoception who
-works on computers all day.
-
-link:https://github.com/MidHunterX/Intention[Intention]: An implementation of
-Proactive computing where you simply state your intent and let your computer
-change and modify its environment to adapt to your intention. Abstracts away
-Operating Systems to use it as specialized environment for a specific intent.
-
-link:Mid_Hunter/scripts/ai_theme.sh[Adaptive Window Contrast]: An adaptive
-interface design solution for UI contrast issues with transparent windows. It
-makes the window text readable against both light and dark wallpapers by
-detecting the brightness of the Wallpaper and adjusting the perceived
-transparency of the window (via blur brightness + contrast).
-
-.`Fig: Window brightness (perceived) adapted to 60% across wallpapers with varying brightness`
-image:Mid_Hunter/scripts/.assets/auto_adaptation.jpg[link=Mid_Hunter/scripts/ai_theme.sh]
-
-====
+and comfort without even thinking about keybindings.
 
 == 💼 Carefully Concocted Custom Configurations
 
@@ -181,7 +142,7 @@ end
 keyd --- linux ==Bash Shell==> hypr
 
 swww{{🔴 swww}}
-vifm(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/vifm'>VIFM</a>)
+vifm(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/vifm'>ViFM</a>)
 ls{{🟡 lsd / ls}}
 cat{{🟡 bat / cat}}
 find{{🟡 fd / find}}
@@ -245,6 +206,16 @@ Click the following categories to toggle the list of packages in that category.
 | linux-headers  | Headers and scripts for building modules        | pacman
 | pacman-contrib | Scripts and tools for pacman systems (paccache) | pacman
 |===
+
+[discrete]
+==== Yay - Yet Another Yogurt AUR Helper
+[source,bash]
+----
+sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay-bin.git
+cd yay-bin
+makepkg -si
+----
 ====
 
 .👢 Boot
@@ -581,17 +552,6 @@ sudo ln -s /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/
 |===
 ====
 
-=== 🚙 Extra Utility Tools
-
-==== Yay - Yet Another Yogurt AUR Helper
-[source,bash]
-----
-sudo pacman -S --needed git base-devel
-git clone https://aur.archlinux.org/yay-bin.git
-cd yay-bin
-makepkg -si
-----
-
 == 🛎️ Sustained System Services
 
 [%header]
@@ -796,6 +756,39 @@ nameserver 8.8.4.4     # Google secondary
 ----
 
 NOTE: systemd-resolved can also set DNS config but since we are not enabling that service, it will not do anything.
+
+== ⚗️ Empathic Environment Engineering Experiment
+
+Exploring reduction of Cognitive Load by Intent based context switching, Calm
+technology inspired ambient nudging, Automation and Proactive Computing.
+
+[discrete]
+.Core Philosophies
+- Computers and tools should understand context, intent and work for humans.
+- Environment should support cognitive flow, not disrupt or redirect it.
+
+link:https://github.com/MidHunterX/Project-Launcher[Run]: Automating project
+initialization and environment setup. Helps to maintain cognitive context of
+task without distracting yourself from manual setup.
+
+link:https://github.com/MidHunterX/Expression[Expression]: Expressing a
+non-intrusive ambient notification of life events and schedules. Know time
+schedule without knowing the time. Useful for humans with low interoception who
+works on computers all day.
+
+link:https://github.com/MidHunterX/Intention[Intention]: An implementation of
+Proactive computing where you simply state your intent and let your computer
+change and modify its environment to adapt to your intention. Abstracts away
+Operating Systems to use it as specialized environment for a specific intent.
+
+link:Mid_Hunter/scripts/ai_theme.sh[Adaptive Window Contrast]: An adaptive
+interface design solution for UI contrast issues with transparent windows. It
+makes the window text readable against both light and dark wallpapers by
+detecting the brightness of the Wallpaper and adjusting the perceived
+transparency of the window (via blur brightness + contrast).
+
+.`Fig: Window brightness (perceived) adapted to 60% across wallpapers with varying brightness`
+image:Mid_Hunter/scripts/.assets/auto_adaptation.jpg[link=Mid_Hunter/scripts/ai_theme.sh]
 
 = Personal Notes
 
