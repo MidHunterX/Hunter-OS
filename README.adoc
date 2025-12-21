@@ -97,10 +97,6 @@ Click the links below for a detailed documentation.
 | Shell Prompt Engine
 | image:.config/starship/.assets/prompt.png[,128,link=.config/starship/]
 
-| link:.config/VSCodium/User/[🆚 VSCode]
-| GUI Code Editor
-| image:.config/VSCodium/User/.assets/code.jpg[,128,link=.config/VSCodium/User/]
-
 | link:.config/waybar/[🍫 WayBar]
 | Status Bar
 | image:.config/waybar/.assets/waybar.png[,128,link=.config/waybar/]
@@ -442,7 +438,6 @@ WARNING: xdg-desktop-portal-hyprland enables features like screen sharing. There
 | xournalpp           | PDF Annotation / Drawing    | pacman
 | zathura             | PDF Graphical Viewer        | pacman
 | zathura-pdf-poppler | Zathura Poppler Backend     | pacman
-| vscodium-bin        | Open Source build of VSCode | yay
 |===
 ====
 
