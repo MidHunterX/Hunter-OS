@@ -32,10 +32,10 @@ update_config_value() {
 }
 
 clamp_hour() {
-  local h="$1"
+  local h=$((10#$1))   # force base-10 immediately
   ((h < 0)) && echo "23" && return
   ((h > 23)) && echo "00" && return
-  printf "%02d" "$h"
+  echo "$h"
 }
 
 # Returns:
@@ -49,8 +49,13 @@ get_time_context() {
   # Jump to next datapoint if >30 min
   ((minute > 30)) && hour=$((10#$hour + 1))
   THIS_HOUR=$(clamp_hour "$hour")
-  PREV_HOUR=$(clamp_hour $((10#$THIS_HOUR - 1)))
-  NEXT_HOUR=$(clamp_hour $((10#$THIS_HOUR + 1)))
+  PREV_HOUR=$(clamp_hour $((THIS_HOUR - 1)))
+  NEXT_HOUR=$(clamp_hour $((THIS_HOUR + 1)))
+
+  # Zero pad
+  THIS_HOUR=$(printf "%02d" "$THIS_HOUR")
+  PREV_HOUR=$(printf "%02d" "$PREV_HOUR")
+  NEXT_HOUR=$(printf "%02d" "$NEXT_HOUR")
 }
 
 # procedure: prints out gradient, updates config
@@ -89,11 +94,8 @@ main() {
   local THIS_VAL="${!THIS_VAR}"
   local NEXT_VAL="${!NEXT_VAR}"
 
-  # Average current & stored brightness
-  local AVG_BR
-  AVG_BR=$(calc "(${THIS_VAL} + ${current_brightness}) / 2")
-  update_config_value "$THIS_VAR" "$AVG_BR"
-  THIS_VAL="$AVG_BR"
+  update_config_value "$THIS_VAR" "$current_brightness"
+  THIS_VAL="$current_brightness"
 
   echo -e "${YLO}${PREV_VAR} = ${PREV_VAL} # PREV${RESET}"
   generate_gradient "$PREV_HOUR" "$THIS_HOUR" "$PREV_VAL" "$THIS_VAL"
