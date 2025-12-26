@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+STRATEGY="seismic" # "gradient" | "seismic"
+
 BLU='\033[0;34m'
 YLO='\033[0;33m'
 GRN='\033[1;32m'
@@ -79,6 +81,60 @@ generate_gradient() {
     done
 }
 
+# procedure: updates change throughout the day starting from current hour
+# usage: generate_seismic_shift from_hour from_val
+generate_seismic_shift() {
+    local from_hour="$1"
+    local from_val="$2"
+
+    local old_var="BR_${from_hour}_00"
+    local old_val="${!old_var}"
+
+    # How much the curve should move
+    local delta
+    delta=$(calc "${from_val} - ${old_val}")
+    [[ "$delta" == "0" ]] && return
+
+    echo -e "${YLO}Seismic shift Δ=${delta} starting @ ${from_hour}:00${RESET}"
+
+    # Walk through all future hours (including wrap-around)
+    local h=$((10#$from_hour))
+    for ((i = h; i < 24; i++)); do
+        local hour
+        hour=$(clamp_hour "$h")
+
+        # Stop once we loop back to previous hour
+        [[ "$hour" == "$PREV_HOUR" ]] && break
+
+        # Update hour anchor
+        local base_var="BR_${hour}_00"
+        local base_val="${!base_var}"
+        local new_base
+        new_base=$(calc "${base_val} + ${delta}")
+        update_config_value "$base_var" "$new_base"
+
+        # Update 15-min divisions
+        local div=0
+        for ((j = 1; j < DIVISIONS; j++)); do
+            div=$((10#$div + INTERVALS))
+            printf -v div "%02d" "$div"
+
+            local var="BR_${hour}_${div}"
+            local val="${!var}"
+
+            # Skip undefined entries safely
+            [[ -z "$val" ]] && continue
+
+            local new_val
+            new_val=$(calc "${val} + ${delta}")
+            update_config_value "$var" "$new_val"
+            echo -e "${YLO}${var} = ${new_val}${RESET}"
+        done
+
+        h=$((10#$h + 1))
+    done
+}
+
 main() {
     local current_brightness
     current_brightness=$(brillo)
@@ -97,13 +153,21 @@ main() {
     update_config_value "$THIS_VAR" "$current_brightness"
     THIS_VAL="$current_brightness"
 
-    echo -e "${YLO}${PREV_VAR} = ${PREV_VAL} # PREV${RESET}"
-    generate_gradient "$PREV_HOUR" "$THIS_HOUR" "$PREV_VAL" "$THIS_VAL"
-    echo -e "${GRN}${THIS_VAR} = ${THIS_VAL} # THIS${RESET}"
-    generate_gradient "$THIS_HOUR" "$NEXT_HOUR" "$THIS_VAL" "$NEXT_VAL"
-    echo -e "${BLU}${NEXT_VAR} = ${NEXT_VAL} # NEXT${RESET}"
-
-    echo -e "\n${GRN}Brightness interpolation updated successfully.${RESET}"
+    case "$STRATEGY" in
+    gradient)
+        echo -e "${YLO}${PREV_VAR} = ${PREV_VAL} # PREV${RESET}"
+        generate_gradient "$PREV_HOUR" "$THIS_HOUR" "$PREV_VAL" "$THIS_VAL"
+        echo -e "${GRN}${THIS_VAR} = ${THIS_VAL} # THIS${RESET}"
+        generate_gradient "$THIS_HOUR" "$NEXT_HOUR" "$THIS_VAL" "$NEXT_VAL"
+        echo -e "${BLU}${NEXT_VAR} = ${NEXT_VAL} # NEXT${RESET}"
+        echo -e "\n${GRN}Local Brightness interpolation updated successfully.${RESET}"
+        ;;
+    seismic)
+        generate_seismic_shift "$THIS_HOUR" "$THIS_VAL"
+        echo -e "\n${GRN}Global Brightness temporal translation successful.${RESET}"
+        ;;
+    *) ;;
+    esac
 }
 
 main "$@"
