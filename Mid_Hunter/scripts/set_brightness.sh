@@ -40,6 +40,10 @@ clamp_hour() {
     echo "$h"
 }
 
+zero_pad() {
+    printf "%02d" "$1"
+}
+
 # Returns:
 # var $THIS_HOUR
 # var $PREV_HOUR
@@ -55,9 +59,9 @@ get_time_context() {
     NEXT_HOUR=$(clamp_hour $((THIS_HOUR + 1)))
 
     # Zero pad
-    THIS_HOUR=$(printf "%02d" "$THIS_HOUR")
-    PREV_HOUR=$(printf "%02d" "$PREV_HOUR")
-    NEXT_HOUR=$(printf "%02d" "$NEXT_HOUR")
+    THIS_HOUR=$(zero_pad "$THIS_HOUR")
+    PREV_HOUR=$(zero_pad "$PREV_HOUR")
+    NEXT_HOUR=$(zero_pad "$NEXT_HOUR")
 }
 
 # procedure: prints out gradient, updates config
@@ -102,6 +106,7 @@ generate_seismic_shift() {
     for ((i = h; i < 24; i++)); do
         local hour
         hour=$(clamp_hour "$h")
+        hour=$(zero_pad "$hour")
 
         # Stop once we loop back to previous hour
         [[ "$hour" == "$PREV_HOUR" ]] && break
