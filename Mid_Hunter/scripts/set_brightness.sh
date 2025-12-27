@@ -116,6 +116,7 @@ generate_seismic_shift() {
         local base_val="${!base_var}"
         local new_base
         new_base=$(calc "${base_val} + ${delta}")
+        ((new_base < 0)) && new_base=0
         update_config_value "$base_var" "$new_base"
 
         # Update 15-min divisions
@@ -132,6 +133,7 @@ generate_seismic_shift() {
 
             local new_val
             new_val=$(calc "${val} + ${delta}")
+            ((new_val < 0)) && new_val=0
             update_config_value "$var" "$new_val"
             echo -e "${YLO}${var} = ${new_val}${RESET}"
         done
