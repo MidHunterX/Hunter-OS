@@ -10,7 +10,8 @@ window {
 }
 button {
   color: @on_background;
-  border-style: none;
+  border: 3px solid;
+  border-color: transparent;
   border-radius: 15px;
   background-repeat: no-repeat;
   background-position: center;
