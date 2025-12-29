@@ -20,12 +20,9 @@ source "$CONFIG_FILE"
 calc() {
     local result
     result=$(awk "BEGIN {print $*}")
-
-    if [[ "$result" =~ ^-?[0-9]+$ ]]; then
-        printf "%d" "$result"
-    else
-        printf "%.2f" "$result"
-    fi
+    # if [[ "$result" =~ ^-?[0-9]+$ ]]; then
+    #     printf "%d" "$result"
+    printf "%.2f" "$result"
 }
 
 update_config_value() {
@@ -42,6 +39,14 @@ clamp_hour() {
 
 zero_pad() {
     printf "%02d" "$1"
+}
+
+is_zero() {
+    [[ "$1" =~ ^([0]+([.][0]+)?|[.][0]+)$ ]]
+}
+
+is_negative_number() {
+    [[ "$1" =~ ^-([0-9]+([.][0-9]+)?|[.][0-9]+)$ ]]
 }
 
 # Returns:
@@ -97,12 +102,15 @@ generate_seismic_shift() {
     # How much the curve should move
     local delta
     delta=$(calc "${from_val} - ${old_val}")
-    [[ "$delta" == "0" ]] && return
+    if is_zero "$delta"; then
+        return
+    fi
 
     echo -e "${YLO}Seismic shift Δ=${delta} starting @ ${from_hour}:00${RESET}"
 
     # Walk through all future hours (including wrap-around)
     local h=$((10#$from_hour))
+    # NOTE: i=0 for global lift, i=h for current to end
     for ((i = h; i < 24; i++)); do
         local hour
         hour=$(clamp_hour "$h")
@@ -116,7 +124,9 @@ generate_seismic_shift() {
         local base_val="${!base_var}"
         local new_base
         new_base=$(calc "${base_val} + ${delta}")
-        ((new_base < 0)) && new_base=0
+        if is_negative_number "$new_base"; then
+            new_base=0
+        fi
         update_config_value "$base_var" "$new_base"
 
         # Update 15-min divisions
@@ -133,9 +143,12 @@ generate_seismic_shift() {
 
             local new_val
             new_val=$(calc "${val} + ${delta}")
-            ((new_val < 0)) && new_val=0
+
+            if is_negative_number "$new_val"; then
+                new_val=0
+            fi
             update_config_value "$var" "$new_val"
-            echo -e "${YLO}${var} = ${new_val}${RESET}"
+            echo -e "${var} = ${new_val}"
         done
 
         h=$((10#$h + 1))
@@ -161,19 +174,26 @@ main() {
     THIS_VAL="$current_brightness"
 
     case "$STRATEGY" in
-    gradient)
-        echo -e "${YLO}${PREV_VAR} = ${PREV_VAL} # PREV${RESET}"
-        generate_gradient "$PREV_HOUR" "$THIS_HOUR" "$PREV_VAL" "$THIS_VAL"
-        echo -e "${GRN}${THIS_VAR} = ${THIS_VAL} # THIS${RESET}"
-        generate_gradient "$THIS_HOUR" "$NEXT_HOUR" "$THIS_VAL" "$NEXT_VAL"
-        echo -e "${BLU}${NEXT_VAR} = ${NEXT_VAL} # NEXT${RESET}"
-        echo -e "\n${GRN}Local Brightness interpolation updated successfully.${RESET}"
-        ;;
-    seismic)
-        generate_seismic_shift "$THIS_HOUR" "$THIS_VAL"
-        echo -e "\n${GRN}Global Brightness temporal translation successful.${RESET}"
-        ;;
-    *) ;;
+        gradient)
+            echo -e "${YLO}${PREV_VAR} = ${PREV_VAL} # PREV${RESET}"
+            generate_gradient "$PREV_HOUR" "$THIS_HOUR" "$PREV_VAL" "$THIS_VAL"
+            echo -e "${GRN}${THIS_VAR} = ${THIS_VAL} # THIS${RESET}"
+            generate_gradient "$THIS_HOUR" "$NEXT_HOUR" "$THIS_VAL" "$NEXT_VAL"
+            echo -e "${BLU}${NEXT_VAR} = ${NEXT_VAL} # NEXT${RESET}"
+            echo -e "\n${GRN}Local Brightness interpolation updated successfully.${RESET}"
+            ;;
+        seismic)
+            # Previous to This
+            echo -e "${YLO}${PREV_VAR} = ${PREV_VAL} # PREV${RESET}"
+            generate_gradient "$PREV_HOUR" "$THIS_HOUR" "$PREV_VAL" "$THIS_VAL"
+            echo -e "${GRN}${THIS_VAR} = ${THIS_VAL} # THIS${RESET}"
+            echo -e "\n${GRN}Local Brightness interpolation updated successfully.${RESET}"
+
+            # This to Rest
+            generate_seismic_shift "$THIS_HOUR" "$THIS_VAL"
+            echo -e "\n${GRN}Global Brightness temporal translation successful.${RESET}"
+            ;;
+        *) ;;
     esac
 }
 
