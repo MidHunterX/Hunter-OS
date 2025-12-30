@@ -30,7 +30,8 @@ fi
 # AUTO-START HYPRLAND #
 # =================== #
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-    dbus-run-session Hyprland > /dev/null
+    # dbus-run-session Hyprland > /dev/null
+    start-hyprland
 fi
 
 
