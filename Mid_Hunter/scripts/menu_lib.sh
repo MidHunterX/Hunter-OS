@@ -53,13 +53,13 @@ show_menu() {
   local switch_label=$3
   local color=$4
   ensure_cache "$cache_file"
-  local selection=$(
+  local selection
+  selection=$(
     (
       sed '/^$/d' "$cache_file"
       get_switch_entries "$switch_label"
     ) | fuzzel --dmenu \
       --border-color="$color" \
-      --background="#2d2d379b" \
       --match-mode=fzf \
       --prompt="$prompt "
   )
