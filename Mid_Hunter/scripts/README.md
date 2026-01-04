@@ -37,7 +37,7 @@ speed and efficiency.
 | Script               | Description                                        |
 | -------------------- | -------------------------------------------------- |
 | ai_brightness.sh     | Automatically set brightness based on your history |
-| ai_idle.sh           | Automatically execute commands after timeout       |
+| ai_idle.sh           | Automatically display off/sleep/shutdown on idle   |
 | ai_theme.sh          | Wallpaper based auto transparency and more         |
 | fetch.sh             | Simple Fetch Script                                |
 | kill_hypr.sh         | Kill Hyprland Safely                               |
