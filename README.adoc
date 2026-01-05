@@ -261,8 +261,8 @@ makepkg -si
 | lazygit       | TUI for Git                  | pacman
 | git-delta     | Git Syntax Highlighted Pager | pacman
 | meson         | Nice build system            | pacman
-| nodejs        | Node Java Script Runtime Env | pacman
-| npm           | Node JS package manager      | pacman
+| nodejs        | JavaScript Runtime Env       | pacman
+| npm           | NodeJS package manager       | pacman
 | python        | Python Interpreter           | pacman
 | sqlitebrowser | DB Browser for SQLite        | pacman
 |===
@@ -456,6 +456,7 @@ WARNING: xdg-desktop-portal-hyprland enables features like screen sharing. There
 | vifm         | TUI File Manager     | pacman
 | docx2txt     | View .docx files     | pacman
 | odt2txt      | View .odt files      | pacman
+| rar2fs       | FUSE mount rar files | aur
 |===
 ====
 
@@ -784,6 +785,10 @@ transparency of the window (via blur brightness + contrast).
 
 .`Fig: Window brightness (perceived) adapted to 60% across wallpapers with varying brightness`
 image:Mid_Hunter/scripts/.assets/auto_adaptation.jpg[link=Mid_Hunter/scripts/ai_theme.sh]
+
+link:Mid_Hunter/scripts/ai_idle.sh[Auto Shutdown]: The device will shutdown
+itself when it's left unattended for a long time at sleeping hours but if it's
+working hours, the device will suspend instead to save power.
 
 = Personal Notes
 
