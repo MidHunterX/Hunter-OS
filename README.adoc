@@ -117,7 +117,7 @@ Click the links below for a detailed documentation.
 ----
 flowchart LR
 
-subgraph XOSCRP Layer
+subgraph Intention Layer
   intention(<a href='https://github.com/MidHunterX/Intention'>Intention</a>)
   linux(Linux)
   windows(Windows)
@@ -265,7 +265,10 @@ makepkg -si
 | npm           | NodeJS package manager       | pacman
 | python        | Python Interpreter           | pacman
 | sqlitebrowser | DB Browser for SQLite        | pacman
+| jdk-openjdk   | Java Development Kit ℹ️      | pacman
 |===
+
+NOTE: Before installing jdk-openjdk, make sure to yeet out the pre-installed java package.
 ====
 
 .⚙️ Utilities
