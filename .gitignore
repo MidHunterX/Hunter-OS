@@ -128,7 +128,7 @@
 !.config/matugen/
 # Generated Files
 .config/fuzzel/colors.ini
-.config/hypr/colors.conf
+.config/hypr/colors/2_colors.conf
 .config/kitty/colors/colors.conf
 .config/waybar/colors.css
 .config/wlogout/color_icons/
