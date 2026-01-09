@@ -566,6 +566,7 @@ whole config from the generator itself (Not a fan of this technique).
 
 [source,mermaid]
 ----
+graph TD
 expression(<a href='https://github.com/MidHunterX/Expression'>Expression</a>)
 vifm(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/vifm'>ViFM</a>)
 expression & vifm --> ai[ai_theme.sh]
