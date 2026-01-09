@@ -405,8 +405,6 @@ When using `curlftpfs` to FUSE mount and copy files over FTP, there's a common i
 |===
 NOTE: wl-screenrec might be optimized, fast, efficient and Lightweight but it doesn't work in battery saver mode unlike wf-recorder.
 
-WARNING: Color generators like matugen are pervasive that it becomes a core dependency for app config colors unless there's a way to do fallback color on app configs. This makes the configs non-plug-n-play for other systems until all variables are replaced with hex colorcodes. TLDR: Usually colors don't work without matugen on some apps.
-
 WARNING: xdg-desktop-portal-hyprland enables features like screen sharing. There is a bug when the display is rotated, screen sharing shows it as default landscape mode. This is because `SPA_META_VideoTransform` is not present in the buffer metadata for **PipeWire streams**. This is what many apps, including browsers use to determine if and how the captured image needs to be rotated and Browser WebRTC doesn't support the SPA_META_VideoTransform metadata as well. This issue can be tracked here: https://github.com/hyprwm/xdg-desktop-portal-hyprland/issues/292[issue 292] and in WebRTC: https://issues.webrtc.org/issues/42226058[issue 42226058]. Have to wait (most likely a decade or two) until WebRTC fixes it.
 ====
 
@@ -551,6 +549,38 @@ sudo ln -s /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/
 |===
 ====
 
+== 🎨 Diligently Directed Dynamic Design Definitions
+
+`matugen` is used to generate dynamic Material You colors.
+
+Color generators like matugen are so pervasive, it becomes a dependency for app
+config colors unless there's a way to set fallback colors on app configs. This
+makes the configs non-plug-n-play for other systems until all variables are
+replaced with hex colorcodes. Another mitigation technique is to generate the
+whole config from the generator itself (Not a fan of this technique).
+
+|===
+| 🔴 | matugen Required as of now
+| 🟢 | matugen Optional (Plug n Play Friendly)
+|===
+
+[source,mermaid]
+----
+expression(<a href='https://github.com/MidHunterX/Expression'>Expression</a>)
+vifm(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/vifm'>ViFM</a>)
+expression & vifm --> ai[ai_theme.sh]
+ai --> gen[matugen] & hypr[🟢 hyprland]
+gen --> hypr --> 2_colors.conf --> 1_colors_fallback.conf
+gen --> tmux[🔴 tmux]
+gen --> bar[🔴 waybar]
+gen --> vis[🔴 cava]
+gen --> notif[🔴 dunst]
+gen --> term[🔴 kitty]
+gen --> top[🔴 btop]
+gen --> app[🔴 fuzzel]
+gen --> power[🔴 wlogout]
+----
+
 == 🛎️ Sustained System Services
 
 [%header]
@@ -570,30 +600,6 @@ sudo ln -s /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/
 [source,bash]
 ----
 systemctl enable <Service_Name>
-----
-
-== 🎨 Diligently Directed Dynamic Design Definitions
-
-`matugen` is used to generate dynamic Material You colors.
-
-|===
-| 🔴 | matugen Required
-| 🟢 | matugen Optional (Plug n Play Friendly)
-|===
-
-[source,mermaid]
-----
-graph TD
-ai[ai_theme.sh] --> gen[matugen] & hypr[🟢 hyprland]
-gen --> hypr --> 2_colors.conf --> 1_colors_fallback.conf
-gen --> tmux[🔴 tmux]
-gen --> bar[🔴 waybar]
-gen --> vis[🔴 cava]
-gen --> notif[🔴 dunst]
-gen --> term[🔴 kitty]
-gen --> top[🔴 btop]
-gen --> app[🔴 fuzzel]
-gen --> power[🔴 wlogout]
 ----
 
 == 💽 Core Computational Configurations
