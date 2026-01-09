@@ -398,6 +398,7 @@ When using `curlftpfs` to FUSE mount and copy files over FTP, there's a common i
 | waybar                      | Wayland Status Bar           | pacman
 | wl-clipboard                | wl-copy + wl-paste           | pacman
 | wtype                       | Wayland Keystrokes Emulation | pacman
+| vicinae-bin                 | Raycast Launcher alt         | aur
 | wf-recorder                 | Wayland Screen Recorder      | aur
 | keyd                        | Key Remapping Daemon         | aur
 | swww                        | Wayland Wallpaper Daemon     | aur

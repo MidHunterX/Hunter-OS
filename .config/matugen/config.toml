@@ -15,6 +15,11 @@ input_path  = '~/.config/matugen/templates/hyprland.conf'
 output_path = '~/.config/hypr/colors/2_colors.conf'
 post_hook   = 'hyprctl reload config-only >/dev/null'
 
+[templates.vicinae]
+input_path = './templates/vicinae.toml'
+output_path = '~/.local/share/vicinae/themes/matugen.toml'
+post_hook = 'vicinae theme set matugen'
+
 [templates.waybar]
 input_path  = '~/.config/matugen/templates/waybar.css'
 output_path = '~/.config/waybar/colors.css'
