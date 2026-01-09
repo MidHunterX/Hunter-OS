@@ -6,7 +6,7 @@ print_logs=false
 [[ "$1" == "--log" ]] && print_logs=true
 
 MONITOR="eDP-1"
-AUTOSCALE_STRATEGY="adapt" # custom | adapt
+AUTOSCALE_STRATEGY="adapt" # custom | strength | adapt
 
 log() {
     local grn='\033[1;32m'
@@ -89,8 +89,8 @@ magick "$wallpaper" -gravity Center -crop ${border}%x${border}+0+0 -resize 1x1 "
 hex_value=$(magick "$TMP_IMG" txt: | awk '/#\w+/{print $3}')
 log "🎨 Average Color: $(hex_to_ansi "$hex_value" invert)${hex_value}"
 
-# matugen image "$WALLPAPER_PATH" --quiet
-matugen color hex "$hex_value" --quiet
+matugen image "$wallpaper" --quiet
+# matugen color hex "$hex_value" --quiet
 
 # -----------------------------------------------------------------------------
 # THEME BASED ON LIGHT/DARK WALLPAPER
@@ -142,7 +142,7 @@ case "$AUTOSCALE_STRATEGY" in
     brightness=$(lerp "$wallpaper_brightness" "$max_brightness" "$min_brightness")
     contrast=$(lerp "$wallpaper_brightness" "$max_contrast" "$min_contrast")
     ;;
-"adapt")
+"strength")
     # wallpaper_brightness (0-1)
     # brightness (0-2) where, 0-1=dark, 1=neutral, 1-2=light
     # contrast (0-2) where, 0-1=dark, 1=neutral, 1-2=light
@@ -159,14 +159,35 @@ case "$AUTOSCALE_STRATEGY" in
     brightness=$(awk -v b="$base_brightness" -v a="$adapt" -v s="$strength" 'BEGIN{print b + (a * s)}')
     contrast=$(awk -v b="$base_contrast" -v a="$adapt" -v s="$strength" 'BEGIN{print b + (a * s)}')
     ;;
+"adapt")
+    target_brightness=0.6 # target percieved brightness of window (0.0 - 2.0)
+    brightness=$(awk -v w="$wallpaper_brightness" -v t="$target_brightness" '
+    BEGIN {
+        # Inverse relationship: darker wallpapers need lighter windows
+        # and vice versa to maintain contrast
+        # window = 1.2 * t - 0.5 * w # Samey feel
+        # window = (t * 1.5) - (w * 0.8) # Higher peaks and lower troughs
+        window = t * (1.1 - (w ^ 2)) # Exponential decay for natural feel
+
+        # Clamp to valid range
+        if (window < 0) window = 0
+        if (window > 2) window = 2
+
+        print window
+    }')
+    ;;
 *)
     brightness=1.0
     contrast=1.0
     ;;
 esac
 
-log "☀️ Window Brightness: $brightness"
-log "🌗 Window Contrast: $contrast"
+if [[ ! -z "$brightness" ]]; then
+    log "☀️ Window Brightness: $brightness"
+    hyprctl keyword decoration:blur:brightness "$brightness" >/dev/null
+fi
 
-hyprctl keyword decoration:blur:brightness "$brightness" >/dev/null
-hyprctl keyword decoration:blur:contrast "$contrast" >/dev/null
+if [[ ! -z "$contrast" ]]; then
+    log "🌗 Window Contrast: $contrast"
+    hyprctl keyword decoration:blur:contrast "$contrast" >/dev/null
+fi
