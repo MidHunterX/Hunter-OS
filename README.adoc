@@ -571,8 +571,8 @@ expression(<a href='https://github.com/MidHunterX/Expression'>Expression</a>)
 vifm(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/vifm'>ViFM</a>)
 expression & vifm --> ai[ai_theme.sh]
 ai --> gen[matugen] & hypr[🟢 hyprland]
-gen --> hypr --> 2_colors.conf --> 1_colors_fallback.conf
-gen --> tmux[🔴 tmux]
+gen --> hypr --> 1_colors_fallback.conf --> 2_colors.conf
+gen --> tmux[🟢 tmux] --> colors_fallback.conf --> colors.conf
 gen --> bar[🔴 waybar]
 gen --> vis[🔴 cava]
 gen --> notif[🔴 dunst]
