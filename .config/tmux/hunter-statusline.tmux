@@ -38,6 +38,8 @@ function build_prefix_off() {
 # █ ▀█▀ █▀▀ █▀▄▀█ █▀
 # █ ░█░ ██▄ █░▀░█ ▄█
 
+# Usage: item <background> <foreground> <content>
+# Creates: A simple item with a background and foreground text color
 function item() {
     local background foreground content
     background=$1
@@ -46,6 +48,10 @@ function item() {
     echo "#[bg=${background},fg=${foreground}]${content}"
 }
 
+# Usage: item_prefix <background> <foreground> <content>
+# Creates:
+#   - A simple item with a background and foreground text color
+#   - On prefix, bg = @hunter_prefix_bg and fg = default
 function item_prefix() {
     local background foreground content module pfx_bg
     pfx_bg=$(get_tmux_option "@hunter_prefix_bg" 'red')
@@ -53,7 +59,7 @@ function item_prefix() {
     foreground=$2
     content=$3
     module=$(build_prefix_off "$background" "$foreground" "$content")
-    module+=$(build_prefix_on "$pfx_bg" '#000000' "$content")
+    module+=$(build_prefix_on "$pfx_bg" 'default' "$content")
     echo "$module"
 }
 
@@ -64,17 +70,18 @@ function item_prefix_inverted() {
     foreground=$2
     content=$3
     module=$(build_prefix_off "$background" "$foreground" "$content")
-    module+=$(build_prefix_on '#000000' "$pfx_fg" "$content")
+    module+=$(build_prefix_on 'default' "$pfx_fg" "$content")
     echo "$module"
 }
 
 function item_prefix_text() {
-    local background foreground content module
+    local background foreground content module pfx_fg
+    pfx_fg=$(get_tmux_option "@hunter_prefix_fg" 'red')
     background=$1
     foreground=$2
     content=$3
     module=$(build_prefix_off "$background" "$foreground" "$content")
-    module+=$(build_prefix_on "$background" 'red' "$content")
+    module+=$(build_prefix_on "$background" "$pfx_fg" "$content")
     echo "$module"
 }
 
