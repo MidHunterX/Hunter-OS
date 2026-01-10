@@ -226,7 +226,7 @@ tmux set-option -g window-status-current-format "$(current_window_config)"
 # █▀ ▀█▀ ▄▀█ ▀█▀ █░█ █▀   █░░ █ █▄░█ █▀▀
 # ▄█ ░█░ █▀█ ░█░ █▄█ ▄█   █▄▄ █ █░▀█ ██▄
 status_pos=$(get_tmux_option "@hunter-status-position" "bottom")
-status_jus=$(get_tmux_option "@hunter-status-justify" "centre")
+status_jus=$(get_tmux_option "@hunter-status-justify" "absolute-centre")
 tmux set-option -g status-style bg=default,fg=default
 tmux set-option -g status-position "${status_pos}"
 tmux set-option -g status-justify "${status_jus}"
@@ -235,8 +235,7 @@ tmux set-option -g status-justify "${status_jus}"
 # ▄█ ░█░ █▀█ ░█░ █▄█ ▄█   █░▀░█ █▄█ █▄▀ █▄█ █▄▄ ██▄ ▄█
 tmux set-option -g status-right-length 69
 tmux set-option -g status-left-length 69
+
 # Uncomment any or concat var strings for more
-# tmux set-option -g status-left "$(time_module_config)"
-# tmux set-option -g status-right "$(session_module_config)"
 tmux set-option -g status-left "$(session_module_config)"
 tmux set-option -g status-right "$(time_module_config)"
