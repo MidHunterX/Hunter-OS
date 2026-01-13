@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 minutes() { echo $(($1 * 60)); }
-TIMEOUT_MINOR=$(minutes 5)
-TIMEOUT_MAJOR=$(minutes 15)
+TIMEOUT_MINOR=$(minutes 15)
+TIMEOUT_MAJOR=$(minutes 30)
 
 swayidle -w \
     timeout "$TIMEOUT_MINOR" 'hyprctl dispatch dpms off' \

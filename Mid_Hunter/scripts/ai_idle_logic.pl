@@ -46,14 +46,14 @@ my $SLEEP_END_M   = to_minutes($SLEEP_END);
 # DECISION LOGIC
 
 if (in_range($NOW_MINUTES, $WORK_START_M, $WORK_END_M)) {
-	print "Work hours (suspend)\n";
+	# print "Work hours\n";
 	system("systemctl suspend");
 }
 elsif (in_range($NOW_MINUTES, $SLEEP_START_M, $SLEEP_END_M)) {
-	print "Sleep hours (poweroff)\n";
+	# print "Sleep hours\n";
 	system("systemctl poweroff");
 }
 else {
-	print "Neutral hours (DPMS off)\n";
-	system("hyprctl dispatch dpms off");
+	# print "Neutral hours\n";
+	system("systemctl suspend");
 }
