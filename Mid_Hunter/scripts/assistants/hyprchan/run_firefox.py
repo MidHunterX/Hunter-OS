@@ -64,6 +64,7 @@ def daily_personal_tab(ff_attribs: list[str]):
     if date_today != date_last_run:
         print("First run of the day for 'Personal' profile. Adding new tab.")
         ff_attribs.extend(["-new-tab", "https://app.daily.dev/"])
+        ff_attribs.extend(["-new-tab", "https://sysdle.com/"])
         hist_file.parent.mkdir(parents=True, exist_ok=True)
         hist_file.write_text(date_today)
 
