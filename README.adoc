@@ -171,7 +171,8 @@ fish --> ls & vifm & cd & git & vos & brs & cat & find & prompt
 cd --> ls --> nf
 prompt & fish --$VIFM_MODE--> vifm
 fish --$editor--> nvim
-vifm --> ls & exif & nf
+vifm --> ls & nf
+vifm --exif data--> exif
 vifm --syntax highlighting--> syntax
 vifm --file search--> fzf & find
 nvim --vifm.vim--> vifm
