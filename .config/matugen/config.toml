@@ -60,11 +60,11 @@ input_path  = '~/.config/matugen/templates/wlogout.css'
 output_path = '~/.config/wlogout/colors.css'
 post_hook   = 'perl ~/.config/matugen/scripts/wlogout.pl'
 
-[config.custom_colors]
-red     = { color = "#f38ba8", blend = true }
-green   = { color = "#a6e3a1", blend = true }
-magenta = { color = "#f5c2e7", blend = true }
-cyan    = { color = "#94e2d5", blend = true }
+# [config.custom_colors]
+# red     = { color = "#f38ba8", blend = true }
+# green   = { color = "#a6e3a1", blend = true }
+# magenta = { color = "#f5c2e7", blend = true }
+# cyan    = { color = "#94e2d5", blend = true }
 # white   = { color = "#e6e6e6", blend = true }
 # yellow  = { color = "#f9e2af", blend = true }
 # blue    = { color = "#89b4fa", blend = true }
