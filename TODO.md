@@ -2,7 +2,6 @@
 
 | Package               | Desc                                 | pacman |
 | --------------------- | ------------------------------------ | ------ |
-| vicinae-bin           | Raycast Launcher alt                 | aur    |
 | helix                 | Visual first Vim like editor         | pacman |
 | veracrypt             | Data Encryption                      | pacman |
 | aylurs-gtk-shell      | Scaffolding for Astal+Gnim project   | aur    |
