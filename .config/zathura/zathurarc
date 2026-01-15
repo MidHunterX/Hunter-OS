@@ -73,13 +73,9 @@ set recolor-keephue "true"
 map b toggle_page_mode
 map [fullscreen] b toggle_page_mode
 
-# i - Information Toggle
-map i toggle_statusbar
-map [fullscreen] i toggle_statusbar
-
-# I - Invert Colorscheme (Dark mode toggle)
-map I recolor
-map [fullscreen] I recolor
+# i - Invert Colorscheme (Dark mode toggle)
+map i recolor
+map [fullscreen] i recolor
 
 # f - fullscreen
 unmap f
@@ -89,18 +85,6 @@ map [fullscreen] f toggle_fullscreen
 # x - Kill
 map x quit
 map [fullscreen] x quit
-
-# D/U - Zoom
-map D zoom "out"
-map U zoom "in"
-map [fullscreen] D zoom "out"
-map [fullscreen] U zoom "in"
-
-# <C-o>/<C-i> - Zoom
-map <C-o> zoom "out"
-map <C-i> zoom "in"
-map [fullscreen] <C-o> zoom "out"
-map [fullscreen] <C-i> zoom "in"
 
 # d/u - Half Scroll
 unmap d
@@ -127,10 +111,30 @@ map <Right> navigate "next"
 map [fullscreen] <Left> navigate "previous"
 map [fullscreen] <Right> navigate "next"
 
-# zoom page
+# == ZOOMER == #
+
+# Universal like zoom keys
 map 0 zoom "default"
 map - zoom "out"
 map = zoom "in"
 map [fullscreen] 0 zoom "default"
 map [fullscreen] - zoom "out"
 map [fullscreen] = zoom "in"
+
+# D/U - Zoom
+map D zoom "out"
+map U zoom "in"
+map [fullscreen] D zoom "out"
+map [fullscreen] U zoom "in"
+
+# <C-o>/<C-i> - Zoom
+map <C-o> zoom "out"
+map <C-i> zoom "in"
+map [fullscreen] <C-o> zoom "out"
+map [fullscreen] <C-i> zoom "in"
+
+# mupdf like Set width
+map [normal]     H adjust_window best-fit
+map [normal]     W adjust_window width
+map [fullscreen] H adjust_window best-fit
+map [fullscreen] W adjust_window width

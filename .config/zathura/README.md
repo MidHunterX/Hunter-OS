@@ -11,7 +11,7 @@
 | Keymap   | Description                                      |
 | -------- | ------------------------------------------------ |
 | b        | Toggle **Booklet** View Mode                     |
-| I        | Toggle **Invert** Colorscheme (Dark Mode Toggle) |
+| i        | Toggle **Invert** Colorscheme (Dark Mode Toggle) |
 | f        | Toggle **Fullscreen** Mode                       |
 | j        | Smooth Scroll Down                               |
 | k        | Smooth Scroll Up                                 |
@@ -20,6 +20,8 @@
 | h        | Navigate to Previous Page                        |
 | l        | Navigate to Next Page                            |
 | 0        | Set Default Zoom                                 |
+| H        | Fit Page to **Height**                           |
+| W        | Fit Page to **Width**                            |
 | +, <C-i> | Zoom In                                          |
 | -, <C-o> | Zoom Out                                         |
 | x        | Close/Quit                                       |
