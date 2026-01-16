@@ -184,7 +184,7 @@ vos --> volume
 brs --> brillo
 ----
 
-.Dynamic Color Generation
+.🎨 Dynamic Color Generation
 [%collapsible]
 ====
 [discrete]
@@ -194,7 +194,7 @@ brs --> brillo
 
 |===
 | 🟢 | matugen Optional (Plug n Play Friendly)
-| 🔴 | matugen Required for now
+| 🔴 | matugen Required
 |===
 
 [source,mermaid]
@@ -203,13 +203,15 @@ graph TD
 expression(<a href='https://github.com/MidHunterX/Expression'>Expression</a>)
 vifm(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/vifm'>ViFM</a>)
 
-%% ----- Sourcing Techniques ----- %%
+%% ========================== Sourcing Techniques ========================== %%
+
 override_sourcing{{Override Sourcing}}
 conditional_sourcing{{Conditional Sourcing}}
-manual_selection{{Manual Selection}}
 default_fallback{{Fallback Defaults}}
+manual_selection{{Manual Selection}}
 
-%% ----- Progress ----- %%
+%% ======================== Implementation Progress ======================== %%
+
 expression & vifm --> ai[ai_theme.sh]
 ai --> gen[matugen] & hypr[🟢 hyprland]
 gen --> hypr --> 1_colors_fallback.conf --colors/2_colors.conf--> override_sourcing
@@ -221,11 +223,14 @@ gen --> app[🟢 fuzzel] --colors.ini--> default_fallback
 gen --> power[🔴 wlogout]
 gen --> bar[🔴 waybar]
 gen --> vis[🔴 cava]
+
+%% ========================================================================= %%
 ----
 
-- Waybar: There's no way to conditionally source/implement fallback in GTK-CSS. Only way is to copy a generated file initially.
-- wlogout: Same as waybar. GTK-CSS issue.
+- Waybar & Wlogout: There's no way to conditionally source/implement fallback in GTK-CSS. Only way is to copy a generated file initially.
 - cava: No option for theme fallback in config as it is doing an in-built parsing. The best way would be to find/create a better wrapper using cava as backend.
+
+Solution: Use custom made status bar, logout screen etc. with a custom GUI shell like QuickShell, AGS or EWW.
 ====
 
 == 📦 Preeminently Preferred Primary Packages
@@ -437,8 +442,6 @@ When using `curlftpfs` to FUSE mount and copy files over FTP, there's a common i
 | dunst                       | Notification Daemon          | pacman
 | fuzzel                      | Wayland App Launcher         | pacman
 | hyprland                    | Wayland compositor           | pacman
-| hyprpolkitagent             | Hypr Authentication Agent    | pacman
-| hyprpicker                  | Hypr Color Picker            | pacman
 | xdg-desktop-portal-hyprland | Hypr Desktop Portal          | pacman
 | swayidle                    | Wayland Idle Manager         | pacman
 | swayosd                     | On Screen Display Window     | pacman
@@ -450,7 +453,6 @@ When using `curlftpfs` to FUSE mount and copy files over FTP, there's a common i
 | keyd                        | Key Remapping Daemon         | aur
 | swww                        | Wayland Wallpaper Daemon     | aur
 | wlogout                     | Logout Screen                | aur
-| clock-tui                   | TUI Clock (tclock)           | aur
 |===
 NOTE: wl-screenrec might be optimized, fast, efficient and Lightweight but it doesn't work in battery saver mode unlike wf-recorder.
 
