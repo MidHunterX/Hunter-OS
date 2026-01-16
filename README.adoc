@@ -184,6 +184,50 @@ vos --> volume
 brs --> brillo
 ----
 
+.Dynamic Color Generation
+[%collapsible]
+====
+[discrete]
+=== 🎨 Dynamic Color Generation
+
+`matugen` is used to generate dynamic Material You colors for applications.
+
+|===
+| 🟢 | matugen Optional (Plug n Play Friendly)
+| 🔴 | matugen Required for now
+|===
+
+[source,mermaid]
+----
+graph TD
+expression(<a href='https://github.com/MidHunterX/Expression'>Expression</a>)
+vifm(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/vifm'>ViFM</a>)
+
+%% ----- Sourcing Techniques ----- %%
+override_sourcing{{Override Sourcing}}
+conditional_sourcing{{Conditional Sourcing}}
+manual_selection{{Manual Selection}}
+default_fallback{{Fallback Defaults}}
+
+%% ----- Progress ----- %%
+expression & vifm --> ai[ai_theme.sh]
+ai --> gen[matugen] & hypr[🟢 hyprland]
+gen --> hypr --> 1_colors_fallback.conf --colors/2_colors.conf--> override_sourcing
+gen --> tmux[🟢 tmux] --colors.conf--> conditional_sourcing
+gen --> notif[🟢 dunst] --dunstrc.d/99-colors.conf--> override_sourcing
+gen --> term[🟢 kitty] --colors/colors.conf--> override_sourcing
+gen --> top[🟢 btop] --colors.theme--> manual_selection
+gen --> app[🟢 fuzzel] --colors.ini--> default_fallback
+gen --> power[🔴 wlogout]
+gen --> bar[🔴 waybar]
+gen --> vis[🔴 cava]
+----
+
+- Waybar: There's no way to conditionally source/implement fallback in GTK-CSS. Only way is to copy a generated file initially.
+- wlogout: Same as waybar. GTK-CSS issue.
+- cava: No option for theme fallback in config as it is doing an in-built parsing. The best way would be to find/create a better wrapper using cava as backend.
+====
+
 == 📦 Preeminently Preferred Primary Packages
 
 Click the following categories to toggle the list of packages in that category.
@@ -393,7 +437,9 @@ When using `curlftpfs` to FUSE mount and copy files over FTP, there's a common i
 | dunst                       | Notification Daemon          | pacman
 | fuzzel                      | Wayland App Launcher         | pacman
 | hyprland                    | Wayland compositor           | pacman
-| xdg-desktop-portal-hyprland | Desktop Integration Portal   | pacman
+| hyprpolkitagent             | Hypr Authentication Agent    | pacman
+| hyprpicker                  | Hypr Color Picker            | pacman
+| xdg-desktop-portal-hyprland | Hypr Desktop Portal          | pacman
 | swayidle                    | Wayland Idle Manager         | pacman
 | swayosd                     | On Screen Display Window     | pacman
 | waybar                      | Wayland Status Bar           | pacman
@@ -404,48 +450,13 @@ When using `curlftpfs` to FUSE mount and copy files over FTP, there's a common i
 | keyd                        | Key Remapping Daemon         | aur
 | swww                        | Wayland Wallpaper Daemon     | aur
 | wlogout                     | Logout Screen                | aur
+| clock-tui                   | TUI Clock (tclock)           | aur
 |===
 NOTE: wl-screenrec might be optimized, fast, efficient and Lightweight but it doesn't work in battery saver mode unlike wf-recorder.
 
 WARNING: xdg-desktop-portal-hyprland enables features like screen sharing. There is a bug when the display is rotated, screen sharing shows it as default landscape mode. This is because `SPA_META_VideoTransform` is not present in the buffer metadata for **PipeWire streams**. This is what many apps, including browsers use to determine if and how the captured image needs to be rotated and Browser WebRTC doesn't support the SPA_META_VideoTransform metadata as well. This issue can be tracked here: https://github.com/hyprwm/xdg-desktop-portal-hyprland/issues/292[issue 292] and in WebRTC: https://issues.webrtc.org/issues/42226058[issue 42226058]. Have to wait (most likely a decade or two) until WebRTC fixes it.
 
 WARNING: Color generators like matugen are so pervasive, it becomes a dependency for app config colors unless there's a way to set fallback colors on app configs. This makes the configs non-plug-n-play for other systems until all variables are replaced with hex colorcodes. Another mitigation technique is to generate the whole config from the generator itself (Not a fan of this technique).
-
-`matugen` is used to generate dynamic Material You colors. Currently, each config is in the process of getting fallback colors for portability.
-
-|===
-| 🟢 | matugen Optional (Plug n Play Friendly)
-| 🔴 | matugen Required for now
-|===
-
-[source,mermaid]
-----
-graph TD
-expression(<a href='https://github.com/MidHunterX/Expression'>Expression</a>)
-vifm(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/vifm'>ViFM</a>)
-
-%% ----- Sourcing Techniques ----- %%
-override_sourcing{{Override Sourcing}}
-conditional_sourcing{{Conditional Sourcing}}
-manual_selection{{Manual Selection}}
-default_fallback{{Fallback Defaults}}
-
-%% ----- Progress ----- %%
-expression & vifm --> ai[ai_theme.sh]
-ai --> gen[matugen] & hypr[🟢 hyprland]
-gen --> hypr --> 1_colors_fallback.conf --colors/2_colors.conf--> override_sourcing
-gen --> tmux[🟢 tmux] --colors.conf--> conditional_sourcing
-gen --> notif[🟢 dunst] --dunstrc.d/99-colors.conf--> override_sourcing
-gen --> term[🟢 kitty] --colors/colors.conf--> override_sourcing
-gen --> top[🟢 btop] --colors.theme--> manual_selection
-gen --> app[🟢 fuzzel] --colors.ini--> default_fallback
-gen --> power[🔴 wlogout]
-gen --> bar[🔴 waybar]
-gen --> vis[🔴 cava]
-----
-
-- Waybar: There's no way to conditionally source/implement fallback in GTK-CSS. Only way is to copy a generated file initially.
-- cava: No option for theme fallback in config as it is doing an in-built parsing. The best way would be to find/create a better wrapper using cava as backend.
 
 ====
 
@@ -843,6 +854,12 @@ working hours, the device will suspend instead to save power.
 | /tmp (swap) | = 4G             | 200M
 | /home       | > 128G           | 40G
 |===
+
+=== Dynamic Resizing
+
+Use BTRFS to create a single logical volume and make the partitions into
+logical sub-volumes. No more unmounting, no fsck, no live USB to resize
+partitions.
 
 == 🤫 SSH
 
