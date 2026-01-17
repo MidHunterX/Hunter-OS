@@ -1,5 +1,13 @@
 = Hunter OS
 
+// Variables
+// ---------
+:gh-repo: https://github.com/MidHunterX/Hunter-OS
+:gh-repo-master: https://github.com/MidHunterX/Hunter-OS/tree/master
+:gh-nvim: https://github.com/MidHunterX/NvME
+
+// GitHub specific tags
+// --------------------
 ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
@@ -7,6 +15,10 @@ ifdef::env-github[]
 :caution-caption: :fire:
 :warning-caption: :warning:
 endif::[]
+
+// NOTE:
+// -----
+// * Use subs=attributes+ to enable attributes inside codeblock.
 
 == 📜 Philosophy
 
@@ -41,9 +53,9 @@ Click the links below for a detailed documentation.
 | File Manager
 | image:.config/vifm/.assets/vifm.jpg[,128,link=.config/vifm/]
 
-| link:https://github.com/MidHunterX/NvME[📝 NeoVim]
+| link:{gh-nvim}[📝 NeoVim]
 | TUI Code Editor
-| image:https://github.com/MidHunterX/NvME/blob/37a9ab0ee56159f744e670831e315ca085a7b218/img/nvim_dashboard.jpg[,128,link=https://github.com/MidHunterX/NvME]
+| image:{gh-nvim}/blob/37a9ab0ee56159f744e670831e315ca085a7b218/img/nvim_dashboard.jpg[,128,link={gh-nvim}]
 
 | link:.mozilla/[🦊 FireFox]
 | Web Browser
@@ -113,7 +125,7 @@ Click the links below for a detailed documentation.
 | 🟡 | Optional Dependency
 |===
 
-[source,mermaid]
+[source,mermaid,subs=attributes+]
 ----
 flowchart LR
 
@@ -121,24 +133,24 @@ subgraph Intention Layer
   intention(<a href='https://github.com/MidHunterX/Intention'>Intention</a>)
   linux(Linux)
   windows(Windows)
-  grub{<a href='https://github.com/MidHunterX/Hunter-OS?tab=readme-ov-file#-grub-bootloader'>GRUB</a>}
-  keyd{{<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/keyd/'>KeyD</a>}}
+  grub{<a href='{gh-repo}?tab=readme-ov-file#-grub-bootloader'>GRUB</a>}
+  keyd{{<a href='{gh-repo-master}/.config/keyd/'>KeyD</a>}}
 end
 
 intention --> grub --> linux & windows
 linux -.SEND.-> intention -.RECV.-> linux & windows
 
 subgraph Orchestration Layer
-  hypr(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/hypr'>Hyprland</a>)
+  hypr(<a href='{gh-repo-master}/.config/hypr'>Hyprland</a>)
   run(<a href='https://github.com/MidHunterX/Project-Launcher'>Project Launcher</a>)
   expression(<a href='https://github.com/MidHunterX/Expression'>Expression</a>)
-  kitty(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/kitty/'>Kitty</a>)
+  kitty(<a href='{gh-repo-master}/.config/kitty/'>Kitty</a>)
 end
 
 keyd --- linux ==Bash Shell==> hypr
 
 swww{{🔴 swww}}
-vifm(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/vifm'>ViFM</a>)
+vifm(<a href='{gh-repo-master}/.config/vifm'>ViFM</a>)
 ls{{🟡 lsd / ls}}
 cat{{🟡 bat / cat}}
 find{{🟡 fd / find}}
@@ -146,18 +158,18 @@ grep{{🟡 ripgrep / grep}}
 exif{{🟡 exiv2}}
 tmux{{🟡 tmux}}
 syntax{{🟡 highlight}}
-nvim(<a href='https://github.com/MidHunterX/NvME'>NeoVim</a>)
-fish(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/fish/'>Fish Shell</a>)
+nvim(<a href='{gh-nvim}'>NeoVim</a>)
+fish(<a href='{gh-repo-master}/.config/fish/'>Fish Shell</a>)
 vos(VOS)
 cd{{🟡 zoxide / cd}}
 volume{{🔴 pamixer}}
 brs(BRS)
 brillo{{🔴 brillo}}
-waybar(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/waybar/'>Waybar</a>)
+waybar(<a href='{gh-repo-master}/.config/waybar/'>Waybar</a>)
 nf(Nerd Font)
 fzf{{🔴 fzf}}
 git{{🟡 git / lazygit}}
-prompt(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/starship/'>Starship Prompt</a>)
+prompt(<a href='{gh-repo-master}/.config/starship/'>Starship Prompt</a>)
 
 hypr --> kitty
 hypr --startup--> expression --> swww --wayland--> hypr
@@ -198,11 +210,11 @@ brs --> brillo
 | 🔴 | matugen Required
 |===
 
-[source,mermaid]
+[source,mermaid,subs=attributes+]
 ----
 graph TD
 expression(<a href='https://github.com/MidHunterX/Expression'>Expression</a>)
-vifm(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/vifm'>ViFM</a>)
+vifm(<a href='{gh-repo-master}/.config/vifm'>ViFM</a>)
 
 %% ========================== Sourcing Techniques ========================== %%
 
@@ -240,20 +252,20 @@ Solution: Use custom made status bar, logout screen etc. with a custom GUI shell
 [discrete]
 === 🌊 Workflow
 
-[source,mermaid]
+[source,mermaid,subs=attributes+]
 ----
 graph LR
 %% ============================= Core Workflow ============================= %%
-nvim(<a href='https://github.com/MidHunterX/NvME'>NeoVim</a>)
-fish(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/fish/'>Fish Shell</a>)
-vifm(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/vifm'>ViFM</a>)
-kitty(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/kitty/'>Kitty</a>)
-hypr(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/hypr'>Hyprland</a>)
+nvim(<a href='{gh-nvim}'>NeoVim</a>)
+fish(<a href='{gh-repo-master}/.config/fish/'>Fish Shell</a>)
+vifm(<a href='{gh-repo-master}/.config/vifm'>ViFM</a>)
+kitty(<a href='{gh-repo-master}/.config/kitty/'>Kitty</a>)
+hypr(<a href='{gh-repo-master}/.config/hypr'>Hyprland</a>)
 
 subgraph Development Area
-	tmux(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/tmux/'>TMUX</a>)
+	tmux(<a href='{gh-repo-master}/.config/tmux/'>TMUX</a>)
 	run(<a href='https://github.com/MidHunterX/Project-Launcher'>Project Launcher</a>)
-	git(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/lazygit/'>Lazygit</a>)
+	git(<a href='{gh-repo-master}/.config/lazygit/'>Lazygit</a>)
 end
 
 fish --Edit Command (alt+e)--> nvim
@@ -278,7 +290,7 @@ nvim -.Immediate Jump (f).-> cursor
 nvim -.Local Jump (s).-> cursor
 nvim -.Global Jump (leader sf).-> cursor
 hypr--(Meta+e f)--> firefox
-firefox(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.mozilla/'>Firefox</a>)
+firefox(<a href='{gh-repo-master}/.mozilla/'>Firefox</a>)
 firefox -.Element Focus (f).-> cursor
 firefox -.TextInput Focus (gi).-> cursor
 
@@ -665,7 +677,7 @@ sudo ln -s /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/
 | dhcpcd.service         | DHCP/ IPv4LL/ IPv6RA/ DHCPv6 client
 | NetworkManager.service | Network connection manager
 
-| https://github.com/MidHunterX/Hunter-OS/tree/master/.config/keyd/[keyd.service]
+| {gh-repo-master}/.config/keyd/[keyd.service]
 | A key remapping daemon for linux
 
 | swayosd-libinput-backend.service
