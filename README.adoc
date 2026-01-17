@@ -281,6 +281,9 @@ hypr--(Meta+e f)--> firefox
 firefox(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.mozilla/'>Firefox</a>)
 firefox -.Element Focus (f).-> cursor
 firefox -.TextInput Focus (gi).-> cursor
+
+%% ======================== Entertainment Workflow ======================== %%
+firefox <--Global Video (ctrl+shift+})--> hypr
 ----
 ====
 
