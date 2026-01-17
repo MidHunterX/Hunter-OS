@@ -162,6 +162,7 @@ prompt(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/star
 hypr --> kitty
 hypr --startup--> expression --> swww --wayland--> hypr
 hypr --startup--> swww & waybar
+hypr --textinput--> nvim
 waybar --submap--> hypr
 run --> tmux & nvim
 
@@ -184,11 +185,11 @@ vos --> volume
 brs --> brillo
 ----
 
-.🎨 Dynamic Color Generation
+.🎨 Dynamic Colors
 [%collapsible]
 ====
 [discrete]
-=== 🎨 Dynamic Color Generation
+=== 🎨 Dynamic Colors
 
 `matugen` is used to generate dynamic Material You colors for applications.
 
@@ -231,6 +232,31 @@ gen --> vis[🔴 cava]
 - cava: No option for theme fallback in config as it is doing an in-built parsing. The best way would be to find/create a better wrapper using cava as backend.
 
 Solution: Use custom made status bar, logout screen etc. with a custom GUI shell like QuickShell, AGS or EWW.
+====
+
+.🌊 Workflow
+[%collapsible]
+====
+[discrete]
+=== 🌊 Workflow
+
+[source,mermaid]
+----
+graph TD
+nvim(<a href='https://github.com/MidHunterX/NvME'>NeoVim</a>)
+fish(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/fish/'>Fish Shell</a>)
+vifm(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/vifm'>ViFM</a>)
+kitty(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/kitty/'>Kitty</a>)
+hypr(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/hypr'>Hyprland</a>)
+
+fish --Edit Command (alt+e)--> nvim
+nvim --Open Files (leader pf)--> vifm
+vifm --Edit Files (i/l)--> nvim
+vifm --cd Temporarily (s)--> fish
+kitty --Scrollback History(alt+n)--> nvim
+hypr --(Meta+e k)--> kitty
+hypr --(Meta+e n)--> nvim
+----
 ====
 
 == 📦 Preeminently Preferred Primary Packages
