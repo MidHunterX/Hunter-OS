@@ -242,20 +242,45 @@ Solution: Use custom made status bar, logout screen etc. with a custom GUI shell
 
 [source,mermaid]
 ----
-graph TD
+graph LR
+%% ============================= Core Workflow ============================= %%
 nvim(<a href='https://github.com/MidHunterX/NvME'>NeoVim</a>)
 fish(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/fish/'>Fish Shell</a>)
 vifm(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/vifm'>ViFM</a>)
 kitty(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/kitty/'>Kitty</a>)
 hypr(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/hypr'>Hyprland</a>)
 
+subgraph Development Area
+	tmux(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/tmux/'>TMUX</a>)
+	run(<a href='https://github.com/MidHunterX/Project-Launcher'>Project Launcher</a>)
+	git(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.config/lazygit/'>Lazygit</a>)
+end
+
 fish --Edit Command (alt+e)--> nvim
-nvim --Open Files (leader pf)--> vifm
+nvim --Nested Terminal (alt+/)--> fish
 vifm --Edit Files (i/l)--> nvim
+nvim --Open Files (leader pf)--> vifm
 vifm --cd Temporarily (s)--> fish
 kitty --Scrollback History(alt+n)--> nvim
+fish --(vm/vc)--> vifm
 hypr --(Meta+e k)--> kitty
 hypr --(Meta+e n)--> nvim
+
+%% ========================== Development Workflow ========================== %%
+fish --(run)--- run --- tmux --> nvim & fish
+git --Edit Commit (ctrl+o e)--> nvim
+nvim --Git UI (leader gc)-->git
+
+%% ============================= Jump Workflow ============================= %%
+cursor{{Cursor Target}}
+hypr -.Cursor Mode (Meta+e c).-> cursor
+nvim -.Immediate Jump (f).-> cursor
+nvim -.Local Jump (s).-> cursor
+nvim -.Global Jump (leader sf).-> cursor
+hypr--(Meta+e f)--> firefox
+firefox(<a href='https://github.com/MidHunterX/Hunter-OS/tree/master/.mozilla/'>Firefox</a>)
+firefox -.Element Focus (f).-> cursor
+firefox -.TextInput Focus (gi).-> cursor
 ----
 ====
 
