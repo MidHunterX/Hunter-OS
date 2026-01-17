@@ -1,13 +1,17 @@
 = Hunter OS
 
-// Variables
-// ---------
-:gh-repo: https://github.com/MidHunterX/Hunter-OS
-:gh-repo-master: https://github.com/MidHunterX/Hunter-OS/tree/master
-:gh-nvim: https://github.com/MidHunterX/NvME
+// ============================= [ VARIABLES ] ============================= //
+
+// Repository Links
+:gh-user: https://github.com/MidHunterX
+:gh-repo: {gh-user}/Hunter-OS
+:gh-repo-master: {gh-repo}/tree/master
+:gh-nvim: {gh-user}/NvME
+:gh-intention: {gh-user}/Intention
+:gh-expression: {gh-user}/Expression
+:gh-run: {gh-user}/Project-Launcher
 
 // GitHub specific tags
-// --------------------
 ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
@@ -17,8 +21,9 @@ ifdef::env-github[]
 endif::[]
 
 // NOTE:
-// -----
 // * Use subs=attributes+ to enable attributes inside codeblock.
+
+// ========================================================================= //
 
 == 📜 Philosophy
 
@@ -130,7 +135,7 @@ Click the links below for a detailed documentation.
 flowchart LR
 
 subgraph Intention Layer
-  intention(<a href='https://github.com/MidHunterX/Intention'>Intention</a>)
+  intention(<a href='{gh-intention}'>Intention</a>)
   linux(Linux)
   windows(Windows)
   grub{<a href='{gh-repo}?tab=readme-ov-file#-grub-bootloader'>GRUB</a>}
@@ -142,8 +147,8 @@ linux -.SEND.-> intention -.RECV.-> linux & windows
 
 subgraph Orchestration Layer
   hypr(<a href='{gh-repo-master}/.config/hypr'>Hyprland</a>)
-  run(<a href='https://github.com/MidHunterX/Project-Launcher'>Project Launcher</a>)
-  expression(<a href='https://github.com/MidHunterX/Expression'>Expression</a>)
+  run(<a href='{gh-run}'>Project Launcher</a>)
+  expression(<a href='{gh-expression}'>Expression</a>)
   kitty(<a href='{gh-repo-master}/.config/kitty/'>Kitty</a>)
 end
 
@@ -213,7 +218,7 @@ brs --> brillo
 [source,mermaid,subs=attributes+]
 ----
 graph TD
-expression(<a href='https://github.com/MidHunterX/Expression'>Expression</a>)
+expression(<a href='{gh-expression}'>Expression</a>)
 vifm(<a href='{gh-repo-master}/.config/vifm'>ViFM</a>)
 
 %% ========================== Sourcing Techniques ========================== %%
@@ -264,7 +269,7 @@ hypr(<a href='{gh-repo-master}/.config/hypr'>Hyprland</a>)
 
 subgraph Development Area
 	tmux(<a href='{gh-repo-master}/.config/tmux/'>TMUX</a>)
-	run(<a href='https://github.com/MidHunterX/Project-Launcher'>Project Launcher</a>)
+	run(<a href='{gh-run}'>Project Launcher</a>)
 	git(<a href='{gh-repo-master}/.config/lazygit/'>Lazygit</a>)
 end
 
@@ -884,16 +889,16 @@ technology inspired ambient nudging, Automation and Proactive Computing.
 - Computers and tools should understand context, intent and work for humans.
 - Environment should support cognitive flow, not disrupt or redirect it.
 
-link:https://github.com/MidHunterX/Project-Launcher[Run]: Automating project
+link:{gh-run}[Run]: Automating project
 initialization and environment setup. Helps to maintain cognitive context of
 task without distracting yourself from manual setup.
 
-link:https://github.com/MidHunterX/Expression[Expression]: Expressing a
+link:{gh-expression}[Expression]: Expressing a
 non-intrusive ambient notification of life events and schedules. Know time
 schedule without knowing the time. Useful for humans with low interoception who
 works on computers all day.
 
-link:https://github.com/MidHunterX/Intention[Intention]: An implementation of
+link:{gh-intention}[Intention]: An implementation of
 Proactive computing where you simply state your intent and let your computer
 change and modify its environment to adapt to your intention. Abstracts away
 Operating Systems to use it as specialized environment for a specific intent.
