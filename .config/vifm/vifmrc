@@ -50,6 +50,7 @@ nnoremap rv :OpenRandomVideoFile<CR>l<c-o>
 " TOGGLE DOT FILES
 nnoremap gh za
 nnoremap gn :!nemo %d 2>/dev/null<CR>
+nnoremap gw :!swww img %f && bash ~/Mid_Hunter/scripts/ai_theme.sh &<CR>
 
 " FAST NAVIGATION >:D
 nnoremap / /<c-y>
@@ -550,7 +551,7 @@ filextype {go.mod},
 
 "  DIRECTORY PREVIEW
 fileviewer {*/,.*/,../},
-      \ lsd --almost-all --color=always --icon=always --group-directories-first --blocks=permission --blocks=name,
+      \ lsd --almost-all --color=always --icon=always --group-directories-first --blocks=permission --blocks=git --blocks=name,
       \ lsd --almost-all --color=always --icon=always --group-directories-first --tree --depth=3,
       \ df -h %f | highlight -O ansi --syntax javascript,
       \ ls --color=always
@@ -663,6 +664,8 @@ filextype {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
       \ mpv --vo=tct %f,
       \ {     using mpv Kitty Protocol}
       \ mpv --vo=kitty %f,
+      \ {View Wallpaper using mpvpaper}
+      \ mpvpaper -o "no-audio loop" eDP-1 "%f",
       \ {Set as Wallpaper with mpvpaper}
       \ $VIFM/scripts/mpvpaper.sh %f,
       \ {View using ffplay}
