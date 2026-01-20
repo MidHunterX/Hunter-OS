@@ -71,14 +71,16 @@ Note: Backspace also works in homerow Ctrl layer as well
 
 ## 🎹 KeyD Keybindings
 
-- Escape    = f+j (chorded < 50ms)
-- Escape    = CapsLock (Click < 300ms)
-- Ctrl      = CapsLock (Press < 300ms with other Key)
-- CapsLock  = CapsLock (Press > 300ms)
+- Escape = f+j (chorded < 50ms)
+- Escape = CapsLock (Click < 300ms)
+- Ctrl = CapsLock (Press < 300ms with other Key)
+- CapsLock = CapsLock (Press > 300ms)
 
 ## 🍇 Meta Keymap Toggle
 
 ### Meta + Space
+
+Meta + Space is the same keybinding Windows use to cycle between multiple layouts as well.
 
 ```mermaid
 graph LR
@@ -91,18 +93,12 @@ lr1 --> lr2
 lr2 --> lr0
 ```
 
-### Homerow Meta + Space
-
-```mermaid
-graph LR
-lr0[QWERTY]
-lr1[NUMPAD]
-
-lr0 --> lr1
-lr1 --> lr0
-```
-
 ### QWERTY Layer
+
+
+<table>
+<tr><th>Normal Layer</th><th>Shift Layer</th></tr>
+<tr><td>
 
 ```
 1 2 3 4 5 6 7 8 9 0 - =
@@ -111,6 +107,8 @@ lr1 --> lr0
    z x c v b n m , . /
 ```
 
+</td><td>
+
 ```
 ! @ # $ % ^ & * ( ) _ +
  Q W E R T Y U I O P { } |
@@ -118,23 +116,39 @@ lr1 --> lr0
    Z X C V B N M < > ?
 ```
 
+</td></tr>
+</table>
+
 ### NUMPAD Layer
 
-```
-Function Keys (F1-F9)
- q w e r t y 7 8 9 p [ ] \
-  a s d f g h 4 5 6 ; '
-   z x c v b 0 1 2 3 /
-```
+<table>
+<tr><th>Normal Layer</th><th>Shift Layer</th></tr>
+<tr><td>
 
 ```
-Function Keys (F1-F9)
- Q W E R T Y & * ( P { } |
-  A S D F G H $ % ^ : "
-   Z X C V B ) ! @ # ?
+- F1 F2 F3 F4 F5 F6 F7 F8 F9
+ - - - - - - 7 8 9 - - - -
+  - - - - - - 4 5 6 - -
+   - - - - - 0 1 2 3 .
 ```
+
+</td><td>
+
+```
+- F1 F2 F3 F4 F5 F6 F7 F8 F9
+ - - - - - - & * ( - - - -
+  - - - - - - $ % ^ - -
+   - - - - - ) ! @ # .
+```
+
+</td></tr>
+</table>
 
 ### DVORAK Layer
+
+<table>
+<tr><th>Normal Layer</th><th>Shift Layer</th></tr>
+<tr><td>
 
 ```
 1 2 3 4 5 6 7 8 9 0 [ ]
@@ -143,9 +157,14 @@ Function Keys (F1-F9)
    ; q j k x b m w v z
 ```
 
+</td><td>
+
 ```
 ! @ # $ % ^ & * ( ) { }
  " < > P Y F G C R L ? + |
   A O E U I D H T N S _
    : Q J K X B M W V Z
 ```
+
+</td></tr>
+</table>
