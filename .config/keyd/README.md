@@ -11,8 +11,8 @@ using kernel level input primitives (evdev, uinput).
 Homerow modifiers are activated by overloading the specific key assigned to it.
 
 <table>
-<tr><th>Left Hand</th><th>Right Hand</th></tr>
-<tr><td>
+<tr><th>Layout</th><th>Left Hand</th><th>Right Hand</th></tr>
+<tr><td>QWERTY</td><td>
 
 | a    | s    | d   | f     |
 | ---- | ---- | --- | ----- |
@@ -24,7 +24,21 @@ Homerow modifiers are activated by overloading the specific key assigned to it.
 | ----- | --- | ---- | ---- |
 | Shift | Alt | Ctrl | Meta |
 
-</td></tr> </table>
+</td></tr>
+<tr><td>DVORAK</td><td>
+
+| a    | o    | e   | u     |
+| ---- | ---- | --- | ----- |
+| Meta | Ctrl | Alt | Shift |
+
+</td><td>
+
+| h     | t   | n    | s    |
+| ----- | --- | ---- | ---- |
+| Shift | Alt | Ctrl | Meta |
+
+</td></tr>
+</table>
 
 - `Shift` is assigned to `Index finger` as it's the most used key & finger.
 - `Alt` is assigned to `Middle finger` because it's the least used key
