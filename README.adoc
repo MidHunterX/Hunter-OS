@@ -227,7 +227,7 @@ override_sourcing{{Override Sourcing}}
 conditional_sourcing{{Conditional Sourcing}}
 ansi{{ANSI Convention}}
 default_fallback{{Fallback Defaults}}
-manual_selection{{Manual Selection}}
+settings{{UI Settings}}
 
 %% ======================== Implementation Progress ======================== %%
 
@@ -237,12 +237,15 @@ gen --> hypr --colors/2_colors.conf--> override_sourcing
 gen --> tmux[🟢 tmux] --colors.conf--> conditional_sourcing
 gen --> notif[🟢 dunst] --dunstrc.d/99-colors.conf--> override_sourcing
 gen --> term[🟢 kitty] --colors/colors.conf--> override_sourcing
-gen --> top[🟢 btop] --themes/colors.theme--> manual_selection
+gen --> top[🟢 btop] --themes/colors.theme--> settings
 gen --> app[🟢 fuzzel] --themes/colors.ini--> default_fallback
-gen --> vifm[🟢 vifm] --colors/colors.vifm--> conditional_sourcing --> ansi
+gen --> vifm[🟢 vifm] --colors/colors.vifm--> conditional_sourcing
 gen --> power[🔴 wlogout]
 gen --> bar[🔴 waybar]
 gen --> vis[🔴 cava]
+
+ansi --> term
+git[🟢 lazygit] --> ansi
 
 %% ========================================================================= %%
 ----

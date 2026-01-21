@@ -9,17 +9,17 @@ gui:
   expandFocusedSidePanel: false
   theme:
     activeBorderColor:
-      - green
-      - bold
+      - magenta
     inactiveBorderColor:
-      - lightblack
+      - default
     searchingActiveBorderColor:
       - cyan
-      - bold
+      - reverse
     optionsTextColor:
-      - blue
+      - magenta
     selectedLineBgColor:
       - black # `default`, 'reverse'
+      - bold
     cherryPickedCommitBgColor:
       - cyan
     cherryPickedCommitFgColor:
