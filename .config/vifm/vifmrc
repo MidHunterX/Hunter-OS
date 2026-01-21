@@ -1,12 +1,42 @@
 " vim: set filetype=vim :
 
+" ▄▀█ █▀▀ █▀ ▀█▀ █░█ █▀▀ ▀█▀ █ █▀▀ █▀
+" █▀█ ██▄ ▄█ ░█░ █▀█ ██▄ ░█░ █ █▄▄ ▄█
+" @4357H371C5
+
+colorscheme hunterv2 hunter Default
+
+" custom fallback colors
+highlight User1 ctermbg=Green ctermfg=Black cterm=bold
+highlight User2 ctermbg=default ctermfg=Green cterm=bold
+highlight User3  ctermbg=Grey11  ctermfg=White    cterm=none
+highlight User4  ctermbg=238    ctermfg=Grey11  cterm=bold
+highlight User5  ctermbg=Grey11  ctermfg=238    cterm=bold
+
+" custom generated colors
+if filereadable($HOME . '/.config/vifm/colors/colors.vifm')
+    source $HOME/.config/vifm/colors/colors.vifm
+endif
+
+" statusline = title | attributes, modified, sortorder
+" set statusline=" %t %= %2*%1* %A %2*%0* %22d %10{&sort} "
+set statusline=" %t %= %2*%1* %A %2*%0* %22d %10{&sort} "
+
+" futuristic tabline
+set tablabel="%[(%n)%]%[%[%T{tree}%]%[{%c}%]@%]%p:t "
+set tabprefix="%5*%[%1*%C%] %3*%[%1*%C%]%N:"
+set tabsuffix="%4*%[%2*%C%]%4*"
+
+" =========================================================================== "
+
+
 " █▀▀ █░█ █▀ ▀█▀ █▀█ █▀▄▀█   █▀▀ █▀█ █▀▄▀█ █▀▄▀█ ▄▀█ █▄░█ █▀▄ █▀
 " █▄▄ █▄█ ▄█ ░█░ █▄█ █░▀░█   █▄▄ █▄█ █░▀░█ █░▀░█ █▀█ █░▀█ █▄▀ ▄█
 " @commands
 
-" --------------------------------------------------------------------------- "
-" FZF Integration
 
+" FZF Integration
+" --------------------------------------------------------------------------- "
 " Exclude dot dir and dot files - 47310
 " find . -type d -type f -o -not -regex '.*/\..*' | fzf
 " Exclude dot dir and dot files except for .config/ - 49099
@@ -23,9 +53,8 @@ command! FZFfind : let $FZF_PICK = term('fd --type d --type f --hidden --exclude
 nnoremap <c-f> :FZFfind<cr>
 nnoremap ? :FZFfind<cr>
 
-" --------------------------------------------------------------------------- "
 " Open random media file [rr]
-
+" --------------------------------------------------------------------------- "
 command! OpenRandomFile :let $RANDOM_FILE = system('fd -e mp4 -e mkv -e avi -e jpg -e png -e jpeg -e gif --type f --hidden --exclude ".git" | shuf -n 1') |
       \ if $RANDOM_FILE != '' |
       \     execute 'goto' fnameescape($RANDOM_FILE) |
@@ -133,9 +162,6 @@ mark m ~/Mid_Hunter/
 " TERMINAL TITLE
 set title
 
-" COLORSCHEMES
-colorscheme hunterv2 hunter Default
-
 " SET LINE NUMBERS
 set number
 
@@ -150,19 +176,6 @@ set sortnumbers
 
 " RUN EXECUTABLES BASED ON FILETYPES
 set norunexec
-
-" STATUSLINE = TITLE | ATTRIBUTES, MODIFIED, SORTORDER
-highlight User1 ctermbg=Green ctermfg=Black cterm=bold
-highlight User2 ctermbg=default ctermfg=Green cterm=bold
-set statusline=" %t %= %2*%1* %A %2*%0* %22d %10{&sort} "
-
-" TABLINE
-highlight User3  ctermbg=Grey11  ctermfg=White    cterm=none
-highlight User4  ctermbg=238    ctermfg=Grey11  cterm=bold
-highlight User5  ctermbg=Grey11  ctermfg=238    cterm=bold
-set tablabel="%[(%n)%]%[%[%T{tree}%]%[{%c}%]@%]%p:t "
-set tabprefix="%5*%[%1*%C%] %3*%[%1*%C%]%N:"
-set tabsuffix="%4*%[%2*%C%]%4*"
 
 " DIR VIEW FORMAT
 " Uses sorting keys: https://vifm.info/docs/vifm-app.txt#vifm-%27sort%27

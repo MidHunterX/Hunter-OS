@@ -225,6 +225,7 @@ vifm(<a href='{gh-repo-master}/.config/vifm'>ViFM</a>)
 
 override_sourcing{{Override Sourcing}}
 conditional_sourcing{{Conditional Sourcing}}
+ansi{{ANSI Convention}}
 default_fallback{{Fallback Defaults}}
 manual_selection{{Manual Selection}}
 
@@ -232,12 +233,13 @@ manual_selection{{Manual Selection}}
 
 expression & vifm --> ai[ai_theme.sh]
 ai --> gen[matugen] & hypr[🟢 hyprland]
-gen --> hypr --> 1_colors_fallback.conf --colors/2_colors.conf--> override_sourcing
+gen --> hypr --colors/2_colors.conf--> override_sourcing
 gen --> tmux[🟢 tmux] --colors.conf--> conditional_sourcing
 gen --> notif[🟢 dunst] --dunstrc.d/99-colors.conf--> override_sourcing
 gen --> term[🟢 kitty] --colors/colors.conf--> override_sourcing
-gen --> top[🟢 btop] --colors.theme--> manual_selection
-gen --> app[🟢 fuzzel] --colors.ini--> default_fallback
+gen --> top[🟢 btop] --themes/colors.theme--> manual_selection
+gen --> app[🟢 fuzzel] --themes/colors.ini--> default_fallback
+gen --> vifm[🟢 vifm] --colors/colors.vifm--> conditional_sourcing --> ansi
 gen --> power[🔴 wlogout]
 gen --> bar[🔴 waybar]
 gen --> vis[🔴 cava]

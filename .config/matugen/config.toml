@@ -42,6 +42,15 @@ input_path  = '~/.config/matugen/templates/kitty.conf'
 output_path = '~/.config/kitty/colors/colors.conf'
 post_hook   = 'pkill -SIGUSR1 kitty'
 
+# ▄▀█ █▄░█ █▀ █
+# █▀█ █░▀█ ▄█ █
+# =============
+# Changes are visible immediately but due to changing the ansi colors of terminal.
+
+[templates.vifm]
+input_path  = '~/.config/matugen/templates/vifm.vifm'
+output_path = '~/.config/vifm/colors/colors.vifm'
+
 # █▀ ▀█▀ ▄▀█ ▀█▀ █ █▀▀
 # ▄█ ░█░ █▀█ ░█░ █ █▄▄
 # ====================

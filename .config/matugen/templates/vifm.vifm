@@ -1,0 +1,6 @@
+" vim: set filetype=vim :
+
+highlight User1 ctermbg=LightWhite ctermfg=Black cterm=bold
+highlight User2 ctermbg=default ctermfg=LightWhite cterm=bold
+
+highlight Border cterm=none ctermfg=LightWhite ctermbg=default
