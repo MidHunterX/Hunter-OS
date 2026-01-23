@@ -134,25 +134,12 @@ Click the links below for a detailed documentation.
 ----
 flowchart LR
 
-subgraph Intention Layer
-  intention(<a href='{gh-intention}'>Intention</a>)
-  linux(Linux)
-  windows(Windows)
-  grub{<a href='{gh-repo}?tab=readme-ov-file#-grub-bootloader'>GRUB</a>}
-  keyd{{<a href='{gh-repo-master}/.config/keyd/'>KeyD</a>}}
-end
-
-intention --> grub --> linux & windows
-linux -.SEND.-> intention -.RECV.-> linux & windows
-
 subgraph Orchestration Layer
   hypr(<a href='{gh-repo-master}/.config/hypr'>Hyprland</a>)
   run(<a href='{gh-run}'>Project Launcher</a>)
   expression(<a href='{gh-expression}'>Expression</a>)
   kitty(<a href='{gh-repo-master}/.config/kitty/'>Kitty</a>)
 end
-
-keyd --- linux ==Bash Shell==> hypr
 
 swww{{🔴 swww}}
 vifm(<a href='{gh-repo-master}/.config/vifm'>ViFM</a>)
@@ -279,12 +266,28 @@ Both solutions are non-plug-n-play friendly. Therefore use custom made status ba
 [source,mermaid,subs=attributes+]
 ----
 graph LR
+
+%% ============= Cross Operating System Context Relay Protocol ============= %%
+subgraph XOSCRP
+  intention(<a href='{gh-intention}'>Intention</a>)
+  linux(Linux)
+  windows(Windows)
+  grub{<a href='{gh-repo}?tab=readme-ov-file#-grub-bootloader'>GRUB</a>}
+  keyd{{<a href='{gh-repo-master}/.config/keyd/'>KeyD</a>}}
+end
+
+intention --> grub --> linux & windows
+linux -.SEND.-> intention -.RECV.-> linux & windows
+
 %% ============================= Core Workflow ============================= %%
 nvim(<a href='{gh-nvim}'>NeoVim</a>)
 fish(<a href='{gh-repo-master}/.config/fish/'>Fish Shell</a>)
 vifm(<a href='{gh-repo-master}/.config/vifm'>ViFM</a>)
 kitty(<a href='{gh-repo-master}/.config/kitty/'>Kitty</a>)
 hypr(<a href='{gh-repo-master}/.config/hypr'>Hyprland</a>)
+firefox(<a href='{gh-repo-master}/.mozilla/'>Firefox</a>)
+
+keyd --- linux ==Bash Shell==> hypr
 
 subgraph Development Area
 	tmux(<a href='{gh-repo-master}/.config/tmux/'>TMUX</a>)
@@ -309,14 +312,15 @@ nvim --Git UI (leader gc)-->git
 
 %% ============================= Jump Workflow ============================= %%
 cursor{{Cursor Target}}
-hypr -.Cursor Mode (Meta+e c).-> cursor
+hypr -.Cursor Mode (Meta c).-> cursor
 nvim -.Immediate Jump (f).-> cursor
 nvim -.Local Jump (s).-> cursor
 nvim -.Global Jump (leader sf).-> cursor
-hypr--(Meta+e f)--> firefox
-firefox(<a href='{gh-repo-master}/.mozilla/'>Firefox</a>)
+hypr --(Meta+e f)--> firefox
 firefox -.Element Focus (f).-> cursor
 firefox -.TextInput Focus (gi).-> cursor
+
+%% hypr --(Meta+b w)--> windows
 
 %% ======================== Entertainment Workflow ======================== %%
 firefox --Global Video (ctrl+shift+})--> hypr
