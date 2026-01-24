@@ -20,12 +20,22 @@ endif
 
 " statusline = title | attributes, modified, sortorder
 " set statusline=" %t %= %2*%1* %A %2*%0* %22d %10{&sort} "
-set statusline=" %t %= %2*%1* %A %2*%0* %22d %10{&sort} "
+set statusline=" %t %= %2*%1* %A %2*%0* %22d %10{&sort} "
 
 " futuristic tabline
 set tablabel="%[(%n)%]%[%[%T{tree}%]%[{%c}%]@%]%p:t "
-set tabprefix="%5*%[%1*%C%] %3*%[%1*%C%]%N:"
-set tabsuffix="%4*%[%2*%C%]%4*"
+" (slant right)
+set tabprefix="%5*%[%1*%C%] %3*%[%1*%C%]%N:"
+set tabsuffix="%4*%[%2*%C%]%4*"
+" (slant left)
+" set tabprefix="%5*%[%1*%C%] %3*%[%1*%C%]%N:"
+" set tabsuffix="%4*%[%2*%C%]%4*"
+
+" Vertical border (│┆)
+set fillchars=vborder:"│",hborder:"",millersep:"|"
+
+" NOTE: Default is `psv` where `s` is side borders, and `v` is vertical line
+set tuioptions="psv"
 
 " =========================================================================== "
 
@@ -34,6 +44,7 @@ set tabsuffix="%4*%[%2*%C%]%4*"
 " █▄▄ █▄█ ▄█ ░█░ █▄█ █░▀░█   █▄▄ █▄█ █░▀░█ █░▀░█ █▀█ █░▀█ █▄▀ ▄█
 " @commands
 
+nnoremap <M-s> :execute '!sudo -E unshare --mount vifm %d %D' | redraw<cr>
 
 " FZF Integration
 " --------------------------------------------------------------------------- "
@@ -1123,9 +1134,6 @@ command! reload :write | restart full
 
 " Customize view columns a bit (enable ellipsis for truncated file names)
 " set viewcolumns=-{name}..,6{}.
-
-" Show vertical border
-set fillchars=vborder:│
 
 " Filter-out build and temporary files
 " filter! {*.lo,*.o,*.d,*.class,*.pyc,*.pyo,.*~}
