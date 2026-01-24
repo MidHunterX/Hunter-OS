@@ -90,7 +90,7 @@ nnoremap rv :OpenRandomVideoFile<CR>l<c-o>
 " TOGGLE DOT FILES
 nnoremap gh za
 nnoremap gn :!nemo %d 2>/dev/null<CR>
-nnoremap gw :!swww img %f && bash ~/Mid_Hunter/scripts/ai_theme.sh &<CR>
+nnoremap gw :!swww img %f --transition-step 30 && perl ~/Mid_Hunter/scripts/ai_theme.pl &<CR>
 
 " FAST NAVIGATION >:D
 nnoremap / /<c-y>
