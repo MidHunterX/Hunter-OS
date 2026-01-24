@@ -219,7 +219,7 @@ settings{{UI Settings}}
 
 %% ======================== Implementation Progress ======================== %%
 
-expression & vifm --> ai[ai_theme.sh]
+expression & vifm --> ai[ai_theme.pl]
 ai --> gen[matugen] & hypr[🟢 hyprland]
 gen --> hypr --colors/2_colors.conf--> override_sourcing
 gen --> tmux[🟢 tmux] --colors.conf--> conditional_sourcing
@@ -552,8 +552,6 @@ NOTE: wl-screenrec might be optimized, fast, efficient and Lightweight but it do
 
 WARNING: xdg-desktop-portal-hyprland enables features like screen sharing. There is a bug when the display is rotated, screen sharing shows it as default landscape mode. This is because `SPA_META_VideoTransform` is not present in the buffer metadata for **PipeWire streams**. This is what many apps, including browsers use to determine if and how the captured image needs to be rotated and Browser WebRTC doesn't support the SPA_META_VideoTransform metadata as well. This issue can be tracked here: https://github.com/hyprwm/xdg-desktop-portal-hyprland/issues/292[issue 292] and in WebRTC: https://issues.webrtc.org/issues/42226058[issue 42226058]. Have to wait (most likely a decade or two) until WebRTC fixes it.
 
-WARNING: Color generators like matugen are so pervasive, it becomes a dependency for app config colors unless there's a way to set fallback colors on app configs. This makes the configs non-plug-n-play for other systems until all variables are replaced with hex colorcodes. Another mitigation technique is to generate the whole config from the generator itself (Not a fan of this technique).
-
 ====
 
 .💻 2-in-1 Laptop Specific
@@ -693,7 +691,6 @@ sudo ln -s /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/
 | slurp              | Region Selector for Wayland    | pacman
 | tesseract          | OCR Utility                    | pacman
 | tesseract-data-eng | Tesseract OCR Data English     | pacman
-| tesseract-data-mal | Tesseract OCR Data Malayalam   | pacman
 |===
 ====
 
@@ -799,7 +796,7 @@ sudoedit /etc/sudoers
 [source,bash]
 ----
 # Sudo Stuff
-Defaults timestamp_type=global      # Activate Sudo across terminals
+# Defaults timestamp_type=global      # Activate Sudo across terminals (not recommended)
 Defaults timestamp_timeout = 10     # Activate Sudo for 10 minutes
 Defaults passwd_timeout = 5         # Sudo prompt timeout after 5 minutes
 # Login Stuff
@@ -912,32 +909,32 @@ technology inspired ambient nudging, Automation and Proactive Computing.
 - Computers and tools should understand context, intent and work for humans.
 - Environment should support cognitive flow, not disrupt or redirect it.
 
-link:{gh-run}[Run]: Automating project
-initialization and environment setup. Helps to maintain cognitive context of
-task without distracting yourself from manual setup.
+link:{gh-run}[Run]: Automating project initialization and environment setup.
+Helps to maintain cognitive context of task without distracting yourself from
+manual setup.
 
-link:{gh-expression}[Expression]: Expressing a
-non-intrusive ambient notification of life events and schedules. Know time
-schedule without knowing the time. Useful for humans with low interoception who
-works on computers all day.
+link:{gh-expression}[Expression]: Expressing a non-intrusive ambient
+notification of life events and schedules. Know time schedule without knowing
+the time. Useful for humans with low interoception who works on computers all
+day.
 
-link:{gh-intention}[Intention]: An implementation of
-Proactive computing where you simply state your intent and let your computer
-change and modify its environment to adapt to your intention. Abstracts away
-Operating Systems to use it as specialized environment for a specific intent.
+link:{gh-intention}[Intention]: An implementation of Proactive computing where
+you simply state your intent and let your computer change and modify its
+environment to adapt to your intention. Abstracts away Operating Systems to use
+it as specialized environment for a specific intent.
 
-link:Mid_Hunter/scripts/ai_theme.sh[Adaptive Window Contrast]: An adaptive
+link:Mid_Hunter/scripts/ai_idle.sh[Auto Shutdown]: The device will shutdown
+itself when it's left unattended for a long time at sleeping hours but if it's
+working hours, the device will suspend instead to save power.
+
+link:Mid_Hunter/scripts/ai_theme.pl[Adaptive Window Contrast]: An adaptive
 interface design solution for UI contrast issues with transparent windows. It
 makes the window text readable against both light and dark wallpapers by
 detecting the brightness of the Wallpaper and adjusting the perceived
 transparency of the window (via blur brightness + contrast).
 
 .`Fig: Window brightness (perceived) adapted to 60% across wallpapers with varying brightness`
-image:Mid_Hunter/scripts/.assets/auto_adaptation.jpg[link=Mid_Hunter/scripts/ai_theme.sh]
-
-link:Mid_Hunter/scripts/ai_idle.sh[Auto Shutdown]: The device will shutdown
-itself when it's left unattended for a long time at sleeping hours but if it's
-working hours, the device will suspend instead to save power.
+image:Mid_Hunter/scripts/.assets/auto_adaptation.jpg[link=Mid_Hunter/scripts/ai_theme.pl]
 
 = Personal Notes
 
