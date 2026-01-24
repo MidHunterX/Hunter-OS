@@ -121,6 +121,7 @@ if status is-interactive
     set fish_pager_color_completion white # rest of the tab completion
     set fish_pager_color_description yellow # tab completion (description)
     set fish_color_autosuggestion 7e7e7e
+    set fish_color_command blue
 
     # Set the cursor shapes for the different vi modes.
     set fish_cursor_default block blink
