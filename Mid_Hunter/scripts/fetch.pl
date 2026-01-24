@@ -18,31 +18,31 @@ my $BAR_SIZE = 20;
 
 # Inspiration from GNU
 sub cat {
-	my ($file) = @_;
-	open(my $fh, '<', "$file") or return "N/A";
-	my $content = <$fh>;
-	chomp $content;
-	close($fh);
-	return $content;
+    my ($file) = @_;
+    open(my $fh, '<', "$file") or return "N/A";
+    my $content = <$fh>;
+    chomp $content;
+    close($fh);
+    return $content;
 }
 
 # Inspiration from HTML5
 sub progress {
-	my %args = (
-		value => 0,
-		max => 100,
-		bar_size => 30,
-		char_fill => "🬋",
-		char_empty => "🬋",
-		@_, # Override Defaults
-	);
+    my %args = (
+        value => 0,
+        max => 100,
+        bar_size => 30,
+        char_fill => "🬋",
+        char_empty => "🬋",
+        @_, # Override Defaults
+    );
 
-	my $ratio = $args{value} / $args{max};
-	$ratio = 0 if $ratio < 0;
-	$ratio = 1 if $ratio > 1;
-	my $filled = ceil($ratio * $args{bar_size});
-	my $empty  = $args{bar_size} - $filled;
-	return MAGENTA . $args{char_fill} x $filled . BRIGHT_MAGENTA . $args{char_empty} x $empty . RESET;
+    my $ratio = $args{value} / $args{max};
+    $ratio = 0 if $ratio < 0;
+    $ratio = 1 if $ratio > 1;
+    my $filled = ceil($ratio * $args{bar_size});
+    my $empty  = $args{bar_size} - $filled;
+    return MAGENTA . $args{char_fill} x $filled . BRIGHT_MAGENTA . $args{char_empty} x $empty . RESET;
 }
 
 # ============================= DATA COLLECTION ============================= #
@@ -54,27 +54,27 @@ my $battery_bar = progress(value => $battery_capacity);
 # OS Name
 my $os_name = "Linux";
 if (open my $fh, '<', '/etc/os-release') {
-	while (<$fh>) {
-		if (/^PRETTY_NAME=(.*)/) {
-			$os_name = $1;
-			$os_name =~ s/^"|"$//g;   # strip quotes
-			last;
-		}
-	}
+    while (<$fh>) {
+        if (/^PRETTY_NAME=(.*)/) {
+            $os_name = $1;
+            $os_name =~ s/^"|"$//g;   # strip quotes
+            last;
+        }
+    }
 }
 
 # CPU Name
 my $cpu_info = "Unknown CPU";
 if (open(my $fh, '<', '/proc/cpuinfo')) {
-	while (<$fh>) {
-		if (/^model name\s+:\s+(.*)$/) {
-			$cpu_info = $1;
-			$cpu_info =~ s/\(R\)|\(TM\)|Processor|CPU//g; # Clean up
-			$cpu_info =~ s/\s+/ /g;
-			last;
-		}
-	}
-	close($fh);
+    while (<$fh>) {
+        if (/^model name\s+:\s+(.*)$/) {
+            $cpu_info = $1;
+            $cpu_info =~ s/\(R\)|\(TM\)|Processor|CPU//g; # Clean up
+            $cpu_info =~ s/\s+/ /g;
+            last;
+        }
+    }
+    close($fh);
 }
 
 # GPU Name
