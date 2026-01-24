@@ -32,10 +32,9 @@ providing CLI/TUI tools and utilities for efficient workflow tailored to
 personal preference. Even if the Display Server (central point of failure)
 fails, navigate comfortably in TTY interface without feeling homesick.
 
-*Lightweight, Optimized, and Battery Efficient*: Perfectly engineered to be
-light on system resources, ensuring smooth performance. Every aspect is
-optimized for maximum efficiency, extending battery life and also have many
-features at disposal.
+*Optimized, and Battery Efficient*: Perfectly engineered to use the most
+optimal amount of system resources, ensuring smooth performance while not
+sacrificing on the amount of features and ability.
 
 *Cohesive Universal Interface with Vim Keybindings*: Keyboard-centric approach,
 with standardized Vim-style keybindings deeply integrated into every tools,
@@ -214,7 +213,7 @@ vifm(<a href='{gh-repo-master}/.config/vifm'>ViFM</a>)
 
 override_sourcing{{Override Sourcing}}
 conditional_sourcing{{Conditional Sourcing}}
-ansi{{ANSI Convention}}
+ansi{{<a href='{gh-repo-master}/.config/matugen/templates/kitty.conf'>ANSI Convention</a>}}
 default_fallback{{Fallback Defaults}}
 settings{{UI Settings}}
 
@@ -227,6 +226,7 @@ gen --> tmux[🟢 tmux] --colors.conf--> conditional_sourcing
 gen --> notif[🟢 dunst] --dunstrc.d/99-colors.conf--> override_sourcing
 gen --> term[🟢 kitty] --colors/colors.conf--> override_sourcing
 gen --> top[🟢 btop] --themes/colors.theme--> settings
+gen --> app2[🟢 vicinae] --(Plugins UI)--> settings
 gen --> app[🟢 fuzzel] --themes/colors.ini--> default_fallback
 gen --> vifm[🟢 vifm] --colors/colors.vifm--> conditional_sourcing
 gen --> power[🔴 wlogout]
@@ -257,11 +257,11 @@ git[🟢 lazygit] --> ansi
 Both solutions are non-plug-n-play friendly. Therefore use custom made status bar, logout screen etc. with a GUI shell framework like Astal with AGS or QuickShell.
 ====
 
-.🌊 Workflow
+.🌊 Integrated System Interaction Architecture
 [%collapsible]
 ====
 [discrete]
-=== 🌊 Workflow
+=== 🌊 Integrated System Interaction Architecture
 
 [source,mermaid,subs=attributes+]
 ----
