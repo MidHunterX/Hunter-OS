@@ -15,7 +15,6 @@ Press `SUPER + E` to enter **Execute** Mode and activate the following keys
 | Keymap    | Description                                    |
 | --------- | ---------------------------------------------- |
 | B         | **B**rightness Mode                            |
-| C         | **C**olor Picker                               |
 | E         | **E**xperiment Firefox Profile                 |
 | F         | **F**irefox (Default Profile)                  |
 | K         | **K**itty Terminal Emulator                    |
@@ -30,6 +29,7 @@ Press `SUPER + C` to enter **Cursor** Mode and activate the following keys
 
 | Keymap          | Description                |
 | --------------- | -------------------------- |
+| C               | Precise Color Picker Mode  |
 | F               | Vim like Find mode         |
 | H,J,K,L         | Move cursor                |
 | SHIFT + H,J,K,L | Move cursor faster         |
