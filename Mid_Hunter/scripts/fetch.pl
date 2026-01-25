@@ -130,11 +130,11 @@ my $bat_val = $bat_watt ne "0.0" ? "${bat_percent}% \@${bat_watt}W" : "${bat_per
 
 my $R   = RESET;
 my $U   = UNDERLINE;
-my $X   = BLUE;		# Accent 1
-my $Y   = YELLOW;	# Accent 2
-my $H   = BLUE;		# Heading
-my $B   = GREEN;	# Bold
-my $V   = MAGENTA;	# Values
+my $X   = BLUE;     # Accent 1
+my $Y   = YELLOW;   # Accent 2
+my $H   = BLUE;     # Heading
+my $B   = GREEN;    # Bold
+my $V   = MAGENTA;  # Values
 
 my $user = $ENV{USER} // getpwuid($<);
 my $host = hostname();

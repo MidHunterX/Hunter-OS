@@ -10,7 +10,7 @@ my $WORK_START  = "06:00";
 my $WORK_END    = "16:00";
 
 my $SLEEP_START = "20:00";
-my $SLEEP_END   = "03:00";
+my $SLEEP_END   = "04:00";
 
 # ================================
 
@@ -24,12 +24,11 @@ sub to_minutes {
 # if now is between start and end
 sub in_range {
 	my ($now, $start, $end) = @_;
-	# Normal range (same day)
 	if ($start <= $end) {
+		# Normal range (same day)
 		return ($now >= $start && $now < $end);
-	}
-	# Overnight range (e.g. 23:00 → 06:00)
-	else {
+	} else {
+		# Overnight range (e.g. 23:00 → 06:00)
 		return ($now >= $start || $now < $end);
 	}
 }
