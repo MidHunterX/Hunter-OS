@@ -14,15 +14,16 @@ Press `SUPER + E` to enter **Execute** Mode and activate the following keys
 
 | Keymap    | Description                                    |
 | --------- | ---------------------------------------------- |
-| N         | **N**eovim as Text Input Mode                  |
-| F         | **F**irefox (Default Profile)                  |
+| B         | **B**rightness Mode                            |
+| C         | **C**olor Picker                               |
 | E         | **E**xperiment Firefox Profile                 |
+| F         | **F**irefox (Default Profile)                  |
 | K         | **K**itty Terminal Emulator                    |
+| N         | **N**eovim as Text Input Mode                  |
+| P         | **P**rint Screen with Tesseract OCR Extraction |
+| V         | **V**olume Mode                                |
 | W         | **W**aybar Refresh                             |
 | SHIFT + W | **W**aybar Toggle                              |
-| B         | **B**rightness Mode                            |
-| V         | **V**olume Mode                                |
-| P         | **P**rint Screen with Tesseract OCR Extraction |
 | ESC       | Disable Execute Mode                           |
 
 Press `SUPER + C` to enter **Cursor** Mode and activate the following keys

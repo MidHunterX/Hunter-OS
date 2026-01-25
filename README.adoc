@@ -312,7 +312,7 @@ nvim --Git UI (leader gc)-->git
 
 %% ============================= Jump Workflow ============================= %%
 cursor{{Cursor Target}}
-hypr -.Cursor Mode (Meta c).-> cursor
+hypr -.Cursor Jump (Meta+c f).-> cursor
 nvim -.Immediate Jump (f).-> cursor
 nvim -.Local Jump (s).-> cursor
 nvim -.Global Jump (leader sf).-> cursor
@@ -535,6 +535,7 @@ When using `curlftpfs` to FUSE mount and copy files over FTP, there's a common i
 | dunst                       | Notification Daemon          | pacman
 | fuzzel                      | Wayland App Launcher         | pacman
 | hyprland                    | Wayland compositor           | pacman
+| hyprpicker                  | Hypr Color Picker            | pacman
 | xdg-desktop-portal-hyprland | Hypr Desktop Portal          | pacman
 | swayidle                    | Wayland Idle Manager         | pacman
 | swayosd                     | On Screen Display Window     | pacman
