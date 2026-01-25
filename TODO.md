@@ -36,6 +36,7 @@
 | nap-bin               | Snippet Manager                      | aur    |
 | jamesdsp              | Audio Effect Preprocessor (Pipewire) | aur    |
 | easyeffects           | Audio Equalizer                      | pacman |
+| speech-dispatcher     | Speech Synthesis (spd-say)           | pacman |
 
 Best implementation of transparency:
 

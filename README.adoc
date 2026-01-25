@@ -439,7 +439,6 @@ NOTE: Before installing jdk-openjdk, make sure to yeet out the pre-installed jav
 | man-db            | Utility for reading man pages         | pacman
 | poppler           | PDF Rendering Engine                  | pacman
 | ripgrep           | Text Search Tool                      | pacman
-| speech-dispatcher | Speech Synthesis (spd-say)            | pacman
 | xsv               | CLI CSV Processor                     | pacman
 | fastfetch         | Fetch System Information              | pacman
 | localsend-bin     | Air-drop like Local File Transfer     | aur
