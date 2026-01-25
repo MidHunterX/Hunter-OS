@@ -53,8 +53,9 @@
 
 # ▀█▀ █▀▀ █▀█ █▀▄▀█ █ █▄░█ ▄▀█ █░░
 # ░█░ ██▄ █▀▄ █░▀░█ █ █░▀█ █▀█ █▄▄
-# 🐟 Fish Shell
+# 🐟 Fish Shell (Ignored Files)
 !.config/fish/
+.config/fish/completions/
 .config/fish/fish_variables
 .config/fish/env.fish
 # 🐱 Kitty Terminal Emulator
