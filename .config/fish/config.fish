@@ -46,7 +46,7 @@ if status is-interactive
     alias arch 'bash ~/Mid_Hunter/scripts/assistants/archchan/get_command-list.sh'
     alias vim nvim
 
-    # function format_duration
+    # function cmd_duration
     #   set ms $CMD_DURATION
     #   set x (math --scale=0 $ms / 1000)
     #   set seconds (math --scale=0 $x % 60)
@@ -88,14 +88,27 @@ if status is-interactive
         set YLOBG '\033[1;43m'
         set WHTBG '\033[1;47m'
 
+        # ANSI Convention
+        set PNKFG '\033[1;35m'
+        set BRPNKFG '\033[1;95m'
+        set BRPNKBG '\033[1;105m'
+        set PNKBG '\033[1;45m'
+
         set BOLD '\033[4m'
         set RESET '\033[0;0m'
         set PROMPT ""
 
-        # BUBBLE
-        set PROMPT (string join '' $PROMPT "$RESET$YLOFG")
-        set PROMPT (string join '' $PROMPT "$YLOBG$BLKFG $(date +%H:%M) ")
-        set PROMPT (string join '' $PROMPT "$RESET$YLOFG")
+        # FUTURISTIC TUI
+
+        # set PROMPT (string join '' $PROMPT "$RESET$BRPNKFG█")
+        # set PROMPT (string join '' $PROMPT "$BRPNKBG$WHTFG$(cmd_duration) ")
+        # set PROMPT (string join '' $PROMPT "$RESET$BRPNKFG\n")
+
+        set PROMPT (string join '' $PROMPT "$RESET$PNKFG█") #   █
+        set PROMPT (string join '' $PROMPT "$PNKBG$BLKFG$(date +%H:%M) ")
+        set PROMPT (string join '' $PROMPT "$RESET$PNKFG") #  
+
+        set PROMPT (string join '' $PROMPT "$RESET$BRPNKFG")
 
         echo -n -e "\n$PROMPT$RESET "
     end
