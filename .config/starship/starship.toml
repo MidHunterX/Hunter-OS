@@ -34,7 +34,10 @@ col_chk = '#A6E3A1'
 
 col_red = '#f16565'
 col_ylo = '#F9E2AF'
-col_blu = '#89B4FA'
+# ANSI Color Magenta
+# https://i.sstatic.net/KTSQa.png
+col_blu = '5'
+# col_blu = '#89B4FA'
 col_grn = '#A6E3A1'
 col_pnk = '#F5C2E7'
 

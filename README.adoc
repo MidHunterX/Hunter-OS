@@ -236,6 +236,7 @@ gen --> vis[🔴 cava]
 ansi --> term
 git[🟢 lazygit] --> ansi
 fish[🟢 fish] --> ansi
+prompt[🟢 starship] --> ansi
 
 %% ========================================================================= %%
 ----
@@ -320,7 +321,7 @@ cursor{{Cursor Target}}
 
 hypr_cur{{Cursor Mode}}
 hypr -.Cursor Mode (Meta+c).-> hypr_cur
-hypr_cur -.Pixel Jump (f).-> cursor
+hypr_cur <-.Pixel Jump (f).-> cursor
 
 hypr_col{{ColorPicker Mode}}
 hypr_cur -.(c).-> hypr_col
