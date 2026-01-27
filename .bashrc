@@ -496,23 +496,15 @@ PROMPT_COMMAND='__setprompt'
 
 # ============================ [ CUSTOM STUFF ] ============================ #
 
-# Neovim
-alias mid='nvim'
-
-# Brightness
-alias brs='bash ~/Mid_Hunter/scripts/set_brightness.sh'
-
-# Volume
-alias vos='bash ~/Mid_Hunter/scripts/set_volume.sh'
-
 # vicd Function
 vicd() {
-  local dst="$(command vifm --choose-dir - "$@")"
+  local dst
+  dst="$(command vifm --choose-dir - "$@")"
   if [ -z "$dst" ]; then
     echo 'Directory picking cancelled/failed'
     return 1
   fi
-  cd "$dst"
+  cd "$dst" || return
 }
 
 history -c

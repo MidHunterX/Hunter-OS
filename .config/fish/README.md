@@ -9,8 +9,6 @@ fish is a Unix shell with a focus on interactivity and usability. Fish is design
 | yeet     | Remove Packages along with their Dependencies |
 | woman    | Yapping all possible Man pages                |
 | sayonara | Shutdown Computer                             |
-| brs      | Set Brightness                                |
-| vos      | Set System Volume                             |
 | cls      | Clear Terminal Screen (`CTRL + L`)            |
 
 ### Semantic Commands

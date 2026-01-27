@@ -38,9 +38,6 @@ if status is-interactive
     abbr -a -g sayonara 'shutdown now' # Epic way to Shutdown
     abbr -a -g cls clear # Clear Screen
     abbr -a -g yeet 'sudo pacman -Rns' # Remove packages with dependencies
-    abbr -a -g mid nvim # Neovim
-    abbr -a -g brs 'bash ~/Mid_Hunter/scripts/set_brightness.sh' # Brightness
-    abbr -a -g vos 'bash ~/Mid_Hunter/scripts/set_volume.sh' # Volume
     abbr -a -g woman 'man -k . | fzf | awk \'{print $1}\' | xargs man'
 
     alias arch 'bash ~/Mid_Hunter/scripts/assistants/archchan/get_command-list.sh'

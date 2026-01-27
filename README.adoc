@@ -151,10 +151,8 @@ tmux{{🟡 tmux}}
 syntax{{🟡 highlight}}
 nvim(<a href='{gh-nvim}'>NeoVim</a>)
 fish(<a href='{gh-repo-master}/.config/fish/'>Fish Shell</a>)
-vos(VOS)
 cd{{🟡 zoxide / cd}}
 volume{{🔴 pamixer}}
-brs(BRS)
 brillo{{🔴 brillo}}
 waybar(<a href='{gh-repo-master}/.config/waybar/'>Waybar</a>)
 nf(Nerd Font)
@@ -171,7 +169,7 @@ run --> tmux & nvim
 
 kitty --scrollback pager--> nvim
 kitty --default shell--> fish
-fish --> ls & vifm & cd & git & vos & brs & cat & find & prompt
+fish --> ls & vifm & cd & git & cat & find & prompt
 cd --> ls --> nf
 prompt & fish --$VIFM_MODE--> vifm
 fish --$editor--> nvim
@@ -184,8 +182,6 @@ vifm --$editor--> nvim
 nvim --> nf & find & git & grep
 nvim --graphics_protocol--> kitty
 waybar --> volume & brillo & nf
-vos --> volume
-brs --> brillo
 ----
 
 .🎨 Dynamic UI Coloring
