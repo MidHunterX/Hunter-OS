@@ -1,4 +1,6 @@
 [config]
+fallback_color = "#ff8282"
+caching = true # $XDG_CACHE_HOME/matugen/<file>
 
 # █▀▄ █▄█ █▄░█ ▄▀█ █▀▄▀█ █ █▀▀
 # █▄▀ ░█░ █░▀█ █▀█ █░▀░█ █ █▄▄
