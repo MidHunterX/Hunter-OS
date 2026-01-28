@@ -10,6 +10,7 @@
 !.assets/
 !.bashrc
 !.bash_profile
+!automata/
 # Ignore Workspaces ;D
 */workspace/
 

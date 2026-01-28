@@ -9,7 +9,7 @@ use Time::HiRes qw(sleep);
 # ============================== CONFIGURATION ============================== #
 
 my $INTERVAL_MINS = 5; # How often to update brightness
-my $CACHE_FILE    = File::Spec->catfile($ENV{HOME}, '.cache', 'brightness_data.json');
+my $CACHE_FILE    = File::Spec->catfile($ENV{HOME}, '.cache', 'radiance_data.json');
 my $BRIGHTNESS_CMD    = "brillo -u 5000000 -S";
 
 # =========================================================================== #
