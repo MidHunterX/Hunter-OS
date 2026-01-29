@@ -207,10 +207,10 @@ vifm(<a href='{gh-repo-master}/.config/vifm'>ViFM</a>)
 
 %% ========================== Sourcing Techniques ========================== %%
 
-override_sourcing{{Override Sourcing}}
 conditional_sourcing{{Conditional Sourcing}}
-ansi{{<a href='{gh-repo-master}/.config/matugen/templates/kitty.conf'>ANSI Convention</a>}}
+override_sourcing{{Override Sourcing}}
 default_fallback{{Fallback Defaults}}
+ansi{{<a href='{gh-repo-master}/.config/matugen/templates/kitty.conf'>ANSI Convention</a>}}
 settings{{UI Settings}}
 
 %% ======================== Implementation Progress ======================== %%
@@ -218,13 +218,14 @@ settings{{UI Settings}}
 expression & vifm --> ai[ai_theme.pl]
 ai --> gen[matugen] & hypr[🟢 hyprland]
 gen --> hypr --colors/2_colors.conf--> override_sourcing
-gen --> tmux[🟢 tmux] --colors.conf--> conditional_sourcing
 gen --> notif[🟢 dunst] --dunstrc.d/99-colors.conf--> override_sourcing
 gen --> term[🟢 kitty] --colors/colors.conf--> override_sourcing
+gen --> tmux[🟢 tmux] --colors.conf--> conditional_sourcing
+gen --> vifm[🟢 vifm] --colors/colors.vifm--> conditional_sourcing
+gen --> nvim[🟢 nvim] --colors/colors.lua--> conditional_sourcing
+gen --> app[🟢 fuzzel] --themes/colors.ini--> default_fallback
 gen --> top[🟢 btop] --themes/colors.theme--> settings
 gen --> app2[🟢 vicinae] --(Plugins UI)--> settings
-gen --> app[🟢 fuzzel] --themes/colors.ini--> default_fallback
-gen --> vifm[🟢 vifm] --colors/colors.vifm--> conditional_sourcing
 gen --> power[🔴 wlogout]
 gen --> bar[🔴 waybar]
 gen --> vis[🔴 cava]

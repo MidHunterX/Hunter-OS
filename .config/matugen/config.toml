@@ -44,6 +44,12 @@ input_path  = '~/.config/matugen/templates/kitty.conf'
 output_path = '~/.config/kitty/colors/colors.conf'
 post_hook   = 'pkill -SIGUSR1 kitty'
 
+# NOTE: For hot-reloading, Signal is handled manually in neovim with autocmd
+[templates.neovim]
+input_path = '~/.config/matugen/templates/neovim.lua'
+output_path = '~/.config/nvim/lua/colors/colors.lua'
+post_hook = 'pkill -SIGUSR1 nvim'
+
 # ▄▀█ █▄░█ █▀ █
 # █▀█ █░▀█ ▄█ █
 # =============
