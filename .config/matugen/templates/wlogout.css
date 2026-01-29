@@ -1,5 +1,7 @@
 /*
 * Css Colors - Generated with Matugen
 */
-<* for name, value in colors *>
-@define-color {{name}} {{value.default.hex}};<* endfor *>
+
+@define-color primary {{colors.primary.default.hex}};
+@define-color background {{colors.background.default.hex}};
+@define-color on_background {{colors.on_background.default.hex}};

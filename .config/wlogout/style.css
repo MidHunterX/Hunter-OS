@@ -30,9 +30,8 @@ button:active {
 }
 
 button:hover {
-  color: @primary;
   border: 3px solid;
-  border-color: @primry;
+  border-color: @primary;
 }
 
 #logout {
