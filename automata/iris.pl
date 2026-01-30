@@ -6,6 +6,7 @@
 use POSIX qw(strftime);
 use Term::ANSIColor qw(:constants);
 use Getopt::Long;
+use File::Basename;
 
 # ============================== CONFIGURATION ============================== #
 
@@ -60,7 +61,7 @@ if (!$wallpaper || ! -f $wallpaper) {
     error_msg("Wallpaper not found or invalid: " . ($wallpaper // "NULL"));
     exit 1;
 }
-log_msg("🎨 Using wallpaper: $wallpaper");
+log_msg('Current Wallpaper: '.basename(dirname($wallpaper)).'/'.basename($wallpaper));
 
 
 # THEME BASED ON WALLPAPER COLOR
@@ -107,7 +108,7 @@ if (!$hex_value) {
 }
 $hex_value = substr($hex_value, 0, 7); # Standardize to 6 chars
 
-log_msg("🎨 Average Color: " . hex_to_ansi($hex_value, 1) . $hex_value);
+log_msg('Average Color: '.hex_to_ansi($hex_value, 1).' '.$hex_value.' ');
 
 # ACTION: Call Matugen
 system("matugen image '$wallpaper' --quiet");
@@ -206,16 +207,11 @@ elsif ($AUTOSCALE_STRATEGY eq "strength") {
 }
 elsif ($AUTOSCALE_STRATEGY eq "adapt") {
     my $target_brightness = 0.5;  # target percieved brightness of window (0.0 - 2.0)
-
     # window = 1.2 * t - 0.5 * w # Samey feel
     # window = (t * 1.5) - (w * 0.8) # Higher peaks and lower troughs
     # window = t * (1.1 - (w ^ 2)) # Exponential decay for natural feel
-    my $window = $target_brightness * (1.5 - ($wallpaper_brightness ** 0.5));
-
-    # Clamp
-    $window = 0 if $window < 0;
-    $window = 2 if $window > 2;
-
+    my $window = $target_brightness * (1.1 - ($wallpaper_brightness ** 2));
+    $window = clamp($window, 0.0, 2.0);
     $brightness = $window;
 }
 else {
@@ -223,22 +219,38 @@ else {
     $contrast   = 1.0;
 }
 
+
+# APPLY WINDOW SETTINGS
+# -----------------------------------------------------------------------------
+
+my @cmds;
+my $r1 = ON_BRIGHT_BLACK;
+my $r2 = ON_BLACK;
+my $rs = RESET;
+
+log_msg("╭──".BOLD.BLACK.ON_YELLOW." Adaptive Window Settings ".$rs."──┬──────╮");
+
 if (defined $brightness) {
-    log_msg(sprintf("☀️ SET: Window Brightness = %.2f", $brightness));
-    system("hyprctl keyword decoration:blur:brightness $brightness >/dev/null");
+    log_msg($r1.sprintf("│ ☀️ Window Brightness         │ %.2f │", $brightness).$rs);
+    push @cmds, "keyword decoration:blur:brightness $brightness";
 }
 
 if (defined $contrast) {
-    log_msg(sprintf("🌗 SET: Window Contrast = %.2f", $contrast));
-    system("hyprctl keyword decoration:blur:contrast $contrast >/dev/null");
+    log_msg($r2.sprintf("│ 🌗 Window Contrast           │ %.2f │", $contrast).$rs);
+    push @cmds, "keyword decoration:blur:contrast $contrast";
 }
 
 if (defined $vibrancy) {
-    log_msg(sprintf("🌸 SET: Window Vibrancy = %.2f", $vibrancy));
-    system("hyprctl keyword decoration:blur:vibrancy $vibrancy >/dev/null");
+    log_msg($r1.sprintf("│ 🌸 Window Vibrancy           │ %.2f │", $vibrancy).$rs);
+    push @cmds, "keyword decoration:blur:vibrancy $vibrancy";
 }
 
 if (defined $vibrancy_darkness) {
-    log_msg(sprintf("🌸 SET: Window Vibrancy Darkness = %.2f", $vibrancy_darkness));
-    system("hyprctl keyword decoration:blur:vibrancy_darkness $vibrancy_darkness >/dev/null");
+    log_msg($r2.sprintf("│ 🌸 Window Darkness Vibrancy  │ %.2f │", $vibrancy_darkness).$rs);
+    push @cmds, "keyword decoration:blur:vibrancy_darkness $vibrancy_darkness";
 }
+
+# https://wiki.hypr.land/Configuring/Using-hyprctl/#batch
+system('hyprctl --batch "' . join(' ; ', @cmds) . '" >/dev/null');
+
+log_msg("╰──────────────────────────────┴──────╯");

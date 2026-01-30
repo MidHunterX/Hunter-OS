@@ -215,7 +215,7 @@ settings{{UI Settings}}
 
 %% ======================== Implementation Progress ======================== %%
 
-expression & vifm --> ai[ai_theme.pl]
+expression & vifm --> ai[iris.pl]
 ai --> gen[matugen] & hypr[🟢 hyprland]
 gen --> hypr --colors/2_colors.conf--> override_sourcing
 gen --> notif[🟢 dunst] --dunstrc.d/99-colors.conf--> override_sourcing
@@ -361,7 +361,6 @@ Click the following categories to toggle the list of packages in that category.
 ==== Yay - Yet Another Yogurt AUR Helper
 [source,bash]
 ----
-sudo pacman -S --needed git base-devel
 git clone https://aur.archlinux.org/yay-bin.git
 cd yay-bin
 makepkg -si
@@ -937,14 +936,14 @@ link:Mid_Hunter/scripts/ai_idle.sh[Auto Shutdown]: The device will shutdown
 itself when it's left unattended for a long time at sleeping hours but if it's
 working hours, the device will suspend instead to save power.
 
-link:Mid_Hunter/scripts/ai_theme.pl[Adaptive Window Contrast]: An adaptive
+link:automata/iris.pl[Adaptive Window Contrast]: An adaptive
 interface design solution for UI contrast issues with transparent windows. It
 makes the window text readable against both light and dark wallpapers by
 detecting the brightness of the Wallpaper and adjusting the perceived
 transparency of the window (via blur brightness + contrast).
 
 .`Fig: Window brightness (perceived) adapted to 60% across wallpapers with varying brightness`
-image:Mid_Hunter/scripts/.assets/auto_adaptation.jpg[link=Mid_Hunter/scripts/ai_theme.pl]
+image:Mid_Hunter/scripts/.assets/auto_adaptation.jpg[link=automata/iris.pl]
 
 = Personal Notes
 

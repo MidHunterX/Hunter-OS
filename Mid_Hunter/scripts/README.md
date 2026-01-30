@@ -1,15 +1,5 @@
 # 📜 Scripts
 
-## Brightness Adaptation (ai_theme.sh)
-
-![ai_theme](./.assets/auto_adaptation.jpg)
-
-Maintains the contrast of a transparent window across different wallpapers;
-doesn't matter if the wallpaper is dark or light, the window will have the same
-perceived opacity. It does this by dynamically adjusting the brightness of
-the window based on the perceived brightness of the current wallpaper.
-Similar to how your eyes adapt to different light conditions.
-
 ## Emoji/NerdFont Menu (menu_emoji.sh, menu_nerdfont.sh)
 
 ![menu_emoji](./.assets/script_menu.jpg)
@@ -36,9 +26,7 @@ speed and efficiency.
 
 | Script            | Description                                        |
 | ----------------- | -------------------------------------------------- |
-| ai_brightness     | Automatically set brightness based on your history |
 | ai_idle           | Automatically display off/sleep/shutdown on idle   |
-| ai_theme          | Wallpaper based auto transparency and more         |
 | fetch             | Simple Fetch Script                                |
 | kill_hypr         | Kill Hyprland Safely                               |
 | menu_emoji        | Emoji Selector                                     |
