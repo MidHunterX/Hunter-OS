@@ -10,7 +10,7 @@ use Getopt::Long;
 # ============================== CONFIGURATION ============================== #
 
 my $MONITOR            = "eDP-1";
-my $AUTOSCALE_STRATEGY = "adapt"; # custom | strength | adapt
+my $AUTOSCALE_STRATEGY = "manual"; # manual | strength | adapt
 my $CENTER_BIAS        = 10;      # (0-100)
 my $print_logs         = 0;
 
@@ -140,18 +140,54 @@ sub lerp {
     return $dark + ($factor * ($light - $dark));
 }
 
+sub clamp {
+    my ($v, $min, $max) = @_;
+    return $min if $v < $min;
+    return $max if $v > $max;
+    return $v;
+}
+
+sub remap_threshold {
+    my ($value, $lo, $hi) = @_;
+    return 0 if $hi <= $lo; # Avoid division by zero
+    my $normalized = ($value - $lo) / ($hi - $lo);
+    return clamp($normalized, 0.0, 1.0);
+}
+
 my $wallpaper_brightness = $luma_value / 255;
-my ($brightness, $contrast);
 
-if ($AUTOSCALE_STRATEGY eq "custom") {
-    # Personal Preference
-    my $min_brightness = 0.2;
-    my $max_brightness = 0.7;
-    my $min_contrast   = 0.5;
-    my $max_contrast   = 0.8;
+# Thresholds for wallpaper_brightness (Personal Preference)
+# NOTE: My most brightest wallpaper sits around at 65% brightness Remapping
+# thresholds so that l_values and d_values actually represents window
+# preferences for my personal wallpaper collection
+my $lo_threshold = 0.0;
+my $hi_threshold = 0.7;
 
-    $brightness = lerp($wallpaper_brightness, $max_brightness, $min_brightness);
-    $contrast   = lerp($wallpaper_brightness, $max_contrast, $min_contrast);
+$wallpaper_brightness = remap_threshold(
+    $wallpaper_brightness,
+    $lo_threshold,
+    $hi_threshold
+);
+
+my ($brightness, $contrast, $vibrancy, $vibrancy_darkness);
+
+if ($AUTOSCALE_STRATEGY eq "manual") {
+    # Light Wallpaper (Personal Preference)
+    my $l_brightness = 0.35;
+    my $l_contrast   = 1.0;
+    my $l_vibrancy   = 0.0;
+    my $l_vibrancy_darkness = 0.0;
+
+    # Dark Wallpaper (Personal Preference)
+    my $d_brightness = 0.6;
+    my $d_contrast   = 0.5;
+    my $d_vibrancy   = 0.5;
+    my $d_vibrancy_darkness = 2.0;
+
+    $brightness = lerp($wallpaper_brightness, $d_brightness, $l_brightness);
+    $contrast   = lerp($wallpaper_brightness, $d_contrast, $l_contrast);
+    $vibrancy = lerp($wallpaper_brightness, $d_vibrancy, $l_vibrancy);
+    $vibrancy_darkness = lerp($wallpaper_brightness, $d_vibrancy_darkness, $l_vibrancy_darkness);
 }
 elsif ($AUTOSCALE_STRATEGY eq "strength") {
     # wallpaper_brightness (0-1)
@@ -169,12 +205,12 @@ elsif ($AUTOSCALE_STRATEGY eq "strength") {
     $contrast   = $base_contrast   + ($adapt * $strength);
 }
 elsif ($AUTOSCALE_STRATEGY eq "adapt") {
-    my $target_brightness = 0.6;  # target percieved brightness of window (0.0 - 2.0)
+    my $target_brightness = 0.5;  # target percieved brightness of window (0.0 - 2.0)
 
     # window = 1.2 * t - 0.5 * w # Samey feel
     # window = (t * 1.5) - (w * 0.8) # Higher peaks and lower troughs
     # window = t * (1.1 - (w ^ 2)) # Exponential decay for natural feel
-    my $window = $target_brightness * (1.1 - ($wallpaper_brightness ** 2));
+    my $window = $target_brightness * (1.5 - ($wallpaper_brightness ** 0.5));
 
     # Clamp
     $window = 0 if $window < 0;
@@ -195,4 +231,14 @@ if (defined $brightness) {
 if (defined $contrast) {
     log_msg(sprintf("🌗 SET: Window Contrast = %.2f", $contrast));
     system("hyprctl keyword decoration:blur:contrast $contrast >/dev/null");
+}
+
+if (defined $vibrancy) {
+    log_msg(sprintf("🌸 SET: Window Vibrancy = %.2f", $vibrancy));
+    system("hyprctl keyword decoration:blur:vibrancy $vibrancy >/dev/null");
+}
+
+if (defined $vibrancy_darkness) {
+    log_msg(sprintf("🌸 SET: Window Vibrancy Darkness = %.2f", $vibrancy_darkness));
+    system("hyprctl keyword decoration:blur:vibrancy_darkness $vibrancy_darkness >/dev/null");
 }
