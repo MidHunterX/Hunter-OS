@@ -5,14 +5,15 @@ use Sys::Hostname qw(hostname);
 
 # ============================== CONFIGURATION ============================== #
 
-# my ICO = '  ';   # Classic Dots
-# my ICO = '🯇🯅🯈 ';  # Groupism
-# my ICO = '⣿⣿⣿ ';  # Air Vent
-# my ICO = '▜▙  ';  # Egyptian Snek
-# my ICO = '█ ';  # Sharp Edges
-# my ICO = '';  # Caution Stripes
-my $ICO = '';  # Tigerstripes
-my $BAR_SIZE = 20;
+# my $ICO = '  ';   # Classic Dots
+# my $ICO = '🯇🯅🯈 ';  # Groupism
+# my $ICO = '⣿⣿⣿ ';  # Air Vent
+# my $ICO = '▜██▙';  # Egyptian Snek
+# my $ICO = '██';  # Sharp Edges
+# my $ICO = '';  # Stripes (Left-Right)
+my $ICO = '';  # Stripes (Right-Left)
+# my $ICO = '';  # Tigerstripes
+my $BAR_SIZE = 25;
 
 # ================================ UTILITIES ================================ #
 
@@ -134,7 +135,7 @@ my $X   = BLUE;     # Accent 1
 my $Y   = YELLOW;   # Accent 2
 my $H   = BLUE;     # Heading
 my $B   = GREEN;    # Bold
-my $V   = MAGENTA;  # Values
+my $V   = BOLD . MAGENTA;  # Values
 
 my $user = $ENV{USER} // getpwuid($<);
 my $host = hostname();
