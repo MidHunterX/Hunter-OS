@@ -1,11 +1,38 @@
+@import "colors.css";
+
+/* SEMANTIC COLORS
+* ----------------- */
+
 /* Color of speaker_out port */
 @define-color cc_audio #a6e3a1;
 /* Color of microphone_in port */
 @define-color cc_microphone #f5c2e7;
-/* Color of light in illustrations */
-@define-color cc_backlight #f9e2af;
 
 
-/* General Data */
-@define-color cc_battery #bac2de;
-@define-color cc_time #bac2de;
+/* DYNAMIC COLORS
+* ---------------- */
+
+@define-color item_border @outline;
+@define-color item_background @background;
+@define-color item_reflection @surface_container_high;
+
+@define-color cc_battery @secondary;
+@define-color cc_time @secondary;
+@define-color cc_backlight @tertiary;
+@define-color cc_network @tertiary;
+
+@define-color btn_inactive_full_bg @secondary_container;
+@define-color btn_inactive_full_fg @secondary;
+@define-color btn_inactive_empty_bg @background;
+@define-color btn_inactive_empty_fg @outline;
+
+@define-color btn_active_full_bg @primary;
+@define-color btn_active_full_fg @on_primary;
+@define-color btn_active_empty_bg @error;
+@define-color btn_active_empty_fg @on_error;
+
+@define-color btn_urgent_bg #a6e3a1;
+@define-color btn_urgent_fg #000000;
+
+@define-color btn_hover_bg @tertiary;
+@define-color btn_hover_fg @scrim;

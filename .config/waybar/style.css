@@ -1,5 +1,4 @@
 @import url("./pixelBar.css");
-@import "colors.css";
 @import "colorcodes.css";
 
 * {
@@ -32,28 +31,28 @@ window#waybar {
   border-radius: 10px 10px 25px 25px;
 }
 #workspaces.og button {
-  background-color: @secondary_container;
-  color: @secondary;
+  background-color: @btn_inactive_full_bg;
+  color: @btn_inactive_full_fg;
   border-radius: 5px 5px 20px 20px;
   margin: 0px 5px;
   min-width: 70px;
   /* transition: all 0.3s ease-in-out; */
 }
 #workspaces.og button.empty {
-  background-color: @background;
-  color: @outline;
+  background-color: @btn_inactive_empty_bg;
+  color: @btn_inactive_empty_fg;
 }
 #workspaces.og button.active {
-  background-color: @primary;
-  color: @scrim;
+  background-color: @btn_active_full_bg;
+  color: @btn_active_full_fg;
 }
 #workspaces.og button.urgent {
-  background-color: @error;
-  color: @scrim;
+  background-color: @btn_urgent_bg;
+  color: @btn_urgent_fg;
 }
 #workspaces.og button:hover {
-  background-color: @tertiary;
-  color: @scrim;
+  background-color: @btn_hover_bg;
+  color: @btn_hover_fg;
 }
 
 tooltip {
@@ -82,19 +81,11 @@ tooltip {
   /* pixelbar 10px padding + 3px border */
   margin-top: 13px;
   margin-bottom: 0px;
-  background: linear-gradient(
-    @background,
-    @surface_container_high
-  );
+  background: linear-gradient(@item_background, @item_reflection);
   padding: 5px;
   border-width: 0.02em;
   border-style: solid;
-  border-color: @outline;
-  /* text-shadow:
-1px 1px 4 #000,
--1px 1px 4 #000,
-1px -1px 4 #000,
--1px -1px 4 #000; */
+  border-color: @item_border;
 }
 
 /*================*\
@@ -144,11 +135,11 @@ tooltip {
 }
 
 #backlight {
-  color: @tertiary;
+  color: @cc_backlight;
 }
 
 #network {
-  color: @tertiary;
+  color: @cc_network;
 }
 
 #temperature.critical {
@@ -207,7 +198,7 @@ tooltip {
   }
 }
 #battery.og {
-  color: @secondary;
+  color: @cc_battery;
   margin-right: 15px;
 }
 #battery.og.charging {

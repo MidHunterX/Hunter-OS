@@ -1,10 +1,5 @@
 #waybar.pixelbar {
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.4) 0%,
-    rgba(0, 0, 0, 0.2) 30%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0) 100%);
 }
 
 /* ============================ [ WORKSPACES ] ============================ */
@@ -23,8 +18,8 @@
   margin-right: 5px;
   padding-left: 27px;
   padding-right: 27px;
-  border-color: @secondary;
-  color: @secondary;
+  border-color: @btn_inactive_full_fg;
+  color: @btn_inactive_full_fg;
   transition: none;
 }
 
@@ -32,22 +27,22 @@
 #workspaces.pixel button.empty {
   border-top: 1px;
   border-style: solid;
-  border-color: @primary_container;
-  color: @primary_container;
+  border-color: @btn_inactive_empty_fg;
+  color: @btn_inactive_empty_fg;
 }
 
 /* Active and Full */
 #workspaces.pixel button.active {
-  border-color: @primary;
-  color: @primary;
+  border-color: @btn_active_full_bg;
+  color: @btn_active_full_bg;
   border-top: 3px;
   border-style: solid;
 }
 
 /* Active but Empty */
 #workspaces.pixel button.active.empty {
-  border-color: #f38ba8;
-  color: #f38ba8;
+  border-color: @btn_active_empty_bg;
+  color: @btn_active_empty_bg;
 }
 
 #workspaces.pixel button.focused {
@@ -65,26 +60,18 @@
 /* Urgent */
 #workspaces.pixel button.urgent {
   border-style: solid;
-  border-color: #a6e3a1;
-  color: #a6e3a1;
+  border-color: @btn_urgent_bg;
+  color: @btn_urgent_bg;
   animation-name: finished_task_blink;
   animation-duration: 0.5s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
-  background: linear-gradient(
-    to bottom,
-    rgba(166, 227, 161, 0.3) 0%,
-    rgba(166, 227, 161, 0) 100%
-  );
+  background: linear-gradient(to bottom, rgba(166, 227, 161, 0.3) 0%, rgba(166, 227, 161, 0) 100%);
 }
 
 #workspaces.pixel button:hover {
-  background: linear-gradient(
-    to bottom,
-    rgba(50, 50, 50, 0.8) 0%,
-    rgba(50, 50, 50, 0) 100%
-  );
+  background: linear-gradient(to bottom, rgba(50, 50, 50, 0.8) 0%, rgba(50, 50, 50, 0) 100%);
 }
 
 /* =========================== [ AUDIO VOLUME ] =========================== */
