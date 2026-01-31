@@ -35,7 +35,7 @@ set tabsuffix="%4*%[%2*%C%]%4*"
 set fillchars=vborder:"│",hborder:"",millersep:"|"
 
 " NOTE: Default is `psv` where `s` is side borders, and `v` is vertical line
-set tuioptions="psv"
+set tuioptions="pv"
 
 " =========================================================================== "
 
@@ -90,7 +90,7 @@ nnoremap rv :OpenRandomVideoFile<CR>l<c-o>
 " TOGGLE DOT FILES
 nnoremap gh za
 nnoremap gn :!nemo %d 2>/dev/null<CR>
-nnoremap gw :!swww img %f --transition-step 30 && perl ~/Mid_Hunter/scripts/ai_theme.pl &<CR>
+nnoremap gw :!swww img %f --transition-step 10 && perl ~/automata/iris.pl &<CR>
 
 " FAST NAVIGATION >:D
 nnoremap / /<c-y>
@@ -668,7 +668,7 @@ filextype {*.bmp,*.jpg,*.jpeg,*.png,*.xpm},<image/*>
       \ {View in nomacs}
       \ nomacs %f -m 'frameless',
       \ {Set as Wallpaper with SWWW}
-      \ swww img %f && bash ~/Mid_Hunter/scripts/ai_theme.sh &,
+      \ swww img %f && bash ~/automata/iris.pl &,
       \ {Edit in NeoVim}
       \ nvim %f,
 fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
@@ -689,8 +689,6 @@ filextype {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
       \ {     using mpv Kitty Protocol}
       \ mpv --vo=kitty %f,
       \ {View Wallpaper using mpvpaper}
-      \ mpvpaper -o "no-audio loop" eDP-1 "%f",
-      \ {Set as Wallpaper with mpvpaper}
       \ $VIFM/scripts/mpvpaper.sh %f,
       \ {View using ffplay}
       \ ffplay -fs -hide_banner -autoexit %f,
