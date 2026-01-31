@@ -1,6 +1,6 @@
 # Automata
 
-## Brightness Adaptation (iris.pl)
+## Visual Adaptation (iris.pl)
 
 ![iris](./.assets/auto_adaptation.jpg)
 

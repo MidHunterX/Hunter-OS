@@ -26,7 +26,6 @@ speed and efficiency.
 
 | Script            | Description                                        |
 | ----------------- | -------------------------------------------------- |
-| ai_idle           | Automatically display off/sleep/shutdown on idle   |
 | fetch             | Simple Fetch Script                                |
 | kill_hypr         | Kill Hyprland Safely                               |
 | menu_emoji        | Emoji Selector                                     |

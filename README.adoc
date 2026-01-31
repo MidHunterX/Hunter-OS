@@ -294,19 +294,19 @@ subgraph Development Area
 	git(<a href='{gh-repo-master}/.config/lazygit/'>Lazygit</a>)
 end
 
-fish --Edit Command (alt+e)--> nvim
-nvim --Nested Terminal (alt+/)--> fish
-vifm --Edit Files (i/l)--> nvim
-nvim --Open Files (leader pf)--> vifm
-vifm --cd Temporarily (s)--> fish
-kitty --Scrollback History(alt+n)--> nvim
-fish --(vm/vc)--> vifm
+fish ==Edit Command (alt+e)==> nvim
+nvim ==Nested Terminal (alt+/)==> fish
+vifm ==Edit Files (i/l)==> nvim
+nvim ==Open Files (leader pf)==> vifm
+vifm ==cd Temporarily (s)==> fish
+fish ==(vm/vc)==> vifm
 
 hypr_exec{{Execute Mode}}
 hypr --(Meta+e)--> hypr_exec
 
 hypr_exec --(k)--> kitty
-hypr_exec --(n)--> nvim
+hypr_exec --Nvim TextInput (n)--> nvim
+kitty --Scrollback History(alt+n)--> nvim
 
 %% ========================== Development Workflow ========================== %%
 fish --(run)--- run --> tmux --> nvim & fish
@@ -917,6 +917,7 @@ technology inspired ambient nudging, Automation and Proactive Computing.
 .Core Philosophies
 - Computers and tools should understand context, intent and work for humans.
 - Environment should support cognitive flow, not disrupt or redirect it.
+- Interactions should be reproducible and logically consistent to create a mental model that will be transferred to human muscle memory so that the interface disappears over time and only intent exists.
 
 link:{gh-run}[Run]: Automating project initialization and environment setup.
 Helps to maintain cognitive context of task without distracting yourself from
@@ -932,9 +933,9 @@ you simply state your intent and let your computer change and modify its
 environment to adapt to your intention. Abstracts away Operating Systems to use
 it as specialized environment for a specific intent.
 
-link:Mid_Hunter/scripts/ai_idle.sh[Auto Shutdown]: The device will shutdown
-itself when it's left unattended for a long time at sleeping hours but if it's
-working hours, the device will suspend instead to save power.
+link:automata/idle[Auto Idle]: The device will shutdown itself when it's left
+unattended for a long time at sleeping hours but if it's working hours, the
+device will suspend instead to save power.
 
 link:automata/iris.pl[Adaptive Window Contrast]: An adaptive
 interface design solution for UI contrast issues with transparent windows. It
