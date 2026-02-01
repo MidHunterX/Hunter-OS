@@ -253,7 +253,7 @@ prompt[🟢 starship] --> ansi
 - Waybar & Wlogout: There's no way to conditionally source/implement fallback in GTK-CSS. Only way is to copy a generated file initially.
 - cava: No option for theme fallback in config as it is doing an in-built parsing. The least resistant path would be to generate config file directly from matugen.
 
-Both solutions are non-plug-n-play friendly. Therefore use custom made status bar, logout screen etc. with a GUI shell framework like Astal with AGS or QuickShell.
+Both solutions are non-plug-n-play friendly on their own unless you provide copy of a pre-generated file before running. Therefore use custom made status bar, logout screen etc. with a GUI shell framework like Astal with AGS or QuickShell.
 ====
 
 .🌊 Integrated System Interaction Architecture
@@ -418,7 +418,7 @@ makepkg -si
 | npm           | NodeJS package manager       | pacman
 | python        | Python Interpreter           | pacman
 | sqlitebrowser | DB Browser for SQLite        | pacman
-| jdk-openjdk   | Java Development Kit ℹ️      | pacman
+| jdk-openjdk   | Java Development Kit         | pacman
 |===
 
 NOTE: Before installing jdk-openjdk, make sure to yeet out the pre-installed java package.
@@ -521,6 +521,7 @@ NOTE: Before installing jdk-openjdk, make sure to yeet out the pre-installed jav
 | torbrowser-launcher       | Anonnymous Onion Browser           | pacman
 | transmission-gtk          | GUI Torrent Client                 | pacman
 | wpa_supplicant            | WLAN Daemon                        | pacman
+| speedometer               | TUI Network Speed Monitor          | aur
 |===
 
 [discrete]
