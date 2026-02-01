@@ -8,6 +8,7 @@ use Exporter qw(import);
 our @EXPORT_OK = qw(
     interpolate_brightness
     load_data
+    update_point
 );
 
 sub load_data {
@@ -20,6 +21,20 @@ sub load_data {
     return decode_json($json_text || '{}');
 }
 
+sub update_point {
+    my ($data, $minute, $value, $window_size) = @_;
+    $window_size //= 10; # Default to 10 minutes if not specified
+    # Remove any existing points within the detection window (padding)
+    for my $stored_min (keys %$data) {
+        my $diff = abs($stored_min - $minute);
+        # Handle circular time wrap-around (e.g., 23:59 and 00:01)
+        if ($diff > 720) { $diff = 1440 - $diff; }
+        if ($diff <= $window_size) { delete $data->{$stored_min}; }
+    }
+    # Set the new point
+    $data->{$minute} = sprintf("%.2f", $value);
+    return $data;
+}
 
 sub interpolate_brightness {
     my ($data, $current_min) = @_;

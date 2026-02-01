@@ -1,9 +1,14 @@
 #!/usr/bin/env perl
 use strict;
 use warnings;
+
 use JSON::PP;
 use File::Spec;
 use POSIX qw(strftime);
+
+use FindBin;            # locate script directory
+use lib $FindBin::Bin;  # add directory to the search path (@INC) for lib
+use logic qw(update_point);
 
 my $CACHE_FILE = File::Spec->catfile($ENV{HOME}, '.cache', 'radiance_data.json');
 
@@ -26,7 +31,7 @@ sub save_point {
     }
 
     # Update point
-    $data->{$min} = sprintf("%.2f", $val);
+    $data = update_point($data, $min, $val);
 
     # Save back
     open my $fh, '>', $CACHE_FILE or die $!;
