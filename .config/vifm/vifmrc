@@ -90,7 +90,7 @@ nnoremap rv :OpenRandomVideoFile<CR>l<c-o>
 " TOGGLE DOT FILES
 nnoremap gh za
 nnoremap gn :!nemo %d 2>/dev/null<CR>
-nnoremap gw :!swww img %f --transition-step 10 && perl ~/automata/iris.pl &<CR>
+nnoremap gw :!swww img %f --transition-step 10 && perl ~/automata/iris/worker.pl &<CR>
 
 " FAST NAVIGATION >:D
 nnoremap / /<c-y>
@@ -104,6 +104,7 @@ anoremap <c-i> <CR>
 " FILE MANAGEMENT
 nnoremap o :file<CR>
 nnoremap t :touch<SPACE>
+" m is reserved for marks, so using M for mkdir instead
 nnoremap M :mkdir<SPACE>
 
 " TAB MANAGEMENT
@@ -668,7 +669,7 @@ filextype {*.bmp,*.jpg,*.jpeg,*.png,*.xpm},<image/*>
       \ {View in nomacs}
       \ nomacs %f -m 'frameless',
       \ {Set as Wallpaper with SWWW}
-      \ swww img %f && bash ~/automata/iris.pl &,
+      \ swww img %f && bash ~/automata/iris/worker.pl &,
       \ {Edit in NeoVim}
       \ nvim %f,
 fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>

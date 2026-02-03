@@ -8,7 +8,7 @@ use Time::HiRes qw(sleep);
 
 use FindBin;            # locate script directory
 use lib $FindBin::Bin;  # add directory to the search path (@INC) for lib
-use logic qw(interpolate_brightness load_data);
+use Logic qw(interpolate_brightness load_data);
 
 # ============================== CONFIGURATION ============================== #
 

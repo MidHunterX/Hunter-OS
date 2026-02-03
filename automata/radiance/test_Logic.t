@@ -4,7 +4,7 @@ use warnings;
 use Test::More;
 use FindBin;            # locate script directory
 use lib $FindBin::Bin;  # add directory to the search path (@INC) for lib
-use logic qw(interpolate_brightness update_point);
+use Logic qw(interpolate_brightness update_point);
 
 subtest 'Interpolation Logic' => sub {
     # Test Case: Empty Data

@@ -215,7 +215,7 @@ settings{{UI Settings}}
 
 %% ======================== Implementation Progress ======================== %%
 
-expression & vifm --> ai[iris.pl]
+expression & vifm --> ai[iris]
 ai --> gen[matugen] & hypr[🟢 hyprland]
 gen --> hypr --colors/2_colors.conf--> override_sourcing
 gen --> notif[🟢 dunst] --dunstrc.d/99-colors.conf--> override_sourcing
@@ -934,18 +934,18 @@ you simply state your intent and let your computer change and modify its
 environment to adapt to your intention. Abstracts away Operating Systems to use
 it as specialized environment for a specific intent.
 
-link:automata/idle[Auto Idle]: The device will shutdown itself when it's left
+link:automata/stasis[Auto Idle]: The device will shutdown itself when it's left
 unattended for a long time at sleeping hours but if it's working hours, the
 device will suspend instead to save power.
 
-link:automata/iris.pl[Adaptive Window Contrast]: An adaptive
+link:automata/iris[Adaptive Window Contrast]: An adaptive
 interface design solution for UI contrast issues with transparent windows. It
 makes the window text readable against both light and dark wallpapers by
 detecting the brightness of the Wallpaper and adjusting the perceived
 transparency of the window (via blur brightness + contrast).
 
 .`Fig: Window brightness (perceived) adapted to 60% across wallpapers with varying brightness`
-image:Mid_Hunter/scripts/.assets/auto_adaptation.jpg[link=automata/iris.pl]
+image:Mid_Hunter/scripts/.assets/auto_adaptation.jpg[link=automata/iris/]
 
 = Personal Notes
 

@@ -1,4 +1,4 @@
-package logic;
+package Logic;
 
 use strict;
 use warnings;

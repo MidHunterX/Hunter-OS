@@ -1,8 +1,8 @@
 # Automata
 
-## Ocular Brightness Adaptation (Iris)
+An automaton (automata in plural) is an abstract self-propelled computing device which follows a predetermined sequence of operations automatically.
 
-`iris.pl`
+## Ocular Brightness Adaptation (Iris)
 
 ![iris](./.assets/auto_adaptation.jpg)
 
@@ -13,8 +13,6 @@ the window based on the perceived brightness of the current wallpaper.
 Similar to how your eyes adapt to different light conditions.
 
 ## Hardware Brightness Adaptation (Radiance)
-
-`brightness/`
 
 ```
 || = Data Point
