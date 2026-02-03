@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import datetime
 import random
+import shlex
 import subprocess
 import sys
 from pathlib import Path
@@ -114,7 +115,9 @@ def main():
     # Use Popen to run Firefox in the background
     launch_cmd = ["firefox", *ff_attribs]
     if workspace_cmd:
-        hypr_chan.execute_command([*workspace_cmd, *launch_cmd])
+        # Hyprland exec needs ONE shell-quoted command
+        firefox_cmd_str = shlex.join(launch_cmd)
+        hypr_chan.execute_command([*workspace_cmd, firefox_cmd_str])
     else:
         # Fallback for other profiles without a specific workspace
         subprocess.Popen(launch_cmd)
