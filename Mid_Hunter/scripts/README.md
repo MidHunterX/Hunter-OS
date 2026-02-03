@@ -33,5 +33,3 @@ speed and efficiency.
 | menu_update       | Emoji Update Script                                |
 | menu_wifi         | Wifi Selector                                      |
 | reboot_to_windows | Reboots directly to Windows                        |
-| set_brightness    | Brightness preference learner using brillo         |
-| set_volume        | Sets Systemwide Volume using pamixer               |
