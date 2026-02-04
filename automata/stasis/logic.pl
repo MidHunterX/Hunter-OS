@@ -6,53 +6,67 @@ use warnings;
 # ================================
 
 # Time format: HH:MM (24-hour)
-my $WORK_START  = "06:00";
-my $WORK_END    = "16:00";
-
-my $SLEEP_START = "20:00";
-my $SLEEP_END   = "04:00";
+use constant {
+    WORK_START  => "06:00",
+    WORK_END    => "16:00",
+    SLEEP_START => "20:00",
+    SLEEP_END   => "04:00"
+};
 
 # ================================
 
 # HH:MM -> minutes
-sub to_minutes {
-	my ($time) = @_;
-	my ($hour, $minute) = split /:/, $time;
-	return $hour * 60 + $minute;
+sub time_to_minutes {
+    my ($time) = @_;
+    my ($hour, $minute) = split /:/, $time;
+    return $hour * 60 + $minute;
 }
 
 # if now is between start and end
-sub in_range {
-	my ($now, $start, $end) = @_;
-	if ($start <= $end) {
-		# Normal range (same day)
-		return ($now >= $start && $now < $end);
-	} else {
-		# Overnight range (e.g. 23:00 → 06:00)
-		return ($now >= $start || $now < $end);
-	}
+sub in_time_range {
+    my ($now, $start, $end) = @_;
+    if ($start <= $end) {
+        # Normal range (same day)
+        return $now >= $start && $now < $end;
+    }
+    else {
+        # Overnight range (e.g. 23:00 → 06:00)
+        return $now >= $start || $now < $end;
+    }
 }
 
-# TIME CALCULATION
+sub get_action_for_time {
+    my ($current_minutes) = @_;
 
-my ($sec, $min, $hour) = localtime;
-my $NOW_MINUTES = $hour * 60 + $min;
-my $WORK_START_M  = to_minutes($WORK_START);
-my $WORK_END_M    = to_minutes($WORK_END);
-my $SLEEP_START_M = to_minutes($SLEEP_START);
-my $SLEEP_END_M   = to_minutes($SLEEP_END);
+    my %t = (
+        work_start  => time_to_minutes(WORK_START),
+        work_end    => time_to_minutes(WORK_END),
+        sleep_start => time_to_minutes(SLEEP_START),
+        sleep_end   => time_to_minutes(SLEEP_END)
+    );
 
-# DECISION LOGIC
+    my $is_work_time = in_time_range($current_minutes, $t{work_start}, $t{work_end});
+    my $is_sleep_time = in_time_range($current_minutes, $t{sleep_start}, $t{sleep_end});
 
-if (in_range($NOW_MINUTES, $WORK_START_M, $WORK_END_M)) {
-	# print "Work hours\n";
-	system("systemctl suspend");
+    if ($is_work_time) {
+        return 'systemctl suspend';
+    }
+    elsif ($is_sleep_time) {
+        return 'systemctl poweroff';
+    }
+    else {
+        return 'systemctl suspend';
+    }
 }
-elsif (in_range($NOW_MINUTES, $SLEEP_START_M, $SLEEP_END_M)) {
-	# print "Sleep hours\n";
-	system("systemctl poweroff");
+
+sub get_action_for_current_time {
+    my ($sec, $min, $hour) = localtime;
+    my $current_minutes = $hour * 60 + $min;
+    return get_action_for_time($current_minutes);
 }
-else {
-	# print "Neutral hours\n";
-	system("systemctl suspend");
-}
+
+# MAIN
+# ================================
+
+my $action = get_action_for_current_time();
+system($action);
