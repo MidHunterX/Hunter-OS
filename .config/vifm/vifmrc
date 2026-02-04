@@ -90,7 +90,7 @@ nnoremap rv :OpenRandomVideoFile<CR>l<c-o>
 " TOGGLE DOT FILES
 nnoremap gh za
 nnoremap gn :!nemo %d 2>/dev/null<CR>
-nnoremap gw :!swww img %f --transition-step 10 && perl ~/automata/iris/worker.pl &<CR>
+nnoremap gw :!$VIFM/scripts/set_wallpaper.pl %f &<CR>
 
 " FAST NAVIGATION >:D
 nnoremap / /<c-y>
@@ -467,7 +467,7 @@ fileviewer *.os highlight -O ansi --syntax os
 fileviewer *.oz highlight -O ansi --syntax oz
 fileviewer *.paradox,*.sc highlight -O ansi --syntax paradox
 fileviewer *.pas highlight -O ansi --syntax pas
-fileviewer *.perl,*.cgi,*.perl,*.pl,*.plex,*.plx,*.pm highlight -O ansi --syntax perl
+fileviewer *.perl,*.cgi,*.perl,*.pl,*.plex,*.plx,*.pm,*.pod,*.t highlight -O ansi --syntax perl
 fileviewer *.php,*.php3,*.php4,*.php5,*.php6,*.php7,*.phps,*.phpt highlight -O ansi --syntax php
 fileviewer *.pike,*.pmod highlight -O ansi --syntax pike
 fileviewer *.pl1,*.bdy,*.ff,*.fp,*.fpp,*.rpp,*.sf,*.sp,*.spb,*.spe,*.spp,*.sps,*.wf,*.wp,*.wpb,*.wpp,*.wps highlight -O ansi --syntax pl1

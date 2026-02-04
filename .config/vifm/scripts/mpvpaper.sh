@@ -1,13 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-if command -v swww >/dev/null 2>&1; then
-  # Installed
-  if pgrep swww >/dev/null 2>&1; then
-    # Running
-    swww kill
-  fi
-fi
-
-pkill expression
-
-mpvpaper -o "no-audio loop" eDP-1 "$1"
+# mpvpaper will draw over the swww instance temporarily
+mpvpaper  -o "no-audio loop panscan=1.0" eDP-1 "$1"
