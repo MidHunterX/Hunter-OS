@@ -195,8 +195,9 @@ waybar --> volume & brillo & nf
 IMPORTANT: Color generators like matugen are so pervasive, it becomes a dependency for app config colors unless there's a way to set fallback colors on app configs. This makes the configs non-plug-n-play for other systems until all variables are replaced with hex colorcodes. The main focus of this section is to make every configs independent and plug-n-play friendly again.
 
 |===
-| 🟢 | matugen Optional (Plug n Play Friendly)
-| 🔴 | matugen Required
+| 🟢 | matugen Optional (Fallback Colors)     | [10/15]
+| 🟡 | matugen Suggested (Pink Color)         | [02/15]
+| 🔴 | matugen Required (No Fallback Colors)  | [03/15]
 |===
 
 [source,mermaid,subs=attributes+]
@@ -204,6 +205,7 @@ IMPORTANT: Color generators like matugen are so pervasive, it becomes a dependen
 graph TD
 expression(<a href='{gh-expression}'>Expression</a>)
 vifm(<a href='{gh-repo-master}/.config/vifm'>ViFM</a>)
+iris(<a href='{gh-repo-master}/automata'>Iris</a>)
 
 %% ========================== Sourcing Techniques ========================== %%
 
@@ -215,8 +217,8 @@ settings{{UI Settings}}
 
 %% ======================== Implementation Progress ======================== %%
 
-expression & vifm --> ai[iris]
-ai --> gen[matugen] & hypr[🟢 hyprland]
+expression & vifm --> iris
+iris --> gen[matugen] & hypr[🟢 hyprland]
 gen --> hypr --colors/2_colors.conf--> override_sourcing
 gen --> notif[🟢 dunst] --dunstrc.d/99-colors.conf--> override_sourcing
 gen --> term[🟢 kitty] --colors/colors.conf--> override_sourcing
@@ -232,8 +234,8 @@ gen --> vis[🔴 cava]
 
 ansi --> term
 git[🟢 lazygit] --> ansi
-fish[🟢 fish] --> ansi
-prompt[🟢 starship] --> ansi
+fish[🟡 fish] --> ansi
+prompt[🟡 starship] --> ansi
 
 %% ========================================================================= %%
 ----
@@ -244,7 +246,7 @@ prompt[🟢 starship] --> ansi
 - **Override Sourcing**: Sourcing the generated file which replaces the pre-existing color variables. Programs which allow to source non-existing files without errors or uses a special directory to source files can do this. This is the most preferred solution as all it takes is just one source command in config.
 - **Conditional Sourcing**: Conditionally source the generated file if it exists. Programs which has well designed DSLs with file operations or has embedded language can do this. This is second most preferred way as changing the DSL syntax can break things and it'll be time consuming if there are many different configs like this.
 - **Default Fallback**: The program have in-built fallback configs which can be used if the generated file doesn't exist.
-- **ANSI Convention**: Using specific 16 color ANSI codes to represent semantic colors. This should only be used as a last resort if all other methods fail. Most likely TUI apps which doesn't provide robust way of configuring colors and especially it uses a simplistic config like yaml or have no config at all but uses 16 colors.
+- **ANSI Convention**: Using specific 16 color ANSI codes to represent semantic colors. This should only be used as a last resort if all other methods fail. Most likely TUI apps which doesn't provide robust way of configuring colors and especially it uses a simplistic config like yaml or have no config at all but uses 16 colors. Primary colors will revert to pink without a color generator.
 - **UI Settings**: This is the least preferred method and it's a terrible design. Should use in-built UI to set the dynamic theme because the config files are used as a cache instead like btop.
 
 [discrete]
