@@ -578,7 +578,7 @@ filextype {go.mod},
 fileviewer {*/,.*/,../},
       \ lsd --almost-all --color=always --icon=always --group-directories-first --blocks=permission --blocks=git --blocks=name,
       \ lsd --almost-all --color=always --icon=always --group-directories-first --tree --depth=3,
-      \ df -h %f | highlight -O ansi --syntax javascript,
+      \ stat %f | highlight -O ansi --syntax bash,
       \ ls --color=always
 
 "  DATABASE
