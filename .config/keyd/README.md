@@ -6,6 +6,10 @@ result often being tethered to a specified environment (X11). keyd attempts to
 solve this problem by providing a flexible system wide daemon which remaps keys
 using kernel level input primitives (evdev, uinput).
 
+> [!NOTE]
+> For detailed data on ergonomic analysis of different keyboard layouts, use: [cyanophage](https://cyanophage.github.io/).
+> It gives you access to data like: Finger usage, Finger distance, Column & Row usage, Same finger Bigram & Trigrams etc.
+
 ## 🏠 Home Row Mods (GCAS)
 
 Homerow modifiers are activated by overloading the specific key assigned to it.
@@ -94,7 +98,6 @@ lr2 --> lr0
 ```
 
 ### QWERTY Layer
-
 
 <table>
 <tr><th>Normal Layer</th><th>Shift Layer</th></tr>

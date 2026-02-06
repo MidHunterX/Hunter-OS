@@ -291,9 +291,9 @@ firefox(<a href='{gh-repo-master}/.mozilla/'>Firefox</a>)
 keyd --- linux ==Bash Shell==> hypr
 
 subgraph Development Area
-	tmux(<a href='{gh-repo-master}/.config/tmux/'>TMUX</a>)
-	run(<a href='{gh-run}'>Project Launcher</a>)
-	git(<a href='{gh-repo-master}/.config/lazygit/'>Lazygit</a>)
+tmux(<a href='{gh-repo-master}/.config/tmux/'>TMUX</a>)
+run(<a href='{gh-run}'>Project Launcher</a>)
+git(<a href='{gh-repo-master}/.config/lazygit/'>Lazygit</a>)
 end
 
 fish ==Edit Command (alt+e)==> nvim
