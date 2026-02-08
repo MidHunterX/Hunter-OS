@@ -55,8 +55,14 @@ Homerow modifiers are activated by overloading the specific key assigned to it.
 
 ## 🚀 Space Layer
 
-Space layer is activated by overloading space key. Then press the keys below to
-activate space layer remaps.
+**Vim Navigation** is activated by overloading space key in QWERTY Layer. Then
+press the keys below to activate space layer remaps.
+
+**Numpad Layer** is activated by overloading space key in QWERTY > Meta Layer.
+
+<table>
+<tr><th>Vim Navigation</th><th>Numpad Layer</th></tr>
+<tr><td>
 
 | Key | Output Key             |
 | --- | ---------------------- |
@@ -71,14 +77,41 @@ activate space layer remaps.
 | d   | Move to End of Line    |
 | ;   | Backspace              |
 
-Note: Backspace also works in homerow Ctrl layer as well
+</td><td>
 
-## 🎹 KeyD Keybindings
+<table>
+<tr><th>Normal Layer</th></tr>
+<tr><td>
 
-- Escape = f+j (chorded < 50ms)
-- Escape = CapsLock (**Tap** < 300ms)
-- Ctrl = CapsLock (**Press** < 300ms with other Key)
-- CapsLock = CapsLock (**Press** > 300ms)
+```
+- F1 F2 F3 F4 F5 F6 F7 F8 F9
+ - - - - - - 7 8 9 - - - -
+  - - - - - - 4 5 6 - -
+   - - - - - 0 1 2 3 .
+```
+
+</td></tr>
+<th>Shift Layer</th>
+<tr><td>
+
+```
+- F1 F2 F3 F4 F5 F6 F7 F8 F9
+ - - - - - - & * ( - - - -
+  - - - - - - $ % ^ - -
+   - - - - - ) ! @ # .
+```
+
+</td></tr>
+</table>
+</td></tr>
+</table>
+
+## 🎹 Keybindings
+
+- f+j (chorded < 50ms) = **Escape**
+- CapsLock (**Tap** < 300ms) = **Escape**
+- CapsLock (**Press** < 300ms + another Key) = **Ctrl**
+- CapsLock (**Press** > 300ms) = **CapsLock**
 
 ## 🎡 Layer Topology
 
@@ -86,7 +119,7 @@ Meta + Space is the same keybinding Windows use to cycle between multiple layout
 Here, **Press** = Temporary Layer Switch and **Tap** = Permanent Layer Toggle.
 
 ```mermaid
-graph LR
+graph
 qw[QWERTY]
 qwspace[Vim Navigation]
 qwmeta{{Meta Layer}}
@@ -98,83 +131,8 @@ qw --space (press)--> qwspace
 qw --meta (press)--- qwmeta --space (tap)--> nm
 qwmeta <--space (press)--> qwmetaspace --> nm
 qwmetaspace --> qw
-nm --meta layer--> dv
-dv --meta layer--> qw
+nm --meta+space--> dv
+dv --meta+space--> qw
 ```
 
 TIP: You can get NUMPAD with overloading space only if you do the following sequence: Meta down -> Space down -> Meta up. Now you are in the Space Layer which points to NUMPAD, inside the Meta Layer inside the QWERTY Layer which will go back to QWERTY layer when you do Space up.
-
-### QWERTY Layer
-
-<table>
-<tr><th>Normal Layer</th><th>Shift Layer</th></tr>
-<tr><td>
-
-```
-1 2 3 4 5 6 7 8 9 0 - =
- q w e r t y u i o p [ ] \
-  a s d f g h j k l ; '
-   z x c v b n m , . /
-```
-
-</td><td>
-
-```
-! @ # $ % ^ & * ( ) _ +
- Q W E R T Y U I O P { } |
-  A S D F G H J K L : "
-   Z X C V B N M < > ?
-```
-
-</td></tr>
-</table>
-
-### NUMPAD Layer
-
-<table>
-<tr><th>Normal Layer</th><th>Shift Layer</th></tr>
-<tr><td>
-
-```
-- F1 F2 F3 F4 F5 F6 F7 F8 F9
- - - - - - - 7 8 9 - - - -
-  - - - - - - 4 5 6 - -
-   - - - - - 0 1 2 3 .
-```
-
-</td><td>
-
-```
-- F1 F2 F3 F4 F5 F6 F7 F8 F9
- - - - - - - & * ( - - - -
-  - - - - - - $ % ^ - -
-   - - - - - ) ! @ # .
-```
-
-</td></tr>
-</table>
-
-### DVORAK Layer
-
-<table>
-<tr><th>Normal Layer</th><th>Shift Layer</th></tr>
-<tr><td>
-
-```
-1 2 3 4 5 6 7 8 9 0 [ ]
- ' , . p y f g c r l / = \
-  a o e u i d h t n s -
-   ; q j k x b m w v z
-```
-
-</td><td>
-
-```
-! @ # $ % ^ & * ( ) { }
- " < > P Y F G C R L ? + |
-  A O E U I D H T N S _
-   : Q J K X B M W V Z
-```
-
-</td></tr>
-</table>
