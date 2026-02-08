@@ -76,26 +76,33 @@ Note: Backspace also works in homerow Ctrl layer as well
 ## 🎹 KeyD Keybindings
 
 - Escape = f+j (chorded < 50ms)
-- Escape = CapsLock (Click < 300ms)
-- Ctrl = CapsLock (Press < 300ms with other Key)
-- CapsLock = CapsLock (Press > 300ms)
+- Escape = CapsLock (**Tap** < 300ms)
+- Ctrl = CapsLock (**Press** < 300ms with other Key)
+- CapsLock = CapsLock (**Press** > 300ms)
 
-## 🍇 Meta Keymap Toggle
-
-### Meta + Space
+## 🎡 Layer Topology
 
 Meta + Space is the same keybinding Windows use to cycle between multiple layouts as well.
+Here, **Press** = Temporary Layer Switch and **Tap** = Permanent Layer Toggle.
 
 ```mermaid
 graph LR
-lr0[QWERTY]
-lr1[NUMPAD]
-lr2[DVORAK]
+qw[QWERTY]
+qwspace[Vim Navigation]
+qwmeta{{Meta Layer}}
+qwmetaspace{{Space Layer}}
+nm[NUMPAD]
+dv[DVORAK]
 
-lr0 --> lr1
-lr1 --> lr2
-lr2 --> lr0
+qw --space (press)--> qwspace
+qw --meta (press)--- qwmeta --space (tap)--> nm
+qwmeta <--space (press)--> qwmetaspace --> nm
+qwmetaspace --> qw
+nm --meta layer--> dv
+dv --meta layer--> qw
 ```
+
+TIP: You can get NUMPAD with overloading space only if you do the following sequence: Meta down -> Space down -> Meta up. Now you are in the Space Layer which points to NUMPAD, inside the Meta Layer inside the QWERTY Layer which will go back to QWERTY layer when you do Space up.
 
 ### QWERTY Layer
 
