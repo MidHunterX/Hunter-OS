@@ -40,7 +40,7 @@ if status is-interactive
     abbr -a -g yeet 'sudo pacman -Rns' # Remove packages with dependencies
     abbr -a -g woman 'man -k . | fzf | awk \'{print $1}\' | xargs man'
 
-    alias arch 'bash ~/Mid_Hunter/scripts/assistants/archchan/get_command-list.sh'
+    alias arch 'perl ~/Mid_Hunter/scripts/assistants/archchan/get_command.pl'
     alias vim nvim
 
     # function cmd_duration
@@ -151,6 +151,7 @@ if status is-interactive
     end
 
     # Ctrl-Z fg command
+    # repaint to remove background process icon from prompt
     bind --mode insert \cz 'fg 2>/dev/null; commandline -f repaint'
 
     # █▀▀ █░█ █▄░█ █▀▀ ▀█▀ █ █▀█ █▄░█ █▀

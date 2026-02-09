@@ -1,0 +1,111 @@
+---
+# Audio
+
+- keyword: "[wpctl] Show audio devices - lists sound devices"
+  commands:
+    - wpctl status
+  comment: "Set default device using `wpctl set-default <number>`. Source = Microphone and Sink = Sound."
+
+- keyword: "[wpctl] How to set default audio/microphone device"
+  commands:
+    - wpctl status
+  comment: "Set default device using `wpctl set-default <number>`. Source = Microphone and Sink = Sound."
+
+# Power
+
+- keyword: "[tlp] Disable Conservation Mode - Set to fullcharge temporarily"
+  commands:
+    - sudo tlp fullcharge
+  comment: "You can set default charging mode at: /etc/tlp.conf"
+
+- keyword: "[tlp] Enable Conservation Mode - Set charging limit @60%"
+  commands:
+    - sudo tlp setcharge
+  comment: "You can set default charging mode at: /etc/tlp.conf"
+
+- keyword: "[tlp] How to do Conservation Mode"
+  comment: "You can set default charging mode with: `sudoedit /etc/tlp.conf`"
+
+# System
+
+- keyword: "[pacman] Show/Get list of unwanted package/dependencies to remove/clean"
+  commands:
+    - pacman -Qdtq
+  comment: "These are the things you gotta yeet! using `sudo pacman -R $(pacman -Qdtq)`"
+
+- keyword: "[pacman] Do remove/clean unwanted package/dependencies"
+  commands:
+    - sudo pacman -R $(pacman -Qdtq)
+
+- keyword: "[aft-mtp-mount] Mount Android Device"
+  commands:
+    - aft-mtp-mount /mnt
+  comment: "Mounted Android Device to /mnt"
+
+- keyword: "[curlftpfs] How to mount FTP Device"
+  comment: "You can use the command `curlftpfs <ftphostname> /mnt` for example: `curlftpfs ''ftp://192.168.1.36:2121'' /mnt/`"
+
+- keyword: "[umount] Do unmount /mnt"
+  commands:
+    - sudo umount /mnt
+  comment: "Done"
+
+- keyword: "[df] List/Show partition space details"
+  commands:
+    - df -h
+  comment: "For showing mountpoints only you can do `df -h | grep /dev`"
+
+# Network
+
+- keyword: "[nmcli] Wifi Disable Device"
+  commands:
+    - nmcli radio wifi off
+  comment: "Done"
+
+- keyword: "[nmcli] Do Wifi Enable Device"
+  commands:
+    - nmcli radio wifi on
+  comment: "Done"
+
+- keyword: "[nmcli] How to Connect to Wifi?"
+  commands:
+    - nmcli device wifi list
+  comment: "You can connect with `nmcli device wifi connect <SSID>`"
+
+- keyword: "[nmcli] Do Network Disable"
+  commands:
+    - nmcli networking off
+  comment: "Done"
+
+- keyword: "[nmcli] Do Network Enable"
+  commands:
+    - nmcli networking on
+  comment: "Done"
+
+# Themes
+
+- keyword: "[gsettings] Show/get currently active gtk theme"
+  commands:
+    - gsettings get org.gnome.desktop.interface gtk-theme
+
+- keyword: "[ls] How to set GTK system themes themes"
+  commands:
+    - ls /usr/share/themes/
+  comment: "You can set theme using `gsettings set org.gnome.desktop.interface gtk-theme <theme_name>`"
+
+- keyword: "[systemctl] Show running background services"
+  commands:
+    - systemctl status
+
+# Tools
+
+- keyword: "[yt-dlp] How to Download Videos with specific format and size?"
+  comment: "You can do `yt-dlp -F <URL>` to list available formats and `yt-dlp -f <format> <URL>` to download in that specific format."
+
+- keyword: "[git] Do Git Undo last commit"
+  commands:
+    - git reset HEAD~
+  comment: "Done"
+
+- keyword: "[tmux] How to create a new session in tmux?"
+  comment: "You can create a new session using: `tmux new -s <Session_Name>` or just simply `tmux` ;D"

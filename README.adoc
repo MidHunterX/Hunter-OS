@@ -411,16 +411,18 @@ makepkg -si
 === 📦 Development
 [%header]
 |===
-| Package Name  | Description                  | Src
-| git           | Version control system       | pacman
-| lazygit       | TUI for Git                  | pacman
-| git-delta     | Git Syntax Highlighted Pager | pacman
-| meson         | Nice build system            | pacman
-| nodejs        | JavaScript Runtime Env       | pacman
-| npm           | NodeJS package manager       | pacman
-| python        | Python Interpreter           | pacman
-| sqlitebrowser | DB Browser for SQLite        | pacman
-| jdk-openjdk   | Java Development Kit         | pacman
+| Package Name      | Description                       | Src
+| git               | Version control system            | pacman
+| lazygit           | TUI for Git                       | pacman
+| git-delta         | Git Syntax Highlighted Pager      | pacman
+| meson             | Nice build system                 | pacman
+| nodejs            | JavaScript Runtime Env            | pacman
+| npm               | NodeJS package manager            | pacman
+| python            | Python Interpreter                | pacman
+| sqlitebrowser     | DB Browser for SQLite             | pacman
+| jdk-openjdk       | Java Development Kit              | pacman
+| perl-term-readkey | Read Keystrokes from the Terminal | pacman
+| perl-yaml-libyaml | YAML Parser for Perl              | pacman
 |===
 
 NOTE: Before installing jdk-openjdk, make sure to yeet out the pre-installed java package.
@@ -559,6 +561,7 @@ When using `curlftpfs` to FUSE mount and copy files over FTP, there's a common i
 | keyd                        | Key Remapping Daemon         | aur
 | swww                        | Wayland Wallpaper Daemon     | aur
 | wlogout                     | Logout Screen                | aur
+| clock-tui                   | TUI Clock (tclock)           | aur
 |===
 NOTE: wl-screenrec might be optimized, fast, efficient and Lightweight but it doesn't work in battery saver mode unlike wf-recorder.
 
@@ -720,12 +723,6 @@ sudo ln -s /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/
 | swayosd-libinput-backend.service
 | Libinput daemon for sway OSD server
 |===
-
-.Enable services at startup with:
-[source,bash]
-----
-systemctl enable <Service_Name>
-----
 
 == 💽 Core Computational Configurations
 
