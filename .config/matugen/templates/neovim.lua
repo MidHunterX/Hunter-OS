@@ -5,7 +5,6 @@
 local M = {}
 
 <* for name, value in colors *>
-M.{{name}} = "{{value.default.hex}}"
-<* endfor *>
+M.{{name}} = "{{value.default.hex}}"<* endfor *>
 
 return M

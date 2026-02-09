@@ -100,8 +100,6 @@ sub process_markdown {
 		chomp(my $line = $lines[$i]);
 
 		# probable file path
-
-		# if ($line =~ m{^[\w./-]+\.[\w]+$} && -f $line)
 		if ($line =~ m{^[\w./()@+\[\]-]+\.[\w]+$} && -f $line) {
 			my $path = $line;
 			my $lang = detect_language($path);
@@ -111,12 +109,8 @@ sub process_markdown {
 
 			# Skip possible blank line or code fence one line below
 			my $j = $i;
-			while ($j < @lines && $lines[$j] =~ /^\s*$/) {
-				$j++;  # skip empty lines
-			}
-			if ($j < @lines && $lines[$j] =~ /^```/) {
-				$i = $j;  # start delete from fence line
-			}
+			while ($j < @lines && $lines[$j] =~ /^\s*$/) { $j++; }  # skip empty lines
+			if ($j < @lines && $lines[$j] =~ /^```/) { $i = $j; } # start delete from fence line
 
 			delete_existing_block(\@lines, \$i, \@out);
 

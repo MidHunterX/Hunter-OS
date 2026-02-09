@@ -3,4 +3,5 @@
 highlight User1 ctermbg=LightWhite ctermfg=Black cterm=bold
 highlight User2 ctermbg=default ctermfg=LightWhite cterm=bold
 
+highlight Directory cterm=bold ctermfg=LightWhite ctermbg=default
 highlight Border cterm=none ctermfg=LightWhite ctermbg=default
