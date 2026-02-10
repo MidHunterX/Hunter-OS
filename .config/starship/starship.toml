@@ -1,9 +1,9 @@
 # [](col_usr)$os$username[](fg:col_usr)\
 
 format = """
-$character[](fg:col_blk bg:col_dir)\
+$character[](fg:col_dir)\
 $directory[](fg:col_dir bg:col_git)$git_branch$git_status\
-[](fg:col_git bg:col_lng)\
+[](fg:col_git)\
 $all\
 $status\
 $cmd_duration\
@@ -79,12 +79,12 @@ symbol = ' '
 format = '[ $symbol$number ]($style)'
 
 [status]
-symbol = '[](fg:col_lng bg:col_red)[  ](bg:col_red fg:col_wht)[](fg:col_red)'
-success_symbol = '[](fg:col_lng bg:col_chk)[  ](bg:col_chk fg:col_blk)[](fg:col_chk)'
-not_executable_symbol = '[](fg:col_lng bg:col_red)[  ](bg:col_red fg:col_wht)[](fg:col_red)'
-not_found_symbol =	'[](fg:col_lng bg:col_ylo)[  ](bg:col_ylo fg:col_blk)[](fg:col_ylo)'
-sigint_symbol =	'[](fg:col_lng bg:col_red)[  ](bg:col_red fg:col_wht)[](fg:col_red)' # Interrupt Signal (ctrl+c)
-signal_symbol = '[](fg:col_lng bg:col_ylo)[  ](bg:col_ylo fg:col_blk)[](fg:col_ylo)'
+symbol = '[](fg:col_red)[  ](bg:col_red fg:col_wht)[](fg:col_red)'
+success_symbol = '[](fg:col_chk)[  ](bg:col_chk fg:col_blk)[](fg:col_chk)'
+not_executable_symbol = '[](fg:col_red)[  ](bg:col_red fg:col_wht)[](fg:col_red)'
+not_found_symbol =	'[](fg:col_ylo)[  ](bg:col_ylo fg:col_blk)[](fg:col_ylo)'
+sigint_symbol =	'[](fg:col_red)[  ](bg:col_red fg:col_wht)[](fg:col_red)' # Interrupt Signal (ctrl+c)
+signal_symbol = '[](fg:col_ylo)[  ](bg:col_ylo fg:col_blk)[](fg:col_ylo)'
 style = "bg:col_chk fg:col_blk"
 format = '[$symbol]($style)'
 map_symbol = true
