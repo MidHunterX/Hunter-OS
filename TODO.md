@@ -2,6 +2,7 @@
 
 | Package               | Desc                                 | pacman |
 | --------------------- | ------------------------------------ | ------ |
+| mpvc                  | CLI MPV Player                       | aur    |
 | helix                 | Visual first Vim like editor         | pacman |
 | veracrypt             | Data Encryption                      | pacman |
 | aylurs-gtk-shell      | Scaffolding for Astal+Gnim project   | aur    |
@@ -37,6 +38,9 @@
 | jamesdsp              | Audio Effect Preprocessor (Pipewire) | aur    |
 | easyeffects           | Audio Equalizer                      | pacman |
 | speech-dispatcher     | Speech Synthesis (spd-say)           | pacman |
+| hyprpolkitagent       | Hyprland GUI Authentication Agent    | pacman |
+| docker                | leightweight container runtime       | pacman |
+| docker-compose        | build capabilities with BuildKit     | pacman |
 
 Best implementation of transparency:
 

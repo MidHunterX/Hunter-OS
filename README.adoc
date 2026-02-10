@@ -357,6 +357,7 @@ Click the following categories to toggle the list of packages in that category.
 | linux-firmware | Firmware files for Linux                        | pacman
 | linux-headers  | Headers and scripts for building modules        | pacman
 | pacman-contrib | Scripts and tools for pacman systems (paccache) | pacman
+| systemctl-tui  | TUI for systemd services and their logs         | pacman
 |===
 
 [discrete]
