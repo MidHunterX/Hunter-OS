@@ -8,6 +8,59 @@ It provides the latest Wayland features, is highly customizable, has all the eye
 
 ## Hyprland Keybindings
 
+Inside a Mode Press `?` or `SHIFT + /` to open the **Key Menu**
+
+```mermaid
+flowchart
+hypr(Hyprland)
+
+%% ========== execute mode ========== %%
+
+exec(Execute Mode)
+bright(Brightness Mode)
+volume(Volume Mode)
+learn{{Learn}}
+mute{{Mute}}
+inc{{Increment}}
+dec{{Decrement}}
+nil{{Exit}}
+
+hypr -- SUPER + e --> exec
+exec -- b --> bright
+exec -- v --> volume
+bright -- x --> learn
+volume -- m --> mute
+bright -- q --> nil
+volume -- x/q --> nil
+bright & volume -- u --> inc
+bright & volume -- d --> dec
+
+%% ========== cursor mode ========== %%
+
+cursor(Cursor Mode)
+find(Cursor Jump Mode)
+color(Color Picker Mode)
+c_pick{{Pick Color}}
+
+hypr -- SUPER + c --> cursor
+cursor -- f --> find
+cursor -- c --> color
+color -- esc --> cursor
+color -- i --> c_pick
+
+%% ========== transform mode ========== %%
+
+transform(Transformation Mode)
+t_resize{{Resize Tile}}
+t_swap{{Swap Tile}}
+t_focus{{Focus Tile}}
+
+hypr -- SUPER + t --> transform
+transform -- CTRL + hjkl --> t_resize
+transform -- SHIFT + hjkl --> t_swap
+transform -- hjkl --> t_focus
+```
+
 ### Vim Style Modal Keybindings
 
 Press `SUPER + E` to enter **Execute** Mode and activate the following keys
