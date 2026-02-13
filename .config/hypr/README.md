@@ -6,6 +6,15 @@ Hyprland is a dynamic tiling Wayland compositor based on wlroots that doesn't sa
 
 It provides the latest Wayland features, is highly customizable, has all the eyecandy, the most powerful plugins, easy IPC, much more QoL stuff than other wlr-based compositors.
 
+## Features
+
+**Assistive Window Border** deactivates and leaves you distraction free most of
+the time. Borders are there to notify you of something important. If there are
+more than one window, border kicks in getting all your attention for
+communicating to you on which window your cursor is currently in. It also kicks
+in alerting you if it's a floating or special window. `#Hidden_UI: Window
+border as a window selector`
+
 ## Hyprland Keybindings
 
 Inside a Mode Press `?` or `SHIFT + /` to open the **Key Menu**
