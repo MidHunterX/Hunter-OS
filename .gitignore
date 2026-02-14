@@ -49,7 +49,8 @@
 # ⚡ System Power Menu
 !.config/wlogout/
 # 🕹️ System UI
-!.config/ags/
+!.config/quickshell/
+.config/quickshell/colors.json
 
 
 # ▀█▀ █▀▀ █▀█ █▀▄▀█ █ █▄░█ ▄▀█ █░░

@@ -255,14 +255,16 @@ prompt[🟡 starship] --> ansi
 - Waybar & Wlogout: There's no way to conditionally source/implement fallback in GTK-CSS. Only way is to copy a generated file initially.
 - cava: No option for theme fallback in config as it is doing an in-built parsing. The least resistant path would be to generate config file directly from matugen.
 
-Both solutions are non-plug-n-play friendly on their own unless you provide copy of a pre-generated file before running. Therefore use custom made status bar, logout screen etc. with a GUI shell framework like Astal with AGS or QuickShell.
+Both solutions are non-plug-n-play friendly on their own unless you provide copy of a pre-generated file before running. Therefore use custom made status bar, logout screen etc. with a GUI shell framework like Astal with AGS (`aylurs-gtk-shell-git` Still uses GTK. GTK = lesser flexibility) or QuickShell (uses Qt = better flexibility).
 ====
 
-.🌊 Integrated System Interaction Architecture
+.🌊 Personal Workflow
 [%collapsible]
 ====
 [discrete]
-=== 🌊 Integrated System Interaction Architecture
+=== 🌊 Personal Workflow
+
+This is my most frequently used workflow out of all other possibilities.
 
 [source,mermaid,subs=attributes+]
 ----
@@ -547,6 +549,7 @@ When using `curlftpfs` to FUSE mount and copy files over FTP, there's a common i
 | Package Name                | Description                  | Src
 | libnotify                   | Notification library         | pacman
 | matugen                     | Material You Color Generator | pacman
+| quickshell                  | Qt GUI Shell                 | pacman
 | dunst                       | Notification Daemon          | pacman
 | fuzzel                      | Wayland App Launcher         | pacman
 | hyprland                    | Wayland compositor           | pacman
@@ -909,7 +912,7 @@ nameserver 8.8.4.4     # Google secondary
 
 NOTE: systemd-resolved can also set DNS config but since we are not enabling that service, it will not do anything.
 
-== ⚗️ Empathic Environment Engineering Experiment
+== ⚗️ Empathic Environment Exploration
 
 Exploring reduction of Cognitive Load by Intent based context switching, Calm
 technology inspired ambient nudging, Automation and Proactive Computing.
