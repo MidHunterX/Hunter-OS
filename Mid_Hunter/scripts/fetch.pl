@@ -11,7 +11,8 @@ use Sys::Hostname qw(hostname);
 # my $ICO = '▜██▙';  # Egyptian Snek
 # my $ICO = '██';  # Sharp Edges
 # my $ICO = '';  # Stripes (Left-Right)
-my $ICO = '';  # Stripes (Right-Left)
+# my $ICO = '';  # Stripes (Right-Left)
+my $ICO = '';  # Stripe (Right-Left)
 # my $ICO = '';  # Tigerstripes
 my $BAR_SIZE = 25;
 
@@ -141,7 +142,16 @@ my $user = $ENV{USER} // getpwuid($<);
 my $host = hostname();
 my $user_host = "$H$user".WHITE."\@$H$host$R";
 my $date_str = `date +"$V%d$R %b %Y, $V%H:%M$R %a"`; chomp $date_str;
-my $color_str = RED.$ICO . GREEN.$ICO . YELLOW.$ICO . BLUE.$ICO . MAGENTA.$ICO . CYAN.$ICO . WHITE.$ICO . BLACK.$ICO . RESET;
+my $color_str = ""
+                . RED.$ICO . BRIGHT_RED.$ICO
+                . GREEN.$ICO . BRIGHT_GREEN.$ICO
+                . YELLOW.$ICO . BRIGHT_YELLOW.$ICO
+                . BLUE.$ICO . BRIGHT_BLUE.$ICO
+                . MAGENTA.$ICO . BRIGHT_MAGENTA.$ICO
+                . CYAN.$ICO . BRIGHT_CYAN.$ICO
+                . WHITE.$ICO . BRIGHT_WHITE.$ICO
+                . BLACK.$ICO . BRIGHT_BLACK.$ICO
+                . RESET;
 
 print "\n";
 printf "  %s     %s     %s        %s%s%s%s%s%s%s%s%s\n", $X, $Y."o.", "   .o", $color_str;
