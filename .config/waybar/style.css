@@ -121,6 +121,7 @@ tooltip {
 * LEFT CORNER *
 \*============*/
 
+#clock.date,
 #temperature,
 #memory,
 #cpu,
@@ -132,6 +133,11 @@ tooltip {
   padding-right: 5px;
   border-radius: 10px 0px 0px 25px;
   margin-left: 15px;
+}
+
+#clock.date {
+  color: @secondary;
+  margin-right: 0;
 }
 
 #backlight {
@@ -158,16 +164,25 @@ tooltip {
 * NO CORNER *
 \*=========*/
 
+#clock.time,
 #pulseaudio.microphone {
   border-radius: 0px 0px 0px 0px;
   border-left: 0px;
   border-right: 0px;
 }
 
+#clock.time {
+  color: @primary;
+  background: linear-gradient(@item_background, @secondary_container);
+  margin-left: 0;
+  margin-right: 0;
+}
+
 /*============*\
 * RIGHT CORNER *
 \*============*/
 
+#clock.week,
 #bluetooth,
 #idle_inhibitor,
 #battery.og {
@@ -176,6 +191,11 @@ tooltip {
   padding-left: 15px;
   margin-right: 10px;
   border-radius: 0px 25px 10px 0px;
+}
+
+#clock.week {
+  color: @secondary;
+  margin-left: 0;
 }
 
 #bluetooth {

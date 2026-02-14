@@ -48,7 +48,10 @@
         "reload_style_on_change": false,
         // --------------------------------------------------- MODULE POSITIONS
         "modules-left": [
-            "clock",
+            "clock#date",
+            "clock#time",
+            "clock#week",
+            // "clock",
             "network"
             // "bluetooth"
         ],
@@ -70,6 +73,15 @@
             // uses : fmt.dev/latest/syntax/#chrono-format-specifications
             // 󰨳 WEEK |  YEAR-MONTH-DAY |  HOUR:MINUTE
             "format": "󰃭 {:%Y-%m-%d | 󰥔 %H:%M | 󰨳 %a }"
+        },
+        "clock#date": {
+            "format": "󰃭 {:%Y-%m-%d}"
+        },
+        "clock#time": {
+            "format": "󰥔 {:%H:%M}"
+        },
+        "clock#week": {
+            "format": "󰨳 {:%a}"
         },
         "idle_inhibitor": {
             "format": "{icon}",
