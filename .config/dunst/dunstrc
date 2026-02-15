@@ -26,7 +26,7 @@
     width = 512
 
     # The maximum height of a single notification, excluding the frame.
-    height = (64, 256)
+    height = (64, 512)
 
     # Position the notification in the top right corner
     origin = bottom-right
@@ -249,7 +249,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 0
+    corner_radius = 20
 
     # Define which corners to round when drawing the window. If the corner radius
     # is set to 0 this option will be ignored.
