@@ -14,29 +14,29 @@
         ]
     },
     // =========================== [ PIXEL BAR ] =========================== //
-    {
-        "name": "pixelbar",
-        "layer": "bottom",
-        "position": "top",
-        "mod": "dock",
-        "exclusive": false,
-        "passthrough": false,
-        "gtk-layer-shell": true,
-        "reload_style_on_change": false,
-        "modules-center": [
-            "hyprland/workspaces#pixel"
-        ],
-        "hyprland/workspaces#pixel": {
-            "active-only": false,
-            "all-outputs": false,
-            "format": "",
-            "persistent-workspaces": {
-                "1": [],
-                "2": [],
-                "3": []
-            }
-        }
-    },
+    // {
+    //     "name": "pixelbar",
+    //     "layer": "bottom",
+    //     "position": "top",
+    //     "mod": "dock",
+    //     "exclusive": false,
+    //     "passthrough": false,
+    //     "gtk-layer-shell": true,
+    //     "reload_style_on_change": false,
+    //     "modules-center": [
+    //         "hyprland/workspaces#pixel"
+    //     ],
+    //     "hyprland/workspaces#pixel": {
+    //         "active-only": false,
+    //         "all-outputs": false,
+    //         "format": "",
+    //         "persistent-workspaces": {
+    //             "1": [],
+    //             "2": [],
+    //             "3": []
+    //         }
+    //     }
+    // },
     // ========================== [ BUBBLES BAR ] ========================== //
     {
         "layer": "bottom",
@@ -86,8 +86,8 @@
         "idle_inhibitor": {
             "format": "{icon}",
             "format-icons": {
-                "activated": "",
-                "deactivated": ""
+                "activated": "󰅶", // 
+                "deactivated": "󰾪" // 
             }
         },
         "backlight/slider": {
@@ -226,20 +226,8 @@
             "format-charging": " {capacity}%",
             "format-plugged": " {capacity}%",
             // "format-alt": "{time} {icon}",
-            "format-icons": [
-                "░░░░░░░░░░ 󰂎",
-                "▉░░░░░░░░░ 󰁺",
-                "▉▉░░░░░░░░ 󰁻",
-                "▉▉▉░░░░░░░ 󰁼",
-                "▉▉▉▉░░░░░░ 󰁽",
-                "▉▉▉▉▉░░░░░ 󰁾",
-                "▉▉▉▉▉▉░░░░ 󰁿",
-                "▉▉▉▉▉▉▉░░░ 󰂀",
-                "▉▉▉▉▉▉▉▉░░ 󰂁",
-                "▉▉▉▉▉▉▉▉▉░ 󰂂",
-                "▉▉▉▉▉▉▉▉▉▉ 󰁹"
-            ],
-            // "format-icons": ["", "", "", "", ""]
+            "format-icons": [ "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
+            // "format-icons": ["", "", "", "", ""],
             "on-click": "wlogout"
         },
         // ========================== [ UNUSED ] ========================== //
