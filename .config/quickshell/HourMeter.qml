@@ -4,8 +4,11 @@ import Quickshell
 Item {
   id: root
   width: 300
+  height: 2
 
-  property int size: 3
+  property color c_background: Colors.outline
+  property color c_foreground: "#FFFFFF"
+
 
   SystemClock {
     id: clock
@@ -22,8 +25,8 @@ Item {
     // First half (0-30 minutes)
     Rectangle {
       width: (parent.width - parent.spacing) / 2
-      height: root.size
-      color: "#6b6d94"
+      height: root.height
+      color: root.c_background
 
       Rectangle {
         width: {
@@ -34,7 +37,7 @@ Item {
           }
         }
         height: parent.height
-        color: "#ffffff"
+        color: root.c_foreground
 
         Behavior on width {
           NumberAnimation { duration: 300 }
@@ -45,8 +48,8 @@ Item {
     // Second half (30-60 minutes)
     Rectangle {
       width: (parent.width - parent.spacing) / 2
-      height: root.size
-      color: "#6b6d94"
+      height: root.height
+      color: root.c_background
 
       Rectangle {
         width: {
@@ -57,7 +60,7 @@ Item {
           }
         }
         height: parent.height
-        color: "#ffffff"
+        color: root.c_foreground
 
         Behavior on width {
           NumberAnimation { duration: 300 }

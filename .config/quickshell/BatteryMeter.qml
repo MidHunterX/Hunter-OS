@@ -5,8 +5,10 @@ import Quickshell.Io
 Item {
   id: root
   width: 300
-  height: 3
+  height: 2
 
+  property color c_background: Colors.outline
+  property color c_foreground: Colors.secondary
   property int batteryPercent: 0
 
   // Read battery percentage
@@ -43,17 +45,17 @@ Item {
 
       Rectangle {
         width: (parent.width - 9 * parent.spacing) / 10
-        height: 3
-        color: "#313244"
+        height:root.height
+        color: root.c_background
 
         Rectangle {
           anchors.fill: parent
           visible: root.batteryPercent >= (index + 1) * 10
           color: {
             // Color based on battery level
-            if (root.batteryPercent > 50) return "#a6e3a1" // Green
-            else if (root.batteryPercent > 20) return "#f9e2af" // Yellow
-            else return "#f38ba8" // Red
+            if (root.batteryPercent > 50) return root.c_foreground
+            else if (root.batteryPercent > 20) return "#f9e2af"
+            else return "#f38ba8"
           }
         }
       }

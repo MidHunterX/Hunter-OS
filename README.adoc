@@ -195,9 +195,9 @@ waybar --> volume & brillo & nf
 IMPORTANT: Color generators like matugen are so pervasive, it becomes a dependency for app config colors unless there's a way to set fallback colors on app configs. This makes the configs non-plug-n-play for other systems until all variables are replaced with hex colorcodes. The main focus of this section is to make every configs independent and plug-n-play friendly again.
 
 |===
-| 🟢 | matugen Optional (Fallback Colors)     | [10/15]
-| 🟡 | matugen Suggested (Pink Color)         | [02/15]
-| 🔴 | matugen Required (No Fallback Colors)  | [03/15]
+| 🟢 | matugen Optional (Fallback Colors)     | [11/16]
+| 🟡 | matugen Optional (Fallback to Pink)    | [02/16]
+| 🔴 | matugen Required (No Fallback Colors)  | [03/16]
 |===
 
 [source,mermaid,subs=attributes+]
@@ -223,6 +223,7 @@ gen --> hypr --colors/2_colors.conf--> override_sourcing
 gen --> notif[🟢 dunst] --dunstrc.d/99-colors.conf--> override_sourcing
 gen --> term[🟢 kitty] --colors/colors.conf--> override_sourcing
 gen --> tmux[🟢 tmux] --colors.conf--> conditional_sourcing
+gen --> qml[🟢 QuickShell] --colors.json--> conditional_sourcing
 gen --> vifm[🟢 vifm] --colors/colors.vifm--> conditional_sourcing
 gen --> nvim[🟢 nvim] --colors/colors.lua--> conditional_sourcing
 gen --> app[🟢 fuzzel] --themes/colors.ini--> default_fallback

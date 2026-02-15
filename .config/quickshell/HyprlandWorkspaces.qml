@@ -5,22 +5,23 @@ import Quickshell.Hyprland
 Row {
   id: root
   spacing: 10
-  height: 3
+  height: 4
 
   property list<int> persistentWorkspaces: [1, 2, 3]
 
-  property color c_focus_full: "#cdd6f4"
-  property color c_unfocus_full: "#7f849c"
-  property color c_focus_empty: "#ff7086"
-  property color c_unfocus_empty: "#45475a"
-  property color c_urgent: "#a6e3a1"
+  property color c_focus_full: Colors.primary
+  property color c_unfocus_full: Colors.secondary
+  property color c_focus_empty: Colors.error
+  property color c_unfocus_empty: Colors.outline
+  // The human eye is most sensitive to yellowish-green light, specifically at a wavelength of 555 nanometers during daylight conditions.
+  property color c_urgent: "#7CFF00"
 
   Repeater {
     model: root.persistentWorkspaces
 
     Item {
       width: 70
-      height: 3
+      height: root.height
 
       // CHECK: workspace object for this ID
       property var workspace: {
@@ -47,7 +48,7 @@ Row {
         width: parent.width
 
         height: {
-          if (isUrgent) return 3    // Urgent
+          if (isUrgent) return 4    // Urgent
           if (isFocused) return 3   // Focused
           if (!isEmpty) return 2    // Non-focused non-empty
           return 1                  // Non-focused empty
@@ -73,11 +74,6 @@ Row {
           anchors.fill: parent
           color: "#bf40b9"
           opacity: 0
-
-          // gradient: Gradient {
-          //   GradientStop { position: 0.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.8) }
-          //   GradientStop { position: 1.0; color: Qt.rgba(0.2, 0.2, 0.2, 0) }
-          // }
         }
 
         // BEHAVIOR: Urgent blinking indicator

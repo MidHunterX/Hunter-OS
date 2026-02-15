@@ -21,7 +21,14 @@ Scope {
 
       implicitHeight: 10
       color: "transparent"
-      // color: "#7f7f7f"
+
+      Rectangle {
+        anchors.fill: parent
+        gradient: Gradient {
+          GradientStop { position: 0.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.6) }
+          GradientStop { position: 1.0; color: Qt.rgba(0.2, 0.2, 0.2, 0) }
+        }
+      }
 
       Item {
         anchors.fill: parent

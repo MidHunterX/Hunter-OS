@@ -50,6 +50,11 @@ input_path = '~/.config/matugen/templates/neovim.lua'
 output_path = '~/.config/nvim/lua/colors/colors.lua'
 post_hook = 'pkill -SIGUSR1 nvim'
 
+[templates.quickshell]
+input_path = '~/.config/matugen/templates/quickshell.json'
+output_path = '~/.config/quickshell/colors.json'
+# output_path = '~/.local/state/quickshell/user/generated/colors.json'
+
 # ▄▀█ █▄░█ █▀ █
 # █▀█ █░▀█ ▄█ █
 # =============
