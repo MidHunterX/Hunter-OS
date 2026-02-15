@@ -12,7 +12,8 @@ use File::Basename;
 
 my $MONITOR            = "eDP-1";
 my $AUTOSCALE_STRATEGY = "manual"; # manual | strength | adapt
-my $CENTER_BIAS        = 10;      # (0-100)
+my $CENTER_BIAS        = 10; # (0-100)
+my $STRATEGY           = "image"; # image | color
 my $print_logs         = 0;
 
 GetOptions("log" => \$print_logs);
@@ -111,8 +112,12 @@ $hex_value = substr($hex_value, 0, 7); # Standardize to 6 chars
 log_msg('Average Color: '.hex_to_ansi($hex_value, 1).' '.$hex_value.' ');
 
 # ACTION: Call Matugen
-system("matugen image '$wallpaper' --quiet");
-# system("matugen color hex '$hex_value' --quiet");
+my %matugen_cmds = (
+    'image' => "matugen image '$wallpaper' --quiet",
+    'color' => "matugen color hex '$hex_value' --quiet"
+);
+die "Unknown strategy: $STRATEGY" unless exists $matugen_cmds{$STRATEGY};
+system($matugen_cmds{$STRATEGY}) == 0 or print "Matugen failed: $?";
 
 
 # THEME BASED ON LIGHT/DARK WALLPAPER
