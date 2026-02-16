@@ -121,18 +121,29 @@ Here, **Press** = Temporary Layer Switch and **Tap** = Permanent Layer Toggle.
 ```mermaid
 graph
 qw[QWERTY]
-qwspace[Vim Navigation]
+qwhome{{Homerow Mod}}
+qwspace{{Vim Navigation}}
 qwmeta{{Meta Layer}}
 qwmetaspace{{Space Layer}}
-nm[NUMPAD]
-dv[DVORAK]
-
-qw --space (press)--> qwspace
-qw --meta (press)--- qwmeta --space (tap)--> nm
-qwmeta <--space (press)--> qwmetaspace --> nm
+qw -- overload --> qwhome
+qw --space (overload)--> qwspace
+qw --meta (overload)--- qwmeta --space --> nm
+qw -- ctrl (overload) --> qwctrl{{Ctrl Layer}} --( ; )--> quote{{Pinkie Backspace}}
+qwmeta <--space (overload)--> qwmetaspace --> nm
 qwmetaspace --> qw
-nm --meta+space--> dv
-dv --meta+space--> qw
+
+nm[NUMPAD]
+nmmeta{{Meta Layer}}
+nm --( ; )--> quote
+nm --meta (overload)--> nmmeta --space--> dv
+
+dv[DVORAK]
+dvhome{{Homerow Mod}}
+dvmeta{{Meta Layer}}
+dvshift{{Shift Layer}}
+dv -- overload --> dvhome
+dv -- shift (overload) --> dvshift
+dv --meta (overload)--> dvmeta --space--> qw
 ```
 
 TIP: You can get NUMPAD with overloading space only if you do the following sequence: Meta down -> Space down -> Meta up. Now you are in the Space Layer which points to NUMPAD, inside the Meta Layer inside the QWERTY Layer which will go back to QWERTY layer when you do Space up.
