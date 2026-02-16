@@ -8,7 +8,10 @@ Item {
   height: 2
 
   property color c_background: Colors.outline
-  property color c_foreground: Colors.secondary
+  property color c_high: Colors.primary // "#a6e3a1"
+  property color c_low: "#f9e2af"
+  property color c_crit: "#f38ba8"
+
   property int batteryPercent: 0
 
   // Read battery percentage
@@ -46,16 +49,16 @@ Item {
       Rectangle {
         width: (parent.width - 9 * parent.spacing) / 10
         height:root.height
-        color: root.c_background
+        color: c_background
 
         Rectangle {
           anchors.fill: parent
           visible: root.batteryPercent >= (index + 1) * 10
           color: {
             // Color based on battery level
-            if (root.batteryPercent > 50) return root.c_foreground
-            else if (root.batteryPercent > 20) return "#f9e2af"
-            else return "#f38ba8"
+            if (root.batteryPercent > 50) return c_high
+            else if (root.batteryPercent > 20) return c_low
+            else return c_crit
           }
         }
       }
