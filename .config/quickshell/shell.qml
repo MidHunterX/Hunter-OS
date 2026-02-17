@@ -25,7 +25,7 @@ Scope {
       Rectangle {
         anchors.fill: parent
         gradient: Gradient {
-          GradientStop { position: 0.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.6) }
+          GradientStop { position: 0.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.9) }
           GradientStop { position: 1.0; color: Qt.rgba(0.2, 0.2, 0.2, 0) }
         }
       }
@@ -44,7 +44,13 @@ Scope {
         }
 
         BatteryMeter {
+          id: batteryMeter
           anchors.right: parent.right
+        }
+
+        IdleMeter {
+          anchors.right: batteryMeter.left
+          anchors.rightMargin: 20
         }
       }
     }
