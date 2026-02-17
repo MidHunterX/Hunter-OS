@@ -5,8 +5,9 @@ import Quickshell.Io
 Item {
   id: root
   width: 300
-  height: 2
 
+  property var thicc: 3
+  property var gap: 5
   property color c_background: Colors.outline
   property color c_high: Colors.primary // "#a6e3a1"
   property color c_low: "#f9e2af"
@@ -40,7 +41,7 @@ Item {
 
   Row {
     anchors.fill: parent
-    spacing: 3 // Small gap between segments
+    spacing: gap
 
     // Create 10 segments (each representing 10%)
     Repeater {
@@ -48,7 +49,7 @@ Item {
 
       Rectangle {
         width: (parent.width - 9 * parent.spacing) / 10
-        height:root.height
+        height: thicc
         color: c_background
 
         Rectangle {

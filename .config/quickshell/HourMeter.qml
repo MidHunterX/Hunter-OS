@@ -3,9 +3,10 @@ import Quickshell
 
 Item {
   id: root
-  width: 300
-  height: 2
+  width: 400
 
+  property var thicc: 3
+  property var gap: 10
   property color c_background: Colors.outline
   property color c_foreground: "#FFFFFF"
 
@@ -20,12 +21,12 @@ Item {
 
   Row {
     anchors.fill: parent
-    spacing: 5 // Gap in the middle
+    spacing: gap
 
     // First half (0-30 minutes)
     Rectangle {
       width: (parent.width - parent.spacing) / 2
-      height: root.height
+      height: thicc
       color: root.c_background
 
       Rectangle {
@@ -48,7 +49,7 @@ Item {
     // Second half (30-60 minutes)
     Rectangle {
       width: (parent.width - parent.spacing) / 2
-      height: root.height
+      height: thicc
       color: root.c_background
 
       Rectangle {
