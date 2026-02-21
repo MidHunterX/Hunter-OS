@@ -1,16 +1,15 @@
 import Quickshell
 import QtQuick
+import Quickshell.Wayland
 
 // Qt Docs: https://doc.qt.io/qt-6/qml-qtquick-item.html
 
 Scope {
   Variants {
     model: Quickshell.screens
-
     PanelWindow {
       required property var modelData
       screen: modelData
-      // Source: https://quickshell.org/docs/v0.1.0/types/Quickshell/ExclusionMode/
       exclusionMode: ExclusionMode.Ignore
 
       anchors {
@@ -48,11 +47,32 @@ Scope {
           anchors.right: parent.right
         }
 
+        /*
         IdleMeter {
           anchors.right: batteryMeter.left
           anchors.rightMargin: 20
         }
+        */
       }
     }
+  }
+
+  PanelWindow {
+    exclusionMode: ExclusionMode.Ignore
+    WlrLayershell.layer: WlrLayer.Overlay
+
+    anchors {
+      top: true
+      left: true
+      right: true
+    }
+
+    implicitHeight: 10
+    color: "transparent"
+
+    HyprlandWorkspacesIdleBG {
+      anchors.horizontalCenter: parent.horizontalCenter
+    }
+
   }
 }

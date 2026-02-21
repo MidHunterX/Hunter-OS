@@ -10,6 +10,7 @@ Item {
   property color c_background: Colors.outline
   property color c_foreground: "#FFFFFF"
 
+  transform: Shear { xFactor: -1.0 }
 
   SystemClock {
     id: clock

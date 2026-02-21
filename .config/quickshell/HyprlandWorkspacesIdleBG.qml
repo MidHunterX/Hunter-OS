@@ -4,20 +4,17 @@ import Quickshell.Wayland
 
 Item {
   id: root
-  implicitHeight: 3
+  implicitHeight: 5
+  implicitWidth: 230
 
   // Trigger idle state only after n seconds of inactivity
-  property int inactivityTriggerSeconds: 30
+  property int inactivityTriggerSeconds: 60
   property real maxIdleMinutes: 15
   property int tickInterval: 1000
 
-  property int meterSegmentWidth: 80
-  property int spacing: 0
 
-  property color c_idle_active: Colors.error
-  property color c_idle_inactive: Colors.primary_container
-  property color c_meter_fill: Colors.error
-  property color c_meter_track: Colors.primary_container
+  property color c_meter_fill: Colors.primary
+  property color c_meter_track: "#808080"
 
   property real  idleSeconds: 0
   property bool  userIsIdle: idleMonitor.isIdle
@@ -29,8 +26,6 @@ Item {
       idleSeconds = 0
     }
   }
-
-  implicitWidth: meterSegment.implicitWidth + spacing + boolSegment.implicitWidth
 
   IdleMonitor {
     id: idleMonitor
@@ -47,11 +42,10 @@ Item {
 
   Row {
     anchors.fill: parent
-    spacing: root.spacing
 
     Item {
       id: meterSegment
-      implicitWidth: root.meterSegmentWidth
+      implicitWidth: root.implicitWidth
       implicitHeight: root.height
       height: root.height
       width: implicitWidth
@@ -62,6 +56,9 @@ Item {
         anchors.fill: parent
         // radius: height / 2
         color: root.c_meter_track
+        opacity: root.userIsIdle ? 1.0 : 0.0
+        Behavior on opacity { NumberAnimation { duration: 200 } }
+        // opacity: 1
       }
 
       // Fill (progress)
@@ -82,38 +79,6 @@ Item {
       }
 
       Behavior on opacity { NumberAnimation { duration: 200 } }
-    }
-
-    Item {
-      id: boolSegment
-      implicitWidth: root.height
-      implicitHeight: root.height
-      height: root.height
-      width: implicitWidth
-
-      Rectangle {
-        anchors.centerIn: parent
-        width: parent.width
-        height: parent.height
-        // radius: height / 2
-
-        color: root.userIsIdle ? root.c_idle_active : root.c_idle_inactive
-
-        Behavior on color {
-          ColorAnimation { duration: 300 }
-        }
-
-        // // Blink animation when idle
-        // SequentialAnimation on opacity {
-        //   running: root.userIsIdle
-        //   loops: Animation.Infinite
-        //   NumberAnimation { from: 1.0; to: 0.4; duration: 700; easing.type: Easing.InOutSine }
-        //   NumberAnimation { from: 0.4; to: 1.0; duration: 700; easing.type: Easing.InOutSine }
-        // }
-
-        // Snap back to fully opaque when not idle
-        opacity: root.userIsIdle ? 1.0 : 1.0
-      }
     }
   }
 }

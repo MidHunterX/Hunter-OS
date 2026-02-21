@@ -15,6 +15,8 @@ Item {
 
   property int batteryPercent: 0
 
+  transform: Shear { xFactor: 1.0 }
+
   // Read battery percentage
   Process {
     id: batteryProc
