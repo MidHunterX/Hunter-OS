@@ -14,7 +14,7 @@ Item {
 
 
   property color c_meter_fill: Colors.primary
-  property color c_meter_track: "#808080"
+  property color c_meter_track: Colors.outline
 
   property real  idleSeconds: 0
   property bool  userIsIdle: idleMonitor.isIdle

@@ -5,9 +5,11 @@ import Quickshell.Hyprland
 Row {
   id: root
   spacing: 10
-  height: 4
+  height: 8 // To accomodate numbers
 
   property list<int> persistentWorkspaces: [1, 2, 3]
+  property int primaryLength: 70
+  property int secondaryLength: 30
 
   property color c_focus_full: Colors.primary
   property color c_unfocus_full: Colors.secondary
@@ -29,7 +31,7 @@ Row {
     model: root.persistentWorkspaces
 
     Item {
-      width: 70
+      width: root.primaryLength
       height: root.height
 
       // CHECK: workspace object for this ID
@@ -46,6 +48,7 @@ Row {
       property bool isFocused: workspace ? workspace.focused : false
       property bool isEmpty: workspace ? workspace.toplevels.values.length === 0 : true
       property bool isUrgent: workspace ? workspace.urgent : false
+      property bool isFull: !isEmpty
 
       // BEHAVIOR: Pixel Workspace
       Rectangle {
@@ -55,10 +58,11 @@ Row {
         width: parent.width
 
         height: {
-          if (isUrgent) return 4    // Urgent
-          if (isFocused) return 3   // Focused
-          if (!isEmpty) return 2    // Non-focused non-empty
-          return 1                  // Non-focused empty
+          if (isUrgent) return 5
+          if (isFocused && isFull) return 4
+          if (!isFocused && isFull) return 3
+          if (isFocused && isEmpty) return 2
+          return 1  // Empty Workspace
         }
 
         color: {
@@ -128,7 +132,7 @@ Row {
     }
 
     Item {
-      width: 70
+      width: root.secondaryLength
       height: root.height
 
       // Direct reference to workspace object from model
@@ -162,6 +166,26 @@ Row {
 
         Behavior on height { NumberAnimation { duration: 150 } }
         Behavior on color { ColorAnimation { duration: 100 } }
+      }
+
+      // TEXT: Workspace number text on top
+      Text {
+        anchors.centerIn: parent
+        text: workspaceId
+        font.pixelSize: 14
+        font.bold: true
+        color: isFocused ? "white" : (isEmpty ? root.c_unfocus_empty : root.c_unfocus_full)
+        style: Text.Outline
+        styleColor: "black"
+
+        // TEXT: shadow for readability
+        Rectangle {
+          anchors.fill: parent
+          color: "black"
+          opacity: 0.3
+          z: -1
+          radius: 5
+        }
       }
 
       Rectangle {
