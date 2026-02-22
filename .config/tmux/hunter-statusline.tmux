@@ -15,6 +15,8 @@ get_tmux_option() {
 # █▀█ █▀█ █▀▀ █▀▀ █ ▀▄▀   █▄▄ █░█ █ █░░ █▀▄ █▀▀ █▀█
 # █▀▀ █▀▄ ██▄ █▀░ █ █░█   █▄█ █▄█ █ █▄▄ █▄▀ ██▄ █▀▄
 
+# Creates a module segment that only appears when the tmux prefix key is active.
+# Visual feedback for command mode.
 function build_prefix_on() {
     local background foreground content module
     background=$1
@@ -25,6 +27,8 @@ function build_prefix_on() {
     echo "$module"
 }
 
+# Creates a module segment that appears only when the prefix is NOT active.
+# Useful for showing alternative content during normal mode.
 function build_prefix_off() {
     local background foreground content module
     background=$1
@@ -38,8 +42,8 @@ function build_prefix_off() {
 # █ ▀█▀ █▀▀ █▀▄▀█ █▀
 # █ ░█░ ██▄ █░▀░█ ▄█
 
-# Usage: item <background> <foreground> <content>
-# Creates: A simple item with a background and foreground text color
+# Simple colored block with background and foreground.
+# Basic building block for all modules.
 function item() {
     local background foreground content
     background=$1
@@ -48,10 +52,8 @@ function item() {
     echo "#[bg=${background},fg=${foreground}]${content}"
 }
 
-# Usage: item_prefix <background> <foreground> <content>
-# Creates:
-#   - A simple item with a background and foreground text color
-#   - On prefix, bg = @hunter_prefix_bg and fg = default
+# Shows content normally, but changes background color when prefix is active.
+# Visual cue for prefix mode.
 function item_prefix() {
     local background foreground content module pfx_bg
     pfx_bg=$(get_tmux_option "@hunter_prefix_bg" 'red')
@@ -63,6 +65,8 @@ function item_prefix() {
     echo "$module"
 }
 
+# Reverses colors during prefix mode (background becomes default, foreground
+# becomes prefix color). Alternative visual style.
 function item_prefix_inverted() {
     local background foreground content module pfx_fg
     pfx_fg=$(get_tmux_option "@hunter_prefix_bg" 'red')
@@ -74,6 +78,8 @@ function item_prefix_inverted() {
     echo "$module"
 }
 
+# Only changes text color during prefix mode while keeping background.
+# Subtle prefix indicator.
 function item_prefix_text() {
     local background foreground content module pfx_fg
     pfx_fg=$(get_tmux_option "@hunter_prefix_fg" 'red')
@@ -88,8 +94,7 @@ function item_prefix_text() {
 # █▀▄▀█ █▀█ █▀▄ █░█ █░░ █▀▀ █▀
 # █░▀░█ █▄█ █▄▀ █▄█ █▄▄ ██▄ ▄█
 
-# █    █    █
-
+# Basic module with text only. Used for minimal, clean status bar items.
 function build_simple_module() {
     local background foreground text module_format
     background=$1
@@ -141,6 +146,7 @@ function build_module_format_left() {
     echo "${module_format}"
 }
 
+# MODULE: Session Name
 function session_module_config() {
     local background foreground icon text
     background=$(get_tmux_option '@hunter_module_session_bg' 'gray')
@@ -151,6 +157,7 @@ function session_module_config() {
     build_simple_module "$background" "$foreground" "$icon $text"
 }
 
+# MODULE: Current Time
 function time_module_config() {
     local background foreground icon text
     background=$(get_tmux_option '@hunter_module_time_bg' 'gray')
@@ -164,6 +171,8 @@ function time_module_config() {
 # █░█░█ █ █▄░█ █▀▄ █▀█ █░█░█ █▀
 # ▀▄▀▄▀ █ █░▀█ █▄▀ █▄█ ▀▄▀▄▀ ▄█
 
+# Formats non-active window tabs with separators.
+# Clean visual distinction between windows.
 function build_window_format() {
     local background foreground number text text_color window_format
     left_separator=$(get_tmux_option '@hunter_window_left_separator' '█')
@@ -185,6 +194,7 @@ function build_window_format() {
     echo "${window_format}"
 }
 
+# Special formatting for the active window. Makes current window stand out.
 function build_current_window_format() {
     local background foreground number text text_color window_format
     left_separator=$(get_tmux_option '@hunter_window_left_separator' '█')
@@ -207,6 +217,7 @@ function build_current_window_format() {
     echo "${window_format}"
 }
 
+# Configures appearance of active window (highlighted with blue background).
 function current_window_config() {
     local background foreground number text text_color
     background=$(get_tmux_option '@hunter_window_current_bg' 'blue')
@@ -217,6 +228,7 @@ function current_window_config() {
     build_current_window_format "$background" "$foreground" "$number" "$text" "$text_color"
 }
 
+# Configures appearance of inactive windows (black background).
 function default_window_config() {
     local background foreground number text text_color
     background=$(get_tmux_option '@hunter_window_default_bg' 'black')

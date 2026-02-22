@@ -115,8 +115,9 @@ press the keys below to activate space layer remaps.
 
 ## 🎡 Layer Topology
 
-Meta + Space is the same keybinding Windows use to cycle between multiple layouts as well.
-Here, **Press** = Temporary Layer Switch and **Tap** = Permanent Layer Toggle.
+Meta + Space is the same keybinding Windows use to cycle between multiple
+layouts as well. Here, **Overload** = Press to Layer Switch Temporarily and
+**Tap** = Permanent Layer Toggle.
 
 ```mermaid
 graph
@@ -125,7 +126,7 @@ qwhome{{Homerow Mod}}
 qwspace{{Vim Navigation}}
 qwmeta{{Meta Layer}}
 qwmetaspace{{Space Layer}}
-qw -- overload --> qwhome
+qw -- (overload) --> qwhome
 qw --space (overload)--> qwspace
 qw --meta (overload)--- qwmeta --space --> nm
 qw -- ctrl (overload) --> qwctrl{{Ctrl Layer}} --( ; )--> quote{{Pinkie Backspace}}
@@ -146,4 +147,7 @@ dv -- shift (overload) --> dvshift
 dv --meta (overload)--> dvmeta --space--> qw
 ```
 
-TIP: You can get NUMPAD with overloading space only if you do the following sequence: Meta down -> Space down -> Meta up. Now you are in the Space Layer which points to NUMPAD, inside the Meta Layer inside the QWERTY Layer which will go back to QWERTY layer when you do Space up.
+TIP: You can get NUMPAD with overloading space only if you do the following
+sequence: Meta down -> Space down -> Meta up. Now you are in the Space Layer
+which points to NUMPAD, inside the Meta Layer inside the QWERTY Layer which
+will go back to QWERTY layer when you do Space up.

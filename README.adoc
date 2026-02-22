@@ -567,11 +567,11 @@ When using `curlftpfs` to FUSE mount and copy files over FTP, there's a common i
 | swww                        | Wayland Wallpaper Daemon     | aur
 | wlogout                     | Logout Screen                | aur
 | clock-tui                   | TUI Clock (tclock)           | aur
-| sway-audio-idle-inhibit-git | Prevents idle on audio       | aur
 |===
+
 NOTE: wl-screenrec might be optimized, fast, efficient and Lightweight but it doesn't work in battery saver mode unlike wf-recorder.
 
-NOTE: Firefox supports the Wayland inhibit protocol, but it attempts to use the DBus interfaces first. It never reaches its Wayland inhibit-idle protocol fallback because the portal indicates success, even if there's no backend https://github.com/flatpak/xdg-desktop-portal-gtk/issues/465[#465]. `sway-audio-idle-inhibit-git` Prevents swayidle/hypridle from sleeping while any application is outputting or receiving audio. This only works for Pulseaudio / Pipewire Pulse.
+NOTE: Firefox supports the Wayland inhibit protocol, but it attempts to use the DBus interfaces first. It never reaches its Wayland inhibit-idle protocol fallback because the portal returns success. See issue https://github.com/flatpak/xdg-desktop-portal-gtk/issues/465[#465] created at 2024. `sway-audio-idle-inhibit-git` Prevents swayidle/hypridle from sleeping while any application is outputting or receiving audio but has limitations.
 
 WARNING: xdg-desktop-portal-hyprland enables features like screen sharing. There is a bug when the display is rotated, screen sharing shows it as default landscape mode. This is because `SPA_META_VideoTransform` is not present in the buffer metadata for **PipeWire streams**. This is what many apps, including browsers use to determine if and how the captured image needs to be rotated and Browser WebRTC doesn't support the SPA_META_VideoTransform metadata as well. This issue can be tracked here: https://github.com/hyprwm/xdg-desktop-portal-hyprland/issues/292[issue 292] and in WebRTC: https://issues.webrtc.org/issues/42226058[issue 42226058]. Have to wait (most likely a decade or two) until WebRTC fixes it.
 

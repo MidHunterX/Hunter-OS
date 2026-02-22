@@ -8,12 +8,18 @@ It provides the latest Wayland features, is highly customizable, has all the eye
 
 ## Features
 
-**Assistive Window Border** deactivates and leaves you distraction free most of
+### Assistive Window Border
+
+Assistive Window Border deactivates and leaves you distraction free most of
 the time. Borders are there to notify you of something important. If there are
 more than one window, border kicks in getting all your attention for
 communicating to you on which window your cursor is currently in. It also kicks
 in alerting you if it's a floating or special window. `#Hidden_UI: Window
 border as a window selector`
+
+- Normal state: Border OFF (distraction-free, default mode)
+- Multi-window: Border ON (spatial orienting)
+- Floating/special window: Border ON (alerting)
 
 ## Hyprland Keybindings
 

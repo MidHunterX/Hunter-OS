@@ -138,6 +138,7 @@ tooltip {
 #clock.date {
   color: @secondary;
   margin-right: 0;
+  border-radius: 25px 0px 0px 10px;
 }
 
 #backlight {
@@ -189,13 +190,14 @@ tooltip {
   border-left: 0px;
   padding-right: 15px;
   padding-left: 15px;
-  margin-right: 10px;
+  margin-right: 15px;
   border-radius: 0px 25px 10px 0px;
 }
 
 #clock.week {
   color: @secondary;
   margin-left: 0;
+  border-radius: 0px 10px 25px 0px;
 }
 
 #bluetooth {
@@ -204,6 +206,16 @@ tooltip {
 
 #idle_inhibitor {
   padding-right: 25px;
+}
+
+#idle_inhibitor.activated {
+  color: @error;
+  background: linear-gradient(@on_error, @error_container);
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 #pulseaudio.microphone {
