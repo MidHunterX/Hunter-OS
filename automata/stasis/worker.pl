@@ -14,7 +14,7 @@ sub minutes {
 
 my @cmd = (
     "swayidle", "-w",
-    "timeout", minutes(TIMEOUT_MINOR), "hyprctl dispatch dpms off",
+    "timeout", minutes(TIMEOUT_MINOR), "perl ~/automata/stasis/logic.pl --minor",
     "resume", "hyprctl dispatch dpms on",
     "timeout", minutes(TIMEOUT_MAJOR), "hyprctl dispatch dpms on; sleep 1; perl ~/automata/stasis/logic.pl",
     "resume", "hyprctl dispatch dpms on"
