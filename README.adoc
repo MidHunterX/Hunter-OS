@@ -221,7 +221,7 @@ expression & vifm --> iris
 iris --> gen[matugen] & hypr[🟢 hyprland]
 gen --> hypr --colors/2_colors.conf--> override_sourcing
 gen --> notif[🟢 dunst] --dunstrc.d/99-colors.conf--> override_sourcing
-gen --> term[🟢 kitty] --colors/colors.conf--> override_sourcing
+gen --> kitty[🟢 kitty] --colors/colors.conf--> override_sourcing
 gen --> tmux[🟢 tmux] --colors.conf--> conditional_sourcing
 gen --> qml[🟢 QuickShell] --colors.json--> conditional_sourcing
 gen --> vifm[🟢 vifm] --colors/colors.vifm--> conditional_sourcing
@@ -230,10 +230,10 @@ gen --> app[🟢 fuzzel] --themes/colors.ini--> default_fallback
 gen --> top[🟢 btop] --themes/colors.theme--> settings
 gen --> app2[🟢 vicinae] --(Plugins UI)--> settings
 gen --> power[🔴 wlogout]
-gen --> bar[🔴 waybar]
+gen --> waybar[🔴 waybar]
 gen --> vis[🔴 cava]
 
-ansi --> term
+ansi --> kitty
 git[🟢 lazygit] --> ansi
 fish[🟡 fish] --> ansi
 prompt[🟡 starship] --> ansi
@@ -423,6 +423,7 @@ makepkg -si
 | nodejs            | JavaScript Runtime Env            | pacman
 | npm               | NodeJS package manager            | pacman
 | python            | Python Interpreter                | pacman
+| python-uv         | Rust python Package Installer     | pacman
 | sqlitebrowser     | DB Browser for SQLite             | pacman
 | jdk-openjdk       | Java Development Kit              | pacman
 | perl-term-readkey | Read Keystrokes from the Terminal | pacman
@@ -767,6 +768,10 @@ sudo plymouth-set-default-theme -R cuts_alt
 
 NOTE: The splash screen included here is one from the 80+ plymouth splash screens from https://github.com/adi1090x/plymouth-themes[adi1090x/plymouth-themes].
 
+.👥 Usergroups
+[%collapsible]
+====
+[discrete]
 === 👥 Usergroups
 
 List all available groups that you can assign:
@@ -795,7 +800,12 @@ Verify currently active groups:
 ----
 groups midhunter
 ----
+====
 
+.🎹 KeyD Setup
+[%collapsible]
+====
+[discrete]
 === 🎹 KeyD Setup
 [source,bash]
 ----
@@ -803,7 +813,12 @@ sudo ln -s ~/.config/keyd/default.conf /etc/keyd/default.conf
 systemctl enable keyd.service
 systemctl start keyd.service
 ----
+====
 
+.🔑 Sudoers
+[%collapsible]
+====
+[discrete]
 === 🔑 Sudoers
 [source,bash]
 ----
@@ -820,7 +835,12 @@ Defaults passwd_timeout = 5         # Sudo prompt timeout after 5 minutes
 Defaults insults                    # Incorrect Password Easteregg
 Defaults pwfeedback                 # Visible Password Feedback
 ----
+====
 
+.🚪 Skip Username
+[%collapsible]
+====
+[discrete]
 === 🚪 Skip Username
 [source,bash]
 ----
@@ -845,7 +865,12 @@ or use this line if you want to **auto login** to a specific user on TTY1
 ExecStart=
 ExecStart=-/sbin/agetty --noissue --autologin 'midhunter' - $TERM
 ----
+====
 
+.🍬 Colorful Pacman
+[%collapsible]
+====
+[discrete]
 === 🍬 Colorful Pacman
 [source,bash]
 ----
@@ -858,7 +883,12 @@ ParallelDownloads = 5
 Color
 ILoveCandy
 ----
+====
 
+.🚫 Rage against the Censorship
+[%collapsible]
+====
+[discrete]
 === 🚫 Rage against the Censorship
 
 *dhcpcd* brings up the networking interface (wlp2s0/eth0), assigns IP and other host configurations.
@@ -915,6 +945,7 @@ nameserver 8.8.4.4     # Google secondary
 ----
 
 NOTE: systemd-resolved can also set DNS config but since we are not enabling that service, it will not do anything.
+====
 
 == ⚗️ Empathic Environment Exploration
 
@@ -951,11 +982,15 @@ makes the window text readable against both light and dark wallpapers by
 detecting the brightness of the Wallpaper and adjusting the perceived
 transparency of the window (via blur brightness + contrast).
 
-.`Fig: Window brightness (perceived) adapted to 60% across wallpapers with varying brightness`
-image:Mid_Hunter/scripts/.assets/auto_adaptation.jpg[link=automata/iris/]
+.`Fig: Window brightness (perceived) auto adapted to comfortable levels across wallpapers with varying brightness`
+image:automata/.assets/auto_adaptation.jpg[link=automata/iris/]
 
 = Personal Notes
 
+.🗒️ Partition Proportions
+[%collapsible]
+====
+[discrete]
 == 🗒️ Partition Proportions
 [%header]
 |===
@@ -966,13 +1001,19 @@ image:Mid_Hunter/scripts/.assets/auto_adaptation.jpg[link=automata/iris/]
 | /home       | > 128G           | 40G
 |===
 
+[discrete]
 === Dynamic Resizing
 
 Use BTRFS to create a single logical volume and make the partitions into
 logical sub-volumes. No more unmounting, no fsck, no live USB to resize
 partitions.
+====
 
-== 🤫 SSH
+.🤫 SSH Work-Life Separation (Multiple GitHub Accounts)
+[%collapsible]
+====
+[discrete]
+== 🤫 SSH Work-Life Separation
 
 Create separate SSH keys for separate stuff.
 
@@ -981,8 +1022,6 @@ Create separate SSH keys for separate stuff.
 ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519          # Personal Key
 ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_company  # Work Key
 ----
-
-=== Work-Life Separation (Multiple GitHub Accounts)
 
 .📝 $HOME/.ssh/config
 [source,config]
@@ -1015,3 +1054,4 @@ Host github-company
 - `~/projects/work/` → work account
 
 Now you just clone normally. Git and SSH handle the rest. No more manual switching, no more mistakes.
+====
