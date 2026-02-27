@@ -11,6 +11,7 @@ Scope {
       required property var modelData
       screen: modelData
       exclusionMode: ExclusionMode.Ignore
+      WlrLayershell.layer: WlrLayer.Bottom
 
       anchors {
         top: true
@@ -18,14 +19,14 @@ Scope {
         right: true
       }
 
-      implicitHeight: 10
+      implicitHeight: 15
       color: "transparent"
 
       Rectangle {
         anchors.fill: parent
         gradient: Gradient {
-          GradientStop { position: 0.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.9) }
-          GradientStop { position: 1.0; color: Qt.rgba(0.2, 0.2, 0.2, 0) }
+          GradientStop { position: 0.0; color: Qt.rgba(0, 0, 0, 0.9) }
+          GradientStop { position: 1.0; color: Qt.rgba(0, 0, 0, 0) }
         }
       }
 
