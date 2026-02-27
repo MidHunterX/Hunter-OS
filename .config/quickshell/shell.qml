@@ -47,13 +47,6 @@ Scope {
           id: batteryMeter
           anchors.right: parent.right
         }
-
-        /*
-        IdleMeter {
-          anchors.right: batteryMeter.left
-          anchors.rightMargin: 20
-        }
-        */
       }
     }
   }
@@ -71,7 +64,7 @@ Scope {
     implicitHeight: 10
     color: "transparent"
 
-    HyprlandWorkspacesIdleBG {
+    IdleMeter {
       anchors.horizontalCenter: parent.horizontalCenter
     }
 
