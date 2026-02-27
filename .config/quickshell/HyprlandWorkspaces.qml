@@ -15,6 +15,7 @@ Row {
   property color c_unfocus_full: Colors.secondary
   property color c_focus_empty: Colors.error
   property color c_unfocus_empty: Colors.outline
+  property color c_special: "#FFFF00"
   // The human eye is most sensitive to yellowish-green light, specifically at a wavelength of 555 nanometers during daylight conditions.
   property color c_urgent: "#7CFF00"
 
@@ -143,6 +144,7 @@ Row {
       property bool isFocused: workspace.focused
       property bool isEmpty: workspace.toplevels.values.length === 0
       property bool isUrgent: workspace.urgent
+      property bool isSpecial: workspaceId === -98
 
       // BEHAVIOR: Pixel Workspace
       Rectangle {
@@ -160,6 +162,7 @@ Row {
 
         color: {
           if (isUrgent) return root.c_urgent
+          if (isSpecial) return root.c_special
           if (isFocused) return isEmpty ? root.c_focus_empty : root.c_focus_full
           if (!isFocused) return isEmpty ? root.c_unfocus_empty : root.c_unfocus_full
         }
@@ -177,6 +180,7 @@ Row {
         color: isFocused ? "white" : (isEmpty ? root.c_unfocus_empty : root.c_unfocus_full)
         style: Text.Outline
         styleColor: "black"
+        opacity: isSpecial ? 0.0 : 1.0 // Hide special workspace number
 
         // TEXT: shadow for readability
         Rectangle {
