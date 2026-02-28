@@ -16,6 +16,17 @@ my $INTERVAL_MINS = 5;  # How often to update brightness
 my $CACHE_FILE    = File::Spec->catfile($ENV{HOME}, '.cache', 'radiance_data.json');
 my $BRIGHTNESS_CMD    = "brillo -u 5000000 -S";
 
+# ============================== COMMAND LINE ============================== #
+use Getopt::Long;
+
+my $flag_once = 0;
+GetOptions("once" => \$flag_once);
+
+if ($flag_once) {
+    refresh_screen_brightness();
+    exit 0;
+}
+
 # =========================================================================== #
 
 # CHECK: single instance
@@ -25,13 +36,15 @@ if (-e $lock_file) {
     my $pid = <$fh>;
     if ($pid && kill(0, $pid)) { die "Already running with PID $pid\n"; }
 }
+
+# REQUIRE: single instance lock file
 open my $fh, '>', $lock_file or die $!;
 print $fh $$;
 close $fh;
 
 # =============================== MAIN LOGIC =============================== #
 
-while (1) {
+sub refresh_screen_brightness {
     my $data = load_data($CACHE_FILE);
     my ($h, $m) = (strftime("%H", localtime), strftime("%M", localtime));
     my $now = ($h * 60) + $m;
@@ -40,5 +53,10 @@ while (1) {
 
     printf "Time: %02d:%02d | Target: %.2f%%\n", int($now/60), $now%60, $target_br;
     system("$BRIGHTNESS_CMD $target_br");
+}
+
+# BEHAVIOR: continuous refresh loop
+while (1) {
+    refresh_screen_brightness();
     sleep($INTERVAL_MINS * 60);
 }
