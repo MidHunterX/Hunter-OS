@@ -35,15 +35,26 @@ Scope {
         anchors.leftMargin: 20
         anchors.rightMargin: 20
 
-        HourMeter {
+        MeterTime {
           anchors.left: parent.left
         }
 
-        HyprlandWorkspaces {
+        WorkspaceSpecial {
+          anchors.right: workspaces.left
+          anchors.rightMargin: 10
+        }
+
+        WorkspacePersistent {
+          id: workspaces
           anchors.horizontalCenter: parent.horizontalCenter
         }
 
-        BatteryMeter {
+        WorkspaceOther {
+          anchors.left: workspaces.right
+          anchors.leftMargin: 10
+        }
+
+        MeterBattery {
           id: batteryMeter
           anchors.right: parent.right
         }
@@ -64,7 +75,8 @@ Scope {
     implicitHeight: 10
     color: "transparent"
 
-    IdleMeter {
+    MeterIdle {
+      // inactivityTriggerSeconds: 3
       anchors.horizontalCenter: parent.horizontalCenter
     }
 
