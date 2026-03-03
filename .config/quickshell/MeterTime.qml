@@ -3,14 +3,14 @@ import Quickshell
 
 Item {
   id: root
-  width: 400
+  width: 300
 
   property var thicc: 3
   property var gap: 10
   property color c_background: Colors.outline
   property color c_foreground: "#FFFFFF"
 
-  transform: Shear { xFactor: -1.0 }
+  // transform: Shear { xFactor: -0.6 }
 
   SystemClock {
     id: clock

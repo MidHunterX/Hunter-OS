@@ -15,7 +15,7 @@ Item {
 
   property int batteryPercent: 0
 
-  transform: Shear { xFactor: 1.0 }
+  // transform: Shear { xFactor: 0.6 }
 
   // Read battery percentage
   Process {
