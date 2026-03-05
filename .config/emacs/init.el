@@ -39,9 +39,9 @@
 (setq scroll-conservatively scroll-margin)
 (setq select-enable-clipboard t)
 (set-face-attribute 'default nil :height 150)   ; Font Size
-(set-frame-parameter nil 'alpha-background 80)
+(set-frame-parameter nil 'alpha-background 0)
 (add-to-list 'default-frame-alist '(font . "jetbrains mono nerd font-14"))
-(add-to-list 'default-frame-alist '(alpha-background . 80))
+(add-to-list 'default-frame-alist '(alpha-background . 0))
 (setq-default frame-title-format "%b %& emacs")
 (setq-default indicate-empty-lines t)  ; show blank lines at EOF
 (defalias 'yes-or-no-p 'y-or-n-p)  ; answering just 'y' or 'n' is sufficient
@@ -153,7 +153,7 @@
 (unless (package-installed-p 'dashboard) (package-install 'dashboard))
 (setq wallpaper (with-temp-buffer
                     (insert-file-contents "~/.cache/swww/eDP-1")
-                    (thing-at-point 'line t)))
+                    (cadr (split-string (buffer-string) "\0" t))))
 ;; supported values are: string (filepath), 'official, 'logo and integers.
 (setq dashboard-startup-banner wallpaper)
 (setq dashboard-image-banner-max-width 600)
