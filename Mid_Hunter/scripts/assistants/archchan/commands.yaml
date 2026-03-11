@@ -1,11 +1,6 @@
 ---
 # Audio
 
-- keyword: "[wpctl] Show audio devices - lists sound devices"
-  commands:
-    - wpctl status
-  comment: "Set default device using `wpctl set-default <number>`. Source = Microphone and Sink = Sound."
-
 - keyword: "[wpctl] How to set default audio/microphone device"
   commands:
     - wpctl status
@@ -37,6 +32,10 @@
   commands:
     - sudo pacman -R $(pacman -Qdtq)
 
+- keyword: "[paccache] Do remove/clean all package version cache except current and previous"
+  commands:
+    - paccache -r --keep 2
+
 - keyword: "[aft-mtp-mount] Mount Android Device"
   commands:
     - aft-mtp-mount /mnt
@@ -54,6 +53,14 @@
   commands:
     - df -h
   comment: "For showing mountpoints only you can do `df -h | grep /dev`"
+
+- keyword: "[systemctl] Show running background services"
+  commands:
+    - systemctl status
+
+- keyword: "[journalctl] Show full system logs/journal entries for debugging"
+  commands:
+    - journalctl -b -1
 
 # Network
 
@@ -93,10 +100,6 @@
     - ls /usr/share/themes/
   comment: "You can set theme using `gsettings set org.gnome.desktop.interface gtk-theme <theme_name>`"
 
-- keyword: "[systemctl] Show running background services"
-  commands:
-    - systemctl status
-
 # Tools
 
 - keyword: "[yt-dlp] How to Download Videos with specific format and size?"
@@ -109,3 +112,9 @@
 
 - keyword: "[tmux] How to create a new session in tmux?"
   comment: "You can create a new session using: `tmux new -s <Session_Name>` or just simply `tmux` ;D"
+
+- keyword: "[curl] How to refresh github cached images?"
+  comment: "Do `curl -X PURGE <camo.githubusercontent_url>` to refresh github cached images."
+
+- keyword: "[rsync] How to do backup copy of files?"
+  comment: "You can use `rsync -av <source> <destination>` to backup files. \nUse `rsync -avn` for a test dry-run before doing the actual backup copy."
