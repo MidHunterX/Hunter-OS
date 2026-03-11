@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-import datetime
 import random
 import shlex
 import subprocess
 import sys
-from pathlib import Path
 
+from .ff_tab_builder import TabScheduler, Weekday
 from .persona import HyprChan
 
 COMMENTS = [
@@ -58,16 +57,16 @@ def find_firefox_process(profile_name: str) -> str | None:
 
 def daily_personal_tab(ff_attribs: list[str]):
     """Extends ff_attribs list if it's first run of the day for "Personal" profile."""
-    hist_file = Path.home() / ".cache/run_firefox_history.txt"
-    date_today: str = str(datetime.date.today())
-    date_last_run: str = hist_file.read_text().strip() if hist_file.exists() else ""
-
-    if date_today != date_last_run:
-        print("First run of the day for 'Personal' profile. Adding new tab.")
-        ff_attribs.extend(["-new-tab", "https://app.daily.dev/"])
-        ff_attribs.extend(["-new-tab", "https://sysdle.com/"])
-        hist_file.parent.mkdir(parents=True, exist_ok=True)
-        hist_file.write_text(date_today)
+    scheduler = TabScheduler()
+    (
+        scheduler.daily("https://sysdle.com/")
+        .every_n_days("https://learn.dvorak.nl/?lang=en&lesson=5", 2)
+        .weekly_on_days(
+            "https://app.daily.dev/",
+            [Weekday.TUESDAY, Weekday.FRIDAY],
+        )
+        .apply(ff_attribs)
+    )
 
 
 def main():
