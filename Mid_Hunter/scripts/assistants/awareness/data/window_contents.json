@@ -1,0 +1,15 @@
+{
+  "shellscript": [".sh"],
+  "python": [".py"],
+  "lua": [".lua"],
+  "configuration": [".conf"],
+  "perl": [".pl"],
+  "json": [".json"],
+  "c": [".c"],
+  "java": [".java"],
+  "webdev": [".html", ".js", ".css"],
+  "YouTube": ["youtube"],
+  "Reddit": ["reddit", "r/"],
+  "Image Board": ["9gag", "4chan", "pixiv"],
+  "Movie": ["movie"]
+}

@@ -1,0 +1,8 @@
+{
+  "null": "desktop",
+  "kitty": "terminal",
+  "firefox": "browser",
+  "feh": "image",
+  "mpv": "video",
+  "org.pwmt.zathura": "document"
+}

@@ -1,0 +1,22 @@
+{
+  "terminal": {
+    "reading documentation": ["man "],
+    "coding": [".css", ".js", ".json", ".c", ".java", ".html", ".sh", ".py", ".lua", ".pl", ".conf", "nvim"],
+    "working": ["tmux"],
+    "documenting": [".adoc", ".md", ".txt"],
+    "exploring files": ["vifm"]
+  },
+  "browser": {
+    "researching": ["google search", "archwiki", "wiki"],
+    "entertainment": ["youtube", "reddit", "r/", "9gag"]
+  },
+  "image": {
+    "seeing pictures": ["feh"]
+  },
+  "video": {
+    "watching video": ["mpv"]
+  },
+  "document": {
+    "reading document": ["zathura"]
+  }
+}
