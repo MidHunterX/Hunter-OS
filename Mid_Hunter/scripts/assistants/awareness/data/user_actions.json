@@ -8,6 +8,7 @@
   },
   "browser": {
     "researching": ["google search", "archwiki", "wiki"],
+    "shopping": ["amazon", "flipkart"],
     "entertainment": ["youtube", "reddit", "r/", "9gag"]
   },
   "image": {

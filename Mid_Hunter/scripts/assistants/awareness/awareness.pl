@@ -35,10 +35,10 @@ my $window_types = load_json("window_types.json");
 sub get_window_type {
     my ($class) = @_;
     $class = lc($class // "null");
-    return $window_types->{$class} // "nothing";
+    return $window_types->{$class} // "unknown";
 }
 
-# WindowType -> UserAction
+# WindowType.WindowTitle -> UserAction
 my $user_actions = load_json("user_actions.json");
 sub get_inferred_action {
     my ($wintype, $title) = @_;
@@ -47,12 +47,13 @@ sub get_inferred_action {
     foreach my $action_name (keys %$actions) {
         my $keywords = $actions->{$action_name};
         foreach my $keyword (@$keywords) {
-            if ($title =~ m{\Q$keyword\E}) {
-                return $action_name;
-            }
+            $keyword = lc($keyword);
+            # Keyword token matching
+            if (index($title, $keyword." ") != -1) { return $action_name; }
+            if (index($title, " ".$keyword) != -1) { return $action_name; }
         }
     }
-    return "nothing";
+    return "something";
 }
 
 # WindowTitle -> WindowContent
@@ -63,9 +64,10 @@ sub get_possible_content {
     foreach my $content_type (keys %$window_contents) {
         my $keywords = $window_contents->{$content_type};
         foreach my $keyword (@$keywords) {
-            if (index($title, lc($keyword)) != -1) {
-                return $content_type;
-            }
+            $keyword = lc($keyword);
+            # Keyword token matching
+            if (index($title, $keyword." ") != -1) { return $content_type; }
+            if (index($title, " ".$keyword) != -1) { return $content_type; }
         }
     }
     return "something";
@@ -91,8 +93,8 @@ while (1) {
         print "  ".RED."class: ".RESET."$class\n";
         print "  ".RED."inference: ".RESET."{";
         print " ".GREEN."wintype: ".RESET."$wintype".",";
-        print " ".GREEN."content: ".RESET."$content".",";
-        print " ".GREEN."action: ".RESET."$action"." }\n";
+        print " ".GREEN."action: ".RESET."$action".",";
+        print " ".YELLOW."content: ".RESET."$content"." }\n";
         print "  ".RED."msg: ".RESET."$msg\n";
         print "}\n";
 
