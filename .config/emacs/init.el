@@ -113,17 +113,16 @@
 (require 'evil)
 (evil-mode 1)
 (with-eval-after-load 'evil
-  ;; set leader key in all states
+  ;; LEADER KEY (SPC)
   (evil-set-leader nil (kbd "C-SPC"))
-  ;; set leader key in normal state
-  (evil-set-leader '(normal) (kbd "<SPC>"))
-  ;; Redo
+  (evil-set-leader '(normal visual) (kbd "SPC"))
+
+  ;; BUFFER MANIPULATION
   (evil-define-key 'normal 'global (kbd "U") 'undo-redo)
-  ;; Save buffer
   (evil-define-key 'normal 'global (kbd "<leader>w") 'save-buffer)
-  ;; Interactive file name search.
+
+  ;; BUFFER MANAGEMENT
   (evil-define-key 'normal 'global (kbd "<leader>pf") 'project-find-file)
-  ;; Interactive open-buffer switch.
   (evil-define-key 'normal 'global (kbd "<leader>x") 'kill-this-buffer))
 
 ;; ================================@[140ms]================================ ;;
@@ -181,6 +180,11 @@
 (setq dashboard-set-file-icons t)
 (require 'dashboard)
 (dashboard-setup-startup-hook)
+
+
+(which-key-mode 1)
+(which-key-setup-side-window-right-bottom)
+;; (which-key-setup-side-window-bottom)
 
 ;; =================================@[10ms]================================= ;;
 ;; Total Time: 2060ms
