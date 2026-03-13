@@ -56,7 +56,7 @@ Item {
 
         Rectangle {
           anchors.fill: parent
-          visible: root.batteryPercent >= (index + 1) * 10
+          visible: root.batteryPercent >= ((index + 1) * 10) - 5
           color: {
             // Color based on battery level
             if (root.batteryPercent > 50) return c_high
