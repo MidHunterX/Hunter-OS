@@ -1,3 +1,4 @@
+import subprocess
 import time
 from pathlib import Path
 
@@ -7,17 +8,23 @@ from common.base_assistant import BaseAssistant
 SCRIPT_DIR = Path(__file__).parent.resolve()
 
 
+class MOODS:
+    NORMAL = "normal"
+    HOT = "hot"
+    SAD = "sad"
+
+
 class ArchChan(BaseAssistant):
     """Arch Chan persona for system monitoring."""
 
-    def __init__(self, mood: str = "default"):
-        name = "Arch Chan"
+    def __init__(self, mood: str = MOODS.NORMAL):
+        name = "Arch"
         hints = ["-h", "string:frcolor:#5cc0ff", "-h", "string:bgcolor:#1f3847"]
 
         # Special DP Change Logic
-        if mood == "hot":
+        if mood == MOODS.HOT:
             image_path = SCRIPT_DIR / "assets/arch_hot.jpg"
-        elif mood == "sad":
+        elif mood == MOODS.SAD:
             image_path = SCRIPT_DIR / "assets/arch_sad.jpg"
         else:
             image_path = SCRIPT_DIR / "assets/arch_chan.jpg"
@@ -93,6 +100,28 @@ class ArchChan(BaseAssistant):
                 return temp_milli_c / 1000.0
         except (FileNotFoundError, ValueError):
             return -1.0
+
+    @staticmethod
+    def get_top_cpu_processes(n: int = 2) -> list:
+        """Returns the top N processes by CPU usage as a list of strings."""
+        try:
+            # -e: all processes, -o: custom format (cpu usage, command name)
+            # --sort=-pcpu: sort by cpu usage descending
+            output = subprocess.check_output(
+                ["ps", "-eo", "pcpu,comm", "--sort=-pcpu"],
+                encoding="utf-8",
+            )
+            # Split lines and skip the header
+            lines = output.strip().split("\n")[1:]
+            top_procs = []
+            for line in lines[:n]:
+                parts = line.split(None, 1)
+                if len(parts) == 2:
+                    usage, name = parts
+                    top_procs.append(f"{name} ({usage}%)")
+            return top_procs
+        except (subprocess.SubprocessError, FileNotFoundError):
+            return []
 
     # =========================== [ ADMIN FUNCTIONS ] =========================== #
 
