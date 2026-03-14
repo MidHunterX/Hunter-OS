@@ -6,23 +6,25 @@
   display: none
 }
 
+/* SUPER COMPACT TAB BAR */
+/* --------------------- */
+#TabsToolbar { max-height: calc(16px + 2 * 10px + 4px); }
+
 /* ICON ONLY TABS */
 /* -------------- */
-.tab-content > :not(.tab-icon-stack){
-  display: none
-}
-.tab-icon-image:not([src]){
-  display: block !important;
-}
+.tab-content > :not(.tab-icon-stack){ display: none }
+.tab-icon-image:not([src]){ display: block !important; }
 .tab-icon-stack > *{ margin-inline: 0 !important; }
 .tabbrowser-tab{
   -moz-box-flex: 0 !important; /* Fx <112 compatibility */
   flex-grow: 0 !important;
+  max-height: calc(16px + 2 * 10px + 4px) !important;
 }
 .tabbrowser-tab[fadein]{ min-width: calc(16px + 2 * 10px + 4px) !important; }
 :root[uidensity="compact"] .tabbrowser-tab[fadein]{
   min-width: calc(16px + 2 * var(--inline-tab-padding,0px) + 4px) !important;
 }
+/* Tab Icon Padding */
 :root:not([uidensity="compact"]) .tab-content{ padding-inline: 10px !important; }
 
 
