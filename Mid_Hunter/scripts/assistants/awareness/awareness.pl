@@ -30,7 +30,7 @@ sub get_active_window {
     return decode_json($json_raw);
 }
 
-# WindowClass -> WindowType
+# Window.Class -> Window.Type
 my $window_types = load_json("window_types.json");
 sub get_window_type {
     my ($class) = @_;
@@ -38,25 +38,24 @@ sub get_window_type {
     return $window_types->{$class} // "unknown";
 }
 
-# WindowType.WindowTitle -> UserAction
-my $user_actions = load_json("user_actions.json");
+# Window.Type -> Window.Type.Action
+my $type_actions = load_json("type_actions.json");
 sub get_inferred_action {
     my ($wintype, $title) = @_;
     $title = lc($title // "");
-    my $actions = $user_actions->{$wintype} // {};
+    my $actions = $type_actions->{$wintype} // {};
     foreach my $action_name (keys %$actions) {
         my $keywords = $actions->{$action_name};
         foreach my $keyword (@$keywords) {
-            $keyword = lc($keyword);
-            # Keyword token matching
-            if (index($title, $keyword." ") != -1) { return $action_name; }
-            if (index($title, " ".$keyword) != -1) { return $action_name; }
+            if (index($title, lc($keyword)) != -1) {
+                return $action_name;
+            }
         }
     }
     return "something";
 }
 
-# WindowTitle -> WindowContent
+# Window.Title -> Window.Content
 my $window_contents = load_json("window_contents.json");
 sub get_possible_content {
     my ($title) = @_;
@@ -64,10 +63,9 @@ sub get_possible_content {
     foreach my $content_type (keys %$window_contents) {
         my $keywords = $window_contents->{$content_type};
         foreach my $keyword (@$keywords) {
-            $keyword = lc($keyword);
-            # Keyword token matching
-            if (index($title, $keyword." ") != -1) { return $content_type; }
-            if (index($title, " ".$keyword) != -1) { return $content_type; }
+            if (index($title, lc($keyword)) != -1) {
+                return $content_type;
+            }
         }
     }
     return "something";

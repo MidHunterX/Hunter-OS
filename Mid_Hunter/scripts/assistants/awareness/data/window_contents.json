@@ -9,7 +9,7 @@
   "java": [".java"],
   "webdev": [".html", ".js", ".css"],
   "YouTube": ["youtube"],
-  "Reddit": ["reddit", "r/"],
+  "Reddit": ["reddit", "- r/"],
   "Image Board": ["9gag", "4chan", "pixiv"],
   "E-Commerce": ["amazon", "flipkart"],
   "Movie": ["movie"]
