@@ -3,9 +3,14 @@ import random
 import shlex
 import subprocess
 import sys
+from pathlib import Path
 
-from .ff_tab_builder import TabScheduler, Weekday
-from .persona import HyprChan
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from hyprchan.ff_tab_builder import TabScheduler, Weekday
+from hyprchan.persona import HyprChan
 
 COMMENTS = [
     "I found what you're looking for. It's right here.",

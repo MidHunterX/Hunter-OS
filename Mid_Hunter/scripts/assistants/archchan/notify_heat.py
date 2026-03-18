@@ -1,8 +1,14 @@
+import sys
 import time
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 from common.base_assistant import Singleton
 
-from .persona import ArchChan, MOODS
+from archchan.persona import MOODS, ArchChan
 
 
 def notify_heat():
@@ -31,8 +37,7 @@ def notify_heat():
             print(f"CPU Temp: {cpu_temp:.1f}°C. Processes: {process_log}")
 
             message = (
-                f"CPU TEMP: {cpu_temp:.1f}°C.\n"
-                f"Source of heat:\n{process_info}"
+                f"CPU TEMP: {cpu_temp:.1f}°C.\n" f"Source of heat:\n{process_info}"
             )
 
             arch_chan.message(message)
