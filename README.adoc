@@ -465,7 +465,10 @@ NOTE: Before installing jdk-openjdk, make sure to yeet out the pre-installed jav
 | tgpt              | CLI AI Chat without API keys          | aur
 | wl-kbptr          | Cursor Modal Keyboard Driven Pointer  | aur
 | wlrctl            | Cursor Control Utility                | aur
+| voxtype-bin       | Voice-to-text Tool                    | aur
 |===
+
+NOTE: To install Voice Typing Feature, download whisper model with `voxtype setup --download`. Run daemon with `voxtype`. Then use `ScrollLock` as push-to-talk.
 ====
 
 .📷 Audio, Video and Image
@@ -960,7 +963,7 @@ technology inspired ambient nudging, Automation and Proactive Computing.
 
 link:{gh-run}[Run]: Automating project initialization and environment setup.
 Helps to maintain cognitive context of task without distracting yourself from
-manual setup.
+manual setup. `EF.TaskInitiation`
 
 link:{gh-expression}[Expression]: Expressing a non-intrusive ambient
 notification of life events and schedules. Know time schedule without knowing
@@ -970,11 +973,12 @@ day. `#Hidden_UI: Wallpaper as an indicator of hours`
 link:{gh-intention}[Intention]: An implementation of Proactive computing where
 you simply state your intent and let your computer change and modify its
 environment to adapt to your intention. Abstracts away Operating Systems to use
-it as specialized environment for a specific intent.
+it as specialized environment for a specific intent. `EF.TaskInitiation`
 
 link:automata/stasis[Auto Idle]: The device will shutdown itself when it's left
 unattended for a long time at sleeping hours but if it's working hours, the
-device will suspend instead to save power.
+device will suspend instead to save power. So, just go to sleep if you are
+tired and let the computer do the powering off for you.
 
 link:automata/iris[Adaptive Window Contrast]: An adaptive
 interface design solution for UI contrast issues with transparent windows. It

@@ -118,6 +118,8 @@ Press `SUPER + T` to enter window **Transformation** Mode and activate the follo
 | CTRL + H,J,K,L  | Resize window |
 | ESC             | Exit Mode     |
 
+Press `SCROLL_LOCK` to enter **Voice_Typing** Mode. Say something to type and press `SCROLL_LOCK` again.
+
 ### Windows Style Keybindings
 
 | Keymap           | Description             |
