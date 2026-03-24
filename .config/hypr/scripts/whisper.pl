@@ -5,7 +5,7 @@ use POSIX qw(setsid);
 
 my $DAEMON_NAME = "voxtype"; # The expected process name to check for
 my $DAEMON_CMD  = "voxtype"; # The command to start the daemon
-my $TIMER_DELAY = 60;        # Seconds to wait before killing the daemon after 'stop'
+my $TIMER_DELAY = 60 * 5;    # seconds before killing the daemon
 
 # HELPER FUNCTIONS
 
@@ -18,7 +18,7 @@ sub start_daemon_if_needed {
     unless (is_daemon_running()) {
         print "Daemon not running. Starting '$DAEMON_CMD'...\n";
         system("nohup $DAEMON_CMD &>/dev/null &");
-        sleep 0.2;
+        sleep 0.5;
     }
 }
 
@@ -52,7 +52,7 @@ if ($action eq "start") {
     start_daemon_if_needed();
     system("voxtype record start &>/dev/null &");
     print "Recording started.\n";
-    system("pkill -f 'hypr/scripts/voice_to_text.pl stop' 2>/dev/null");
+    system("pkill -f 'hypr/scripts/whisper.pl stop' 2>/dev/null");
 } elsif ($action eq "stop") {
     system("voxtype record stop &>/dev/null &");
     print "Recording stopped.\n";
