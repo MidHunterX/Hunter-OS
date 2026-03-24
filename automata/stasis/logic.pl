@@ -7,10 +7,10 @@ use warnings;
 
 # Time format: HH:MM (24-hour)
 use constant {
-    WORK_START  => "06:00",
+    WORK_START  => "09:00",
     WORK_END    => "16:00",
     SLEEP_START => "20:00",
-    SLEEP_END   => "04:00"
+    SLEEP_END   => "05:00"
 };
 
 # ================================

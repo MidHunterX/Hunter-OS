@@ -33,9 +33,8 @@ Item {
     }
   }
 
-  // Update battery every 5 seconds
   Timer {
-    interval: 5000
+    interval: 10000 // 10 seconds
     running: true
     repeat: true
     onTriggered: batteryProc.running = true

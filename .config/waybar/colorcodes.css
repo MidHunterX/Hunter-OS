@@ -14,7 +14,7 @@
 
 @define-color item_border @outline;
 @define-color item_background @surface;
-@define-color item_reflection @surface_container_highest;
+@define-color item_reflection @surface_container_high;
 
 @define-color cc_battery @secondary;
 @define-color cc_time @secondary;

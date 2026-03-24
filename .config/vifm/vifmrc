@@ -31,11 +31,11 @@ set tabsuffix="%4*%[%2*%C%]%4*"
 " set tabprefix="%5*%[%1*%C%] %3*%[%1*%C%]%N:"
 " set tabsuffix="%4*%[%2*%C%]%4*"
 
-" Vertical border (│┆)
+" Vertical border (█│🭲┆)
 set fillchars=vborder:"│",hborder:"",millersep:"|"
 
 " NOTE: Default is `psv` where `s` is side borders, and `v` is vertical line
-set tuioptions="pv"
+set tuioptions="psv"
 
 " =========================================================================== "
 
@@ -597,6 +597,13 @@ fileviewer {*.db,*.sqlite3},
 fileviewer *.csv,
       \ cat %c | xsv table,
       \ sed "s/,,,,/,,-,,/g;s/,,/ /g" %c | column -t | sed "s/ - /  /g" | cut -c -%pw
+
+"  EMACS
+filextype {*.org},
+      \ {Open with EDITOR}
+      \ $EDITOR %f,
+      \ {Open with Emacs}
+      \ emacs %f
 
 "  PDF
 filextype {*.pdf},<application/pdf>
