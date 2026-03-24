@@ -184,15 +184,15 @@ nvim --graphics_protocol--> kitty
 waybar --> volume & brillo & nf
 ----
 
-.🎨 Dynamic UI Coloring
+.🎨 Dynamic UI Coloring Diagram
 [%collapsible]
 ====
 [discrete]
-=== 🎨 Dynamic UI Coloring
+=== 🎨 Dynamic UI Coloring Diagram
 
 `matugen` is used to generate dynamic Material You colors for applications.
 
-IMPORTANT: Color generators like matugen are so pervasive, it becomes a dependency for app config colors unless there's a way to set fallback colors on app configs. This makes the configs non-plug-n-play for other systems until all variables are replaced with hex colorcodes. The main focus of this section is to make every configs independent and plug-n-play friendly again.
+IMPORTANT: Color generators like matugen are so pervasive, it becomes a dependency for app config colors unless there's a way to set fallback colors on app configs. This makes the configs non-plug-n-play for other systems until all variables are replaced with hex colorcodes. The main focus of this section is to make every configs independent (matugen Optional) and plug-n-play friendly again.
 
 |===
 | 🟢 | matugen Optional (Fallback Colors)     | [11/16]
@@ -259,11 +259,11 @@ prompt[🟡 starship] --> ansi
 Both solutions are non-plug-n-play friendly on their own unless you provide copy of a pre-generated file before running. Therefore use custom made status bar, logout screen etc. with a GUI shell framework like Astal with AGS (`aylurs-gtk-shell-git` Still uses GTK. GTK = lesser flexibility) or QuickShell (uses Qt = better flexibility).
 ====
 
-.🌊 Personal Workflow
+.🌊 Personal Workflow Diagram
 [%collapsible]
 ====
 [discrete]
-=== 🌊 Personal Workflow
+=== 🌊 Personal Workflow Diagram
 
 This is my most frequently used workflow out of all other possibilities.
 
