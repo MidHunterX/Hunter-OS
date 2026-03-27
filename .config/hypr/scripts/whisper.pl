@@ -10,15 +10,39 @@ my $TIMER_DELAY = 60 * 5;    # seconds before killing the daemon
 # HELPER FUNCTIONS
 
 sub is_daemon_running {
-    my $count = `pgrep -x "$DAEMON_NAME"`;
+    my $count = `pgrep -cx "$DAEMON_NAME"`;
+    chomp $count;
     return $count > 0;
+}
+
+sub is_daemon_ready {
+    my $status = `voxtype status`;
+    chomp $status;
+    return $status eq "idle";
+}
+
+sub wait_for_daemon {
+    my $timeout = shift // 10;  # Allow timeout to be passed as parameter
+    my $check_interval = shift // 0.2;
+    print "Waiting for daemon to be ready (timeout: ${timeout}s)...\n";
+    if (!is_daemon_running()) {
+        die "Daemon is not running. Cannot wait for readiness.\n";
+    }
+    my $start_time = time();
+    while (time() - $start_time < $timeout) {
+        if (is_daemon_ready()) {
+            print "Daemon is ready.\n";
+            return 1;
+        }
+        sleep $check_interval;
+    }
+    die "Timed out waiting for daemon to be ready after ${timeout}s.\n";
 }
 
 sub start_daemon_if_needed {
     unless (is_daemon_running()) {
         print "Daemon not running. Starting '$DAEMON_CMD'...\n";
         system("nohup $DAEMON_CMD &>/dev/null &");
-        sleep 0.5;
     }
 }
 
@@ -50,6 +74,7 @@ my $action = shift @ARGV;
 
 if ($action eq "start") {
     start_daemon_if_needed();
+    wait_for_daemon();
     system("voxtype record start &>/dev/null &");
     print "Recording started.\n";
     system("pkill -f 'hypr/scripts/whisper.pl stop' 2>/dev/null");

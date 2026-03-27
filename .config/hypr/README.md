@@ -120,6 +120,9 @@ Press `SUPER + T` to enter window **Transformation** Mode and activate the follo
 
 Press `SCROLL_LOCK` to enter **Voice_Typing** Mode. Say something to type and press `SCROLL_LOCK` again.
 
+> [!NOTE]
+> The voice typing daemon will stop after 5 minutes of no use to save resources.
+
 ### Windows Style Keybindings
 
 | Keymap           | Description             |
