@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 
 # Adaptive Window Contrast based on Wallpaper Brightness
-# Requires: ImageMagick, swww (for wallpaper)
+# Requires: ImageMagick, awww (for wallpaper)
 
 use POSIX qw(strftime);
 use Term::ANSIColor qw(:constants);
@@ -13,7 +13,7 @@ use File::Basename;
 my $MONITOR            = "eDP-1";
 my $AUTOSCALE_STRATEGY = "manual"; # manual | strength | adapt
 my $CENTER_BIAS        = 10; # (0-100)
-my $STRATEGY           = "image"; # image | color
+my $STRATEGY           = "color"; # image | color
 my $print_logs         = 0;
 
 GetOptions("log" => \$print_logs);
@@ -34,9 +34,9 @@ sub error_msg {
     print "[" . RED . get_timestamp() . RESET . "] $msg\n";
 }
 
-sub get_swww_wallpaper {
+sub get_awww_wallpaper {
     my $monitor = shift;
-    my $cache_file = "$ENV{HOME}/.cache/swww/$monitor";
+    my $cache_file = "$ENV{HOME}/.cache/awww/$monitor";
     return unless -f $cache_file;
 
     open(my $fh, '<:raw', $cache_file) or return;
@@ -57,7 +57,7 @@ sub get_swww_wallpaper {
 
 # INITIALIZE
 # -----------------------------------------------------------------------------
-my $wallpaper = get_swww_wallpaper($MONITOR);
+my $wallpaper = get_awww_wallpaper($MONITOR);
 if (!$wallpaper || ! -f $wallpaper) {
     error_msg("Wallpaper not found or invalid: " . ($wallpaper // "NULL"));
     exit 1;
