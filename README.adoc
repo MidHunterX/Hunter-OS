@@ -491,6 +491,10 @@ NOTE: To install Voice Typing Feature, download whisper model with `voxtype setu
 |===
 
 [discrete]
+==== Fix Low Volume Dialogue + Blown Out Sound FX in Movies
+Install `easyeffects`, `lsp-plugins-lv2` and `calf`. Open `easyeffects` and add the effect *"Autogain"*. It will automatically detect and calibrate volume gain in real-time. After this, just open up `easyeffects` whenever you are watching any movies.
+
+[discrete]
 === 🎬 Video
 [%header]
 |===
