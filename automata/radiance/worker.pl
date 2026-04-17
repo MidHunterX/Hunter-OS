@@ -15,15 +15,34 @@ use Logic qw(interpolate_brightness load_data);
 my $INTERVAL_MINS = 5;  # How often to update brightness
 my $CACHE_FILE    = File::Spec->catfile($ENV{HOME}, '.cache', 'radiance_data.json');
 my $BRIGHTNESS_CMD    = "brillo -u 5000000 -S";
+my $TOGGLE_LOCK_FILE  = "/tmp/ai_brightness_toggle.lock";
 
 # ============================== COMMAND LINE ============================== #
 use Getopt::Long;
 
 my $flag_once = 0;
-GetOptions("once" => \$flag_once);
+my $flag_toggle = 0;
+GetOptions(
+    "once" => \$flag_once, # Only run once and exit. Basically update.
+    "toggle" => \$flag_toggle # Toggle worker lock
+);
 
 if ($flag_once) {
     refresh_screen_brightness();
+    exit 0;
+}
+
+if ($flag_toggle) {
+    if (-e $TOGGLE_LOCK_FILE) {
+        unlink $TOGGLE_LOCK_FILE or die "Could not remove lock: $!\n";
+        system("notify-send", "-r", "69", " Radiance unlocked");
+        refresh_screen_brightness();
+    } else {
+        open my $fh, '>', $TOGGLE_LOCK_FILE or die "Could not create lock: $!\n";
+        print $fh "LOCKED\n";
+        close $fh;
+        system("notify-send", "-r", "69", " Radiance locked");
+    }
     exit 0;
 }
 
@@ -45,6 +64,10 @@ close $fh;
 # =============================== MAIN LOGIC =============================== #
 
 sub refresh_screen_brightness {
+    if (-e $TOGGLE_LOCK_FILE) {
+        return;
+    }
+
     my $data = load_data($CACHE_FILE);
     my ($h, $m) = (strftime("%H", localtime), strftime("%M", localtime));
     my $now = ($h * 60) + $m;
