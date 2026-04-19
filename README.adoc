@@ -492,7 +492,29 @@ NOTE: To install Voice Typing Feature, download whisper model with `voxtype setu
 
 [discrete]
 ==== Fix Low Volume Dialogue + Blown Out Sound FX in Movies
-Install `easyeffects`, `lsp-plugins-lv2` and `calf`. Open `easyeffects` and add the effect *"Autogain"*. It will automatically detect and calibrate volume gain in real-time. After this, just open up `easyeffects` whenever you are watching any movies.
+Install `easyeffects`, `lsp-plugins-lv2` and `calf`. Open `easyeffects` and add the *Autogain* effect. It will automatically detect and calibrate volume gain in real-time. After this, just open up `easyeffects` whenever you are watching any movies.
+
+[discrete]
+==== AutoEQ to another IEM
+[discrete]
+===== Step 1: Parametric Equalization
+* Open link:https://squig.link[squig.link]
+* Disable all targets from the active graph window.
+* Select your IEM from `models` section.
+* Add the IEM you want to try with `+` button.
+* Download the graph of the IEM you want to try (Target).
+* Go to `equalizer` section
+* Parametric Equalizer = Your IEM
+* AutoEQ Range = 20-6000 hz (we shouldn't AutoEQ treble as treble graphs are not accurate)
+* Hit `AutoEQ` button and click `Export` for Linux or `Export Graphic EQ` for Android.
+
+[discrete]
+===== Step 2: Loading Frequency Response Graph
+* Open `easyeffects`
+* Add *Equalizer* effect > More Actions > Import APO
+* Load the previously downloaded *ParametricEQ* file.
+
+On Android Smartphone, you can use Wavelet app to load the downloaded *GraphicEQ* file.
 
 [discrete]
 === 🎬 Video
