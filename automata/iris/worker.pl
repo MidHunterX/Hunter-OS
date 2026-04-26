@@ -35,21 +35,13 @@ sub error_msg {
 }
 
 sub get_awww_wallpaper {
-    my $monitor = shift;
-    my $cache_file = "$ENV{HOME}/.cache/awww/$monitor";
-    return unless -f $cache_file;
-
-    open(my $fh, '<:raw', $cache_file) or return;
-    my $content = do { local $/; <$fh> };
-    close($fh);
-
-    # The file is null-delimited: [empty][filter][path][...]
-    # example: ^@Lanczos3^@/home/user/wall.png^@
-    my @parts = split(/\0/, $content);
-
-    # We look for the first part that looks like an absolute path
-    foreach my $part (@parts) {
-        return $part if $part =~ m{^/};
+    # my $monitor = shift;
+    my $output = `awww query 2>/dev/null`;
+    return unless $output && $? == 0;
+    chomp $output;
+    # Parse the output format: "eDP-1: 1920x1080, scale: 1, currently displaying: image: /path/to/image.jpg"
+    if ($output =~ /currently displaying: image: (.+)$/) {
+        return $1;
     }
     return;
 }
@@ -57,7 +49,7 @@ sub get_awww_wallpaper {
 
 # INITIALIZE
 # -----------------------------------------------------------------------------
-my $wallpaper = get_awww_wallpaper($MONITOR);
+my $wallpaper = get_awww_wallpaper();
 if (!$wallpaper || ! -f $wallpaper) {
     error_msg("Wallpaper not found or invalid: " . ($wallpaper // "NULL"));
     exit 1;
