@@ -23,9 +23,9 @@ class ScheduleEntry(TypedDict):
 
 class SequenceEntry(TypedDict):
     name: str
-    urls: List[str]
+    urls: Optional[List[str]]
+    date_map: Optional[Dict[str, str]]
     interval_days: Optional[int]
-    specific_dates: Optional[List[datetime.date]]
 
 
 class TabScheduler:
@@ -36,7 +36,6 @@ class TabScheduler:
 
     def __init__(self, state_file: Optional[Path] = None):
         self.state_file = state_file or Path.home() / ".cache/run_firefox_schedule.json"
-        # each entry: {'url': str, 'interval_days': int or None, 'weekdays': list or None}
         self.entries = []
         self.sequences = []
         self._load_state()
@@ -56,60 +55,54 @@ class TabScheduler:
     def iterate_every_n_days(self, name: str, urls: List[str], n: int = 1):
         """Opens the next URL in the list every 'n' days."""
         self.sequences.append(
-            {"name": name, "urls": urls, "interval_days": n, "specific_dates": None}
+            {"name": name, "urls": urls, "date_map": None, "interval_days": n}
         )
         return self
 
-    def iterate_on_dates(self, name: str, urls: List[str], dates: List[datetime.date]):
+    def iterate_on_dates(self, name: str, date_map: Dict[str, str]):
         """
-        Opens the next URL in the list when today matches a specific date.
+        Opens a specific URL if today's date matches a key in the date_map.
+        Format: { "2023-12-25": "https://url.com" }
         """
         self.sequences.append(
-            {"name": name, "urls": urls, "interval_days": None, "specific_dates": dates}
+            {"name": name, "urls": None, "date_map": date_map, "interval_days": None}
         )
         return self
 
     def apply(self, ff_attribs: List[str]) -> None:
         today = datetime.date.today()
+        today_iso = today.isoformat()
         updated = False
 
         for entry in self.entries:
             url = entry["url"]
             last_run_str = self.state.get(url)
-            last_run = None
-            if last_run_str:
-                last_run = datetime.date.fromisoformat(last_run_str)
+            last_run = (
+                datetime.date.fromisoformat(last_run_str) if last_run_str else None
+            )
             due = False
 
             # RULE 1: INTERVAL-BASED
             if entry["interval_days"] is not None:
-                if last_run is None:
+                if (
+                    last_run is None
+                    or (today - last_run).days >= entry["interval_days"]
+                ):
                     due = True
-                else:
-                    days_since = (today - last_run).days
-                    if days_since >= entry["interval_days"]:
-                        due = True
 
             # RULE 2: WEEKDAY-BASED
             if entry["weekdays"] is not None:
-                not_run_today = last_run is None or last_run != today
-                if today.weekday() in entry["weekdays"] and not_run_today:
+                if today.weekday() in entry["weekdays"] and (last_run != today):
                     due = True
 
             if due:
                 ff_attribs.extend(["-new-tab", url])
-                self.state[url] = today.isoformat()
+                self.state[url] = today_iso
                 updated = True
 
         for seq in self.sequences:
             name = seq["name"]
-            urls = seq["urls"]
-            if not urls:
-                continue
-
             seq_state = self.state.get(name, {})
-            if isinstance(seq_state, str):
-                seq_state = {"last_run": seq_state, "index": 0}
 
             last_run_str = seq_state.get("last_run")
             last_run = (
@@ -117,29 +110,24 @@ class TabScheduler:
             )
             index = seq_state.get("index", 0)
 
-            due = False
+            url_to_open = None
 
-            # RULE 1: INTERVAL-BASED
-            if seq["interval_days"] is not None:
-                if last_run is None:
-                    due = True
-                else:
-                    if (today - last_run).days >= seq["interval_days"]:
-                        due = True
+            # RULE 1: INTERVAL-BASED (Sequential)
+            if seq["interval_days"] is not None and seq["urls"]:
+                if last_run is None or (today - last_run).days >= seq["interval_days"]:
+                    url_to_open = seq["urls"][index % len(seq["urls"])]
+                    index = (index + 1) % len(seq["urls"])
 
-            # RULE 2: SPECIFIC DATES
-            if seq["specific_dates"] is not None:
-                not_run_today = last_run is None or last_run != today
-                if today in seq["specific_dates"] and not_run_today:
-                    due = True
+            # RULE 2: DATE MAP-BASED (Specific URL for Specific Date)
+            elif seq["date_map"] is not None:
+                if today_iso in seq["date_map"] and last_run != today:
+                    url_to_open = seq["date_map"][today_iso]
 
-            if due:
-                url_to_open = urls[index % len(urls)]
+            if url_to_open:
                 ff_attribs.extend(["-new-tab", url_to_open])
-
                 self.state[name] = {
-                    "last_run": today.isoformat(),
-                    "index": (index + 1) % len(urls),
+                    "last_run": today_iso,
+                    "index": index,
                 }
                 updated = True
 
@@ -151,7 +139,7 @@ class TabScheduler:
             try:
                 with open(self.state_file) as f:
                     self.state = json.load(f)
-            except json.JSONDecodeError:
+            except (json.JSONDecodeError, IOError):
                 self.state = {}
         else:
             self.state = {}
