@@ -18,7 +18,7 @@ $wallpaper_extension =~ s/.*\.(.*)/$1/;
 my @swww_extensions = ("png", "jpg", "jpeg", "webp");
 for my $ext (@swww_extensions) {
   if ($wallpaper_extension eq $ext) {
-    system("swww", "img", WALLPAPER, "--transition-step", 10);
+    system("awww", "img", WALLPAPER, "--transition-step", 10);
     system("perl", IRIS);
     exit 0;
   }
