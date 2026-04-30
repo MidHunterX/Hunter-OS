@@ -2,7 +2,7 @@
 
 An automaton (automata in plural) is an abstract self-propelled computing device which follows a predetermined sequence of operations automatically.
 
-## Ocular Brightness Adaptation (Iris)
+## Iris - Ocular Brightness Adaptation
 
 ![iris](./.assets/auto_adaptation.jpg)
 
@@ -12,7 +12,9 @@ perceived opacity. It does this by dynamically adjusting the brightness of
 the window based on the perceived brightness of the current wallpaper.
 Similar to how your eyes adapt to different light conditions.
 
-## Hardware Brightness Adaptation (Radiance)
+## Radiance - Hardware Brightness Adaptation
+
+![radiance](./.assets/radiance.jpg)
 
 ```
 || = Data Point
@@ -28,3 +30,4 @@ Interpolate brightness smoothly throughout the whole day.
 - Case 0 (Initial): 14% @ 12:34 = Stay the same until like normal brightness system until it's more than one data point. When wrapping around to next day, NEXT will be detected as the first data point.
 - Case 1 (Subsequent): Set 0% @ 4:00, 7% @ 6:30, 12% @ 9:00 = LERP(PREV, NEXT).
 - Case 2 (Update): Next day, set 4% @ 6:25. NEXT will be detected as 7% @ 6:30 which might not be the intended value since data points are close to each-other = SET with a padding to detection window. This same philosophy is used in UI Buttons and Touch Keyboards as well to detect nearest touch/click and accept it as intended.
+- Case 3 (Pause): Use `--toggle` to temporarily pause/resume auto-brightness. Useful when you are outside and want a fixed brightness level throughout the usage.
