@@ -1,6 +1,7 @@
 import QtQuick
 import Quickshell
 import Quickshell.Wayland
+import Quickshell.Io
 
 Item {
   id: root
@@ -12,12 +13,12 @@ Item {
   property real maxIdleMinutes: 15
   property int tickInterval: 1000
 
-
   property color c_meter_fill: Colors.primary
   property color c_meter_track: Colors.outline
 
   property real  idleSeconds: 0
   property bool  userIsIdle: idleMonitor.isIdle
+  property bool  idleDaemonRunning: false
 
   readonly property real fillRatio: Math.min(idleSeconds / (maxIdleMinutes * 60), 1.0)
 
@@ -40,6 +41,26 @@ Item {
     onTriggered: root.idleSeconds += (root.tickInterval / 1000)
   }
 
+  Process {
+    id: idleDaemonCheck
+    command: ["sh", "-c", "pgrep -x swayidle >/dev/null 2>&1 || pgrep -x hypridle >/dev/null 2>&1"]
+    onExited: {
+      root.idleDaemonRunning = (exitCode === 0)
+    }
+  }
+
+  Timer {
+    id: daemonCheckTimer
+    interval: 300000 // 5 minutes
+    running: true
+    repeat: true
+    triggeredOnStart: true
+    onTriggered: {
+      if (!idleDaemonCheck.running)
+        idleDaemonCheck.running = true
+    }
+  }
+
   Row {
     anchors.fill: parent
 
@@ -50,15 +71,15 @@ Item {
       height: root.height
       width: implicitWidth
 
+      opacity: root.idleDaemonRunning && root.userIsIdle ? 1.0 : 0.0
+
       // Track (background)
       Rectangle {
         id: meterTrack
         anchors.fill: parent
-        // radius: height / 2
         color: root.c_meter_track
         opacity: root.userIsIdle ? 1.0 : 0.0
         Behavior on opacity { NumberAnimation { duration: 200 } }
-        // opacity: 1
       }
 
       // Fill (progress)
@@ -70,7 +91,6 @@ Item {
           bottom: parent.bottom
         }
         width: parent.width * root.fillRatio
-        // radius: height / 2
         color: root.c_meter_fill
 
         Behavior on width {
