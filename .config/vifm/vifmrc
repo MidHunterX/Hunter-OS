@@ -283,15 +283,100 @@ endif
 " █▀█ █ █▄█ █▀█ █▄▄ █ █▄█ █▀█ ░█░
 " @syntax_highlighting
 
+" @syntax_highlighting: BAT
+" -------------------------
+" Get available list using:
+" bat --list-languages
+
+" NOTE: VIFM fileviewer extension regex seem to have a limit
+" so, remove unwanted extensions to shorten the list
+
+" I removed these:
+" sublime-settings,sublime-menu,sublime-keymap,sublime-mousemap,
+" \sublime-theme,sublime-build,sublime-project,sublime-completions,
+" \sublime-commands,sublime-macro,sublime-color-scheme,
+" \*.SConstruct,*.Sconstruct,*.sconstruct,*.SConscript,
+
+fileviewer {
+                  \*.fish_history,
+                  \*.CFG,*.COMMIT_EDITMSG,*.Cakefile,*.Containerfile,*.DOT,
+                  \*.Dockerfile,*.Emakefile,
+                  \*.F,*.F03,*.F08,*.F77,*.F90,*.F95,*.FOR,*.FPP,
+                  \*.GNUmakefile,*.HTACCESS,*.HTGROUPS,*.HTPASSWD,
+                  \*.INF,*.INI,*.Jenkinsfile,*.MERGE_MSG,*.Makefile,
+                  \*.OCamlMakefile,*.PKGBUILD,*.REG,*.S,*.Slakefile,
+                  \*.TAG_EDITMSG,*.URL,
+                  \*.ad,*.adb,*.adoc,*.adp,*.ads,*.as,*.asa,*.asciidoc,
+                  \*.asp,*.attributes,*.authorized_keys,*.authorized_keys2,
+                  \*.automount,*.awk,*.babel,*.bash,*.bash_login,
+                  \*.bash_logout,*.bash_profile,*.bash_profile,*.bashrc,
+                  \*.bat,*.bib,*.bnsh,*.bnsi,*.bsh,*.build,
+                  \*.c,*.cabal,*.cc,*.cfc,*.cfg,*.cfm,*.cfml,*.cjs,*.cl,
+                  \*.clisp,*.clj,*.cljc,*.cljs,*.cmake,*.cmd,*.coffee,*.comp,
+                  \*.cp,*.cpp,*.cpuinfo,*.cpy,*.cr,*.crontab,*.crypttab,*.cs,
+                  \*.cson,*.css,*.csx,*.cxx,*.d,*.dart,*.debdiff,*.desktop,
+                  \*.device,*.di,*.diff,*.dnssd,*.dockerfile,*.dot,*.dpr,
+                  \*.ebuild,*.eclass,*.edn,*.el,*.elm,*.emakefile,*.eml,*.env,
+                  \*.envvars,*.epp,*.erb,*.erl,*.es6,*.escript,*.ex,*.exclude,
+                  \*.exs,*.f,*.f03,*.f08,*.f77,*.f90,*.f95,*.fasl,
+                  \*.fastcgi_params,*.fish,*.flatpakref,*.flatpakrepo,*.for,*.fpp,
+                  \*.frag,*.fs,*.fsh,*.fshader,*.fsi,*.fstab,*.fsx,*.gd,
+                  \*.geojson,*.geom,*.gitattributes,*.gitconfig,*.gitignore,
+                  \*.gitlog,*.glsl,*.gnu,*.gnuplot,*.go,*.gp,*.gpl,*.gpr,*.gql,
+                  \*.gradle,*.graphql,*.graphqls,*.groff,*.groovy,*.group,*.gs,
+                  \*.gsh,*.gshader,*.gv,*.gvy,*.gyp,*.gypi,*.h,*.help,*.hgrc,
+                  \*.hh,*.hosts,*.hpp,*.hrl,*.hs,*.htaccess,*.htc,*.htgroups,
+                  \*.htm,*.html,*.htpasswd,*.http,*.hxx,*.idr,*.image,*.inf,
+                  \*.ini,*.inl,*.ipp,*.ipynb,*.j2,*.java,*.jinja,*.jinja2,
+                  \*.jl,*.jq,*.js,*.json,*.jsonc,*.jsonl,*.jsonld,*.jsonnet,
+                  \*.jsp,*.jsx,*.known_hosts,*.ksh,*.kshrc,*.kt,*.kts,*.kube,
+                  \*.l,*.lean,*.less,*.lhs,*.libjsonnet,*.libsonnet,*.link,
+                  \*.lisp,*.ll,*.lng,*.log,*.ls,*.lsp,*.ltx,*.lua,*.m,*.mailmap,
+                  \*.mak,*.make,*.makefile,*.man,*.markdn,*.markdown,*.matlab,
+                  \*.mboxz,*.mbx,*.md,*.mdown,*.mediawiki,*.meminfo,*.mesh,
+                  \*.mjs,*.mk,*.mkd,*.ml,*.mli,*.mll,*.mly,*.mm,*.mount,*.msg,
+                  \*.mtab,*.mud,*.namelist,*.ndjson,*.netdev,*.network,*.network,
+                  \*.nimble,*.nims,*.ninja,*.nix,*.nsdinc,*.nse,*.nsh,*.nsi,
+                  \*.nspawn,*.odin,*.org,*.p,*.pac,*.pas,*.passwd,*.patch,
+                  \*.path,*.pbtxt,*.pc,*.php,*.php3,*.php4,*.php5,*.php7,*.phps,
+                  \*.phpt,*.phtml,*.pl,*.plot,*.plt,*.pm,*.pmc,*.pod,*.pp,
+                  \*.properties,*.proto,*.protobuf,*.protodevel,*.prototxt,*.ps1,
+                  \*.psd1,*.psm1,*.pub,*.purs,*.pxd,*.pxi,*.py,*.py3,*.pyi,
+                  \*.pyw,*.pyx,*.rahit,*.rails,*.rcall,*.rchit,*.reg,*.rgen,
+                  \*.rhtml,*.rint,*.rmiss,*.rpy,*.s,*.sarif,*.scgi_params,
+                  \*.scm,*.scope,*.service,*.sh,*.shtml,*.sld,*.slice,*.socket,
+                  \*.ss,*.swap,*.t,*.tab,*.target,*.task,*.tesc,*.tese,*.tex,
+                  \*.textpb,*.textproto,*.timer,*.troff,*.twig,*.txt,*.url,
+                  \*.uwsgi_params,*.vert,*.volume,*.vs,*.vsh,*.vshader,*.wiki,
+                  \*.wikipedia,*.xhtml,*.yaws,*.zig,*.zlogin,*.zlogout,*.zon,
+                  \*.zprofile,*.zsh,*.zshenv,*.zshrc,.Dockerfile,
+                  \.HTACCESS,.HTGROUPS,.HTPASSWD,
+                  \.bash_aliases,.bash_completions,.bash_functions,.bash_login,
+                  \.bash_logout,.bash_variables,.bashrc,.coveragerc,.editorconfig,
+                  \.env,.env.default,.env.defaults,.env.dev,.env.development,
+                  \.env.development.local,.env.dist,.env.dusk.local,.env.example,
+                  \.env.local,.env.prod,.env.production,.env.production.local,
+                  \.env.sample,.env.staging,.env.template,.env.test,.env.test.local,
+                  \.env.testing,.envrc,.flaskenv,.git,.gitattributes,.gitconfig,
+                  \.gitignore,.gitlint,.gitmodules,.hgrc,.htaccess,.htgroups,
+                  \.htpasswd,.mailmap,.profile,.pylintrc,.textmate_init,.zlogin,
+                  \.zlogout,.zprofile,.zshenv,.zshrc,
+                  \CMakeCache.txt,CMakeLists.txt,Makefile.am,Makefile.in,Pipfile.lock,
+                  \c++,cmd-help,coffee.erb,conf.erb,cron.d,css.erb,css.less,
+                  \css.liquid,env.example,env.sample,env.template,flake.lock,
+                  \git-rebase-todo,go.mod,go.sum,go.work,
+                  \h++,h++.in,h.in,hh.in,hpp.in,htm.j2,html.eex,html.erb,
+                  \html.j2,html.leex,html.twig,httpd.conf,hxx.in,js.erb,
+                  \known_hosts.old,ls.erb,makefile.am,makefile.in,mime.types,
+                  \nginx.conf,paru.conf,pb.txt,proto.text,pxd.in,pxi.in,pyx.in,
+                  \show-nonprintable,sources.list,xhtml.j2,xml.j2},
+                  \ bat --color always --wrap never --pager never --plain %c
+
+
+" @syntax_highlighting: HIGHLIGHT
+" -------------------------------
 " Get available list and formated using:
 " highlight --list-scripts langs
-" s/.*: *\(.*\)/\1
-" s/\(^\S\+$\)/fileviewer *.\1 highlight -0 ansi --syntax \1
-" sort
-" s/ /,*./g
-" s/,\*\.(//
-" s/,\*\.)//
-" s/\(^[a-z0-9]*\),\(.*\)/fileviewer *.\1,\2 highlight -0 ansi --syntax \1
 
 " 16-COLOR TERMINAL
 fileviewer *.abap,*.abp highlight -O ansi --syntax abap
@@ -578,7 +663,7 @@ filextype {go.mod},
 fileviewer {*/,.*/,../},
       \ lsd --almost-all --color=always --icon=always --group-directories-first --blocks=permission --blocks=git --blocks=name,
       \ lsd --almost-all --color=always --icon=always --group-directories-first --tree --depth=3,
-      \ stat %f | highlight -O ansi --syntax bash,
+      \ stat %f | bat --color always --wrap never --paging never --plain -l bash,
       \ ls --color=always
 
 "  DATABASE
@@ -626,6 +711,7 @@ fileviewer {*.pdf},<application/pdf>
       \ pdftotext -raw -nopgbrk %c -,
       " Maintains columns, hyphenation etc.
       \ pdftotext -nopgbrk -layout %c -,
+      " PDF Metadata
       \ pdfinfo %c,
       " Actual PDF Binary Data
       \ highlight -O ansi --syntax pdf,
@@ -680,8 +766,8 @@ filextype {*.bmp,*.jpg,*.jpeg,*.png,*.xpm},<image/*>
       \ {Edit in NeoVim}
       \ nvim %f,
 fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-      \ exiv2 %f 2> /dev/null | highlight -O ansi --syntax conf,
-      \ exiv2 -PEkt %f 2> /dev/null | highlight -O ansi --syntax conf,
+      \ exiv2 %f 2> /dev/null | bat --color always --wrap never --paging never --plain -l conf,
+      \ exiv2 -PEkt %f 2> /dev/null | bat --color always --wrap never --paging never --plain -l conf,
       \ kitten icat --silent --transfer-mode=file --place=%pwx%ph@%pxx%py %c >/dev/tty </dev/tty %N
       \ %pc
       \ kitten icat --clear --silent >/dev/tty </dev/tty %N
@@ -708,8 +794,8 @@ fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
       \*.fl[icv],*.m2v,*.mov,*.webm,*.mts,*.m4v,*.r[am],*.qt,*.divx,
       \*.as[fx],*.unknown_video},<video/*>
       \ $VIFM/scripts/ffprobe.sh %c,
-      \ ffprobe -hide_banner -v error -pretty -print_format json -show_private_data -show_format -show_streams  %c | highlight -O ansi --syntax json,
-      \ ffprobe -hide_banner -pretty %c 2>&1 | highlight -O ansi --syntax ini
+      \ ffprobe -hide_banner -v error -pretty -print_format json -show_private_data -show_format -show_streams  %c | bat --color always --wrap never --paging never --plain -l json,
+      \ ffprobe -hide_banner -pretty %c 2>&1 | bat --color always --wrap never --paging never --plain -l ini
 
 "  OFFICE FILES
 filextype { *.odt,*.doc,*.docx,*.odp,*.pptx,*.ppt},

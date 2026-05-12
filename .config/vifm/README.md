@@ -77,9 +77,10 @@ Ever in need of GUI File Explorer features? Use `gn` to Goto Nemo File Manager.
 | Package Name | Description                             | Src    |
 | ------------ | --------------------------------------- | ------ |
 | git          | Git Status on .git/                     | pacman |
-| highlight    | Code Syntax Highlighter                 | pacman |
 | lsd          | Better file list view                   | pacman |
 | xsv          | View CSV in a neat table                | pacman |
 | ffmpeg       | View video/audio metadata using ffprobe | pacman |
 | exiv2        | Image EXIF metadata                     | pacman |
 | odt2txt      | View .odt files                         | pacman |
+
+Syntax Highlighting: bat / highlight

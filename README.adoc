@@ -1,4 +1,4 @@
-= Hunter OS
+= Hunter OS - pass:[<span title="Wánzhěng">完整</span>]
 
 // ============================= [ VARIABLES ] ============================= //
 
@@ -125,8 +125,8 @@ Click the links below for a detailed documentation.
 == 🍇 Directed Diagram Denoting Documented Dependencies
 
 |===
-| 🔴 | Required Dependency
-| 🟡 | Optional Dependency
+| 🔴 | Required Interconnected Dependency
+| 🟡 | Optional Interconnected Dependency
 |===
 
 [source,mermaid,subs=attributes+]
@@ -144,11 +144,9 @@ swww{{🔴 swww}}
 vifm(<a href='{gh-repo-master}/.config/vifm'>ViFM</a>)
 ls{{🟡 lsd / ls}}
 cat{{🟡 bat / cat}}
-find{{🟡 fd / find}}
+find{{🔴 fd}}
 grep{{🟡 ripgrep / grep}}
-exif{{🟡 exiv2}}
 tmux{{🟡 tmux}}
-syntax{{🟡 highlight}}
 nvim(<a href='{gh-nvim}'>NeoVim</a>)
 fish(<a href='{gh-repo-master}/.config/fish/'>Fish Shell</a>)
 cd{{🟡 zoxide / cd}}
@@ -169,13 +167,12 @@ run --> tmux & nvim
 
 kitty --scrollback pager--> nvim
 kitty --default shell--> fish
-fish --> ls & vifm & cd & git & cat & find & prompt
+fish --> ls & vifm & cd & git & cat & prompt
 cd --> ls --> nf
 prompt & fish --$VIFM_MODE--> vifm
 fish --$editor--> nvim
 vifm --> ls & nf
-vifm --exif data--> exif
-vifm --syntax highlighting--> syntax
+vifm --syntax highlighting--> cat
 vifm --file search--> fzf & find
 nvim --vifm.vim--> vifm
 vifm --$editor--> nvim
@@ -450,7 +447,6 @@ NOTE: Before installing jdk-openjdk, make sure to yeet out the pre-installed jav
 | fd                | Faster alternative to find command    | pacman
 | ffmpegthumbnailer | Video Thumbnailer                     | pacman
 | fzf               | Fuzzy Finder Utility                  | pacman
-| highlight         | Syntax Highlighter                    | pacman
 | jq                | CLI JSON Processor                    | pacman
 | libqalculate      | CLI NLP Calculator                    | pacman
 | lsd               | ls with Nerd Font support             | pacman
@@ -983,8 +979,10 @@ technology inspired ambient nudging, Automation and Proactive Computing.
 
 [discrete]
 .Core Philosophies
+- Eliminating friction between intent and execution
 - Computers and tools should understand context, intent and work for humans.
 - Environment should support cognitive flow, not disrupt or redirect it.
+- Expanding the Self by removing the boundaries of where the Self ends and tools begin.
 - Interactions should be reproducible and logically consistent to create a mental model that will be transferred to human muscle memory so that the interface disappears over time and only intent exists.
 
 link:{gh-run}[Run]: Automating project initialization and environment setup.
