@@ -42,13 +42,3 @@ function cat
         end
     end
 end
-
-# FIND -> FD
-# =========
-function find
-    if command -q fd
-        fd $argv
-    else
-        command find $argv
-    end
-end
