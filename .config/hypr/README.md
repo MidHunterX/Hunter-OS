@@ -118,7 +118,9 @@ Press `SUPER + T` to enter window **Transformation** Mode and activate the follo
 | CTRL + H,J,K,L  | Resize window |
 | ESC             | Exit Mode     |
 
-Press `SCROLL_LOCK` to enter **Voice_Typing** Mode. Say something to type and press `SCROLL_LOCK` again.
+Press `SCROLL_LOCK` to toggle **Voice_Typing** Mode. Say something to type and press `SCROLL_LOCK` again.
+
+Press `SUPER + W` to enter **Whisper** Mode, which is the same as **Voice_Typing** Mode. Then exit with `ESC` or `W`.
 
 > [!NOTE]
 > The voice typing daemon will stop after 5 minutes of no use to save resources.
