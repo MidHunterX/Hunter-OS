@@ -5,6 +5,7 @@
 
 -- VARIABLES
 -- ---------
+local mainMod = "SUPER"
 local terminal = "kitty"
 local browser = "python ~/Mid_Hunter/scripts/assistants/hyprchan/run_firefox.py"
 
@@ -19,12 +20,6 @@ launcher()
 
 NOTIFY_SEND = "notify-send -r 69"
 NOTIFY_CLOSE = "dunstctl close 69"
-local mainMod = "SUPER"
-
-local whisper = "perl ~/.config/hypr/scripts/whisper.pl"
-hl.on("hyprland.start", function()
-    hl.exec_cmd("vicinae server")
-end)
 
 
 -- █▀▄▀█ █ █▀ █▀▀
@@ -44,6 +39,8 @@ hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("bash ~/Mid_Hunter/scripts/ki
 -- █░█ █▀█ █ █▀▀ █▀▀   ▀█▀ █▄█ █▀█ █ █▄░█ █▀▀   █▀▄▀█ █▀█ █▀▄ █▀▀
 -- ▀▄▀ █▄█ █ █▄▄ ██▄   ░█░ ░█░ █▀▀ █ █░▀█ █▄█   █░▀░█ █▄█ █▄▀ ██▄
 -- Voice Typing mode [SCROLL_LOCK] to toggle
+local whisper = "perl ~/.config/hypr/scripts/whisper.pl"
+
 ---@param status "start"|"stop"
 function VoiceType(status)
     if status == "start" then
@@ -107,11 +104,6 @@ local function cursor(visibility)
     end
 end
 
-hl.bind("SUPER + C", function()
-    hl.dispatch(hl.dsp.submap("Cursor"))
-    cursor("show")
-end)
-
 hl.define_submap("Cursor", function()
     -- Source: https://github.com/moverest/wl-kbptr
     -- Find position and Jump Cursor to it (requires wl-kbptr)
@@ -122,11 +114,6 @@ hl.define_submap("Cursor", function()
     end)
 
     -- SUBMAP: ColorPicker
-    hl.bind("C", function()
-        hl.dispatch(hl.dsp.submap("ColorPicker"))
-        hl.dispatch(hl.dsp.exec_cmd("hyprpicker | wl-copy"))
-    end)
-
     hl.define_submap("ColorPicker", function()
         hl.bind("j", hl.dsp.exec_cmd("wlrctl pointer move 0 1"), { repeating = true })
         hl.bind("k", hl.dsp.exec_cmd("wlrctl pointer move 0 -1"), { repeating = true })
@@ -136,7 +123,6 @@ hl.define_submap("Cursor", function()
         hl.bind("SHIFT + K", hl.dsp.exec_cmd("wlrctl pointer move 0 -5"), { repeating = true })
         hl.bind("SHIFT + L", hl.dsp.exec_cmd("wlrctl pointer move 5 0"), { repeating = true })
         hl.bind("SHIFT + H", hl.dsp.exec_cmd("wlrctl pointer move -5 0"), { repeating = true })
-
         -- Pick Color -> Keep mouse away -> Return full control to user
         hl.bind("i", function()
             hl.dispatch(hl.dsp.exec_cmd("wlrctl pointer click left"))
@@ -144,12 +130,15 @@ hl.define_submap("Cursor", function()
             cursor("hide")
             hl.dispatch(hl.dsp.submap("reset"))
         end)
-
         -- exit ColorPicker mode
         hl.bind("escape", function()
             hl.dispatch(hl.dsp.exec_cmd("pkill hyprpicker"))
             hl.dispatch(hl.dsp.submap("Cursor"))
         end)
+    end)
+    hl.bind("C", function()
+        hl.dispatch(hl.dsp.submap("ColorPicker"))
+        hl.dispatch(hl.dsp.exec_cmd("hyprpicker | wl-copy"))
     end)
 
     -- Cursor movement (requires wlrctl)
@@ -190,6 +179,10 @@ hl.define_submap("Cursor", function()
         hl.dispatch(hl.dsp.submap("reset"))
         cursor("hide")
     end)
+end)
+hl.bind("SUPER + C", function()
+    hl.dispatch(hl.dsp.submap("Cursor"))
+    cursor("show")
 end)
 
 
@@ -293,8 +286,7 @@ hl.define_submap("Execute", function()
     -- hl.bind("escape", function() hl.dispatch(hl.dsp.submap("reset")); hl.exec_cmd("dunstctl close 69") end)
     local ExecuteMenu =
     [[ "Execute Mode (e)" "--" " b - [Brightness Mode]\n e - Entertainment\n f - Firefox Browser\n k - Kitty Terminal\n n - Nvim Input\n p - Printscreen\n P - Printscreen OCR \n v - [Volume Mode]\n w - Refresh Waybar\n escape - Exit" ]]
-    hl.bind("SHIFT + slash",
-        hl.dsp.exec_cmd(NOTIFY_SEND .. ExecuteMenu))
+    hl.bind("SHIFT + slash", hl.dsp.exec_cmd(NOTIFY_SEND .. ExecuteMenu))
 end)
 
 
