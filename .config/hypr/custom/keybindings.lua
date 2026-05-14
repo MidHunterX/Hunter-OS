@@ -201,30 +201,30 @@ hl.define_submap("Execute", function()
     -- SUBMAP: Brightness
     local BrightnessMenu =
     [[ "Brightness Mode (e > b)" "--" " u - brightness +2\n d - brightness -1\n x - learn\n l - lock toggle\n q - exit\n esc - exit" ]]
-    hl.bind("B", function()
-        hl.define_submap("Brightness", function()
-            hl.bind("u", hl.dsp.exec_cmd("swayosd-client --brightness +2"), { repeating = true })
-            hl.bind("d", hl.dsp.exec_cmd("swayosd-client --brightness -1"), { repeating = true })
-            local exit_brightness = function()
-                hl.dispatch(hl.dsp.submap("reset"))
-                hl.exec_cmd(NOTIFY_CLOSE)
-            end
-            -- lock/unlock
-            hl.bind("l", function()
-                hl.exec_cmd("perl ~/automata/radiance/worker.pl --toggle")
-                exit_brightness()
-            end)
-            -- learn and exit
-            hl.bind("x", function()
-                hl.exec_cmd("perl ~/automata/radiance/learn.pl")
-                exit_brightness()
-            end)
-            -- exit
-            hl.bind("q", exit_brightness)
-            hl.bind("escape", exit_brightness)
-            -- help
-            hl.bind("SHIFT + slash", hl.dsp.exec_cmd(NOTIFY_SEND .. BrightnessMenu))
+    hl.define_submap("Brightness", function()
+        hl.bind("u", hl.dsp.exec_cmd("swayosd-client --brightness +2"), { repeating = true })
+        hl.bind("d", hl.dsp.exec_cmd("swayosd-client --brightness -1"), { repeating = true })
+        local exit_brightness = function()
+            hl.dispatch(hl.dsp.submap("reset"))
+            hl.exec_cmd(NOTIFY_CLOSE)
+        end
+        -- lock/unlock
+        hl.bind("l", function()
+            hl.exec_cmd("perl ~/automata/radiance/worker.pl --toggle")
+            exit_brightness()
         end)
+        -- learn and exit
+        hl.bind("x", function()
+            hl.exec_cmd("perl ~/automata/radiance/learn.pl")
+            exit_brightness()
+        end)
+        -- exit
+        hl.bind("q", exit_brightness)
+        hl.bind("escape", exit_brightness)
+        -- help
+        hl.bind("SHIFT + slash", hl.dsp.exec_cmd(NOTIFY_SEND .. BrightnessMenu))
+    end)
+    hl.bind("B", function()
         hl.dispatch(hl.dsp.submap("Brightness"))
         hl.exec_cmd(NOTIFY_SEND .. BrightnessMenu)
     end)
@@ -256,20 +256,26 @@ hl.define_submap("Execute", function()
     end)
 
     -- SUBMAP: Volume
+    local VolumeMenu =
+    [[ "Volume Mode (e > v)" "--" " u - volume +1\n d - volume -1\n m - mute\n x - exit\n q - exit\n escape - exit" ]]
+    hl.define_submap("Volume", function()
+        hl.bind("u", hl.dsp.exec_cmd("swayosd-client --output-volume raise"), { repeating = true })
+        hl.bind("d", hl.dsp.exec_cmd("swayosd-client --output-volume lower"), { repeating = true })
+        hl.bind("m", hl.dsp.exec_cmd("swayosd-client --output-volume mute-toggle"))
+        local exit_volume = function()
+            hl.dispatch(hl.dsp.submap("reset"))
+            hl.exec_cmd(NOTIFY_CLOSE)
+        end
+        -- exit submap
+        hl.bind("x", exit_volume)
+        hl.bind("q", exit_volume)
+        hl.bind("escape", exit_volume)
+        -- help
+        hl.bind("SHIFT + slash", hl.dsp.exec_cmd(NOTIFY_SEND .. VolumeMenu))
+    end)
     hl.bind("V", function()
-        local VolumeMenu =
-        [[ "Volume Mode (e > v)" "--" " u - volume +1\n d - volume -1\n m - mute\n x - exit\n q - exit\n escape - exit" ]]
-        hl.define_submap("Volume", function()
-            hl.bind("u", hl.dsp.exec_cmd("swayosd-client --output-volume raise"), { repeating = true })
-            hl.bind("d", hl.dsp.exec_cmd("swayosd-client --output-volume lower"), { repeating = true })
-            hl.bind("m", hl.dsp.exec_cmd("swayosd-client --output-volume mute-toggle"))
-            -- exit submap
-            hl.bind("x", hl.dsp.submap("reset"))
-            hl.bind("q", hl.dsp.submap("reset"))
-            hl.bind("escape", hl.dsp.submap("reset"))
-            -- help
-            hl.bind("SHIFT + slash", hl.dsp.exec_cmd(NOTIFY_SEND .. VolumeMenu))
-        end)
+        hl.dispatch(hl.dsp.submap("Volume"))
+        hl.exec_cmd(NOTIFY_SEND .. VolumeMenu)
     end)
 
     -- Toggle Waybar
