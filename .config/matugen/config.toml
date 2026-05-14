@@ -13,8 +13,8 @@ output_path = '~/.config/tmux/colors.conf'
 post_hook   = 'tmux source-file ~/.config/tmux/tmux.conf > /dev/null 2>&1'
 
 [templates.hyprland]
-input_path  = '~/.config/matugen/templates/hyprland.conf'
-output_path = '~/.config/hypr/colors/2_colors.conf'
+input_path  = '~/.config/matugen/templates/hyprland.lua'
+output_path = '~/.config/hypr/colors/colors.lua'
 post_hook   = 'hyprctl reload config-only >/dev/null'
 
 [templates.vicinae]
