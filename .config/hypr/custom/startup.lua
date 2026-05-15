@@ -19,6 +19,6 @@ hl.on("hyprland.start", function()
     -- hl.exec_cmd("python ~/Mid_Hunter/scripts/assistants/archchan/notify_battery.py") -- Replaced by Quickshell pixelbar
     hl.exec_cmd("python ~/Mid_Hunter/scripts/assistants/archchan/notify_heat.py")
 
-    -- move cursor aside
-    hl.exec_cmd("sleep 0.1 && hyprctl dispatch movecursor 1920 540")
+    -- yeet cursor aside
+    hl.dispatch(hl.dsp.cursor.move({ x = 1920, y = 540 }))
 end)

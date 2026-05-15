@@ -286,6 +286,7 @@ hl.define_submap("Execute", function()
     -- hl.bind("escape", function() hl.dispatch(hl.dsp.submap("reset")); hl.exec_cmd("dunstctl close 69") end)
     local ExecuteMenu =
     [[ "Execute Mode (e)" "--" " b - [Brightness Mode]\n e - Entertainment\n f - Firefox Browser\n k - Kitty Terminal\n n - Nvim Input\n p - Printscreen\n P - Printscreen OCR \n v - [Volume Mode]\n w - Refresh Waybar\n escape - Exit" ]]
+    -- help
     hl.bind("SHIFT + slash", hl.dsp.exec_cmd(NOTIFY_SEND .. ExecuteMenu))
 end)
 
