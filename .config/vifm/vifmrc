@@ -288,88 +288,407 @@ endif
 " Get available list using:
 " bat --list-languages
 
-" NOTE: VIFM fileviewer extension regex seem to have a limit
+" NOTE: VIFM fileviewer extension regex seem to have a memory limit
+" everything after the limit gets cut-off
 " so, remove unwanted extensions to shorten the list
 
-" I removed these:
-" sublime-settings,sublime-menu,sublime-keymap,sublime-mousemap,
+" Here's what I chose to remove:
+" ------------------------------
+" " passwd:
+" \passwd,
+" " JSON:
+" \Pipfile.lock,*.jsonl,*.jsonc,*.jsonld,*.geojson,
+" \*.ndjson,flake.lock,*.sarif,
+" \sublime-settings,sublime-menu,sublime-keymap,sublime-mousemap,
 " \sublime-theme,sublime-build,sublime-project,sublime-completions,
 " \sublime-commands,sublime-macro,sublime-color-scheme,
-" \*.SConstruct,*.Sconstruct,*.sconstruct,*.SConscript,
+" " YAML:
+" \sublime-syntax,CITATION.cff,.clang-format,fish_history,
+" " Bourne Again Shell (bash):
+" \.textmate_init,.zlogin,.zlogout,.zprofile,.zshenv,.zshrc,
+" \PKGBUILD,ebuild,eclass,.ksh,.kshrc,
+" " Fortran Namelist:
+" \namelist,
+" " Git Attributes:
+" \attributes,gitattributes,.gitattributes,
+" " Git Commit:
+" \COMMIT_EDITMSG,MERGE_MSG,TAG_EDITMSG,
+" " Git Config:
+" \.gitconfig,.gitmodules,
+" " debsources:
+" \sources.list,
+" " Diff:
+" \*.diff,*.patch,*.debdiff,
+" " DotENV:
+" \.env.template,.env.test,.env.test.local,.env.testing,
+" \.env.dusk.local,.env.staging,.env.default,
+" \.env.defaults,.envrc,.flaskenv,
+" \env,env.example,env.sample,env.template,
+" " Manpage:
+" \*.man,
+" " CMakeCache:
+" \CMakeCache.txt,
+" " AppleScript:
+" \*.applescript,
+" " ARM Assembly:
+" \*.s,*.S,
+" " syslog:
+" \*.syslog,
+" " SystemVerilog:
+" \*.sv,*.svh,*.vh,
+" " Tab Separated Values:
+" \*.tsv,
+" " varlink:
+" \*.varlink,
+" " Verilog:
+" \*.v,*.V,
+" " VimHelp:
+" \*.vimhelp,
+" " fstab:
+" \fstab,crypttab,mtab,
+" " Hosts File:
+" \hosts,
+
+" I removed these due to low impact
+" ---------------------------------
+" " MATLAB:
+" \*.matlab,
+" " MediaWiki:
+" \*.mediawiki,*.wikipedia,*.wiki,
+" " Regular Expression:
+" \*.re,
+" " Ruby:
+" \Appfile,Appraisals,Berksfile,Brewfile,Cheffile,Deliverfile,
+" \Fastfile,Guardfile,Podfile,Rantfile,Scanfile,
+" \Snapfile,Thorfile,Vagrantfile,
+" \*.capfile,*.cgi,config.ru,*.fcgi,*.gemspec,*.irbrc,*.jbuilder,
+" \*.podspec,*.prawn,*.rabl,*.rake,*.rbx,*.rjs,ruby.rail,
+" \*.simplecov,*.thor,
+" " Protocol Buffer (TEXT):
+" \pb.txt,proto.text,*.textpb,*.pbtxt,*.prototxt,*.textproto,
 
 fileviewer {
-                  \*.fish_history,
-                  \*.CFG,*.COMMIT_EDITMSG,*.Cakefile,*.Containerfile,*.DOT,
-                  \*.Dockerfile,*.Emakefile,
-                  \*.F,*.F03,*.F08,*.F77,*.F90,*.F95,*.FOR,*.FPP,
-                  \*.GNUmakefile,*.HTACCESS,*.HTGROUPS,*.HTPASSWD,
-                  \*.INF,*.INI,*.Jenkinsfile,*.MERGE_MSG,*.Makefile,
-                  \*.OCamlMakefile,*.PKGBUILD,*.REG,*.S,*.Slakefile,
-                  \*.TAG_EDITMSG,*.URL,
-                  \*.ad,*.adb,*.adoc,*.adp,*.ads,*.as,*.asa,*.asciidoc,
-                  \*.asp,*.attributes,*.authorized_keys,*.authorized_keys2,
-                  \*.automount,*.awk,*.babel,*.bash,*.bash_login,
-                  \*.bash_logout,*.bash_profile,*.bash_profile,*.bashrc,
-                  \*.bat,*.bib,*.bnsh,*.bnsi,*.bsh,*.build,
-                  \*.c,*.cabal,*.cc,*.cfc,*.cfg,*.cfm,*.cfml,*.cjs,*.cl,
-                  \*.clisp,*.clj,*.cljc,*.cljs,*.cmake,*.cmd,*.coffee,*.comp,
-                  \*.cp,*.cpp,*.cpuinfo,*.cpy,*.cr,*.crontab,*.crypttab,*.cs,
-                  \*.cson,*.css,*.csx,*.cxx,*.d,*.dart,*.debdiff,*.desktop,
-                  \*.device,*.di,*.diff,*.dnssd,*.dockerfile,*.dot,*.dpr,
-                  \*.ebuild,*.eclass,*.edn,*.el,*.elm,*.emakefile,*.eml,*.env,
-                  \*.envvars,*.epp,*.erb,*.erl,*.es6,*.escript,*.ex,*.exclude,
-                  \*.exs,*.f,*.f03,*.f08,*.f77,*.f90,*.f95,*.fasl,
-                  \*.fastcgi_params,*.fish,*.flatpakref,*.flatpakrepo,*.for,*.fpp,
-                  \*.frag,*.fs,*.fsh,*.fshader,*.fsi,*.fstab,*.fsx,*.gd,
-                  \*.geojson,*.geom,*.gitattributes,*.gitconfig,*.gitignore,
-                  \*.gitlog,*.glsl,*.gnu,*.gnuplot,*.go,*.gp,*.gpl,*.gpr,*.gql,
-                  \*.gradle,*.graphql,*.graphqls,*.groff,*.groovy,*.group,*.gs,
-                  \*.gsh,*.gshader,*.gv,*.gvy,*.gyp,*.gypi,*.h,*.help,*.hgrc,
-                  \*.hh,*.hosts,*.hpp,*.hrl,*.hs,*.htaccess,*.htc,*.htgroups,
-                  \*.htm,*.html,*.htpasswd,*.http,*.hxx,*.idr,*.image,*.inf,
-                  \*.ini,*.inl,*.ipp,*.ipynb,*.j2,*.java,*.jinja,*.jinja2,
-                  \*.jl,*.jq,*.js,*.json,*.jsonc,*.jsonl,*.jsonld,*.jsonnet,
-                  \*.jsp,*.jsx,*.known_hosts,*.ksh,*.kshrc,*.kt,*.kts,*.kube,
-                  \*.l,*.lean,*.less,*.lhs,*.libjsonnet,*.libsonnet,*.link,
-                  \*.lisp,*.ll,*.lng,*.log,*.ls,*.lsp,*.ltx,*.lua,*.m,*.mailmap,
-                  \*.mak,*.make,*.makefile,*.man,*.markdn,*.markdown,*.matlab,
-                  \*.mboxz,*.mbx,*.md,*.mdown,*.mediawiki,*.meminfo,*.mesh,
-                  \*.mjs,*.mk,*.mkd,*.ml,*.mli,*.mll,*.mly,*.mm,*.mount,*.msg,
-                  \*.mtab,*.mud,*.namelist,*.ndjson,*.netdev,*.network,*.network,
-                  \*.nimble,*.nims,*.ninja,*.nix,*.nsdinc,*.nse,*.nsh,*.nsi,
-                  \*.nspawn,*.odin,*.org,*.p,*.pac,*.pas,*.passwd,*.patch,
-                  \*.path,*.pbtxt,*.pc,*.php,*.php3,*.php4,*.php5,*.php7,*.phps,
-                  \*.phpt,*.phtml,*.pl,*.plot,*.plt,*.pm,*.pmc,*.pod,*.pp,
-                  \*.properties,*.proto,*.protobuf,*.protodevel,*.prototxt,*.ps1,
-                  \*.psd1,*.psm1,*.pub,*.purs,*.pxd,*.pxi,*.py,*.py3,*.pyi,
-                  \*.pyw,*.pyx,*.rahit,*.rails,*.rcall,*.rchit,*.reg,*.rgen,
-                  \*.rhtml,*.rint,*.rmiss,*.rpy,*.s,*.sarif,*.scgi_params,
-                  \*.scm,*.scope,*.service,*.sh,*.shtml,*.sld,*.slice,*.socket,
-                  \*.ss,*.swap,*.t,*.tab,*.target,*.task,*.tesc,*.tese,*.tex,
-                  \*.textpb,*.textproto,*.timer,*.troff,*.twig,*.txt,*.url,
-                  \*.uwsgi_params,*.vert,*.volume,*.vs,*.vsh,*.vshader,*.wiki,
-                  \*.wikipedia,*.xhtml,*.yaws,*.zig,*.zlogin,*.zlogout,*.zon,
-                  \*.zprofile,*.zsh,*.zshenv,*.zshrc,.Dockerfile,
-                  \.HTACCESS,.HTGROUPS,.HTPASSWD,
-                  \.bash_aliases,.bash_completions,.bash_functions,.bash_login,
-                  \.bash_logout,.bash_variables,.bashrc,.coveragerc,.editorconfig,
-                  \.env,.env.default,.env.defaults,.env.dev,.env.development,
-                  \.env.development.local,.env.dist,.env.dusk.local,.env.example,
-                  \.env.local,.env.prod,.env.production,.env.production.local,
-                  \.env.sample,.env.staging,.env.template,.env.test,.env.test.local,
-                  \.env.testing,.envrc,.flaskenv,.git,.gitattributes,.gitconfig,
-                  \.gitignore,.gitlint,.gitmodules,.hgrc,.htaccess,.htgroups,
-                  \.htpasswd,.mailmap,.profile,.pylintrc,.textmate_init,.zlogin,
-                  \.zlogout,.zprofile,.zshenv,.zshrc,
-                  \CMakeCache.txt,CMakeLists.txt,Makefile.am,Makefile.in,Pipfile.lock,
-                  \c++,cmd-help,coffee.erb,conf.erb,cron.d,css.erb,css.less,
-                  \css.liquid,env.example,env.sample,env.template,flake.lock,
-                  \git-rebase-todo,go.mod,go.sum,go.work,
-                  \h++,h++.in,h.in,hh.in,hpp.in,htm.j2,html.eex,html.erb,
-                  \html.j2,html.leex,html.twig,httpd.conf,hxx.in,js.erb,
-                  \known_hosts.old,ls.erb,makefile.am,makefile.in,mime.types,
-                  \nginx.conf,paru.conf,pb.txt,proto.text,pxd.in,pxi.in,pyx.in,
-                  \show-nonprintable,sources.list,xhtml.j2,xml.j2},
+      " ActionScript:
+                        \*.as,
+      " Ada:
+                        \*.adb,*.ads,*.gpr,
+      " Apache Conf:
+                        \envvars,htaccess,HTACCESS,htgroups,HTGROUPS,htpasswd,HTPASSWD,
+                        \.htaccess,.HTACCESS,.htgroups,.HTGROUPS,.htpasswd,.HTPASSWD,httpd.conf,
+      " AsciiDoc (Asciidoctor):
+                        \*.adoc,*.ad,*.asciidoc,
+      " ASP:
+                        \*.asa,
+      " Authorized Keys:
+                        \authorized_keys,*.pub,authorized_keys2,
+      " AWK:
+                        \*.awk,
+      " Batch File:
+                        \*.bat,*.cmd,
+      " BibTeX:
+                        \*.bib,
+      " Bourne Again Shell (bash):
+                        \*.sh,*.bash,*.zsh,*.ash,
+                        \.bash_aliases,.bash_completions,.bash_functions,.bash_login,
+                        \.bash_logout,.bash_profile,.bash_variables,.bashrc,.profile,
+      " C:
+                        \*.c,
+      " C#:
+                        \*.cs,*.csx,
+      " C++:
+                        \*.cpp,*.cc,*.cp,*.cxx,*.c++,*.h,*.hh,*.hpp,*.hxx,*.h++,
+                        \*.inl,*.ipp,
+      " Cabal:
+                        \*.cabal,
+      " CFML:
+                        \*.cfml,*.cfm,*.cfc,
+      " Clojure:
+                        \*.clj,*.cljc,*.cljs,*.edn,
+      " CMake:
+                        \CMakeLists.txt,*.cmake,
+      " CMake C Header:
+                        \*.h.in,
+      " CMake C++ Header:
+                        \*.hh.in,*.hpp.in,*.hxx.in,*.h++.in,
+      " CoffeeScript:
+                        \*.coffee,Cakefile,coffee.erb,*.cson,
+      " Crystal:
+                        \*.cr,
+      " CSS:
+                        \*.css,*.css.erb,*.css.liquid,
+      " D:
+                        \*.d,*.di,
+      " Dart:
+                        \*.dart,
+      " Dockerfile:
+                        \Dockerfile,dockerfile,Containerfile,
+      " DotENV:
+                        \.env,.env.dist,.env.local,.env.sample,.env.example,
+                        \.env.dev,.env.development,.env.development.local,
+                        \.env.prod,.env.production,.env.production.local,
+      " Elixir:
+                        \*.ex,*.exs,
+      " Elm:
+                        \*.elm,
+      " Email:
+                        \*.eml,*.msg,*.mbx,*.mboxz,
+      " Erlang:
+                        \*.erl,*.hrl,Emakefile,*.emakefile,*.escript,
+      " F#:
+                        \*.fs,*.fsi,*.fsx,
+      " Fish:
+                        \*.fish,
+      " Fortran (Fixed Form):
+                        \*.f,*.F,*.f77,*.F77,*.for,*.FOR,*.fpp,*.FPP,
+      " Fortran (Modern):
+                        \*.f90,*.F90,*.f95,*.F95,*.f03,*.F03,*.f08,*.F08,
+      " GDScript (Godot Engine):
+                        \*.gd,
+      " Git Ignore:
+                        \.gitignore,
+      " Git Log:
+                        \gitlog,
+      " Git Mailmap:
+                        \.mailmap,mailmap,
+      " Git Rebase Todo:
+                        \git-rebase-todo,
+      " GLSL:
+                        \*.vs,*.gs,*.vsh,*.fsh,*.gsh,*.vshader,*.fshader,
+                        \*.gshader,*.vert,*.frag,*.geom,*.tesc,*.tese,*.comp,
+                        \*.glsl,*.mesh,*.task,*.rgen,*.rint,*.rahit,*.rchit,
+                        \*.rmiss,*.rcall,
+      " gnuplot:
+                        \*.gp,*.gpl,*.gnuplot,*.gnu,*.plot,*.plt,
+      " Go:
+                        \*.go,
+      " Gomod:
+                        \go.mod,go.work,
+      " Gosum:
+                        \go.sum,
+      " GraphQL:
+                        \*.graphql,*.graphqls,*.gql,
+      " Groovy:
+                        \*.groovy,*.gvy,*.gradle,Jenkinsfile,
+      " Haskell:
+                        \*.hs,
+      " HTML:
+                        \*.html,*.htm,*.shtml,*.xhtml,
+      " HTML (ASP):
+                        \*.asp,
+      " HTML (EEx):
+                        \*.html.eex,*.html.leex,
+      " HTML (Erlang):
+                        \*.yaws,
+      " HTML (Jinja2):
+                        \*.htm.j2,*.html.j2,*.xhtml.j2,*.xml.j2,
+      " HTML (Rails):
+                        \*.rails,*.rhtml,*.erb,*.html.erb,
+      " HTML (Tcl):
+                        \*.adp,
+      " HTML (Twig):
+                        \*.twig,*.html.twig,
+      " HTTP Request and Response:
+                        \*.http,
+      " Idris:
+                        \*.idr,
+      " INI:
+                        \*.ini,*.INI,*.inf,*.INF,*.reg,*.REG,*.lng,*.cfg,*.CFG,
+                        \desktop,*.url,*.URL,.editorconfig,.coveragerc,
+                        \.pylintrc,.gitlint,.hgrc,paru.conf,
+      " Java:
+                        \*.java,*.bsh,
+      " Java Properties:
+                        \*.properties,
+      " Java Server Page (JSP):
+                        \*.jsp,
+      " JavaScript:
+                        \*.htc,
+      " JavaScript (Babel):
+                        \*.js,*.mjs,*.jsx,*.babel,*.es6,*.cjs,*.pac,
+      " JavaScript (Rails):
+                        \*.js.erb,
+      " Jinja2:
+                        \*.j2,*.jinja2,*.jinja,
+      " JQ:
+                        \*.jq,
+      " JSON:
+                        \*.json,
+                        \*.ipynb,
+      " jsonnet:
+                        \*.jsonnet,*.libsonnet,*.libjsonnet,
+      " Julia:
+                        \*.jl,
+      " Known Hosts:
+                        \known_hosts,known_hosts.old,
+      " Kotlin:
+                        \*.kt,*.kts,
+      " LaTeX:
+                        \*.tex,*.ltx,
+      " Lean 4:
+                        \*.lean,
+      " Less:
+                        \*.less,*.css.less,
+      " Lisp:
+                        \*.lisp,*.cl,*.clisp,*.l,*.mud,*.el,*.scm,*.ss,*.lsp,*.fasl,*.sld,
+      " Literate Haskell:
+                        \*.lhs,
+      " LiveScript:
+                        \*.ls,Slakefile,*.ls.erb,
+      " LLVM:
+                        \*.ll,
+      " log:
+                        \*.log,
+      " Lua:
+                        \*.lua,*.nse,
+      " Makefile:
+                        \make,GNUmakefile,makefile,Makefile,makefile.am,Makefile.am,
+                        \makefile.in,Makefile.in,OCamlMakefile,*.mak,*.mk,
+      " Markdown:
+                        \*.md,*.mdown,*.markdown,*.markdn,*.mkd,*.mdx,*.mdwn,
+      " nginx:
+                        \conf.erb,nginx.conf,mime.types,fastcgi_params,scgi_params,
+                        \uwsgi_params,
+      " Nim:
+                        \*.nim,*.nims,*.nimble,
+      " Ninja:
+                        \*.ninja,
+      " Nix:
+                        \*.nix,
+      " NSIS:
+                        \*.nsi,*.nsh,*.bnsi,*.bnsh,*.nsdinc,
+      " Objective-C:
+                        \*.m,
+      " Objective-C++:
+                        \*.mm,
+      " OCaml:
+                        \*.ml,*.mli,
+      " OCamllex:
+                        \*.mll,
+      " OCamlyacc:
+                        \*.mly,
+      " Odin:
+                        \*.odin,
+      " orgmode:
+                        \*.org,
+      " Pascal:
+                        \*.pas,*.p,*.dpr,
+      " Perl:
+                        \*.pl,*.pc,*.pm,*.pmc,*.pod,*.t,
+      " PHP:
+                        \*.php,*.php3,*.php4,*.php5,*.php7,*.phps,*.phpt,*.phtml,
+      " Plain Text:
+                        \*.txt,
+      " PowerShell:
+                        \*.ps1,*.psm1,*.psd1,
+      " Protocol Buffer:
+                        \*.proto,*.protobuf,*.protodevel,
+      " Puppet:
+                        \*.pp,*.epp,
+      " PureScript:
+                        \*.purs,
+      " Python:
+                        \*.py,*.py3,*.pyw,*.pyi,*.pyx,*.pyx.in,*.pxd,*.pxd.in,*.pxi,*.pxi.in,
+                        \*.rpy,*.cpy,
+                        \SConstruct,Sconstruct,sconstruct,SConscript,Snakefile,
+                        \*.gyp,*.gypi,
+                        \*.vpy,*.wscript,*.bazel,*.bzl,*.xsh,*.xonshrc,
+      " QML:
+                        \*.qml,*.qmlproject,
+      " R:
+                        \*.R,*.r,.Rprofile,
+      " Racket:
+                        \*.rkt,
+      " Rd (R Documentation):
+                        \*.rd,
+      " Rego:
+                        \*.rego,
+      " Requirements.txt:
+                        \requirements.txt,requirements.in,
+      " resolv:
+                        \resolv.conf,
+      " reStructuredText:
+                        \*.rst,*.rest,
+      " Robot Framework:
+                        \*.robot,*.resource,
+      " Ruby:
+                        \*.rb,Gemfile,Rakefile,
+      " Ruby Haml:
+                        \*.haml,
+      " Ruby on Rails:
+                        \*.rxml,*.builder,
+      " Ruby Slim:
+                        \*.slim,*.skim,
+      " Rust:
+                        \*.rs,*.ron,
+      " Salt State (SLS):
+                        \*.sls,
+      " Sass:
+                        \*.sass,
+      " Scala:
+                        \*.scala,*.sbt,*.sc,*.mill,
+      " SCSS:
+                        \*.scss,
+      " Separated Values:
+                        \*.csv,
+      " SML:
+                        \*.sml,*.cm,*.sig,
+      " Solidity:
+                        \*.sol,
+      " SQL:
+                        \*.sql,*.ddl,*.dml,
+      " SQL (Rails):
+                        \*.erbsql,*.sql.erb,
+      " SSH Config:
+                        \ssh_config,
+      " SSHD Config:
+                        \sshd_config,
+      " Strace:
+                        \*.strace,
+      " Stylus:
+                        \*.styl,*.stylus,
+      " Svelte:
+                        \*.svlt,*.svelte,
+      " Swift:
+                        \*.swift,
+      " Tcl:
+                        \*.tcl,
+      " Terraform:
+                        \*.tf,*.tfvars,*.hcl,
+      " TeX:
+                        \*.sty,*.cls,
+      " Textile:
+                        \*.textile,
+      " Todo.txt:
+                        \todo.txt,done.txt,
+      " TOML:
+                        \*.toml,*.tml,
+                        \Cargo.lock,Gopkg.lock,Pipfile,pdm.lock,poetry.lock,uv.lock,
+      " TypeScript:
+                        \*.ts,*.mts,*.cts,
+      " TypeScriptReact:
+                        \*.tsx,
+      " Typst:
+                        \*.typ,
+      " VHDL:
+                        \*.vhd,*.vhdl,*.vho,*.vht,
+      " VimL:
+                        \*.vim,vimrc,gvimrc,.vimrc,.gvimrc,.exrc,.nvimrc,
+                        \_vimrc,_gvimrc,_exrc,
+      " Vue Component:
+                        \*.vue,
+      " Vyper:
+                        \*.vy,
+      " WGSL:
+                        \*.wgsl,
+      " x86_64 Assembly:
+                        \*.yasm,*.nasm,*.asm,*.inc,*.mac,
+      " XML:
+                        \*.xml,*.xsd,*.xslt,*.tld,*.dtml,*.rng,*.rss,*.opml,*.svg,*.xaml,
+                        \*.csproj,*.vbproj,*.props,*.targets,
+      " YAML:
+                        \*.yaml,*.yml,
+      " Zig:
+                        \*.zig,*.zon },
                   \ bat --color always --wrap never --pager never --plain %c
 
 
