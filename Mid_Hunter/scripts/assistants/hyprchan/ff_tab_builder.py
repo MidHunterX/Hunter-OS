@@ -96,7 +96,7 @@ class TabScheduler:
                     due = True
 
             if due:
-                ff_attribs.extend(["-new-tab", url])
+                ff_attribs.extend(["--new-tab", url])
                 self.state[url] = today_iso
                 updated = True
 
@@ -124,7 +124,7 @@ class TabScheduler:
                     url_to_open = seq["date_map"][today_iso]
 
             if url_to_open:
-                ff_attribs.extend(["-new-tab", url_to_open])
+                ff_attribs.extend(["--new-tab", url_to_open])
                 self.state[name] = {
                     "last_run": today_iso,
                     "index": index,

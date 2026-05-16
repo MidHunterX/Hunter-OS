@@ -19,7 +19,7 @@ class HyprChan(BaseAssistant):
 
     def focus_window(self, pid: str | int):
         """Focuses the window with the given PID."""
-        self.execute_command(["hyprctl", "dispatch", "focuswindow", f"pid:{pid}"])
+        self.execute_command(["hyprctl", "dispatch", f"hl.dsp.focus({{ window = 'pid:{pid}' }})"])
 
     # TODO: Use get_active_window for user intent detection
     @staticmethod

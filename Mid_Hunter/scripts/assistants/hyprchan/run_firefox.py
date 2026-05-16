@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import random
-import shlex
+import shlex  # Needed for quoting ampersands in URL for shell exec
 import subprocess
 import sys
 from pathlib import Path
@@ -11,32 +11,6 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from hyprchan.ff_tab_builder import TabScheduler, Weekday
 from hyprchan.persona import HyprChan
-
-COMMENTS = [
-    "I found what you're looking for. It's right here.",
-    "Look no further! I've found exactly what you need.",
-    "Found it! It was right here.",
-    "Aha! Here's what you've been searching for.",
-    "Mission accomplished! I've located what you're looking for.",
-    "Found it! Here it is.",
-    "Here it is! I found what you're after.",
-    "The thing you're looking for is right here.",
-    "Got it! I've found the item you were searching for.",
-    "Search complete! I've found the missing piece.",
-    "There you go! Firefox, safe and sound.",
-    "Tada~! Found your Firefox, just where it was hiding.",
-    "Aha! Firefox located. I'm good at this, aren't I?",
-    "Gotcha! Here's your Firefox, exactly where you left it.",
-    "Boom! Mission complete. Firefox is all yours.",
-    "Firefox, spotted and secured! You're welcome~",
-    "Easy peasy! Your Firefox has been found.",
-    "Found it! Now go forth and browse!",
-    "There it is! Right under our noses the whole time.",
-    "Firefox retrieved! I’m basically a window-finding pro.",
-    "All done~ Your Firefox is right here, ready for action.",
-    "Zoom~ Found your Firefox in record time!",
-    "Another job well done! Here's your Firefox.",
-]
 
 
 def find_firefox_process(profile_name: str) -> str | None:
@@ -66,12 +40,40 @@ def daily_personal_tab(ff_attribs: list[str]):
     (
         scheduler.daily("https://sysdle.com/")
         .every_n_days("https://learn.dvorak.nl/?lang=en&lesson=5", 2)
+        .every_n_days("https://roadmap.sh/", 28)
         .weekly_on_days(
             "https://app.daily.dev/",
             [Weekday.TUESDAY, Weekday.FRIDAY],
         )
         .apply(ff_attribs)
     )
+
+
+COMMENTS = [
+    "I found what you're looking for. It's right here.",
+    "Look no further! I've found exactly what you need.",
+    "Found it! It was right here.",
+    "Aha! Here's what you've been searching for.",
+    "Mission accomplished! I've located what you're looking for.",
+    "Found it! Here it is.",
+    "Here it is! I found what you're after.",
+    "The thing you're looking for is right here.",
+    "Got it! I've found the item you were searching for.",
+    "Search complete! I've found the missing piece.",
+    "There you go! Firefox, safe and sound.",
+    "Tada~! Found your Firefox, just where it was hiding.",
+    "Aha! Firefox located. I'm good at this, aren't I?",
+    "Gotcha! Here's your Firefox, exactly where you left it.",
+    "Boom! Mission complete. Firefox is all yours.",
+    "Firefox, spotted and secured! You're welcome~",
+    "Easy peasy! Your Firefox has been found.",
+    "Found it! Now go forth and browse!",
+    "There it is! Right under our noses the whole time.",
+    "Firefox retrieved! I’m basically a window-finding pro.",
+    "All done~ Your Firefox is right here, ready for action.",
+    "Zoom~ Found your Firefox in record time!",
+    "Another job well done! Here's your Firefox.",
+]
 
 
 def main():
@@ -81,13 +83,13 @@ def main():
 
     profile_name = sys.argv[1]
 
-    ff_attribs = ["-P", profile_name, "-no-remote"]
+    ff_attribs = ["-P", profile_name, "--no-remote"]
 
     # Add URL if provided
     url = ""
     if len(sys.argv) >= 3:
         url = sys.argv[2]
-        ff_attribs.extend(["-new-tab", url])
+        ff_attribs.extend(["--new-tab", url])
 
     hypr_chan = HyprChan()
 
@@ -106,25 +108,29 @@ def main():
     print(f"No running instance for profile '{profile_name}'. Launching new one.")
 
     # Logic for daily new tab for "Personal" profile
+    workspace_cmd = []
+
     if profile_name == "Personal":
         daily_personal_tab(ff_attribs)
+        workspace_cmd = ["hyprctl", "dispatch", "hl.dsp.focus({ workspace = 2 })"]
 
-    # Determine workspace and launch command
-    workspace_cmd = []
-    if profile_name == "Personal":
-        workspace_cmd = ["hyprctl", "dispatch", "--", "exec", "[workspace 2]"]
     elif profile_name == "Experiment":
-        workspace_cmd = ["hyprctl", "dispatch", "--", "exec", "[workspace 3]"]
+        daily_experiment_tab(ff_attribs)
+        workspace_cmd = ["hyprctl", "dispatch", "hl.dsp.focus({ workspace = 3 })"]
 
-    # Use Popen to run Firefox in the background
-    launch_cmd = ["firefox", *ff_attribs]
+    # Switching to your workspace is faster than reloading
     if workspace_cmd:
-        # Hyprland exec needs ONE shell-quoted command
-        firefox_cmd_str = shlex.join(launch_cmd)
-        hypr_chan.execute_command([*workspace_cmd, firefox_cmd_str])
-    else:
-        # Fallback for other profiles without a specific workspace
-        subprocess.Popen(launch_cmd)
+        hypr_chan.execute_command(workspace_cmd)
+
+    # Launch Firefox
+    # NOTE: Yes, I know you can just pass launch_cmd directly to hypr_chan
+    # we are doing it via hyprctl because we need this to be executed only
+    # after the workspace switch
+    launch_cmd = ["firefox", *ff_attribs]
+    cmd_str = " ".join(shlex.quote(arg) for arg in launch_cmd)  # list -> str
+    # single quote on outer and double on inner due to shell shenanigans
+    lua_exec = f'hl.dsp.exec_cmd("{cmd_str}")'
+    hypr_chan.execute_command(["hyprctl", "dispatch", lua_exec])
 
 
 if __name__ == "__main__":

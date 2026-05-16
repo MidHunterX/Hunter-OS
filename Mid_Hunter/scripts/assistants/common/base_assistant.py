@@ -13,7 +13,7 @@ class BaseAssistant:
         self.image_path = image_path
         self.hints = hints
 
-    def execute_command(self, command: list[str]):
+    def execute_command(self, command: list[str] | str):
         """Executes a shell command."""
         try:
             subprocess.run(command, check=True, capture_output=True, text=True)
