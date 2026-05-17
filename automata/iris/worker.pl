@@ -3,6 +3,8 @@
 # Adaptive Window Contrast based on Wallpaper Brightness
 # Requires: ImageMagick, awww (for wallpaper)
 
+use strict;
+use warnings;
 use POSIX qw(strftime);
 use Term::ANSIColor qw(:constants);
 use Getopt::Long;
@@ -171,13 +173,13 @@ my ($brightness, $contrast, $vibrancy, $vibrancy_darkness);
 
 if ($AUTOSCALE_STRATEGY eq "manual") {
     # Light Wallpaper (Personal Preference)
-    my $l_brightness = 0.35;
+    my $l_brightness = 0.3;
     my $l_contrast   = 1.0;
     my $l_vibrancy   = 0.0;
     my $l_vibrancy_darkness = 0.0;
 
     # Dark Wallpaper (Personal Preference)
-    my $d_brightness = 0.6;
+    my $d_brightness = 0.7;
     my $d_contrast   = 0.5;
     my $d_vibrancy   = 0.5;
     my $d_vibrancy_darkness = 2.0;
@@ -220,34 +222,36 @@ else {
 # APPLY WINDOW SETTINGS
 # -----------------------------------------------------------------------------
 
-my @cmds;
+my @lua_props;
 my $r1 = ON_BRIGHT_BLACK;
 my $r2 = ON_BLACK;
 my $rs = RESET;
 
-log_msg("╭──".BOLD.BLACK.ON_YELLOW." Adaptive Window Settings ".$rs."──┬──────╮");
+log_msg("╭──".BOLD.BLACK.ON_YELLOW." Adaptive Window Settings ".$rs."──┬───────╮");
 
 if (defined $brightness) {
-    log_msg($r1.sprintf("│ ☀️ Window Brightness         │ %.2f │", $brightness).$rs);
-    push @cmds, "keyword decoration:blur:brightness $brightness";
+    log_msg($r1.sprintf("│ ☀️ Window Brightness         │ %.3f │", $brightness).$rs);
+    push @lua_props, "brightness = $brightness";
 }
 
 if (defined $contrast) {
-    log_msg($r2.sprintf("│ 🌗 Window Contrast           │ %.2f │", $contrast).$rs);
-    push @cmds, "keyword decoration:blur:contrast $contrast";
+    log_msg($r2.sprintf("│ 🌗 Window Contrast           │ %.3f │", $contrast).$rs);
+    push @lua_props, "contrast = $contrast";
 }
 
 if (defined $vibrancy) {
-    log_msg($r1.sprintf("│ 🌸 Window Vibrancy           │ %.2f │", $vibrancy).$rs);
-    push @cmds, "keyword decoration:blur:vibrancy $vibrancy";
+    log_msg($r1.sprintf("│ 🌸 Window Vibrancy           │ %.3f │", $vibrancy).$rs);
+    push @lua_props, "vibrancy = $vibrancy";
 }
 
 if (defined $vibrancy_darkness) {
-    log_msg($r2.sprintf("│ 🌸 Window Darkness Vibrancy  │ %.2f │", $vibrancy_darkness).$rs);
-    push @cmds, "keyword decoration:blur:vibrancy_darkness $vibrancy_darkness";
+    log_msg($r2.sprintf("│ 🌸 Window Darkness Vibrancy  │ %.3f │", $vibrancy_darkness).$rs);
+    push @lua_props, "vibrancy_darkness = $vibrancy_darkness";
 }
 
-# https://wiki.hypr.land/Configuring/Using-hyprctl/#batch
-system('hyprctl --batch "' . join(' ; ', @cmds) . '" >/dev/null');
+if (@lua_props) {
+    my $lua_cmd = "hl.config({ decoration = { blur = {" . join(", ", @lua_props) . "} } })";
+    system("hyprctl eval '$lua_cmd' >/dev/null");
+}
 
-log_msg("╰──────────────────────────────┴──────╯");
+log_msg("╰──────────────────────────────┴───────╯");
