@@ -17,8 +17,8 @@ my $HOME = $ENV{HOME} // die "HOME environment variable is not set";
 my @cmd = (
     "swayidle", "-w",
     "timeout", minutes(TIMEOUT_MINOR), "perl $HOME/automata/stasis/logic.pl --minor",
-    "resume", "hyprctl dispatch dpms on; perl $HOME/automata/radiance/worker.pl --once",
+    "resume", "hyprctl dispatch dpms on",
     "timeout", minutes(TIMEOUT_MAJOR), "hyprctl dispatch dpms on; sleep 1; perl $HOME/automata/stasis/logic.pl",
-    "resume", "hyprctl dispatch dpms on; perl $HOME/automata/radiance/worker.pl --once"
+    "resume", "hyprctl dispatch dpms on; perl $HOME/automata/radiance/worker.pl --once; expression --once"
 );
 exec @cmd or die "Failed to exec swayidle: $!";
