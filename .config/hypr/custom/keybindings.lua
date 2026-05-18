@@ -32,8 +32,7 @@ hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("grim ~/Pictures/$(date +%Y%m%d-%H%M%
 -- Logout Screen
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("wlogout --protocol layer-shell"))
 -- Exit Hyprland
-hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("bash ~/Mid_Hunter/scripts/kill_hypr.sh"))
--- hl.bind(MOD .. " + SHIFT + B", hl.dsp.exit())
+hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exit())
 
 
 -- █░█ █▀█ █ █▀▀ █▀▀   ▀█▀ █▄█ █▀█ █ █▄░█ █▀▀   █▀▄▀█ █▀█ █▀▄ █▀▀
