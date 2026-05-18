@@ -2,7 +2,7 @@ import datetime
 import json
 from enum import IntEnum
 from pathlib import Path
-from typing import List, Optional, TypedDict, Dict, Any
+from typing import Any, Dict, List, Optional, TypedDict
 
 
 class Weekday(IntEnum):
@@ -26,6 +26,7 @@ class SequenceEntry(TypedDict):
     urls: Optional[List[str]]
     date_map: Optional[Dict[str, str]]
     interval_days: Optional[int]
+    is_sticky: Optional[bool]
 
 
 class TabScheduler:
@@ -55,17 +56,44 @@ class TabScheduler:
     def iterate_every_n_days(self, name: str, urls: List[str], n: int = 1):
         """Opens the next URL in the list every 'n' days."""
         self.sequences.append(
-            {"name": name, "urls": urls, "date_map": None, "interval_days": n}
+            {
+                "name": name,
+                "urls": urls,
+                "date_map": None,
+                "interval_days": n,
+                "is_sticky": False,
+            }
         )
         return self
 
     def iterate_on_dates(self, name: str, date_map: Dict[str, str]):
         """
-        Opens a specific URL if today's date matches a key in the date_map.
-        Format: { "2023-12-25": "https://url.com" }
+        Opens a specific URL ONLY if today's date matches a key in the date_map.
         """
         self.sequences.append(
-            {"name": name, "urls": None, "date_map": date_map, "interval_days": None}
+            {
+                "name": name,
+                "urls": None,
+                "date_map": date_map,
+                "interval_days": None,
+                "is_sticky": False,
+            }
+        )
+        return self
+
+    def repeat_until_next(self, name: str, date_map: Dict[str, str]):
+        """
+        Opens the URL corresponding to the most recent date in the past,
+        repeating it daily until a new date entry is reached.
+        """
+        self.sequences.append(
+            {
+                "name": name,
+                "urls": None,
+                "date_map": date_map,
+                "interval_days": None,
+                "is_sticky": True,
+            }
         )
         return self
 
@@ -74,6 +102,7 @@ class TabScheduler:
         today_iso = today.isoformat()
         updated = False
 
+        # TYPE: STANDARD ENTRIES
         for entry in self.entries:
             url = entry["url"]
             last_run_str = self.state.get(url)
@@ -100,6 +129,7 @@ class TabScheduler:
                 self.state[url] = today_iso
                 updated = True
 
+        # TYPE: SEQUENCE ENTRIES
         for seq in self.sequences:
             name = seq["name"]
             seq_state = self.state.get(name, {})
@@ -118,10 +148,19 @@ class TabScheduler:
                     url_to_open = seq["urls"][index % len(seq["urls"])]
                     index = (index + 1) % len(seq["urls"])
 
-            # RULE 2: DATE MAP-BASED (Specific URL for Specific Date)
+            # RULE 2: DATE MAP-BASED
             elif seq["date_map"] is not None:
-                if today_iso in seq["date_map"] and last_run != today:
-                    url_to_open = seq["date_map"][today_iso]
+                if seq.get("is_sticky"):
+                    # Daily Timeline
+                    past_dates = [d for d in seq["date_map"] if d <= today_iso]
+                    if past_dates:
+                        latest_mapped_date = max(past_dates)
+                        if last_run != today:
+                            url_to_open = seq["date_map"][latest_mapped_date]
+                else:
+                    # Fixed Timeline
+                    if today_iso in seq["date_map"] and last_run != today:
+                        url_to_open = seq["date_map"][today_iso]
 
             if url_to_open:
                 ff_attribs.extend(["--new-tab", url_to_open])
