@@ -170,10 +170,10 @@ hl.config({
         -- controls the VRR (Adaptive Sync) of your monitors.
         -- 0 - off, 1 - on, 2 - fullscreen only, 3 - fullscreen with video or game content type [0/1/2/3]
         vrr = 0,
-        -- If DPMS is set to off, wake up the monitors if the mouse moves
+        -- wake up the monitors if the mouse moves
         mouse_move_enables_dpms = false,
-        -- If DPMS is set to off, wake up the monitors if a key is pressed
-        key_press_enables_dpms = false,
+        -- wake up the monitors if a key is pressed
+        key_press_enables_dpms = true,
         -- If true, will animate manual window resizes/moves
         animate_manual_resizes = true,
         -- If true, will animate windows being dragged by mouse, note that this can cause weird behavior on some curves

@@ -49,13 +49,14 @@ sub get_action_for_time {
     my $is_sleep_time = in_time_range($current_minutes, $t{sleep_start}, $t{sleep_end});
 
     if ($is_work_time) {
+        # Keep workstation active and ready to deploy at all times
         return 'systemctl suspend';
     }
     elsif ($is_sleep_time) {
         return 'systemctl poweroff';
     }
     else {
-        return 'systemctl suspend';
+        return 'systemctl poweroff';
     }
 }
 
@@ -66,38 +67,7 @@ sub get_action_for_current_time {
 }
 
 
-# MINOR
-# ================================
-
-sub is_window_fullscreen {
-    my $output = `hyprctl activewindow`;
-    if ($output =~ /fullscreen:\s*(\d+)/) {
-        my $fullscreen_val = $1;
-        # 0 = not full | 1 = maximized | 2 = fullscreen
-        return ($fullscreen_val > 0) ? 1 : 0;
-    }
-    return 0;  # Default
-}
-
-sub get_action_for_minor {
-    if (is_window_fullscreen()) {
-        return "";
-    }
-    return "hyprctl dispatch dpms off";
-}
-
-use Getopt::Long;
-my $minor_flag = 0;
-GetOptions("minor" => \$minor_flag);
-
-
 # MAIN
 # ================================
 
-my $action;
-if ($minor_flag) {
-    $action = get_action_for_minor();
-} else {
-   $action = get_action_for_current_time();
-}
-system($action);
+system(get_action_for_current_time());
