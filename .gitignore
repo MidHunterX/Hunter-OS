@@ -50,7 +50,7 @@
 !.config/wlogout/
 # 🕹️ System UI
 !.config/quickshell/
-.config/quickshell/colors.json
+.config/quickshell/config/colors.json
 
 
 # ▀█▀ █▀▀ █▀█ █▀▄▀█ █ █▄░█ ▄▀█ █░░
