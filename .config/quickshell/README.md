@@ -8,11 +8,11 @@ intention. `#Hidden_UI: Screen borders as GUI shell interface`
 
 ## Modules
 
-`./MeterBattery.qml` - 10 Segmented Lines denoting every 10%
+`./PixelUI/MeterBattery.qml` - 10 Segmented Lines denoting every 10%
 
-`./MeterTime.qml` - 2 Segmented Meters denoting hours and minutes
+`./PixelUI/MeterTime.qml` - 2 Segmented Meters denoting hours and minutes
 
-`./WorkspaceSpecial.qml` + `./WorkspacePersistent.qml` + `./WorkspaceOther.qml`
+`./PixelUI/WorkspaceSpecial.qml` + `./PixelUI/WorkspacePersistent.qml` + `./PixelUI/WorkspaceOther.qml`
 
 Primary Priority: 3 persistent workspaces are always shown for quick
 navigation. 1 = Dev Work, 2 = Personal Work, 3 = Entertainment. These three
@@ -23,7 +23,7 @@ Secondary Priority: Special Workspace indicator conditionally shown on the left
 of persistent workspaces. Other workspaces conditionally shown on the right
 side.
 
-`./MeterIdle.qml`
+`./PixelUI/MeterIdle.qml`
 
 This meter indicates the idle status of `swayidle` or `hypridle`.
 Displays in the middle replacing Workspace module temporarily.

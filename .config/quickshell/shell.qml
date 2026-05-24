@@ -3,8 +3,8 @@ import QtQuick
 import Quickshell.Wayland
 import "config"     // Global Config
 import "components" // Reuseable Unit Components
-import "meters"
-import "workspaces"
+import "PixelUI"
+import "DesktopUI"
 
 // Qt Docs: https://doc.qt.io/qt-6/qml-qtquick-item.html
 
@@ -90,8 +90,19 @@ Scope {
         }
     }
 
-    DesktopDetails {
-        required property var modelData
-        screen: modelData
+    PanelWindow {
+        // on the desktop wallpaper
+        exclusionMode: ExclusionMode.Ignore
+        WlrLayershell.layer: WlrLayer.Background
+
+        anchors { top: true; left: true; right: true }
+        margins { top: 15; left: 10; right: 10 }
+
+        implicitHeight: 35
+        color: "transparent"
+
+        ModuleTime {}
+        // ModuleWorkspaces {} // Not that useful compared to PixelUI
+        ModuleBattery {}
     }
 }
