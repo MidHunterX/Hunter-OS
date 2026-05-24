@@ -1,9 +1,10 @@
 import Quickshell
 import QtQuick
 import Quickshell.Wayland
-import "config"
+import "config"     // Global Config
+import "components" // Reuseable Unit Components
 import "meters"
-import "components"
+import "workspaces"
 
 // Qt Docs: https://doc.qt.io/qt-6/qml-qtquick-item.html
 
