@@ -72,7 +72,6 @@ Scope {
       right: true
     }
 
-    implicitHeight: 10
     color: "transparent"
 
     MeterIdle {
@@ -80,5 +79,8 @@ Scope {
       anchors.horizontalCenter: parent.horizontalCenter
     }
 
+  DesktopDetails {
+    required property var modelData
+    screen: modelData
   }
 }
