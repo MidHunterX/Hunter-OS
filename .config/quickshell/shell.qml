@@ -78,6 +78,28 @@ Scope {
       // inactivityTriggerSeconds: 3
       anchors.horizontalCenter: parent.horizontalCenter
     }
+  }
+
+  PanelWindow {
+    exclusionMode: ExclusionMode.Ignore
+    WlrLayershell.layer: WlrLayer.Overlay
+    mask: Region {}   // fully click-through
+
+    anchors {
+      bottom: true
+      left: true
+      right: true
+    }
+
+    implicitHeight: child.implicitHeight
+    color: "transparent"
+
+    HyprSubmap {
+      id: child
+      anchors.horizontalCenter: parent.horizontalCenter
+      anchors.bottom: parent.bottom
+    }
+  }
 
   DesktopDetails {
     required property var modelData
