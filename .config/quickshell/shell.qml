@@ -64,6 +64,8 @@ Scope {
     PanelWindow {
         exclusionMode: ExclusionMode.Ignore
         WlrLayershell.layer: WlrLayer.Overlay
+        mask: Region {}   // click-through
+        implicitHeight: 15
 
         anchors { top: true; left: true; right: true }
         color: "transparent"
