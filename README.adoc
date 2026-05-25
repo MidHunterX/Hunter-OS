@@ -6,7 +6,7 @@
 :gh-user: https://github.com/MidHunterX
 :gh-repo: {gh-user}/Hunter-OS
 :gh-repo-master: {gh-repo}/tree/master
-:gh-nvim: {gh-user}/NvME
+:gh-nvim: {gh-user}/Hunter-Nvim
 :gh-intention: {gh-user}/Intention
 :gh-expression: {gh-user}/Expression
 :gh-run: {gh-user}/Project-Launcher
@@ -683,6 +683,15 @@ WARNING: xdg-desktop-portal-hyprland enables features like screen sharing. There
 | starship     | Cross Platform Prompt              | pacman
 | tmux         | Terminal Multiplexer               | pacman
 |===
+
+[discrete]
+==== Explore More
+
+https://arewelegacycomputingyet.com/::
+Track terminal emulator support for Unicode's "Symbols for Legacy Computing" (U+1FB00-U+1FBFF) and its supplement block (U+1CC00-U+1CEBF).
+
+https://notcurses.com/::
+A library facilitating complex TUIs on modern terminal emulators, supporting vivid colors, multimedia, threads, and Unicode to the maximum degree possible.
 ====
 
 .🖋️ Fonts
@@ -862,6 +871,25 @@ Defaults pwfeedback                 # Visible Password Feedback
 ----
 ====
 
+.🕐 Time
+[%collapsible]
+====
+[discrete]
+=== Time Sync
+[source,bash]
+----
+timedatectl status
+sudo timedatectl set-ntp true
+----
+[discrete]
+=== Time Zone
+[source,bash]
+----
+timedatectl list-timezones
+sudo timedatectl set-timezone [Region/City]
+----
+====
+
 .🚪 Skip Username
 [%collapsible]
 ====
@@ -982,6 +1010,7 @@ technology inspired ambient nudging, Automation and Proactive Computing.
 - Eliminating friction between intent and execution
 - Computers and tools should understand context, intent and work for humans.
 - Environment should support cognitive flow, not disrupt or redirect it.
+- You should not be held back by the tools that you use. The tools should be customizable, scriptable or at least molded to your needs.
 - Expanding the Self by removing the boundaries of where the Self ends and tools begin.
 - Interactions should be reproducible and logically consistent to create a mental model that will be transferred to human muscle memory so that the interface disappears over time and only intent exists.
 
