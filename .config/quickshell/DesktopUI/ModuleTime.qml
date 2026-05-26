@@ -8,7 +8,7 @@ Item {
     anchors.fill: parent
 
     SlantedBox {
-        slantType: 1 // ParallelogramBox
+        slantType: "right"
         anchors.left: parent.left
         height: parent.height
         width: clockRow.width + (skewOffset * 2) + 20

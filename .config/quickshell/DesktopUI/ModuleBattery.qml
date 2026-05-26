@@ -9,7 +9,7 @@ Item {
 
     SlantedBox {
         id: batteryBox
-        slantType: 1
+        slantType: "right"
         anchors.right: parent.right
         height: parent.height
         width: batteryRow.width + (skewOffset * 2) + 20

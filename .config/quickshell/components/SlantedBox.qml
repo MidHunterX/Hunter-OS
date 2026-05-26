@@ -9,8 +9,11 @@ Item {
     property int borderWidth: 1
     property real skewOffset: 15 // The pixel offset of the slant
 
-    // Type: 0 for /____\ (BeveledEdge), 1 for /____/ (Parallelogram)
-    property int slantType: 0
+    // \____/ = Bottom (BeveledEdge)
+    // /____\ = Top (BeveledEdge)
+    // \____\ = Left (Parallelogram)
+    // /____/ = Right (Parallelogram)
+    property string slantType: "right"
 
     // The inner content assigned by the user will go into this padded container
     default property alias content: contentContainer.data
@@ -28,17 +31,25 @@ Item {
 
             startX: root.skewOffset; startY: 0
             PathLine {
-                x: root.slantType === 0 ? root.width - root.skewOffset
-                : root.width;
+                x: root.slantType === "top" ? root.width - root.skewOffset
+                : root.slantType === "right" ? root.width
+                : 0;
                 y: 0
             }
             PathLine {
-                x: root.slantType === 0 ? root.width
-                : root.width - root.skewOffset;
+                x: root.slantType === "top" ? root.width
+                : root.slantType === "right" ? root.width - root.skewOffset
+                : 0;
                 y: root.height
             }
-            PathLine { x: 0; y: root.height }
-            PathLine { x: root.skewOffset; y: 0 }
+            PathLine {
+                x: 0;
+                y: root.height
+            }
+            PathLine {
+                x: root.skewOffset;
+                y: 0
+            }
         }
     }
 

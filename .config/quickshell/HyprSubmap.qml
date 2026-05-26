@@ -35,7 +35,7 @@ Item {
 
     SlantedBox {
         anchors.fill: parent
-        slantType: 0
+        slantType: "top"
 
         color: c_background
         borderColor: c_border
