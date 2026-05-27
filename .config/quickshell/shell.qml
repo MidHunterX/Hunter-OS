@@ -16,11 +16,12 @@ Scope {
             screen: modelData
             exclusionMode: ExclusionMode.Ignore
             WlrLayershell.layer: WlrLayer.Bottom
-            implicitHeight: 15
+            implicitHeight: 13
 
             anchors { top: true; left: true; right: true }
             color: "transparent"
 
+            /*
             Rectangle {
                 anchors.fill: parent
                 gradient: Gradient {
@@ -28,11 +29,12 @@ Scope {
                     GradientStop { position: 1.0; color: Qt.rgba(0, 0, 0, 0) }
                 }
             }
+            */
 
             Item {
                 anchors.fill: parent
-                anchors.leftMargin: 20
-                anchors.rightMargin: 20
+                anchors.leftMargin: 25
+                anchors.rightMargin: 25
 
                 MeterTime {
                     anchors.left: parent.left
@@ -40,7 +42,7 @@ Scope {
 
                 WorkspaceSpecial {
                     anchors.right: workspaces.left
-                    anchors.rightMargin: 10
+                    // anchors.rightMargin: 10
                 }
 
                 WorkspacePersistent {
@@ -50,7 +52,7 @@ Scope {
 
                 WorkspaceOther {
                     anchors.left: workspaces.right
-                    anchors.leftMargin: 10
+                    // anchors.leftMargin: 10
                 }
 
                 MeterBattery {
@@ -82,7 +84,7 @@ Scope {
         mask: Region {}   // fully click-through
         implicitHeight: child.implicitHeight
 
-        anchors { bottom: true; left: true; right: true }
+        anchors { top: true; left: true; right: true }
         color: "transparent"
 
         HyprSubmap {
@@ -98,7 +100,7 @@ Scope {
         WlrLayershell.layer: WlrLayer.Background
 
         anchors { top: true; left: true; right: true }
-        margins { top: 15; left: 10; right: 10 }
+        margins { top: 13; left: 13; right: 13 }
 
         implicitHeight: 35
         color: "transparent"

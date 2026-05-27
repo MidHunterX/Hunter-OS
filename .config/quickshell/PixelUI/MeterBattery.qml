@@ -6,6 +6,7 @@ import "../components"
 Item {
     id: root
     width: 300
+    implicitHeight: 13
 
     property var thicc: 3
     property var gap: 5
@@ -16,29 +17,36 @@ Item {
 
     property int batteryPercent: monitor.batteryPercent
 
-    BatteryMonitor {
-        id: monitor
-    }
+    BatteryMonitor { id: monitor }
 
-    Row {
+    SlantedBox {
         anchors.fill: parent
-        spacing: gap
+        color: Colors.surface_container_highest
+        borderColor: Colors.outline_variant
+        borderWidth: 1
+        slantType: "right"
+        skewOffset: (parent.height / 3)
 
-        Repeater {
-            model: 10  // 10 segments with each representing 10%
+        Row {
+            // anchors.verticalCenter: parent.verticalCenter
+            width: parent.width
+            spacing: root.gap
 
-            Rectangle {
-                width: (parent.width - 9 * parent.spacing) / 10
-                height: thicc
-                color: root.c_background
-
+            Repeater {
+                model: 10
                 Rectangle {
-                    anchors.fill: parent
-                    visible: root.batteryPercent >= ((index + 1) * 10) - 5
-                    color: {
-                        if (root.batteryPercent > 40) return root.c_high
-                        else if (root.batteryPercent > 20) return root.c_low
-                        else return root.c_crit
+                    width: (parent.width - 9 * parent.spacing) / 10
+                    height: root.thicc
+                    color: root.c_background
+
+                    Rectangle {
+                        anchors.fill: parent
+                        visible: root.batteryPercent >= ((index + 1) * 10) - 5
+                        color: {
+                            if (root.batteryPercent > 40) return root.c_high
+                            else if (root.batteryPercent > 20) return root.c_low
+                            else return root.c_crit
+                        }
                     }
                 }
             }

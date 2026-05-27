@@ -1,10 +1,12 @@
 import QtQuick
 import Quickshell
 import "../config"
+import "../components"
 
 Item {
     id: root
     width: 300
+    implicitHeight: 13
 
     property var thicc: 3
     property var gap: 10
@@ -16,55 +18,43 @@ Item {
         precision: SystemClock.Seconds
     }
 
-    // Calculate current minute within the hour (0-59)
     property int currentMinute: clock.date.getMinutes()
 
-    Row {
+    SlantedBox {
         anchors.fill: parent
-        spacing: gap
+        slantType: "left"
+        skewOffset: (parent.height / 3)
+        color: Colors.surface_container_highest
+        borderColor: Colors.outline_variant
 
-        // First half (0-30 minutes)
-        Rectangle {
-            width: (parent.width - parent.spacing) / 2
-            height: thicc
-            color: root.c_background
+        Row {
+            // anchors.verticalCenter: parent.verticalCenter
+            width: parent.width
+            spacing: root.gap
 
+            // First half
             Rectangle {
-                width: {
-                    if (root.currentMinute <= 30) {
-                        return parent.width * (root.currentMinute / 30.0)
-                    } else {
-                        return parent.width
-                    }
-                }
-                height: parent.height
-                color: root.c_foreground
-
-                Behavior on width {
-                    NumberAnimation { duration: 300 }
+                width: (parent.width - parent.spacing) / 2
+                height: root.thicc
+                color: root.c_background
+                Rectangle {
+                    width: root.currentMinute <= 30 ? parent.width * (root.currentMinute / 30.0) : parent.width
+                    height: parent.height
+                    color: root.c_foreground
+                    Behavior on width { NumberAnimation { duration: 300 } }
                 }
             }
-        }
 
-        // Second half (30-60 minutes)
-        Rectangle {
-            width: (parent.width - parent.spacing) / 2
-            height: thicc
-            color: root.c_background
-
+            // Second half
             Rectangle {
-                width: {
-                    if (root.currentMinute > 30) {
-                        return parent.width * ((root.currentMinute - 30) / 30.0)
-                    } else {
-                        return 0
-                    }
-                }
-                height: parent.height
-                color: root.c_foreground
-
-                Behavior on width {
-                    NumberAnimation { duration: 300 }
+                width: (parent.width - parent.spacing) / 2
+                height: root.thicc
+                color: root.c_background
+                Rectangle {
+                    width: root.currentMinute > 30 ? parent.width * ((root.currentMinute - 30) / 30.0) : 0
+                    height: parent.height
+                    color: root.c_foreground
+                    Behavior on width { NumberAnimation { duration: 300 } }
                 }
             }
         }

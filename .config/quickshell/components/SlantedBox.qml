@@ -4,16 +4,19 @@ import QtQuick.Shapes
 Item {
     id: root
 
-    property color color: "#000000"
-    property color borderColor: "#ffffff"
-    property int borderWidth: 1
-    property real skewOffset: 15 // The pixel offset of the slant
-
     // \____/ = Bottom (BeveledEdge)
     // /____\ = Top (BeveledEdge)
     // \____\ = Left (Parallelogram)
     // /____/ = Right (Parallelogram)
     property string slantType: "right"
+    property color color: "#000000"
+    property color borderColor: "#ffffff"
+    property int borderWidth: 1
+
+    // Set to the following to give you the best dynamic look
+    // skewOffset: (parent.height / 2)
+    property real skewOffset: 15 // The pixel offset of the slant
+
 
     // The inner content assigned by the user will go into this padded container
     default property alias content: contentContainer.data
@@ -29,25 +32,31 @@ Item {
             strokeWidth: root.borderWidth
             joinStyle: ShapePath.RoundJoin
 
-            startX: root.skewOffset; startY: 0
+            // Top-Left Starting Point
+            startX: (root.slantType === "bottom" || root.slantType === "left") ? root.skewOffset : 0
+            startY: 0
+
+            // Top-Right Corner
             PathLine {
-                x: root.slantType === "top" ? root.width - root.skewOffset
-                : root.slantType === "right" ? root.width
-                : 0;
+                x: (root.slantType === "bottom" || root.slantType === "right") ? root.width - root.skewOffset : root.width
                 y: 0
             }
+
+            // Bottom-Right Corner
             PathLine {
-                x: root.slantType === "top" ? root.width
-                : root.slantType === "right" ? root.width - root.skewOffset
-                : 0;
+                x: (root.slantType === "top" || root.slantType === "left") ? root.width - root.skewOffset : root.width
                 y: root.height
             }
+
+            // Bottom-Left Corner
             PathLine {
-                x: 0;
+                x: (root.slantType === "top" || root.slantType === "right") ? root.skewOffset : 0
                 y: root.height
             }
+
+            // Close the path back to Start
             PathLine {
-                x: root.skewOffset;
+                x: (root.slantType === "bottom" || root.slantType === "left") ? root.skewOffset : 0
                 y: 0
             }
         }

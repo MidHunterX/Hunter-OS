@@ -8,7 +8,7 @@ Item {
     id: root
     // Since this is wrapped around ParallelogramBox, this acts as the padding
     implicitHeight: 30
-    implicitWidth: submapContent.width + 40
+    implicitWidth: Math.max(240, submapContent.width + 40)
 
     property color c_foreground: Colors.on_primary
     property color c_background: Colors.primary
@@ -29,18 +29,15 @@ Item {
 
     opacity: isActive ? 1.0 : 0.0
     visible: opacity > 0
-    Behavior on opacity {
-        NumberAnimation { duration: 250; easing.type: Easing.OutCubic }
-    }
 
     SlantedBox {
         anchors.fill: parent
         slantType: "top"
+        skewOffset: (parent.height / 3)
 
         color: c_background
         borderColor: c_border
         borderWidth: 2
-        skewOffset: 15
 
         Row {
             id: submapContent

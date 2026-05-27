@@ -16,8 +16,10 @@ Item {
 
     property color c_focus_full: Colors.primary
     property color c_unfocus_full: Colors.secondary
-    property color c_focus_empty: Colors.error
+    // Sharp danger/error color which breaks from the cohesive palette indicating the state of nothingness to be loud. Asking to do something
+    property color c_focus_empty: "#FF0000"
     property color c_unfocus_empty: Colors.outline
+    // High visibility color to be viewed from even a distance
     property color c_special: "#FFFF00"
     // The human eye is most sensitive to yellowish-green light, specifically at a wavelength of 555 nanometers during daylight conditions.
     property color c_urgent: "#7CFF00"
@@ -105,6 +107,6 @@ Item {
         hoverEnabled: !root.isSpecial
         onEntered: { if (!root.isSpecial) hoverOverlay.opacity = 1 }
         onExited: { if (!root.isSpecial) hoverOverlay.opacity = 0 }
-        onClicked: { if (!root.isSpecial) Hyprland.dispatch("workspace " + root.workspaceId) }
+        onClicked: { if (!root.isSpecial) Hyprland.dispatch("hl.dsp.focus({ workspace = " + root.workspaceId + " })") }
     }
 }

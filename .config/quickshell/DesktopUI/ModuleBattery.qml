@@ -13,10 +13,10 @@ Item {
         anchors.right: parent.right
         height: parent.height
         width: batteryRow.width + (skewOffset * 2) + 20
+        skewOffset: (parent.height / 3)
 
-        color: Colors.surface_container_low
+        color: Colors.surface_container_highest
         borderColor: Colors.outline_variant
-        opacity: 0.9
 
         property int batteryPercent: monitor.batteryPercent
 

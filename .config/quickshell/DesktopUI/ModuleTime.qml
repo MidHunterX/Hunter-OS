@@ -8,14 +8,14 @@ Item {
     anchors.fill: parent
 
     SlantedBox {
-        slantType: "right"
+        slantType: "left"
         anchors.left: parent.left
         height: parent.height
         width: clockRow.width + (skewOffset * 2) + 20
+        skewOffset: (parent.height / 3)
 
-        color: Colors.surface_container_low
+        color: Colors.surface_container_highest
         borderColor: Colors.outline_variant
-        opacity: 0.9
 
         SystemClock {
             id: clock
