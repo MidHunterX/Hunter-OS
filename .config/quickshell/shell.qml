@@ -1,8 +1,6 @@
 import Quickshell
 import QtQuick
 import Quickshell.Wayland
-import "config"     // Global Config
-import "components" // Reuseable Unit Components
 import "PixelUI"
 import "DesktopUI"
 
@@ -33,8 +31,8 @@ Scope {
 
             Item {
                 anchors.fill: parent
-                anchors.leftMargin: 25
-                anchors.rightMargin: 25
+                anchors.leftMargin: 30
+                anchors.rightMargin: 30
 
                 MeterTime {
                     anchors.left: parent.left
@@ -42,7 +40,7 @@ Scope {
 
                 WorkspaceSpecial {
                     anchors.right: workspaces.left
-                    // anchors.rightMargin: 10
+                    anchors.rightMargin: 10
                 }
 
                 WorkspacePersistent {
@@ -52,7 +50,7 @@ Scope {
 
                 WorkspaceOther {
                     anchors.left: workspaces.right
-                    // anchors.leftMargin: 10
+                    anchors.leftMargin: 10
                 }
 
                 MeterBattery {
@@ -108,5 +106,22 @@ Scope {
         ModuleTime {}
         // ModuleWorkspaces {} // Not that useful compared to PixelUI
         ModuleBattery {}
+    }
+
+    PanelWindow {
+        exclusionMode: ExclusionMode.Ignore
+        WlrLayershell.layer: WlrLayer.Bottom
+        mask: Region {} // click-through
+
+        // Positioned at bottom left
+        anchors { bottom: true; left: true }
+
+        implicitWidth: wifiMeter.implicitWidth
+        implicitHeight: wifiMeter.implicitHeight
+        color: "transparent"
+
+        MeterWifi {
+            id: wifiMeter
+        }
     }
 }
