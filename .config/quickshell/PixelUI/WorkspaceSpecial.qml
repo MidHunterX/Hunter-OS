@@ -6,7 +6,7 @@ import "../config"
 Item {
     id: root
     height: 13
-    width: contentRow.width + 30
+    width: contentRow.width + 25
     visible: specialRepeater.count > 0
 
     property int primaryLength: 70
@@ -14,14 +14,14 @@ Item {
 
     SlantedBox {
         anchors.fill: parent
-        slantType: "right"
-        skewOffset: (parent.height / 3)
+        slantType: "left"
+        skewOffset: (parent.height / 2)
         color: Colors.surface_container_highest
         borderColor: Colors.outline_variant
 
         Row {
             id: contentRow
-            anchors.centerIn: parent
+            anchors.horizontalCenter: parent.horizontalCenter
             spacing: 10
             height: 8 // To accomodate numbers
 

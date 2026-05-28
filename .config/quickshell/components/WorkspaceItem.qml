@@ -16,11 +16,11 @@ Item {
 
     property color c_focus_full: Colors.primary
     property color c_unfocus_full: Colors.secondary
-    // Sharp danger/error color which breaks from the cohesive palette indicating the state of nothingness to be loud. Asking to do something
-    property color c_focus_empty: "#FF0000"
+    // Sharp error color which breaks from the visual harmony indicating the state of nothingness to be loud.
+    property color c_focus_empty: "#FF6969"
     property color c_unfocus_empty: Colors.outline
     // High visibility color to be viewed from even a distance
-    property color c_special: "#FFFF00"
+    property color c_special: "#FFFF69"
     // The human eye is most sensitive to yellowish-green light, specifically at a wavelength of 555 nanometers during daylight conditions.
     property color c_urgent: "#7CFF00"
 

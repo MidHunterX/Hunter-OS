@@ -5,7 +5,7 @@
 hl.on("hyprland.start", function()
     -- ESSENTIALS
     hl.exec_cmd("iio-hyprland") -- Accelerometer based Auto Screen Orientation
-    hl.exec_cmd("waybar") -- Status Bar
+    -- hl.exec_cmd("waybar") -- Status Bar
     hl.exec_cmd("quickshell") -- GUI Shell Layer
     hl.exec_cmd("swayosd-server") -- OSD Window
     hl.exec_cmd("awww-daemon") -- Wayland Wallpaper Daemon

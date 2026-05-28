@@ -8,11 +8,11 @@ Item {
     anchors.fill: parent
 
     SlantedBox {
-        slantType: "left"
+        slantType: "right"
         anchors.left: parent.left
         height: parent.height
         width: clockRow.width + (skewOffset * 2) + 20
-        skewOffset: (parent.height / 3)
+        skewOffset: (parent.height / 2)
 
         color: Colors.surface_container_highest
         borderColor: Colors.outline_variant

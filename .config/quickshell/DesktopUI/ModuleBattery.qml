@@ -9,11 +9,11 @@ Item {
 
     SlantedBox {
         id: batteryBox
-        slantType: "right"
+        slantType: "left"
         anchors.right: parent.right
         height: parent.height
         width: batteryRow.width + (skewOffset * 2) + 20
-        skewOffset: (parent.height / 3)
+        skewOffset: (parent.height / 2)
 
         color: Colors.surface_container_highest
         borderColor: Colors.outline_variant

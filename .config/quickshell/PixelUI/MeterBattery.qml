@@ -24,8 +24,8 @@ Item {
         color: Colors.surface_container_highest
         borderColor: Colors.outline_variant
         borderWidth: 1
-        slantType: "right"
-        skewOffset: (parent.height / 3)
+        slantType: "left"
+        skewOffset: (parent.height / 2)
 
         Row {
             // anchors.verticalCenter: parent.verticalCenter
