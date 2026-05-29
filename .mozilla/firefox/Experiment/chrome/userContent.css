@@ -1,36 +1,35 @@
 /* =========================== BACKGROUND NEWTAB =========================== */
 @-moz-document url(about:home),
-url(about:newtab){
+url(about:newtab) {
+  .click-target-container *,
+  .top-sites-list * {
+    color: #fff !important;
+    text-shadow: 2px 2px 2px #222 !important;
+  }
 
-.click-target-container *,
-.top-sites-list * {
-  color: #fff !important;
-  text-shadow: 2px 2px 2px #222 !important;
-}
+  body::before {
+    content: "";
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* background: #f9a no-repeat url(img/bg1.jpg) center; */
+    background: #f9a;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+  }
 
-body::before {
-  content: "";
-  z-index: -1;
-  position: fixed;
-  top: 0;
-  left: 0;
-  /* background: #f9a no-repeat url(img/bg1.jpg) center; */
-  background: #f9a;
-  background-size: cover;
-  width: 100vw;
-  height: 100vh;
-}
-
-/* REMOVE BRANDING */
-.search-wrapper {
-  display: none !important;
-}
+  /* REMOVE BRANDING */
+  .search-wrapper,
+  .logo-in-content {
+    display: none !important;
+  }
 }
 
 /* ========================== BACKGROUND INCOGNITO ========================== */
 
-@-moz-document url(about:privatebrowsing){
-
+@-moz-document url(about:privatebrowsing) {
   .click-target-container *,
   .top-sites-list * {
     color: #fff !important;
