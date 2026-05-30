@@ -23,7 +23,7 @@ Item {
     SlantedBox {
         anchors.fill: parent
         slantType: "top"
-        skewOffset: (parent.height / 3)
+        skewOffset: (parent.height / 2)
         color: Colors.surface_container_highest
         borderColor: Colors.outline_variant
 

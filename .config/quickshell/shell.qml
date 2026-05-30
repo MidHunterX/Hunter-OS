@@ -4,61 +4,49 @@ import Quickshell.Wayland
 import "PixelUI"
 import "DesktopUI"
 
-// Qt Docs: https://doc.qt.io/qt-6/qml-qtquick-item.html
-
 Scope {
-    Variants {
-        model: Quickshell.screens
-        PanelWindow {
-            required property var modelData
-            screen: modelData
-            exclusionMode: ExclusionMode.Ignore
-            WlrLayershell.layer: WlrLayer.Bottom
-            implicitHeight: 13
+    PanelWindow {
+        exclusionMode: ExclusionMode.Ignore
+        WlrLayershell.layer: WlrLayer.Bottom
+        implicitHeight: 13
 
-            anchors { top: true; left: true; right: true }
-            color: "transparent"
+        anchors { top: true; left: true; right: true }
+        margins { left: 30; right: 30 }
+        color: "transparent"
 
-            /*
-            Rectangle {
-                anchors.fill: parent
-                gradient: Gradient {
-                    GradientStop { position: 0.0; color: Qt.rgba(0, 0, 0, 0.9) }
-                    GradientStop { position: 1.0; color: Qt.rgba(0, 0, 0, 0) }
-                }
-            }
-            */
-
-            Item {
-                anchors.fill: parent
-                anchors.leftMargin: 30
-                anchors.rightMargin: 30
-
-                MeterTime {
-                    anchors.left: parent.left
-                }
-
-                WorkspaceSpecial {
-                    anchors.right: workspaces.left
-                    anchors.rightMargin: 10
-                }
-
-                WorkspacePersistent {
-                    id: workspaces
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-
-                WorkspaceOther {
-                    anchors.left: workspaces.right
-                    anchors.leftMargin: 10
-                }
-
-                MeterBattery {
-                    id: batteryMeter
-                    anchors.right: parent.right
-                }
+        /*
+        Rectangle {
+            anchors.fill: parent
+            gradient: Gradient {
+                GradientStop { position: 0.0; color: Qt.rgba(0, 0, 0, 0.9) }
+                GradientStop { position: 1.0; color: Qt.rgba(0, 0, 0, 0) }
             }
         }
+        */
+
+       MeterTime {
+           anchors.left: parent.left
+       }
+
+       WorkspaceSpecial {
+           anchors.right: workspaces.left
+           anchors.rightMargin: 10
+       }
+
+       WorkspacePersistent {
+           id: workspaces
+           anchors.horizontalCenter: parent.horizontalCenter
+       }
+
+       WorkspaceOther {
+           anchors.left: workspaces.right
+           anchors.leftMargin: 10
+       }
+
+       MeterBattery {
+           id: batteryMeter
+           anchors.right: parent.right
+       }
     }
 
     PanelWindow {
@@ -103,25 +91,37 @@ Scope {
         implicitHeight: 35
         color: "transparent"
 
-        ModuleTime {}
+        ModuleTime {
+            id: desktopTime
+        }
+        // PROXIMITY: ModuleTime
+        // Wifi strength changes rapidly with Time
+        ModuleWifi {
+            id: desktopWifi
+            anchors.left: desktopTime.right
+            anchors.leftMargin: 10
+            anchors.verticalCenter: desktopTime.verticalCenter
+            segments: 8
+        }
         // ModuleWorkspaces {} // Not that useful compared to PixelUI
         ModuleBattery {}
     }
 
+    // Using DesktopUI/ModuleWifi instead of PixelUI/MeterWifi
+    // Not enough importance to show it all times with PixelUI
+    /*
     PanelWindow {
         exclusionMode: ExclusionMode.Ignore
         WlrLayershell.layer: WlrLayer.Bottom
         mask: Region {} // click-through
-
         // Positioned at bottom left
         anchors { bottom: true; left: true }
-
         implicitWidth: wifiMeter.implicitWidth
         implicitHeight: wifiMeter.implicitHeight
         color: "transparent"
-
         MeterWifi {
             id: wifiMeter
         }
     }
+    */
 }
