@@ -6,7 +6,7 @@ Item {
     property int signalStrength: 0
     property bool isOnline: false
 
-    property int intervalWifiStrength: 5000
+    property int intervalWifiStrength: 10000
     property int intervalInternetConnection: 30000
 
     // Fetches signal strength (0-100)

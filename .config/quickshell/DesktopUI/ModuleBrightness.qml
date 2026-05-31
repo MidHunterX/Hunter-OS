@@ -5,27 +5,23 @@ import "../components"
 Item {
     id: root
 
-    // Number of segments for the meter
-    property int segments: 5
+    // UI Configuration
+    property int segments: 8
     property int segment_size: 8
+    property int max_brightness_threshold: 100
 
-    WifiMonitor {
-        id: wifi
-    }
-
-    readonly property color activeColor: {
-        if (!wifi.isOnline) return "#FF6969" // Disconnected/No Internet
-        if (wifi.signalStrength > 85) return "#FFDD69" // Excellent
-        return Colors.secondary
-    }
+    readonly property color activeColor: Colors.secondary
     readonly property color inactiveColor: Colors.secondary_container
+
+    BrightnessMonitor {
+        id: monitor
+    }
 
     SlantedBox {
         id: outerBox
         anchors.fill: parent
 
-        // Outer styling
-        slantType: "right"
+        slantType: "left"
         color: Colors.surface_container_highest
         borderColor: Colors.outline_variant
         borderWidth: 1
@@ -42,31 +38,30 @@ Item {
                     height: root.segment_size * 1
                     width: root.segment_size * 2
 
-                    // Styling
-                    slantType: "right"
+                    slantType: "left"
                     skewOffset: (parent.height / 2)
                     borderWidth: 0
 
-                    // Logic: fill if the signal strength is higher than this segment's threshold
-                    // Example: Segment 1 (index 0) fills if strength > 0
-                    // Segment 5 (index 4) fills if strength > 80
+                    // Logic: fill segment if brightness is above threshold
                     color: {
-                        let threshold = (index / root.segments) * 100;
-                        return (wifi.signalStrength > threshold)
-                        ? root.activeColor
-                        : root.inactiveColor
+                        let threshold = (index / root.segments) * root.max_brightness_threshold;
+                        return (monitor.brightness > threshold)
+                            ? root.activeColor
+                            : root.inactiveColor
                     }
 
                     Behavior on color {
-                        ColorAnimation { duration: 400 }
+                        ColorAnimation { duration: 300 }
                     }
                 }
             }
         }
+
         Text {
             id: text
-            text: wifi.signalStrength + "%"
+            text: monitor.brightness + "%"
             color: Colors.on_surface_variant
+            font.pixelSize: 10
             anchors.left: row.right
             anchors.leftMargin: 8
             anchors.verticalCenter: parent.verticalCenter

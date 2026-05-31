@@ -14,34 +14,17 @@ Scope {
         margins { left: 30; right: 30 }
         color: "transparent"
 
-        /*
-        Rectangle {
-            anchors.fill: parent
-            gradient: Gradient {
-                GradientStop { position: 0.0; color: Qt.rgba(0, 0, 0, 0.9) }
-                GradientStop { position: 1.0; color: Qt.rgba(0, 0, 0, 0) }
-            }
-        }
-        */
-
        MeterTime {
            anchors.left: parent.left
        }
 
-       WorkspaceSpecial {
-           anchors.right: workspaces.left
-           anchors.rightMargin: 10
-       }
-
+       // PROXIMITY: Workspaces
+       WorkspaceSpecial { anchors.right: workspaces.left }
        WorkspacePersistent {
            id: workspaces
            anchors.horizontalCenter: parent.horizontalCenter
        }
-
-       WorkspaceOther {
-           anchors.left: workspaces.right
-           anchors.leftMargin: 10
-       }
+       WorkspaceOther { anchors.left: workspaces.right }
 
        MeterBattery {
            id: batteryMeter
@@ -91,11 +74,11 @@ Scope {
         implicitHeight: 35
         color: "transparent"
 
+        // PROXIMITY: ModuleTime x ModuleWifi
+        // Wifi strength changes with Time
         ModuleTime {
             id: desktopTime
         }
-        // PROXIMITY: ModuleTime
-        // Wifi strength changes rapidly with Time
         ModuleWifi {
             id: desktopWifi
             anchors.left: desktopTime.right
@@ -103,8 +86,23 @@ Scope {
             anchors.verticalCenter: desktopTime.verticalCenter
             segments: 8
         }
+
         // ModuleWorkspaces {} // Not that useful compared to PixelUI
-        ModuleBattery {}
+
+        // PROXIMITY: ModuleBrightness x ModuleBattery
+        // Brightness impacts Battery life
+        ModuleBrightness {
+            id: desktopBrightness
+            anchors.right: desktopBattery.left
+            anchors.rightMargin: 10
+            anchors.verticalCenter: desktopBattery.verticalCenter
+            segments: 8
+            max_brightness_threshold: 50
+        }
+        ModuleBattery {
+            id: desktopBattery
+            anchors.right: parent.right
+        }
     }
 
     // Using DesktopUI/ModuleWifi instead of PixelUI/MeterWifi

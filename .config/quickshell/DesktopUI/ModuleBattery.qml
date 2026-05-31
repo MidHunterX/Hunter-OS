@@ -5,7 +5,8 @@ import "../components"
 
 Item {
     id: root
-    anchors.fill: parent
+    implicitHeight: parent.height
+    implicitWidth: batteryRow.width + 50
 
     SlantedBox {
         id: batteryBox
