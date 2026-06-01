@@ -132,7 +132,7 @@ hl.define_submap("Cursor", function()
         -- exit ColorPicker mode
         hl.bind("escape", function()
             hl.dispatch(hl.dsp.exec_cmd("pkill hyprpicker"))
-            hl.dispatch(hl.dsp.submap("Cursor"))
+            hl.dispatch(hl.dsp.exec_cmd("hyprctl dispatch 'hl.dispatch(hl.dsp.submap(\"Cursor\"))'"))
         end)
     end)
     hl.bind("C", function()
@@ -318,10 +318,6 @@ for key, workspace in pairs(finger_workspace) do
     hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = workspace }))
     hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = workspace }))
 end
-
--- Cycle through windows with mainMod + n
-hl.bind(mainMod .. " + n", hl.dsp.window.cycle_next())
-
 
 -- █░█░█ █ █▄░█ █▀▄ █▀█ █░█░█ █▀   █▀ ▀█▀ █▄█ █░░ █▀▀
 -- ▀▄▀▄▀ █ █░▀█ █▄▀ █▄█ ▀▄▀▄▀ ▄█   ▄█ ░█░ ░█░ █▄▄ ██▄

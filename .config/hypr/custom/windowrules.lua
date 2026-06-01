@@ -42,11 +42,53 @@ hl.window_rule({
   move = { "(monitor_w-(monitor_w*" .. pip_size .. ")-16)", "(monitor_h-(monitor_h*" .. pip_size .. ")-16)" },
   keep_aspect_ratio = true,
   no_dim = true,
+  no_blur = true,
   pin = true,
   no_initial_focus = true,
   idle_inhibit = "always",
-  nearest_neighbor = true
+  no_focus = true,
 })
+
+-- Cycle through windows with mainMod + n
+--[[
+Imagine the following scenario:
+- workspace 1: kitty terminal
+- workspace 2: empty
+- workspace 3: firefox window
+- Switch to workspace 1 -> Kitty terminal is focused
+- Switch to workspace 3 -> Firefox window is focused
+- Accidentally switch to workspace 2 -> Pinned firefox-pip is focused
+- Switch to workspace 1 -> Pinned firefox-pip is still focused
+]]
+-- This keybind fixes this issue
+-- Keeps firefox-pip no_focus, so it won't get focused but still be able to cycle through it
+hl.bind("SUPER + n", function()
+  local ws = hl.get_active_workspace()
+  local pip_window = nil
+  if ws then
+    local windows = hl.get_workspace_windows(ws)
+    if windows then
+      for _, w in ipairs(windows) do
+        if w.class == "firefox" and w.title == "Picture-in-Picture" then
+          pip_window = w
+          break
+        end
+      end
+    end
+  end
+  if pip_window then
+    local active = hl.get_active_window()
+    if active and active.address == pip_window.address then
+      hl.dispatch(hl.dsp.window.cycle_next())
+    else
+      hl.dispatch(hl.dsp.window.set_prop({ prop = "no_focus", value = "false", window = pip_window }))
+      hl.dispatch(hl.dsp.focus({ window = pip_window }))
+      hl.dispatch(hl.dsp.window.set_prop({ prop = "no_focus", value = "true", window = pip_window }))
+    end
+  else
+    hl.dispatch(hl.dsp.window.cycle_next())
+  end
+end)
 
 -- MULTIMEDIA
 -- ==========

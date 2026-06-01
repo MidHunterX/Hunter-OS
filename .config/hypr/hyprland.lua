@@ -25,7 +25,7 @@ hl.config({
             inactive_border = "rgba(59595900)",
         },
         layout = "dwindle", -- dwindle/master/scrolling/monocle
-        no_focus_fallback = true,
+        no_focus_fallback = false, -- Stop cycling through windows
         resize_on_border = true,
         allow_tearing = false,
 
@@ -71,11 +71,11 @@ hl.config({
             ignore_opacity = true,
             new_optimizations = true,
             xray = true,
-            noise = 0.05,
-            brightness = 0.5, -- a safe dark default
-            contrast = 0.8,
-            vibrancy = 0.2,
-            vibrancy_darkness = 0.0,
+            noise = 0.05, -- [0.0 - 1.0]
+            brightness = 0.5, -- [0.0 - 2.0]
+            contrast = 0.8, -- [0.0 - 2.0]
+            vibrancy = 0.2, -- [0.0 - 1.0]
+            vibrancy_darkness = 0.0, -- [0.0 - 1.0]
             special = false,
             popups = true,
             popups_ignorealpha = 0.2
