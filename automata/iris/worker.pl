@@ -13,7 +13,7 @@ use File::Basename;
 # ============================== CONFIGURATION ============================== #
 
 my $MONITOR            = "eDP-1";
-my $AUTOSCALE_STRATEGY = "manual"; # manual | strength | adapt
+my $AUTOSCALE_STRATEGY = "manual"; # manual | strength | exponential | dramatic
 my $CENTER_BIAS        = 10; # (0-100)
 my $STRATEGY           = "color"; # image | color
 my $print_logs         = 0;
@@ -204,12 +204,18 @@ elsif ($AUTOSCALE_STRATEGY eq "strength") {
     $brightness = $base_brightness + ($adapt * $strength);
     $contrast   = $base_contrast   + ($adapt * $strength);
 }
-elsif ($AUTOSCALE_STRATEGY eq "adapt") {
-    my $target_brightness = 0.5;  # target percieved brightness of window (0.0 - 2.0)
+elsif ($AUTOSCALE_STRATEGY eq "exponential") {
+    my $target_brightness = 0.6;  # target percieved brightness of window (0.0 - 2.0)
     # window = 1.2 * t - 0.5 * w # Samey feel
-    # window = (t * 1.5) - (w * 0.8) # Higher peaks and lower troughs
     # window = t * (1.1 - (w ^ 2)) # Exponential decay for natural feel
     my $window = $target_brightness * (1.1 - ($wallpaper_brightness ** 2));
+    $window = clamp($window, 0.0, 2.0);
+    $brightness = $window;
+}
+elsif ($AUTOSCALE_STRATEGY eq "dramatic") {
+    my $target_brightness = 0.6;
+    # window = (t * 1.5) - (w * 0.8) # Higher peaks and lower troughs
+    my $window = ($target_brightness * 1.5) - ($wallpaper_brightness * 0.8);
     $window = clamp($window, 0.0, 2.0);
     $brightness = $window;
 }
