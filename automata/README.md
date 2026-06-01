@@ -31,3 +31,11 @@ Interpolate brightness smoothly throughout the whole day.
 - Case 1 (Subsequent): Set 0% @ 4:00, 7% @ 6:30, 12% @ 9:00 = LERP(PREV, NEXT).
 - Case 2 (Update): Next day, set 4% @ 6:25. NEXT will be detected as 7% @ 6:30 which might not be the intended value since data points are close to each-other = SET with a padding to detection window. This same philosophy is used in UI Buttons and Touch Keyboards as well to detect nearest touch/click and accept it as intended.
 - Case 3 (Pause): Use `--toggle` to temporarily pause/resume auto-brightness. Useful when you are outside and want a fixed brightness level throughout the usage.
+
+## Stasis - Intelligent Power State Adaptation
+
+Stasis makes your computer know when to stop. It dynamically manages your
+system power state by learning your usage patterns to decide if it should just
+suspend to save power or fully shutdown when left unattended.
+
+Just simply walk away and go to sleep. Your computer should power itself off for you.
