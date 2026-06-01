@@ -32,47 +32,61 @@ Item {
         skewOffset: (parent.height / 2)
 
         Row {
-            id: row
-            spacing: 1
-            anchors.verticalCenter: parent.verticalCenter
+            id: contentContainer
+            anchors.centerIn: parent
+            spacing: 8
 
-            Repeater {
-                model: root.segments
-                delegate: SlantedBox {
-                    height: root.segment_size * 1
-                    width: root.segment_size * 2
+            Text {
+                id: icon
+                text: {
+                    if (wifi.isOnline) return "󰖩"
+                    return "󰖪"
+                }
+                color: Colors.on_surface_variant
+                anchors.verticalCenter: parent.verticalCenter
+            }
 
-                    // Styling
-                    slantType: "right"
-                    skewOffset: (parent.height / 2)
-                    borderWidth: 0
+            Row {
+                id: row
+                spacing: 1
+                anchors.verticalCenter: parent.verticalCenter
 
-                    // Logic: fill if the signal strength is higher than this segment's threshold
-                    // Example: Segment 1 (index 0) fills if strength > 0
-                    // Segment 5 (index 4) fills if strength > 80
-                    color: {
-                        let threshold = (index / root.segments) * 100;
-                        return (wifi.signalStrength > threshold)
-                        ? root.activeColor
-                        : root.inactiveColor
-                    }
+                Repeater {
+                    model: root.segments
+                    delegate: SlantedBox {
+                        height: root.segment_size * 1
+                        width: root.segment_size * 2
 
-                    Behavior on color {
-                        ColorAnimation { duration: 400 }
+                        // Styling
+                        slantType: "right"
+                        skewOffset: (parent.height / 2)
+                        borderWidth: 0
+
+                        // Logic: fill if the signal strength is higher than this segment's threshold
+                        // Example: Segment 1 (index 0) fills if strength > 0
+                        // Segment 5 (index 4) fills if strength > 80
+                        color: {
+                            let threshold = (index / root.segments) * 100;
+                            return (wifi.signalStrength > threshold)
+                            ? root.activeColor
+                            : root.inactiveColor
+                        }
+
+                        Behavior on color {
+                            ColorAnimation { duration: 400 }
+                        }
                     }
                 }
             }
-        }
-        Text {
-            id: text
-            text: wifi.signalStrength + "%"
-            color: Colors.on_surface_variant
-            anchors.left: row.right
-            anchors.leftMargin: 8
-            anchors.verticalCenter: parent.verticalCenter
+            Text {
+                id: text
+                text: wifi.signalStrength + "%"
+                color: Colors.on_surface_variant
+                anchors.verticalCenter: parent.verticalCenter
+            }
         }
     }
 
     implicitHeight: row.height + root.segment_size
-    implicitWidth: row.width + (text.width + 8) + (outerBox.skewOffset * 2) + root.segment_size
+    implicitWidth: contentContainer.width + (outerBox.skewOffset * 2) + root.segment_size
 }

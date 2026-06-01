@@ -28,46 +28,57 @@ Item {
         skewOffset: (parent.height / 2)
 
         Row {
-            id: row
-            spacing: 1
-            anchors.verticalCenter: parent.verticalCenter
+            id: contentContainer
+            anchors.centerIn: parent
+            spacing: 8
 
-            Repeater {
-                model: root.segments
-                delegate: SlantedBox {
-                    height: root.segment_size * 1
-                    width: root.segment_size * 2
+            Text {
+                id: icon
+                text: "󰃠"
+                color: Colors.on_surface_variant
+                anchors.verticalCenter: parent.verticalCenter
+            }
 
-                    slantType: "left"
-                    skewOffset: (parent.height / 2)
-                    borderWidth: 0
+            Row {
+                id: row
+                spacing: 1
+                anchors.verticalCenter: parent.verticalCenter
 
-                    // Logic: fill segment if brightness is above threshold
-                    color: {
-                        let threshold = (index / root.segments) * root.max_brightness_threshold;
-                        return (monitor.brightness > threshold)
+                Repeater {
+                    model: root.segments
+                    delegate: SlantedBox {
+                        height: root.segment_size * 1
+                        width: root.segment_size * 2
+
+                        slantType: "left"
+                        skewOffset: (parent.height / 2)
+                        borderWidth: 0
+
+                        // Logic: fill segment if brightness is above threshold
+                        color: {
+                            let threshold = (index / root.segments) * root.max_brightness_threshold;
+                            return (monitor.brightness > threshold)
                             ? root.activeColor
                             : root.inactiveColor
-                    }
+                        }
 
-                    Behavior on color {
-                        ColorAnimation { duration: 300 }
+                        Behavior on color {
+                            ColorAnimation { duration: 300 }
+                        }
                     }
                 }
             }
-        }
 
-        Text {
-            id: text
-            text: monitor.brightness + "%"
-            color: Colors.on_surface_variant
-            font.pixelSize: 10
-            anchors.left: row.right
-            anchors.leftMargin: 8
-            anchors.verticalCenter: parent.verticalCenter
+            Text {
+                id: text
+                text: monitor.brightness + "%"
+                color: Colors.on_surface_variant
+                font.pixelSize: 10
+                anchors.verticalCenter: parent.verticalCenter
+            }
         }
     }
 
     implicitHeight: row.height + root.segment_size
-    implicitWidth: row.width + (text.width + 8) + (outerBox.skewOffset * 2) + root.segment_size
+    implicitWidth: contentContainer.width + (outerBox.skewOffset * 2) + root.segment_size
 }
