@@ -1,29 +1,16 @@
 import QtQuick
-import Quickshell.Io
+import Quickshell.Services.UPower
+// Quickshell.Services.UPower module binds directly to the system's UPower DBus daemon
 
 Item {
     id: root
-    property int batteryPercent: 0
-    property int interval: 10000
-
-    Process {
-        id: batteryProc
-        command: ["cat", "/sys/class/power_supply/BAT0/capacity"]
-        running: true
-        stdout: StdioCollector {
-            onStreamFinished: {
-                var percent = parseInt(this.text.trim())
-                if (!isNaN(percent)) {
-                    root.batteryPercent = Math.max(0, Math.min(100, percent))
-                }
-            }
-        }
+    readonly property int batteryPercent: {
+        let bat = UPower.devices.values.find(d => d.isLaptopBattery);
+        return bat ? Math.round(bat.percentage * 100) : 0; // percentage is 0.0 to 1.0
     }
 
-    Timer {
-        interval: root.interval
-        running: true
-        repeat: true
-        onTriggered: batteryProc.running = true
+    readonly property bool isCharging: {
+        let bat = UPower.devices.values.find(d => d.isLaptopBattery);
+        return bat ? (bat.state === UPowerDeviceState.Charging) : false;
     }
 }

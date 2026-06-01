@@ -2,7 +2,6 @@ import QtQuick
 import "../config"
 import "../components"
 
-
 Item {
     id: root
     implicitHeight: parent.height
@@ -20,6 +19,7 @@ Item {
         borderColor: Colors.outline_variant
 
         property int batteryPercent: monitor.batteryPercent
+        property bool isCharging: monitor.isCharging
 
         BatteryMonitor {
             id: monitor
@@ -31,8 +31,8 @@ Item {
             spacing: 8
 
             Text {
-                text: "PWR"
-                color: Colors.primary
+                text: batteryBox.isCharging ? "CHG" : "PWR"
+                color: batteryBox.isCharging ? "#a6e3a1" : Colors.primary
                 font.pixelSize: 14
                 anchors.verticalCenter: parent.verticalCenter
             }

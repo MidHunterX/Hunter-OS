@@ -45,7 +45,7 @@ Item {
     Process {
         id: idleDaemonCheck
         command: ["sh", "-c", "pgrep -x swayidle >/dev/null 2>&1 || pgrep -x hypridle >/dev/null 2>&1"]
-        onExited: {
+        onExited: (exitCode, exitStatus) => {
             root.idleDaemonRunning = (exitCode === 0)
         }
     }

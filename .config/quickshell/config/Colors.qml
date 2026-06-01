@@ -76,7 +76,7 @@ QtObject {
         onFileChanged: reload()
         printErrors: false
 
-        onLoadFailed: function(error) {
+        onLoadFailed: (error) => {
             console.log("Colors: Failed to load - using fallback colors")
         }
 
