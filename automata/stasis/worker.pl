@@ -2,13 +2,11 @@
 use strict;
 use warnings;
 
-# Timeout in minutes
-use constant {
-    TIMEOUT_MINOR => 15,
-    TIMEOUT_MAJOR => 30
-};
+use FindBin;
+use lib $FindBin::Bin;
+use Vars qw(TIMEOUT_MAJOR TIMEOUT_MINOR);
 
-sub minutes {
+sub seconds {
     my ($minutes) = @_;
     return $minutes * 60;
 }
@@ -22,9 +20,9 @@ my $RADIANCE = "perl $HOME/automata/radiance/worker.pl";
 
 my @cmd = (
     "swayidle", "-w",
-    "timeout", minutes(TIMEOUT_MINOR), "$SCREEN_OFF",
+    "timeout", seconds(TIMEOUT_MINOR), "$SCREEN_OFF",
     "resume", "$SCREEN_ON; $RADIANCE --once",
-    "timeout", minutes(TIMEOUT_MAJOR), "$SCREEN_ON; sleep 1; $LOGIC",
+    "timeout", seconds(TIMEOUT_MAJOR), "$SCREEN_ON; sleep 1; $LOGIC",
     "resume", "$SCREEN_ON; $RADIANCE --once; expression --once"
 );
 exec @cmd or die "Failed to exec swayidle: $!";

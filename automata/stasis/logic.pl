@@ -2,20 +2,9 @@
 use strict;
 use warnings;
 use Time::Piece; # Required for parsing timestamps
-
-# DYNAMIC CONFIGURATION
-# ================================
-
-# Look back window in days
-use constant DAYS_TO_LOOK_BACK => 14;
-
-# Fallbacks if journalctl has no boot history
-use constant {
-    FALLBACK_START => "09:00",
-    FALLBACK_END   => "16:00",
-};
-
-# ================================
+use FindBin;
+use lib $FindBin::Bin;
+use Vars qw(TIMEOUT_MAJOR TIMEOUT_MINOR DAYS_TO_LOOK_BACK FALLBACK_START FALLBACK_END);
 
 # HH:MM -> minutes
 sub time_to_minutes {
@@ -24,17 +13,19 @@ sub time_to_minutes {
     return $hour * 60 + $minute;
 }
 
+# minutes -> HH:MM
+sub minutes_to_time {
+    my ($min) = @_;
+    $min %= 1440; # Wrap around 24h
+    return sprintf("%02d:%02d", int($min / 60), $min % 60);
+}
+
 # if now is between start and end
 sub in_time_range {
     my ($now, $start, $end) = @_;
-    if ($start <= $end) {
-        # Normal range (same day)
-        return $now >= $start && $now < $end;
-    }
-    else {
-        # Overnight range (e.g. 23:00 → 06:00)
-        return $now >= $start || $now < $end;
-    }
+    return ($start <= $end)
+        ? ($now >= $start && $now < $end) # Normal range (same day)
+        : ($now >= $start || $now < $end); # Overnight range (23:00 -> 06:00)
 }
 
 # retrieve historical boot start and end times
@@ -71,7 +62,9 @@ sub get_boot_times {
 
         # Exclude active boot (idx 0) from shutdown times to avoid calculation skew
         if ($idx != 0) {
-            push @end_times, $end_time;
+            my $skew_correction_min = TIMEOUT_MAJOR + TIMEOUT_MINOR;
+            my $end_min = time_to_minutes($end_time) - $skew_correction_min;
+            push @end_times, minutes_to_time($end_min);
         }
     }
     close($fh);
