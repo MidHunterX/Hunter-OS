@@ -1123,8 +1123,8 @@ filextype { *.odt,*.doc,*.docx,*.odp,*.pptx,*.ppt},
       \ application/vnd.ms-excel>
       \ libreoffice %f & disown
 fileviewer {*.doc},<application/msword> catdoc %c
-fileviewer {*.odt},
-      \ odt2txt %f -
+fileviewer {*.odt,*.ods,*.odp,*.sxw},
+      \ odt2txt %f
 fileviewer {*.docx},
       \<application/
       \vnd.openxmlformats-officedocument.wordprocessingml.document>
