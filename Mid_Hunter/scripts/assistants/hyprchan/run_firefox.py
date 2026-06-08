@@ -34,6 +34,65 @@ def find_firefox_process(profile_name: str) -> str | None:
     return None
 
 
+def daily_experiment_tab(ff_attribs: list[str]):
+    """Extends ff_attribs list if it's first run of the day for "Experiment" profile."""
+    yt = "https://www.youtube.com/watch?v="
+    scheduler = TabScheduler()
+    (
+        scheduler.repeat_until_next(
+            "DMS",
+            {
+                "2026-06-08": [
+                    # M3 - Relations, Lattice, Hasse Diagram
+                    f"{yt}JPe7btJOXic&list=PLZKuc5xrMu7fozSeHwxhmJMKQ6dSpkoSA",
+                    f"{yt}zzYTDF0wz5Q&list=PLv-1irVkw_hTglW2TS4ujtesfWO25IYu7&index=16&pp=iAQB",
+                ],
+                "2026-06-25": [
+                    # M4 - Sequence and Series, Generating Fn
+                    f"{yt}d9V0HVdoiEg&list=PLZKuc5xrMu7ePTO-xNuq9qLc3UN5zWqN7",
+                    f"{yt}_UKtWQ72G2s&list=PLv-1irVkw_hTglW2TS4ujtesfWO25IYu7&index=25&pp=iAQB",
+                ],
+                "2026-07-10": [
+                    # M5 - Group Theory, Abelian, Cyclic
+                    f"{yt}ulj2kqDAmqg&list=PLZKuc5xrMu7f9aix6zaKR10US8EtpIax0",
+                    f"{yt}E7Z7n1EgnaA&list=PLv-1irVkw_hTglW2TS4ujtesfWO25IYu7&index=39&pp=iAQB",
+                ],
+                "2026-07-25": [
+                    # M2 - Permutations and Combinations
+                    f"{yt}yP6OEGxZSlo&list=PLZKuc5xrMu7drwa5FIWqAMB1m0_535-cY",
+                    f"{yt}ejI01HRnv10&list=PLv-1irVkw_hTglW2TS4ujtesfWO25IYu7&index=9&pp=iAQB",
+                ],
+                "2026-08-10": [
+                    # M1 - Truth Tables, Logic Validity
+                    f"{yt}dAmwjFt2nM0&list=PLb_KXbUqilxB_b3MGbRTVb7M-sXsx9WdR",
+                    f"{yt}7NZhBsn3G7w&list=PLv-1irVkw_hTglW2TS4ujtesfWO25IYu7&index=1&pp=iAQB",
+                ],
+            },
+        )
+        .repeat_until_next(
+            "LSD",
+            {
+                "2026-06-15": f"{yt}7pDc0CjxsKY&list=PLoH_6D93KihM1GuhDSipH_eh73mvpVel_",  # M1 - Conversion, 9s Complement
+                "2026-06-30": f"{yt}MY8pLZ_MOlw&list=PLoH_6D93KihNPMY_XieGRWCrIUoLZciGn",  # M2 - Boolean Simplification, K-map
+                "2026-07-15": f"{yt}gvTM4oGD_XU&list=PLoH_6D93KihNbQtvzoX6z517m5bAgprrB",  # M3 - Full Adder, Subtrator circuits
+                "2026-07-30": f"{yt}9NitpW-Rmzs&list=PLoH_6D93KihOJVi0rZmSlnwZhFS0DxEcD",  # M4 - Counters, Flip Flops
+                "2026-08-15": f"{yt}9bV9otTD6ls&list=PLoH_6D93KihMSCsKFdJC3DkK8ufy8GOPF",  # M5 - Ring Counters, Shift Registers
+            },
+        )
+        .repeat_until_next(
+            "Calculus",
+            {
+                "2026-06-20": f"{yt}xxQd2W_JZFA&list=PL7lBkW4pLsIK-G03ZOcyJ34cMKc5iQ4QA",  # M1 - Eigen Values & Vectors, System of Eqn
+                "2026-07-05": f"{yt}TZwI4D_87ng&list=PL7lBkW4pLsIKMZ-K8Xc_PfPu8gWAVVqRG",  # M2 - Extrema, Saddle Points, Chain Rule
+                "2026-07-20": f"{yt}M3pbshICvuI&list=PL7lBkW4pLsILqrHAMiaa46s9LVqtW6xMm",  # M3 - Evaluate, Reverse Order of Integration
+                "2026-08-05": f"{yt}RsXyD2Af_pg&list=PL7lBkW4pLsIIvAW5g-MZWGC7Hh4uERDJp",  # M4 - Series Test: Ratio, Limit comparison
+                "2026-08-20": f"{yt}Zi3csr_SVKk&list=PL7lBkW4pLsIJ_hp6PFndYb3GRAA8Z4pYt",  # M5 - Fourier Series, Sine and Cosine Series
+            },
+        )
+        .apply(ff_attribs)
+    )
+
+
 def daily_personal_tab(ff_attribs: list[str]):
     """Extends ff_attribs list if it's first run of the day for "Personal" profile."""
     scheduler = TabScheduler()

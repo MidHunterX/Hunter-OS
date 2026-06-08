@@ -24,7 +24,7 @@ class ScheduleEntry(TypedDict):
 class SequenceEntry(TypedDict):
     name: str
     urls: Optional[List[str]]
-    date_map: Optional[Dict[str, str]]
+    date_map: Optional[Dict[str, str | List[str]]]
     interval_days: Optional[int]
     is_sticky: Optional[bool]
 
@@ -66,9 +66,9 @@ class TabScheduler:
         )
         return self
 
-    def iterate_on_dates(self, name: str, date_map: Dict[str, str]):
+    def iterate_on_dates(self, name: str, date_map: Dict[str, str | List[str]]):
         """
-        Opens a specific URL ONLY if today's date matches a key in the date_map.
+        Opens a specific URL (or list of URLs) ONLY if today's date matches a key in the date_map.
         """
         self.sequences.append(
             {
@@ -81,9 +81,9 @@ class TabScheduler:
         )
         return self
 
-    def repeat_until_next(self, name: str, date_map: Dict[str, str]):
+    def repeat_until_next(self, name: str, date_map: Dict[str, str | List[str]]):
         """
-        Opens the URL corresponding to the most recent date in the past,
+        Opens the URL(s) corresponding to the most recent date in the past,
         repeating it daily until a new date entry is reached.
         """
         self.sequences.append(
@@ -140,12 +140,12 @@ class TabScheduler:
             )
             index = seq_state.get("index", 0)
 
-            url_to_open = None
+            urls_to_open : Optional[str | List[str]] = None
 
             # RULE 1: INTERVAL-BASED (Sequential)
             if seq["interval_days"] is not None and seq["urls"]:
                 if last_run is None or (today - last_run).days >= seq["interval_days"]:
-                    url_to_open = seq["urls"][index % len(seq["urls"])]
+                    urls_to_open = seq["urls"][index % len(seq["urls"])]
                     index = (index + 1) % len(seq["urls"])
 
             # RULE 2: DATE MAP-BASED
@@ -156,14 +156,19 @@ class TabScheduler:
                     if past_dates:
                         latest_mapped_date = max(past_dates)
                         if last_run != today:
-                            url_to_open = seq["date_map"][latest_mapped_date]
+                            urls_to_open = seq["date_map"][latest_mapped_date]
                 else:
                     # Fixed Timeline
                     if today_iso in seq["date_map"] and last_run != today:
-                        url_to_open = seq["date_map"][today_iso]
+                        urls_to_open = seq["date_map"][today_iso]
 
-            if url_to_open:
-                ff_attribs.extend(["--new-tab", url_to_open])
+            if urls_to_open:
+                if isinstance(urls_to_open, list):
+                    for u in urls_to_open:
+                        ff_attribs.extend(["--new-tab", u])
+                else:
+                    ff_attribs.extend(["--new-tab", urls_to_open])
+
                 self.state[name] = {
                     "last_run": today_iso,
                     "index": index,
