@@ -15,8 +15,8 @@ my $HOME = $ENV{HOME} // die "HOME environment variable is not set";
 
 my $SCREEN_ON = "hyprctl dispatch 'hl.dsp.dpms({action=\"enable\"})'";
 my $SCREEN_OFF = "hyprctl dispatch 'hl.dsp.dpms({action=\"disable\"})'";
-my $LOGIC = "perl $HOME/automata/stasis/logic.pl";
-my $RADIANCE = "perl $HOME/automata/radiance/worker.pl";
+my $LOGIC = "perl $HOME/agents/stasis/logic.pl";
+my $RADIANCE = "perl $HOME/agents/radiance/worker.pl";
 
 my @cmd = (
     "swayidle", "-w",

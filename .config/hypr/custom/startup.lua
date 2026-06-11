@@ -11,9 +11,9 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("awww-daemon") -- Wayland Wallpaper Daemon
     hl.exec_cmd("expression") -- Custom Wallpaper Engine
 
-    -- AUTOMATAS
-    hl.exec_cmd("perl ~/automata/radiance/worker.pl")
-    hl.exec_cmd("perl ~/automata/stasis/worker.pl")
+    -- AGENTS
+    hl.exec_cmd("perl ~/agents/radiance/worker.pl")
+    hl.exec_cmd("perl ~/agents/stasis/worker.pl")
 
     -- NOTIFICATIONS
     -- hl.exec_cmd("python ~/Mid_Hunter/scripts/assistants/archchan/notify_battery.py") -- Replaced by Quickshell pixelbar

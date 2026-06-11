@@ -1,6 +1,6 @@
-# Automata
+# Agents
 
-An automaton (automata in plural) is an abstract self-propelled computing device which follows a predetermined sequence of operations automatically.
+Autonomous software program that can perceive its environment, make decisions, and take independent actions to achieve specific goals.
 
 ## Iris - Ocular Brightness Adaptation
 

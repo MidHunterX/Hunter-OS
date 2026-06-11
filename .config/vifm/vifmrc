@@ -1081,7 +1081,7 @@ filextype {*.bmp,*.jpg,*.jpeg,*.png,*.xpm},<image/*>
       \ {View in nomacs}
       \ nomacs %f -m 'frameless',
       \ {Set as Wallpaper with SWWW}
-      \ swww img %f && bash ~/automata/iris/worker.pl &,
+      \ swww img %f && bash ~/agents/iris/worker.pl &,
       \ {Edit in NeoVim}
       \ nvim %f,
 fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>

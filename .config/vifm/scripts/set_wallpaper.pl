@@ -6,7 +6,7 @@ use warnings;
 use constant {
   WALLPAPER => $ARGV[0],
   SCREEN => "eDP-1",
-  IRIS => "$ENV{HOME}/automata/iris/worker.pl",
+  IRIS => "$ENV{HOME}/agents/iris/worker.pl",
 };
 
 exit 1 unless WALLPAPER;

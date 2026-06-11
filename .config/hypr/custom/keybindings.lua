@@ -202,12 +202,12 @@ hl.define_submap("Execute", function()
         end
         -- lock/unlock
         hl.bind("l", function()
-            hl.exec_cmd("perl ~/automata/radiance/worker.pl --toggle")
+            hl.exec_cmd("perl ~/agents/radiance/worker.pl --toggle")
             exit_brightness()
         end)
         -- learn and exit
         hl.bind("x", function()
-            hl.exec_cmd("perl ~/automata/radiance/learn.pl")
+            hl.exec_cmd("perl ~/agents/radiance/learn.pl")
             exit_brightness()
         end)
         -- exit

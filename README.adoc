@@ -202,7 +202,7 @@ IMPORTANT: Color generators like matugen are so pervasive, it becomes a dependen
 graph TD
 expression(<a href='{gh-expression}'>Expression</a>)
 vifm(<a href='{gh-repo-master}/.config/vifm'>ViFM</a>)
-iris(<a href='{gh-repo-master}/automata'>Iris</a>)
+iris(<a href='{gh-repo-master}/agents'>Iris</a>)
 
 %% ========================== Sourcing Techniques ========================== %%
 
@@ -586,7 +586,7 @@ When using `curlftpfs` to FUSE mount and copy files over FTP, there's a common i
 | waybar                      | Wayland Status Bar           | pacman
 | wl-clipboard                | wl-copy + wl-paste           | pacman
 | wtype                       | Wayland Keystrokes Emulation | pacman
-| quickshell-git              | Qt GUI Shell                 | aur
+| quickshell                  | Qt GUI Shell                 | pacman
 | vicinae-bin                 | Raycast Launcher alt         | aur
 | wf-recorder                 | Wayland Screen Recorder      | aur
 | keyd                        | Key Remapping Daemon         | aur
@@ -1028,19 +1028,19 @@ you simply state your intent and let your computer change and modify its
 environment to adapt to your intention. Abstracts away Operating Systems to use
 it as specialized environment for a specific intent. `EF.TaskInitiation`
 
-link:automata/stasis[Auto Idle]: The device will shutdown itself when it's left
+link:agents/stasis[Auto Idle]: The device will shutdown itself when it's left
 unattended for a long time at sleeping hours but if it's working hours, the
 device will suspend instead to save power. So, just go to sleep if you are
 tired and let the computer do the powering off for you.
 
-link:automata/iris[Adaptive Window Contrast]: An adaptive
+link:agents/iris[Adaptive Window Contrast]: An adaptive
 interface design solution for UI contrast issues with transparent windows. It
 makes the window text readable against both light and dark wallpapers by
 detecting the brightness of the Wallpaper and adjusting the perceived
 transparency of the window (via blur brightness + contrast).
 
 .`Fig: Window brightness (perceived) auto adapted to comfortable levels across wallpapers with varying brightness`
-image:automata/.assets/auto_adaptation.jpg[link=automata/iris/]
+image:agents/.assets/auto_adaptation.jpg[link=agents/iris/]
 
 = Personal Notes
 
