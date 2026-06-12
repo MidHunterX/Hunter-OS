@@ -15,14 +15,19 @@ my $wallpaper_extension = WALLPAPER;
 $wallpaper_extension =~ s/.*\.(.*)/$1/;
 
 # IMAGE WALLPAPER
-my @swww_extensions = ("png", "jpg", "jpeg", "webp");
+my @swww_extensions = ("png", "jpg", "jpeg", "webp", "gif");
 for my $ext (@swww_extensions) {
   if ($wallpaper_extension eq $ext) {
-    system("awww", "img", WALLPAPER, "--transition-step", 10);
+    if ($ext eq "gif") {
+      system("awww", "img", WALLPAPER);
+    } else {
+      system("awww", "img", WALLPAPER, "--transition-step", 10);
+    }
     system("perl", IRIS);
     exit 0;
   }
 }
+system("notify-send", "Wallpaper not supported");
 
 # # VIDEO WALLPAPER
 # my @mpv_extensions = ("mp4", "mkv", "avi", "mov", "flv", "webm", "wmv", "m4v");
