@@ -296,7 +296,23 @@ end)
 hl.bind("SUPER + X", hl.dsp.window.close())
 hl.bind("SUPER + F", hl.dsp.window.fullscreen())
 -- TODO: hl.bind("SUPER + M", hl.dsp.layout("togglesplit"))
-hl.bind("SUPER + V", hl.dsp.window.float())
+
+hl.bind("SUPER + V", function()
+    local win = hl.get_active_window()
+    local mon = hl.get_active_monitor()
+    if not win or not mon then return end
+    if not win.floating then
+        hl.dispatch(hl.dsp.window.float({action="on"}))
+        local targetW = math.floor(mon.width * 0.90)
+        local targetH = math.floor(mon.height * 0.85)
+        -- Works. Not optimizing as it's not a bottleneck.
+        hl.dispatch(hl.dsp.window.center())
+        hl.dispatch(hl.dsp.window.resize({ x = targetW, y = targetH }))
+    else
+        hl.dispatch(hl.dsp.window.float({action="off"}))
+    end
+end)
+
 -- Example special workspace (scratchpad)
 hl.bind("SUPER + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind("SUPER + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
