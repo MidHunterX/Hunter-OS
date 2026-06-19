@@ -250,7 +250,7 @@ prompt[🟡 starship] --> ansi
 [discrete]
 ==== Notes
 
-- Waybar & Wlogout: There's no way to conditionally source/implement fallback in GTK-CSS. Only way is to copy a generated file initially.
+- [.line-through]#Waybar &# Wlogout: There's no way to conditionally source/implement fallback in GTK-CSS. Only way is to copy a generated file initially.
 - cava: No option for theme fallback in config as it is doing an in-built parsing. The least resistant path would be to generate config file directly from matugen.
 
 Both solutions are non-plug-n-play friendly on their own unless you provide copy of a pre-generated file before running. Therefore use custom made status bar, logout screen etc. with a GUI shell framework like Astal with AGS (`aylurs-gtk-shell-git` Still uses GTK. GTK = lesser flexibility) or QuickShell (uses Qt = better flexibility).
@@ -581,6 +581,7 @@ When using `curlftpfs` to FUSE mount and copy files over FTP, there's a common i
 | hyprland                    | Wayland compositor           | pacman
 | hyprpicker                  | Hypr Color Picker            | pacman
 | xdg-desktop-portal-hyprland | Hypr Desktop Portal          | pacman
+| adw-gtk-theme               | libadwaita theme             | pacman
 | swayidle                    | Wayland Idle Manager         | pacman
 | swayosd                     | On Screen Display Window     | pacman
 | waybar                      | Wayland Status Bar           | pacman
@@ -594,6 +595,12 @@ When using `curlftpfs` to FUSE mount and copy files over FTP, there's a common i
 | wlogout                     | Logout Screen                | aur
 | clock-tui                   | TUI Clock (tclock)           | aur
 |===
+
+.Installing Dark Theme (adw-gtk-theme)
+[source,bash]
+----
+gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
+----
 
 NOTE: wl-screenrec might be optimized, fast, efficient and Lightweight but it doesn't work in battery saver mode unlike wf-recorder.
 
