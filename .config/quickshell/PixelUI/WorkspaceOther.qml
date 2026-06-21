@@ -2,6 +2,7 @@ import QtQuick
 import Quickshell.Hyprland
 import "../components"
 import "../config"
+import "../logic/WorkspaceLogic.js" as Logic
 
 Item {
     id: root
@@ -12,14 +13,6 @@ Item {
     property list<int> persistentWorkspaces: [1, 2, 3]
     property int primaryLength: 70
     property int secondaryLength: 30
-
-    // Helper function to check if workspace ID is in persistent list
-    function isPersistent(id) {
-        for (var i = 0; i < persistentWorkspaces.length; i++) {
-            if (persistentWorkspaces[i] === id) return true;
-        }
-        return false;
-    }
 
     SlantedBox {
         anchors.fill: parent
@@ -39,19 +32,7 @@ Item {
             // but hides them if they're unfocused AND empty
             Repeater {
                 id: otherRepeater
-                model: {
-                    var result = [];
-                    for (var i = 0; i < Hyprland.workspaces.values.length; i++) {
-                        var ws = Hyprland.workspaces.values[i];
-                        if (root.isPersistent(ws.id)) continue;
-                        if (!ws.focused && ws.toplevels.values.length === 0) continue;
-                        if (ws.id < 0) continue; // Exclude Special Workspaces
-                        result.push(ws);
-                    }
-                    // Sort by ID to maintain order
-                    result.sort(function(a, b) { return a.id - b.id; });
-                    return result;
-                }
+                model: Logic.getOther(Hyprland.workspaces.values, root.persistentWorkspaces)
 
                 WorkspaceItem {
                     width: root.secondaryLength

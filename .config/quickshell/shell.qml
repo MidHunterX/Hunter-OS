@@ -5,6 +5,11 @@ import "PixelUI"
 import "DesktopUI"
 
 Scope {
+
+    // █▀█ █ ▀▄▀ █▀▀ █░░ █▄▄ ▄▀█ █▀█
+    // █▀▀ █ █░█ ██▄ █▄▄ █▄█ █▀█ █▀▄
+    // =============================
+
     PanelWindow {
         exclusionMode: ExclusionMode.Ignore
         WlrLayershell.layer: WlrLayer.Bottom
@@ -14,23 +19,25 @@ Scope {
         margins { left: 30; right: 30 }
         color: "transparent"
 
-       MeterTime {
-           anchors.left: parent.left
-       }
+        MeterTime { anchors.left: parent.left }
 
-       // PROXIMITY: Workspaces
-       WorkspaceSpecial { anchors.right: workspaces.left }
-       WorkspacePersistent {
-           id: workspaces
-           anchors.horizontalCenter: parent.horizontalCenter
-       }
-       WorkspaceOther { anchors.left: workspaces.right }
+        // PROXIMITY: Workspaces
+        WorkspaceSpecial { anchors.right: workspaces.left }
+        WorkspacePersistent {
+            id: workspaces
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+        WorkspaceOther { anchors.left: workspaces.right }
 
-       MeterBattery {
-           id: batteryMeter
-           anchors.right: parent.right
-       }
+        MeterBattery {
+            id: batteryMeter
+            anchors.right: parent.right
+        }
     }
+
+    // █ █▀▄ █░░ █▀▀   █▀▄▀█ █▀▀ ▀█▀ █▀▀ █▀█
+    // █ █▄▀ █▄▄ ██▄   █░▀░█ ██▄ ░█░ ██▄ █▀▄
+    // =====================================
 
     PanelWindow {
         exclusionMode: ExclusionMode.Ignore
@@ -47,6 +54,10 @@ Scope {
         }
     }
 
+    // █▀ █░█ █▄▄ █▀▄▀█ ▄▀█ █▀█   █░█ █░█ █▀▄
+    // ▄█ █▄█ █▄█ █░▀░█ █▀█ █▀▀   █▀█ █▄█ █▄▀
+    // ======================================
+
     PanelWindow {
         exclusionMode: ExclusionMode.Ignore
         WlrLayershell.layer: WlrLayer.Overlay
@@ -62,6 +73,10 @@ Scope {
             anchors.bottom: parent.bottom
         }
     }
+
+    // █▀▄ █▀▀ █▀ █▄▀ ▀█▀ █▀█ █▀█   █░█ █░█ █▀▄
+    // █▄▀ ██▄ ▄█ █░█ ░█░ █▄█ █▀▀   █▀█ █▄█ █▄▀
+    // ========================================
 
     PanelWindow {
         // on the desktop wallpaper
@@ -109,17 +124,17 @@ Scope {
     // Not enough importance to show it all times with PixelUI
     /*
     PanelWindow {
-        exclusionMode: ExclusionMode.Ignore
-        WlrLayershell.layer: WlrLayer.Bottom
-        mask: Region {} // click-through
-        // Positioned at bottom left
-        anchors { bottom: true; left: true }
-        implicitWidth: wifiMeter.implicitWidth
-        implicitHeight: wifiMeter.implicitHeight
-        color: "transparent"
-        MeterWifi {
-            id: wifiMeter
-        }
-    }
+    exclusionMode: ExclusionMode.Ignore
+    WlrLayershell.layer: WlrLayer.Bottom
+    mask: Region {} // click-through
+    // Positioned at bottom left
+    anchors { bottom: true; left: true }
+    implicitWidth: wifiMeter.implicitWidth
+    implicitHeight: wifiMeter.implicitHeight
+    color: "transparent"
+    MeterWifi {
+    id: wifiMeter
+}
+}
     */
 }

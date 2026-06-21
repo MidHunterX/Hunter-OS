@@ -12,14 +12,6 @@ Item {
     property int primaryLength: 70
     property int secondaryLength: 30
 
-    // Helper function to check if workspace ID is in persistent list
-    function isPersistent(id) {
-        for (var i = 0; i < persistentWorkspaces.length; i++) {
-            if (persistentWorkspaces[i] === id) return true;
-        }
-        return false;
-    }
-
     SlantedBox {
         anchors.fill: parent
         slantType: "top"

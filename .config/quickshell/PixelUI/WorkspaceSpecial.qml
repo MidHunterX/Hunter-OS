@@ -2,6 +2,7 @@ import QtQuick
 import Quickshell.Hyprland
 import "../components"
 import "../config"
+import "../logic/WorkspaceLogic.js" as Logic
 
 Item {
     id: root
@@ -27,16 +28,7 @@ Item {
 
             Repeater {
                 id: specialRepeater
-                model: {
-                    var result = [];
-                    for (var i = 0; i < Hyprland.workspaces.values.length; i++) {
-                        var ws = Hyprland.workspaces.values[i];
-                        if (ws.id < 0) result.push(ws);
-                    }
-                    // Sort by ID to maintain order
-                    result.sort(function(a, b) { return a.id - b.id; });
-                    return result;
-                }
+                model: Logic.getSpecial(Hyprland.workspaces.values)
 
                 WorkspaceItem {
                     width: root.secondaryLength
