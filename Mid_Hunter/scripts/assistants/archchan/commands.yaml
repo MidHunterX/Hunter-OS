@@ -8,18 +8,11 @@
 
 # Power
 
-- keyword: "[tlp] Disable Conservation Mode - Set to fullcharge temporarily"
-  commands:
-    - sudo tlp fullcharge
-  comment: "You can set default charging mode at: /etc/tlp.conf"
-
-- keyword: "[tlp] Enable Conservation Mode - Set charging limit @60%"
-  commands:
-    - sudo tlp setcharge
-  comment: "You can set default charging mode at: /etc/tlp.conf"
-
 - keyword: "[tlp] How to do Conservation Mode"
-  comment: "You can set default charging mode with: `sudoedit /etc/tlp.conf`"
+  comment: "Enable/disable conservation mode temporarily with: `sudo tlp start` and `sudo tlp stop`.\nYou can also set charging mode permanently with: `sudoedit /etc/tlp.conf`"
+
+- keyword: "[tlp] Toggle Battery Conservation"
+  procedure: "toggle_conservation"
 
 # System
 

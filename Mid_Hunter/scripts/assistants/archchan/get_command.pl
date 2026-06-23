@@ -5,7 +5,6 @@
 use strict;
 use warnings;
 use utf8;
-use POSIX qw(strftime);
 use YAML::XS qw(LoadFile);
 use Term::ANSIColor qw(:constants);
 use Time::HiRes qw(sleep);
@@ -13,97 +12,53 @@ use IPC::Open2;
 use FindBin;
 binmode(STDOUT, ":encoding(UTF-8)"); # Force UTF-8 for W-I-D-E (>255) print
 
+use lib $FindBin::Bin;
+use ArchChan;
 
 # Configuration
-my $NAME        = "Arch Chan";
-my $DATA_FILE   = "commands.yaml";
+my $DATA_FILE   = "$FindBin::Bin/commands.yaml";
 my $PROMPT      = "Arch Chan's Command Shop";
-
-# Colors
-my $C_BG    = ON_BLACK;
-my $C_CMD   = BOLD . BLUE;
-my $C_OPT   = BOLD . CYAN;
-my $C_VAR   = BOLD . RED;
-my $C_STR   = BOLD . YELLOW;
-my $C_PROC  = BOLD . MAGENTA;
-my $C_RST   = RESET;
-
-# Prompts
-my $transient_prompt = ""
-. RESET . RED . "█"
-. BOLD . BLACK . ON_RED . strftime("%H:%M", localtime) . " "
-. RESET . RED . ""
-. RESET . BRIGHT_BLACK . ""
-. RESET;
-my $message_prompt = BOLD . GREEN . $NAME . ":" . RESET;
-
-sub animate_message {
-    my ($text) = @_;
-
-    print "\n${message_prompt} ";
-
-    # Syntax highlight backticks
-    $text =~ s/`(\S+)(.*?)`/$C_BG$C_CMD$1$C_OPT$2${C_RST}/g;
-    $text =~ s/<([^>]+)>/${C_VAR}<$1>${C_OPT}/g;
-    $text =~ s/''(.+?)''/${C_STR}"$1"${C_OPT}/g;
-
-    foreach my $word (split(/ /, $text)) {
-        print "$word ";
-        $| = 1; # Flush output buffer
-        sleep(0.09);
-    }
-    print "\n";
-}
 
 sub main {
     # REQUIRE: DATA_FILE
-    $DATA_FILE = "$FindBin::Bin/commands.yaml";
     die "Missing $DATA_FILE" unless -e $DATA_FILE;
     my $data = LoadFile($DATA_FILE);
 
     # REQUIRE: item selection
     my @keywords = map { $_->{keyword} } @$data;
-    my $selection;
     my $pid = open2(my $fzf_out, my $fzf_in, "fzf --border rounded --border-label \"$PROMPT\"");
     print $fzf_in join("\n", @keywords);
     close($fzf_in);
-    $selection = <$fzf_out>;
+    my $selection = <$fzf_out>;
     chomp($selection) if $selection;
     waitpid($pid, 0);
 
-    unless ( $selection ) {
+    unless ($selection) {
         animate_message("Nothing to do... Have a nice day, master ;D");
         exit 0;
     }
 
     my ($entry) = grep { $_->{keyword} eq $selection } @$data;
 
-    # ACTION: Execute standard commands
+    # ACTION: Commands
     if ($entry->{commands}) {
         my @cmds = ref($entry->{commands}) eq 'ARRAY' ? @{$entry->{commands}} : ($entry->{commands});
         foreach my $cmd (@cmds) {
-            my $f_cmd = $cmd;
-            $f_cmd =~ s/^(\S+)(.*)$/$C_CMD$1$C_OPT$2/;
-            print "\n${transient_prompt} ${C_RST}${C_CMD}$f_cmd${C_RST}\n";
-            system($cmd);
+            execute_command($cmd);
         }
     }
 
-    # ACTION: Execute Procedure Script
+    # ACTION: Procedure
     if ($entry->{procedure}) {
         my $proc_name = $entry->{procedure};
-        my $proc_dir  = "$FindBin::Bin/procedures";
-        my $sh_script = "$proc_dir/$proc_name.sh";
-        my $pl_script = "$proc_dir/$proc_name.pl";
+        my $proc_path = "$FindBin::Bin/procedures/$proc_name";
 
-        print "\n${transient_prompt} ${C_PROC}Doing: $proc_name${C_RST}\n";
-
-        if (-f $sh_script) {
-            system("bash", $sh_script);
-        } elsif (-f $pl_script) {
-            system("perl", $pl_script);
+        if (-f "$proc_path.pl") {
+            system("perl", "$proc_path.pl");
+        } elsif (-f "$proc_path.sh") {
+            system("bash", "$proc_path.sh");
         } else {
-            print "${C_VAR}Error: Procedure script '$proc_name' (.sh or .pl) not found in $proc_dir${C_RST}\n";
+            print "Procedure $proc_name not found.\n";
         }
     }
 
