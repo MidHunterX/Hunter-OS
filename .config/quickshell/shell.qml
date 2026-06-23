@@ -120,6 +120,8 @@ Scope {
         }
     }
 
+    PowerMenu {}
+
     // Using DesktopUI/ModuleWifi instead of PixelUI/MeterWifi
     // Not enough importance to show it all times with PixelUI
     /*
