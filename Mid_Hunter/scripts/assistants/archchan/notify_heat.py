@@ -19,7 +19,7 @@ def notify_heat():
     arch_chan = ArchChan(mood=MOODS.HOT)
 
     check_interval_sec = 5 * 60  # 5 minutes
-    warm_temp_c = 70.0
+    warm_temp_c = 80.0
 
     print("Starting CPU heat monitoring...")
 

@@ -25,6 +25,7 @@ my $C_CMD   = BOLD . BLUE;
 my $C_OPT   = BOLD . CYAN;
 my $C_VAR   = BOLD . RED;
 my $C_STR   = BOLD . YELLOW;
+my $C_PROC  = BOLD . MAGENTA;
 my $C_RST   = RESET;
 
 # Prompts
@@ -69,7 +70,7 @@ sub main {
     $selection = <$fzf_out>;
     chomp($selection) if $selection;
     waitpid($pid, 0);
-    # return unless $selection;
+
     unless ( $selection ) {
         animate_message("Nothing to do... Have a nice day, master ;D");
         exit 0;
@@ -77,7 +78,7 @@ sub main {
 
     my ($entry) = grep { $_->{keyword} eq $selection } @$data;
 
-    # ACTION: Execute commands
+    # ACTION: Execute standard commands
     if ($entry->{commands}) {
         my @cmds = ref($entry->{commands}) eq 'ARRAY' ? @{$entry->{commands}} : ($entry->{commands});
         foreach my $cmd (@cmds) {
@@ -85,6 +86,24 @@ sub main {
             $f_cmd =~ s/^(\S+)(.*)$/$C_CMD$1$C_OPT$2/;
             print "\n${transient_prompt} ${C_RST}${C_CMD}$f_cmd${C_RST}\n";
             system($cmd);
+        }
+    }
+
+    # ACTION: Execute Procedure Script
+    if ($entry->{procedure}) {
+        my $proc_name = $entry->{procedure};
+        my $proc_dir  = "$FindBin::Bin/procedures";
+        my $sh_script = "$proc_dir/$proc_name.sh";
+        my $pl_script = "$proc_dir/$proc_name.pl";
+
+        print "\n${transient_prompt} ${C_PROC}Doing: $proc_name${C_RST}\n";
+
+        if (-f $sh_script) {
+            system("bash", $sh_script);
+        } elsif (-f $pl_script) {
+            system("perl", $pl_script);
+        } else {
+            print "${C_VAR}Error: Procedure script '$proc_name' (.sh or .pl) not found in $proc_dir${C_RST}\n";
         }
     }
 
