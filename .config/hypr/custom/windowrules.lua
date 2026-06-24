@@ -139,7 +139,8 @@ hl.window_rule({
   -- border_color = colors.secondary,
   -- size = (monitor_w*0.602) (monitor_h*0.6)
   size = { "(monitor_w*0.7)", "(monitor_h*0.7)" },
-  center = true
+  center = true,
+  border_color = "rgba(f9e2afff)" -- Sync to Pixelbar colors
 })
 
 -- nvim_textinput Window
@@ -160,5 +161,5 @@ hl.window_rule({
 -- Create a smol kitty on special workspace
 hl.workspace_rule({
   workspace = "special:magic",
-  on_created_empty = "kitty --class smol"
+  on_created_empty = "kitty --class smol",
 })

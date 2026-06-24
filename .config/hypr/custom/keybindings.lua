@@ -304,10 +304,21 @@ hl.bind("SUPER + V", function()
     if not win.floating then
         hl.dispatch(hl.dsp.window.float({action="on"}))
         local targetW = math.floor(mon.width * 0.90)
-        local targetH = math.floor(mon.height * 0.85)
+        local targetH = math.floor(mon.height * 0.90)
         -- Works. Not optimizing as it's not a bottleneck.
-        hl.dispatch(hl.dsp.window.center())
-        hl.dispatch(hl.dsp.window.resize({ x = targetW, y = targetH }))
+        ---@type "adjusted" | "normal"
+        local mode = "adjusted"
+        if mode == "adjusted" then
+            local adjustment = 0.05 -- The lower the number, the lower the window
+            adjustment = math.floor(mon.height * adjustment)
+            hl.dispatch(hl.dsp.window.center())
+            hl.dispatch(hl.dsp.window.resize({ x = targetW, y = targetH + adjustment }))
+            hl.dispatch(hl.dsp.window.move({ direction = "d" }))
+            hl.dispatch(hl.dsp.window.resize({ x = 0, y = -adjustment, relative = true }))
+        elseif mode == "normal" then
+            hl.dispatch(hl.dsp.window.center())
+            hl.dispatch(hl.dsp.window.resize({ x = targetW, y = targetH }))
+        end
     else
         hl.dispatch(hl.dsp.window.float({action="off"}))
     end
