@@ -338,7 +338,7 @@ end
 -- █░█░█ █ █▄░█ █▀▄ █▀█ █░█░█ █▀   █▀ ▀█▀ █▄█ █░░ █▀▀
 -- ▀▄▀▄▀ █ █░▀█ █▄▀ █▄█ ▀▄▀▄▀ ▄█   ▄█ ░█░ ░█░ █▄▄ ██▄
 -- [Super+.] Emoji Selector
-hl.bind("SUPER + PERIOD", hl.dsp.exec_cmd("bash ~/Mid_Hunter/scripts/menu_emoji.sh"))
+hl.bind("SUPER + PERIOD", hl.dsp.exec_cmd("perl ~/Mid_Hunter/scripts/menu_emoji.pl"))
 
 -- [Alt+Tab] through existing workspaces
 hl.bind("ALT + TAB", hl.dsp.focus({ workspace = "e+1" }))
