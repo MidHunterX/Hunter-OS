@@ -16,16 +16,10 @@
 
 # System
 
-- keyword: "[pacman] Show/Get list of unwanted package/dependencies to remove/clean"
-  commands:
-    - pacman -Qdtq
-  comment: "These are the things you gotta yeet! using `sudo pacman -R $(pacman -Qdtq)`"
+- keyword: "[system] Do a full cleanup"
+  procedure: "self_clean"
 
-- keyword: "[pacman] Do remove/clean unwanted package/dependencies"
-  commands:
-    - sudo pacman -R $(pacman -Qdtq)
-
-- keyword: "[paccache] Do remove/clean all package version cache except current and previous"
+- keyword: "[paccache] Clean package version cache except current and previous"
   commands:
     - paccache -r --keep 2
 

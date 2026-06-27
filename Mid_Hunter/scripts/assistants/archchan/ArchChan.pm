@@ -50,7 +50,7 @@ sub animate_message {
     print "${MESSAGE_PROMPT} ";
 
     # Syntax highlight
-    $text =~ s/`(\S+)(.*?)`/$C_BG$C_CMD$1$C_OPT$2${C_RST}/g;
+    $text =~ s/`(\S+)(.*?)`/$C_BG $C_CMD$1$C_OPT$2 ${C_RST}/g;
     $text =~ s/<([^>]+)>/${C_VAR}<$1>${C_OPT}/g;
     $text =~ s/''(.+?)''/${C_STR}"$1"${C_OPT}/g;
     $text =~ s/\*(\S+)\*/${C_RST}${C_CMD}$1${C_RST}/g;
@@ -58,7 +58,7 @@ sub animate_message {
     foreach my $word (split(/ /, $text)) {
         print "$word ";
         $| = 1;
-        sleep(0.05);
+        sleep(0.08);
     }
 
     print "\n" if $newline;
