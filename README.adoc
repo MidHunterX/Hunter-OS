@@ -487,32 +487,6 @@ NOTE: To install Voice Typing Feature, download whisper model with `voxtype setu
 |===
 
 [discrete]
-==== Fix Low Volume Dialogue + Blown Out Sound FX in Movies
-Install `easyeffects`, `lsp-plugins-lv2` and `calf`. Open `easyeffects` and add the *Autogain* effect. It will automatically detect and calibrate volume gain in real-time. After this, just open up `easyeffects` whenever you are watching any movies.
-
-[discrete]
-==== AutoEQ to another IEM
-[discrete]
-===== Step 1: Parametric Equalization
-* Open link:https://squig.link[squig.link]
-* Disable all targets from the active graph window.
-* Select your IEM from `models` section.
-* Add the IEM you want to try with `+` button.
-* Download the graph of the IEM you want to try (Target).
-* Go to `equalizer` section
-* Parametric Equalizer = Your IEM
-* AutoEQ Range = 20-6000 hz (we shouldn't AutoEQ treble as treble graphs are not accurate)
-* Hit `AutoEQ` button and click `Export` for Linux or `Export Graphic EQ` for Android.
-
-[discrete]
-===== Step 2: Loading Frequency Response Graph
-* Open `easyeffects`
-* Add *Equalizer* effect > More Actions > Import APO
-* Load the previously downloaded *ParametricEQ* file.
-
-On Android Smartphone, you can use Wavelet app to load the downloaded *GraphicEQ* file.
-
-[discrete]
 === 🎬 Video
 [%header]
 |===
@@ -548,7 +522,7 @@ On Android Smartphone, you can use Wavelet app to load the downloaded *GraphicEQ
 | curlftpfs                 | FUSE mount ftp sites               | pacman
 | termscp                   | TUI client for SCP, FTP, Kube, S3  | pacman
 | dhcpcd                    | DHCP Client Daemon                 | pacman
-| firefox                   | Internet Browser                   | pacman
+| firefox-developer-edition | Internet Browser                   | pacman
 | keepassxc                 | Password Manager                   | pacman
 | networkmanager            | CLI Network Manager - nmcli, nmtui | pacman
 | openssh                   | SSH protocol implementation        | pacman
@@ -557,6 +531,8 @@ On Android Smartphone, you can use Wavelet app to load the downloaded *GraphicEQ
 | wpa_supplicant            | WLAN Daemon                        | pacman
 | speedometer               | TUI Network Speed Monitor          | aur
 |===
+
+* `firefox-developer-edition` allows you to load unverified extensions and bypass stringent security systems imposed by vanilla firefox. This is needed for doing the Movie Streaming Buffer Preloading hack.
 
 [discrete]
 ==== FUSE Mounted FTP File Transfer Issue
@@ -1119,3 +1095,32 @@ Host github-company
 
 Now you just clone normally. Git and SSH handle the rest. No more manual switching, no more mistakes.
 ====
+
+== 🎥 Media Optimization
+
+=== Fix Video Buffering issues on streaming Movies
+Install link:https://github.com/Andrews54757/FastStream[FastStream] in `firefox-developer-edition`. It takes over the video streaming player; overriding by a custom player that aggressively pre-buffers the rest of the video/movie in the background while you watch it. Supports HLS streams (.m3u8) and DASH streams (.mpd). Video player will now show buffer download speed, comprehensive subtitle UI supporting search and download.
+
+=== Fix Low Volume Dialogue + Blown Out Sound FX in Movies
+Install `easyeffects`, `lsp-plugins-lv2` and `calf`. Open `easyeffects` and add the *Autogain* effect. It will automatically detect and calibrate volume gain in real-time. After this, just open up `easyeffects` whenever you are watching any movies.
+
+=== AutoEQ to another IEM
+
+==== Step 1: Parametric Equalization
+* Open link:https://squig.link[squig.link]
+* Disable all targets from the active graph window.
+* Select your IEM from `models` section.
+* Add the IEM you want to try with `+` button.
+* Download the graph of the IEM you want to try (Target).
+* Go to `equalizer` section
+* Parametric Equalizer = Your IEM
+* AutoEQ Range = 20-6000 hz (we shouldn't AutoEQ treble as treble graphs are not accurate)
+* Hit `AutoEQ` button and click `Export` for Linux or `Export Graphic EQ` for Android.
+
+==== Step 2: Loading Frequency Response Graph
+* Open `easyeffects`
+* Add *Equalizer* effect > More Actions > Import APO
+* Load the previously downloaded *ParametricEQ* file.
+
+On Android Smartphone, you can use Wavelet app to load the downloaded *GraphicEQ* file.
+
