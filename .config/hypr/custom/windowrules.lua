@@ -20,7 +20,6 @@ hl.layer_rule({
 -- Disable blur for everything except
 -- windowrule = match:class negative:^(kitty|launcher|logout_dialog)$, no_blur on
 
-
 -- █░█░█ █ █▄░█ █▀▄ █▀█ █░█░█   █▀█ █░█ █░░ █▀▀ █▀
 -- ▀▄▀▄▀ █ █░▀█ █▄▀ █▄█ ▀▄▀▄▀   █▀▄ █▄█ █▄▄ ██▄ ▄█
 
@@ -32,7 +31,7 @@ local pip_size = 0.3
 hl.window_rule({
   name = "firefox-pip",
   match = {
-    class = "^firefox$",
+    class = "^(firefox|firefox-developer-edition)$",
     title = "^Picture-in-Picture$"
   },
   float = true,
@@ -46,33 +45,29 @@ hl.window_rule({
   pin = true,
   no_initial_focus = true,
   idle_inhibit = "always",
-  no_focus = true,
+  no_focus = true
 })
 
 -- Cycle through windows with mainMod + n
---[[
-Imagine the following scenario:
-- workspace 1: kitty terminal
-- workspace 2: empty
-- workspace 3: firefox window
-- Switch to workspace 1 -> Kitty terminal is focused
-- Switch to workspace 3 -> Firefox window is focused
-- Accidentally switch to workspace 2 -> Pinned firefox-pip is focused
-- Switch to workspace 1 -> Pinned firefox-pip is still focused
-]]
+-- Imagine the following scenario:
+-- - workspace 1: kitty terminal
+-- - workspace 2: empty
+-- - workspace 3: firefox window
+-- - Switch to workspace 1 -> Kitty terminal is focused
+-- - Switch to workspace 3 -> Firefox window is focused
+-- - Accidentally switch to workspace 2 -> Pinned firefox-pip is focused
+-- - Switch to workspace 1 -> Pinned firefox-pip is still focused
 -- This keybind fixes this issue
 -- Keeps firefox-pip no_focus, so it won't get focused but still be able to cycle through it
-hl.bind("SUPER + n", function()
+hl.bind("SUPER + n", function ()
   local ws = hl.get_active_workspace()
   local pip_window = nil
   if ws then
     local windows = hl.get_workspace_windows(ws)
-    if windows then
-      for _, w in ipairs(windows) do
-        if w.class == "firefox" and w.title == "Picture-in-Picture" then
-          pip_window = w
-          break
-        end
+    for _, w in ipairs(windows) do
+      if w.class == "firefox" or w.class == "firefox-developer-edition" and w.title == "Picture-in-Picture" then
+        pip_window = w
+        break
       end
     end
   end
@@ -108,7 +103,6 @@ hl.window_rule({
   match = { class = "^feh$" },
   stay_focused = true
 })
-
 
 -- █▀▄ █▄█ █▄░█ ▄▀█ █▀▄▀█ █ █▀▀   █▀█ █░█ █░░ █▀▀ █▀
 -- █▄▀ ░█░ █░▀█ █▀█ █░▀░█ █ █▄▄   █▀▄ █▄█ █▄▄ ██▄ ▄█
@@ -154,12 +148,11 @@ hl.window_rule({
   center = true
 })
 
-
 -- █░█░█ █▀█ █▀█ █▄▀ █▀ █▀█ ▄▀█ █▀▀ █▀▀   █▀█ █░█ █░░ █▀▀ █▀
 -- ▀▄▀▄▀ █▄█ █▀▄ █░█ ▄█ █▀▀ █▀█ █▄▄ ██▄   █▀▄ █▄█ █▄▄ ██▄ ▄█
 
 -- Create a smol kitty on special workspace
 hl.workspace_rule({
   workspace = "special:magic",
-  on_created_empty = "kitty --class smol",
+  on_created_empty = "kitty --class smol"
 })

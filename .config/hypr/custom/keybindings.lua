@@ -45,7 +45,7 @@ function VoiceType(status)
     if status == "start" then
         hl.dispatch(hl.dsp.exec_cmd(whisper .. " start"))
         hl.dispatch(hl.dsp.submap("Whisper"))
-    elseif status == "stop" then
+    else
         hl.dispatch(hl.dsp.exec_cmd(whisper .. " stop"))
         hl.dispatch(hl.dsp.submap("reset"))
     end
@@ -315,7 +315,7 @@ hl.bind("SUPER + V", function()
             hl.dispatch(hl.dsp.window.resize({ x = targetW, y = targetH + adjustment }))
             hl.dispatch(hl.dsp.window.move({ direction = "d" }))
             hl.dispatch(hl.dsp.window.resize({ x = 0, y = -adjustment, relative = true }))
-        elseif mode == "normal" then
+        else
             hl.dispatch(hl.dsp.window.center())
             hl.dispatch(hl.dsp.window.resize({ x = targetW, y = targetH }))
         end
