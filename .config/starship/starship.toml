@@ -201,6 +201,10 @@ disabled      = true
 symbol        = " "
 format        = '[ $symbol$version ]($style)'
 
+[bun]
+symbol        = " "
+format        = '[ $symbol$version ]($style)'
+
 [c]
 symbol        = " "
 format        = '[ $symbol($version(-$name)) ]($style)'
