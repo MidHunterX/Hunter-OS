@@ -179,7 +179,7 @@ if ($AUTOSCALE_STRATEGY eq "manual") {
     my $l_vibrancy_darkness = 0.0;
 
     # Dark Wallpaper (Personal Preference)
-    my $d_brightness = 0.7;
+    my $d_brightness = 0.6;
     my $d_contrast   = 0.5;
     my $d_vibrancy   = 0.5;
     my $d_vibrancy_darkness = 2.0;
