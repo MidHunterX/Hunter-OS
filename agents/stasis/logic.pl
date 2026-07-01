@@ -17,6 +17,7 @@ sub time_to_minutes {
 sub minutes_to_time {
     my ($min) = @_;
     $min %= 1440; # Wrap around 24h
+    $min += 1440 if $min < 0;
     return sprintf("%02d:%02d", int($min / 60), $min % 60);
 }
 
@@ -51,9 +52,10 @@ sub get_boot_times {
 
         my ($start_date, $start_time, $end_date, $end_time) = @dates;
 
-        my $t_start;
+        my ($t_start, $t_end);
         eval {
             $t_start = localtime->strptime("$start_date $start_time:00", "%Y-%m-%d %H:%M:%S");
+            $t_end   = localtime->strptime("$end_date $end_time:00", "%Y-%m-%d %H:%M:%S");
         };
 
         # CASE: Invalid timestamp
@@ -62,17 +64,19 @@ sub get_boot_times {
         # CASE: Out of range
         next if $t_start < $cutoff_time;
 
-        # DATA SKEW CORRECTION
-        # ====================
-        my $start_min = time_to_minutes($start_time);
-        my $end_min = time_to_minutes($end_time);
-        my $user_idle_min = TIMEOUT_MAJOR + TIMEOUT_MINOR;
-
         # CASE: Exclude current active boot (idx 0) from shutdown times
         next if ($idx == 0);
 
-        # Case: Exclude if it's just a restart or short break
-        next if $end_min - $start_min < 30;
+        my $duration_min = ($t_end - $t_start) / 60;
+
+        # Case: Exclude if it's not a proper sleep
+        my $user_bedtime_min = 5 * 60;
+        next if $duration_min < $user_bedtime_min;
+
+        # DATA SKEW CORRECTION
+        # ====================
+        my $end_min = time_to_minutes($end_time);
+        my $user_idle_min = TIMEOUT_MAJOR + TIMEOUT_MINOR;
 
         # CASE: Correct Data
         push @start_times, $start_time;
@@ -131,11 +135,15 @@ sub get_action_for_current_time {
 
 # MAIN
 # ================================
+unless (caller) {
 
-my ($start_times_ref, $end_times_ref) = get_boot_times(DAYS_TO_LOOK_BACK);
-my $dynamic_start = calculate_median_time($start_times_ref, FALLBACK_START);
-my $dynamic_end   = calculate_median_time($end_times_ref, FALLBACK_END);
-my $action = get_action_for_current_time($dynamic_start, $dynamic_end);
+    my ($start_times_ref, $end_times_ref) = get_boot_times(DAYS_TO_LOOK_BACK);
+    my $dynamic_start = calculate_median_time($start_times_ref, FALLBACK_START);
+    my $dynamic_end   = calculate_median_time($end_times_ref, FALLBACK_END);
+    my $action = get_action_for_current_time($dynamic_start, $dynamic_end);
 
-# print "{" . "\n Current_Action\t: $action" . "\n Work_Start\t: $dynamic_start" . "\n Work_End\t: $dynamic_end" . "\n Start_Times\t: [" . join(', ', @$start_times_ref) . "]" . "\n End_Times\t: [" . join(', ', @$end_times_ref) . "]" . "\n}" ;
-system($action);
+    # print "{" . "\n Current_Action\t: $action" . "\n Work_Start\t: $dynamic_start" . "\n Work_End\t: $dynamic_end" . "\n Start_Times\t: [" . join(', ', @$start_times_ref) . "]" . "\n End_Times\t: [" . join(', ', @$end_times_ref) . "]" . "\n}" ;
+    system($action);
+}
+
+1; # script returns true when required
