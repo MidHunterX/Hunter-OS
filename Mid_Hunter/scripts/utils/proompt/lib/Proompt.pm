@@ -116,7 +116,30 @@ sub process_markdown {
             push @out, "```$lang\n";
             push @out, get_file_content($path, $start_line, $end_line);
             push @out, "```\n";
-        } else {
+        }
+        # Check if line matches a <code> execution tag
+        elsif ($trimmed =~ m{<code>(.*?)</code>}i) {
+            my $command = $1;
+            $command =~ s/^\s+//;
+            $command =~ s/\s+$//;
+
+            push @out, "$line";
+            $i++;
+
+            # Move pointer forward to skip any existing code block below it
+            delete_existing_block(\@lines, \$i);
+
+            # Execute command and capture output
+            my $output = `$command`;
+
+            push @out, "```\n";
+            if (defined $output && length $output > 0) {
+                push @out, $output;
+                push @out, "\n" unless $output =~ /\n$/;
+            }
+            push @out, "```\n";
+        }
+        else {
             push @out, $line;
             $i++;
         }

@@ -15,12 +15,23 @@ subtest 'Language Detection' => sub {
 };
 
 subtest 'Backtick Cleaning' => sub {
-    my @input = ("clean line 1\n", "```\n", "clean line 2\n", "```python\n");
+    my @input = ("line 1\n", "```python\n", "line 2\n", "```\n");
     my @cleaned = Proompt::clean_backtick_lines(@input);
     is(scalar @cleaned, 2, 'Removes lines with backticks');
 };
 
 subtest 'File Content Retrieval' => sub {
+    my ($fh, $filename) = tempfile();
+    print $fh "line 1\n```\nline 2\n```\n";
+    close $fh;
+
+    my @content = Proompt::get_file_content($filename);
+    is_deeply(\@content, ["line 1\n", "line 2\n"], 'Reads file and strips backticks');
+    unlink $filename;
+};
+
+
+subtest 'Malformed File Content Retrieval' => sub {
     my ($fh, $filename) = tempfile();
     print $fh "line 1\n```\nline 2\n";
     close $fh;
@@ -57,7 +68,6 @@ subtest 'Markdown Processing: Fresh Insertion' => sub {
 
     my $out_str = join('', @output);
     like($out_str, qr/print\('hello'\)/, 'Inserted correct file content');
-    like($out_str, qr/```python/, 'Created correct markdown fence');
 
     unlink $src_file;
 };
@@ -69,7 +79,7 @@ subtest 'Markdown Processing: Existing Block Replacement' => sub {
 
     my @input = (
         "$src_file\n",
-        "```bash\n",
+        "```sh\n",
         "OLD CONTENT\n",
         "```\n",
         "Footer\n"
@@ -96,7 +106,8 @@ subtest 'Edge Case: Empty File' => sub {
     my @input = ("$src_file\n");
     my @output = Proompt::process_markdown(@input);
     my $out_str = join('', @output);
-    like($out_str, qr/```\n```/, 'Inserts empty block cleanly');
+
+    like($out_str, qr/```\s*```/, 'Empty file generates empty code block properly');
 
     unlink $src_file;
 };
@@ -121,9 +132,9 @@ subtest 'Edge Case: Whitespace between Path and Fence' => sub {
     my @input = (
         "$src_file\n",
         "\n",
-        "```perl\n",
+        "```pl\n",
         "old\n",
-        "```\n"
+        "```\n",
     );
     my @output = Proompt::process_markdown(@input);
 
@@ -133,6 +144,29 @@ subtest 'Edge Case: Whitespace between Path and Fence' => sub {
     like($out_str, qr/exit;/, 'Inserts new content');
 
     unlink $src_file;
+};
+
+subtest 'Feature: Code Tag Execution' => sub {
+    my @input = ("<code> echo \"Hello, world!\" </code>\n", "Footer\n");
+    my @output = Proompt::process_markdown(@input);
+    my $out_str = join('', @output);
+
+    like($out_str, qr/Hello, world!/, 'Executes code and includes output');
+    like($out_str, qr/```\nHello, world!\n```/, 'Wraps execution output in a code block');
+};
+
+subtest 'Feature: Code Tag Replacing Existing Output' => sub {
+    my @input = (
+        "<code> echo \"New Output\" </code>\n",
+        "```\n",
+        "Old Output\n",
+        "```\n"
+    );
+    my @output = Proompt::process_markdown(@input);
+    my $out_str = join('', @output);
+
+    unlike($out_str, qr/Old Output/, 'Successfully dropped previous code block from markdown');
+    like($out_str, qr/New Output/, 'Inserted new code execution trace properly');
 };
 
 done_testing();

@@ -1,3 +1,34 @@
+# PROOMPT
+
+## USAGE
+
+CLI:
+
+```bash
+proompt filename
+```
+
+NVIM:
+
+```lua
+:!proompt %
+```
+
+### Expansion Syntax
+
+```
+<code> echo "Hello, world!" </code>
+./lib/Proompt.pm
+```
+
+## INSTALL
+
+```bash
+mkdir -p ~/.local/bin/lib
+ln -sf "$PWD/proompt.pl" ~/.local/bin/proompt
+ln -sf "$PWD/lib/Proompt.pm" ~/.local/bin/lib/Proompt.pm
+```
+
 ## RESEARCH
 
 ### Claude
