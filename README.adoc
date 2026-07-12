@@ -529,6 +529,7 @@ NOTE: To install Voice Typing Feature, download whisper model with `voxtype setu
 | torbrowser-launcher       | Anonnymous Onion Browser           | pacman
 | transmission-gtk          | GUI Torrent Client                 | pacman
 | wpa_supplicant            | WLAN Daemon                        | pacman
+| wlctl-bin                 | TUI for networkmanager, Vim keys   | aur
 | speedometer               | TUI Network Speed Monitor          | aur
 |===
 
@@ -851,6 +852,8 @@ Defaults passwd_timeout = 5         # Sudo prompt timeout after 5 minutes
 # Login Stuff
 Defaults insults                    # Incorrect Password Easteregg
 Defaults pwfeedback                 # Visible Password Feedback
+# Visudo Editor
+Defaults editor=/usr/bin/nvim
 ----
 ====
 
@@ -1095,6 +1098,13 @@ Host github-company
 
 Now you just clone normally. Git and SSH handle the rest. No more manual switching, no more mistakes.
 ====
+
+== 🧹 Clear Recently Used
+
+[source,bash]
+----
+cat /dev/null > ~/.local/share/recently-used.xbel
+----
 
 == 🎥 Media Optimization
 

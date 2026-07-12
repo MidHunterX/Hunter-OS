@@ -1,3 +1,29 @@
+# Semantic: FTP
+# =================
+function ftp
+    if command -q termscp
+        termscp $argv
+    else
+        echo "No ftp client found"
+    end
+end
+
+# Semantic: WIFI
+# =================
+function wifi
+    if test -n "$argv"
+        command wifi $argv
+        return
+    end
+    if command -q wlctl
+        wlctl
+    else if command -q nmtui
+        nmtui
+    else
+        echo "No wifi client found"
+    end
+end
+
 # GIT -> LAZYGIT
 # ==============
 function git
