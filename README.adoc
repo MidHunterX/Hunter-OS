@@ -1099,6 +1099,70 @@ Host github-company
 Now you just clone normally. Git and SSH handle the rest. No more manual switching, no more mistakes.
 ====
 
+.🌐 The Coherent Locale
+[%collapsible]
+====
+[discrete]
+== 🌐 The Coherent Locale
+
+WARNING: Do not try this at home.
+
+.Copy en_HUNTER Locale and Compile
+[source,bash]
+----
+sudo cp ~/.config/LOCALE/en_HUNTER /usr/share/i18n/locales/
+sudo localedef -i en_HUNTER -f UTF-8 en_HUNTER
+----
+
+.Add entry to /etc/locale.gen
+[source,bash]
+----
+sudoedit /etc/locale.gen
+----
+
+.📝 /etc/locale.gen
+[source,config]
+----
+en_HUNTER UTF-8
+----
+
+.Generate locale
+[source,bash]
+----
+sudo locale-gen
+----
+
+.Verify installed locales
+[source,bash]
+----
+localectl list-locales
+----
+
+.Edit /etc/locale.conf
+[source,bash]
+----
+sudoedit /etc/locale.conf
+----
+
+.📝 /etc/locale.conf
+[source,bash]
+----
+LANG=en_HUNTER.UTF-8
+----
+
+Reboot your computer. Run `cal` to see the new change. Months should be now in
+proper Roman month names adapted to the Gregorian calendar: Primilis,
+Secundilis, Tertilis, Quartilis, Quintilis, Sextilis, September, October,
+November, December, Undecember and Duodecember.
+
+Uses -ilis for months 1–6 (since those were the original numbered months in the
+old Roman calendar), and -ber for months 7–12 (since that was the suffix they
+historically chose for the later months).
+
+Now you can properly tell the month number just by the name and vice-versa
+unlike the "modern" inconsistent slop.
+====
+
 == 🧹 Clear Recently Used
 
 [source,bash]
@@ -1109,10 +1173,18 @@ cat /dev/null > ~/.local/share/recently-used.xbel
 == 🎥 Media Optimization
 
 === Fix Video Buffering issues on streaming Movies
-Install link:https://github.com/Andrews54757/FastStream[FastStream] in `firefox-developer-edition`. It takes over the video streaming player; overriding by a custom player that aggressively pre-buffers the rest of the video/movie in the background while you watch it. Supports HLS streams (.m3u8) and DASH streams (.mpd). Video player will now show buffer download speed, comprehensive subtitle UI supporting search and download.
+Install link:https://github.com/Andrews54757/FastStream[FastStream] in
+`firefox-developer-edition`. It takes over the video streaming player;
+overriding by a custom player that aggressively pre-buffers the rest of the
+video/movie in the background while you watch it. Supports HLS streams (.m3u8)
+and DASH streams (.mpd). Video player will now show buffer download speed,
+comprehensive subtitle UI supporting search and download.
 
 === Fix Low Volume Dialogue + Blown Out Sound FX in Movies
-Install `easyeffects`, `lsp-plugins-lv2` and `calf`. Open `easyeffects` and add the *Autogain* effect. It will automatically detect and calibrate volume gain in real-time. After this, just open up `easyeffects` whenever you are watching any movies.
+Install `easyeffects`, `lsp-plugins-lv2` and `calf`. Open `easyeffects` and add
+the *Autogain* effect. It will automatically detect and calibrate volume gain
+in real-time. After this, just open up `easyeffects` whenever you are watching
+any movies.
 
 === AutoEQ to another IEM
 

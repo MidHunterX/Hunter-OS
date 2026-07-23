@@ -37,6 +37,8 @@
 !.config/GRUB/
 # 👄 Plymouth Splash
 !.config/PLYMOUTH/
+# 🌐 System Locale
+!.config/LOCALE/
 # 🔑 Keymapping Utility
 !.config/keyd/
 # 💧 Wayland Compositor
