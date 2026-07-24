@@ -113,9 +113,9 @@ Click the links below for a detailed documentation.
 | Shell Prompt Engine
 | image:.config/starship/.assets/prompt.png[,128,link=.config/starship/]
 
-| link:.config/waybar/[🍫 WayBar]
+| link:.config/quickshell/[⚡ Quickshell]
 | Status Bar
-| image:.config/waybar/.assets/waybar.png[,128,link=.config/waybar/]
+| image:.config/quickshell/.assets/quickshell.png[,128,link=.config/quickshell/]
 
 | link:.config/wlogout/[🌳 Wlogout]
 | Logout Menu
@@ -189,12 +189,12 @@ waybar --> volume & brillo & nf
 
 `matugen` is used to generate dynamic Material You colors for applications.
 
-IMPORTANT: Color generators like matugen are so pervasive, it becomes a dependency for app config colors unless there's a way to set fallback colors on app configs. This makes the configs non-plug-n-play for other systems until all variables are replaced with hex colorcodes. The main focus of this section is to make every configs independent (matugen Optional) and plug-n-play friendly again.
+IMPORTANT: Color generators like matugen are so pervasive, it becomes a dependency for app config colors unless there's a way to set fallback colors on app configs. This generally makes the configs not plug-n-play friendly but, the main focus of this section is to make every configs independent (matugen Optional) and plug-n-play friendly again.
 
 |===
-| 🟢 | matugen Optional (Fallback Colors)     | [11/16]
+| 🟢 | matugen Optional (Fallback Colors)     | [12/16]
 | 🟡 | matugen Optional (Fallback to Pink)    | [02/16]
-| 🔴 | matugen Required (No Fallback Colors)  | [03/16]
+| 🔴 | matugen Required (No Fallback Colors)  | [02/16]
 |===
 
 [source,mermaid,subs=attributes+]
@@ -227,7 +227,7 @@ gen --> app[🟢 fuzzel] --themes/colors.ini--> default_fallback
 gen --> top[🟢 btop] --themes/colors.theme--> settings
 gen --> app2[🟢 vicinae] --(Plugins UI)--> settings
 gen --> power[🔴 wlogout]
-gen --> waybar[🔴 waybar]
+gen --> waybar[🟢 <del>waybar</del> QuickShell]
 gen --> vis[🔴 cava]
 
 ansi --> kitty

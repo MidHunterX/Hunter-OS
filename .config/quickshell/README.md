@@ -1,5 +1,7 @@
 # Quickshell - Pixel UI
 
+![Pixelbar + GUI](.assets/quickshell.png)
+
 This status bar is designed for communication with just thin lines. This makes
 sure that you get the full screen real-estate all of the time for keeping you
 distraction free. The non-intrusive infomation is always there on top when you
