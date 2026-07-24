@@ -85,6 +85,19 @@ hl.bind("SUPER + n", function ()
   end
 end)
 
+-- MOBILE APP LIKE
+-- ===============
+
+hl.window_rule({
+  name = "Local_Send",
+  match = { class = "^(localsend)$" },
+  float = true,
+  size = { "512", "1024" },
+  center = true,
+  keep_aspect_ratio = true,
+  no_blur = true,
+})
+
 -- MULTIMEDIA
 -- ==========
 
