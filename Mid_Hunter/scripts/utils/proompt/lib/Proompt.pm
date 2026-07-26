@@ -4,12 +4,18 @@ use strict;
 use warnings;
 use Exporter 'import';
 
-our @EXPORT_OK = qw(process_markdown detect_language clean_backtick_lines get_file_content);
+our @EXPORT_OK = qw(
+    process_markdown
+    detect_language
+    clean_backtick_lines
+    get_file_content
+);
 
-# -----------------------------------------------------------------------------
-# Configuration
-# -----------------------------------------------------------------------------
-my %LANGUAGE_MAP = (
+# =============================================================================
+# Constants & Configuration
+# =============================================================================
+
+use constant LANGUAGE_MAP => {
     'adoc' => 'asciidoc',
     'py'   => 'python',
     'sh'   => 'bash',
@@ -24,127 +30,159 @@ my %LANGUAGE_MAP = (
     'yml'  => 'yaml',
     'md'   => 'markdown',
     'txt'  => '',
-);
+};
+
+use constant EXTENSION_RE   => qr/\.([^.\/]+)$/;
+use constant FILE_INC_RE    => qr{^ ( [\w./()@+\[\]-]+\.\w+ ) (?: :(\d+) :(\d+) )? $}x;
+use constant CODE_TAG_RE    => qr{<code> (.*?) </code>}xi;
+use constant CODE_FENCE_RE  => qr/^```/;
+use constant BLANK_LINE_RE  => qr/^\s*$/;
+
+# =============================================================================
+# Exported Public API
+# =============================================================================
 
 sub detect_language {
     my ($filename) = @_;
-    if ($filename =~ /\.([^.\/]+)$/) {
-        my $ext = $1;
-        return $LANGUAGE_MAP{$ext} // $ext;
-    }
-    return '';
+    return '' unless defined $filename && $filename =~ EXTENSION_RE;
+
+    my $ext = $1;
+    my $map = LANGUAGE_MAP;
+    return exists $map->{$ext} ? $map->{$ext} : $ext;
 }
 
 sub clean_backtick_lines {
-    my @lines = @_;
-    # Remove lines containing triple backticks to prevent markdown nesting errors
-    return grep { $_ !~ /```/ } @lines;
+    my (@lines) = @_;
+    return grep { $_ !~ CODE_FENCE_RE } @lines;
 }
 
 sub get_file_content {
     my ($path, $start_line, $end_line) = @_;
 
-    if (open my $fh, '<', $path) {
-        my @lines = <$fh>;
-        close $fh;
+    my @lines = _read_file_lines($path);
 
-        # If line numbers are given, filter the array (converting 1-based line nums to 0-based index)
-        if (defined $start_line && defined $end_line) {
-            $start_line = 1 if $start_line < 1;
-            $end_line = @lines if $end_line > @lines;
-
-            if ($start_line <= $end_line && $start_line <= @lines) {
-                @lines = @lines[$start_line - 1 .. $end_line - 1];
-            } else {
-                @lines = (); # Invalid range returns empty
-            }
-        }
-
-        return clean_backtick_lines(@lines);
-    }
-    return "(WARNING: Could not read $path)\n";
-}
-
-sub delete_existing_block {
-    my ($lines_ref, $i_ref) = @_;
-    my $i = $$i_ref;
-    my $start_i = $i;
-
-    # If the next non-empty line starts a code block, skip until the end of that block
-    while ($i < @$lines_ref && $lines_ref->[$i] =~ /^\s*$/) {
-        $i++;
+    if (defined $start_line && defined $end_line) {
+        @lines = _slice_line_range(\@lines, $start_line, $end_line);
     }
 
-    if ($i < @$lines_ref && $lines_ref->[$i] =~ /^```/) {
-        $i++; # skip opening fence
-        while ($i < @$lines_ref && $lines_ref->[$i] !~ /^```/) {
-            $i++;
-        }
-        if ($i < @$lines_ref && $lines_ref->[$i] =~ /^```/) {
-            $i++; # skip closing fence
-        }
-        $$i_ref = $i;
-    } else {
-        # If no code block is found, revert so we don't accidentally consume intentional empty lines
-        $$i_ref = $start_i;
-    }
+    return clean_backtick_lines(@lines);
 }
 
 sub process_markdown {
     my (@lines) = @_;
-    my @out;
+    my @output;
     my $i = 0;
 
     while ($i < @lines) {
         my $line = $lines[$i];
         chomp(my $trimmed = $line);
 
-        # Check if line matches a file path (optionally ending with :start:end)
-        if ($trimmed =~ m{^([\w./()@+\[\]-]+\.\w+)(?::(\d+):(\d+))?$} && -f $1) {
-            my $path = $1;
-            my $start_line = $2;
-            my $end_line = $3;
-            my $lang = detect_language($path);
-
-            push @out, "$line";
-            $i++;
-
-            # Move pointer forward to skip any existing code block below it
-            delete_existing_block(\@lines, \$i);
-
-            # Insert updated code fence block
-            push @out, "```$lang\n";
-            push @out, get_file_content($path, $start_line, $end_line);
-            push @out, "```\n";
+        if (my $inc = _parse_file_inclusion($trimmed)) {
+            push @output, $line;
+            $i = _skip_existing_code_block(\@lines, $i + 1);
+            push @output, _format_file_block($inc->{path}, $inc->{start}, $inc->{end});
         }
-        # Check if line matches a <code> execution tag
-        elsif ($trimmed =~ m{<code>(.*?)</code>}i) {
-            my $command = $1;
-            $command =~ s/^\s+//;
-            $command =~ s/\s+$//;
-
-            push @out, "$line";
-            $i++;
-
-            # Move pointer forward to skip any existing code block below it
-            delete_existing_block(\@lines, \$i);
-
-            # Execute command and capture output
-            my $output = `$command`;
-
-            push @out, "```\n";
-            if (defined $output && length $output > 0) {
-                push @out, $output;
-                push @out, "\n" unless $output =~ /\n$/;
-            }
-            push @out, "```\n";
+        elsif (my $cmd = _parse_code_tag($trimmed)) {
+            push @output, $line;
+            $i = _skip_existing_code_block(\@lines, $i + 1);
+            push @output, _format_command_block($cmd);
         }
         else {
-            push @out, $line;
+            push @output, $line;
             $i++;
         }
     }
-    return @out;
+
+    return @output;
+}
+
+# =============================================================================
+# Internal Helpers
+# =============================================================================
+
+sub _read_file_lines {
+    my ($path) = @_;
+    open my $fh, '<', $path or return ("(WARNING: Could not read $path)\n");
+    my @lines = <$fh>;
+    close $fh;
+    return @lines;
+}
+
+sub _slice_line_range {
+    my ($lines_ref, $start_line, $end_line) = @_;
+    my $total_lines = @$lines_ref;
+
+    $start_line = 1            if $start_line < 1;
+    $end_line   = $total_lines if $end_line > $total_lines;
+
+    if ($start_line <= $end_line && $start_line <= $total_lines) {
+        return @{$lines_ref}[ $start_line - 1 .. $end_line - 1 ];
+    }
+
+    return ();
+}
+
+sub _parse_file_inclusion {
+    my ($text) = @_;
+    if ($text =~ FILE_INC_RE) {
+        my ($path, $start, $end) = ($1, $2, $3);
+        return { path => $path, start => $start, end => $end } if -f $path;
+    }
+    return;
+}
+
+sub _parse_code_tag {
+    my ($text) = @_;
+    if ($text =~ CODE_TAG_RE) {
+        return $1;
+    }
+    return;
+}
+
+sub _format_file_block {
+    my ($path, $start_line, $end_line) = @_;
+    my $lang = detect_language($path);
+
+    return (
+        "```$lang\n",
+        get_file_content($path, $start_line, $end_line),
+        "```\n",
+    );
+}
+
+sub _format_command_block {
+    my ($command) = @_;
+    $command =~ s/^\s+|\s+$//g;
+
+    my $cmd_output = `$command`;
+    my @block = ("```\n");
+
+    if (defined $cmd_output && length $cmd_output) {
+        push @block, $cmd_output;
+        push @block, "\n" unless $cmd_output =~ /\n$/;
+    }
+
+    push @block, "```\n";
+    return @block;
+}
+
+sub _skip_existing_code_block {
+    my ($lines_ref, $index) = @_;
+    my $curr = $index;
+
+    # Skip optional blank lines preceding a code block
+    $curr++ while $curr < @$lines_ref && $lines_ref->[$curr] =~ BLANK_LINE_RE;
+
+    # Check if an existing code block fence starts here
+    if ($curr < @$lines_ref && $lines_ref->[$curr] =~ CODE_FENCE_RE) {
+        $curr++; # Skip opening fence line
+        $curr++ while $curr < @$lines_ref && $lines_ref->[$curr] !~ CODE_FENCE_RE; # Skip block body
+        $curr++ if $curr < @$lines_ref && $lines_ref->[$curr] =~ CODE_FENCE_RE;    # Skip closing fence line
+        return $curr;
+    }
+
+    # If no code block fence was found, return original index to preserve whitespace
+    return $index;
 }
 
 1;
