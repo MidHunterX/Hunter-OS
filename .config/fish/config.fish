@@ -43,26 +43,31 @@ if status is-interactive
     alias arch 'perl ~/Mid_Hunter/scripts/assistants/archchan/get_command.pl'
     alias vim nvim
 
-    # function cmd_duration
-    #   set ms $CMD_DURATION
-    #   set x (math --scale=0 $ms / 1000)
-    #   set seconds (math --scale=0 $x % 60)
-    #   set x (math --scale=0 $x / 60)
-    #   set minutes (math --scale=0 $x % 60)
-    #   set x (math --scale=0 $x / 60)
-    #   set hours (math --scale=0 $x % 24)
-    #   set result ""
-    #   if test $hours -gt 0
-    #     set result "$result$hours"h
-    #   end
-    #   if test $minutes -gt 0
-    #     set result "$result$minutes"m
-    #   end
-    #   if test $seconds -gt 0 -o (not test -n "$result")
-    #     set result "$result$seconds"s
-    #   end
-    #   echo $result
-    # end
+    function cmd_duration
+        set ms $CMD_DURATION
+        set x (math --scale=0 $ms / 1000)
+        set seconds (math --scale=0 $x % 60)
+        set x (math --scale=0 $x / 60)
+        set minutes (math --scale=0 $x % 60)
+        set x (math --scale=0 $x / 60)
+        set hours (math --scale=0 $x % 24)
+        set result ""
+        if test $hours -gt 0
+            set result "$result$hours"h
+        end
+        if test $hours -gt 0 -o $minutes -gt 0
+            set result "$result:"
+        end
+        if test $minutes -gt 0
+            set result "$result$minutes"m
+        end
+        # if test $seconds -gt 0 -o (not test -n "$result")
+        #     set result "$result$seconds"s
+        # end
+        if test -n $result
+            echo $result
+        end
+    end
 
     # LS_COLORS
     source ~/.config/fish/ls_colors.fish
@@ -93,21 +98,25 @@ if status is-interactive
 
         set BOLD '\033[4m'
         set RESET '\033[0;0m'
-        set PROMPT ""
 
         # FUTURISTIC TUI
 
-        # set PROMPT (string join '' $PROMPT "$RESET$BRPNKFG█")
-        # set PROMPT (string join '' $PROMPT "$BRPNKBG$WHTFG$(cmd_duration) ")
-        # set PROMPT (string join '' $PROMPT "$RESET$BRPNKFG\n")
+        set TRANSIENT_TIME ""
+        set DURATION (cmd_duration)
+        if test -n "$DURATION" -a (math --scale=0 $CMD_DURATION / 1000) -ge 60 # Seconds
+            set TRANSIENT_TIME (string join '' $TRANSIENT_TIME "$RESET$PNKFG-------------------------------------------------------")
+            set TRANSIENT_TIME (string join '' $TRANSIENT_TIME "$PNKBG$BLKFG󱎫 $(cmd_duration)")
+            set TRANSIENT_TIME (string join '' $TRANSIENT_TIME "$RESET$PNKFG")
+        end
 
-        set PROMPT (string join '' $PROMPT "$RESET$PNKFG█") #   █
-        set PROMPT (string join '' $PROMPT "$PNKBG$BLKFG$(date +%H:%M) ")
-        set PROMPT (string join '' $PROMPT "$RESET$PNKFG") #  
+        set TRANSIENT_PROMPT ""
+        set TRANSIENT_PROMPT (string join '' $TRANSIENT_PROMPT "\n$RESET$PNKFG█") #   █
+        set TRANSIENT_PROMPT (string join '' $TRANSIENT_PROMPT "$PNKBG$BLKFG$(date +%H:%M) ")
+        set TRANSIENT_PROMPT (string join '' $TRANSIENT_PROMPT "$RESET$PNKFG") #  
 
-        set PROMPT (string join '' $PROMPT "$RESET$BRPNKFG")
+        set TRANSIENT_PROMPT (string join '' $TRANSIENT_PROMPT "$RESET$BRPNKFG")
 
-        echo -n -e "\n$PROMPT$RESET "
+        echo -n -e "$TRANSIENT_TIME$TRANSIENT_PROMPT$RESET "
     end
     enable_transience
 
