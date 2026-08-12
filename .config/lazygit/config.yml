@@ -78,15 +78,15 @@ keybinding:
     prevPage: K # ','
     nextPage: J # .
 git:
-  pagers:
+  diffRenderers:
     - colorArg: always
-      pager: delta --paging=never --syntax-theme="base16" --diff-highlight
+      command: delta --paging=never --syntax-theme="base16" --diff-highlight
   commit:
     # If true, pass '--signoff' flag when committing
     signOff: false
   merging:
     # args: "--no-ff" # No Fast Forwarding, Make Merge Commit
-    squashMergeMessage: "🍋 squash_merge: {{selectedRef}} into {{currentBranch}}"
+    squashMergeMessage: "🍋 chore(squash): {{selectedRef}} into {{currentBranch}}"
   mainBranches:
     - master
     - main
