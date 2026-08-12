@@ -90,9 +90,9 @@ end)
 
 hl.window_rule({
   name = "Local_Send",
-  match = { class = "^(localsend)$" },
+  match = { class = "^(org.localsend.localsend_app)$" },
   float = true,
-  size = { "512", "1024" },
+  size = { "480", "1024" },
   center = true,
   keep_aspect_ratio = true,
   no_blur = true,
