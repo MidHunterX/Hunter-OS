@@ -35,7 +35,7 @@ use constant LANGUAGE_MAP => {
 use constant EXTENSION_RE   => qr/\.([^.\/]+)$/;
 use constant FILE_INC_RE    => qr{^ ( [\w./()@+\[\]-]+\.\w+ ) (?: :(\d+) :(\d+) )? $}x;
 use constant CODE_TAG_RE    => qr{<code> (.*?) </code>}xi;
-use constant CODE_FENCE_RE  => qr/^```/;
+use constant CODE_FENCE_RE  => qr/^\s*```/;
 use constant BLANK_LINE_RE  => qr/^\s*$/;
 
 # =============================================================================
