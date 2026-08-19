@@ -10,10 +10,9 @@ local terminal = "kitty"
 local browser = "python ~/Mid_Hunter/scripts/assistants/hyprchan/run_firefox.py"
 
 local function launcher()
-    local menu = "vicinae open" -- wofi -> fuzzel -> vicinae
-    hl.on("hyprland.start", function()
-        hl.exec_cmd("vicinae server")
-    end)
+    local menu = "fuzzel" -- wofi -> fuzzel -> vicinae -> fuzzel
+    -- fuzzel: it's much more lightweight than most of the launchers. Made by the dev who made foot terminal.
+    -- vicinae: can do calculations and everything. Once server crashes, it's gone. Unreliable.
     hl.bind("ALT + SPACE", hl.dsp.exec_cmd(menu))
 end
 launcher()
