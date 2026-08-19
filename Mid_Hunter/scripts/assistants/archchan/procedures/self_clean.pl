@@ -27,18 +27,23 @@ if ($pkg_count != 0) {
 
 # ACTION: PACKAGE CACHE
 my $cache_output = `paccache --keep 2 --dryrun`;
-if ($cache_output =~ /(\d+) candidates.*disk space saved: ([\d.]+) MiB/s) {
-    # ==> finished dry run: 77 candidates (disk space saved: 602.84 MiB)
+if ($cache_output =~ /(\d+) candidates \(disk space saved: ([\d.]+) (MiB|GiB)\)/s) {
+    # ==> finished dry run: 233 candidates (disk space saved: 1.88 GiB)
     my $cache_count = $1;
     my $cache_size  = $2;
-    animate_message("There's some space to clean up...");
-    execute_command("paccache --keep 2 --dryrun");
-    if (animate_prompt("Free up $cache_size MB?")) {
+    my $cache_unit  = $3;
+    animate_message("There are some old package cache...");
+    if (animate_prompt("Free up $cache_size $cache_unit?")) {
         execute_command("paccache -r --keep 2");
     } else {
         animate_message("No worries, I'll leave the cache alone.");
         $skipped = 1;
     }
+} elsif ($cache_output =~ /(\d+) candidates \(disk space saved: ([\d.]+) (KiB)\)/s) {
+    # ==> finished dry run: 1 candidates (disk space saved: 69.48 KiB)
+    my $cache_size  = $2;
+    my $cache_unit  = $3;
+    animate_message("There's only $cache_size $cache_unit worth of old package cache. Skipping...");
 } elsif ($cache_output =~ /no candidate packages found for pruning/s) {
     # ==> no candidate packages found for pruning
 } else {
