@@ -15,7 +15,9 @@ our $transient_prompt = ""
 . RESET . RED . "█"
 . BOLD . BLACK . ON_RED . strftime("%H:%M", localtime) . " "
 . RESET . RED . ""
-. RESET . BRIGHT_BLACK . ""
+. RESET . BRIGHT_BLACK . ""
+. RESET . ON_BRIGHT_BLACK . WHITE . " 󰚩 "
+. RESET . BRIGHT_BLACK . ""
 . RESET;
 
 # Colors
@@ -67,10 +69,10 @@ sub animate_message {
 sub animate_prompt {
     my ($question) = @_;
     animate_message($question, 0);
-    print BOLD . YELLOW . "(y/N) > " . RESET;
+    print BOLD . YELLOW . "(Y/n) > " . RESET;
     my $input = <STDIN>;
     chomp($input);
-    return ($input =~ /^[yY]/) ? 1 : 0;
+    return ($input =~ /^[yY]/) ? 0 : 1;
 }
 
 1;
