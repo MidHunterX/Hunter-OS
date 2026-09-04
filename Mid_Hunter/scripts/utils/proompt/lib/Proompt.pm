@@ -34,6 +34,7 @@ use constant LANGUAGE_MAP => {
 
 use constant EXTENSION_RE   => qr/\.([^.\/]+)$/;
 use constant FILE_INC_RE    => qr{^ ( [\w./()@+\[\]-]+\.\w+ ) (?: :(\d+) :(\d+) )? $}x;
+use constant EXEC_INC_RE    => qr{^ ( [\w./()@+\[\]-]+ ) (?: :(\d+) :(\d+) )? $}x;
 use constant CODE_TAG_RE    => qr{<code> (.*?) </code>}xi;
 use constant CODE_FENCE_RE  => qr/^\s*```/;
 use constant BLANK_LINE_RE  => qr/^\s*$/;
@@ -87,6 +88,11 @@ sub process_markdown {
             $i = _skip_existing_code_block(\@lines, $i + 1);
             push @output, _format_command_block($cmd);
         }
+        elsif (my $exec = _parse_exec_inclusion($trimmed)) {
+            push @output, $line;
+            $i = _skip_existing_code_block(\@lines, $i + 1);
+            push @output, _format_file_block($exec->{path}, $exec->{start}, $exec->{end});
+        }
         else {
             push @output, $line;
             $i++;
@@ -127,6 +133,15 @@ sub _parse_file_inclusion {
     if ($text =~ FILE_INC_RE) {
         my ($path, $start, $end) = ($1, $2, $3);
         return { path => $path, start => $start, end => $end } if -f $path;
+    }
+    return;
+}
+
+sub _parse_exec_inclusion {
+    my ($text) = @_;
+    if ($text =~ EXEC_INC_RE) {
+        my ($path, $start, $end) = ($1, $2, $3);
+        return { path => $path, start => $start, end => $end } if -f $path && -x $path;
     }
     return;
 }
