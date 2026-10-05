@@ -38,6 +38,7 @@ if status is-interactive
     abbr -a -g sayonara 'shutdown now' # Epic way to Shutdown
     abbr -a -g cls clear # Clear Screen
     abbr -a -g yeet 'sudo pacman -Rns' # Remove packages with dependencies
+    abbr -a -g yoink 'sudo pacman -S' # Install packages with dependencies
     abbr -a -g woman 'man -k . | fzf | awk \'{print $1}\' | xargs man'
 
     alias arch 'perl ~/Mid_Hunter/scripts/assistants/archchan/get_command.pl'
@@ -55,7 +56,7 @@ if status is-interactive
         if test $hours -gt 0
             set result "$result$hours"h
         end
-        if test $hours -gt 0 -o $minutes -gt 0
+        if test $hours -gt 0 -a $minutes -gt 0
             set result "$result:"
         end
         if test $minutes -gt 0

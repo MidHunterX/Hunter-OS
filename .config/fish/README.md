@@ -7,7 +7,8 @@ fish is a Unix shell with a focus on interactivity and usability. Fish is design
 | Command  | Description                                   |
 | -------- | --------------------------------------------- |
 | yeet     | Remove Packages along with their Dependencies |
-| woman    | Yapping all possible Man pages                |
+| yoink    | Install Packages along with Dependencies      |
+| woman    | Yapping out all available Man pages with fzf  |
 | sayonara | Shutdown Computer                             |
 | cls      | Clear Terminal Screen (`CTRL + L`)            |
 
