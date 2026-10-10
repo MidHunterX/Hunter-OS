@@ -1,7 +1,4 @@
 gui:
-  branchColorPatterns:
-    "^docs/": "#11aaff"
-    'ISSUE-\d+': "#ff5733"
   screenMode: "normal" # one of 'normal' | 'half' | 'full'
   scrollPastBottom: true
   scrollOffMargin: 4
@@ -28,6 +25,9 @@ gui:
       - red
     defaultFgColor:
       - white
+    branchColorPatterns:
+      "^docs/": "#11aaff"
+      'ISSUE-\d+': "#ff5733"
   commitLength:
     show: true
   mouseEvents: false
@@ -86,7 +86,7 @@ git:
     signOff: false
   merging:
     # args: "--no-ff" # No Fast Forwarding, Make Merge Commit
-    squashMergeMessage: "🍋 chore(squash): {{selectedRef}} into {{currentBranch}}"
+    squashMergeMessage: "\U0001F34B chore(squash): {{selectedRef}} into {{currentBranch}}"
   mainBranches:
     - master
     - main
