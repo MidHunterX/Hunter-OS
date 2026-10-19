@@ -2,24 +2,90 @@ package Logic;
 
 use strict;
 use warnings;
-use JSON::PP;
+use JSON::PP qw(decode_json);
+use File::Spec;
+use POSIX qw(strftime);
 use Exporter qw(import);
 
 our @EXPORT_OK = qw(
+    data_file
+    fval
+    hm_to_minute
     interpolate_brightness
     load_data
+    minute_to_hm
+    now_minute
+    save_data
     update_point
 );
 
+# ============================== SHARED PATHS =============================== #
+
+sub data_file {
+    return $ENV{RADIANCE_FILE}
+        if defined $ENV{RADIANCE_FILE} && length $ENV{RADIANCE_FILE};
+    my $home = $ENV{HOME} // '';
+    return File::Spec->catfile($home, '.cache', 'radiance_data.json');
+}
+
+# ============================== DATA I/O =================================== #
+
 sub load_data {
     my ($file_path) = @_;
-    if (!-e $file_path) { return {}; }
+    if (!defined $file_path || !-e $file_path) { return {}; }
     open my $fh, '<', $file_path or return {};
     local $/;
     my $json_text = <$fh>;
     close $fh;
-    return decode_json($json_text || '{}');
+    # Blank or malformed content must never crash a caller.
+    if (!defined $json_text || $json_text !~ /\S/) { return {}; }
+    my $data = eval { decode_json($json_text) };
+    return {} unless ref $data eq 'HASH';
+    return $data;
 }
+
+sub save_data {
+    my ($file_path, $data) = @_;
+    $data ||= {};
+    open my $fh, '>', $file_path or die "write $file_path: $!";
+    # Sort by numeric minute key for a stable file
+    my @keys = sort { $a <=> $b } keys %$data;
+    my %ordered = map { $_ => $data->{$_} } @keys;
+    print {$fh} JSON::PP->new->canonical->encode(\%ordered);
+    close $fh;
+    return 1;
+}
+
+# ============================== HELPERS ==================================== #
+
+# Coerce a stored value to a number; anything unparseable counts as 0.
+sub fval {
+    my ($v) = @_;
+    return (defined $v && $v =~ /^-?\d/) ? $v + 0 : 0;
+}
+
+sub minute_to_hm {
+    my $m = shift;
+    $m = int($m) % 1440;
+    $m += 1440 if $m < 0;
+    return sprintf("%02d:%02d", int($m / 60), $m % 60);
+}
+
+sub hm_to_minute {
+    my $s = shift;
+    return undef unless defined $s && $s =~ /^\s*(\d{1,2}):?(\d{2})?\s*$/;
+    my ($h, $mn) = ($1, $2 // 0);
+    return undef if $h > 23 || $mn > 59;
+    return $h * 60 + $mn;
+}
+
+# Minutes elapsed since local midnight (0..1439).
+sub now_minute {
+    my ($h, $m) = (strftime("%H", localtime), strftime("%M", localtime));
+    return $h * 60 + $m;
+}
+
+# ============================== DOMAIN ===================================== #
 
 sub update_point {
     my ($data, $minute, $value, $window_size) = @_;
@@ -32,7 +98,7 @@ sub update_point {
         if ($diff <= $window_size) { delete $data->{$stored_min}; }
     }
     # Set the new point
-    $data->{$minute} = sprintf("%.2f", $value);
+    $data->{$minute} = sprintf("%.2f", fval($value));
     return $data;
 }
 
@@ -45,7 +111,7 @@ sub interpolate_brightness {
     return 0 if (!@stored_mins);
 
     # SCENARIO Exact match
-    return $data->{$current_min} if exists $data->{$current_min};
+    return fval($data->{$current_min}) if exists $data->{$current_min};
 
     my ($prev, $next);
     for my $m (@stored_mins) {
@@ -57,8 +123,8 @@ sub interpolate_brightness {
     # If no prev, the "prev" is the last point of the previous day
     if (!defined $prev) {
         $prev = $stored_mins[-1];
-        my $val_prev = $data->{$prev};
-        my $val_next = $data->{$stored_mins[0]};
+        my $val_prev = fval($data->{$prev});
+        my $val_next = fval($data->{$stored_mins[0]});
 
         my $dist_total = (1440 - $prev) + $stored_mins[0];
         my $dist_curr  = ($current_min < $prev) ? $current_min + (1440 - $prev) : $current_min - $prev;
@@ -69,8 +135,8 @@ sub interpolate_brightness {
     # If no next, the "next" is the first point of the next day
     if (!defined $next) {
         $next = $stored_mins[0];
-        my $val_prev = $data->{$prev};
-        my $val_next = $data->{$next};
+        my $val_prev = fval($data->{$prev});
+        my $val_next = fval($data->{$next});
 
         my $dist_total = (1440 - $prev) + $next;
         my $dist_curr  = $current_min - $prev;
@@ -79,8 +145,8 @@ sub interpolate_brightness {
     }
 
     # LERP (Linear Interpolation)
-    my $val_prev = $data->{$prev};
-    my $val_next = $data->{$next};
+    my $val_prev = fval($data->{$prev});
+    my $val_next = fval($data->{$next});
     return $val_prev + ($val_next - $val_prev) * (($current_min - $prev) / ($next - $prev));
 }
 

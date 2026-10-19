@@ -2,15 +2,18 @@
 use strict;
 use warnings;
 
-use JSON::PP;
-use File::Spec;
-use POSIX qw(strftime);
-
 use FindBin;            # locate script directory
 use lib $FindBin::Bin;  # add directory to the search path (@INC) for lib
-use Logic qw(update_point);
+use Logic qw(
+    data_file
+    load_data
+    minute_to_hm
+    now_minute
+    save_data
+    update_point
+);
 
-my $CACHE_FILE = File::Spec->catfile($ENV{HOME}, '.cache', 'radiance_data.json');
+my $CACHE_FILE = data_file();
 
 sub get_brightness {
     my $val = `brillo`;
@@ -21,29 +24,16 @@ sub get_brightness {
 sub save_point {
     my ($min, $val) = @_;
 
-    # Load existing
-    my $data = {};
-    if (-e $CACHE_FILE) {
-        open my $fh, '<', $CACHE_FILE;
-        local $/;
-        $data = decode_json(<$fh> || '{}');
-        close $fh;
-    }
+    # Load, update and save back through the shared Logic helpers
+    my $data = load_data($CACHE_FILE);
+    update_point($data, $min, $val);
+    save_data($CACHE_FILE, $data);
 
-    # Update point
-    $data = update_point($data, $min, $val);
-
-    # Save back
-    open my $fh, '>', $CACHE_FILE or die $!;
-    print $fh encode_json($data);
-    close $fh;
-
-    printf "Saved: %02d:%02d -> %.2f%%\n", int($min/60), $min%60, $val;
+    printf "Saved: %s -> %.2f%%\n", minute_to_hm($min), $val;
 }
 
 # Get current time and brightness
-my ($h, $m) = (strftime("%H", localtime), strftime("%M", localtime));
-my $current_min = ($h * 60) + $m;
+my $current_min = now_minute();
 my $current_br  = get_brightness();
 
 save_point($current_min, $current_br);

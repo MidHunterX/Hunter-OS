@@ -2,18 +2,22 @@
 use strict;
 use warnings;
 
-use File::Spec;
-use POSIX qw(strftime);
 use Time::HiRes qw(sleep);
 
 use FindBin;            # locate script directory
 use lib $FindBin::Bin;  # add directory to the search path (@INC) for lib
-use Logic qw(interpolate_brightness load_data);
+use Logic qw(
+    data_file
+    interpolate_brightness
+    load_data
+    minute_to_hm
+    now_minute
+);
 
 # ============================== CONFIGURATION ============================== #
 
 my $INTERVAL_MINS = 5;  # How often to update brightness
-my $CACHE_FILE    = File::Spec->catfile($ENV{HOME}, '.cache', 'radiance_data.json');
+my $CACHE_FILE    = data_file();
 my $BRIGHTNESS_CMD    = "brillo -u 5000000 -S";
 my $TOGGLE_LOCK_FILE  = "/tmp/ai_brightness_toggle.lock";
 
@@ -69,12 +73,11 @@ sub refresh_screen_brightness {
     }
 
     my $data = load_data($CACHE_FILE);
-    my ($h, $m) = (strftime("%H", localtime), strftime("%M", localtime));
-    my $now = ($h * 60) + $m;
+    my $now = now_minute();
 
     my $target_br = interpolate_brightness($data, $now);
 
-    printf "Time: %02d:%02d | Target: %.2f%%\n", int($now/60), $now%60, $target_br;
+    printf "Time: %s | Target: %.2f%%\n", minute_to_hm($now), $target_br;
     system("$BRIGHTNESS_CMD $target_br");
 }
 
