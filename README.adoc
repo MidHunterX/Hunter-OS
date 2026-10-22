@@ -140,7 +140,7 @@ subgraph Orchestration Layer
   kitty(<a href='{gh-repo-master}/.config/kitty/'>Kitty</a>)
 end
 
-swww{{🔴 swww}}
+awww{{🔴 awww}}
 vifm(<a href='{gh-repo-master}/.config/vifm'>ViFM</a>)
 ls{{🟡 lsd / ls}}
 cat{{🟡 bat / cat}}
@@ -159,8 +159,8 @@ git{{🟡 git / lazygit}}
 prompt(<a href='{gh-repo-master}/.config/starship/'>Starship Prompt</a>)
 
 hypr --> kitty
-hypr --startup--> expression --> swww --wayland--> hypr
-hypr --startup--> swww & waybar
+hypr --startup--> expression --> awww --wayland--> hypr
+hypr --startup--> awww & waybar
 hypr --textinput--> nvim
 waybar --submap--> hypr
 run --> tmux & nvim
@@ -458,7 +458,6 @@ NOTE: Before installing jdk-openjdk, make sure to yeet out the pre-installed jav
 | localsend-bin     | Air-drop like Local File Transfer     | aur
 | onefetch          | Fetch Git Project Information         | aur
 | brillo            | Brightness based on human perception  | aur
-| tgpt              | CLI AI Chat without API keys          | aur
 | wl-kbptr          | Cursor Modal Keyboard Driven Pointer  | aur
 | wlrctl            | Cursor Control Utility                | aur
 | voxtype-bin       | Voice-to-text Tool                    | aur
@@ -568,7 +567,7 @@ When using `curlftpfs` to FUSE mount and copy files over FTP, there's a common i
 | vicinae-bin                 | Raycast Launcher alt         | aur
 | wf-recorder                 | Wayland Screen Recorder      | aur
 | keyd                        | Key Remapping Daemon         | aur
-| swww                        | Wayland Wallpaper Daemon     | aur
+| awww                        | Wayland Wallpaper Daemon     | aur
 | wlogout                     | Logout Screen                | aur
 | clock-tui                   | TUI Clock (tclock)           | aur
 |===
@@ -631,7 +630,7 @@ WARNING: xdg-desktop-portal-hyprland enables features like screen sharing. There
 | Package Name | Description          | Src
 | fuse-zip     | FUSE mount zip files | pacman
 | nemo         | GUI File Manager     | pacman
-| p7zip        | CLI 7 Zip Archiver   | pacman
+| 7zip         | CLI 7 Zip Archiver   | pacman
 | unzip        | Unzip .zip archives  | pacman
 | vifm         | TUI File Manager     | pacman
 | docx2txt     | View .docx files     | pacman
@@ -1107,11 +1106,16 @@ Now you just clone normally. Git and SSH handle the rest. No more manual switchi
 
 WARNING: Do not try this at home.
 
+There's one important caveat: Even though many core Linux toolchains support
+custom locale name, almost every external tools expects locale to be in the
+format of `{Lang}_{2 Letter Code}`. So, we are renaming it to something like
+`en_XX`
+
 .Copy en_HUNTER Locale and Compile
 [source,bash]
 ----
-sudo cp ~/.config/LOCALE/en_HUNTER /usr/share/i18n/locales/
-sudo localedef -i en_HUNTER -f UTF-8 en_HUNTER
+sudo cp ~/.config/LOCALE/en_HUNTER /usr/share/i18n/locales/en_XX
+sudo localedef -i en_XX -f UTF-8 en_XX
 ----
 
 .Add entry to /etc/locale.gen
@@ -1123,7 +1127,7 @@ sudoedit /etc/locale.gen
 .📝 /etc/locale.gen
 [source,config]
 ----
-en_HUNTER UTF-8
+en_XX UTF-8
 ----
 
 .Generate locale
@@ -1147,17 +1151,20 @@ sudoedit /etc/locale.conf
 .📝 /etc/locale.conf
 [source,bash]
 ----
-LANG=en_HUNTER.UTF-8
+LANG=en_XX.UTF-8
 ----
 
 Reboot your computer. Run `cal` to see the new change. Months should be now in
-proper Roman month names adapted to the Gregorian calendar: Primilis,
-Secundilis, Tertilis, Quartilis, Quintilis, Sextilis, September, October,
-November, December, Undecember and Duodecember.
+proper Roman month names adapted to the Gregorian calendar: Primilis (Pri),
+Secundilis (Sec), Tertilis (Ter), Quartilis (Quart), Quintilis (Quin), Sextilis
+(Sex), September (Sep), October (Oct), November (Nov), December (Dec),
+Undecember (Undec) and Duodecember (Duodec).
 
 Uses -ilis for months 1–6 (since those were the original numbered months in the
 old Roman calendar), and -ber for months 7–12 (since that was the suffix they
 historically chose for the later months).
+
+Date and Time will now use proper ISO 8601 format.
 
 Now you can properly tell the month number just by the name and vice-versa
 unlike the "modern" inconsistent slop.
