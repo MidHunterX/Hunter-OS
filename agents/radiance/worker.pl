@@ -8,18 +8,21 @@ use FindBin;            # locate script directory
 use lib $FindBin::Bin;  # add directory to the search path (@INC) for lib
 use Logic qw(
     data_file
+    fval
     interpolate_brightness
     load_data
     minute_to_hm
     now_minute
 );
+use Weather qw(cached_delta);
 
 # ============================== CONFIGURATION ============================== #
 
-my $INTERVAL_MINS = 5;  # How often to update brightness
-my $CACHE_FILE    = data_file();
-my $BRIGHTNESS_CMD    = "brillo -u 5000000 -S";
-my $TOGGLE_LOCK_FILE  = "/tmp/ai_brightness_toggle.lock";
+my $INTERVAL_MINS           = 5;  # How often to update brightness
+my $WEATHER_REFRESH_MINS    = 30;  # Time to wait before updating weather cache
+my $CACHE_FILE              = data_file();
+my $BRIGHTNESS_CMD          = "brillo -u 5000000 -S";
+my $TOGGLE_LOCK_FILE        = "/tmp/ai_brightness_toggle.lock";
 
 # ============================== COMMAND LINE ============================== #
 use Getopt::Long;
@@ -67,6 +70,16 @@ close $fh;
 
 # =============================== MAIN LOGIC =============================== #
 
+sub weather_note {
+    my ($weather) = @_;
+    return "weather n/a" unless $weather;
+    return "weather disabled (no coords in .env)" if $weather->{disabled};
+    my $note = sprintf("weather code %d, cloud %d%%, %+d%%",
+        fval($weather->{weather_code}), fval($weather->{cloud_cover}), fval($weather->{delta}));
+    $note .= " (cached)" if $weather->{stale};
+    return $note;
+}
+
 sub refresh_screen_brightness {
     if (-e $TOGGLE_LOCK_FILE) {
         return;
@@ -75,9 +88,17 @@ sub refresh_screen_brightness {
     my $data = load_data($CACHE_FILE);
     my $now = now_minute();
 
-    my $target_br = interpolate_brightness($data, $now);
+    my $base_br = interpolate_brightness($data, $now);
 
-    printf "Time: %s | Target: %.2f%%\n", minute_to_hm($now), $target_br;
+    my $weather = cached_delta($WEATHER_REFRESH_MINS * 60);
+    my $delta   = $weather ? fval($weather->{delta}) : 0;
+
+    my $target_br = $base_br + $delta;
+    $target_br = 0   if $target_br < 0;
+    $target_br = 100 if $target_br > 100;
+
+    printf "Time: %s | Base: %.2f%% | %s | Target: %.2f%%\n",
+        minute_to_hm($now), $base_br, weather_note($weather), $target_br;
     system("$BRIGHTNESS_CMD $target_br");
 }
 

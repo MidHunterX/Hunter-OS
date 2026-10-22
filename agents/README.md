@@ -32,6 +32,19 @@ Interpolate brightness smoothly throughout the whole day.
 - Case 2 (Update): Next day, set 4% @ 6:25. NEXT will be detected as 7% @ 6:30 which might not be the intended value since data points are close to each-other = SET with a padding to detection window. This same philosophy is used in UI Buttons and Touch Keyboards as well to detect nearest touch/click and accept it as intended.
 - Case 3 (Pause): Use `--toggle` to temporarily pause/resume auto-brightness. Useful when you are outside and want a fixed brightness level throughout the usage.
 
+### Radiance Weather Adaptation
+
+Setting a .env file with `RADIANCE_LATITUDE` and `RADIANCE_LONGITUDE` will
+unlock another feature that automatically adapts brightness curve delta based
+on your local ambient light inferred from cloud and weather patterns.
+
+This makes sure that you won't have to manually adjust on every other sunny or rainy day.
+
+> [!NOTE]
+> Brightness curve on a sunny day without clouds is taken as the reference
+> curve. So, set up your brightness curve specifically for that day. The rest
+> are all calculated adjustments.
+
 ## Stasis - Intelligent Power State Adaptation
 
 Stasis makes your computer know when to stop. It dynamically manages your
