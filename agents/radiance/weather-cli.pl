@@ -4,26 +4,32 @@ use warnings;
 
 use FindBin;            # locate script directory
 use lib $FindBin::Bin;  # add directory to the search path (@INC) for lib
-use Weather qw(cached_delta env_file);
+use Logic qw(data_file interpolate_brightness load_data now_minute);
+use Weather qw(cached_weather delta describe_code env_file weather_factor);
 
-# Thin CLI over Weather.pm. The actual fetch/delta/cache logic lives in the
-# module so worker.pl can reuse it; this just prints the current numbers.
+my $WEATHER_REFRESH_MINS = 30;  # Reuse cached conditions until this long
 
-my $WEATHER_REFRESH_MINS = 30;  # Reuse the cached delta until this long has passed
-
-my $weather = cached_delta($WEATHER_REFRESH_MINS * 60);
+my $weather = cached_weather($WEATHER_REFRESH_MINS * 60);
 
 die "Weather fetch failed and no cached data available\n" unless $weather;
 
-# No coordinates configured: report the disabled state instead of real numbers
+# No coordinates configured: report the disabled state
 if ($weather->{disabled}) {
     warn "Weather disabled: RADIANCE_LATITUDE/RADIANCE_LONGITUDE are not set.\n"
-       . "Add them to " . env_file() . " to enable the brightness delta.\n";
-    printf "Suggested brightness delta: %d%%\n", $weather->{delta};
+       . "Add them to " . env_file() . " to enable the brightness correction.\n";
+    printf "Suggested brightness delta: 0%%\n";
     exit 0;
 }
 
-printf "Weather code: %d | Cloud cover: %d%%%s\n",
-    $weather->{weather_code}, $weather->{cloud_cover},
+my $base   = interpolate_brightness(load_data(data_file()), now_minute());
+my $target = $base + delta($base, $weather);
+$target = 0   if $target < 0;
+$target = 100 if $target > 100;
+
+printf "Weather code: %d (%s)%s\n",
+    $weather->{weather_code},
+    describe_code($weather->{weather_code}),
     $weather->{stale} ? " (cached)" : "";
-printf "Suggested brightness delta: %d%%\n", $weather->{delta};
+printf "Learned now: %.2f%% | Factor: x%.2f\n", $base, weather_factor($weather);
+printf "Suggested brightness delta: %+.2f%% -> target %.2f%%\n",
+    delta($base, $weather), $target;

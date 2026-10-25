@@ -14,7 +14,7 @@ use Logic qw(
     minute_to_hm
     now_minute
 );
-use Weather qw(cached_delta);
+use Weather qw(adjust_brightness cached_weather weather_factor);
 
 # ============================== CONFIGURATION ============================== #
 
@@ -74,8 +74,9 @@ sub weather_note {
     my ($weather) = @_;
     return "weather n/a" unless $weather;
     return "weather disabled (no coords in .env)" if $weather->{disabled};
-    my $note = sprintf("weather code %d, cloud %d%%, %+d%%",
-        fval($weather->{weather_code}), fval($weather->{cloud_cover}), fval($weather->{delta}));
+    my $note = sprintf("weather code %d, x%.2f",
+        fval($weather->{weather_code}),
+        weather_factor($weather));
     $note .= " (cached)" if $weather->{stale};
     return $note;
 }
@@ -90,11 +91,10 @@ sub refresh_screen_brightness {
 
     my $base_br = interpolate_brightness($data, $now);
 
-    my $weather = cached_delta($WEATHER_REFRESH_MINS * 60);
-    my $delta   = $weather ? fval($weather->{delta}) : 0;
-
-    my $target_br = $base_br + $delta;
-    $target_br = 0   if $target_br < 0;
+    # Weather correction is scaled against the learned value for this minute:
+    # bright parts of the curve come down a lot, dim parts only nudge down.
+    my $weather    = cached_weather($WEATHER_REFRESH_MINS * 60);
+    my $target_br  = adjust_brightness($base_br, $weather);
     $target_br = 100 if $target_br > 100;
 
     printf "Time: %s | Base: %.2f%% | %s | Target: %.2f%%\n",

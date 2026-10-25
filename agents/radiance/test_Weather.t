@@ -4,7 +4,19 @@ use warnings;
 use Test::More;
 use FindBin;            # locate script directory
 use lib $FindBin::Bin;  # add directory to the search path (@INC) for lib
-use Weather qw(cache_file cached_delta delta_from env_file is_fresh load_env location);
+use Weather qw(
+    adjust_brightness
+    cache_file
+    cached_weather
+    delta
+    describe_code
+    env_file
+    is_fresh
+    load_env
+    location
+    severity
+    weather_factor
+);
 
 require File::Temp;
 require JSON::PP;
@@ -25,26 +37,75 @@ sub read_cache {
     return JSON::PP::decode_json(<$fh>);
 }
 
-subtest 'Delta from WMO weather codes' => sub {
-    is(delta_from(0, 50),  0,   "Clear sky: no change");
-    is(delta_from(1, 50),  0,   "Mainly clear: no change");
-    is(delta_from(2, 50),  -5,  "Partly cloudy: small dim");
-    is(delta_from(3, 50),  -5,  "Overcast: small dim");
-    is(delta_from(3, 90),  -10, "Overcast + >80% cloud: extra -5");
-    is(delta_from(45, 50), -15, "Fog: heavy dim");
-    is(delta_from(55, 50), -10, "Rain: moderate dim");
-    is(delta_from(71, 50), -5,  "Snow: small dim");
-    is(delta_from(81, 50), -12, "Rain showers: moderate-heavy dim");
-    is(delta_from(95, 50), -20, "Thunderstorm: strongest dim");
-    is(delta_from(95, 95), -20, "Thunderstorm never dims past -20");
-    is(delta_from(40, 50), 0,   "Unmapped code: no change");
+# Floating-point comparisons
+sub approx {
+    my ($got, $exp, $name) = @_;
+    cmp_ok(abs($got - $exp), '<', 1e-9, $name);
+}
 
-    # Intensity multiplier
-    is(delta_from(2, 50, 0.5), -2, "Intensity 0.5 softens the delta");
-    is(delta_from(2, 50, 2.0), -10, "Intensity 2.0 doubles the delta");
+subtest 'Severity mapping (fraction of brightness removed)' => sub {
+    approx(severity(0),  0.00, "Clear sky: no dimming");
+    approx(severity(1),  0.00, "Mainly clear: no dimming");
+    approx(severity(2),  0.05, "Partly cloudy: 5%");
+    approx(severity(3),  0.05, "Overcast: 5%");
+    approx(severity(45), 0.15, "Fog: 15%");
+    approx(severity(55), 0.10, "Rain: 10%");
+    approx(severity(71), 0.05, "Snow: 5%");
+    approx(severity(81), 0.12, "Rain showers: 12%");
+    approx(severity(95), 0.20, "Thunderstorm: 20%");
+    approx(severity(40), 0.00, "Unmapped code: no dimming");
+    approx(severity(undef), 0, "Missing code tolerated");
 
-    # Tolerates missing fields
-    is(delta_from(undef, undef), 0, "Missing code/cloud tolerated");
+    # A leftover cloud_cover field (old cache entries) must not influence it
+    approx(severity(3, 95), 0.05, "cloud_cover is ignored");
+};
+
+subtest 'Weather code descriptions' => sub {
+    is(describe_code(0),  'Clear sky',              "Code 0 described");
+    is(describe_code(3),  'Overcast',               "Code 3 described");
+    is(describe_code(45), 'Fog',                    "Fog code described");
+    is(describe_code(81), 'Moderate rain showers',  "Shower code described");
+    is(describe_code(99), 'Thunderstorm with heavy hail', "Top thunderstorm code described");
+    is(describe_code(40), 'unknown code',           "Unmapped code says so instead of guessing");
+    is(describe_code(undef), 'unknown',             "Missing code tolerated");
+    is(describe_code('abc'), 'unknown',             "Garbage code tolerated");
+};
+
+subtest 'Correction scales with the learned brightness' => sub {
+    my $overcast = { weather_code => 3 };   # severity 0.05
+
+    # Bright learned value on a cloudy day: lowered a lot
+    approx(adjust_brightness(95, $overcast), 90.25, "Bright daytime comes down by 5%");
+    approx(delta(95, $overcast), -4.75, "Delta is worth -4.75 points at base 95");
+
+    # Same weather, but the learned curve is already dim: only nudged down
+    approx(adjust_brightness(12, $overcast), 11.4, "Dim evening only nudges down");
+    approx(delta(12, $overcast), -0.6, "Delta is worth just -0.6 points at base 12");
+    ok(adjust_brightness(12, $overcast) > 0, "Dim value is never cut off entirely");
+
+    # Clear weather: untouched at any level
+    my $clear = { weather_code => 0 };
+    approx(adjust_brightness(95, $clear), 95, "Clear day, bright: untouched");
+    approx(adjust_brightness(12, $clear), 12, "Clear day, dim: untouched");
+    approx(delta(50, $clear), 0, "Clear day: zero delta");
+
+    # Extreme weather scales the same way
+    my $storm = { weather_code => 95 };   # severity 0.20
+    approx(adjust_brightness(100, $storm), 80, "Storm scales a peak value to 80%");
+    approx(adjust_brightness(10, $storm),  8,  "Storm scales a dim value to 8");
+
+    # Intensity softens/hardens the scaling
+    approx(weather_factor($overcast, 0.5), 0.975, "Intensity 0.5 halves the correction");
+    approx(adjust_brightness(100, $overcast, 0.5), 97.5, "Intensity 0.5 applied to base");
+
+    # Safety rails
+    approx(weather_factor({ weather_code => 95 }, 10), 0.1,
+        "Never dims by more than 90% even at absurd intensity");
+    is(weather_factor(undef, 1), 1, "No weather data: factor 1");
+    is(weather_factor({ disabled => 1 }, 1), 1, "Disabled: factor 1");
+    approx(adjust_brightness(50, { disabled => 1 }), 50, "Disabled: learned value untouched");
+    approx(adjust_brightness(50, undef), 50, "No weather data: learned value untouched");
+    is(adjust_brightness(-5, $overcast), 0, "Never goes negative");
 };
 
 subtest 'Cache freshness' => sub {
@@ -54,7 +115,7 @@ subtest 'Cache freshness' => sub {
     ok(!is_fresh({}, 60),                             "Fresh: entry without timestamp rejected");
 };
 
-subtest 'Reuse cached delta until refresh is due' => sub {
+subtest 'Reuse cached conditions until refresh is due' => sub {
     my ($fh, $path) = File::Temp::tempfile(UNLINK => 1);
     close $fh;
     local %ENV = %ENV;
@@ -62,21 +123,21 @@ subtest 'Reuse cached delta until refresh is due' => sub {
     $ENV{RADIANCE_LONGITUDE} = '77.1';
     local $ENV{RADIANCE_WEATHER_FILE} = $path;
 
-    write_cache($path, { weather_code => 3, cloud_cover => 40, delta => -5, fetched_at => time() });
+    write_cache($path, { weather_code => 3, fetched_at => time() });
 
     my $fetched = 0;
     local *Weather::fetch_current = sub { $fetched++; return undef; };
 
-    my $w = cached_delta(600);
-    is($w->{delta}, -5,  "Delta served from cache");
-    is($w->{stale}, 0,   "Fresh cache not flagged stale");
-    is($fetched,     0,  "No API call while cache is fresh");
+    my $w = cached_weather(600);
+    is($w->{weather_code}, 3, "Conditions served from cache");
+    is($w->{stale}, 0,       "Fresh cache not flagged stale");
+    is($fetched,     0,      "No API call while cache is fresh");
 
-    # A cached delta of exactly 0 is still a valid result
-    write_cache($path, { weather_code => 0, cloud_cover => 10, delta => 0, fetched_at => time() });
-    $w = cached_delta(600);
-    is($w->{delta}, 0, "Zero delta cache is honoured");
-    is($fetched,    0, "Still no API call for a zero-delta cache");
+    # A clear-sky cache (severity 0) is still a valid result
+    write_cache($path, { weather_code => 0, fetched_at => time() });
+    $w = cached_weather(600);
+    is($w->{weather_code}, 0, "Clear-sky cache is honoured");
+    is($fetched,           0, "Still no API call for a clear-sky cache");
 };
 
 subtest 'Refresh once the cache ages out' => sub {
@@ -87,19 +148,19 @@ subtest 'Refresh once the cache ages out' => sub {
     $ENV{RADIANCE_LONGITUDE} = '77.1';
     local $ENV{RADIANCE_WEATHER_FILE} = $path;
 
-    write_cache($path, { weather_code => 3, cloud_cover => 40, delta => -5, fetched_at => time() - 7200 });
+    write_cache($path, { weather_code => 3, fetched_at => time() - 7200 });
 
     my $fetched = 0;
     local *Weather::fetch_current = sub {
         $fetched++;
-        return { weather_code => 95, cloud_cover => 100 };
+        return { weather_code => 95 };
     };
 
-    my $w = cached_delta(600);
+    my $w = cached_weather(600);
     is($fetched,     1,   "Stale cache triggers a refetch");
-    is($w->{delta}, -20,  "Fresh delta returned");
+    is($w->{weather_code}, 95, "Fresh conditions returned");
     is($w->{stale},  0,   "Fresh fetch not flagged stale");
-    is(read_cache($path)->{delta}, -20, "Cache file updated with fresh result");
+    is(read_cache($path)->{weather_code}, 95, "Cache file updated with fresh result");
 };
 
 subtest 'Fetch failure falls back to the cache' => sub {
@@ -110,18 +171,18 @@ subtest 'Fetch failure falls back to the cache' => sub {
     $ENV{RADIANCE_LONGITUDE} = '77.1';
     local $ENV{RADIANCE_WEATHER_FILE} = $path;
 
-    write_cache($path, { weather_code => 3, cloud_cover => 40, delta => -5, fetched_at => time() - 7200 });
+    write_cache($path, { weather_code => 3, fetched_at => time() - 7200 });
 
     local *Weather::fetch_current = sub { return undef; };
 
-    my $w = cached_delta(600);
-    is($w->{delta}, -5, "Stale cache served when fetch fails");
-    is($w->{stale}, 1,  "Fallback data flagged stale");
-    is(read_cache($path)->{delta}, -5, "Cache file left untouched by failed fetch");
+    my $w = cached_weather(600);
+    is($w->{weather_code}, 3, "Stale cache served when fetch fails");
+    is($w->{stale}, 1,        "Fallback data flagged stale");
+    is(read_cache($path)->{weather_code}, 3, "Cache file left untouched by failed fetch");
 
-    # No cache at all + failing fetch: caller gets undef and defaults to 0
+    # No cache at all + failing fetch: caller gets undef and applies no change
     unlink $path;
-    ok(!defined cached_delta(600), "Undef returned when nothing is cached and fetch fails");
+    ok(!defined cached_weather(600), "Undef returned when nothing is cached and fetch fails");
 };
 
 subtest 'Coordinates come from the environment' => sub {
@@ -157,14 +218,15 @@ subtest 'Weather disabled without coordinates' => sub {
     delete @ENV{qw(RADIANCE_LATITUDE RADIANCE_LONGITUDE)};
 
     # Even a perfectly fresh cache is ignored while disabled
-    write_cache($path, { weather_code => 3, cloud_cover => 40, delta => -5, fetched_at => time() });
+    write_cache($path, { weather_code => 3, fetched_at => time() });
 
     local *Weather::fetch_current = sub { die "must not touch the network while disabled" };
 
-    my $w = cached_delta(600);
-    is($w->{delta},    0,   "Disabled: delta is 0");
-    ok($w->{disabled},      "Disabled: flagged so callers can report it");
-    is($w->{stale},    0,   "Disabled: not flagged stale");
+    my $w = cached_weather(600);
+    ok($w->{disabled},       "Disabled: flagged so callers can report it");
+    is($w->{stale}, 0,       "Disabled: not flagged stale");
+    is(delta(50, $w), 0,     "Disabled: delta is 0 at any brightness");
+    approx(adjust_brightness(50, $w), 50, "Disabled: learned value passed through");
 };
 
 subtest '.env sourcing' => sub {

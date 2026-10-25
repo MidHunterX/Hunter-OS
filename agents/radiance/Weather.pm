@@ -1,13 +1,6 @@
 package Weather;
 
-# Weather-driven brightness delta for radiance.
-# Fetches current conditions from Open-Meteo (no API key required), translate
-# them into a brightness delta (percentage) and cache the result so consumers
-# can reuse it until it ages out instead of hitting the API on every tick.
-#
-# The coordinates are sensitive and live in a .env file next to this module
-# (sourced on load, see env_file()/load_env()). Without them the weather
-# module is disabled and reports a delta of 0.
+# Weather-driven brightness correction for radiance.
 
 use strict;
 use warnings;
@@ -16,21 +9,24 @@ use File::Spec;
 use File::Basename qw(dirname);
 use Exporter qw(import);
 
-# Reuse the shared JSON reader for the cache file.
 use FindBin;            # locate script directory
 use lib $FindBin::Bin;  # add directory to the search path (@INC) for lib
 use Logic qw(fval load_data);
 
 our @EXPORT_OK = qw(
+    adjust_brightness
     cache_file
-    cached_delta
-    delta_from
+    cached_weather
+    delta
+    describe_code
     env_file
+    fetch_conditions
     fetch_current
-    fetch_delta
     is_fresh
     load_env
     location
+    severity
+    weather_factor
 );
 
 # ============================== CONFIGURATION ============================== #
@@ -96,46 +92,87 @@ sub cache_file {
 
 # ============================== DELTA LOGIC ================================ #
 
-# Translate WMO weather code + cloud cover into a brightness delta.
-# Pure function: no I/O, safe to unit test.
-sub delta_from {
-    my ($weather_code, $cloud_cover, $intensity) = @_;
-    $weather_code //= 0;
-    $cloud_cover  //= 0;
-    $intensity    //= 1.0;
+sub severity {
+    my ($weather_code) = @_;
+    $weather_code = fval($weather_code);
 
-    my $delta = 0;
+    my $s = 0;
 
     # WMO Weather Codes interpretation
-    if ($weather_code == 0 || $weather_code == 1) {
-        $delta = 0;           # Clear / mainly clear
-    }
-    elsif ($weather_code == 2 || $weather_code == 3) {
-        $delta = -5;          # Partly cloudy / overcast
-    }
-    elsif ($weather_code >= 45 && $weather_code <= 48) {
-        $delta = -15;         # Fog
-    }
-    elsif ($weather_code >= 51 && $weather_code <= 67) {
-        $delta = -10;         # Drizzle / rain / freezing rain
-    }
-    elsif ($weather_code >= 71 && $weather_code <= 77) {
-        $delta = -5;          # Snow
-    }
-    elsif ($weather_code >= 80 && $weather_code <= 82) {
-        $delta = -12;         # Rain showers
-    }
-    elsif ($weather_code >= 95) {
-        $delta = -20;         # Thunderstorm
-    }
+    if    ($weather_code == 0 || $weather_code == 1) { $s = 0.00; }  # Clear / mainly clear
+    elsif ($weather_code == 2 || $weather_code == 3) { $s = 0.05; }  # Partly cloudy / overcast
+    elsif ($weather_code >= 45 && $weather_code <= 48) { $s = 0.15; }# Fog
+    elsif ($weather_code >= 51 && $weather_code <= 67) { $s = 0.10; }# Drizzle / rain / freezing rain
+    elsif ($weather_code >= 71 && $weather_code <= 77) { $s = 0.05; }# Snow
+    elsif ($weather_code >= 80 && $weather_code <= 82) { $s = 0.12; }# Rain showers
+    elsif ($weather_code >= 95) { $s = 0.20; }                      # Thunderstorm
 
-    # Extra dimming if very overcast
-    if ($cloud_cover > 80 && $delta > -20) {
-        $delta -= 5;
-    }
+    return $s;
+}
 
-    # Apply intensity multiplier
-    return int($delta * $intensity);
+# Human-readable meaning of a WMO weather code, for display only
+sub describe_code {
+    my ($weather_code) = @_;
+    return 'unknown' unless defined $weather_code && $weather_code =~ /\A\d+\z/;
+
+    my %text = (
+        0  => 'Clear sky',
+        1  => 'Mainly clear',
+        2  => 'Partly cloudy',
+        3  => 'Overcast',
+        45 => 'Fog',
+        48 => 'Depositing rime fog',
+        51 => 'Light drizzle',
+        53 => 'Moderate drizzle',
+        55 => 'Dense drizzle',
+        56 => 'Light freezing drizzle',
+        57 => 'Dense freezing drizzle',
+        61 => 'Slight rain',
+        63 => 'Moderate rain',
+        65 => 'Heavy rain',
+        66 => 'Light freezing rain',
+        67 => 'Heavy freezing rain',
+        71 => 'Slight snowfall',
+        73 => 'Moderate snowfall',
+        75 => 'Heavy snowfall',
+        77 => 'Snow grains',
+        80 => 'Slight rain showers',
+        81 => 'Moderate rain showers',
+        82 => 'Violent rain showers',
+        85 => 'Slight snow showers',
+        86 => 'Heavy snow showers',
+        95 => 'Thunderstorm',
+        96 => 'Thunderstorm with slight hail',
+        99 => 'Thunderstorm with heavy hail',
+    );
+    return $text{$weather_code} // 'unknown code';
+}
+
+# Multiplier for the learned brightness: 1.0 = untouched, 0.85 = 15% off.
+sub weather_factor {
+    my ($weather, $intensity) = @_;
+    $intensity //= $INTENSITY;
+    return 1 unless $weather && !$weather->{disabled};
+
+    my $s = severity($weather->{weather_code}) * $intensity;
+    $s = 0   if $s < 0;
+    $s = 0.9 if $s > 0.9;   # Never dim by more than 90%, whatever the intensity
+    return 1 - $s;
+}
+
+# Scale the learned brightness for the current minute by the weather factor.
+sub adjust_brightness {
+    my ($learned, $weather, $intensity) = @_;
+    $learned = fval($learned);
+    my $adjusted = $learned * weather_factor($weather, $intensity);
+    return $adjusted < 0 ? 0 : $adjusted;
+}
+
+# Signed delta in percentage points for a given learned brightness, for
+# logging/CLI display. Negative = dimmer than the learned curve.
+sub delta {
+    my ($learned, $weather, $intensity) = @_;
+    return adjust_brightness($learned, $weather, $intensity) - fval($learned);
 }
 
 # ============================== FETCHING =================================== #
@@ -148,7 +185,7 @@ sub fetch_current {
 
     my $url = "https://api.open-meteo.com/v1/forecast"
             . "?latitude=$lat&longitude=$lon"
-            . "&current=temperature_2m,weather_code,cloud_cover";
+            . "&current=temperature_2m,weather_code";
 
     # -s silent, -S show errors, -f fail on HTTP errors, --max-time timeout
     my $json = `curl -sSf --max-time 10 "$url" 2>&1`;
@@ -162,17 +199,15 @@ sub fetch_current {
 
     return {
         weather_code => fval($current->{weather_code}),
-        cloud_cover  => fval($current->{cloud_cover}),
     };
 }
 
 # Fetch conditions and turn them into a cache entry:
-# { weather_code, cloud_cover, delta, fetched_at }
-sub fetch_delta {
+# { weather_code, fetched_at }
+sub fetch_conditions {
     my $current = fetch_current() or return undef;
     return {
         %$current,
-        delta      => delta_from($current->{weather_code}, $current->{cloud_cover}, $INTENSITY),
         fetched_at => time(),
     };
 }
@@ -188,8 +223,7 @@ sub is_fresh {
 
 sub load_cache {
     my $cache = load_data(cache_file());
-    # Must look like something we wrote; Logic::load_data returns {} otherwise.
-    return undef unless exists $cache->{fetched_at} && exists $cache->{delta};
+    return undef unless exists $cache->{fetched_at} && exists $cache->{weather_code};
     return $cache;
 }
 
@@ -203,17 +237,14 @@ sub save_cache {
 
 # ============================== MAIN ENTRY ================================= #
 
-# Reuse the cached delta until it ages out, then re-fetch. On fetch failure
-# the stale cache is served instead (flagged with stale => 1); if there is no
-# cache at all, undef is returned so callers can default to delta 0.
-sub cached_delta {
+sub cached_weather {
     my ($max_age_secs) = @_;
     $max_age_secs //= $REFRESH_SECS;
 
     # Without coordinates (no/incomplete .env) the weather module is disabled:
-    # report a delta of 0 and never touch the cache or the network.
+    # report no conditions and never touch the cache or the network.
     if (!location_ok()) {
-        return { delta => 0, stale => 0, disabled => 1 };
+        return { stale => 0, disabled => 1 };
     }
 
     my $cache = load_cache();
@@ -222,7 +253,7 @@ sub cached_delta {
         return $cache;
     }
 
-    my $fresh = fetch_delta();
+    my $fresh = fetch_conditions();
     if ($fresh) {
         $fresh->{stale} = 0;
         save_cache($fresh);
@@ -236,7 +267,6 @@ sub cached_delta {
     return undef;
 }
 
-# Source the radiance .env at load time so the coordinates are available.
 load_env();
 
 1; # Must return a true value
